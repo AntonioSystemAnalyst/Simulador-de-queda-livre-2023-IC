@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A7D27068-DD1F-4686-BBAB-B4998147EE23}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>freeFall</RootNamespace>
+    <AssemblyName>freeFall</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>astronomy.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="configurePlanet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="configurePlanet.Designer.cs">
+      <DependentUpon>configurePlanet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Data.Designer.cs">
+      <DependentUpon>Data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="experimentData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="experimentData.Designer.cs">
+      <DependentUpon>experimentData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Simulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simulator.Designer.cs">
+      <DependentUpon>Simulator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Space.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Space.Designer.cs">
+      <DependentUpon>Space.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Speed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Speed.Designer.cs">
+      <DependentUpon>Speed.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="configurePlanet.resx">
+      <DependentUpon>configurePlanet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data.resx">
+      <DependentUpon>Data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="experimentData.resx">
+      <DependentUpon>experimentData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Simulator.resx">
+      <DependentUpon>Simulator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Space.resx">
+      <DependentUpon>Space.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Speed.resx">
+      <DependentUpon>Speed.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonEarth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonJupiter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonMars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonMercury.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonMoon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonNeptune.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonSaturn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonUranus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonVenus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\seta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setaX.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\horizonUnknow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="astronomy.ico" />
+    <None Include="Resources\airResistence.png" />
+    <None Include="Resources\gauge.png" />
+    <None Include="Resources\arrowsBlue %282%29.png" />
+    <None Include="Resources\arrowsBlue %281%29.png" />
+    <None Include="Resources\pokebola.png" />
+    <None Include="Resources\paper3.png" />
+    <None Include="Resources\paper2.png" />
+    <None Include="Resources\corpoTelephone.png" />
+    <None Include="Resources\corpoSphere2.png" />
+    <None Include="Resources\corpoSphere.png" />
+    <None Include="Resources\corpoSoccer.png" />
+    <None Include="Resources\corpoRing.png" />
+    <None Include="Resources\corpoMountains.png" />
+    <None Include="Resources\corpoGolf.png" />
+    <None Include="Resources\corpoEye.png" />
+    <None Include="Resources\corpoCosmos.png" />
+    <None Include="Resources\corpoBubble.png" />
+    <None Include="Resources\corpoBowling.png" />
+    <None Include="Resources\corpoBasketball.png" />
+    <None Include="Resources\corpoBall4.png" />
+    <None Include="Resources\corpoBall.png" />
+    <None Include="Resources\circuitBoard.png" />
+    <None Include="Resources\planetVenus.png" />
+    <None Include="Resources\planetUranus.png" />
+    <None Include="Resources\planetUnknow.png" />
+    <None Include="Resources\planetSaturn.png" />
+    <None Include="Resources\planetNeptune.png" />
+    <None Include="Resources\planetMoon.png" />
+    <None Include="Resources\planetMercury.png" />
+    <None Include="Resources\planetMars.png" />
+    <None Include="Resources\planetJupiter.png" />
+    <None Include="Resources\planetEarth.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
