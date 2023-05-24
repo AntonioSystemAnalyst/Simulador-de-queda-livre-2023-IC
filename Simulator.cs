@@ -28,7 +28,7 @@ namespace freeFall
         public double countTimeVacuum = 0.0;
         public double countTimePaper = 0.0;
 
-
+        public int countTesteAnimation = 0;
 
 
         System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
@@ -62,11 +62,26 @@ namespace freeFall
 
         public void clear ()
         {
+            countTesteAnimation = 0;
             pictureBoxCorpo.Location = new Point(145, 30);
             pictureBoxCorpoPaper.Location = new Point(222, 30);
             pictureBoxVacuum.Location = new Point(16, 13);
             countPixelObject = 0;
             Program.countTimeObject = 0.0;
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            timerTeste.Enabled = true;
+        }
+        private void timerTeste_Tick(object sender, EventArgs e)
+        {
+            pictureBoxCorpo.Location = new Point(145, 30 + countTesteAnimation);
+            if(countTesteAnimation == 534)
+            {
+                timerTeste.Enabled = false;
+            }
+            countTesteAnimation += 1;
         }
         // tamo aqui 
         private void timerAnimation_Tick(object sender, EventArgs e)

@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -94,6 +94,8 @@
             this.timerAnimationVacuum = new System.Windows.Forms.Timer(this.components);
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
+            this.timerTeste = new System.Windows.Forms.Timer(this.components);
+            this.buttonTest = new System.Windows.Forms.Button();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -138,16 +140,16 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea5.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend5);
+            chartArea3.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend3);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.chartSpeed.Series.Add(series5);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chartSpeed.Series.Add(series3);
             this.chartSpeed.Size = new System.Drawing.Size(822, 144);
             this.chartSpeed.TabIndex = 1;
             this.chartSpeed.Text = "chart2";
@@ -156,16 +158,16 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea6.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend6);
+            chartArea4.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend4);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.chartSpace.Series.Add(series6);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chartSpace.Series.Add(series4);
             this.chartSpace.Size = new System.Drawing.Size(822, 150);
             this.chartSpace.TabIndex = 0;
             this.chartSpace.Text = "chart1";
@@ -174,6 +176,7 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
+            this.groupBoxResultados.Controls.Add(this.buttonTest);
             this.groupBoxResultados.Controls.Add(this.buttonLogo);
             this.groupBoxResultados.Controls.Add(this.label9);
             this.groupBoxResultados.Controls.Add(this.txtEspaco);
@@ -841,6 +844,22 @@
             this.timerGrafic.Interval = 10;
             this.timerGrafic.Tick += new System.EventHandler(this.timerGrafic_Tick);
             // 
+            // timerTeste
+            // 
+            this.timerTeste.Interval = 1;
+            this.timerTeste.Tick += new System.EventHandler(this.timerTeste_Tick);
+            // 
+            // buttonTest
+            // 
+            this.buttonTest.ForeColor = System.Drawing.Color.Black;
+            this.buttonTest.Location = new System.Drawing.Point(286, 54);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(52, 23);
+            this.buttonTest.TabIndex = 36;
+            this.buttonTest.Text = "Test";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -954,5 +973,7 @@
         private System.Windows.Forms.Timer timerAnimationPaper;
         private System.Windows.Forms.Timer timerGrafic;
         private System.Windows.Forms.Button buttonLogo;
+        private System.Windows.Forms.Timer timerTeste;
+        private System.Windows.Forms.Button buttonTest;
     }
 }
