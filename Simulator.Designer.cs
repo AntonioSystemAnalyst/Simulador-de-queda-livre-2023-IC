@@ -30,16 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
+            this.buttonTest = new System.Windows.Forms.Button();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEspaco = new System.Windows.Forms.TextBox();
@@ -53,7 +54,6 @@
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
             this.buttonResistencia = new System.Windows.Forms.Button();
             this.txtgravit = new System.Windows.Forms.TextBox();
-            this.buttonConfigPlanet = new System.Windows.Forms.Button();
             this.comboShet = new System.Windows.Forms.ComboBox();
             this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
             this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
@@ -95,7 +95,7 @@
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.timerTeste = new System.Windows.Forms.Timer(this.components);
-            this.buttonTest = new System.Windows.Forms.Button();
+            this.labelTextColor = new System.Windows.Forms.Label();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -140,16 +140,16 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea3.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend3);
+            chartArea7.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend7);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chartSpeed.Series.Add(series3);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chartSpeed.Series.Add(series7);
             this.chartSpeed.Size = new System.Drawing.Size(822, 144);
             this.chartSpeed.TabIndex = 1;
             this.chartSpeed.Text = "chart2";
@@ -158,16 +158,16 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea4.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend4);
+            chartArea8.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend8);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chartSpace.Series.Add(series4);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chartSpace.Series.Add(series8);
             this.chartSpace.Size = new System.Drawing.Size(822, 150);
             this.chartSpace.TabIndex = 0;
             this.chartSpace.Text = "chart1";
@@ -190,6 +190,17 @@
             this.groupBoxResultados.TabIndex = 8;
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Resultados para o corpo";
+            // 
+            // buttonTest
+            // 
+            this.buttonTest.ForeColor = System.Drawing.Color.Black;
+            this.buttonTest.Location = new System.Drawing.Point(286, 54);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(52, 23);
+            this.buttonTest.TabIndex = 36;
+            this.buttonTest.Text = "Test";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // buttonLogo
             // 
@@ -296,14 +307,14 @@
             this.buttonPlanet.Name = "buttonPlanet";
             this.buttonPlanet.Size = new System.Drawing.Size(106, 27);
             this.buttonPlanet.TabIndex = 9;
-            this.buttonPlanet.Text = "Mercúrio";
+            this.buttonPlanet.Text = "Terra";
             this.buttonPlanet.UseVisualStyleBackColor = true;
             this.buttonPlanet.Click += new System.EventHandler(this.buttonPlanet_Click);
             // 
             // pictureBoxPlanets
             // 
             this.pictureBoxPlanets.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxPlanets.Image = global::freeFall.Properties.Resources.planetMercury;
+            this.pictureBoxPlanets.Image = global::freeFall.Properties.Resources.planetEarth;
             this.pictureBoxPlanets.Location = new System.Drawing.Point(30, 24);
             this.pictureBoxPlanets.Name = "pictureBoxPlanets";
             this.pictureBoxPlanets.Size = new System.Drawing.Size(218, 202);
@@ -315,9 +326,9 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
             this.groupBoxConfiguracao.Controls.Add(this.buttonResistencia);
             this.groupBoxConfiguracao.Controls.Add(this.txtgravit);
-            this.groupBoxConfiguracao.Controls.Add(this.buttonConfigPlanet);
             this.groupBoxConfiguracao.Controls.Add(this.comboShet);
             this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
@@ -343,11 +354,11 @@
             // 
             this.buttonResistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonResistencia.ForeColor = System.Drawing.Color.Black;
-            this.buttonResistencia.Location = new System.Drawing.Point(123, 240);
+            this.buttonResistencia.Location = new System.Drawing.Point(9, 234);
             this.buttonResistencia.Name = "buttonResistencia";
-            this.buttonResistencia.Size = new System.Drawing.Size(85, 26);
+            this.buttonResistencia.Size = new System.Drawing.Size(169, 33);
             this.buttonResistencia.TabIndex = 39;
-            this.buttonResistencia.Text = "Resetar";
+            this.buttonResistencia.Text = "Reiniciar simulador";
             this.buttonResistencia.UseVisualStyleBackColor = true;
             this.buttonResistencia.Click += new System.EventHandler(this.buttonResistencia_Click);
             // 
@@ -364,19 +375,6 @@
             this.txtgravit.Size = new System.Drawing.Size(85, 20);
             this.txtgravit.TabIndex = 38;
             // 
-            // buttonConfigPlanet
-            // 
-            this.buttonConfigPlanet.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfigPlanet.ForeColor = System.Drawing.Color.Black;
-            this.buttonConfigPlanet.Location = new System.Drawing.Point(123, 135);
-            this.buttonConfigPlanet.Name = "buttonConfigPlanet";
-            this.buttonConfigPlanet.Size = new System.Drawing.Size(85, 26);
-            this.buttonConfigPlanet.TabIndex = 37;
-            this.buttonConfigPlanet.Text = "Planeta";
-            this.buttonConfigPlanet.UseVisualStyleBackColor = true;
-            this.buttonConfigPlanet.Click += new System.EventHandler(this.buttonConfigPlanet_Click);
-            this.buttonConfigPlanet.MouseHover += new System.EventHandler(this.buttonConfigPlanet_MouseHover);
-            // 
             // comboShet
             // 
             this.comboShet.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
@@ -387,7 +385,7 @@
             this.comboShet.Items.AddRange(new object[] {
             "Aberta",
             "Amaçada"});
-            this.comboShet.Location = new System.Drawing.Point(8, 135);
+            this.comboShet.Location = new System.Drawing.Point(8, 129);
             this.comboShet.Name = "comboShet";
             this.comboShet.Size = new System.Drawing.Size(85, 21);
             this.comboShet.TabIndex = 36;
@@ -426,18 +424,18 @@
             // 
             this.buttonSalve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalve.ForeColor = System.Drawing.Color.Black;
-            this.buttonSalve.Location = new System.Drawing.Point(11, 240);
+            this.buttonSalve.Location = new System.Drawing.Point(9, 193);
             this.buttonSalve.Name = "buttonSalve";
-            this.buttonSalve.Size = new System.Drawing.Size(85, 26);
+            this.buttonSalve.Size = new System.Drawing.Size(169, 33);
             this.buttonSalve.TabIndex = 33;
-            this.buttonSalve.Text = "Salvar";
+            this.buttonSalve.Text = "Confirmar configuração";
             this.buttonSalve.UseVisualStyleBackColor = true;
             this.buttonSalve.Click += new System.EventHandler(this.buttonSalve_Click);
             // 
             // checkBoxLeaf
             // 
             this.checkBoxLeaf.AutoSize = true;
-            this.checkBoxLeaf.Location = new System.Drawing.Point(9, 112);
+            this.checkBoxLeaf.Location = new System.Drawing.Point(9, 109);
             this.checkBoxLeaf.Name = "checkBoxLeaf";
             this.checkBoxLeaf.Size = new System.Drawing.Size(61, 17);
             this.checkBoxLeaf.TabIndex = 31;
@@ -449,7 +447,7 @@
             // checkBoxResistance
             // 
             this.checkBoxResistance.AutoSize = true;
-            this.checkBoxResistance.Location = new System.Drawing.Point(9, 180);
+            this.checkBoxResistance.Location = new System.Drawing.Point(9, 156);
             this.checkBoxResistance.Name = "checkBoxResistance";
             this.checkBoxResistance.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistance.TabIndex = 12;
@@ -526,7 +524,7 @@
             // 
             // trackBarColors
             // 
-            this.trackBarColors.Location = new System.Drawing.Point(146, 180);
+            this.trackBarColors.Location = new System.Drawing.Point(121, 126);
             this.trackBarColors.Maximum = 9;
             this.trackBarColors.Minimum = 1;
             this.trackBarColors.Name = "trackBarColors";
@@ -693,7 +691,7 @@
             // 
             // groupBoxExperimento
             // 
-            this.groupBoxExperimento.BackgroundImage = global::freeFall.Properties.Resources.horizonMercury;
+            this.groupBoxExperimento.BackgroundImage = global::freeFall.Properties.Resources.horizonEarth;
             this.groupBoxExperimento.Controls.Add(this.pictureBox1);
             this.groupBoxExperimento.Controls.Add(this.groupBoxVacuum);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxBase);
@@ -849,16 +847,16 @@
             this.timerTeste.Interval = 1;
             this.timerTeste.Tick += new System.EventHandler(this.timerTeste_Tick);
             // 
-            // buttonTest
+            // labelTextColor
             // 
-            this.buttonTest.ForeColor = System.Drawing.Color.Black;
-            this.buttonTest.Location = new System.Drawing.Point(286, 54);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(52, 23);
-            this.buttonTest.TabIndex = 36;
-            this.buttonTest.Text = "Test";
-            this.buttonTest.UseVisualStyleBackColor = true;
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
+            this.labelTextColor.AutoSize = true;
+            this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
+            this.labelTextColor.Location = new System.Drawing.Point(122, 108);
+            this.labelTextColor.Name = "labelTextColor";
+            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
+            this.labelTextColor.TabIndex = 40;
+            this.labelTextColor.Text = "Cor do texto";
             // 
             // Simulator
             // 
@@ -961,7 +959,6 @@
         private System.Windows.Forms.ComboBox comboShet;
         private System.Windows.Forms.ComboBox comboBoxVacuum;
         private System.Windows.Forms.CheckBox checkBoxVacuum;
-        private System.Windows.Forms.Button buttonConfigPlanet;
         private System.Windows.Forms.PictureBox pictureBoxTimeLeft;
         private System.Windows.Forms.PictureBox pictureBoxTimeRight;
         private System.Windows.Forms.TextBox textTempo;
@@ -975,5 +972,6 @@
         private System.Windows.Forms.Button buttonLogo;
         private System.Windows.Forms.Timer timerTeste;
         private System.Windows.Forms.Button buttonTest;
+        private System.Windows.Forms.Label labelTextColor;
     }
 }

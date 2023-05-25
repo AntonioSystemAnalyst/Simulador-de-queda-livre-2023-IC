@@ -12,8 +12,8 @@ namespace freeFall
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         public static string Key = " ";
-        public static int planetCounter = 3;
-        public static string planetName = "Mercúrio";
+        public static int planetCounter = 1;
+        public static string planetName = "Terra";
 
         public static int dataControl = 0;
         public static int configurePlanetControl = 0;

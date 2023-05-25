@@ -188,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="astronomy.ico" />
+    <None Include="Resources\dfqm.png" />
     <None Include="Resources\airResistence.png" />
     <None Include="Resources\gauge.png" />
     <None Include="Resources\arrowsBlue %282%29.png" />

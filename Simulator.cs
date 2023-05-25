@@ -38,9 +38,9 @@ namespace freeFall
         {
             InitializeComponent();
             timerEixos.Enabled = true;
-            cmbPlaneta.Text = "Mercúrio";
+            cmbPlaneta.Text = "Terra";
             txtAltura.Text = "100";
-            txtgravit.Text = "3,7";
+            txtgravit.Text = "9,8";
             comboBoxVacuum.Text = "Folha";
             comboShet.Text = "Aberta";
             calculate();
@@ -799,12 +799,6 @@ namespace freeFall
         {
             toolTip.SetToolTip(checkBoxEixo, "Exibe eixos no experimento.");
         }
-
-        private void buttonConfigPlanet_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(buttonConfigPlanet, "Configura um planeta como quiser.");
-        }
-
         private void button1_MouseHover(object sender, EventArgs e)
         {
             toolTip.SetToolTip(button1, "Muda a imagem do corpo.");

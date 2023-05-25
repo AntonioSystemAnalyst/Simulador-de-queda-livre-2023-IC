@@ -42,9 +42,11 @@
             this.labellogon = new System.Windows.Forms.Label();
             this.richTextBoxText = new System.Windows.Forms.RichTextBox();
             this.labelTextColor = new System.Windows.Forms.Label();
+            this.pictureBoxDFQM = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDFQM)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSimulador
@@ -61,7 +63,7 @@
             // buttonSimulator
             // 
             this.buttonSimulator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSimulator.Location = new System.Drawing.Point(951, 507);
+            this.buttonSimulator.Location = new System.Drawing.Point(945, 477);
             this.buttonSimulator.Name = "buttonSimulator";
             this.buttonSimulator.Size = new System.Drawing.Size(154, 35);
             this.buttonSimulator.TabIndex = 3;
@@ -78,7 +80,7 @@
             // 
             this.pictureBoxCarrocel.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxCarrocel.Image = global::freeFall.Properties.Resources.planetMercury;
-            this.pictureBoxCarrocel.Location = new System.Drawing.Point(366, 25);
+            this.pictureBoxCarrocel.Location = new System.Drawing.Point(373, 25);
             this.pictureBoxCarrocel.Name = "pictureBoxCarrocel";
             this.pictureBoxCarrocel.Size = new System.Drawing.Size(394, 364);
             this.pictureBoxCarrocel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -91,7 +93,7 @@
             this.richTextBoxPlanetsData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxPlanetsData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxPlanetsData.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxPlanetsData.Location = new System.Drawing.Point(406, 426);
+            this.richTextBoxPlanetsData.Location = new System.Drawing.Point(413, 426);
             this.richTextBoxPlanetsData.Name = "richTextBoxPlanetsData";
             this.richTextBoxPlanetsData.ReadOnly = true;
             this.richTextBoxPlanetsData.Size = new System.Drawing.Size(329, 138);
@@ -102,7 +104,7 @@
             // buttonAbout
             // 
             this.buttonAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAbout.Location = new System.Drawing.Point(951, 456);
+            this.buttonAbout.Location = new System.Drawing.Point(945, 527);
             this.buttonAbout.Name = "buttonAbout";
             this.buttonAbout.Size = new System.Drawing.Size(154, 35);
             this.buttonAbout.TabIndex = 12;
@@ -123,7 +125,7 @@
             // 
             // trackBarPlanets
             // 
-            this.trackBarPlanets.Location = new System.Drawing.Point(520, 586);
+            this.trackBarPlanets.Location = new System.Drawing.Point(527, 586);
             this.trackBarPlanets.Maximum = 8;
             this.trackBarPlanets.Name = "trackBarPlanets";
             this.trackBarPlanets.Size = new System.Drawing.Size(104, 45);
@@ -153,6 +155,7 @@
             this.richTextBoxText.ForeColor = System.Drawing.Color.Cyan;
             this.richTextBoxText.Location = new System.Drawing.Point(786, 25);
             this.richTextBoxText.Name = "richTextBoxText";
+            this.richTextBoxText.ReadOnly = true;
             this.richTextBoxText.Size = new System.Drawing.Size(349, 364);
             this.richTextBoxText.TabIndex = 14;
             this.richTextBoxText.Text = "";
@@ -165,9 +168,20 @@
             this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
             this.labelTextColor.Location = new System.Drawing.Point(990, 565);
             this.labelTextColor.Name = "labelTextColor";
-            this.labelTextColor.Size = new System.Drawing.Size(82, 15);
+            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
             this.labelTextColor.TabIndex = 15;
-            this.labelTextColor.Text = "cor do texto";
+            this.labelTextColor.Text = "Cor do texto";
+            // 
+            // pictureBoxDFQM
+            // 
+            this.pictureBoxDFQM.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxDFQM.Image = global::freeFall.Properties.Resources.dfqm;
+            this.pictureBoxDFQM.Location = new System.Drawing.Point(20, 450);
+            this.pictureBoxDFQM.Name = "pictureBoxDFQM";
+            this.pictureBoxDFQM.Size = new System.Drawing.Size(130, 130);
+            this.pictureBoxDFQM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxDFQM.TabIndex = 16;
+            this.pictureBoxDFQM.TabStop = false;
             // 
             // InitialView
             // 
@@ -176,6 +190,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1149, 621);
+            this.Controls.Add(this.pictureBoxDFQM);
             this.Controls.Add(this.labelTextColor);
             this.Controls.Add(this.richTextBoxText);
             this.Controls.Add(this.labellogon);
@@ -196,6 +211,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDFQM)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,6 +231,7 @@
         private System.Windows.Forms.Label labellogon;
         private System.Windows.Forms.RichTextBox richTextBoxText;
         private System.Windows.Forms.Label labelTextColor;
+        private System.Windows.Forms.PictureBox pictureBoxDFQM;
     }
 }
 
