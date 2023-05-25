@@ -3,7 +3,6 @@ E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\bin\Debug\freeFall.
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\bin\Debug\freeFall.pdb
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.csproj.AssemblyReference.cache
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.csproj.SuggestedBindingRedirects.cache
-E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.Form1.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.Properties.Resources.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.Simulator.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.csproj.GenerateResource.cache
@@ -33,3 +32,4 @@ E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall-v18\obj\Debug\freeF
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall-v18\obj\Debug\freeFall.exe
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall-v18\obj\Debug\freeFall.pdb
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.programView.resources
+E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.InitialView.resources

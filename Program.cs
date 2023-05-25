@@ -146,7 +146,7 @@ namespace freeFall
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 y = new Form1();
+            InitialView y = new InitialView();
             Simulator x = new Simulator();
             y.ShowDialog();
             y = null;
