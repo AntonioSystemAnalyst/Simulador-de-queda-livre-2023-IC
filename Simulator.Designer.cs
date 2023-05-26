@@ -30,12 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -52,6 +50,7 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.labelTextColor = new System.Windows.Forms.Label();
             this.buttonResistencia = new System.Windows.Forms.Button();
             this.txtgravit = new System.Windows.Forms.TextBox();
             this.comboShet = new System.Windows.Forms.ComboBox();
@@ -95,7 +94,6 @@
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.timerTeste = new System.Windows.Forms.Timer(this.components);
-            this.labelTextColor = new System.Windows.Forms.Label();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -140,16 +138,12 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea7.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend1);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
-            series7.ChartArea = "ChartArea1";
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.chartSpeed.Series.Add(series7);
             this.chartSpeed.Size = new System.Drawing.Size(822, 144);
             this.chartSpeed.TabIndex = 1;
             this.chartSpeed.Text = "chart2";
@@ -158,16 +152,12 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea8.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend2);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chartSpace.Series.Add(series8);
             this.chartSpace.Size = new System.Drawing.Size(822, 150);
             this.chartSpace.TabIndex = 0;
             this.chartSpace.Text = "chart1";
@@ -349,6 +339,17 @@
             this.groupBoxConfiguracao.TabIndex = 6;
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
+            // 
+            // labelTextColor
+            // 
+            this.labelTextColor.AutoSize = true;
+            this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
+            this.labelTextColor.Location = new System.Drawing.Point(122, 108);
+            this.labelTextColor.Name = "labelTextColor";
+            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
+            this.labelTextColor.TabIndex = 40;
+            this.labelTextColor.Text = "Cor do texto";
             // 
             // buttonResistencia
             // 
@@ -846,17 +847,6 @@
             // 
             this.timerTeste.Interval = 1;
             this.timerTeste.Tick += new System.EventHandler(this.timerTeste_Tick);
-            // 
-            // labelTextColor
-            // 
-            this.labelTextColor.AutoSize = true;
-            this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
-            this.labelTextColor.Location = new System.Drawing.Point(122, 108);
-            this.labelTextColor.Name = "labelTextColor";
-            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
-            this.labelTextColor.TabIndex = 40;
-            this.labelTextColor.Text = "Cor do texto";
             // 
             // Simulator
             // 

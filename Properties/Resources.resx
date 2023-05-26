@@ -214,6 +214,9 @@
   <data name="planetMoon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetMoon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dfqm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dfqm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="horizonUnknow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonUnknow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -235,6 +238,9 @@
   <data name="corpoSphere2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoSphere2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ufscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ufscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="horizonNeptune" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonNeptune.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -253,7 +259,7 @@
   <data name="planetEarth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetEarth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dfqm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dfqm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Logomarca_UFSCAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logomarca_UFSCAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

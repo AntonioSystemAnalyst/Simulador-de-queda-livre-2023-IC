@@ -373,6 +373,16 @@ namespace freeFall.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logomarca_UFSCAR {
+            get {
+                object obj = ResourceManager.GetObject("Logomarca_UFSCAR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap paper2 {
             get {
                 object obj = ResourceManager.GetObject("paper2", resourceCulture);
@@ -516,6 +526,16 @@ namespace freeFall.Properties {
         internal static System.Drawing.Bitmap setaX {
             get {
                 object obj = ResourceManager.GetObject("setaX", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ufscar {
+            get {
+                object obj = ResourceManager.GetObject("ufscar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

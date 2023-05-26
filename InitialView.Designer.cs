@@ -43,10 +43,12 @@
             this.richTextBoxText = new System.Windows.Forms.RichTextBox();
             this.labelTextColor = new System.Windows.Forms.Label();
             this.pictureBoxDFQM = new System.Windows.Forms.PictureBox();
+            this.pictureBoxUfscar = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDFQM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUfscar)).BeginInit();
             this.SuspendLayout();
             // 
             // labelSimulador
@@ -176,12 +178,22 @@
             // 
             this.pictureBoxDFQM.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxDFQM.Image = global::freeFall.Properties.Resources.dfqm;
-            this.pictureBoxDFQM.Location = new System.Drawing.Point(20, 450);
+            this.pictureBoxDFQM.Location = new System.Drawing.Point(140, 544);
             this.pictureBoxDFQM.Name = "pictureBoxDFQM";
-            this.pictureBoxDFQM.Size = new System.Drawing.Size(130, 130);
+            this.pictureBoxDFQM.Size = new System.Drawing.Size(67, 65);
             this.pictureBoxDFQM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxDFQM.TabIndex = 16;
             this.pictureBoxDFQM.TabStop = false;
+            // 
+            // pictureBoxUfscar
+            // 
+            this.pictureBoxUfscar.Image = global::freeFall.Properties.Resources.Logomarca_UFSCAR;
+            this.pictureBoxUfscar.Location = new System.Drawing.Point(20, 544);
+            this.pictureBoxUfscar.Name = "pictureBoxUfscar";
+            this.pictureBoxUfscar.Size = new System.Drawing.Size(104, 65);
+            this.pictureBoxUfscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxUfscar.TabIndex = 17;
+            this.pictureBoxUfscar.TabStop = false;
             // 
             // InitialView
             // 
@@ -190,6 +202,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1149, 621);
+            this.Controls.Add(this.pictureBoxUfscar);
             this.Controls.Add(this.pictureBoxDFQM);
             this.Controls.Add(this.labelTextColor);
             this.Controls.Add(this.richTextBoxText);
@@ -212,6 +225,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDFQM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUfscar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,6 +246,7 @@
         private System.Windows.Forms.RichTextBox richTextBoxText;
         private System.Windows.Forms.Label labelTextColor;
         private System.Windows.Forms.PictureBox pictureBoxDFQM;
+        private System.Windows.Forms.PictureBox pictureBoxUfscar;
     }
 }
 

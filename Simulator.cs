@@ -33,6 +33,15 @@ namespace freeFall
 
         System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
 
+        // chart Configuration 
+        // n = quantidade de termos
+        // Mm = Y minimo
+        // MM = Y max
+        // interY = intervalo em Y
+        // interX = intervalo em X   
+        // Max = X max
+        // Mmx = X minimu
+
         public static int[] Ax = new int[15];
         public Simulator()
         {
@@ -43,6 +52,9 @@ namespace freeFall
             txtgravit.Text = "9,8";
             comboBoxVacuum.Text = "Folha";
             comboShet.Text = "Aberta";
+            LoadData();
+            spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
+            speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             calculate();
             dataText();
         }
@@ -91,7 +103,7 @@ namespace freeFall
             if ((Math.Round(Program.countTimeObject, 3) - Program.spaceObjectTime[countPixelObject]) < tolerance)
             {
                 pictureBoxCorpo.Location = new Point(145, 30 + countPixelObject);
-                countPixelObject +=  1;
+                countPixelObject +=  10;
                 Console.WriteLine("Oi");
             }
             Program.countTimeObject += 0.001;
@@ -226,6 +238,7 @@ namespace freeFall
                 }
             }
         }
+
         public void spaceGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
             int i;
@@ -278,6 +291,50 @@ namespace freeFall
             {
                 chartSpace.Series[Serie].Points.AddXY((i), Program.velocityObject[i]);
             }
+        }
+
+        public void speedGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
+        {
+            string Serie = "Velocidade";
+            var chart = chartSpeed.ChartAreas[0];
+            chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
+            chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
+            chartSpeed.Visible = true;
+            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
+            chart.AxisX.LabelStyle.Format = "";
+            chart.AxisY.LabelStyle.Format = "";
+            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
+            chart.AxisX.Minimum = Mmx;
+            chart.AxisX.Maximum = Max;
+            chart.AxisY.Minimum = Mm;
+            chart.AxisY.Maximum = MM;
+            chart.AxisY.Interval = InterY;
+            chart.AxisX.Interval = interX;
+            chartSpeed.Series.Add(Serie);
+            chartSpeed.Series[Serie].ChartType = SeriesChartType.Spline;
+            chartSpeed.Series[Serie].Points.AddXY(0, 0);
+        }
+        public void spaceGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
+        {
+            string Serie = "Espaço";
+            var chart = chartSpace.ChartAreas[0];
+            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
+            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
+            chartSpace.Visible = true;
+            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
+            chart.AxisX.LabelStyle.Format = "";
+            chart.AxisY.LabelStyle.Format = "";
+            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
+            chart.AxisX.Minimum = Mmx;
+            chart.AxisX.Maximum = Max;
+            chart.AxisY.Minimum = Mm;
+            chart.AxisY.Maximum = MM;
+            chart.AxisY.Interval = InterY;
+            chart.AxisX.Interval = interX;
+            chartSpace.Series.Add(Serie);
+            chartSpace.Series[Serie].ChartType = SeriesChartType.Spline;
+            chartSpace.Series[Serie].Color = Color.Blue;
+            chartSpace.Series[Serie].Points.AddXY(0, 0);
         }
         private void buttonData_Click(object sender, EventArgs e)
         {
