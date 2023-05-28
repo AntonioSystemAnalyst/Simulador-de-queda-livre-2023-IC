@@ -35,11 +35,11 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
+            this.buttonTest = new System.Windows.Forms.Button();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.buttonLogo = new System.Windows.Forms.Button();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
-            this.buttonTest = new System.Windows.Forms.Button();
-            this.buttonLogo = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEspaco = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -56,7 +56,6 @@
             this.comboShet = new System.Windows.Forms.ComboBox();
             this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
             this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
-            this.buttonSalve = new System.Windows.Forms.Button();
             this.checkBoxLeaf = new System.Windows.Forms.CheckBox();
             this.checkBoxResistance = new System.Windows.Forms.CheckBox();
             this.txtAltura = new System.Windows.Forms.TextBox();
@@ -66,6 +65,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarColors = new System.Windows.Forms.TrackBar();
             this.groupBoxControl = new System.Windows.Forms.GroupBox();
+            this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.textTempo = new System.Windows.Forms.TextBox();
             this.pictureBoxTimeLeft = new System.Windows.Forms.PictureBox();
             this.pictureBoxTimeRight = new System.Windows.Forms.PictureBox();
@@ -94,7 +94,12 @@
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.timerTeste = new System.Windows.Forms.Timer(this.components);
-            this.checkBox3D = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -125,7 +130,9 @@
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
+            this.groupBoxGraficos.Controls.Add(this.buttonTest);
             this.groupBoxGraficos.Controls.Add(this.chartSpeed);
+            this.groupBoxGraficos.Controls.Add(this.buttonLogo);
             this.groupBoxGraficos.Controls.Add(this.chartSpace);
             this.groupBoxGraficos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxGraficos.ForeColor = System.Drawing.Color.Cyan;
@@ -135,6 +142,17 @@
             this.groupBoxGraficos.TabIndex = 9;
             this.groupBoxGraficos.TabStop = false;
             this.groupBoxGraficos.Text = "Gráficos";
+            // 
+            // buttonTest
+            // 
+            this.buttonTest.ForeColor = System.Drawing.Color.Black;
+            this.buttonTest.Location = new System.Drawing.Point(796, 99);
+            this.buttonTest.Name = "buttonTest";
+            this.buttonTest.Size = new System.Drawing.Size(52, 23);
+            this.buttonTest.TabIndex = 36;
+            this.buttonTest.Text = "Test";
+            this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // chartSpeed
             // 
@@ -149,6 +167,17 @@
             this.chartSpeed.TabIndex = 1;
             this.chartSpeed.Text = "chart2";
             this.chartSpeed.Click += new System.EventHandler(this.chartSpeed_Click);
+            // 
+            // buttonLogo
+            // 
+            this.buttonLogo.ForeColor = System.Drawing.Color.Black;
+            this.buttonLogo.Location = new System.Drawing.Point(796, 70);
+            this.buttonLogo.Name = "buttonLogo";
+            this.buttonLogo.Size = new System.Drawing.Size(52, 23);
+            this.buttonLogo.TabIndex = 35;
+            this.buttonLogo.Text = "Log";
+            this.buttonLogo.UseVisualStyleBackColor = true;
+            this.buttonLogo.Click += new System.EventHandler(this.buttonLogo_Click);
             // 
             // chartSpace
             // 
@@ -167,52 +196,34 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
-            this.groupBoxResultados.Controls.Add(this.buttonTest);
-            this.groupBoxResultados.Controls.Add(this.buttonLogo);
+            this.groupBoxResultados.Controls.Add(this.label5);
+            this.groupBoxResultados.Controls.Add(this.label3);
+            this.groupBoxResultados.Controls.Add(this.label1);
+            this.groupBoxResultados.Controls.Add(this.textBox1);
+            this.groupBoxResultados.Controls.Add(this.label2);
+            this.groupBoxResultados.Controls.Add(this.textBox2);
             this.groupBoxResultados.Controls.Add(this.label9);
             this.groupBoxResultados.Controls.Add(this.txtEspaco);
             this.groupBoxResultados.Controls.Add(this.label8);
             this.groupBoxResultados.Controls.Add(this.txtVelocidade);
             this.groupBoxResultados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxResultados.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxResultados.Location = new System.Drawing.Point(528, 90);
+            this.groupBoxResultados.Location = new System.Drawing.Point(691, 1);
             this.groupBoxResultados.Name = "groupBoxResultados";
-            this.groupBoxResultados.Size = new System.Drawing.Size(349, 89);
+            this.groupBoxResultados.Size = new System.Drawing.Size(188, 178);
             this.groupBoxResultados.TabIndex = 8;
             this.groupBoxResultados.TabStop = false;
-            this.groupBoxResultados.Text = "Resultados para o corpo";
-            // 
-            // buttonTest
-            // 
-            this.buttonTest.ForeColor = System.Drawing.Color.Black;
-            this.buttonTest.Location = new System.Drawing.Point(286, 54);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(52, 23);
-            this.buttonTest.TabIndex = 36;
-            this.buttonTest.Text = "Test";
-            this.buttonTest.UseVisualStyleBackColor = true;
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
-            // 
-            // buttonLogo
-            // 
-            this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(286, 23);
-            this.buttonLogo.Name = "buttonLogo";
-            this.buttonLogo.Size = new System.Drawing.Size(52, 23);
-            this.buttonLogo.TabIndex = 35;
-            this.buttonLogo.Text = "Log";
-            this.buttonLogo.UseVisualStyleBackColor = true;
-            this.buttonLogo.Click += new System.EventHandler(this.buttonLogo_Click);
+            this.groupBoxResultados.Text = "Resultados";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(7, 59);
+            this.label9.Location = new System.Drawing.Point(2, 72);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(103, 13);
+            this.label9.Size = new System.Drawing.Size(76, 13);
             this.label9.TabIndex = 14;
-            this.label9.Text = "Velocidade (m/s)";
+            this.label9.Text = "Veloc. (m/s)";
             // 
             // txtEspaco
             // 
@@ -221,17 +232,17 @@
             this.txtEspaco.Cursor = System.Windows.Forms.Cursors.No;
             this.txtEspaco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEspaco.ForeColor = System.Drawing.Color.Cyan;
-            this.txtEspaco.Location = new System.Drawing.Point(120, 19);
+            this.txtEspaco.Location = new System.Drawing.Point(90, 35);
             this.txtEspaco.Name = "txtEspaco";
             this.txtEspaco.ReadOnly = true;
-            this.txtEspaco.Size = new System.Drawing.Size(130, 26);
+            this.txtEspaco.Size = new System.Drawing.Size(90, 26);
             this.txtEspaco.TabIndex = 12;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(7, 28);
+            this.label8.Location = new System.Drawing.Point(2, 40);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
             this.label8.TabIndex = 13;
@@ -244,10 +255,10 @@
             this.txtVelocidade.Cursor = System.Windows.Forms.Cursors.No;
             this.txtVelocidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVelocidade.ForeColor = System.Drawing.Color.Cyan;
-            this.txtVelocidade.Location = new System.Drawing.Point(120, 51);
+            this.txtVelocidade.Location = new System.Drawing.Point(90, 65);
             this.txtVelocidade.Name = "txtVelocidade";
             this.txtVelocidade.ReadOnly = true;
-            this.txtVelocidade.Size = new System.Drawing.Size(130, 26);
+            this.txtVelocidade.Size = new System.Drawing.Size(90, 26);
             this.txtVelocidade.TabIndex = 11;
             // 
             // groupBoxPlanetas
@@ -259,7 +270,7 @@
             this.groupBoxPlanetas.Controls.Add(this.pictureBoxPlanets);
             this.groupBoxPlanetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxPlanetas.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxPlanetas.Location = new System.Drawing.Point(244, 1);
+            this.groupBoxPlanetas.Location = new System.Drawing.Point(228, 1);
             this.groupBoxPlanetas.Name = "groupBoxPlanetas";
             this.groupBoxPlanetas.Size = new System.Drawing.Size(278, 277);
             this.groupBoxPlanetas.TabIndex = 7;
@@ -323,7 +334,6 @@
             this.groupBoxConfiguracao.Controls.Add(this.comboShet);
             this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
-            this.groupBoxConfiguracao.Controls.Add(this.buttonSalve);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxLeaf);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistance);
             this.groupBoxConfiguracao.Controls.Add(this.txtAltura);
@@ -336,7 +346,7 @@
             this.groupBoxConfiguracao.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxConfiguracao.Location = new System.Drawing.Point(4, 1);
             this.groupBoxConfiguracao.Name = "groupBoxConfiguracao";
-            this.groupBoxConfiguracao.Size = new System.Drawing.Size(234, 277);
+            this.groupBoxConfiguracao.Size = new System.Drawing.Size(216, 277);
             this.groupBoxConfiguracao.TabIndex = 6;
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
@@ -421,18 +431,6 @@
             this.checkBoxVacuum.CheckedChanged += new System.EventHandler(this.checkBoxVacuum_CheckedChanged);
             this.checkBoxVacuum.CheckStateChanged += new System.EventHandler(this.checkBoxVacuum_CheckStateChanged);
             this.checkBoxVacuum.MouseHover += new System.EventHandler(this.checkBoxVacuum_MouseHover);
-            // 
-            // buttonSalve
-            // 
-            this.buttonSalve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSalve.ForeColor = System.Drawing.Color.Black;
-            this.buttonSalve.Location = new System.Drawing.Point(9, 193);
-            this.buttonSalve.Name = "buttonSalve";
-            this.buttonSalve.Size = new System.Drawing.Size(169, 33);
-            this.buttonSalve.TabIndex = 33;
-            this.buttonSalve.Text = "Confirmar configuração";
-            this.buttonSalve.UseVisualStyleBackColor = true;
-            this.buttonSalve.Click += new System.EventHandler(this.buttonSalve_Click);
             // 
             // checkBoxLeaf
             // 
@@ -550,12 +548,24 @@
             this.groupBoxControl.Controls.Add(this.label12);
             this.groupBoxControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxControl.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxControl.Location = new System.Drawing.Point(528, 181);
+            this.groupBoxControl.Location = new System.Drawing.Point(510, 181);
             this.groupBoxControl.Name = "groupBoxControl";
-            this.groupBoxControl.Size = new System.Drawing.Size(349, 97);
+            this.groupBoxControl.Size = new System.Drawing.Size(367, 97);
             this.groupBoxControl.TabIndex = 10;
             this.groupBoxControl.TabStop = false;
             this.groupBoxControl.Text = "Controle";
+            // 
+            // checkBox3D
+            // 
+            this.checkBox3D.AutoSize = true;
+            this.checkBox3D.Location = new System.Drawing.Point(272, 29);
+            this.checkBox3D.Name = "checkBox3D";
+            this.checkBox3D.Size = new System.Drawing.Size(40, 17);
+            this.checkBox3D.TabIndex = 35;
+            this.checkBox3D.Text = "3d";
+            this.checkBox3D.UseVisualStyleBackColor = true;
+            this.checkBox3D.CheckStateChanged += new System.EventHandler(this.checkBox3D_CheckStateChanged);
+            this.checkBox3D.MouseHover += new System.EventHandler(this.checkBox3D_MouseHover);
             // 
             // textTempo
             // 
@@ -647,7 +657,7 @@
             this.BTNIniciar.ForeColor = System.Drawing.Color.Black;
             this.BTNIniciar.Location = new System.Drawing.Point(10, 59);
             this.BTNIniciar.Name = "BTNIniciar";
-            this.BTNIniciar.Size = new System.Drawing.Size(79, 27);
+            this.BTNIniciar.Size = new System.Drawing.Size(88, 27);
             this.BTNIniciar.TabIndex = 27;
             this.BTNIniciar.Text = "Iniciar";
             this.BTNIniciar.UseVisualStyleBackColor = true;
@@ -669,9 +679,9 @@
             this.groupBoxDados.Controls.Add(this.richTextBoxDados);
             this.groupBoxDados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxDados.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxDados.Location = new System.Drawing.Point(528, 1);
+            this.groupBoxDados.Location = new System.Drawing.Point(512, 1);
             this.groupBoxDados.Name = "groupBoxDados";
-            this.groupBoxDados.Size = new System.Drawing.Size(349, 86);
+            this.groupBoxDados.Size = new System.Drawing.Size(173, 178);
             this.groupBoxDados.TabIndex = 11;
             this.groupBoxDados.TabStop = false;
             this.groupBoxDados.Text = "Dados";
@@ -684,7 +694,7 @@
             this.richTextBoxDados.Location = new System.Drawing.Point(6, 15);
             this.richTextBoxDados.Name = "richTextBoxDados";
             this.richTextBoxDados.ReadOnly = true;
-            this.richTextBoxDados.Size = new System.Drawing.Size(337, 65);
+            this.richTextBoxDados.Size = new System.Drawing.Size(161, 156);
             this.richTextBoxDados.TabIndex = 0;
             this.richTextBoxDados.Text = "";
             this.richTextBoxDados.TextChanged += new System.EventHandler(this.richTextBoxDados_TextChanged);
@@ -851,17 +861,71 @@
             this.timerTeste.Interval = 1;
             this.timerTeste.Tick += new System.EventHandler(this.timerTeste_Tick);
             // 
-            // checkBox3D
+            // label1
             // 
-            this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(272, 29);
-            this.checkBox3D.Name = "checkBox3D";
-            this.checkBox3D.Size = new System.Drawing.Size(40, 17);
-            this.checkBox3D.TabIndex = 35;
-            this.checkBox3D.Text = "3d";
-            this.checkBox3D.UseVisualStyleBackColor = true;
-            this.checkBox3D.CheckStateChanged += new System.EventHandler(this.checkBox3D_CheckStateChanged);
-            this.checkBox3D.MouseHover += new System.EventHandler(this.checkBox3D_MouseHover);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(2, 152);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Veloc. (m/s)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Cyan;
+            this.textBox1.Location = new System.Drawing.Point(90, 115);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(90, 26);
+            this.textBox1.TabIndex = 16;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 120);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Altura (m)";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox2.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ForeColor = System.Drawing.Color.Cyan;
+            this.textBox2.Location = new System.Drawing.Point(90, 145);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(90, 26);
+            this.textBox2.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(2, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Bola:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(2, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Papel:";
             // 
             // Simulator
             // 
@@ -946,7 +1010,6 @@
         private System.Windows.Forms.GroupBox groupBoxDados;
         private System.Windows.Forms.PictureBox pictureBoxBack;
         private System.Windows.Forms.PictureBox pictureBoxNext;
-        private System.Windows.Forms.Button buttonSalve;
         private System.Windows.Forms.CheckBox checkBoxLeaf;
         private System.Windows.Forms.CheckBox checkBoxResistance;
         private System.Windows.Forms.CheckBox checkBoxEixo;
@@ -979,5 +1042,11 @@
         private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.Label labelTextColor;
         private System.Windows.Forms.CheckBox checkBox3D;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

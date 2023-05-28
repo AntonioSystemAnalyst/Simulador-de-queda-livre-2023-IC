@@ -12,17 +12,19 @@ namespace freeFall
         /// Ponto de entrada principal para o aplicativo.
         /// </summary>
         public static string Key = " ";
-        public static int planetCounter = 1;
-        public static string planetName = "Terra";
+        public static int planetCounter = 1; // define o 1 planeta
+        public static string planetName = "Terra"; // label com o nome do planeta
 
-        public static int dataControl = 0;
+        // controles de janelas
+        public static int dataControl = 0; 
         public static int configurePlanetControl = 0;
         public static int experimentDataControl = 0;
 
-        public static int anotherPlanetGraviy = 10;
+        // define se tera ou não resistencia do ar
         public static int airResistance = 0;
 
-        public static string experimentData = "";
+        public static string experimentData = ""; // dados do experimento
+
 
         public static double finalVelocity = 0;
         public static double initialVelocity = 0;
@@ -30,19 +32,9 @@ namespace freeFall
         public static double height = 0;
         public static double timeExperiment = 0;
         
-        public static double[] spaceObject;
-        public static double[] velocityObject;
-
-
-        // ------------------------------------------------
-        // corpo - sem resistência do ar
-        public static double countTimeObject = 0.0;
-        public static double finalVelocityObject = 0;
-        public static double initialVelocityObject = 0;
-        public static double timeExperimentObject = 0;
-        public static double[] spaceObjectTime;
-        public static double[] spaceObjectPixel;
-
+        public static body corpo  = new body();
+        public static body paper  = new body();
+        public static body vaccum = new body();
 
         public static double organizeData(string data) 
         {

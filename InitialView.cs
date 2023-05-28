@@ -16,11 +16,13 @@ namespace freeFall
     {
         public int visibleAboutControl = 0;
         public int carouselCounter = 1;
+        public int animationCounter = 1;
         public InitialView()
         {
             InitializeComponent();
             timerCarousel.Enabled = true;
             timerWindowControl.Enabled = true;
+            timerAnimation.Enabled = true;
             trackBarPlanets.Value = 0;
             planetData("Mercurio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10²³", "3,7");
             richTextBoxText.Text = "QUEDA LIVRE\n\nA queda livre é um fenômeno físico que ocorre quando um corpo é liberado no ar ou vacúo, e é deixado para cair devido à gravidade.\n\nRESISTÊNCIA DO AR\n\nA resistência do ar é a força que se opõe ao movimento de um objeto pelo ar.\n\nREFERÊNCIAS\n\nImagens\n\nAs ilustrações dos horizontes dos planetas, no campo ''Experimento'', foram feitas com a inteligência artifical da Microsoft, ''Bing Image Creator'', que pode ser acessada em: https://www.bing.com/create. Acessada em 14 de maio de 2023.\n\nAs demais imagens foram retiradas da plataforma ''Pixabay'', que esta disponível no site: https://pixabay.com/pt/. Acessada em 14 de maio de 2023.\n\nCRÉDITOS\n\n";
@@ -28,6 +30,18 @@ namespace freeFall
 
         }
 
+        private void timerAnimation_Tick(object sender, EventArgs e)
+        {
+            animationCounter += 2;
+
+            pictureBoxCorpo.Location = new Point(50, animationCounter);
+
+            if (animationCounter >= 359)
+            {
+                animationCounter = 0;
+                pictureBoxCorpo.Location = new Point(50, 112);
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
 

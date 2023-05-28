@@ -44,11 +44,18 @@
             this.labelTextColor = new System.Windows.Forms.Label();
             this.pictureBoxDFQM = new System.Windows.Forms.PictureBox();
             this.pictureBoxUfscar = new System.Windows.Forms.PictureBox();
+            this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
+            this.pictureBoxBase = new System.Windows.Forms.PictureBox();
+            this.timerAnimation = new System.Windows.Forms.Timer(this.components);
+            this.groupBoxaAnimation = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDFQM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUfscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
+            this.groupBoxaAnimation.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelSimulador
@@ -195,6 +202,42 @@
             this.pictureBoxUfscar.TabIndex = 17;
             this.pictureBoxUfscar.TabStop = false;
             // 
+            // pictureBoxCorpo
+            // 
+            this.pictureBoxCorpo.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxCorpo.Image = global::freeFall.Properties.Resources.corpoSoccer;
+            this.pictureBoxCorpo.Location = new System.Drawing.Point(50, 19);
+            this.pictureBoxCorpo.Name = "pictureBoxCorpo";
+            this.pictureBoxCorpo.Size = new System.Drawing.Size(40, 41);
+            this.pictureBoxCorpo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCorpo.TabIndex = 18;
+            this.pictureBoxCorpo.TabStop = false;
+            // 
+            // pictureBoxBase
+            // 
+            this.pictureBoxBase.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.pictureBoxBase.Location = new System.Drawing.Point(3, 406);
+            this.pictureBoxBase.Name = "pictureBoxBase";
+            this.pictureBoxBase.Size = new System.Drawing.Size(136, 11);
+            this.pictureBoxBase.TabIndex = 19;
+            this.pictureBoxBase.TabStop = false;
+            // 
+            // timerAnimation
+            // 
+            this.timerAnimation.Interval = 1;
+            this.timerAnimation.Tick += new System.EventHandler(this.timerAnimation_Tick);
+            // 
+            // groupBoxaAnimation
+            // 
+            this.groupBoxaAnimation.BackgroundImage = global::freeFall.Properties.Resources.background;
+            this.groupBoxaAnimation.Controls.Add(this.pictureBoxCorpo);
+            this.groupBoxaAnimation.Controls.Add(this.pictureBoxBase);
+            this.groupBoxaAnimation.Location = new System.Drawing.Point(23, 102);
+            this.groupBoxaAnimation.Name = "groupBoxaAnimation";
+            this.groupBoxaAnimation.Size = new System.Drawing.Size(142, 421);
+            this.groupBoxaAnimation.TabIndex = 20;
+            this.groupBoxaAnimation.TabStop = false;
+            // 
             // InitialView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +245,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1149, 621);
+            this.Controls.Add(this.groupBoxaAnimation);
             this.Controls.Add(this.pictureBoxUfscar);
             this.Controls.Add(this.pictureBoxDFQM);
             this.Controls.Add(this.labelTextColor);
@@ -226,6 +270,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDFQM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUfscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
+            this.groupBoxaAnimation.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +294,10 @@
         private System.Windows.Forms.Label labelTextColor;
         private System.Windows.Forms.PictureBox pictureBoxDFQM;
         private System.Windows.Forms.PictureBox pictureBoxUfscar;
+        private System.Windows.Forms.PictureBox pictureBoxCorpo;
+        private System.Windows.Forms.PictureBox pictureBoxBase;
+        private System.Windows.Forms.Timer timerAnimation;
+        private System.Windows.Forms.GroupBox groupBoxaAnimation;
     }
 }
 

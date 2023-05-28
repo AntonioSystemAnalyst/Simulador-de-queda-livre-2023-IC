@@ -17,7 +17,16 @@ namespace freeFall
 {
     public partial class Simulator : Form
     {
-        public int planetCounter = 3;
+        // define objeto para ser usado nas tooltips
+        System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
+
+        // define o planeta para exibir os dados - errado!!!
+        public int planetCounter = 1;
+
+        // controla o botão iniciar 
+        public int buttonStartControl = 0;
+
+        public int corpoCountVetor = 0;
         public int corpoCounter = 0;
 
         public int countAnimation = 0;
@@ -25,23 +34,10 @@ namespace freeFall
         public double NumberTermsTime = 0.0;
         
         public int    countPixelObject = 0;
-        public double countTimeVacuum = 0.0;
-        public double countTimePaper = 0.0;
 
         public int countTesteAnimation = 0;
 
-
-        System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
-
-        // chart Configuration 
-        // n = quantidade de termos
-        // Mm = Y minimo
-        // MM = Y max
-        // interY = intervalo em Y
-        // interX = intervalo em X   
-        // Max = X max
-        // Mmx = X minimu
-
+      
         public static int[] Ax = new int[15];
         public Simulator()
         {
@@ -55,7 +51,7 @@ namespace freeFall
             LoadData();
             spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-            calculate();
+            calculateValues();
             dataText();
         }
 
@@ -79,17 +75,54 @@ namespace freeFall
             pictureBoxCorpoPaper.Location = new Point(222, 30);
             pictureBoxVacuum.Location = new Point(16, 13);
             countPixelObject = 0;
-            Program.countTimeObject = 0.0;
+            corpoCountVetor = 0;
+
+            Program.corpo.TimeExperimentObject  = 0.0;
+            Program.paper.TimeExperimentObject  = 0.0;
+            Program.vaccum.TimeExperimentObject = 0.0;
         }
 
-        private void buttonTest_Click(object sender, EventArgs e)
+        public void calculateValues()
         {
-            timerTeste.Enabled = true;
+            Program.planetName = cmbPlaneta.Text;
+            Program.height = Program.organizeData(txtAltura.Text);
+            Program.gravity = Program.organizeData(txtgravit.Text);
+
+            if (Program.airResistance == 0)
+            {
+                Program.corpo.calculateOutResistence(Program.height, Program.gravity, 0);
+            }
+            else
+            {
+                Program.corpo.calculateWithResistence(Program.height, Program.gravity, 0, 1);
+            }
         }
+
+
+        public void dataText()
+        {
+            string airResistence = "";
+            
+            if (Program.airResistance == 0)
+            {
+                airResistence = "Não";
+            }
+            else
+            {
+                airResistence = "Sim";
+            }
+
+            richTextBoxDados.Text = " Astro: \n " + cmbPlaneta.Text + "\n Gravidade: \n " + Program.gravity +
+               "\n Velocidade inicial(m/s): \n 0\n Velocidade final(m/s): \n " + Math.Round(Program.corpo.FinalVelocityObject, 2) +
+               "\n Tempo(s): \n " + Math.Round(Program.corpo.TimeExperimentObject, 2) + "\n Resistencia do ar: \n " + airResistence;
+
+            Program.experimentData = richTextBoxDados.Text;
+        }
+
         private void timerTeste_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpo.Location = new Point(145, 30 + countTesteAnimation);
-            if(countTesteAnimation == 534)
+            if (countTesteAnimation == 534)
             {
                 timerTeste.Enabled = false;
             }
@@ -100,20 +133,24 @@ namespace freeFall
         {
             double tolerance = 0.0000000001;
             // todas as vezes entra aqui dentro 
-            if ((Math.Round(Program.countTimeObject, 3) - Program.spaceObjectTime[countPixelObject]) < tolerance)
+            if ((Math.Round(Program.corpo.CountTimeObject, 3) - Program.corpo.SpaceObjectPixel[countPixelObject]) < tolerance)
             {
                 pictureBoxCorpo.Location = new Point(145, 30 + countPixelObject);
-                countPixelObject +=  10;
+                countPixelObject += 10;
                 Console.WriteLine("Oi");
             }
-            Program.countTimeObject += 0.001;
-            textTempo.Text = "" + Math.Round(Program.countTimeObject, 3);
-            if (countPixelObject == 534)
+
+            Program.corpo.CountTimeObject += 0.001;
+            textTempo.Text = "" + Math.Round(Program.corpo.CountTimeObject, 3);
+            //txtEspaco.Text = "" + Math.Round(Program.spaceObject[corpoCountVetor], 3);
+            //txtVelocidade.Text = "" + Math.Round(Program.velocityObject[corpoCountVetor], 3);
+            corpoCountVetor += 1;
+            if (Program.corpo.CountTimeObject == Program.timeExperiment)
             {
                 timerAnimation.Enabled = false;
             }
         }
-        // ---- 
+        // --------------------------------------
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpoPaper.Location = new Point(222, 30 + countAnimation);
@@ -123,102 +160,72 @@ namespace freeFall
         {
             pictureBoxVacuum.Location = new Point(16, 13 + countAnimation);
         }
-
-        public void calculate()
+        private void timerEixos_Tick(object sender, EventArgs e)
         {
-            NumberTermsTime = Convert.ToInt32(Program.timeExperiment / 0.01);
-
-            if (Program.airResistance == 0)
+            if (checkBoxEixo.Checked)
             {
-                Program.planetName = cmbPlaneta.Text;
-                Program.height = Program.organizeData(txtAltura.Text);
-                Program.gravity = Program.organizeData(txtgravit.Text);
-                Program.finalVelocity = Math.Sqrt((Program.initialVelocity * Program.initialVelocity) + (2 * Program.gravity * Program.height));
-                Program.timeExperiment = (Program.finalVelocity - Program.initialVelocity) / Program.gravity;
-
-                Program.finalVelocityObject = Math.Sqrt((Program.initialVelocityObject * Program.initialVelocityObject) + (2 * Program.gravity * Program.height));
-                Program.timeExperimentObject = (Program.finalVelocityObject - Program.initialVelocityObject) / Program.gravity;
-
-                loadDataWithOutAirResistance();
+                pictureBoxSetaY.Visible = true;
+                pictureBoxSetaX.Visible = true;
+                pictureBoxBase.Visible = false;
             }
             else
             {
-
+                pictureBoxSetaY.Visible = false;
+                pictureBoxSetaX.Visible = false;
+                pictureBoxBase.Visible = true;
             }
         }
-
-        public void loadDataWithOutAirResistance()
-        {
-            int i = 0;
-
-            double QtdTempox = Program.timeExperiment / (0.01);
-            int timeExperiment = Convert.ToInt32(QtdTempox);
-            Program.spaceObject = new double[timeExperiment + 2];
-            Program.velocityObject = new double[timeExperiment + 2];
-
-
-            // ------------------------------------------------
-            // comum
-            double velocity = 0.0;
-
-            // ------------------------------------------------
-            // ------------------------------------------------
-            // object
-            double QtdSpace = Program.height / 534;
-            double spaceCont = 0.0;
-            Program.spaceObject = new double[Convert.ToInt32(534)];
-            Program.velocityObject = new double[Convert.ToInt32(534)];
-            Program.spaceObjectTime = new double[Convert.ToInt32(535+1000)];
-            Program.spaceObjectPixel = new double[Convert.ToInt32(534)];
-
-            // pixel for space
-
-            for (i = 0; i < 534; i++)
-            {
-                Program.spaceObjectPixel[i] = spaceCont;
-                spaceCont += QtdSpace;
-
-            }
-            // time for pixel
-            for (i = 0; i < 534; i++)
-            {
-                velocity = Math.Sqrt((Program.initialVelocityObject * Program.initialVelocityObject) + (2 * Program.gravity * Program.spaceObjectPixel[i]));
-                Program.spaceObjectTime[i] = Math.Round((velocity - Program.initialVelocityObject) / Program.gravity, 3);
-            }
-            // ------------------------------------------------
-            // ------------------------------------------------
-        }
-
-        public void loadDataWithAirResistance()
-        {
-
-        }
-
+        // --------------------------------------
         private void BTNIniciar_Click(object sender, EventArgs e)
         {
-            clear();
-            timerAnimation.Enabled = true;
+           
+            if (buttonStartControl == 0)
+            {
+                try
+                {
+                    clear();
+                    calculateValues();
+                    dataText();
+                    timerAnimation.Enabled = true;
+                    BTNIniciar.Text = "Parar";
+                    buttonStartControl = 1;
+                    speedGraphic(10, 0, 150, 50, 0, 10, 0);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(" Erro !!!\n" + ex);
+                }
+            }
+            if(buttonStartControl == 1)
+            {
+                BTNIniciar.Text = "Continuar";
+                buttonStartControl = 2;
+            }
+            if (buttonStartControl == 2)
+            {
+                BTNIniciar.Text = "Posicionar";
+                buttonStartControl = 0;
+            }
         }
-
-        public void dataText()
+        private void buttonTest_Click(object sender, EventArgs e)
         {
-            string airResistence = "";
-
-            if (Program.airResistance == 0)
-            {
-                airResistence = "Sim";
-            }
-            else
-            {
-                airResistence = "Não";
-            }
-            richTextBoxDados.Text = " Astro: " + cmbPlaneta.Text + "\n Gravidade: " + Program.gravity +
-                "\n Velocidade inicial(m/s): 0\n Velocidade final(m/s): " + Program.finalVelocity + "\n Resistencia do ar: " + airResistence +
-                "\n Tempo(s): " + Program.timeExperiment;
-
-            Program.experimentData = richTextBoxDados.Text;
+            timerTeste.Enabled = true;
         }
 
+        private void buttonData_Click(object sender, EventArgs e)
+        {
+            if (Program.experimentDataControl == 0)
+            {
+                experimentData windowExperiment = new experimentData();
+                windowExperiment.Show();
+            }
+        }
+
+        private void buttonResistencia_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+    
         private void buttonPlanet_Click(object sender, EventArgs e)
         {
             if (planetCounter == 10)
@@ -238,6 +245,26 @@ namespace freeFall
                 }
             }
         }
+
+        private void buttonConfigPlanet_Click(object sender, EventArgs e)
+        {
+            if (Program.configurePlanetControl == 0)
+            {
+                configurePlanet windowConfigurePlanet = new configurePlanet();
+                windowConfigurePlanet.Show();
+            }
+        }
+        private void buttonLogo_Click(object sender, EventArgs e)
+        {
+            programView x = new programView();
+            x.Show();
+        }
+
+        // --------------------------------------
+
+        // chart Configuration // n = quantidade de termos // Mm = Y minimo
+        // Mm = Y minimo // MM = Y max // interY = intervalo em Y
+        // interX = intervalo em X    // Max = X max // Mmx = X minimu
 
         public void spaceGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
@@ -262,7 +289,7 @@ namespace freeFall
             chartSpace.Series[Serie].Color = Color.Blue;
             for (i = 0; i < n; i++)
             {
-                chartSpace.Series[Serie].Points.AddXY((i), Program.spaceObject[i]);
+                chartSpace.Series[Serie].Points.AddXY((i), Program.corpo.Space[i]);
             }
         }
 
@@ -289,7 +316,7 @@ namespace freeFall
             chartSpeed.Series[Serie].Color = Color.Blue;
             for (i = 0; i < n; i++)
             {
-                chartSpace.Series[Serie].Points.AddXY((i), Program.velocityObject[i]);
+                chartSpace.Series[Serie].Points.AddXY((i), Program.corpo.VelocityObject[i]);
             }
         }
 
@@ -336,14 +363,6 @@ namespace freeFall
             chartSpace.Series[Serie].Color = Color.Blue;
             chartSpace.Series[Serie].Points.AddXY(0, 0);
         }
-        private void buttonData_Click(object sender, EventArgs e)
-        {
-            if (Program.experimentDataControl == 0)
-            {
-                experimentData windowExperiment = new experimentData();
-                windowExperiment.Show();
-            }
-        }
 
         private void checkBoxVacuum_CheckStateChanged(object sender, EventArgs e)
         {
@@ -361,11 +380,6 @@ namespace freeFall
                 pictureBoxVacuum.Visible = false;
                 pictureBoxGauge.Visible = false;
             }
-        }
-
-        private void buttonResistencia_Click(object sender, EventArgs e)
-        {
-            Application.Restart();
         }
 
         private void checkBoxLeaf_CheckStateChanged(object sender, EventArgs e)
@@ -406,21 +420,6 @@ namespace freeFall
             }
         }
 
-        private void buttonSalve_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                calculate();
-                dataText();
-
-                MessageBox.Show(" Salvo com sucesso!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" A altura deve ser menor que 1000 m\n Não é permitido outros caracteres a não ser números, pontos e virgulas.\n" + ex);
-            }
-        }
-
         private void checkBoxResistance_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxResistance.Checked)
@@ -443,22 +442,7 @@ namespace freeFall
                 Ax[i] = rnd.Next(1, 100);
             }
         }
-        private void timerEixos_Tick(object sender, EventArgs e)
-        {
-            if (checkBoxEixo.Checked)
-            {
-                pictureBoxSetaY.Visible = true;
-                pictureBoxSetaX.Visible = true;
-                pictureBoxBase.Visible = false;
-            }
-            else
-            {
-                pictureBoxSetaY.Visible = false;
-                pictureBoxSetaX.Visible = false;
-                pictureBoxBase.Visible = true;
-            }
-        }
-
+       
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
             Space windowSpace = new Space();
@@ -628,14 +612,6 @@ namespace freeFall
             }
             if (planetCounter == 10)
             {
-                txtgravit.Text = "" + Program.anotherPlanetGraviy;
-                cmbPlaneta.Text = "Outro";
-                groupBoxExperimento.BackgroundImage = Properties.Resources.horizonUnknow;
-                pictureBoxPlanets.Image = Properties.Resources.planetUnknow;
-                buttonPlanet.Text = "Configurar";
-            }
-            if (planetCounter == 11)
-            {
                 planetCounter = 1;
                 txtgravit.Text = "9,8";
                 cmbPlaneta.Text = "Terra";
@@ -723,22 +699,15 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
                 buttonPlanet.Text = "Netuno";
             }
-            if (planetCounter == 10)
-            {
-                txtgravit.Text = "" + Program.anotherPlanetGraviy;
-                cmbPlaneta.Text = "Outro";
-                groupBoxExperimento.BackgroundImage = Properties.Resources.horizonUnknow;
-                pictureBoxPlanets.Image = Properties.Resources.planetUnknow;
-                buttonPlanet.Text = "Configurar";
-            }
+
             if (planetCounter == 0)
             {
-                planetCounter = 10;
-                txtgravit.Text = "" + Program.anotherPlanetGraviy;
-                cmbPlaneta.Text = "Outro";
-                groupBoxExperimento.BackgroundImage = Properties.Resources.horizonUnknow;
-                pictureBoxPlanets.Image = Properties.Resources.planetUnknow;
-                buttonPlanet.Text = "Configurar";
+                planetCounter = 9;
+                txtgravit.Text = "11,15";
+                cmbPlaneta.Text = "Netuno";
+                groupBoxExperimento.BackgroundImage = Properties.Resources.horizonNeptune;
+                pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
+                buttonPlanet.Text = "Netuno";
             }
         }
         private void cmbPlaneta_SelectedValueChanged(object sender, EventArgs e)
@@ -815,14 +784,7 @@ namespace freeFall
                 buttonPlanet.Text = "Netuno";
                 planetCounter = 9;
             }
-            if (cmbPlaneta.Text == "Outro")
-            {
-                txtgravit.Text = "" + Program.anotherPlanetGraviy;
-                groupBoxExperimento.BackgroundImage = Properties.Resources.horizonUnknow;
-                pictureBoxPlanets.Image = Properties.Resources.planetUnknow;
-                buttonPlanet.Text = "Configurar";
-                planetCounter = 10;
-            }
+
             Program.planetCounter = planetCounter;
         }
         private void Altura_MouseHover(object sender, EventArgs e)
@@ -867,15 +829,6 @@ namespace freeFall
         private void buttonData_MouseHover(object sender, EventArgs e)
         {
             toolTip.SetToolTip(buttonData, "Exibe os dados configurados do experimento.");
-        }
-
-        private void buttonConfigPlanet_Click(object sender, EventArgs e)
-        {
-            if (Program.configurePlanetControl == 0)
-            {
-                configurePlanet windowConfigurePlanet = new configurePlanet();
-                windowConfigurePlanet.Show();
-            }
         }
         private void trackBarPlanets_Scroll(object sender, EventArgs e)
         {
@@ -1107,12 +1060,6 @@ namespace freeFall
         private void pictureBoxCorpo_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void buttonLogo_Click(object sender, EventArgs e)
-        {
-            programView x = new programView();
-            x.Show();
         }
 
         private void checkBoxGrafico_CheckedChanged(object sender, EventArgs e)

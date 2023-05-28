@@ -28,7 +28,7 @@ namespace freeFall
             for (i=0; i<534; i++)
             {
                 spaceObjectTime += "Pixel: " + i + " - ";
-                spaceObjectTime += Program.spaceObjectTime[i];
+                spaceObjectTime += Program.corpo.SpaceObjectPixel[i];
                 spaceObjectTime += "\n";
 
             }
@@ -40,8 +40,8 @@ namespace freeFall
             richTextBoxConsoleView.Text += " Nome do Planeta: " + Program.planetName + "\n";
             richTextBoxConsoleView.Text += " Altura: " + Program.height + "\n";
             richTextBoxConsoleView.Text += " Gravidade: " + Program.gravity + "\n";
-            richTextBoxConsoleView.Text += " Velocidade final objeto: " + Program.finalVelocityObject + "\n";
-            richTextBoxConsoleView.Text += " Tempo total: " + Program.timeExperimentObject + "\n";
+            richTextBoxConsoleView.Text += " Velocidade final objeto: " + Program.corpo.FinalVelocityObject + "\n";
+            richTextBoxConsoleView.Text += " Tempo total: " + Program.corpo.TimeExperimentObject + "\n";
             richTextBoxConsoleView.Text += " ------------------------------------------------------\n";
             richTextBoxConsoleView.Text += spaceObjectTime;
         }
