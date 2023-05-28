@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -94,6 +94,7 @@
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.timerTeste = new System.Windows.Forms.Timer(this.components);
+            this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -138,13 +139,13 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea1.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend1);
+            chartArea11.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea11);
+            legend11.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend11);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
-            this.chartSpeed.Size = new System.Drawing.Size(822, 144);
+            this.chartSpeed.Size = new System.Drawing.Size(850, 150);
             this.chartSpeed.TabIndex = 1;
             this.chartSpeed.Text = "chart2";
             this.chartSpeed.Click += new System.EventHandler(this.chartSpeed_Click);
@@ -152,13 +153,13 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea2.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend2);
+            chartArea12.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea12);
+            legend12.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend12);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
-            this.chartSpace.Size = new System.Drawing.Size(822, 150);
+            this.chartSpace.Size = new System.Drawing.Size(851, 153);
             this.chartSpace.TabIndex = 0;
             this.chartSpace.Text = "chart1";
             this.chartSpace.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartSpace_MouseClick);
@@ -537,6 +538,7 @@
             // groupBoxControl
             // 
             this.groupBoxControl.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxControl.BackgroundImage")));
+            this.groupBoxControl.Controls.Add(this.checkBox3D);
             this.groupBoxControl.Controls.Add(this.textTempo);
             this.groupBoxControl.Controls.Add(this.pictureBoxTimeLeft);
             this.groupBoxControl.Controls.Add(this.pictureBoxTimeRight);
@@ -594,7 +596,7 @@
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(256, 60);
+            this.button1.Location = new System.Drawing.Point(191, 59);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(70, 26);
             this.button1.TabIndex = 31;
@@ -607,7 +609,7 @@
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(180, 60);
+            this.buttonData.Location = new System.Drawing.Point(115, 59);
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(70, 26);
             this.buttonData.TabIndex = 30;
@@ -619,7 +621,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(265, 33);
+            this.checkBoxEixo.Location = new System.Drawing.Point(272, 48);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -630,19 +632,20 @@
             // checkBoxGrafico
             // 
             this.checkBoxGrafico.AutoSize = true;
-            this.checkBoxGrafico.Location = new System.Drawing.Point(265, 13);
+            this.checkBoxGrafico.Location = new System.Drawing.Point(272, 11);
             this.checkBoxGrafico.Name = "checkBoxGrafico";
             this.checkBoxGrafico.Size = new System.Drawing.Size(73, 17);
             this.checkBoxGrafico.TabIndex = 28;
             this.checkBoxGrafico.Text = "Gráficos";
             this.checkBoxGrafico.UseVisualStyleBackColor = true;
+            this.checkBoxGrafico.CheckedChanged += new System.EventHandler(this.checkBoxGrafico_CheckedChanged);
             this.checkBoxGrafico.MouseHover += new System.EventHandler(this.checkBoxGrafico_MouseHover);
             // 
             // BTNIniciar
             // 
             this.BTNIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNIniciar.ForeColor = System.Drawing.Color.Black;
-            this.BTNIniciar.Location = new System.Drawing.Point(10, 60);
+            this.BTNIniciar.Location = new System.Drawing.Point(10, 59);
             this.BTNIniciar.Name = "BTNIniciar";
             this.BTNIniciar.Size = new System.Drawing.Size(79, 27);
             this.BTNIniciar.TabIndex = 27;
@@ -848,6 +851,18 @@
             this.timerTeste.Interval = 1;
             this.timerTeste.Tick += new System.EventHandler(this.timerTeste_Tick);
             // 
+            // checkBox3D
+            // 
+            this.checkBox3D.AutoSize = true;
+            this.checkBox3D.Location = new System.Drawing.Point(272, 29);
+            this.checkBox3D.Name = "checkBox3D";
+            this.checkBox3D.Size = new System.Drawing.Size(40, 17);
+            this.checkBox3D.TabIndex = 35;
+            this.checkBox3D.Text = "3d";
+            this.checkBox3D.UseVisualStyleBackColor = true;
+            this.checkBox3D.CheckStateChanged += new System.EventHandler(this.checkBox3D_CheckStateChanged);
+            this.checkBox3D.MouseHover += new System.EventHandler(this.checkBox3D_MouseHover);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -963,5 +978,6 @@
         private System.Windows.Forms.Timer timerTeste;
         private System.Windows.Forms.Button buttonTest;
         private System.Windows.Forms.Label labelTextColor;
+        private System.Windows.Forms.CheckBox checkBox3D;
     }
 }

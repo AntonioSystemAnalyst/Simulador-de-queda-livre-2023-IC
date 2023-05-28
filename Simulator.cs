@@ -470,7 +470,10 @@ namespace freeFall
             Speed windowSpeed = new Speed();
             windowSpeed.Show();
         }
-
+        private void checkBox3D_MouseHover(object sender, EventArgs e)
+        {
+            
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             corpoCounter += 1;
@@ -1110,6 +1113,25 @@ namespace freeFall
         {
             programView x = new programView();
             x.Show();
+        }
+
+        private void checkBoxGrafico_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox3D_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox3D.Checked)
+            {
+                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
+            }
+            else
+            {
+                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
+            }
         }
     }
 }
