@@ -37,6 +37,10 @@ namespace freeFall
 
         public int countTesteAnimation = 0;
 
+
+        // --------------
+        public int corpoPixelCount = 0;
+
       
         public static int[] Ax = new int[15];
         public Simulator()
@@ -53,6 +57,7 @@ namespace freeFall
             speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             calculateValues();
             dataText();
+            Console.WriteLine("oi");
         }
 
         public void animation()
@@ -76,6 +81,8 @@ namespace freeFall
             pictureBoxVacuum.Location = new Point(16, 13);
             countPixelObject = 0;
             corpoCountVetor = 0;
+            corpoPixelCount = 0;
+
 
             Program.corpo.TimeExperimentObject  = 0.0;
             Program.paper.TimeExperimentObject  = 0.0;
@@ -128,27 +135,32 @@ namespace freeFall
             }
             countTesteAnimation += 1;
         }
-        // tamo aqui 
+
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
-            double tolerance = 0.0000000001;
-            // todas as vezes entra aqui dentro 
-            if ((Math.Round(Program.corpo.CountTimeObject, 3) - Program.corpo.SpaceObjectPixel[countPixelObject]) < tolerance)
+            double tolerance = 0.01;
+            Console.WriteLine(""+ Program.corpo.TimeExperimentObject);
+            // todas as vezes entra aqui dentro
+            corpoPixelCount += 1;
+            if ((Math.Round(Program.corpo.SpaceObjectTime[countPixelObject], 3)-(Math.Round(Program.corpo.CountTimeObject, 3))  < tolerance))
             {
                 pictureBoxCorpo.Location = new Point(145, 30 + countPixelObject);
                 countPixelObject += 10;
-                Console.WriteLine("Oi");
+                corpoPixelCount += 1;
+                Console.WriteLine(" " + Math.Round(Program.corpo.CountTimeObject, 3) + "-" + ((Math.Round(Program.corpo.SpaceObjectTime[countPixelObject], 3))));
             }
-
-            Program.corpo.CountTimeObject += 0.001;
+            
+           
             textTempo.Text = "" + Math.Round(Program.corpo.CountTimeObject, 3);
             //txtEspaco.Text = "" + Math.Round(Program.spaceObject[corpoCountVetor], 3);
             //txtVelocidade.Text = "" + Math.Round(Program.velocityObject[corpoCountVetor], 3);
-            corpoCountVetor += 1;
-            if (Program.corpo.CountTimeObject == Program.timeExperiment)
+           
+            if (Program.corpo.CountTimeObject == Math.Round(Program.corpo.TimeExperimentObject, 2))
             {
                 timerAnimation.Enabled = false;
             }
+            corpoCountVetor += 1;
+            Program.corpo.CountTimeObject += 0.01;
         }
         // --------------------------------------
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
