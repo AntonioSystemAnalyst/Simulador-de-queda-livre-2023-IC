@@ -19,7 +19,12 @@ namespace freeFall
         private double[] space;
         private double[] velocity;
 
-
+        public static double Round(double value, int decimalPlaces)
+        {
+            double factor = (double)Math.Pow(10, decimalPlaces);
+            double roundedValue = Math.Round(value * factor) / factor;
+            return roundedValue;
+        }
         public void calculateOutResistence (double height, double gravity, double initialVelocity)
         {
            
@@ -31,7 +36,7 @@ namespace freeFall
             int i = 0;
 
             finalVelocity = Math.Sqrt((initialVelocity* initialVelocity) + (2 *gravity* height));
-            timeOutAirResistence = (finalVelocity - initialVelocity) / gravity;
+            timeOutAirResistence = Round((finalVelocity - initialVelocity) / gravity, 2);
 
             space    = new double[timeExperiment + 2];
             velocity = new double[timeExperiment + 2];
@@ -53,7 +58,7 @@ namespace freeFall
             for (i = 0; i < 534; i++)
             {
                 velocity[i] = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * spacePixel[i]));
-                spaceTime[i] = Math.Round((velocity[i] - initialVelocity) / gravity, 3);
+                spaceTime[i] = Round((velocity[i] - initialVelocity) / gravity, 2);
             }
         }
 

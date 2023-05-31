@@ -29,6 +29,8 @@ namespace freeFall
             {
                 spaceObjectTime += "Pixel: " + i + " - ";
                 spaceObjectTime += Program.corpo.SpaceObjectPixel[i];
+                spaceObjectTime += " - ";
+                spaceObjectTime += Program.corpo.SpaceObjectTime[i];
                 spaceObjectTime += "\n";
 
             }

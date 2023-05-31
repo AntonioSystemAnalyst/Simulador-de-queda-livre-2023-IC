@@ -83,6 +83,11 @@ namespace freeFall
             corpoCountVetor = 0;
             corpoPixelCount = 0;
 
+            //chartSpace.Series.Clear();
+            //chartSpace.ChartAreas.Clear();
+
+            //chartSpeed.Series.Clear();
+            //chartSpeed.ChartAreas.Clear();
 
             Program.corpo.TimeExperimentObject  = 0.0;
             Program.paper.TimeExperimentObject  = 0.0;
@@ -139,28 +144,36 @@ namespace freeFall
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
             double tolerance = 0.01;
-            Console.WriteLine(""+ Program.corpo.TimeExperimentObject);
-            // todas as vezes entra aqui dentro
-            corpoPixelCount += 1;
-            if ((Math.Round(Program.corpo.SpaceObjectTime[countPixelObject], 3)-(Math.Round(Program.corpo.CountTimeObject, 3))  < tolerance))
+            //if (space - countTime <= tolerance)
+
+            double space = Program.corpo.SpaceObjectTime[countPixelObject];
+            double countTime = Math.Round(Program.corpo.CountTimeObject, 2);
+            // tem hora q o valor repete
+            if (space == countTime)
             {
                 pictureBoxCorpo.Location = new Point(145, 30 + countPixelObject);
-                countPixelObject += 10;
-                corpoPixelCount += 1;
-                Console.WriteLine(" " + Math.Round(Program.corpo.CountTimeObject, 3) + "-" + ((Math.Round(Program.corpo.SpaceObjectTime[countPixelObject], 3))));
+                countPixelObject += 1;
+               
             }
-            
-           
-            textTempo.Text = "" + Math.Round(Program.corpo.CountTimeObject, 3);
-            //txtEspaco.Text = "" + Math.Round(Program.spaceObject[corpoCountVetor], 3);
-            //txtVelocidade.Text = "" + Math.Round(Program.velocityObject[corpoCountVetor], 3);
-           
-            if (Program.corpo.CountTimeObject == Math.Round(Program.corpo.TimeExperimentObject, 2))
+            Console.WriteLine(" Sapce: " + space + "- Time:" + countTime);
+
+            for(int i = 0; i < Program.corpo.SpaceObjectTime.Length; i++)
+            {
+                Console.WriteLine(" " + Program.corpo.SpaceObjectTime[i]);
+            }
+
+            if (Program.corpo.CountTimeObject >= Program.corpo.TimeExperimentObject)
             {
                 timerAnimation.Enabled = false;
             }
+            corpoPixelCount += 1;
             corpoCountVetor += 1;
             Program.corpo.CountTimeObject += 0.01;
+
+
+            textTempo.Text = "" + Math.Round(Program.corpo.CountTimeObject, 3);
+            txtEspaco.Text = "" + Math.Round(Program.corpo.SpaceObjectPixel[corpoCountVetor], 3);
+            txtVelocidade.Text = "" + Math.Round(Program.corpo.VelocityObject[corpoCountVetor], 3);
         }
         // --------------------------------------
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
