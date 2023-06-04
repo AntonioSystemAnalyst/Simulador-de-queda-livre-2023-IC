@@ -25,6 +25,9 @@ namespace freeFall
 
         public static string experimentData = ""; // dados do experimento
 
+        public static bool bodyOn = true;
+        public static bool paperOn = false;
+        public static bool vaccumOn = false;
 
         public static double finalVelocity = 0;
         public static double initialVelocity = 0;
@@ -35,6 +38,8 @@ namespace freeFall
         public static body corpo  = new body();
         public static body paper  = new body();
         public static body vaccum = new body();
+
+
 
         public static double organizeData(string data) 
         {
