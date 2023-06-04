@@ -35,10 +35,19 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
+            this.buttonGraficVelocity = new System.Windows.Forms.Button();
+            this.buttonGraficSpace = new System.Windows.Forms.Button();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxVaccumHeight = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.groupBoxDados = new System.Windows.Forms.GroupBox();
+            this.richTextBoxDados = new System.Windows.Forms.RichTextBox();
+            this.textBoxVaccumVelocity = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -80,8 +89,6 @@
             this.checkBoxGrafico = new System.Windows.Forms.CheckBox();
             this.BTNIniciar = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.groupBoxDados = new System.Windows.Forms.GroupBox();
-            this.richTextBoxDados = new System.Windows.Forms.RichTextBox();
             this.timerEixos = new System.Windows.Forms.Timer(this.components);
             this.groupBoxExperimento = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -98,17 +105,14 @@
             this.timerAnimationVacuum = new System.Windows.Forms.Timer(this.components);
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBoxVaccumHeight = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBoxVaccumVelocity = new System.Windows.Forms.TextBox();
-            this.buttonGraficSpace = new System.Windows.Forms.Button();
-            this.buttonGraficVelocity = new System.Windows.Forms.Button();
+            this.pictureBoxCorpoView = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPaper = new System.Windows.Forms.PictureBox();
+            this.pictureBoxVaccum = new System.Windows.Forms.PictureBox();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
+            this.groupBoxDados.SuspendLayout();
             this.groupBoxPlanetas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNext)).BeginInit();
@@ -118,7 +122,6 @@
             this.groupBoxControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
-            this.groupBoxDados.SuspendLayout();
             this.groupBoxExperimento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxVacuum.SuspendLayout();
@@ -130,6 +133,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaper)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
@@ -148,6 +154,30 @@
             this.groupBoxGraficos.TabIndex = 9;
             this.groupBoxGraficos.TabStop = false;
             this.groupBoxGraficos.Text = "Gráficos";
+            // 
+            // buttonGraficVelocity
+            // 
+            this.buttonGraficVelocity.Enabled = false;
+            this.buttonGraficVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGraficVelocity.ForeColor = System.Drawing.Color.Black;
+            this.buttonGraficVelocity.Location = new System.Drawing.Point(750, 306);
+            this.buttonGraficVelocity.Name = "buttonGraficVelocity";
+            this.buttonGraficVelocity.Size = new System.Drawing.Size(101, 22);
+            this.buttonGraficVelocity.TabIndex = 38;
+            this.buttonGraficVelocity.Text = "Ampliar gráfico";
+            this.buttonGraficVelocity.UseVisualStyleBackColor = true;
+            // 
+            // buttonGraficSpace
+            // 
+            this.buttonGraficSpace.Enabled = false;
+            this.buttonGraficSpace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGraficSpace.ForeColor = System.Drawing.Color.Black;
+            this.buttonGraficSpace.Location = new System.Drawing.Point(750, 150);
+            this.buttonGraficSpace.Name = "buttonGraficSpace";
+            this.buttonGraficSpace.Size = new System.Drawing.Size(101, 22);
+            this.buttonGraficSpace.TabIndex = 36;
+            this.buttonGraficSpace.Text = "Ampliar gráfico";
+            this.buttonGraficSpace.UseVisualStyleBackColor = true;
             // 
             // chartSpeed
             // 
@@ -191,6 +221,9 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
+            this.groupBoxResultados.Controls.Add(this.pictureBoxVaccum);
+            this.groupBoxResultados.Controls.Add(this.pictureBoxPaper);
+            this.groupBoxResultados.Controls.Add(this.pictureBoxCorpoView);
             this.groupBoxResultados.Controls.Add(this.label7);
             this.groupBoxResultados.Controls.Add(this.label10);
             this.groupBoxResultados.Controls.Add(this.textBoxVaccumHeight);
@@ -215,6 +248,88 @@
             this.groupBoxResultados.TabIndex = 8;
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Resultados";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(9, 98);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(110, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Camara de vacuo:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(9, 152);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 13);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Veloc. (m/s)";
+            // 
+            // textBoxVaccumHeight
+            // 
+            this.textBoxVaccumHeight.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxVaccumHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxVaccumHeight.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxVaccumHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxVaccumHeight.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxVaccumHeight.Location = new System.Drawing.Point(87, 115);
+            this.textBoxVaccumHeight.Name = "textBoxVaccumHeight";
+            this.textBoxVaccumHeight.ReadOnly = true;
+            this.textBoxVaccumHeight.Size = new System.Drawing.Size(83, 26);
+            this.textBoxVaccumHeight.TabIndex = 22;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(9, 120);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(61, 13);
+            this.label11.TabIndex = 23;
+            this.label11.Text = "Altura (m)";
+            // 
+            // groupBoxDados
+            // 
+            this.groupBoxDados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxDados.BackgroundImage")));
+            this.groupBoxDados.Controls.Add(this.richTextBoxDados);
+            this.groupBoxDados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxDados.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBoxDados.Location = new System.Drawing.Point(177, 92);
+            this.groupBoxDados.Name = "groupBoxDados";
+            this.groupBoxDados.Size = new System.Drawing.Size(173, 80);
+            this.groupBoxDados.TabIndex = 11;
+            this.groupBoxDados.TabStop = false;
+            this.groupBoxDados.Text = "Dados";
+            // 
+            // richTextBoxDados
+            // 
+            this.richTextBoxDados.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxDados.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxDados.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxDados.Location = new System.Drawing.Point(6, 15);
+            this.richTextBoxDados.Name = "richTextBoxDados";
+            this.richTextBoxDados.ReadOnly = true;
+            this.richTextBoxDados.Size = new System.Drawing.Size(159, 58);
+            this.richTextBoxDados.TabIndex = 0;
+            this.richTextBoxDados.Text = "";
+            this.richTextBoxDados.TextChanged += new System.EventHandler(this.richTextBoxDados_TextChanged);
+            // 
+            // textBoxVaccumVelocity
+            // 
+            this.textBoxVaccumVelocity.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxVaccumVelocity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxVaccumVelocity.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxVaccumVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxVaccumVelocity.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxVaccumVelocity.Location = new System.Drawing.Point(87, 145);
+            this.textBoxVaccumVelocity.Name = "textBoxVaccumVelocity";
+            this.textBoxVaccumVelocity.ReadOnly = true;
+            this.textBoxVaccumVelocity.Size = new System.Drawing.Size(83, 26);
+            this.textBoxVaccumVelocity.TabIndex = 21;
             // 
             // label5
             // 
@@ -740,32 +855,6 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "Tempo (s)";
             // 
-            // groupBoxDados
-            // 
-            this.groupBoxDados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxDados.BackgroundImage")));
-            this.groupBoxDados.Controls.Add(this.richTextBoxDados);
-            this.groupBoxDados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxDados.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxDados.Location = new System.Drawing.Point(177, 92);
-            this.groupBoxDados.Name = "groupBoxDados";
-            this.groupBoxDados.Size = new System.Drawing.Size(173, 80);
-            this.groupBoxDados.TabIndex = 11;
-            this.groupBoxDados.TabStop = false;
-            this.groupBoxDados.Text = "Dados";
-            // 
-            // richTextBoxDados
-            // 
-            this.richTextBoxDados.BackColor = System.Drawing.Color.Black;
-            this.richTextBoxDados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxDados.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxDados.Location = new System.Drawing.Point(6, 15);
-            this.richTextBoxDados.Name = "richTextBoxDados";
-            this.richTextBoxDados.ReadOnly = true;
-            this.richTextBoxDados.Size = new System.Drawing.Size(159, 58);
-            this.richTextBoxDados.TabIndex = 0;
-            this.richTextBoxDados.Text = "";
-            this.richTextBoxDados.TextChanged += new System.EventHandler(this.richTextBoxDados_TextChanged);
-            // 
             // timerEixos
             // 
             this.timerEixos.Tick += new System.EventHandler(this.timerEixos_Tick);
@@ -924,85 +1013,38 @@
             this.timerGrafic.Interval = 10;
             this.timerGrafic.Tick += new System.EventHandler(this.timerGrafic_Tick);
             // 
-            // label7
+            // pictureBoxCorpoView
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(9, 98);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 13);
-            this.label7.TabIndex = 25;
-            this.label7.Text = "Camara de vacuo:";
+            this.pictureBoxCorpoView.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxCorpoView.Image = global::freeFall.Properties.Resources.corpoSoccer;
+            this.pictureBoxCorpoView.Location = new System.Drawing.Point(51, 15);
+            this.pictureBoxCorpoView.Name = "pictureBoxCorpoView";
+            this.pictureBoxCorpoView.Size = new System.Drawing.Size(25, 22);
+            this.pictureBoxCorpoView.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCorpoView.TabIndex = 26;
+            this.pictureBoxCorpoView.TabStop = false;
             // 
-            // label10
+            // pictureBoxPaper
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(9, 152);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 13);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Veloc. (m/s)";
+            this.pictureBoxPaper.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxPaper.Image = global::freeFall.Properties.Resources.paper2;
+            this.pictureBoxPaper.Location = new System.Drawing.Point(229, 15);
+            this.pictureBoxPaper.Name = "pictureBoxPaper";
+            this.pictureBoxPaper.Size = new System.Drawing.Size(25, 22);
+            this.pictureBoxPaper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPaper.TabIndex = 27;
+            this.pictureBoxPaper.TabStop = false;
             // 
-            // textBoxVaccumHeight
+            // pictureBoxVaccum
             // 
-            this.textBoxVaccumHeight.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxVaccumHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxVaccumHeight.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBoxVaccumHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxVaccumHeight.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxVaccumHeight.Location = new System.Drawing.Point(87, 115);
-            this.textBoxVaccumHeight.Name = "textBoxVaccumHeight";
-            this.textBoxVaccumHeight.ReadOnly = true;
-            this.textBoxVaccumHeight.Size = new System.Drawing.Size(83, 26);
-            this.textBoxVaccumHeight.TabIndex = 22;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(9, 120);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(61, 13);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "Altura (m)";
-            // 
-            // textBoxVaccumVelocity
-            // 
-            this.textBoxVaccumVelocity.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxVaccumVelocity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxVaccumVelocity.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBoxVaccumVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxVaccumVelocity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxVaccumVelocity.Location = new System.Drawing.Point(87, 145);
-            this.textBoxVaccumVelocity.Name = "textBoxVaccumVelocity";
-            this.textBoxVaccumVelocity.ReadOnly = true;
-            this.textBoxVaccumVelocity.Size = new System.Drawing.Size(83, 26);
-            this.textBoxVaccumVelocity.TabIndex = 21;
-            // 
-            // buttonGraficSpace
-            // 
-            this.buttonGraficSpace.Enabled = false;
-            this.buttonGraficSpace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGraficSpace.ForeColor = System.Drawing.Color.Black;
-            this.buttonGraficSpace.Location = new System.Drawing.Point(750, 150);
-            this.buttonGraficSpace.Name = "buttonGraficSpace";
-            this.buttonGraficSpace.Size = new System.Drawing.Size(101, 22);
-            this.buttonGraficSpace.TabIndex = 36;
-            this.buttonGraficSpace.Text = "Ampliar gráfico";
-            this.buttonGraficSpace.UseVisualStyleBackColor = true;
-            // 
-            // buttonGraficVelocity
-            // 
-            this.buttonGraficVelocity.Enabled = false;
-            this.buttonGraficVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGraficVelocity.ForeColor = System.Drawing.Color.Black;
-            this.buttonGraficVelocity.Location = new System.Drawing.Point(750, 306);
-            this.buttonGraficVelocity.Name = "buttonGraficVelocity";
-            this.buttonGraficVelocity.Size = new System.Drawing.Size(101, 22);
-            this.buttonGraficVelocity.TabIndex = 38;
-            this.buttonGraficVelocity.Text = "Ampliar gráfico";
-            this.buttonGraficVelocity.UseVisualStyleBackColor = true;
+            this.pictureBoxVaccum.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxVaccum.Image = global::freeFall.Properties.Resources.gauge;
+            this.pictureBoxVaccum.Location = new System.Drawing.Point(122, 92);
+            this.pictureBoxVaccum.Name = "pictureBoxVaccum";
+            this.pictureBoxVaccum.Size = new System.Drawing.Size(27, 22);
+            this.pictureBoxVaccum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxVaccum.TabIndex = 27;
+            this.pictureBoxVaccum.TabStop = false;
             // 
             // Simulator
             // 
@@ -1029,6 +1071,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
             this.groupBoxResultados.ResumeLayout(false);
             this.groupBoxResultados.PerformLayout();
+            this.groupBoxDados.ResumeLayout(false);
             this.groupBoxPlanetas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNext)).EndInit();
@@ -1040,7 +1083,6 @@
             this.groupBoxControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).EndInit();
-            this.groupBoxDados.ResumeLayout(false);
             this.groupBoxExperimento.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxVacuum.ResumeLayout(false);
@@ -1052,6 +1094,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaper)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1129,5 +1174,8 @@
         private System.Windows.Forms.TextBox textBoxVaccumVelocity;
         private System.Windows.Forms.Button buttonGraficVelocity;
         private System.Windows.Forms.Button buttonGraficSpace;
+        private System.Windows.Forms.PictureBox pictureBoxVaccum;
+        private System.Windows.Forms.PictureBox pictureBoxPaper;
+        private System.Windows.Forms.PictureBox pictureBoxCorpoView;
     }
 }

@@ -85,6 +85,8 @@ namespace freeFall
                 checkBoxResistance.Enabled = false;
                 pictureBoxBack.Enabled = false;
                 pictureBoxNext.Enabled = false;
+                pictureBoxBack.Visible = false;
+                pictureBoxNext.Visible = false;
                 txtgravit.Enabled = false;
             }
             else
@@ -98,6 +100,8 @@ namespace freeFall
                 checkBoxResistance.Enabled = true;
                 pictureBoxBack.Enabled = true;
                 pictureBoxNext.Enabled = true;
+                pictureBoxBack.Visible = true;
+                pictureBoxNext.Visible = true;
                 txtgravit.Enabled = true;
             }
         }
@@ -215,7 +219,7 @@ namespace freeFall
             pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
             Console.WriteLine(Program.paper.Pixels[countPaper]);
             //textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
-            textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
+            //textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
             //chartSpace.Series["Papel"].Points.AddXY(countBody, Program.corpo.Space[countBody]);
             //chartSpeed.Series["Velocidade"].Points.AddXY(countBody, Program.corpo.Velocity[countBody]);
