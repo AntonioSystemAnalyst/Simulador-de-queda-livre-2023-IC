@@ -40,20 +40,20 @@
             this.richTextBoxConsoleView.BackColor = System.Drawing.Color.Black;
             this.richTextBoxConsoleView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxConsoleView.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxConsoleView.Location = new System.Drawing.Point(4, 4);
+            this.richTextBoxConsoleView.Location = new System.Drawing.Point(12, 12);
             this.richTextBoxConsoleView.Name = "richTextBoxConsoleView";
             this.richTextBoxConsoleView.ReadOnly = true;
-            this.richTextBoxConsoleView.Size = new System.Drawing.Size(551, 403);
+            this.richTextBoxConsoleView.Size = new System.Drawing.Size(626, 394);
             this.richTextBoxConsoleView.TabIndex = 0;
             this.richTextBoxConsoleView.Text = "";
             // 
             // buttonFocus
             // 
-            this.buttonFocus.Location = new System.Drawing.Point(605, 24);
+            this.buttonFocus.Location = new System.Drawing.Point(799, 12);
             this.buttonFocus.Name = "buttonFocus";
             this.buttonFocus.Size = new System.Drawing.Size(75, 23);
             this.buttonFocus.TabIndex = 1;
-            this.buttonFocus.Text = "button1";
+            this.buttonFocus.Text = "Focus";
             this.buttonFocus.UseVisualStyleBackColor = true;
             // 
             // timerFocus
@@ -65,7 +65,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(558, 418);
+            this.ClientSize = new System.Drawing.Size(650, 418);
             this.Controls.Add(this.buttonFocus);
             this.Controls.Add(this.richTextBoxConsoleView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

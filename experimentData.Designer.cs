@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(experimentData));
             this.buttonFocus = new System.Windows.Forms.Button();
             this.richTextBoxExperimentData = new System.Windows.Forms.RichTextBox();
+            this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonFocus
@@ -49,12 +51,22 @@
             this.richTextBoxExperimentData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxExperimentData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxExperimentData.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxExperimentData.Location = new System.Drawing.Point(12, 12);
+            this.richTextBoxExperimentData.Location = new System.Drawing.Point(872, 12);
             this.richTextBoxExperimentData.Name = "richTextBoxExperimentData";
             this.richTextBoxExperimentData.ReadOnly = true;
             this.richTextBoxExperimentData.Size = new System.Drawing.Size(448, 404);
             this.richTextBoxExperimentData.TabIndex = 2;
             this.richTextBoxExperimentData.Text = "";
+            // 
+            // dataGridViewPlanets
+            // 
+            this.dataGridViewPlanets.BackgroundColor = System.Drawing.Color.Black;
+            this.dataGridViewPlanets.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewPlanets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewPlanets.Location = new System.Drawing.Point(0, -19);
+            this.dataGridViewPlanets.Name = "dataGridViewPlanets";
+            this.dataGridViewPlanets.Size = new System.Drawing.Size(494, 556);
+            this.dataGridViewPlanets.TabIndex = 15;
             // 
             // experimentData
             // 
@@ -62,7 +74,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(469, 434);
+            this.ClientSize = new System.Drawing.Size(588, 434);
+            this.Controls.Add(this.dataGridViewPlanets);
             this.Controls.Add(this.richTextBoxExperimentData);
             this.Controls.Add(this.buttonFocus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -73,6 +86,7 @@
             this.Text = "Dados do experimento ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.experimentData_FormClosing);
             this.Load += new System.EventHandler(this.experimentData_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -81,5 +95,6 @@
 
         private System.Windows.Forms.Button buttonFocus;
         private System.Windows.Forms.RichTextBox richTextBoxExperimentData;
+        private System.Windows.Forms.DataGridView dataGridViewPlanets;
     }
 }
