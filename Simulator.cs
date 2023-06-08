@@ -948,7 +948,6 @@ namespace freeFall
             if (i == 2)
             {
                 richTextBoxDados.ForeColor = Color.Blue;
-                groupBoxDados.ForeColor = Color.Blue;
                 groupBoxControl.ForeColor = Color.Blue;
                 groupBoxConfiguracao.ForeColor = Color.Blue;
                 groupBoxPlanetas.ForeColor = Color.Blue;
@@ -968,7 +967,6 @@ namespace freeFall
             if (i == 3)
             {
                 richTextBoxDados.ForeColor = Color.Red;
-                groupBoxDados.ForeColor = Color.Red;
                 groupBoxControl.ForeColor = Color.Red;
                 groupBoxConfiguracao.ForeColor = Color.Red;
                 groupBoxPlanetas.ForeColor = Color.Red;
@@ -988,7 +986,6 @@ namespace freeFall
             if (i == 4)
             {
                 richTextBoxDados.ForeColor = Color.Green;
-                groupBoxDados.ForeColor = Color.Green;
                 groupBoxControl.ForeColor = Color.Green;
                 groupBoxConfiguracao.ForeColor = Color.Green;
                 groupBoxPlanetas.ForeColor = Color.Green;
@@ -1008,7 +1005,6 @@ namespace freeFall
             if (i == 5)
             {
                 richTextBoxDados.ForeColor = Color.Gray;
-                groupBoxDados.ForeColor = Color.Gray;
                 groupBoxControl.ForeColor = Color.Gray;
                 groupBoxConfiguracao.ForeColor = Color.Gray;
                 groupBoxPlanetas.ForeColor = Color.Gray;
@@ -1028,7 +1024,6 @@ namespace freeFall
             if (i == 6)
             {
                 richTextBoxDados.ForeColor = Color.Green;
-                groupBoxDados.ForeColor = Color.Green;
                 groupBoxControl.ForeColor = Color.Green;
                 groupBoxConfiguracao.ForeColor = Color.Green;
                 groupBoxPlanetas.ForeColor = Color.Green;
@@ -1048,7 +1043,6 @@ namespace freeFall
             if (i == 7)
             {
                 richTextBoxDados.ForeColor = Color.HotPink;
-                groupBoxDados.ForeColor = Color.HotPink;
                 groupBoxControl.ForeColor = Color.HotPink;
                 groupBoxConfiguracao.ForeColor = Color.HotPink;
                 groupBoxPlanetas.ForeColor = Color.HotPink;
@@ -1068,7 +1062,6 @@ namespace freeFall
             if (i == 8)
             {
                 richTextBoxDados.ForeColor = Color.LightBlue;
-                groupBoxDados.ForeColor = Color.LightBlue;
                 groupBoxControl.ForeColor = Color.LightBlue;
                 groupBoxConfiguracao.ForeColor = Color.LightBlue;
                 groupBoxPlanetas.ForeColor = Color.LightBlue;
@@ -1088,7 +1081,6 @@ namespace freeFall
             if (i == 9)
             {
                 richTextBoxDados.ForeColor = Color.LightSalmon;
-                groupBoxDados.ForeColor = Color.LightSalmon;
                 groupBoxControl.ForeColor = Color.LightSalmon;
                 groupBoxConfiguracao.ForeColor = Color.LightSalmon;
                 groupBoxPlanetas.ForeColor = Color.LightSalmon;
@@ -1108,7 +1100,6 @@ namespace freeFall
             if (i == 10)
             {
                 richTextBoxDados.ForeColor = Color.LightPink;
-                groupBoxDados.ForeColor = Color.LightPink;
                 groupBoxControl.ForeColor = Color.LightPink;
                 groupBoxConfiguracao.ForeColor = Color.LightPink;
                 groupBoxPlanetas.ForeColor = Color.LightPink;
@@ -1128,7 +1119,6 @@ namespace freeFall
             if (i == 1)
             {
                 richTextBoxDados.ForeColor = Color.Cyan;
-                groupBoxDados.ForeColor = Color.Cyan;
                 groupBoxControl.ForeColor = Color.Cyan;
                 groupBoxConfiguracao.ForeColor = Color.Cyan;
                 groupBoxExperimento.ForeColor = Color.Cyan;
