@@ -63,9 +63,11 @@
             this.dataGridViewPlanets.BackgroundColor = System.Drawing.Color.Black;
             this.dataGridViewPlanets.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewPlanets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPlanets.Location = new System.Drawing.Point(0, -19);
+            this.dataGridViewPlanets.ColumnHeadersVisible = false;
+            this.dataGridViewPlanets.Location = new System.Drawing.Point(1, 1);
             this.dataGridViewPlanets.Name = "dataGridViewPlanets";
-            this.dataGridViewPlanets.Size = new System.Drawing.Size(494, 556);
+            this.dataGridViewPlanets.RowHeadersVisible = false;
+            this.dataGridViewPlanets.Size = new System.Drawing.Size(316, 352);
             this.dataGridViewPlanets.TabIndex = 15;
             // 
             // experimentData
@@ -74,7 +76,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(588, 434);
+            this.ClientSize = new System.Drawing.Size(319, 358);
             this.Controls.Add(this.dataGridViewPlanets);
             this.Controls.Add(this.richTextBoxExperimentData);
             this.Controls.Add(this.buttonFocus);

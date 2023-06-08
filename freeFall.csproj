@@ -189,6 +189,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="astronomy.ico" />
+    <None Include="Resources\backgroundVacuumColor.bmp" />
+    <None Include="Resources\backgroundVacuum.bmp" />
     <None Include="Resources\Logomarca_UFSCAR.png" />
     <None Include="Resources\ufscar.png" />
     <None Include="Resources\dfqm.png" />

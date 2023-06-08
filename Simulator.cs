@@ -30,15 +30,26 @@ namespace freeFall
 
         public int countAnimation = 0;
 
+        public int countFocus = 0;
+
+        public int flagVaccumObject = 0;
+
         public double NumberTermsTime = 0.0;
 
-
+      
         
         public int countVaccum = 0;
         public int countPaper  = 0;
         public int countBody   = 0;
         public int countGrafic = 0;
 
+        // -- 
+        DataSet ds = null;
+        DataTable dt = null;
+        public static string planetName, gravity, airResistence, initialVelocityBody, finalVelocityBody, experimentTimeBody;
+        public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper;
+        public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum;
+        // -- 
 
         public static int[] Ax = new int[15];
         public Simulator()
@@ -46,16 +57,34 @@ namespace freeFall
             InitializeComponent();
             timerEixos.Enabled = true;
             cmbPlaneta.Text = "Terra";
-            txtAltura.Text = "100";
+            txtAltura.Text = "10";
             txtgravit.Text = "9,8";
             comboBoxVacuum.Text = "Folha";
             comboShet.Text = "Aberta";
             spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             calculateValues();
-            dataText();
-        }
 
+            // ----
+            dataGridViewPlanets.BackgroundColor = Color.Black;
+            dataGridViewPlanets.DefaultCellStyle.BackColor = Color.Black;
+            dataGridViewPlanets.GridColor = Color.Cyan;
+            dataGridViewPlanets.DefaultCellStyle.ForeColor = Color.Cyan;
+            dataGridViewPlanets.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold);
+            dataGridViewPlanets.DefaultCellStyle.Font = new Font(dataGridViewPlanets.DefaultCellStyle.Font.FontFamily,9);
+            dataGridViewPlanets.AllowUserToResizeColumns = false;
+            dataGridViewPlanets.AllowUserToResizeRows = false;
+            // ---
+
+            loadData();
+            startGrid();
+            Flip();
+           
+        }
+        private void Simulator_Load(object sender, EventArgs e)
+        {
+            dataGridViewPlanets.CurrentCell = null;
+        }
         public void clear ()
         {
             pictureBoxCorpo.Location = new Point(145, 30);
@@ -163,31 +192,6 @@ namespace freeFall
         }
 
 
-        public void dataText()
-        {
-            string airResistence = "";
-            
-            if (Program.airResistance == 0)
-            {
-                airResistence = "Não";
-            }
-            else
-            {
-                airResistence = "Sim";
-            }
-
-            richTextBoxDados.Text = " Astro: \n " + cmbPlaneta.Text + "\n Gravidade: \n " + Program.gravity +
-               "\n Velocidade inicial(m/s): \n 0\n Velocidade final(m/s): \n " + Math.Round(Program.corpo.FinalVelocity, 2) +
-               "\n Tempo(s): \n " + Math.Round(Program.corpo.TimeOutAirResistence, 2) + "\n Resistencia do ar: \n " + airResistence;
-
-            Program.experimentData = richTextBoxDados.Text;
-        }
-
-        private void timerTeste_Tick(object sender, EventArgs e)
-        {
-           // pictureBoxCorpo.Location = new Point(145, 30 + countTesteAnimation);
-        }
-
         private void organizeGrafics()
         {
             int espacodiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
@@ -218,8 +222,7 @@ namespace freeFall
         {
             pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
             Console.WriteLine(Program.paper.Pixels[countPaper]);
-            //textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
-            //textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
+            textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
             //chartSpace.Series["Papel"].Points.AddXY(countBody, Program.corpo.Space[countBody]);
             //chartSpeed.Series["Velocidade"].Points.AddXY(countBody, Program.corpo.Velocity[countBody]);
@@ -279,7 +282,6 @@ namespace freeFall
                 pictureBoxBase.Visible = true;
             }
         }
-        // --------------------------------------
 
         private void BTNIniciar_Click(object sender, EventArgs e)
         {
@@ -289,8 +291,10 @@ namespace freeFall
 
                     clear();
                     calculateValues();
-                    dataText();
                     enabledConfigure(1);
+                    loadData();
+                    startGrid();
+                    Flip();
                     organizeGrafics();
                     animation();
                     BTNIniciar.Text = "Parar";
@@ -316,7 +320,6 @@ namespace freeFall
                         {
                             clear();
                             calculateValues();
-                            dataText();
                             BTNIniciar.Text = "Iniciar";
                             buttonStartControl = 0;
                         }
@@ -520,11 +523,15 @@ namespace freeFall
         {
             if (comboBoxVacuum.Text == "Bóla")
             {
-                pictureBoxVacuum.Image = Properties.Resources.corpoSoccer;
+                pictureBoxVacuum.Image = pictureBoxCorpo.Image;
+                pictureBoxVaccumObject.Image = pictureBoxCorpo.Image;
+                flagVaccumObject = 1;
             }
             else
             {
                 pictureBoxVacuum.Image = Properties.Resources.paper2;
+                pictureBoxVaccumObject.Image = Properties.Resources.paper2;
+                flagVaccumObject = 0;
             }
         }
 
@@ -533,10 +540,12 @@ namespace freeFall
             if (comboShet.Text == "Aberta")
             {
                 pictureBoxCorpoPaper.Image = Properties.Resources.paper2;
+                pictureBoxPaper.Image = Properties.Resources.paper2;
             }
             else
             {
                 pictureBoxCorpoPaper.Image = Properties.Resources.paper3;
+                pictureBoxPaper.Image = Properties.Resources.paper3;
             }
         }
 
@@ -572,76 +581,57 @@ namespace freeFall
         private void button1_Click(object sender, EventArgs e)
         {
             corpoCounter += 1;
+
             if (corpoCounter == 1)
             {
-                pictureBoxCorpo.Image = Properties.Resources.pokebola;
-                pictureBoxVacuum.Image = Properties.Resources.pokebola;
+                pictureBoxCorpo.Image = Properties.Resources.corpoBall4;
+                pictureBoxCorpoView.Image = Properties.Resources.corpoBall4;
+                if (flagVaccumObject == 1)
+                {
+                    pictureBoxVacuum.Image = Properties.Resources.corpoBall4;
+                    pictureBoxVaccumObject.Image = Properties.Resources.corpoBall4;
+                }
             }
             if (corpoCounter == 2)
             {
-                pictureBoxCorpo.Image = Properties.Resources.corpoBall4;
-                pictureBoxVacuum.Image = Properties.Resources.corpoBall4;
+                pictureBoxCorpo.Image = Properties.Resources.corpoBasketball;
+                pictureBoxCorpoView.Image = Properties.Resources.corpoBasketball;
+                if (flagVaccumObject == 1)
+                {
+                    pictureBoxVacuum.Image = Properties.Resources.corpoBasketball;
+                    pictureBoxVaccumObject.Image = Properties.Resources.corpoBasketball;
+                }
             }
             if (corpoCounter == 3)
             {
-                pictureBoxCorpo.Image = Properties.Resources.corpoBasketball;
-                pictureBoxVacuum.Image = Properties.Resources.corpoBasketball;
+                pictureBoxCorpo.Image = Properties.Resources.corpoBowling;
+                pictureBoxCorpoView.Image = Properties.Resources.corpoBowling;
+                if (flagVaccumObject == 1)
+                {
+                    pictureBoxVacuum.Image = Properties.Resources.corpoBowling;
+                    pictureBoxVaccumObject.Image = Properties.Resources.corpoBowling;
+                }
             }
             if (corpoCounter == 4)
             {
-                pictureBoxCorpo.Image = Properties.Resources.corpoBowling;
-                pictureBoxVacuum.Image = Properties.Resources.corpoBowling;
+                pictureBoxCorpo.Image = Properties.Resources.corpoGolf;
+                pictureBoxCorpoView.Image = Properties.Resources.corpoGolf;
+                if (flagVaccumObject == 1)
+                {
+                    pictureBoxVacuum.Image = Properties.Resources.corpoGolf;
+                    pictureBoxVaccumObject.Image = Properties.Resources.corpoGolf;
+                }
             }
             if (corpoCounter == 5)
             {
-                pictureBoxCorpo.Image = Properties.Resources.corpoCosmos;
-                pictureBoxVacuum.Image = Properties.Resources.corpoCosmos;
-            }
-            if (corpoCounter == 6)
-            {
-                pictureBoxCorpo.Image = Properties.Resources.corpoEye;
-                pictureBoxVacuum.Image = Properties.Resources.corpoEye;
-            }
-            if (corpoCounter == 7)
-            {
-                pictureBoxCorpo.Image = Properties.Resources.corpoGolf;
-                pictureBoxVacuum.Image = Properties.Resources.corpoGolf;
-            }
-            if (corpoCounter == 8)
-            {
-                pictureBoxCorpo.Image = Properties.Resources.corpoMountains;
-                pictureBoxVacuum.Image = Properties.Resources.corpoMountains;
-            }
-            if (corpoCounter == 9)
-            {
-                pictureBoxCorpo.Image = Properties.Resources.corpoRing;
-                pictureBoxVacuum.Image = Properties.Resources.corpoRing;
-            }
-            if (corpoCounter == 10)
-            {
-                pictureBoxCorpo.Image = Properties.Resources.corpoEye;
-                pictureBoxVacuum.Image = Properties.Resources.corpoEye;
-            }
-            if (corpoCounter == 11)
-            {
                 pictureBoxCorpo.Image = Properties.Resources.corpoSoccer;
-                pictureBoxVacuum.Image = Properties.Resources.corpoSoccer;
-            }
-            if (corpoCounter == 12)
-            {
-                pictureBoxCorpo.Image = Properties.Resources.corpoSphere;
-                pictureBoxVacuum.Image = Properties.Resources.corpoSphere;
-            }
-            if (corpoCounter == 13)
-            {
-                pictureBoxCorpo.Image = Properties.Resources.corpoSphere2;
-                pictureBoxVacuum.Image = Properties.Resources.corpoSphere2;
-            }
-            if (corpoCounter == 14)
-            {
+                pictureBoxCorpoView.Image = Properties.Resources.corpoSoccer;
+                if (flagVaccumObject == 1)
+                {
+                    pictureBoxVacuum.Image = Properties.Resources.corpoSoccer;
+                    pictureBoxVaccumObject.Image = Properties.Resources.corpoSoccer;
+                }
                 corpoCounter = 0;
-                pictureBoxCorpo.Image = Properties.Resources.corpoBall;
-                pictureBoxVacuum.Image = Properties.Resources.corpoBall;
             }
         }
         private void pictureBoxNext_Click(object sender, EventArgs e)
@@ -947,7 +937,6 @@ namespace freeFall
             i = trackBarColors.Value;
             if (i == 2)
             {
-                richTextBoxDados.ForeColor = Color.Blue;
                 groupBoxControl.ForeColor = Color.Blue;
                 groupBoxConfiguracao.ForeColor = Color.Blue;
                 groupBoxPlanetas.ForeColor = Color.Blue;
@@ -966,7 +955,6 @@ namespace freeFall
             }
             if (i == 3)
             {
-                richTextBoxDados.ForeColor = Color.Red;
                 groupBoxControl.ForeColor = Color.Red;
                 groupBoxConfiguracao.ForeColor = Color.Red;
                 groupBoxPlanetas.ForeColor = Color.Red;
@@ -985,7 +973,6 @@ namespace freeFall
             }
             if (i == 4)
             {
-                richTextBoxDados.ForeColor = Color.Green;
                 groupBoxControl.ForeColor = Color.Green;
                 groupBoxConfiguracao.ForeColor = Color.Green;
                 groupBoxPlanetas.ForeColor = Color.Green;
@@ -1004,7 +991,6 @@ namespace freeFall
             }
             if (i == 5)
             {
-                richTextBoxDados.ForeColor = Color.Gray;
                 groupBoxControl.ForeColor = Color.Gray;
                 groupBoxConfiguracao.ForeColor = Color.Gray;
                 groupBoxPlanetas.ForeColor = Color.Gray;
@@ -1023,7 +1009,6 @@ namespace freeFall
             }
             if (i == 6)
             {
-                richTextBoxDados.ForeColor = Color.Green;
                 groupBoxControl.ForeColor = Color.Green;
                 groupBoxConfiguracao.ForeColor = Color.Green;
                 groupBoxPlanetas.ForeColor = Color.Green;
@@ -1042,7 +1027,6 @@ namespace freeFall
             }
             if (i == 7)
             {
-                richTextBoxDados.ForeColor = Color.HotPink;
                 groupBoxControl.ForeColor = Color.HotPink;
                 groupBoxConfiguracao.ForeColor = Color.HotPink;
                 groupBoxPlanetas.ForeColor = Color.HotPink;
@@ -1061,7 +1045,6 @@ namespace freeFall
             }
             if (i == 8)
             {
-                richTextBoxDados.ForeColor = Color.LightBlue;
                 groupBoxControl.ForeColor = Color.LightBlue;
                 groupBoxConfiguracao.ForeColor = Color.LightBlue;
                 groupBoxPlanetas.ForeColor = Color.LightBlue;
@@ -1080,7 +1063,6 @@ namespace freeFall
             }
             if (i == 9)
             {
-                richTextBoxDados.ForeColor = Color.LightSalmon;
                 groupBoxControl.ForeColor = Color.LightSalmon;
                 groupBoxConfiguracao.ForeColor = Color.LightSalmon;
                 groupBoxPlanetas.ForeColor = Color.LightSalmon;
@@ -1099,7 +1081,6 @@ namespace freeFall
             }
             if (i == 10)
             {
-                richTextBoxDados.ForeColor = Color.LightPink;
                 groupBoxControl.ForeColor = Color.LightPink;
                 groupBoxConfiguracao.ForeColor = Color.LightPink;
                 groupBoxPlanetas.ForeColor = Color.LightPink;
@@ -1118,7 +1099,6 @@ namespace freeFall
             }
             if (i == 1)
             {
-                richTextBoxDados.ForeColor = Color.Cyan;
                 groupBoxControl.ForeColor = Color.Cyan;
                 groupBoxConfiguracao.ForeColor = Color.Cyan;
                 groupBoxExperimento.ForeColor = Color.Cyan;
@@ -1136,9 +1116,165 @@ namespace freeFall
                 txtVelocidade.ForeColor = Color.Cyan;
             }
         }
-        private void richTextBoxDados_TextChanged(object sender, EventArgs e)
+
+        public void startGrid()
+        {
+            ds = new DataSet();
+            dt = new DataTable();
+
+            dt = GetCustomersOutAirResistence();
+            ds.Tables.Add(dt);
+
+            DataView my_DataView = ds.Tables[0].DefaultView;
+            this.dataGridViewPlanets.DataSource = my_DataView;
+        }
+        private void Flip()
+        {
+            DataSet new_ds = FlipDataSet(ds); 
+            DataView my_DataView = new_ds.Tables[0].DefaultView;
+            this.dataGridViewPlanets.DataSource = my_DataView;
+            dataGridViewPlanets.CurrentCell = null;
+        }
+        public DataSet FlipDataSet(DataSet my_DataSet)
+        {
+            DataSet ds = new DataSet();
+
+            foreach (DataTable dt in my_DataSet.Tables)
+            {
+                DataTable table = new DataTable();
+
+                for (int i = 0; i <= dt.Rows.Count; i++)
+                {
+                    table.Columns.Add(Convert.ToString(i));
+                }
+                DataRow r;
+                for (int k = 0; k < dt.Columns.Count; k++)
+                {
+                    r = table.NewRow();
+                    r[0] = dt.Columns[k].ToString();
+                    for (int j = 1; j <= dt.Rows.Count; j++)
+                        r[j] = dt.Rows[j - 1][k];
+                    table.Rows.Add(r);
+                }
+
+                ds.Tables.Add(table);
+            }
+            return ds;
+        }
+
+        private void checkBoxLeaf_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridViewPlanets_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Program.experimentDataControl == 0)
+            {
+                experimentData windowExperiment = new experimentData();
+                windowExperiment.Show();
+            }
+        }
+
+        private static DataTable GetCustomersOutAirResistence()
+        {
+            
+            DataTable table = new DataTable();
+            table.TableName = "Customers";
+            table.Columns.Clear();
+            table.Columns.Add("Nome", typeof(string));
+            table.Columns.Add("Gravidade", typeof(string));
+            table.Columns.Add("Resis. Ar", typeof(string));
+            table.Columns.Add("T.corpo", typeof(string));
+            table.Columns.Add("V.ini. corpo", typeof(string));
+            table.Columns.Add("V.fin. corpo", typeof(string));
+
+            if (Program.paperOn)
+            {
+                table.Columns.Add("T. papel", typeof(string));
+                table.Columns.Add("V.ini. papel", typeof(string));
+                table.Columns.Add("V.fin. papel", typeof(string));
+
+            }
+            if (Program.vaccumOn)
+            {
+                table.Columns.Add("T. vacuo", typeof(string));
+                table.Columns.Add("V.ini. vacuo", typeof(string));
+                table.Columns.Add("V.fin. vacuo", typeof(string));
+
+            }
+
+            if (Program.paperOn && Program.vaccumOn)
+            {
+                table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper,
+                 experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum});
+            }
+            else
+            {
+                if (Program.paperOn == false && Program.vaccumOn)
+                {
+                    table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                    initialVelocityBody, finalVelocityBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum });
+                }
+                else
+                {
+                    if (Program.paperOn && Program.vaccumOn == false)
+                    {
+                        table.Rows.Add(new object[] { planetName, gravity, airResistence, experimentTimeBody,
+                        initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper });
+                    }
+                    else
+                    {
+                        table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                        initialVelocityBody, finalVelocityBody });
+                    }
+                }
+            }
+          
+            table.AcceptChanges();
+            return table;
+        }
+
+        public void loadData()
+        {
+            planetName = Program.planetName;
+            gravity = "" + Math.Round(Program.gravity, 2) + " m/s²";
+
+            initialVelocityBody = "" + Math.Round(Program.corpo.InitialVelocity, 2) + " m/s";
+            finalVelocityBody = "" + Math.Round(Program.corpo.FinalVelocity, 2) + " m/s";
+            if (Program.airResistance == 0)
+            {
+                airResistence = "Não";
+                experimentTimeBody = "" + Math.Round(Program.corpo.TimeOutAirResistence, 2) + " s";
+            }
+            else
+            {
+                airResistence = "Sim";
+                experimentTimeBody = "" + Math.Round(Program.corpo.TimeOutAirResistence, 2) + " s";
+            }
+
+            initialVelocityPaper = "" + Math.Round(Program.paper.InitialVelocity, 2) + " m/s";
+            finalVelocityPaper = "" + Math.Round(Program.paper.FinalVelocity, 2) + " m/s";
+            if (Program.airResistance == 0)
+            {
+                experimentTimePaper = "" + Math.Round(Program.paper.TimeOutAirResistence, 2) + " s";
+            }
+            else
+            {
+                experimentTimePaper = "" + Math.Round(Program.paper.TimeOutAirResistence, 2) + " s";
+            }
+
+            initialVelocityVaccum = "" + Math.Round(Program.vaccum.InitialVelocity, 2) + " m/s";
+            finalVelocityVaccum = "" + Math.Round(Program.vaccum.FinalVelocity, 2) + " m/s";
+            if (Program.airResistance == 0)
+            {
+                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeOutAirResistence, 2) + " s";
+            }
+            else
+            {
+                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeOutAirResistence, 2) + " s";
+            }
         }
 
         private void Altura_Click(object sender, EventArgs e)
@@ -1150,11 +1286,6 @@ namespace freeFall
 
         }
         private void label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Simulator_Load(object sender, EventArgs e)
         {
 
         }
