@@ -107,10 +107,14 @@
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.timerRight = new System.Windows.Forms.Timer(this.components);
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
+            this.labelDetails = new System.Windows.Forms.Label();
+            this.labelGraficSpace = new System.Windows.Forms.Label();
+            this.labelGraficVelocity = new System.Windows.Forms.Label();
+            this.BoxGeracao = new System.Windows.Forms.NumericUpDown();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -141,12 +145,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BoxGeracao)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
+            this.groupBoxGraficos.Controls.Add(this.BoxGeracao);
+            this.groupBoxGraficos.Controls.Add(this.labelGraficVelocity);
+            this.groupBoxGraficos.Controls.Add(this.labelGraficSpace);
+            this.groupBoxGraficos.Controls.Add(this.labelDetails);
             this.groupBoxGraficos.Controls.Add(this.chartSpeed);
             this.groupBoxGraficos.Controls.Add(this.chartSpace);
             this.groupBoxGraficos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,9 +174,9 @@
             this.chartSpeed.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartSpeed.Legends.Add(legend1);
-            this.chartSpeed.Location = new System.Drawing.Point(17, 178);
+            this.chartSpeed.Location = new System.Drawing.Point(13, 191);
             this.chartSpeed.Name = "chartSpeed";
-            this.chartSpeed.Size = new System.Drawing.Size(850, 150);
+            this.chartSpeed.Size = new System.Drawing.Size(851, 128);
             this.chartSpeed.TabIndex = 1;
             this.chartSpeed.Text = "chart2";
             this.chartSpeed.Click += new System.EventHandler(this.chartSpeed_Click);
@@ -179,9 +188,9 @@
             this.chartSpace.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartSpace.Legends.Add(legend2);
-            this.chartSpace.Location = new System.Drawing.Point(16, 19);
+            this.chartSpace.Location = new System.Drawing.Point(16, 38);
             this.chartSpace.Name = "chartSpace";
-            this.chartSpace.Size = new System.Drawing.Size(851, 153);
+            this.chartSpace.Size = new System.Drawing.Size(851, 128);
             this.chartSpace.TabIndex = 0;
             this.chartSpace.Text = "chart1";
             this.chartSpace.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartSpace_MouseClick);
@@ -1049,17 +1058,17 @@
             this.dataGridViewPlanets.TabIndex = 14;
             this.dataGridViewPlanets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlanets_CellContentClick);
             // 
-            // groupBox1
+            // groupBoxData
             // 
-            this.groupBox1.Controls.Add(this.dataGridViewPlanets);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox1.Location = new System.Drawing.Point(502, 1);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(195, 195);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dados";
+            this.groupBoxData.Controls.Add(this.dataGridViewPlanets);
+            this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBoxData.Location = new System.Drawing.Point(502, 1);
+            this.groupBoxData.Name = "groupBoxData";
+            this.groupBoxData.Size = new System.Drawing.Size(195, 195);
+            this.groupBoxData.TabIndex = 11;
+            this.groupBoxData.TabStop = false;
+            this.groupBoxData.Text = "Dados";
             // 
             // timerOpacity
             // 
@@ -1074,6 +1083,60 @@
             // 
             this.timerLeft.Tick += new System.EventHandler(this.timerLeft_Tick);
             // 
+            // labelDetails
+            // 
+            this.labelDetails.AutoSize = true;
+            this.labelDetails.Location = new System.Drawing.Point(340, 321);
+            this.labelDetails.Name = "labelDetails";
+            this.labelDetails.Size = new System.Drawing.Size(196, 13);
+            this.labelDetails.TabIndex = 3;
+            this.labelDetails.Text = "Clique nos gráficos para detalhes";
+            // 
+            // labelGraficSpace
+            // 
+            this.labelGraficSpace.AutoSize = true;
+            this.labelGraficSpace.Location = new System.Drawing.Point(61, 16);
+            this.labelGraficSpace.Name = "labelGraficSpace";
+            this.labelGraficSpace.Size = new System.Drawing.Size(115, 13);
+            this.labelGraficSpace.TabIndex = 4;
+            this.labelGraficSpace.Text = "Espaço pelo tempo";
+            // 
+            // labelGraficVelocity
+            // 
+            this.labelGraficVelocity.AutoSize = true;
+            this.labelGraficVelocity.Location = new System.Drawing.Point(61, 169);
+            this.labelGraficVelocity.Name = "labelGraficVelocity";
+            this.labelGraficVelocity.Size = new System.Drawing.Size(136, 13);
+            this.labelGraficVelocity.TabIndex = 5;
+            this.labelGraficVelocity.Text = "Velocidade pelo tempo";
+            // 
+            // BoxGeracao
+            // 
+            this.BoxGeracao.BackColor = System.Drawing.Color.Black;
+            this.BoxGeracao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BoxGeracao.ForeColor = System.Drawing.Color.Aqua;
+            this.BoxGeracao.Location = new System.Drawing.Point(718, 87);
+            this.BoxGeracao.Maximum = new decimal(new int[] {
+            800,
+            0,
+            0,
+            0});
+            this.BoxGeracao.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.BoxGeracao.Name = "BoxGeracao";
+            this.BoxGeracao.ReadOnly = true;
+            this.BoxGeracao.Size = new System.Drawing.Size(120, 20);
+            this.BoxGeracao.TabIndex = 26;
+            this.BoxGeracao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.BoxGeracao.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1081,7 +1144,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1225, 621);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxData);
             this.Controls.Add(this.groupBoxControl);
             this.Controls.Add(this.groupBoxGraficos);
             this.Controls.Add(this.groupBoxPlanetas);
@@ -1096,6 +1159,7 @@
             this.Text = "UFSCAR - Simulador de queda livre";
             this.Load += new System.EventHandler(this.Simulator_Load);
             this.groupBoxGraficos.ResumeLayout(false);
+            this.groupBoxGraficos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
             this.groupBoxResultados.ResumeLayout(false);
@@ -1128,7 +1192,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.BoxGeracao)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1206,11 +1271,15 @@
         private System.Windows.Forms.PictureBox pictureBoxPaper;
         private System.Windows.Forms.PictureBox pictureBoxCorpoView;
         private System.Windows.Forms.DataGridView dataGridViewPlanets;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxData;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBoxVaccumObject;
         private System.Windows.Forms.Timer timerOpacity;
         private System.Windows.Forms.Timer timerRight;
         private System.Windows.Forms.Timer timerLeft;
+        private System.Windows.Forms.Label labelGraficVelocity;
+        private System.Windows.Forms.Label labelGraficSpace;
+        private System.Windows.Forms.Label labelDetails;
+        private System.Windows.Forms.NumericUpDown BoxGeracao;
     }
 }

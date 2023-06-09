@@ -1284,6 +1284,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.Blue;
                 txtgravit.ForeColor = Color.Blue;
                 txtVelocidade.ForeColor = Color.Blue;
+                textBoxPaperHeight.ForeColor = Color.Blue;
+                textBoxPaperVelocity.ForeColor = Color.Blue;
+                textBoxVaccumHeight.ForeColor = Color.Blue;
+                textBoxVaccumVelocity.ForeColor = Color.Blue;
+                groupBoxData.ForeColor = Color.Blue;
+                dataGridViewPlanets.ForeColor = Color.Blue;
+                labelTextColor.ForeColor = Color.Blue;
+                labelGraficSpace.ForeColor = Color.Blue;
+                labelGraficVelocity.ForeColor = Color.Blue;
+                labelDetails.ForeColor = Color.Blue;
+                comboPaper.ForeColor = Color.Blue;
+                comboBoxVacuum.ForeColor = Color.Blue;
+                textTempo.ForeColor = Color.Blue;
             }
             if (i == 3)
             {
@@ -1302,6 +1315,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.Red;
                 txtgravit.ForeColor = Color.Red;
                 txtVelocidade.ForeColor = Color.Red;
+                textBoxPaperHeight.ForeColor = Color.Red;
+                textBoxPaperVelocity.ForeColor = Color.Red;
+                textBoxVaccumHeight.ForeColor = Color.Red;
+                textBoxVaccumVelocity.ForeColor = Color.Red;
+                groupBoxData.ForeColor = Color.Red;
+                dataGridViewPlanets.ForeColor = Color.Red;
+                labelTextColor.ForeColor = Color.Red;
+                labelGraficSpace.ForeColor = Color.Red; ;
+                labelGraficVelocity.ForeColor = Color.Red;
+                labelDetails.ForeColor = Color.Red;
+                comboPaper.ForeColor = Color.Red;
+                comboBoxVacuum.ForeColor = Color.Red;
+                textTempo.ForeColor = Color.Red;
             }
             if (i == 4)
             {
@@ -1320,6 +1346,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.Green;
                 txtgravit.ForeColor = Color.Green;
                 txtVelocidade.ForeColor = Color.Green;
+                textBoxPaperHeight.ForeColor = Color.Green;
+                textBoxPaperVelocity.ForeColor = Color.Green;
+                textBoxVaccumHeight.ForeColor = Color.Green;
+                textBoxVaccumVelocity.ForeColor = Color.Green;
+                groupBoxData.ForeColor = Color.Green;
+                dataGridViewPlanets.ForeColor = Color.Green;
+                labelTextColor.ForeColor = Color.Green;
+                labelGraficSpace.ForeColor = Color.Green;
+                labelGraficVelocity.ForeColor = Color.Green;
+                labelDetails.ForeColor = Color.Green;
+                comboPaper.ForeColor = Color.Green;
+                comboBoxVacuum.ForeColor = Color.Green;
+                textTempo.ForeColor = Color.Green;
             }
             if (i == 5)
             {
@@ -1338,24 +1377,50 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.Gray;
                 txtgravit.ForeColor = Color.Gray;
                 txtVelocidade.ForeColor = Color.Gray;
+                textBoxPaperHeight.ForeColor = Color.Gray;
+                textBoxPaperVelocity.ForeColor = Color.Gray;
+                textBoxVaccumHeight.ForeColor = Color.Gray;
+                textBoxVaccumVelocity.ForeColor = Color.Gray;
+                groupBoxData.ForeColor = Color.Gray;
+                dataGridViewPlanets.ForeColor = Color.Gray;
+                labelTextColor.ForeColor = Color.Gray;
+                labelGraficSpace.ForeColor = Color.Gray;
+                labelGraficVelocity.ForeColor = Color.Gray;
+                labelDetails.ForeColor = Color.Gray;
+                comboPaper.ForeColor = Color.Gray;
+                comboBoxVacuum.ForeColor = Color.Gray;
+                textTempo.ForeColor = Color.Gray;
             }
             if (i == 6)
             {
-                groupBoxControl.ForeColor = Color.Green;
-                groupBoxConfiguracao.ForeColor = Color.Green;
-                groupBoxPlanetas.ForeColor = Color.Green;
-                groupBoxGraficos.ForeColor = Color.Green;
-                groupBoxResultados.ForeColor = Color.Green;
-                groupBoxExperimento.ForeColor = Color.Green;
-                cmbPlaneta.ForeColor = Color.Green;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Green;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Green;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Green;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Green;
-                txtAltura.ForeColor = Color.Green;
-                txtEspaco.ForeColor = Color.Green;
-                txtgravit.ForeColor = Color.Green;
-                txtVelocidade.ForeColor = Color.Green;
+                groupBoxControl.ForeColor = Color.White;
+                groupBoxConfiguracao.ForeColor = Color.White;
+                groupBoxPlanetas.ForeColor = Color.White;
+                groupBoxGraficos.ForeColor = Color.White;
+                groupBoxResultados.ForeColor = Color.White;
+                groupBoxExperimento.ForeColor = Color.White;
+                cmbPlaneta.ForeColor = Color.White;
+                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
+                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
+                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
+                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
+                txtAltura.ForeColor = Color.White;
+                txtEspaco.ForeColor = Color.White;
+                txtgravit.ForeColor = Color.White;
+                txtVelocidade.ForeColor = Color.White;
+                textBoxPaperHeight.ForeColor = Color.White;
+                textBoxPaperVelocity.ForeColor = Color.White;
+                textBoxVaccumHeight.ForeColor = Color.White;
+                textBoxVaccumVelocity.ForeColor = Color.White;
+                groupBoxData.ForeColor = Color.White;
+                dataGridViewPlanets.ForeColor = Color.White;
+                labelTextColor.ForeColor = Color.White;
+                labelGraficSpace.ForeColor = Color.White;
+                labelGraficVelocity.ForeColor = Color.White;
+                labelDetails.ForeColor = Color.White;
+                comboPaper.ForeColor = Color.White;
+                comboBoxVacuum.ForeColor = Color.White;
+                textTempo.ForeColor = Color.White;
             }
             if (i == 7)
             {
@@ -1374,6 +1439,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.HotPink;
                 txtgravit.ForeColor = Color.HotPink;
                 txtVelocidade.ForeColor = Color.HotPink;
+                textBoxPaperHeight.ForeColor = Color.HotPink;
+                textBoxPaperVelocity.ForeColor = Color.HotPink;
+                textBoxVaccumHeight.ForeColor = Color.HotPink;
+                textBoxVaccumVelocity.ForeColor = Color.HotPink;
+                groupBoxData.ForeColor = Color.HotPink;
+                dataGridViewPlanets.ForeColor = Color.HotPink;
+                labelTextColor.ForeColor = Color.HotPink;
+                labelGraficSpace.ForeColor = Color.HotPink;
+                labelGraficVelocity.ForeColor = Color.HotPink;
+                labelDetails.ForeColor = Color.HotPink;
+                comboPaper.ForeColor = Color.HotPink;
+                comboBoxVacuum.ForeColor = Color.HotPink;
+                textTempo.ForeColor = Color.HotPink;
             }
             if (i == 8)
             {
@@ -1392,6 +1470,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.LightBlue;
                 txtgravit.ForeColor = Color.LightBlue;
                 txtVelocidade.ForeColor = Color.LightBlue;
+                textBoxPaperHeight.ForeColor = Color.LightBlue;
+                textBoxPaperVelocity.ForeColor = Color.LightBlue;
+                textBoxVaccumHeight.ForeColor = Color.LightBlue;
+                textBoxVaccumVelocity.ForeColor = Color.LightBlue;
+                groupBoxData.ForeColor = Color.LightBlue;
+                dataGridViewPlanets.ForeColor = Color.LightBlue;
+                labelTextColor.ForeColor = Color.LightBlue;
+                labelGraficSpace.ForeColor = Color.LightBlue;
+                labelGraficVelocity.ForeColor = Color.LightBlue;
+                labelDetails.ForeColor = Color.LightBlue;
+                comboPaper.ForeColor = Color.LightBlue;
+                comboBoxVacuum.ForeColor = Color.LightBlue;
+                textTempo.ForeColor = Color.LightBlue;
             }
             if (i == 9)
             {
@@ -1410,6 +1501,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.LightSalmon;
                 txtgravit.ForeColor = Color.LightSalmon;
                 txtVelocidade.ForeColor = Color.LightSalmon;
+                textBoxPaperHeight.ForeColor = Color.LightSalmon;
+                textBoxPaperVelocity.ForeColor = Color.LightSalmon;
+                textBoxVaccumHeight.ForeColor = Color.LightSalmon;
+                textBoxVaccumVelocity.ForeColor = Color.LightSalmon;
+                groupBoxData.ForeColor = Color.LightSalmon;
+                dataGridViewPlanets.ForeColor = Color.LightSalmon;
+                labelTextColor.ForeColor = Color.LightSalmon;
+                labelGraficSpace.ForeColor = Color.LightSalmon;
+                labelGraficVelocity.ForeColor = Color.LightSalmon;
+                labelDetails.ForeColor = Color.LightSalmon;
+                comboPaper.ForeColor = Color.LightSalmon;
+                comboBoxVacuum.ForeColor = Color.LightSalmon;
+                textTempo.ForeColor = Color.LightSalmon;
             }
             if (i == 10)
             {
@@ -1428,6 +1532,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.LightPink;
                 txtgravit.ForeColor = Color.LightPink;
                 txtVelocidade.ForeColor = Color.LightPink;
+                textBoxPaperHeight.ForeColor = Color.LightPink;
+                textBoxPaperVelocity.ForeColor = Color.LightPink;
+                textBoxVaccumHeight.ForeColor = Color.LightPink;
+                textBoxVaccumVelocity.ForeColor = Color.LightPink;
+                groupBoxData.ForeColor = Color.LightPink;
+                dataGridViewPlanets.ForeColor = Color.LightPink;
+                labelTextColor.ForeColor = Color.LightPink;
+                labelGraficSpace.ForeColor = Color.LightPink;
+                labelGraficVelocity.ForeColor = Color.LightPink;
+                labelDetails.ForeColor = Color.LightPink;
+                comboPaper.ForeColor = Color.LightPink;
+                comboBoxVacuum.ForeColor = Color.LightPink;
+                textTempo.ForeColor = Color.LightPink;
             }
             if (i == 1)
             {
@@ -1446,6 +1563,19 @@ namespace freeFall
                 txtEspaco.ForeColor = Color.Cyan;
                 txtgravit.ForeColor = Color.Cyan;
                 txtVelocidade.ForeColor = Color.Cyan;
+                textBoxPaperHeight.ForeColor = Color.Cyan;
+                textBoxPaperVelocity.ForeColor = Color.Cyan;
+                textBoxVaccumHeight.ForeColor = Color.Cyan;
+                textBoxVaccumVelocity.ForeColor = Color.Cyan;
+                groupBoxData.ForeColor = Color.Cyan;
+                dataGridViewPlanets.ForeColor = Color.Cyan;
+                labelTextColor.ForeColor = Color.Cyan;
+                labelGraficSpace.ForeColor = Color.Cyan;
+                labelGraficVelocity.ForeColor = Color.Cyan;
+                labelDetails.ForeColor = Color.Cyan;
+                comboPaper.ForeColor = Color.Cyan;
+                comboBoxVacuum.ForeColor = Color.Cyan;
+                textTempo.ForeColor = Color.Cyan;
             }
         }
 

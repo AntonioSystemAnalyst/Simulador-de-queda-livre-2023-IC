@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace freeFall
 {
@@ -15,6 +16,11 @@ namespace freeFall
         public Space()
         {
             InitializeComponent();
+        }
+
+        private void Space_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
