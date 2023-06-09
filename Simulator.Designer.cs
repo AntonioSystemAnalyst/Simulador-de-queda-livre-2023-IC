@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -68,12 +68,12 @@
             this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.labelTextColor = new System.Windows.Forms.Label();
             this.buttonResistencia = new System.Windows.Forms.Button();
+            this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
+            this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
             this.buttonData = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.txtgravit = new System.Windows.Forms.TextBox();
             this.comboPaper = new System.Windows.Forms.ComboBox();
-            this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
-            this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
             this.checkBoxPaper = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafico = new System.Windows.Forms.CheckBox();
@@ -109,6 +109,8 @@
             this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
+            this.timerRight = new System.Windows.Forms.Timer(this.components);
+            this.timerLeft = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -159,10 +161,10 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea7.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend1);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
             this.chartSpeed.Size = new System.Drawing.Size(850, 150);
@@ -173,10 +175,10 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea8.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend2);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
             this.chartSpace.Size = new System.Drawing.Size(851, 153);
@@ -581,6 +583,35 @@
             this.buttonResistencia.UseVisualStyleBackColor = true;
             this.buttonResistencia.Click += new System.EventHandler(this.buttonResistencia_Click);
             // 
+            // comboBoxVacuum
+            // 
+            this.comboBoxVacuum.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.comboBoxVacuum.Enabled = false;
+            this.comboBoxVacuum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxVacuum.ForeColor = System.Drawing.Color.Cyan;
+            this.comboBoxVacuum.FormattingEnabled = true;
+            this.comboBoxVacuum.Items.AddRange(new object[] {
+            "Folha",
+            "Bóla"});
+            this.comboBoxVacuum.Location = new System.Drawing.Point(8, 129);
+            this.comboBoxVacuum.Name = "comboBoxVacuum";
+            this.comboBoxVacuum.Size = new System.Drawing.Size(85, 21);
+            this.comboBoxVacuum.TabIndex = 35;
+            this.comboBoxVacuum.SelectedValueChanged += new System.EventHandler(this.comboBoxVacuum_SelectedValueChanged);
+            // 
+            // checkBoxVacuum
+            // 
+            this.checkBoxVacuum.AutoSize = true;
+            this.checkBoxVacuum.Location = new System.Drawing.Point(8, 109);
+            this.checkBoxVacuum.Name = "checkBoxVacuum";
+            this.checkBoxVacuum.Size = new System.Drawing.Size(62, 17);
+            this.checkBoxVacuum.TabIndex = 34;
+            this.checkBoxVacuum.Text = "Vácuo";
+            this.checkBoxVacuum.UseVisualStyleBackColor = true;
+            this.checkBoxVacuum.CheckedChanged += new System.EventHandler(this.checkBoxVacuum_CheckedChanged);
+            this.checkBoxVacuum.CheckStateChanged += new System.EventHandler(this.checkBoxVacuum_CheckStateChanged);
+            this.checkBoxVacuum.MouseHover += new System.EventHandler(this.checkBoxVacuum_MouseHover);
+            // 
             // buttonData
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -636,35 +667,6 @@
             this.comboPaper.TabIndex = 36;
             this.comboPaper.SelectedIndexChanged += new System.EventHandler(this.comboPaper_SelectedIndexChanged);
             this.comboPaper.SelectedValueChanged += new System.EventHandler(this.comboShet_SelectedValueChanged);
-            // 
-            // comboBoxVacuum
-            // 
-            this.comboBoxVacuum.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.comboBoxVacuum.Enabled = false;
-            this.comboBoxVacuum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxVacuum.ForeColor = System.Drawing.Color.Cyan;
-            this.comboBoxVacuum.FormattingEnabled = true;
-            this.comboBoxVacuum.Items.AddRange(new object[] {
-            "Folha",
-            "Bóla"});
-            this.comboBoxVacuum.Location = new System.Drawing.Point(8, 129);
-            this.comboBoxVacuum.Name = "comboBoxVacuum";
-            this.comboBoxVacuum.Size = new System.Drawing.Size(85, 21);
-            this.comboBoxVacuum.TabIndex = 35;
-            this.comboBoxVacuum.SelectedValueChanged += new System.EventHandler(this.comboBoxVacuum_SelectedValueChanged);
-            // 
-            // checkBoxVacuum
-            // 
-            this.checkBoxVacuum.AutoSize = true;
-            this.checkBoxVacuum.Location = new System.Drawing.Point(8, 109);
-            this.checkBoxVacuum.Name = "checkBoxVacuum";
-            this.checkBoxVacuum.Size = new System.Drawing.Size(62, 17);
-            this.checkBoxVacuum.TabIndex = 34;
-            this.checkBoxVacuum.Text = "Vácuo";
-            this.checkBoxVacuum.UseVisualStyleBackColor = true;
-            this.checkBoxVacuum.CheckedChanged += new System.EventHandler(this.checkBoxVacuum_CheckedChanged);
-            this.checkBoxVacuum.CheckStateChanged += new System.EventHandler(this.checkBoxVacuum_CheckStateChanged);
-            this.checkBoxVacuum.MouseHover += new System.EventHandler(this.checkBoxVacuum_MouseHover);
             // 
             // checkBoxEixo
             // 
@@ -833,6 +835,8 @@
             this.pictureBoxTimeLeft.TabStop = false;
             this.pictureBoxTimeLeft.Visible = false;
             this.pictureBoxTimeLeft.Click += new System.EventHandler(this.pictureBoxTimeLeft_Click);
+            this.pictureBoxTimeLeft.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxTimeLeft_MouseDown);
+            this.pictureBoxTimeLeft.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxTimeLeft_MouseUp);
             // 
             // pictureBoxTimeRight
             // 
@@ -846,6 +850,9 @@
             this.pictureBoxTimeRight.TabStop = false;
             this.pictureBoxTimeRight.Visible = false;
             this.pictureBoxTimeRight.Click += new System.EventHandler(this.pictureBoxTimeRight_Click);
+            this.pictureBoxTimeRight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxTimeRight_MouseDown);
+            this.pictureBoxTimeRight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxTimeRight_MouseMove);
+            this.pictureBoxTimeRight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBoxTimeRight_MouseUp);
             // 
             // BTNIniciar
             // 
@@ -1059,6 +1066,14 @@
             this.timerOpacity.Interval = 2000;
             this.timerOpacity.Tick += new System.EventHandler(this.timerOpacity_Tick);
             // 
+            // timerRight
+            // 
+            this.timerRight.Tick += new System.EventHandler(this.timerRight_Tick);
+            // 
+            // timerLeft
+            // 
+            this.timerLeft.Tick += new System.EventHandler(this.timerLeft_Tick);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1195,5 +1210,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBoxVaccumObject;
         private System.Windows.Forms.Timer timerOpacity;
+        private System.Windows.Forms.Timer timerRight;
+        private System.Windows.Forms.Timer timerLeft;
     }
 }

@@ -1,18 +1,8 @@
-﻿using freeFall.Properties;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 
 
 namespace freeFall
@@ -39,6 +29,9 @@ namespace freeFall
         public double NumberTermsTime = 0.0;
 
         public int greatestValueTime = 0;
+
+        private bool isPictureBoxClickedRight = false;
+        private bool isPictureBoxClickedLeft  = false;
 
         public int countVaccum = 0;
         public int countPaper = 0;
@@ -155,7 +148,7 @@ namespace freeFall
                 }
             }
         }
-        private void pictureBoxTimeLeft_Click(object sender, EventArgs e)
+        private void leftPosition()
         {
             pictureBoxTimeRight.Visible = true;
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
@@ -167,6 +160,7 @@ namespace freeFall
                 if (countBody == 0 || countPaper == 0 || countVaccum == 0)
                 {
                     pictureBoxTimeLeft.Visible = false;
+                    timerLeft.Enabled = false;
                 }
             }
             else
@@ -179,6 +173,7 @@ namespace freeFall
                     if (countBody == 0 || countPaper == 0)
                     {
                         pictureBoxTimeLeft.Visible = false;
+                        timerLeft.Enabled = false;
                     }
                 }
                 else
@@ -191,6 +186,7 @@ namespace freeFall
                         if (countBody == 0 || countVaccum == 0)
                         {
                             pictureBoxTimeLeft.Visible = false;
+                            timerLeft.Enabled = false;
                         }
                     }
                     else
@@ -200,62 +196,110 @@ namespace freeFall
                         if (countBody == 0)
                         {
                             pictureBoxTimeLeft.Visible = false;
+                            timerLeft.Enabled = false;
                         }
                     }
                 }
             }
         }
-
-        private void pictureBoxTimeRight_Click(object sender, EventArgs e)
+        private void rightPosition()
         {
-            pictureBoxTimeLeft.Visible = true;
-            if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
+            if (isPictureBoxClickedRight)
             {
-                countBody++;
-                countPaper++;
-                countVaccum++;
-                updatePosition(countBody, countPaper, countVaccum);
-                if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper || Program.numberOfPoints - 2 == countVaccum)
-                {
-                    pictureBoxTimeRight.Visible = false;
-                }
-            }
-            else
-            {
-                if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
+                pictureBoxTimeLeft.Visible = true;
+                if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
                 {
                     countBody++;
                     countPaper++;
-                    updatePosition(countBody, countPaper, 0);
-                    if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper)
+                    countVaccum++;
+                    updatePosition(countBody, countPaper, countVaccum);
+                    if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper || Program.numberOfPoints - 2 == countVaccum)
                     {
                         pictureBoxTimeRight.Visible = false;
+                        timerRight.Enabled = false;
                     }
                 }
                 else
                 {
-                    if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
+                    if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
                     {
                         countBody++;
-                        countVaccum++;
-                        updatePosition(countBody, 0, countVaccum);
-                        if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countVaccum)
+                        countPaper++;
+                        updatePosition(countBody, countPaper, 0);
+                        if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper)
                         {
                             pictureBoxTimeRight.Visible = false;
+                            timerRight.Enabled = false;
                         }
                     }
                     else
                     {
-                        countBody++;
-                        updatePosition(countBody, 0, 0);
-                        if (Program.numberOfPoints - 2 == countBody)
+                        if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
                         {
-                            pictureBoxTimeRight.Visible = false;
+                            countBody++;
+                            countVaccum++;
+                            updatePosition(countBody, 0, countVaccum);
+                            if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countVaccum)
+                            {
+                                pictureBoxTimeRight.Visible = false;
+                                timerRight.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                            countBody++;
+                            updatePosition(countBody, 0, 0);
+                            if (Program.numberOfPoints - 2 == countBody)
+                            {
+                                pictureBoxTimeRight.Visible = false;
+                                timerRight.Enabled = false;
+                            }
                         }
                     }
                 }
             }
         }
+        private void timerRight_Tick(object sender, EventArgs e)
+        {
+            rightPosition();
+        }
+        private void timerLeft_Tick(object sender, EventArgs e)
+        {
+            leftPosition();
+        }
+        private void pictureBoxTimeRight_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isPictureBoxClickedRight = true;
+                timerRight.Enabled = true;
+            }
+        }
+        private void pictureBoxTimeRight_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isPictureBoxClickedRight = false;
+                timerRight.Enabled = false;
+            }
+        }
+        private void pictureBoxTimeLeft_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isPictureBoxClickedLeft = true;
+                timerLeft.Enabled = true;
+            }
+        }
+        private void pictureBoxTimeLeft_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isPictureBoxClickedLeft = false;
+                timerLeft.Enabled = false;
+            }
+        }
+
         private void Simulator_Load(object sender, EventArgs e)
         {
             dataGridViewPlanets.CurrentCell = null;
@@ -1586,6 +1630,7 @@ namespace freeFall
         {
 
         }
+
         private void label26_Click(object sender, EventArgs e)
         {
 
@@ -1608,6 +1653,19 @@ namespace freeFall
 
         }
         private void checkBox3D_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+        private void pictureBoxTimeLeft_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxTimeRight_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void pictureBoxTimeRight_MouseMove(object sender, MouseEventArgs e)
         {
 
         }
