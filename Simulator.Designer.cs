@@ -30,17 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
-            this.buttonGraficVelocity = new System.Windows.Forms.Button();
-            this.buttonGraficSpace = new System.Windows.Forms.Button();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
+            this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxVaccum = new System.Windows.Forms.PictureBox();
             this.pictureBoxPaper = new System.Windows.Forms.PictureBox();
@@ -109,12 +108,12 @@
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaper)).BeginInit();
@@ -141,14 +140,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
-            this.groupBoxGraficos.Controls.Add(this.buttonGraficVelocity);
-            this.groupBoxGraficos.Controls.Add(this.buttonGraficSpace);
             this.groupBoxGraficos.Controls.Add(this.chartSpeed);
             this.groupBoxGraficos.Controls.Add(this.chartSpace);
             this.groupBoxGraficos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -160,37 +156,13 @@
             this.groupBoxGraficos.TabStop = false;
             this.groupBoxGraficos.Text = "Gráficos";
             // 
-            // buttonGraficVelocity
-            // 
-            this.buttonGraficVelocity.Enabled = false;
-            this.buttonGraficVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGraficVelocity.ForeColor = System.Drawing.Color.Black;
-            this.buttonGraficVelocity.Location = new System.Drawing.Point(750, 306);
-            this.buttonGraficVelocity.Name = "buttonGraficVelocity";
-            this.buttonGraficVelocity.Size = new System.Drawing.Size(101, 22);
-            this.buttonGraficVelocity.TabIndex = 38;
-            this.buttonGraficVelocity.Text = "Ampliar gráfico";
-            this.buttonGraficVelocity.UseVisualStyleBackColor = true;
-            // 
-            // buttonGraficSpace
-            // 
-            this.buttonGraficSpace.Enabled = false;
-            this.buttonGraficSpace.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGraficSpace.ForeColor = System.Drawing.Color.Black;
-            this.buttonGraficSpace.Location = new System.Drawing.Point(750, 150);
-            this.buttonGraficSpace.Name = "buttonGraficSpace";
-            this.buttonGraficSpace.Size = new System.Drawing.Size(101, 22);
-            this.buttonGraficSpace.TabIndex = 36;
-            this.buttonGraficSpace.Text = "Ampliar gráfico";
-            this.buttonGraficSpace.UseVisualStyleBackColor = true;
-            // 
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea13.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea13);
-            legend13.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend13);
+            chartArea5.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend5);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
             this.chartSpeed.Size = new System.Drawing.Size(850, 150);
@@ -201,10 +173,10 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea14.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea14);
-            legend14.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend14);
+            chartArea6.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend6);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
             this.chartSpace.Size = new System.Drawing.Size(851, 153);
@@ -255,6 +227,17 @@
             this.groupBoxResultados.TabIndex = 8;
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Resultados";
+            // 
+            // pictureBoxVaccumObject
+            // 
+            this.pictureBoxVaccumObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.pictureBoxVaccumObject.Image = global::freeFall.Properties.Resources.paper2;
+            this.pictureBoxVaccumObject.Location = new System.Drawing.Point(84, 187);
+            this.pictureBoxVaccumObject.Name = "pictureBoxVaccumObject";
+            this.pictureBoxVaccumObject.Size = new System.Drawing.Size(22, 22);
+            this.pictureBoxVaccumObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxVaccumObject.TabIndex = 29;
+            this.pictureBoxVaccumObject.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -566,7 +549,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(157, 182);
+            this.checkBox3D.Location = new System.Drawing.Point(157, 187);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -685,7 +668,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(95, 182);
+            this.checkBoxEixo.Location = new System.Drawing.Point(95, 187);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -709,7 +692,7 @@
             // checkBoxGrafico
             // 
             this.checkBoxGrafico.AutoSize = true;
-            this.checkBoxGrafico.Location = new System.Drawing.Point(8, 182);
+            this.checkBoxGrafico.Location = new System.Drawing.Point(8, 187);
             this.checkBoxGrafico.Name = "checkBoxGrafico";
             this.checkBoxGrafico.Size = new System.Drawing.Size(73, 17);
             this.checkBoxGrafico.TabIndex = 28;
@@ -721,7 +704,7 @@
             // checkBoxResistance
             // 
             this.checkBoxResistance.AutoSize = true;
-            this.checkBoxResistance.Location = new System.Drawing.Point(9, 156);
+            this.checkBoxResistance.Location = new System.Drawing.Point(9, 160);
             this.checkBoxResistance.Name = "checkBoxResistance";
             this.checkBoxResistance.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistance.TabIndex = 12;
@@ -847,6 +830,7 @@
             this.pictureBoxTimeLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTimeLeft.TabIndex = 33;
             this.pictureBoxTimeLeft.TabStop = false;
+            this.pictureBoxTimeLeft.Visible = false;
             this.pictureBoxTimeLeft.Click += new System.EventHandler(this.pictureBoxTimeLeft_Click);
             // 
             // pictureBoxTimeRight
@@ -859,6 +843,7 @@
             this.pictureBoxTimeRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTimeRight.TabIndex = 32;
             this.pictureBoxTimeRight.TabStop = false;
+            this.pictureBoxTimeRight.Visible = false;
             this.pictureBoxTimeRight.Click += new System.EventHandler(this.pictureBoxTimeRight_Click);
             // 
             // BTNIniciar
@@ -1011,7 +996,7 @@
             // 
             // pictureBoxResistence
             // 
-            this.pictureBoxResistence.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxResistence.BackColor = System.Drawing.Color.Gray;
             this.pictureBoxResistence.Image = global::freeFall.Properties.Resources.airResistence;
             this.pictureBoxResistence.Location = new System.Drawing.Point(288, 24);
             this.pictureBoxResistence.Name = "pictureBoxResistence";
@@ -1068,17 +1053,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados";
             // 
-            // pictureBoxVaccumObject
-            // 
-            this.pictureBoxVaccumObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBoxVaccumObject.Image = global::freeFall.Properties.Resources.paper2;
-            this.pictureBoxVaccumObject.Location = new System.Drawing.Point(84, 187);
-            this.pictureBoxVaccumObject.Name = "pictureBoxVaccumObject";
-            this.pictureBoxVaccumObject.Size = new System.Drawing.Size(22, 22);
-            this.pictureBoxVaccumObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxVaccumObject.TabIndex = 29;
-            this.pictureBoxVaccumObject.TabStop = false;
-            // 
             // timerOpacity
             // 
             this.timerOpacity.Interval = 2000;
@@ -1110,6 +1084,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
             this.groupBoxResultados.ResumeLayout(false);
             this.groupBoxResultados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaper)).EndInit();
@@ -1138,7 +1113,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1212,8 +1186,6 @@
         private System.Windows.Forms.TextBox textBoxVaccumHeight;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxVaccumVelocity;
-        private System.Windows.Forms.Button buttonGraficVelocity;
-        private System.Windows.Forms.Button buttonGraficSpace;
         private System.Windows.Forms.PictureBox pictureBoxVaccum;
         private System.Windows.Forms.PictureBox pictureBoxPaper;
         private System.Windows.Forms.PictureBox pictureBoxCorpoView;

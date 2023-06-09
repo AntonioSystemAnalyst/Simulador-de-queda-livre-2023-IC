@@ -238,6 +238,7 @@ namespace freeFall
         }
         private void pictureBoxTimeLeft_Click(object sender, EventArgs e)
         {
+            pictureBoxTimeLeft.Visible = false;
             pictureBoxTimeRight.Visible = true;
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
@@ -285,10 +286,12 @@ namespace freeFall
                     }
                 }
             }
+            pictureBoxTimeLeft.Visible = true;
         }
 
         private void pictureBoxTimeRight_Click(object sender, EventArgs e)
         {
+            pictureBoxTimeRight.Visible = false;
             pictureBoxTimeLeft.Visible = true;
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
@@ -336,6 +339,7 @@ namespace freeFall
                     }
                 }
             }
+            pictureBoxTimeRight.Visible = true;
         }
         private void Simulator_Load(object sender, EventArgs e)
         {
@@ -461,8 +465,6 @@ namespace freeFall
             pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
             txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
             txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-            //chartSpace.Series["Espaço"].Points.AddXY(countBody, Program.corpo.Space[countBody]);
-            //chartSpeed.Series["Velocidade"].Points.AddXY(countBody, Program.corpo.Velocity[countBody]);
             countBody = countBody + 1;
             if (greatestvalueTime == 1 || greatestvalueTime == 0)
             {
@@ -482,11 +484,8 @@ namespace freeFall
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
-            Console.WriteLine(Program.paper.Pixels[countPaper]);
             textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
-            //chartSpace.Series["Papel"].Points.AddXY(countBody, Program.corpo.Space[countBody]);
-            //chartSpeed.Series["Velocidade"].Points.AddXY(countBody, Program.corpo.Velocity[countBody]);
             countPaper = countPaper + 1;
             if (greatestvalueTime == 2)
             {
@@ -595,6 +594,8 @@ namespace freeFall
                     timerAnimation.Enabled = false;
                     timerAnimationPaper.Enabled = false;
                     timerAnimationVacuum.Enabled = false;
+                    pictureBoxTimeLeft.Visible = true;
+                    pictureBoxTimeRight.Visible= true;
                 }
                 else
                 {
@@ -602,6 +603,8 @@ namespace freeFall
                     {
                         BTNIniciar.Text = "Parar";
                         buttonStartControl = 1;
+                        pictureBoxTimeLeft.Visible = false;
+                        pictureBoxTimeRight.Visible = false;
                         if (Program.paperOn && Program.vaccumOn)
                         {
                             timerAnimation.Enabled = true;
