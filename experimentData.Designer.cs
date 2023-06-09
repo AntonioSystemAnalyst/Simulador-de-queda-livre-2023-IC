@@ -1,6 +1,6 @@
 ﻿namespace freeFall
 {
-    partial class experimentData
+    partial class ExperimentData
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(experimentData));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExperimentData));
             this.buttonFocus = new System.Windows.Forms.Button();
             this.richTextBoxExperimentData = new System.Windows.Forms.RichTextBox();
             this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();

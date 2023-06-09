@@ -32,14 +32,36 @@ namespace freeFall
 
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
+            int rndNumber = 0;
             animationCounter += 2;
-
+            Random rnd = new Random();
             pictureBoxCorpo.Location = new Point(50, animationCounter);
 
             if (animationCounter >= 359)
             {
                 animationCounter = 0;
+                rndNumber = rnd.Next(1, 6);
                 pictureBoxCorpo.Location = new Point(50, 112);
+                if (rndNumber == 1)
+                {
+                    pictureBoxCorpo.Image = Properties.Resources.corpoBall4;
+                }
+                if (rndNumber == 2)
+                {
+                    pictureBoxCorpo.Image = Properties.Resources.corpoBasketball;
+                }
+                if (rndNumber == 3)
+                {
+                    pictureBoxCorpo.Image = Properties.Resources.corpoBowling;
+                }
+                if (rndNumber == 4)
+                {
+                    pictureBoxCorpo.Image = Properties.Resources.corpoGolf;
+                }
+                if (rndNumber == 5)
+                {
+                    pictureBoxCorpo.Image = Properties.Resources.corpoSoccer;
+                }
             }
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -96,6 +118,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.Blue;
                 richTextBoxText.ForeColor = Color.Blue;
                 labellogon.ForeColor = Color.Blue;
+                labelTextColor.ForeColor = Color.Blue;
 
             }
             if (i == 3)
@@ -104,6 +127,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.Red;
                 richTextBoxText.ForeColor = Color.Red;
                 labellogon.ForeColor = Color.Red;
+                labelTextColor.ForeColor = Color.Red;
             }
             if (i == 4)
             {
@@ -112,6 +136,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.Green;
                 richTextBoxText.ForeColor = Color.Green;
                 labellogon.ForeColor = Color.Green;
+                labelTextColor.ForeColor = Color.Green;
             }
             if (i == 5)
             {
@@ -120,6 +145,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.Gray;
                 richTextBoxText.ForeColor = Color.Gray;
                 labellogon.ForeColor = Color.Gray;
+                labelTextColor.ForeColor = Color.Gray;
             }
             if (i == 6)
             {
@@ -128,6 +154,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.White;
                 richTextBoxText.ForeColor = Color.White;
                 labellogon.ForeColor = Color.White;
+                labelTextColor.ForeColor= Color.White;
             }
             if (i == 7)
             {
@@ -136,6 +163,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.HotPink;
                 richTextBoxText.ForeColor = Color.HotPink;
                 labellogon.ForeColor = Color.HotPink;
+                labelTextColor.ForeColor = Color.HotPink;
             }
             if (i == 8)
             {
@@ -144,6 +172,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.LightBlue;
                 richTextBoxText.ForeColor = Color.LightBlue;
                 labellogon.ForeColor = Color.LightBlue;
+                labelTextColor.ForeColor = Color.LightBlue;
             }
             if (i == 9)
             {
@@ -152,6 +181,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.LightSalmon;
                 richTextBoxText.ForeColor = Color.LightSalmon;
                 labellogon.ForeColor = Color.LightSalmon;
+                labelTextColor.ForeColor = Color.LightSalmon;
             }
             if (i == 10)
             {
@@ -160,6 +190,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.LightPink;
                 richTextBoxText.ForeColor = Color.LightPink;
                 labellogon.ForeColor = Color.LightPink;
+                labelTextColor.ForeColor= Color.LightPink;
             }
             if (i == 1)
             {
@@ -168,6 +199,7 @@ namespace freeFall
                 labelSimulador.ForeColor = Color.Cyan;
                 richTextBoxText.ForeColor = Color.Cyan;
                 labellogon.ForeColor = Color.Cyan;
+                labelTextColor.ForeColor = Color.Cyan;
             }
         }
         private void timerCarousel_Tick(object sender, EventArgs e)

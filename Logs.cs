@@ -43,7 +43,7 @@ namespace freeFall
             richTextBoxConsoleView.Text += " Altura: " + Program.height + "\n";
             richTextBoxConsoleView.Text += " Gravidade: " + Program.gravity + "\n";
             richTextBoxConsoleView.Text += " Velocidade final objeto: " + Program.corpo.FinalVelocity + "\n";
-            richTextBoxConsoleView.Text += " Tempo total: " + Program.corpo.TimeOutAirResistence + "\n";
+            richTextBoxConsoleView.Text += " Tempo total: " + Program.corpo.TimeAllExperiment + "\n";
             richTextBoxConsoleView.Text += " ------------------------------------------------------\n";
             richTextBoxConsoleView.Text += spaceObjectTime;
         }

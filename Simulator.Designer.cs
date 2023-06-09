@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.buttonGraficVelocity = new System.Windows.Forms.Button();
             this.buttonGraficSpace = new System.Windows.Forms.Button();
@@ -110,6 +110,7 @@
             this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
+            this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -186,10 +187,10 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea5.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend5);
+            chartArea13.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea13);
+            legend13.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend13);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
             this.chartSpeed.Size = new System.Drawing.Size(850, 150);
@@ -200,10 +201,10 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea6.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend6);
+            chartArea14.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea14);
+            legend14.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend14);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
             this.chartSpace.Size = new System.Drawing.Size(851, 153);
@@ -618,7 +619,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 26);
             this.button1.TabIndex = 31;
-            this.button1.Text = "Corpo";
+            this.button1.Text = "Bóla";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
@@ -846,6 +847,7 @@
             this.pictureBoxTimeLeft.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTimeLeft.TabIndex = 33;
             this.pictureBoxTimeLeft.TabStop = false;
+            this.pictureBoxTimeLeft.Click += new System.EventHandler(this.pictureBoxTimeLeft_Click);
             // 
             // pictureBoxTimeRight
             // 
@@ -857,6 +859,7 @@
             this.pictureBoxTimeRight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxTimeRight.TabIndex = 32;
             this.pictureBoxTimeRight.TabStop = false;
+            this.pictureBoxTimeRight.Click += new System.EventHandler(this.pictureBoxTimeRight_Click);
             // 
             // BTNIniciar
             // 
@@ -1076,6 +1079,11 @@
             this.pictureBoxVaccumObject.TabIndex = 29;
             this.pictureBoxVaccumObject.TabStop = false;
             // 
+            // timerOpacity
+            // 
+            this.timerOpacity.Interval = 2000;
+            this.timerOpacity.Tick += new System.EventHandler(this.timerOpacity_Tick);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1213,5 +1221,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBoxVaccumObject;
+        private System.Windows.Forms.Timer timerOpacity;
     }
 }

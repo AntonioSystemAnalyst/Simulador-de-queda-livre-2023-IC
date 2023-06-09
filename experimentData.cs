@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace freeFall
 {
-    public partial class experimentData : Form
+    public partial class ExperimentData : Form
     {
         DataSet ds = null;
         DataTable dt = null;
         public static string planetName, gravity, airResistence, initialVelocityBody, finalVelocityBody, experimentTimeBody;
         public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper;
         public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum;
-        public experimentData()
+        public ExperimentData()
         {
             InitializeComponent();
             Program.experimentDataControl = 1;
@@ -167,34 +167,34 @@ namespace freeFall
             if (Program.airResistance == 0)
             {
                 airResistence = "Não";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeOutAirResistence, 2) + " s";
+                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
             }
             else
             {
                 airResistence = "Sim";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeOutAirResistence, 2) + " s";
+                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
             }
             //--
             initialVelocityPaper = "" + Math.Round(Program.paper.InitialVelocity, 2) + " m/s";
             finalVelocityPaper = "" + Math.Round(Program.paper.FinalVelocity, 2) + " m/s";
             if (Program.airResistance == 0)
             {
-                experimentTimePaper = "" + Math.Round(Program.paper.TimeOutAirResistence, 2) + " s";
+                experimentTimePaper = "" + Math.Round(Program.paper.TimeAllExperiment, 2) + " s";
             }
             else
             {
-                experimentTimePaper = "" + Math.Round(Program.paper.TimeOutAirResistence, 2) + " s";
+                experimentTimePaper = "" + Math.Round(Program.paper.TimeAllExperiment, 2) + " s";
             }
             //--
             initialVelocityVaccum = "" + Math.Round(Program.vaccum.InitialVelocity, 2) + " m/s";
             finalVelocityVaccum = "" + Math.Round(Program.vaccum.FinalVelocity, 2) + " m/s";
             if (Program.airResistance == 0)
             {
-                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeOutAirResistence, 2) + " s";
+                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s";
             }
             else
             {
-                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeOutAirResistence, 2) + " s";
+                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s";
             }
         }
     }

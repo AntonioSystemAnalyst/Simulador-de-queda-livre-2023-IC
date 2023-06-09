@@ -10,7 +10,7 @@ namespace freeFall
     {
         private double finalVelocity = 0.0;
         private double initialVelocity = 0.0;
-        private double timeOutAirResistence = 0.0;
+        private double timeAllExperiment = 0.0;
         private int numberOfTerms = 0;
 
         private double[] spaceTime;
@@ -39,26 +39,26 @@ namespace freeFall
             animationSpace = new double[numberOfTerms+2]; // para receber o espaço referente ao numero de termos
             pixels = new int[numberOfTerms+2]; // para receber o pixel que deve estar a cada unidade de tempo 
 
-            Console.WriteLine("-----------------------");
+            //Console.WriteLine("-----------------------");
             for (i = 0; i < numberOfTerms; i++)  // passa o valor de unidade inteirando para o vetor animationSpace
             {
                 animationSpace[i] = countSpace;
                 countSpace = countSpace + qtdSpaceForNumberOfTermes;
-                Console.WriteLine("Space = " + countSpace);
+                //Console.WriteLine("Space = " + countSpace);
             }
-            Console.WriteLine("-----------------------");
-            Console.WriteLine("pixels");
-            Console.WriteLine("-----------------------");
+            //Console.WriteLine("-----------------------");
+            //Console.WriteLine("pixels");
+            //Console.WriteLine("-----------------------");
             countSpace = 0.0;
             for (i = 0; i < quantityPixel+1; i++) // passa o valor de unidade inteirando para o vetor animationPixel
             {
                 animationPixel[i] = countSpace;
                 countSpace = countSpace + qtdSpaceForPixels;
-                Console.WriteLine("Pixel = " + countSpace);
+                //Console.WriteLine("Pixel = " + countSpace);
             }
-            Console.WriteLine("-----------------------");
-            Console.WriteLine("aqui");
-            Console.WriteLine("-----------------------");
+            //Console.WriteLine("-----------------------");
+            //Console.WriteLine("aqui");
+            //Console.WriteLine("-----------------------");
             for (i = 0; i < numberOfTerms+1; i++) // compara o espaço animationPixel e animationSpace, e passa o indice do animationPixel com valor do pixel
             {
                 status = 0;
@@ -68,14 +68,14 @@ namespace freeFall
                     {
                         pixels[i] = k;
                         status = 1;
-                        Console.WriteLine("Pixel = " + pixels[i] + "-" + i );
+                        //Console.WriteLine("Pixel = " + pixels[i] + "-" + i );
                     }   
                 }
             }
             pixels[numberOfTerms] = quantityPixel; // garante que o ultimo pixel é igual ao ultimo valor setado 
-            Console.WriteLine("-----------------------");
-            Console.WriteLine("-----------------------");
-            Console.WriteLine("height = "+height);
+            //Console.WriteLine("-----------------------");
+            //Console.WriteLine("-----------------------");
+            //Console.WriteLine("height = "+height);
         }
         public void CalculateOutResistence (double height, double gravity, double initialVelocity)
         {
@@ -83,8 +83,8 @@ namespace freeFall
             int i = 0;
 
             finalVelocity = Math.Sqrt((initialVelocity* initialVelocity) + (2 *gravity* height));
-            timeOutAirResistence = Round((finalVelocity - initialVelocity) / gravity, 3);
-            numberOfTerms = Convert.ToInt32(timeOutAirResistence /0.01);
+            timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
+            numberOfTerms = Convert.ToInt32(timeAllExperiment /0.01);
            
             space     = new double[numberOfTerms + 2];
             velocity  = new double[numberOfTerms + 2];
@@ -129,7 +129,7 @@ namespace freeFall
             int i = 0;
 
             finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
-            timeOutAirResistence = (finalVelocity - initialVelocity) / gravity;
+            timeAllExperiment = (finalVelocity - initialVelocity) / gravity;
 
             space = new double[timeExperiment + 2];
             velocity = new double[timeExperiment + 2];
@@ -169,10 +169,10 @@ namespace freeFall
             set { initialVelocity = value; }
         }
 
-        public double TimeOutAirResistence
+        public double TimeAllExperiment
         {
-            get { return timeOutAirResistence; }
-            set { timeOutAirResistence = value; }
+            get { return timeAllExperiment; }
+            set { timeAllExperiment = value; }
         }
 
         public double[] SpaceTime

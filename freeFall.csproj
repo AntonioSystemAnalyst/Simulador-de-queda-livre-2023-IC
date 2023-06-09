@@ -51,11 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="body.cs" />
-    <Compile Include="configurePlanet.cs">
+    <Compile Include="ConfigurePlanet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="configurePlanet.Designer.cs">
-      <DependentUpon>configurePlanet.cs</DependentUpon>
+    <Compile Include="ConfigurePlanet.Designer.cs">
+      <DependentUpon>ConfigurePlanet.cs</DependentUpon>
     </Compile>
     <Compile Include="Data.cs">
       <SubType>Form</SubType>
@@ -63,11 +63,11 @@
     <Compile Include="Data.Designer.cs">
       <DependentUpon>Data.cs</DependentUpon>
     </Compile>
-    <Compile Include="experimentData.cs">
+    <Compile Include="ExperimentData.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="experimentData.Designer.cs">
-      <DependentUpon>experimentData.cs</DependentUpon>
+    <Compile Include="ExperimentData.Designer.cs">
+      <DependentUpon>ExperimentData.cs</DependentUpon>
     </Compile>
     <Compile Include="InitialView.cs">
       <SubType>Form</SubType>
@@ -106,14 +106,14 @@
     <Compile Include="Speed.Designer.cs">
       <DependentUpon>Speed.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="configurePlanet.resx">
-      <DependentUpon>configurePlanet.cs</DependentUpon>
+    <EmbeddedResource Include="ConfigurePlanet.resx">
+      <DependentUpon>ConfigurePlanet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Data.resx">
       <DependentUpon>Data.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="experimentData.resx">
-      <DependentUpon>experimentData.cs</DependentUpon>
+    <EmbeddedResource Include="ExperimentData.resx">
+      <DependentUpon>ExperimentData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InitialView.resx">
       <DependentUpon>InitialView.cs</DependentUpon>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace freeFall
 {
-    public partial class configurePlanet : Form
+    public partial class ConfigurePlanet : Form
     {
-        public configurePlanet()
+        public ConfigurePlanet()
         {
             InitializeComponent();
             Program.configurePlanetControl = 1;
