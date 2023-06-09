@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -78,7 +78,6 @@
             this.checkBoxPaper = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafico = new System.Windows.Forms.CheckBox();
             this.checkBoxResistance = new System.Windows.Forms.CheckBox();
-            this.txtAltura = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.LbAltura = new System.Windows.Forms.Label();
             this.cmbPlaneta = new System.Windows.Forms.ComboBox();
@@ -114,7 +113,7 @@
             this.labelDetails = new System.Windows.Forms.Label();
             this.labelGraficSpace = new System.Windows.Forms.Label();
             this.labelGraficVelocity = new System.Windows.Forms.Label();
-            this.BoxGeracao = new System.Windows.Forms.NumericUpDown();
+            this.boxHeight = new System.Windows.Forms.NumericUpDown();
             this.groupBoxGraficos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
@@ -146,13 +145,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).BeginInit();
             this.groupBoxData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BoxGeracao)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boxHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
-            this.groupBoxGraficos.Controls.Add(this.BoxGeracao);
             this.groupBoxGraficos.Controls.Add(this.labelGraficVelocity);
             this.groupBoxGraficos.Controls.Add(this.labelGraficSpace);
             this.groupBoxGraficos.Controls.Add(this.labelDetails);
@@ -170,10 +168,10 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea1.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend3);
             this.chartSpeed.Location = new System.Drawing.Point(13, 191);
             this.chartSpeed.Name = "chartSpeed";
             this.chartSpeed.Size = new System.Drawing.Size(851, 128);
@@ -184,10 +182,10 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea2.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend4);
             this.chartSpace.Location = new System.Drawing.Point(16, 38);
             this.chartSpace.Name = "chartSpace";
             this.chartSpace.Size = new System.Drawing.Size(851, 128);
@@ -528,6 +526,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
             this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
             this.groupBoxConfiguracao.Controls.Add(this.buttonResistencia);
@@ -542,7 +541,6 @@
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafico);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistance);
-            this.groupBoxConfiguracao.Controls.Add(this.txtAltura);
             this.groupBoxConfiguracao.Controls.Add(this.label6);
             this.groupBoxConfiguracao.Controls.Add(this.LbAltura);
             this.groupBoxConfiguracao.Controls.Add(this.cmbPlaneta);
@@ -724,16 +722,6 @@
             this.checkBoxResistance.UseVisualStyleBackColor = true;
             this.checkBoxResistance.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged);
             this.checkBoxResistance.MouseHover += new System.EventHandler(this.checkBoxResistance_MouseHover);
-            // 
-            // txtAltura
-            // 
-            this.txtAltura.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.txtAltura.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtAltura.ForeColor = System.Drawing.Color.Cyan;
-            this.txtAltura.Location = new System.Drawing.Point(8, 34);
-            this.txtAltura.Name = "txtAltura";
-            this.txtAltura.Size = new System.Drawing.Size(85, 20);
-            this.txtAltura.TabIndex = 19;
             // 
             // label6
             // 
@@ -1110,29 +1098,23 @@
             this.labelGraficVelocity.TabIndex = 5;
             this.labelGraficVelocity.Text = "Velocidade pelo tempo";
             // 
-            // BoxGeracao
+            // boxHeight
             // 
-            this.BoxGeracao.BackColor = System.Drawing.Color.Black;
-            this.BoxGeracao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BoxGeracao.ForeColor = System.Drawing.Color.Aqua;
-            this.BoxGeracao.Location = new System.Drawing.Point(718, 87);
-            this.BoxGeracao.Maximum = new decimal(new int[] {
-            800,
+            this.boxHeight.BackColor = System.Drawing.Color.Black;
+            this.boxHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.boxHeight.ForeColor = System.Drawing.Color.Aqua;
+            this.boxHeight.Location = new System.Drawing.Point(8, 34);
+            this.boxHeight.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.BoxGeracao.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.BoxGeracao.Name = "BoxGeracao";
-            this.BoxGeracao.ReadOnly = true;
-            this.BoxGeracao.Size = new System.Drawing.Size(120, 20);
-            this.BoxGeracao.TabIndex = 26;
-            this.BoxGeracao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.BoxGeracao.Value = new decimal(new int[] {
-            2,
+            this.boxHeight.Name = "boxHeight";
+            this.boxHeight.ReadOnly = true;
+            this.boxHeight.Size = new System.Drawing.Size(85, 20);
+            this.boxHeight.TabIndex = 26;
+            this.boxHeight.Value = new decimal(new int[] {
+            10,
             0,
             0,
             0});
@@ -1193,7 +1175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).EndInit();
             this.groupBoxData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BoxGeracao)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.boxHeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1215,7 +1197,6 @@
         private System.Windows.Forms.TextBox txtEspaco;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtVelocidade;
-        private System.Windows.Forms.TextBox txtAltura;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label LbAltura;
         private System.Windows.Forms.ComboBox cmbPlaneta;
@@ -1280,6 +1261,6 @@
         private System.Windows.Forms.Label labelGraficVelocity;
         private System.Windows.Forms.Label labelGraficSpace;
         private System.Windows.Forms.Label labelDetails;
-        private System.Windows.Forms.NumericUpDown BoxGeracao;
+        private System.Windows.Forms.NumericUpDown boxHeight;
     }
 }

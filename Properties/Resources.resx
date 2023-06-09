@@ -151,6 +151,9 @@
   <data name="corpoEye" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoEye.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="xls" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xls.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="seta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\seta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -196,8 +199,8 @@
   <data name="planetUranus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetUranus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="gauge" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gauge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="txt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\txt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="planetMars" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetMars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,8 +211,8 @@
   <data name="corpoBall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoBall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="planetJupiter" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetJupiter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="backgroundVacuumColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backgroundVacuumColor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="planetMoon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetMoon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,8 +220,8 @@
   <data name="dfqm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dfqm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logomarca_UFSCAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logomarca_UFSCAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="planetJupiter" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planetJupiter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="horizonUnknow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonUnknow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,6 +241,9 @@
   <data name="corpoBowling" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoBowling.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Logomarca_UFSCAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logomarca_UFSCAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="corpoSphere2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoSphere2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -253,6 +259,9 @@
   <data name="corpoBall4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoBall4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="planetEarth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planetEarth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="corpoRing" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoRing.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -262,10 +271,10 @@
   <data name="backgroundVacuum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backgroundVacuum.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="planetEarth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetEarth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="gauge" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\gauge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backgroundVacuumColor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\backgroundVacuumColor.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="xls1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xls1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

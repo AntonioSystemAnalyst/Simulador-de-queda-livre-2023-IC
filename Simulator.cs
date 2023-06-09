@@ -60,6 +60,7 @@ namespace freeFall
             calculateValues();
             receveidGreatestValueTime();
             dataGridConfigure();
+            buildGrafic();
             loadData();
             startGrid();
             Flip();
@@ -324,7 +325,7 @@ namespace freeFall
         {
             if (Operation == 1)
             {
-                txtAltura.Enabled = false;
+                boxHeight.Enabled = false;
                 cmbPlaneta.Enabled = false;
                 comboBoxVacuum.Enabled = false;
                 comboPaper.Enabled = false;
@@ -339,7 +340,7 @@ namespace freeFall
             }
             else
             {
-                txtAltura.Enabled = true;
+                boxHeight.Enabled = true;
                 cmbPlaneta.Enabled = true;
                 comboBoxVacuum.Enabled = true;
                 comboPaper.Enabled = true;
@@ -393,7 +394,7 @@ namespace freeFall
         public void calculateValues()
         {
             Program.planetName = cmbPlaneta.Text;
-            Program.height = Program.organizeData(txtAltura.Text);
+            Program.height = Program.organizeData(boxHeight.Text);
             Program.gravity = Program.organizeData(txtgravit.Text);
 
             if (Program.airResistance == 0)
@@ -695,7 +696,7 @@ namespace freeFall
         public void initialConfigure()
         {
             cmbPlaneta.Text = "Terra";
-            txtAltura.Text = "10";
+            boxHeight.Text = "10";
             txtgravit.Text = "9,8";
             comboBoxVacuum.Text = "Folha";
             comboPaper.Text = "Aberta";
@@ -704,7 +705,30 @@ namespace freeFall
             textBoxVaccumHeight.Text = " --";
             textBoxVaccumVelocity.Text = " --";
         }
+        public void buildGrafic()
+        {
+            int spaceDiv;
+            chartSpace.Series.Clear();
+            spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
 
+            if (Program.greatestValueTime == 0)
+            {
+                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+            }
+            if (Program.greatestValueTime == 1)
+            {
+                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+            }
+            if (Program.greatestValueTime == 2)
+            {
+                spaceGraphic(Program.paper.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0);
+            }
+            if (Program.greatestValueTime == 3)
+            {
+                spaceGraphic(Program.vaccum.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0);
+            }
+
+        }
         // --------------------------------------
 
         // chart Configuration // n = quantidade de termos // Mm = Y minimo
@@ -1280,7 +1304,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
-                txtAltura.ForeColor = Color.Blue;
+                boxHeight.ForeColor = Color.Blue;
                 txtEspaco.ForeColor = Color.Blue;
                 txtgravit.ForeColor = Color.Blue;
                 txtVelocidade.ForeColor = Color.Blue;
@@ -1311,7 +1335,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Red;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Red;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Red;
-                txtAltura.ForeColor = Color.Red;
+                boxHeight.ForeColor = Color.Red;
                 txtEspaco.ForeColor = Color.Red;
                 txtgravit.ForeColor = Color.Red;
                 txtVelocidade.ForeColor = Color.Red;
@@ -1342,7 +1366,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Green;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Green;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Green;
-                txtAltura.ForeColor = Color.Green;
+                boxHeight.ForeColor = Color.Green;
                 txtEspaco.ForeColor = Color.Green;
                 txtgravit.ForeColor = Color.Green;
                 txtVelocidade.ForeColor = Color.Green;
@@ -1373,7 +1397,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Gray;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Gray;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Gray;
-                txtAltura.ForeColor = Color.Gray;
+                boxHeight.ForeColor = Color.Gray;
                 txtEspaco.ForeColor = Color.Gray;
                 txtgravit.ForeColor = Color.Gray;
                 txtVelocidade.ForeColor = Color.Gray;
@@ -1404,7 +1428,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-                txtAltura.ForeColor = Color.White;
+                boxHeight.ForeColor = Color.White;
                 txtEspaco.ForeColor = Color.White;
                 txtgravit.ForeColor = Color.White;
                 txtVelocidade.ForeColor = Color.White;
@@ -1435,7 +1459,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.HotPink;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.HotPink;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.HotPink;
-                txtAltura.ForeColor = Color.HotPink;
+                boxHeight.ForeColor = Color.HotPink;
                 txtEspaco.ForeColor = Color.HotPink;
                 txtgravit.ForeColor = Color.HotPink;
                 txtVelocidade.ForeColor = Color.HotPink;
@@ -1466,7 +1490,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightBlue;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightBlue;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightBlue;
-                txtAltura.ForeColor = Color.LightBlue;
+                boxHeight.ForeColor = Color.LightBlue;
                 txtEspaco.ForeColor = Color.LightBlue;
                 txtgravit.ForeColor = Color.LightBlue;
                 txtVelocidade.ForeColor = Color.LightBlue;
@@ -1497,7 +1521,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightSalmon;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightSalmon;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightSalmon;
-                txtAltura.ForeColor = Color.LightSalmon;
+                boxHeight.ForeColor = Color.LightSalmon;
                 txtEspaco.ForeColor = Color.LightSalmon;
                 txtgravit.ForeColor = Color.LightSalmon;
                 txtVelocidade.ForeColor = Color.LightSalmon;
@@ -1528,7 +1552,7 @@ namespace freeFall
                 chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightPink;
                 chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightPink;
                 chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightPink;
-                txtAltura.ForeColor = Color.LightPink;
+                boxHeight.ForeColor = Color.LightPink;
                 txtEspaco.ForeColor = Color.LightPink;
                 txtgravit.ForeColor = Color.LightPink;
                 txtVelocidade.ForeColor = Color.LightPink;
@@ -1559,7 +1583,7 @@ namespace freeFall
                 groupBoxPlanetas.ForeColor = Color.Cyan;
                 groupBoxGraficos.ForeColor = Color.Cyan;
                 groupBoxResultados.ForeColor = Color.Cyan;
-                txtAltura.ForeColor = Color.Cyan;
+                boxHeight.ForeColor = Color.Cyan;
                 txtEspaco.ForeColor = Color.Cyan;
                 txtgravit.ForeColor = Color.Cyan;
                 txtVelocidade.ForeColor = Color.Cyan;
