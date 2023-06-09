@@ -38,11 +38,11 @@ namespace freeFall
 
         public double NumberTermsTime = 0.0;
 
-        public int greatestvalueTime = 0;
+        public int greatestValueTime = 0;
 
         public int countVaccum = 0;
-        public int countPaper  = 0;
-        public int countBody   = 0;
+        public int countPaper = 0;
+        public int countBody = 0;
         public int countGrafic = 0;
 
         // -- 
@@ -54,32 +54,19 @@ namespace freeFall
         // -- 
 
         public static int[] Ax = new int[15];
-        public  Simulator()
+        public Simulator()
         {
             InitializeComponent();
             Opacity = 0;
             timerEixos.Enabled = true;
-          
-            cmbPlaneta.Text = "Terra";
-            txtAltura.Text = "10";
-            txtgravit.Text = "9,8";
-            comboBoxVacuum.Text = "Folha";
-            comboShet.Text = "Aberta";
+            initialConfigure();
+
             spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-            calculateValues();
 
-            // ----
-            dataGridViewPlanets.BackgroundColor = Color.Black;
-            dataGridViewPlanets.DefaultCellStyle.BackColor = Color.Black;
-            dataGridViewPlanets.GridColor = Color.Cyan;
-            dataGridViewPlanets.DefaultCellStyle.ForeColor = Color.Cyan;
-            dataGridViewPlanets.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold);
-            dataGridViewPlanets.DefaultCellStyle.Font = new Font(dataGridViewPlanets.DefaultCellStyle.Font.FontFamily,9);
-            dataGridViewPlanets.AllowUserToResizeColumns = false;
-            dataGridViewPlanets.AllowUserToResizeRows = false;
-            // ---
-           
+            calculateValues();
+            receveidGreatestValueTime();
+            dataGridConfigure();
             loadData();
             startGrid();
             Flip();
@@ -94,49 +81,25 @@ namespace freeFall
                 pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
                 txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                 txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                if (greatestvalueTime == 1 || greatestvalueTime == 0)
+                if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
                     textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                }
-                if (countBody == Program.corpo.NumberOfTerms + 1)
-                {
-                    timerAnimation.Enabled = false;
-                    if (greatestvalueTime == 1 || greatestvalueTime == 0)
-                    {
-                        BTNIniciar.Text = "Posicionar";
-                        buttonStartControl = 3;
-                        enabledConfigure(0);
-                    }
                 }
                 pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
                 Console.WriteLine(Program.paper.Pixels[countPaper]);
                 textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
                 textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
                 countPaper = countPaper + 1;
-                if (greatestvalueTime == 2)
+                if (greatestValueTime == 2)
                 {
                     textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
-                }
-                if (countPaper == Program.paper.NumberOfTerms + 1)
-                {
-                    timerAnimationPaper.Enabled = false;
-                    BTNIniciar.Text = "Posicionar";
-                    buttonStartControl = 3;
-                    enabledConfigure(0);
                 }
                 pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
                 textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
                 textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
-                if (greatestvalueTime == 3)
+                if (greatestValueTime == 3)
                 {
                     textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
-                }
-                if (countVaccum == Program.vaccum.NumberOfTerms + 1)
-                {
-                    timerAnimationVacuum.Enabled = false;
-                    BTNIniciar.Text = "Posicionar";
-                    buttonStartControl = 3;
-                    enabledConfigure(0);
                 }
             }
             else
@@ -146,35 +109,18 @@ namespace freeFall
                     pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
                     txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                     txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                    if (greatestvalueTime == 1 || greatestvalueTime == 0)
+                    if (greatestValueTime == 1 || greatestValueTime == 0)
                     {
                         textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                    }
-                    if (countBody == Program.corpo.NumberOfTerms + 1)
-                    {
-                        timerAnimation.Enabled = false;
-                        if (greatestvalueTime == 1 || greatestvalueTime == 0)
-                        {
-                            BTNIniciar.Text = "Posicionar";
-                            buttonStartControl = 3;
-                            enabledConfigure(0);
-                        }
                     }
                     pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
                     Console.WriteLine(Program.paper.Pixels[countPaper]);
                     textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
                     textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
                     countPaper = countPaper + 1;
-                    if (greatestvalueTime == 2)
+                    if (greatestValueTime == 2)
                     {
                         textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
-                    }
-                    if (countPaper == Program.paper.NumberOfTerms + 1)
-                    {
-                        timerAnimationPaper.Enabled = false;
-                        BTNIniciar.Text = "Posicionar";
-                        buttonStartControl = 3;
-                        enabledConfigure(0);
                     }
                 }
                 else
@@ -184,33 +130,16 @@ namespace freeFall
                         pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
                         txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                         txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                        if (greatestvalueTime == 1 || greatestvalueTime == 0)
+                        if (greatestValueTime == 1 || greatestValueTime == 0)
                         {
                             textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                        }
-                        if (countBody == Program.corpo.NumberOfTerms + 1)
-                        {
-                            timerAnimation.Enabled = false;
-                            if (greatestvalueTime == 1 || greatestvalueTime == 0)
-                            {
-                                BTNIniciar.Text = "Posicionar";
-                                buttonStartControl = 3;
-                                enabledConfigure(0);
-                            }
                         }
                         pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
                         textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
                         textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
-                        if (greatestvalueTime == 3)
+                        if (greatestValueTime == 3)
                         {
                             textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
-                        }
-                        if (countVaccum == Program.vaccum.NumberOfTerms + 1)
-                        {
-                            timerAnimationVacuum.Enabled = false;
-                            BTNIniciar.Text = "Posicionar";
-                            buttonStartControl = 3;
-                            enabledConfigure(0);
                         }
                     }
                     else
@@ -218,19 +147,9 @@ namespace freeFall
                         pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
                         txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                         txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                        if (greatestvalueTime == 1 || greatestvalueTime == 0)
+                        if (greatestValueTime == 1 || greatestValueTime == 0)
                         {
                             textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                        }
-                        if (countBody == Program.corpo.NumberOfTerms + 1)
-                        {
-                            timerAnimation.Enabled = false;
-                            if (greatestvalueTime == 1 || greatestvalueTime == 0)
-                            {
-                                BTNIniciar.Text = "Posicionar";
-                                buttonStartControl = 3;
-                                enabledConfigure(0);
-                            }
                         }
                     }
                 }
@@ -238,7 +157,6 @@ namespace freeFall
         }
         private void pictureBoxTimeLeft_Click(object sender, EventArgs e)
         {
-            pictureBoxTimeLeft.Visible = false;
             pictureBoxTimeRight.Visible = true;
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
@@ -246,7 +164,7 @@ namespace freeFall
                 countPaper--;
                 countVaccum--;
                 updatePosition(countBody, countPaper, countVaccum);
-                if (countBody == 0 ||countPaper == 0 || countVaccum == 0)
+                if (countBody == 0 || countPaper == 0 || countVaccum == 0)
                 {
                     pictureBoxTimeLeft.Visible = false;
                 }
@@ -286,12 +204,10 @@ namespace freeFall
                     }
                 }
             }
-            pictureBoxTimeLeft.Visible = true;
         }
 
         private void pictureBoxTimeRight_Click(object sender, EventArgs e)
         {
-            pictureBoxTimeRight.Visible = false;
             pictureBoxTimeLeft.Visible = true;
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
@@ -299,7 +215,7 @@ namespace freeFall
                 countPaper++;
                 countVaccum++;
                 updatePosition(countBody, countPaper, countVaccum);
-                if(Program.numberOfPoints == countBody || Program.numberOfPoints == countPaper || Program.numberOfPoints == countVaccum)
+                if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper || Program.numberOfPoints - 2 == countVaccum)
                 {
                     pictureBoxTimeRight.Visible = false;
                 }
@@ -311,7 +227,7 @@ namespace freeFall
                     countBody++;
                     countPaper++;
                     updatePosition(countBody, countPaper, 0);
-                    if (Program.numberOfPoints == countBody || Program.numberOfPoints == countPaper)
+                    if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper)
                     {
                         pictureBoxTimeRight.Visible = false;
                     }
@@ -323,7 +239,7 @@ namespace freeFall
                         countBody++;
                         countVaccum++;
                         updatePosition(countBody, 0, countVaccum);
-                        if (Program.numberOfPoints == countBody || Program.numberOfPoints == countVaccum)
+                        if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countVaccum)
                         {
                             pictureBoxTimeRight.Visible = false;
                         }
@@ -332,32 +248,31 @@ namespace freeFall
                     {
                         countBody++;
                         updatePosition(countBody, 0, 0);
-                        if (Program.numberOfPoints == countBody)
+                        if (Program.numberOfPoints - 2 == countBody)
                         {
                             pictureBoxTimeRight.Visible = false;
                         }
                     }
                 }
             }
-            pictureBoxTimeRight.Visible = true;
         }
         private void Simulator_Load(object sender, EventArgs e)
         {
             dataGridViewPlanets.CurrentCell = null;
         }
-        public void clear ()
+        public void clear()
         {
             pictureBoxCorpo.Location = new Point(145, 30);
             pictureBoxCorpoPaper.Location = new Point(222, 30);
             pictureBoxVacuum.Location = new Point(16, 13);
 
             countVaccum = 0;
-            countPaper  = 0;
-            countBody   = 0;
+            countPaper = 0;
+            countBody = 0;
             countGrafic = 0;
 
-            Program.corpo.TimeAllExperiment  = 0.0;
-            Program.paper.TimeAllExperiment  = 0.0;
+            Program.corpo.TimeAllExperiment = 0.0;
+            Program.paper.TimeAllExperiment = 0.0;
             Program.vaccum.TimeAllExperiment = 0.0;
         }
 
@@ -368,9 +283,9 @@ namespace freeFall
                 txtAltura.Enabled = false;
                 cmbPlaneta.Enabled = false;
                 comboBoxVacuum.Enabled = false;
-                comboShet.Enabled = false;
+                comboPaper.Enabled = false;
                 checkBoxVacuum.Enabled = false;
-                checkBoxLeaf.Enabled = false;
+                checkBoxPaper.Enabled = false;
                 checkBoxResistance.Enabled = false;
                 pictureBoxBack.Enabled = false;
                 pictureBoxNext.Enabled = false;
@@ -383,9 +298,9 @@ namespace freeFall
                 txtAltura.Enabled = true;
                 cmbPlaneta.Enabled = true;
                 comboBoxVacuum.Enabled = true;
-                comboShet.Enabled = true;
+                comboPaper.Enabled = true;
                 checkBoxVacuum.Enabled = true;
-                checkBoxLeaf.Enabled = true;
+                checkBoxPaper.Enabled = true;
                 checkBoxResistance.Enabled = true;
                 pictureBoxBack.Enabled = true;
                 pictureBoxNext.Enabled = true;
@@ -394,9 +309,9 @@ namespace freeFall
                 txtgravit.Enabled = true;
             }
         }
-        public void animation ()
+        public void animation()
         {
-            if(Program.paperOn && Program.bodyOn && Program.vaccumOn)
+            if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
                 timerAnimation.Enabled = true;
                 timerGrafic.Enabled = true;
@@ -405,7 +320,7 @@ namespace freeFall
             }
             else
             {
-                if(Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
+                if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
                 {
                     timerAnimation.Enabled = true;
                     timerGrafic.Enabled = true;
@@ -414,7 +329,7 @@ namespace freeFall
                 }
                 else
                 {
-                    if(Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
+                    if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
                     {
                         timerAnimation.Enabled = true;
                         timerGrafic.Enabled = true;
@@ -451,7 +366,6 @@ namespace freeFall
             }
         }
 
-
         private void organizeGrafics()
         {
             int espacodiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
@@ -465,15 +379,15 @@ namespace freeFall
             pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
             txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
             txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-            countBody = countBody + 1;
-            if (greatestvalueTime == 1 || greatestvalueTime == 0)
+            if (greatestValueTime == 1 || greatestValueTime == 0)
             {
                 textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
             }
-            if (countBody == Program.corpo.NumberOfTerms+1)
+            countBody = countBody + 1;
+            if (countBody == Program.corpo.NumberOfTerms + 1)
             {
                 timerAnimation.Enabled = false;
-                if (greatestvalueTime == 1 || greatestvalueTime == 0)
+                if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -486,11 +400,11 @@ namespace freeFall
             pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
             textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
-            countPaper = countPaper + 1;
-            if (greatestvalueTime == 2)
+            if (greatestValueTime == 2)
             {
                 textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
             }
+            countPaper = countPaper + 1;
             if (countPaper == Program.paper.NumberOfTerms + 1)
             {
                 timerAnimationPaper.Enabled = false;
@@ -502,14 +416,14 @@ namespace freeFall
 
         private void timerAnimationVacuum_Tick(object sender, EventArgs e)
         {
-            pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);           
+            pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
             textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
             textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
-            countVaccum = countVaccum + 1;
-            if (greatestvalueTime == 3)
+            if (greatestValueTime == 3)
             {
                 textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
             }
+            countVaccum = countVaccum + 1;
             if (countVaccum == Program.vaccum.NumberOfTerms + 1)
             {
                 timerAnimationVacuum.Enabled = false;
@@ -518,34 +432,35 @@ namespace freeFall
                 enabledConfigure(0);
             }
         }
-        public void receveidGreatestValueTime ()
+        public void receveidGreatestValueTime()
         {
             if (Program.corpo.TimeAllExperiment > Program.paper.TimeAllExperiment && Program.corpo.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
             {
-                Program.greatestvalueTime = 1;
+                Program.greatestValueTime = 1;
                 Program.numberOfPoints = Program.corpo.NumberOfTerms;
             }
             else if (Program.paper.TimeAllExperiment > Program.corpo.TimeAllExperiment && Program.paper.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
             {
-                Program.greatestvalueTime = 2;
-                Program.numberOfPoints = Program.corpo.NumberOfTerms;
+                Program.greatestValueTime = 2;
+                Program.numberOfPoints = Program.paper.NumberOfTerms;
             }
             else if (Program.vaccum.TimeAllExperiment > Program.corpo.TimeAllExperiment && Program.vaccum.TimeAllExperiment > Program.paper.TimeAllExperiment)
             {
-                Program.greatestvalueTime = 3;
-                Program.numberOfPoints = Program.corpo.NumberOfTerms;
+                Program.greatestValueTime = 3;
+                Program.numberOfPoints = Program.vaccum.NumberOfTerms;
             }
             else
             {
-                Program.greatestvalueTime = 0;
+                Program.greatestValueTime = 0;
+                Program.numberOfPoints = Program.corpo.NumberOfTerms;
             }
-            greatestvalueTime = Program.greatestvalueTime;
+            greatestValueTime = Program.greatestValueTime;
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
-           
-           
-            if(countGrafic/2 == 0)
+
+
+            if (countGrafic / 2 == 0)
             {
                 chartSpace.Series["Espaço"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
                 chartSpeed.Series["Velocidade"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
@@ -570,20 +485,20 @@ namespace freeFall
 
         private void BTNIniciar_Click(object sender, EventArgs e)
         {
-           
+
             if (buttonStartControl == 0)
             {
-                    clear();
-                    calculateValues();
-                    receveidGreatestValueTime();
-                    enabledConfigure(1);
-                    loadData();
-                    startGrid();
-                    Flip();
-                    organizeGrafics();
-                    animation();
-                    BTNIniciar.Text = "Parar";
-                    buttonStartControl = 1;
+                clear();
+                calculateValues();
+                receveidGreatestValueTime();
+                enabledConfigure(1);
+                loadData();
+                startGrid();
+                Flip();
+                organizeGrafics();
+                animation();
+                BTNIniciar.Text = "Parar";
+                buttonStartControl = 1;
             }
             else
             {
@@ -594,12 +509,40 @@ namespace freeFall
                     timerAnimation.Enabled = false;
                     timerAnimationPaper.Enabled = false;
                     timerAnimationVacuum.Enabled = false;
-                    pictureBoxTimeLeft.Visible = true;
-                    pictureBoxTimeRight.Visible= true;
+                    if (greatestValueTime == 0 || greatestValueTime == 1)
+                    {
+                        if (Program.numberOfPoints - countBody > 3)
+                        {
+                            pictureBoxTimeLeft.Visible = true;
+                            pictureBoxTimeRight.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        if (greatestValueTime == 2)
+                        {
+                            if (Program.numberOfPoints - countPaper > 3)
+                            {
+                                pictureBoxTimeLeft.Visible = true;
+                                pictureBoxTimeRight.Visible = true;
+                            }
+                        }
+                        else
+                        {
+                            if (greatestValueTime == 3)
+                            {
+                                if (Program.numberOfPoints - countVaccum > 3)
+                                {
+                                    pictureBoxTimeLeft.Visible = true;
+                                    pictureBoxTimeRight.Visible = true;
+                                }
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    if(buttonStartControl == 2)
+                    if (buttonStartControl == 2)
                     {
                         BTNIniciar.Text = "Parar";
                         buttonStartControl = 1;
@@ -613,14 +556,14 @@ namespace freeFall
                         }
                         else
                         {
-                            if(Program.paperOn = false && Program.vaccumOn)
+                            if (Program.paperOn = false && Program.vaccumOn)
                             {
                                 timerAnimation.Enabled = true;
                                 timerAnimationVacuum.Enabled = true;
                             }
                             else
                             {
-                                if(Program.vaccumOn = false && Program.paperOn)
+                                if (Program.vaccumOn = false && Program.paperOn)
                                 {
                                     timerAnimation.Enabled = true;
                                     timerAnimationPaper.Enabled = true;
@@ -628,14 +571,13 @@ namespace freeFall
                                 else
                                 {
                                     timerAnimation.Enabled = true;
-                                    Console.WriteLine("hue");
                                 }
                             }
                         }
                     }
                     else
                     {
-                        if(buttonStartControl == 3)
+                        if (buttonStartControl == 3)
                         {
                             clear();
                             calculateValues();
@@ -644,7 +586,7 @@ namespace freeFall
                         }
                     }
                 }
-               
+
             }
         }
 
@@ -661,7 +603,7 @@ namespace freeFall
         {
             Application.Restart();
         }
-    
+
         private void buttonPlanet_Click(object sender, EventArgs e)
         {
             if (planetCounter == 10)
@@ -695,6 +637,29 @@ namespace freeFall
             programView x = new programView();
             x.Show();
         }
+        public void dataGridConfigure()
+        {
+            dataGridViewPlanets.BackgroundColor = Color.Black;
+            dataGridViewPlanets.DefaultCellStyle.BackColor = Color.Black;
+            dataGridViewPlanets.GridColor = Color.Cyan;
+            dataGridViewPlanets.DefaultCellStyle.ForeColor = Color.Cyan;
+            dataGridViewPlanets.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold);
+            dataGridViewPlanets.DefaultCellStyle.Font = new Font(dataGridViewPlanets.DefaultCellStyle.Font.FontFamily, 9);
+            dataGridViewPlanets.AllowUserToResizeColumns = false;
+            dataGridViewPlanets.AllowUserToResizeRows = false;
+        }
+        public void initialConfigure()
+        {
+            cmbPlaneta.Text = "Terra";
+            txtAltura.Text = "10";
+            txtgravit.Text = "9,8";
+            comboBoxVacuum.Text = "Folha";
+            comboPaper.Text = "Aberta";
+            textBoxPaperHeight.Text = " --";
+            textBoxPaperVelocity.Text = " --";
+            textBoxVaccumHeight.Text = " --";
+            textBoxVaccumVelocity.Text = " --";
+        }
 
         // --------------------------------------
 
@@ -726,7 +691,7 @@ namespace freeFall
             chartSpace.Series[Serie].Color = Color.Blue;
             //for (i = 0; i < n; i++)
             //{
-              //  chartSpace.Series[Serie].Points.AddXY((i), Program.corpo.Space[i]);
+            //  chartSpace.Series[Serie].Points.AddXY((i), Program.corpo.Space[i]);
             //}
         }
 
@@ -755,7 +720,7 @@ namespace freeFall
             //for (i = 0; i < n; i++)
             //{
             //    chartSpeed.Series[Serie].Points.AddXY((i), Program.corpo.Velocity[i]);
-           // }
+            // }
         }
 
         public void speedGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
@@ -811,6 +776,8 @@ namespace freeFall
                 pictureBoxVacuum.Visible = true;
                 pictureBoxGauge.Visible = true;
                 Program.vaccumOn = true;
+                textBoxVaccumHeight.Text = "";
+                textBoxVaccumVelocity.Text = "";
             }
             else
             {
@@ -819,22 +786,28 @@ namespace freeFall
                 pictureBoxVacuum.Visible = false;
                 pictureBoxGauge.Visible = false;
                 Program.vaccumOn = false;
+                textBoxVaccumHeight.Text = " --";
+                textBoxVaccumVelocity.Text = " --";
             }
         }
 
         private void checkBoxLeaf_CheckStateChanged(object sender, EventArgs e)
         {
-            if (checkBoxLeaf.Checked)
+            if (checkBoxPaper.Checked)
             {
-                comboShet.Enabled = true;
+                comboPaper.Enabled = true;
                 pictureBoxCorpoPaper.Visible = true;
                 Program.paperOn = true;
+                textBoxPaperHeight.Text = "";
+                textBoxPaperVelocity.Text = "";
             }
             else
             {
-                comboShet.Enabled = false;
+                comboPaper.Enabled = false;
                 pictureBoxCorpoPaper.Visible = false;
                 Program.paperOn = false;
+                textBoxPaperHeight.Text = " --";
+                textBoxPaperVelocity.Text = " --";
             }
         }
 
@@ -856,7 +829,7 @@ namespace freeFall
 
         private void comboShet_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboShet.Text == "Aberta")
+            if (comboPaper.Text == "Aberta")
             {
                 pictureBoxCorpoPaper.Image = Properties.Resources.paper2;
                 pictureBoxPaper.Image = Properties.Resources.paper2;
@@ -881,7 +854,7 @@ namespace freeFall
                 Program.airResistance = 0;
             }
         }
-       
+
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
             Space windowSpace = new Space();
@@ -892,10 +865,6 @@ namespace freeFall
         {
             Speed windowSpeed = new Speed();
             windowSpeed.Show();
-        }
-        private void checkBox3D_MouseHover(object sender, EventArgs e)
-        {
-            
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1224,7 +1193,7 @@ namespace freeFall
 
         private void checkBoxLeaf_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(checkBoxLeaf, "Corpo com alta resistência ao ar.");
+            toolTip.SetToolTip(checkBoxPaper, "Corpo com alta resistência ao ar.");
         }
 
         private void checkBoxResistance_MouseHover(object sender, EventArgs e)
@@ -1449,7 +1418,7 @@ namespace freeFall
         }
         private void Flip()
         {
-            DataSet new_ds = FlipDataSet(ds); 
+            DataSet new_ds = FlipDataSet(ds);
             DataView my_DataView = new_ds.Tables[0].DefaultView;
             this.dataGridViewPlanets.DataSource = my_DataView;
             dataGridViewPlanets.CurrentCell = null;
@@ -1481,19 +1450,11 @@ namespace freeFall
             return ds;
         }
 
-        private void checkBoxLeaf_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void timerOpacity_Tick(object sender, EventArgs e)
         {
             Opacity = 1;
             timerOpacity.Enabled = false;
         }
-
-
-
         private void dataGridViewPlanets_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (Program.experimentDataControl == 0)
@@ -1505,7 +1466,7 @@ namespace freeFall
 
         private static DataTable GetCustomersOutAirResistence()
         {
-            
+
             DataTable table = new DataTable();
             table.TableName = "Customers";
             table.Columns.Clear();
@@ -1558,7 +1519,7 @@ namespace freeFall
                     }
                 }
             }
-          
+
             table.AcceptChanges();
             return table;
         }
@@ -1603,6 +1564,19 @@ namespace freeFall
                 experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s";
             }
         }
+        private void checkBox3D_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox3D.Checked)
+            {
+                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
+            }
+            else
+            {
+                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
+            }
+        }
 
         private void Altura_Click(object sender, EventArgs e)
         {
@@ -1625,19 +1599,17 @@ namespace freeFall
         {
 
         }
-
-        private void checkBox3D_CheckStateChanged(object sender, EventArgs e)
+        private void checkBoxLeaf_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3D.Checked)
-            {
-                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
-                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
-            }
-            else
-            {
-                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
-                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
-            }
+
+        }
+        private void comboPaper_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void checkBox3D_MouseHover(object sender, EventArgs e)
+        {
+
         }
     }
 }

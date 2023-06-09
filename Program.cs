@@ -26,7 +26,7 @@ namespace freeFall
         public static string experimentData = ""; // dados do experimento
 
         // define qual tem o maior tempo, corpo = 1, paper = 2, vaccum = 3
-        public static int greatestvalueTime;
+        public static int greatestValueTime;
 
         // define a quantidade de termos do maior entre corpo = 1, paper = 2, vaccum = 3
         public static int numberOfPoints = 0;

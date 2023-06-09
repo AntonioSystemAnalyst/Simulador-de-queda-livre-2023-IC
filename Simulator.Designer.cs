@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -71,11 +71,11 @@
             this.buttonData = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.txtgravit = new System.Windows.Forms.TextBox();
-            this.comboShet = new System.Windows.Forms.ComboBox();
+            this.comboPaper = new System.Windows.Forms.ComboBox();
             this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
             this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
-            this.checkBoxLeaf = new System.Windows.Forms.CheckBox();
+            this.checkBoxPaper = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafico = new System.Windows.Forms.CheckBox();
             this.checkBoxResistance = new System.Windows.Forms.CheckBox();
             this.txtAltura = new System.Windows.Forms.TextBox();
@@ -159,10 +159,10 @@
             // chartSpeed
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea5.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend5);
+            chartArea7.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend7);
             this.chartSpeed.Location = new System.Drawing.Point(17, 178);
             this.chartSpeed.Name = "chartSpeed";
             this.chartSpeed.Size = new System.Drawing.Size(850, 150);
@@ -173,10 +173,10 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea6.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend6);
+            chartArea8.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend8);
             this.chartSpace.Location = new System.Drawing.Point(16, 19);
             this.chartSpace.Name = "chartSpace";
             this.chartSpace.Size = new System.Drawing.Size(851, 153);
@@ -521,14 +521,14 @@
             this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
             this.groupBoxConfiguracao.Controls.Add(this.buttonResistencia);
             this.groupBoxConfiguracao.Controls.Add(this.buttonLogo);
+            this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.buttonData);
             this.groupBoxConfiguracao.Controls.Add(this.button1);
             this.groupBoxConfiguracao.Controls.Add(this.txtgravit);
-            this.groupBoxConfiguracao.Controls.Add(this.comboShet);
-            this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
+            this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxEixo);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxLeaf);
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafico);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistance);
             this.groupBoxConfiguracao.Controls.Add(this.txtAltura);
@@ -620,21 +620,22 @@
             this.txtgravit.Size = new System.Drawing.Size(85, 20);
             this.txtgravit.TabIndex = 38;
             // 
-            // comboShet
+            // comboPaper
             // 
-            this.comboShet.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.comboShet.Enabled = false;
-            this.comboShet.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboShet.ForeColor = System.Drawing.Color.Cyan;
-            this.comboShet.FormattingEnabled = true;
-            this.comboShet.Items.AddRange(new object[] {
+            this.comboPaper.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.comboPaper.Enabled = false;
+            this.comboPaper.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboPaper.ForeColor = System.Drawing.Color.Cyan;
+            this.comboPaper.FormattingEnabled = true;
+            this.comboPaper.Items.AddRange(new object[] {
             "Aberta",
             "Amaçada"});
-            this.comboShet.Location = new System.Drawing.Point(8, 129);
-            this.comboShet.Name = "comboShet";
-            this.comboShet.Size = new System.Drawing.Size(85, 21);
-            this.comboShet.TabIndex = 36;
-            this.comboShet.SelectedValueChanged += new System.EventHandler(this.comboShet_SelectedValueChanged);
+            this.comboPaper.Location = new System.Drawing.Point(8, 79);
+            this.comboPaper.Name = "comboPaper";
+            this.comboPaper.Size = new System.Drawing.Size(85, 21);
+            this.comboPaper.TabIndex = 36;
+            this.comboPaper.SelectedIndexChanged += new System.EventHandler(this.comboPaper_SelectedIndexChanged);
+            this.comboPaper.SelectedValueChanged += new System.EventHandler(this.comboShet_SelectedValueChanged);
             // 
             // comboBoxVacuum
             // 
@@ -646,7 +647,7 @@
             this.comboBoxVacuum.Items.AddRange(new object[] {
             "Folha",
             "Bóla"});
-            this.comboBoxVacuum.Location = new System.Drawing.Point(8, 79);
+            this.comboBoxVacuum.Location = new System.Drawing.Point(8, 129);
             this.comboBoxVacuum.Name = "comboBoxVacuum";
             this.comboBoxVacuum.Size = new System.Drawing.Size(85, 21);
             this.comboBoxVacuum.TabIndex = 35;
@@ -655,7 +656,7 @@
             // checkBoxVacuum
             // 
             this.checkBoxVacuum.AutoSize = true;
-            this.checkBoxVacuum.Location = new System.Drawing.Point(8, 59);
+            this.checkBoxVacuum.Location = new System.Drawing.Point(8, 109);
             this.checkBoxVacuum.Name = "checkBoxVacuum";
             this.checkBoxVacuum.Size = new System.Drawing.Size(62, 17);
             this.checkBoxVacuum.TabIndex = 34;
@@ -676,18 +677,18 @@
             this.checkBoxEixo.UseVisualStyleBackColor = true;
             this.checkBoxEixo.MouseHover += new System.EventHandler(this.checkBoxEixo_MouseHover);
             // 
-            // checkBoxLeaf
+            // checkBoxPaper
             // 
-            this.checkBoxLeaf.AutoSize = true;
-            this.checkBoxLeaf.Location = new System.Drawing.Point(9, 109);
-            this.checkBoxLeaf.Name = "checkBoxLeaf";
-            this.checkBoxLeaf.Size = new System.Drawing.Size(61, 17);
-            this.checkBoxLeaf.TabIndex = 31;
-            this.checkBoxLeaf.Text = "Folha ";
-            this.checkBoxLeaf.UseVisualStyleBackColor = true;
-            this.checkBoxLeaf.CheckedChanged += new System.EventHandler(this.checkBoxLeaf_CheckedChanged);
-            this.checkBoxLeaf.CheckStateChanged += new System.EventHandler(this.checkBoxLeaf_CheckStateChanged);
-            this.checkBoxLeaf.MouseHover += new System.EventHandler(this.checkBoxLeaf_MouseHover);
+            this.checkBoxPaper.AutoSize = true;
+            this.checkBoxPaper.Location = new System.Drawing.Point(8, 59);
+            this.checkBoxPaper.Name = "checkBoxPaper";
+            this.checkBoxPaper.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxPaper.TabIndex = 31;
+            this.checkBoxPaper.Text = "Folha ";
+            this.checkBoxPaper.UseVisualStyleBackColor = true;
+            this.checkBoxPaper.CheckedChanged += new System.EventHandler(this.checkBoxLeaf_CheckedChanged);
+            this.checkBoxPaper.CheckStateChanged += new System.EventHandler(this.checkBoxLeaf_CheckStateChanged);
+            this.checkBoxPaper.MouseHover += new System.EventHandler(this.checkBoxLeaf_MouseHover);
             // 
             // checkBoxGrafico
             // 
@@ -704,7 +705,7 @@
             // checkBoxResistance
             // 
             this.checkBoxResistance.AutoSize = true;
-            this.checkBoxResistance.Location = new System.Drawing.Point(9, 160);
+            this.checkBoxResistance.Location = new System.Drawing.Point(8, 160);
             this.checkBoxResistance.Name = "checkBoxResistance";
             this.checkBoxResistance.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistance.TabIndex = 12;
@@ -1146,7 +1147,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSpace;
         private System.Windows.Forms.PictureBox pictureBoxBack;
         private System.Windows.Forms.PictureBox pictureBoxNext;
-        private System.Windows.Forms.CheckBox checkBoxLeaf;
+        private System.Windows.Forms.CheckBox checkBoxPaper;
         private System.Windows.Forms.CheckBox checkBoxResistance;
         private System.Windows.Forms.CheckBox checkBoxEixo;
         private System.Windows.Forms.CheckBox checkBoxGrafico;
@@ -1159,7 +1160,7 @@
         private System.Windows.Forms.PictureBox pictureBoxVacuum;
         private System.Windows.Forms.GroupBox groupBoxVacuum;
         private System.Windows.Forms.PictureBox pictureBoxGauge;
-        private System.Windows.Forms.ComboBox comboShet;
+        private System.Windows.Forms.ComboBox comboPaper;
         private System.Windows.Forms.ComboBox comboBoxVacuum;
         private System.Windows.Forms.CheckBox checkBoxVacuum;
         private System.Windows.Forms.PictureBox pictureBoxTimeLeft;
