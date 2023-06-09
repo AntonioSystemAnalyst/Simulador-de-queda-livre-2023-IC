@@ -90,13 +90,14 @@ namespace freeFall
             velocity = new double[numberOfTerms + 2];
             countTimeExperiment = new double[numberOfTerms + 2];
 
-            spaceTime = new double[Convert.ToInt32(535)];
+            spaceTime = new double[numberOfTerms + 2];
             spacePixel = new double[Convert.ToInt32(534)];
 
             // Espaço 
             for (i = 0; i < numberOfTerms + 1; i++)
             {
                 space[i] = ((initialVelocity * countTime) + (gravity * (countTime * countTime)) / 2);
+                spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
 

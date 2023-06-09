@@ -68,198 +68,7 @@ namespace freeFall
             timerOpacity.Enabled = true;
 
         }
-        public void updatePosition(int countBody, int countPaper, int countVaccum)
-        {
-            if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
-            {
-                pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
-                txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
-                txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                if (greatestValueTime == 1 || greatestValueTime == 0)
-                {
-                    textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                }
-                pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
-                Console.WriteLine(Program.paper.Pixels[countPaper]);
-                textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
-                textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
-                countPaper = countPaper + 1;
-                if (greatestValueTime == 2)
-                {
-                    textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
-                }
-                pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
-                textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
-                textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
-                if (greatestValueTime == 3)
-                {
-                    textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
-                }
-            }
-            else
-            {
-                if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
-                {
-                    pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
-                    txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
-                    txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                    if (greatestValueTime == 1 || greatestValueTime == 0)
-                    {
-                        textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                    }
-                    pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
-                    Console.WriteLine(Program.paper.Pixels[countPaper]);
-                    textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
-                    textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
-                    countPaper = countPaper + 1;
-                    if (greatestValueTime == 2)
-                    {
-                        textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
-                    }
-                }
-                else
-                {
-                    if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
-                    {
-                        pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
-                        txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
-                        txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                        if (greatestValueTime == 1 || greatestValueTime == 0)
-                        {
-                            textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                        }
-                        pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
-                        textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
-                        textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
-                        if (greatestValueTime == 3)
-                        {
-                            textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
-                        }
-                    }
-                    else
-                    {
-                        pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
-                        txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
-                        txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
-                        if (greatestValueTime == 1 || greatestValueTime == 0)
-                        {
-                            textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
-                        }
-                    }
-                }
-            }
-        }
-        private void leftPosition()
-        {
-            pictureBoxTimeRight.Visible = true;
-            if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
-            {
-                countBody--;
-                countPaper--;
-                countVaccum--;
-                updatePosition(countBody, countPaper, countVaccum);
-                if (countBody == 0 || countPaper == 0 || countVaccum == 0)
-                {
-                    pictureBoxTimeLeft.Visible = false;
-                    timerLeft.Enabled = false;
-                }
-            }
-            else
-            {
-                if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
-                {
-                    countBody--;
-                    countPaper--;
-                    updatePosition(countBody, countPaper, 0);
-                    if (countBody == 0 || countPaper == 0)
-                    {
-                        pictureBoxTimeLeft.Visible = false;
-                        timerLeft.Enabled = false;
-                    }
-                }
-                else
-                {
-                    if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
-                    {
-                        countBody--;
-                        countVaccum--;
-                        updatePosition(countBody, 0, countVaccum);
-                        if (countBody == 0 || countVaccum == 0)
-                        {
-                            pictureBoxTimeLeft.Visible = false;
-                            timerLeft.Enabled = false;
-                        }
-                    }
-                    else
-                    {
-                        countBody--;
-                        updatePosition(countBody, 0, 0);
-                        if (countBody == 0)
-                        {
-                            pictureBoxTimeLeft.Visible = false;
-                            timerLeft.Enabled = false;
-                        }
-                    }
-                }
-            }
-        }
-        private void rightPosition()
-        {
-            if (isPictureBoxClickedRight)
-            {
-                pictureBoxTimeLeft.Visible = true;
-                if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
-                {
-                    countBody++;
-                    countPaper++;
-                    countVaccum++;
-                    updatePosition(countBody, countPaper, countVaccum);
-                    if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper || Program.numberOfPoints - 2 == countVaccum)
-                    {
-                        pictureBoxTimeRight.Visible = false;
-                        timerRight.Enabled = false;
-                    }
-                }
-                else
-                {
-                    if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
-                    {
-                        countBody++;
-                        countPaper++;
-                        updatePosition(countBody, countPaper, 0);
-                        if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper)
-                        {
-                            pictureBoxTimeRight.Visible = false;
-                            timerRight.Enabled = false;
-                        }
-                    }
-                    else
-                    {
-                        if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
-                        {
-                            countBody++;
-                            countVaccum++;
-                            updatePosition(countBody, 0, countVaccum);
-                            if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countVaccum)
-                            {
-                                pictureBoxTimeRight.Visible = false;
-                                timerRight.Enabled = false;
-                            }
-                        }
-                        else
-                        {
-                            countBody++;
-                            updatePosition(countBody, 0, 0);
-                            if (Program.numberOfPoints - 2 == countBody)
-                            {
-                                pictureBoxTimeRight.Visible = false;
-                                timerRight.Enabled = false;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        
         private void timerRight_Tick(object sender, EventArgs e)
         {
             rightPosition();
@@ -303,7 +112,7 @@ namespace freeFall
 
         private void Simulator_Load(object sender, EventArgs e)
         {
-            dataGridViewPlanets.CurrentCell = null;
+            dataGridDataView.CurrentCell = null;
         }
         public void clear()
         {
@@ -684,14 +493,14 @@ namespace freeFall
         }
         public void dataGridConfigure()
         {
-            dataGridViewPlanets.BackgroundColor = Color.Black;
-            dataGridViewPlanets.DefaultCellStyle.BackColor = Color.Black;
-            dataGridViewPlanets.GridColor = Color.Cyan;
-            dataGridViewPlanets.DefaultCellStyle.ForeColor = Color.Cyan;
-            dataGridViewPlanets.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold);
-            dataGridViewPlanets.DefaultCellStyle.Font = new Font(dataGridViewPlanets.DefaultCellStyle.Font.FontFamily, 9);
-            dataGridViewPlanets.AllowUserToResizeColumns = false;
-            dataGridViewPlanets.AllowUserToResizeRows = false;
+            dataGridDataView.BackgroundColor = Color.Black;
+            dataGridDataView.DefaultCellStyle.BackColor = Color.Black;
+            dataGridDataView.GridColor = Color.Cyan;
+            dataGridDataView.DefaultCellStyle.ForeColor = Color.Cyan;
+            dataGridDataView.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold);
+            dataGridDataView.DefaultCellStyle.Font = new Font(dataGridDataView.DefaultCellStyle.Font.FontFamily, 9);
+            dataGridDataView.AllowUserToResizeColumns = false;
+            dataGridDataView.AllowUserToResizeRows = false;
         }
         public void initialConfigure()
         {
@@ -1287,6 +1096,198 @@ namespace freeFall
         {
             toolTip.SetToolTip(buttonData, "Exibe os dados configurados do experimento.");
         }
+        public void updatePosition(int countBody, int countPaper, int countVaccum)
+        {
+            if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
+            {
+                pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
+                txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
+                if (greatestValueTime == 1 || greatestValueTime == 0)
+                {
+                    textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
+                }
+                pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
+                Console.WriteLine(Program.paper.Pixels[countPaper]);
+                textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
+                textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
+                countPaper = countPaper + 1;
+                if (greatestValueTime == 2)
+                {
+                    textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
+                }
+                pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
+                textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
+                textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
+                if (greatestValueTime == 3)
+                {
+                    textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
+                }
+            }
+            else
+            {
+                if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
+                {
+                    pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                    txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
+                    txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
+                    if (greatestValueTime == 1 || greatestValueTime == 0)
+                    {
+                        textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
+                    }
+                    pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
+                    Console.WriteLine(Program.paper.Pixels[countPaper]);
+                    textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
+                    textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
+                    countPaper = countPaper + 1;
+                    if (greatestValueTime == 2)
+                    {
+                        textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
+                    }
+                }
+                else
+                {
+                    if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
+                    {
+                        pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                        txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
+                        txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
+                        if (greatestValueTime == 1 || greatestValueTime == 0)
+                        {
+                            textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
+                        }
+                        pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
+                        textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
+                        textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
+                        if (greatestValueTime == 3)
+                        {
+                            textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
+                        }
+                    }
+                    else
+                    {
+                        pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                        txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
+                        txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
+                        if (greatestValueTime == 1 || greatestValueTime == 0)
+                        {
+                            textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
+                        }
+                    }
+                }
+            }
+        }
+        private void leftPosition()
+        {
+            pictureBoxTimeRight.Visible = true;
+            if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
+            {
+                countBody--;
+                countPaper--;
+                countVaccum--;
+                updatePosition(countBody, countPaper, countVaccum);
+                if (countBody == 0 || countPaper == 0 || countVaccum == 0)
+                {
+                    pictureBoxTimeLeft.Visible = false;
+                    timerLeft.Enabled = false;
+                }
+            }
+            else
+            {
+                if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
+                {
+                    countBody--;
+                    countPaper--;
+                    updatePosition(countBody, countPaper, 0);
+                    if (countBody == 0 || countPaper == 0)
+                    {
+                        pictureBoxTimeLeft.Visible = false;
+                        timerLeft.Enabled = false;
+                    }
+                }
+                else
+                {
+                    if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
+                    {
+                        countBody--;
+                        countVaccum--;
+                        updatePosition(countBody, 0, countVaccum);
+                        if (countBody == 0 || countVaccum == 0)
+                        {
+                            pictureBoxTimeLeft.Visible = false;
+                            timerLeft.Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        countBody--;
+                        updatePosition(countBody, 0, 0);
+                        if (countBody == 0)
+                        {
+                            pictureBoxTimeLeft.Visible = false;
+                            timerLeft.Enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+        private void rightPosition()
+        {
+            if (isPictureBoxClickedRight)
+            {
+                pictureBoxTimeLeft.Visible = true;
+                if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
+                {
+                    countBody++;
+                    countPaper++;
+                    countVaccum++;
+                    updatePosition(countBody, countPaper, countVaccum);
+                    if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper || Program.numberOfPoints - 2 == countVaccum)
+                    {
+                        pictureBoxTimeRight.Visible = false;
+                        timerRight.Enabled = false;
+                    }
+                }
+                else
+                {
+                    if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
+                    {
+                        countBody++;
+                        countPaper++;
+                        updatePosition(countBody, countPaper, 0);
+                        if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countPaper)
+                        {
+                            pictureBoxTimeRight.Visible = false;
+                            timerRight.Enabled = false;
+                        }
+                    }
+                    else
+                    {
+                        if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
+                        {
+                            countBody++;
+                            countVaccum++;
+                            updatePosition(countBody, 0, countVaccum);
+                            if (Program.numberOfPoints - 2 == countBody || Program.numberOfPoints - 2 == countVaccum)
+                            {
+                                pictureBoxTimeRight.Visible = false;
+                                timerRight.Enabled = false;
+                            }
+                        }
+                        else
+                        {
+                            countBody++;
+                            updatePosition(countBody, 0, 0);
+                            if (Program.numberOfPoints - 2 == countBody)
+                            {
+                                pictureBoxTimeRight.Visible = false;
+                                timerRight.Enabled = false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private void trackBarPlanets_Scroll(object sender, EventArgs e)
         {
             int i;
@@ -1313,7 +1314,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.Blue;
                 textBoxVaccumVelocity.ForeColor = Color.Blue;
                 groupBoxData.ForeColor = Color.Blue;
-                dataGridViewPlanets.ForeColor = Color.Blue;
+                dataGridDataView.ForeColor = Color.Blue;
                 labelTextColor.ForeColor = Color.Blue;
                 labelGraficSpace.ForeColor = Color.Blue;
                 labelGraficVelocity.ForeColor = Color.Blue;
@@ -1344,7 +1345,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.Red;
                 textBoxVaccumVelocity.ForeColor = Color.Red;
                 groupBoxData.ForeColor = Color.Red;
-                dataGridViewPlanets.ForeColor = Color.Red;
+                dataGridDataView.ForeColor = Color.Red;
                 labelTextColor.ForeColor = Color.Red;
                 labelGraficSpace.ForeColor = Color.Red; ;
                 labelGraficVelocity.ForeColor = Color.Red;
@@ -1375,7 +1376,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.Green;
                 textBoxVaccumVelocity.ForeColor = Color.Green;
                 groupBoxData.ForeColor = Color.Green;
-                dataGridViewPlanets.ForeColor = Color.Green;
+                dataGridDataView.ForeColor = Color.Green;
                 labelTextColor.ForeColor = Color.Green;
                 labelGraficSpace.ForeColor = Color.Green;
                 labelGraficVelocity.ForeColor = Color.Green;
@@ -1406,7 +1407,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.Gray;
                 textBoxVaccumVelocity.ForeColor = Color.Gray;
                 groupBoxData.ForeColor = Color.Gray;
-                dataGridViewPlanets.ForeColor = Color.Gray;
+                dataGridDataView.ForeColor = Color.Gray;
                 labelTextColor.ForeColor = Color.Gray;
                 labelGraficSpace.ForeColor = Color.Gray;
                 labelGraficVelocity.ForeColor = Color.Gray;
@@ -1437,7 +1438,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.White;
                 textBoxVaccumVelocity.ForeColor = Color.White;
                 groupBoxData.ForeColor = Color.White;
-                dataGridViewPlanets.ForeColor = Color.White;
+                dataGridDataView.ForeColor = Color.White;
                 labelTextColor.ForeColor = Color.White;
                 labelGraficSpace.ForeColor = Color.White;
                 labelGraficVelocity.ForeColor = Color.White;
@@ -1468,7 +1469,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.HotPink;
                 textBoxVaccumVelocity.ForeColor = Color.HotPink;
                 groupBoxData.ForeColor = Color.HotPink;
-                dataGridViewPlanets.ForeColor = Color.HotPink;
+                dataGridDataView.ForeColor = Color.HotPink;
                 labelTextColor.ForeColor = Color.HotPink;
                 labelGraficSpace.ForeColor = Color.HotPink;
                 labelGraficVelocity.ForeColor = Color.HotPink;
@@ -1499,7 +1500,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.LightBlue;
                 textBoxVaccumVelocity.ForeColor = Color.LightBlue;
                 groupBoxData.ForeColor = Color.LightBlue;
-                dataGridViewPlanets.ForeColor = Color.LightBlue;
+                dataGridDataView.ForeColor = Color.LightBlue;
                 labelTextColor.ForeColor = Color.LightBlue;
                 labelGraficSpace.ForeColor = Color.LightBlue;
                 labelGraficVelocity.ForeColor = Color.LightBlue;
@@ -1530,7 +1531,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.LightSalmon;
                 textBoxVaccumVelocity.ForeColor = Color.LightSalmon;
                 groupBoxData.ForeColor = Color.LightSalmon;
-                dataGridViewPlanets.ForeColor = Color.LightSalmon;
+                dataGridDataView.ForeColor = Color.LightSalmon;
                 labelTextColor.ForeColor = Color.LightSalmon;
                 labelGraficSpace.ForeColor = Color.LightSalmon;
                 labelGraficVelocity.ForeColor = Color.LightSalmon;
@@ -1561,7 +1562,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.LightPink;
                 textBoxVaccumVelocity.ForeColor = Color.LightPink;
                 groupBoxData.ForeColor = Color.LightPink;
-                dataGridViewPlanets.ForeColor = Color.LightPink;
+                dataGridDataView.ForeColor = Color.LightPink;
                 labelTextColor.ForeColor = Color.LightPink;
                 labelGraficSpace.ForeColor = Color.LightPink;
                 labelGraficVelocity.ForeColor = Color.LightPink;
@@ -1592,7 +1593,7 @@ namespace freeFall
                 textBoxVaccumHeight.ForeColor = Color.Cyan;
                 textBoxVaccumVelocity.ForeColor = Color.Cyan;
                 groupBoxData.ForeColor = Color.Cyan;
-                dataGridViewPlanets.ForeColor = Color.Cyan;
+                dataGridDataView.ForeColor = Color.Cyan;
                 labelTextColor.ForeColor = Color.Cyan;
                 labelGraficSpace.ForeColor = Color.Cyan;
                 labelGraficVelocity.ForeColor = Color.Cyan;
@@ -1612,14 +1613,14 @@ namespace freeFall
             ds.Tables.Add(dt);
 
             DataView my_DataView = ds.Tables[0].DefaultView;
-            this.dataGridViewPlanets.DataSource = my_DataView;
+            this.dataGridDataView.DataSource = my_DataView;
         }
         private void Flip()
         {
             DataSet new_ds = FlipDataSet(ds);
             DataView my_DataView = new_ds.Tables[0].DefaultView;
-            this.dataGridViewPlanets.DataSource = my_DataView;
-            dataGridViewPlanets.CurrentCell = null;
+            this.dataGridDataView.DataSource = my_DataView;
+            dataGridDataView.CurrentCell = null;
         }
         public DataSet FlipDataSet(DataSet my_DataSet)
         {

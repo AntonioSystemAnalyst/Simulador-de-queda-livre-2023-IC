@@ -105,7 +105,7 @@
             this.timerAnimationVacuum = new System.Windows.Forms.Timer(this.components);
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
-            this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();
+            this.dataGridDataView = new System.Windows.Forms.DataGridView();
             this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.timerRight = new System.Windows.Forms.Timer(this.components);
@@ -143,7 +143,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDataView)).BeginInit();
             this.groupBoxData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.boxHeight)).BeginInit();
             this.SuspendLayout();
@@ -1033,22 +1033,22 @@
             // 
             // dataGridViewPlanets
             // 
-            this.dataGridViewPlanets.BackgroundColor = System.Drawing.Color.Black;
-            this.dataGridViewPlanets.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewPlanets.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewPlanets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPlanets.ColumnHeadersVisible = false;
-            this.dataGridViewPlanets.Location = new System.Drawing.Point(5, 14);
-            this.dataGridViewPlanets.Name = "dataGridViewPlanets";
-            this.dataGridViewPlanets.ReadOnly = true;
-            this.dataGridViewPlanets.RowHeadersVisible = false;
-            this.dataGridViewPlanets.Size = new System.Drawing.Size(184, 175);
-            this.dataGridViewPlanets.TabIndex = 14;
-            this.dataGridViewPlanets.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlanets_CellContentClick);
+            this.dataGridDataView.BackgroundColor = System.Drawing.Color.Black;
+            this.dataGridDataView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridDataView.ColumnHeadersVisible = false;
+            this.dataGridDataView.Location = new System.Drawing.Point(5, 14);
+            this.dataGridDataView.Name = "dataGridViewPlanets";
+            this.dataGridDataView.ReadOnly = true;
+            this.dataGridDataView.RowHeadersVisible = false;
+            this.dataGridDataView.Size = new System.Drawing.Size(184, 175);
+            this.dataGridDataView.TabIndex = 14;
+            this.dataGridDataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlanets_CellContentClick);
             // 
             // groupBoxData
             // 
-            this.groupBoxData.Controls.Add(this.dataGridViewPlanets);
+            this.groupBoxData.Controls.Add(this.dataGridDataView);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxData.Location = new System.Drawing.Point(502, 1);
@@ -1173,7 +1173,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridDataView)).EndInit();
             this.groupBoxData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.boxHeight)).EndInit();
             this.ResumeLayout(false);
@@ -1251,7 +1251,7 @@
         private System.Windows.Forms.PictureBox pictureBoxVaccum;
         private System.Windows.Forms.PictureBox pictureBoxPaper;
         private System.Windows.Forms.PictureBox pictureBoxCorpoView;
-        private System.Windows.Forms.DataGridView dataGridViewPlanets;
+        private System.Windows.Forms.DataGridView dataGridDataView;
         private System.Windows.Forms.GroupBox groupBoxData;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBoxVaccumObject;

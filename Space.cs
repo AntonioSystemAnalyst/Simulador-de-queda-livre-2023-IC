@@ -20,38 +20,64 @@ namespace freeFall
         public static string dirSalvar = "";
         public static string dirAbrir = "";
         public static string TxtBar = "";
-        public static string FName = "";
         public static int OpSalve = 0;
 
         string[] linha = new string[1000];
+        string[] timeLarge;
         public Space()
         {
             InitializeComponent();
             timerFocus.Enabled = true;
             checkBox3D.Checked = true;
             buildGrafic();
-            Preencher();
+            dataGridConfigure();
+            toComplete();
         }
 
         private void Space_Load(object sender, EventArgs e)
         {
-
+            dataGridView.CurrentCell = null;
         }
-        private void Preencher()
+        private void toComplete()
         {
-            int G = 1, P = 1;
+            int i;
 
-            for (int i = 0; i < 1000; i++)
+            for (i = 0; i < Program.numberOfPoints; i++)
             {
+                linha[0] = timeLarge[i];
+                if (Program.bodyOn)
+                {
+                    if(Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                    {
+                        linha[1] = Convert.ToString(Math.Round(Program.corpo.Space[i], 3));
+                    }
+                }
+                if (Program.paperOn)
+                {
+                    if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
+                    {
+                        linha[2] = Convert.ToString(Math.Round(Program.paper.Space[i], 3));
+                    }
+                }
+                if (Program.vaccumOn)
+                {
+                    if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
+                    {
+                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Space[i], 3));
+                    }
+                }
 
-                linha[0] = Convert.ToString(G);
-                linha[1] = Convert.ToString(P);
-                linha[2] = Convert.ToString(G);
-                linha[3] = Convert.ToString(G);
                 dataGridView.Rows.Add(linha);
-                P += 1;
             }
-
+        }
+        public void dataGridConfigure()
+        {
+            dataGridView.BackgroundColor = Color.Black;
+            dataGridView.DefaultCellStyle.BackColor = Color.Black;
+            dataGridView.GridColor = Color.Cyan;
+            dataGridView.DefaultCellStyle.ForeColor = Color.Cyan;
+            dataGridView.AllowUserToResizeColumns = false;
+            dataGridView.AllowUserToResizeRows = false;
         }
 
         public void graficContinuosSpace(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
@@ -128,27 +154,46 @@ namespace freeFall
 
         public void buildGrafic()
         {
-            int spaceDiv;
+            int spaceDiv, i;
             chartSpace.Series.Clear();
             spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
 
             if(Program.greatestValueTime == 0)
             {
                 graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+                timeLarge = new string[Program.corpo.NumberOfTerms];
+                for (i=0; i<Program.corpo.NumberOfTerms; i++)
+                {
+                    timeLarge[i] = Convert.ToString(Program.corpo.SpaceTime[i]);
+                }
             }
             if (Program.greatestValueTime == 1)
             {
                 graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+                timeLarge = new string[Program.corpo.NumberOfTerms];
+                for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+                {
+                    timeLarge[i] = Convert.ToString(Program.corpo.SpaceTime[i]);
+                }
             }
             if (Program.greatestValueTime == 2)
             {
                 graficContinuosSpace(Program.paper.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0);
+                timeLarge = new string[Program.paper.NumberOfTerms];
+                for (i = 0; i < Program.paper.NumberOfTerms; i++)
+                {
+                    timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i]);
+                }
             }
             if (Program.greatestValueTime == 3)
             {
                 graficContinuosSpace(Program.vaccum.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0);
+                timeLarge = new string[Program.vaccum.NumberOfTerms];
+                for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
+                {
+                    timeLarge[i] = Convert.ToString(Program.vaccum.SpaceTime[i]);
+                }
             }
-
         }
 
 
@@ -216,89 +261,67 @@ namespace freeFall
         {
             string FileLocal = dirSalvar;
             int i, j;
-
+           
             try
             {
+                DateTime dataHoraAtual = DateTime.Now;
+                string dataHoraString = dataHoraAtual.ToString("yyyy-MM-dd-HH.mm.ss");
                 dirSalvar = "";
-                sfdSalve.FileName = FName;
-                sfdSalve.Title = "Salvar Documento"; // Adicionamos um título à janela de salvar
-                sfdSalve.Filter = "Documentos de texto (*.txt)|*.txt|Todos os arquivos|*.*"; // Adicionamos as extensões que serão salvas, .txt e .html
-
+                sfdSalve.FileName = "Queda dos corpos.Resultados-"+dataHoraString;
+                sfdSalve.Title = "Salvar Documento"; 
+                sfdSalve.Filter = "Documentos de texto (*.txt)|*.txt|Todos os arquivos|*.*";
                 if (sfdSalve.ShowDialog() == DialogResult.OK)
                 {
-                    // Se o resultado da caixa de diálogo for igual a Ok, retorna true e entra no IF
-                    dirSalvar = sfdSalve.FileName; // FileName retorna o diretório, este valor adicionamos dentro da variável dirSalvar (c:/index.html, c:/texto.txt).
-
-                    switch (OpSalve)
+                    dirSalvar = sfdSalve.FileName;
+                    using (StreamWriter writer = new StreamWriter(dirSalvar, false))
                     {
-                        case 1:
-                            using (StreamWriter writer = new StreamWriter(dirSalvar, false))
-                            {
-                                writer.Flush();
-                                for (i = 0; i < 5; i++)
-                                {
-                                    // SelecionarPopulacao(i);
-                                    for (j = 0; j < 5; j++)
-                                    {
-                                        writer.WriteLine("População: [" + i + "] | Indivíduo: [" + j + "] = ");
-                                    }
-                                }
-                            }
-                            break;
+                        writer.Flush();
+                        writer.WriteLine(" ----------------------------------------- ");
+                        writer.WriteLine(" Simulador de queda Livre");
+                        writer.WriteLine(" ----------------------------------------- ");
+                        writer.WriteLine(" Nome       : " + Program.planetName);
+                        writer.WriteLine(" Gravidade  : " + Program.gravity);
+                        if(Program.airResistance == 0)
+                        {
+                            writer.WriteLine(" Resis. ar  : Não");
+                        }
+                        else 
+                        {
+                            writer.WriteLine(" Resis. ar  : Sim");
+                        }
+                       
+                        writer.WriteLine(" Tempo para a bóla           : " + Program.corpo.TimeAllExperiment);
+                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.corpo.InitialVelocity);
+                        writer.WriteLine(" Velocidade final da bóla    : " + Program.corpo.FinalVelocity);
+                        if (Program.paperOn)
+                        {
+                            writer.WriteLine(" Tempo para o papel          : " + Program.paper.TimeAllExperiment);
+                            writer.WriteLine(" Velocidade inicial do papel : " + Program.paper.InitialVelocity);
+                            writer.WriteLine(" Velocidade final do papel   : " + Program.paper.FinalVelocity);
 
-                        case 2:
-                            using (StreamWriter writer = new StreamWriter(dirSalvar, false))
-                            {
-                                writer.Flush();
-                                for (i = 0; i < 5; i++)
-                                {
-                                    // SelecionarPopulacao(i);
-                                    for (j = 0; j < 5; j++)
-                                    {
-                                        writer.WriteLine("População: [" + i + "] | Indivíduo: [" + j + "] =  | Pontos =  | Mutação = ");
-                                    }
-                                }
-                            }
-                            break;
+                        }
+                        if (Program.vaccumOn)
+                        {
+                            writer.WriteLine(" Tempo para o vácuo          : " + Program.vaccum.TimeAllExperiment);
+                            writer.WriteLine(" Velocidade inicial no vácuo : " + Program.vaccum.InitialVelocity);
+                            writer.WriteLine(" Velocidade final no vácuo   : " + Program.vaccum.FinalVelocity);
 
-                        case 3:
-                            using (StreamWriter writer = new StreamWriter(dirSalvar, false))
-                            {
-                                writer.Flush();
-                                writer.WriteLine(" ----------------------------------------- ");
-                                writer.WriteLine(" Orphew Algorithms - Algoritmo Genético ");
-                                writer.WriteLine(" ----------------------------------------- ");
-                                writer.WriteLine(" Gerações   : ");
-                                writer.WriteLine(" Populações : ");
-                                writer.WriteLine(" Genes      : ");
-                                writer.WriteLine(" Alelo      : ");
-                                writer.WriteLine(" Prob/Mut   : ");
-                                writer.WriteLine(" Prob/Cru   : ");
-                                writer.WriteLine(" Meta       : ");
-                                writer.WriteLine(" ----------------------------------------- ");
-                                writer.WriteLine(" Resultados  ");
-                                writer.WriteLine(" Gerações   : ");
-                                writer.WriteLine(" Indivíduos : ");
-                                writer.WriteLine(" Mutações   : ");
+                        }
+                        writer.WriteLine(" ----------------------------------------- ");
+                        writer.WriteLine(" Resultados  ");
 
-                                if (5 == 1)
-                                {
-                                    // writer.WriteLine(" Encontrado : Sim");
-                                }
-                                else
-                                {
-                                    writer.WriteLine(" Encontrado : Não");
-                                }
 
-                                writer.WriteLine(" ----------------------------------------- ");
-                            }
-                            break;
+                        for (i = 0; i < 5; i++)
+                        {
+                            writer.WriteLine("Tempo: [" + i + "] | Corpo: [" + i + "] | Bóla : [" + i + "] | Vácuo : [" + i + "]");
+                        }
+                        writer.WriteLine(" ----------------------------------------- ");
                     }
                 }
             }
             catch
             {
-                MessageBox.Show("Não é possível Encriptar", "AG", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Não foi possivel efetuar a operação.");
             }
         }
 

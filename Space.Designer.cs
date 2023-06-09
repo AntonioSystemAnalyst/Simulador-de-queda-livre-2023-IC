@@ -45,9 +45,9 @@
             this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
             this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EspaçoBóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EspaçoPapel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EspaçoVácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -79,9 +79,10 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tempo,
-            this.EspaçoBóla,
-            this.EspaçoPapel,
-            this.EspaçoVácuo});
+            this.Bóla,
+            this.Papel,
+            this.Vácuo});
+            this.dataGridView.GridColor = System.Drawing.Color.Black;
             this.dataGridView.Location = new System.Drawing.Point(6, 15);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
@@ -184,21 +185,21 @@
             this.Tempo.HeaderText = "Tempo";
             this.Tempo.Name = "Tempo";
             // 
-            // EspaçoBóla
+            // Bóla
             // 
-            this.EspaçoBóla.HeaderText = "EspaçoBóla";
-            this.EspaçoBóla.Name = "EspaçoBóla";
+            this.Bóla.HeaderText = "Bóla";
+            this.Bóla.Name = "Bóla";
             // 
-            // EspaçoPapel
+            // Papel
             // 
-            this.EspaçoPapel.HeaderText = "EspaçoPapel";
-            this.EspaçoPapel.Name = "EspaçoPapel";
+            this.Papel.HeaderText = "Papel";
+            this.Papel.Name = "Papel";
             // 
-            // EspaçoVácuo
+            // Vácuo
             // 
-            this.EspaçoVácuo.HeaderText = "EspaçoVácuo";
-            this.EspaçoVácuo.Name = "EspaçoVácuo";
-            this.EspaçoVácuo.ReadOnly = true;
+            this.Vácuo.HeaderText = "Vácuo";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
             // 
             // Space
             // 
@@ -240,8 +241,8 @@
         private System.Windows.Forms.CheckBox checkBox3D;
         private System.Windows.Forms.Timer timerFocus;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tempo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EspaçoBóla;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EspaçoPapel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EspaçoVácuo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bóla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Papel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vácuo;
     }
 }
