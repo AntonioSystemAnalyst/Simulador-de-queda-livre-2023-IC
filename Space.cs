@@ -199,26 +199,12 @@ namespace freeFall
 
         private void SalveImage_Click(object sender, EventArgs e)
         {
-            try
-            {
                 SaveImage(chartSpace);
-            }
-            catch
-            {
-
-            }
         }
 
         private void SalveTXT_Click(object sender, EventArgs e)
         {
-            try
-            {
                 salveTxt();
-            }
-            catch
-            {
-
-            }
         }
 
         private void SalveXLS_Click(object sender, EventArgs e)
@@ -227,33 +213,43 @@ namespace freeFall
         }
         private void SaveImage(Chart chart)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Arquivos de Imagem|*.png;*.jpg;*.bmp|Todos os arquivos|*.*";
-            saveFileDialog.Title = "Salvar Gráfico como Imagem";
-
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                ChartImageFormat imageFormat;
-                string extensao = System.IO.Path.GetExtension(saveFileDialog.FileName);
+                DateTime dataHoraAtual = DateTime.Now;
+                string dataHoraString = dataHoraAtual.ToString("yyyy-MM-dd-HH.mm.ss");
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Arquivos de Imagem|*.png;*.jpg;*.bmp|Todos os arquivos|*.*";
+                saveFileDialog.Title = "Salvar Gráfico como Imagem";
+                saveFileDialog.FileName = "Queda dos corpos.Gráfico SxT-" + dataHoraString;
 
-                switch (extensao.ToLower())
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    case ".png":
-                        imageFormat = ChartImageFormat.Png;
-                        break;
-                    case ".jpg":
-                    case ".jpeg":
-                        imageFormat = ChartImageFormat.Jpeg;
-                        break;
-                    case ".bmp":
-                        imageFormat = ChartImageFormat.Bmp;
-                        break;
-                    default:
-                        MessageBox.Show("Formato de arquivo inválido!");
-                        return;
-                }
+                    ChartImageFormat imageFormat;
+                    string extensao = System.IO.Path.GetExtension(saveFileDialog.FileName);
 
-                chart.SaveImage(saveFileDialog.FileName, imageFormat);
+                    switch (extensao.ToLower())
+                    {
+                        case ".png":
+                            imageFormat = ChartImageFormat.Png;
+                            break;
+                        case ".jpg":
+                        case ".jpeg":
+                            imageFormat = ChartImageFormat.Jpeg;
+                            break;
+                        case ".bmp":
+                            imageFormat = ChartImageFormat.Bmp;
+                            break;
+                        default:
+                            MessageBox.Show("Formato de arquivo inválido!");
+                            return;
+                    }
+
+                    chart.SaveImage(saveFileDialog.FileName, imageFormat);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Não foi possivel efetuar a operação.");
             }
         }
 
@@ -280,7 +276,7 @@ namespace freeFall
                         writer.WriteLine(" Simulador de queda Livre");
                         writer.WriteLine(" ----------------------------------------- ");
                         writer.WriteLine(" Nome       : " + Program.planetName);
-                        writer.WriteLine(" Gravidade  : " + Program.gravity);
+                        writer.WriteLine(" Gravidade  : " + Program.gravity + " m/s²");
                         if(Program.airResistance == 0)
                         {
                             writer.WriteLine(" Resis. ar  : Não");
@@ -290,30 +286,86 @@ namespace freeFall
                             writer.WriteLine(" Resis. ar  : Sim");
                         }
                        
-                        writer.WriteLine(" Tempo para a bóla           : " + Program.corpo.TimeAllExperiment);
-                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.corpo.InitialVelocity);
-                        writer.WriteLine(" Velocidade final da bóla    : " + Program.corpo.FinalVelocity);
+                        writer.WriteLine(" Tempo para a bóla           : " + Program.corpo.TimeAllExperiment + " s");
+                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.corpo.InitialVelocity + " m/s");
+                        writer.WriteLine(" Velocidade final da bóla    : " + Program.corpo.FinalVelocity + " m/s");
                         if (Program.paperOn)
                         {
-                            writer.WriteLine(" Tempo para o papel          : " + Program.paper.TimeAllExperiment);
-                            writer.WriteLine(" Velocidade inicial do papel : " + Program.paper.InitialVelocity);
-                            writer.WriteLine(" Velocidade final do papel   : " + Program.paper.FinalVelocity);
+                            writer.WriteLine(" Tempo para o papel          : " + Program.paper.TimeAllExperiment + " s");
+                            writer.WriteLine(" Velocidade inicial do papel : " + Program.paper.InitialVelocity + " m/s");
+                            writer.WriteLine(" Velocidade final do papel   : " + Program.paper.FinalVelocity + " m/s");
 
                         }
                         if (Program.vaccumOn)
                         {
-                            writer.WriteLine(" Tempo para o vácuo          : " + Program.vaccum.TimeAllExperiment);
-                            writer.WriteLine(" Velocidade inicial no vácuo : " + Program.vaccum.InitialVelocity);
-                            writer.WriteLine(" Velocidade final no vácuo   : " + Program.vaccum.FinalVelocity);
+                            writer.WriteLine(" Tempo para o vácuo          : " + Program.vaccum.TimeAllExperiment + " s");
+                            writer.WriteLine(" Velocidade inicial no vácuo : " + Program.vaccum.InitialVelocity + " m/s");
+                            writer.WriteLine(" Velocidade final no vácuo   : " + Program.vaccum.FinalVelocity + " m/s");
 
                         }
                         writer.WriteLine(" ----------------------------------------- ");
                         writer.WriteLine(" Resultados  ");
+                        writer.WriteLine(" ----------------------------------------- ");
 
-
-                        for (i = 0; i < 5; i++)
+                        for (i = 0; i < Program.numberOfPoints; i++)
                         {
-                            writer.WriteLine("Tempo: [" + i + "] | Corpo: [" + i + "] | Bóla : [" + i + "] | Vácuo : [" + i + "]");
+                            linha[0] = timeLarge[i];
+                            if (Program.bodyOn)
+                            {
+                                if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                                {
+                                    linha[1] = Convert.ToString(Math.Round(Program.corpo.Space[i], 3));
+                                }
+                                else
+                                {
+                                    linha[1] = "-";
+                                }
+                            }
+                            if (Program.paperOn)
+                            {
+                                if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
+                                {
+                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Space[i], 3));
+                                }
+                                else
+                                {
+                                    linha[2] = "-";
+                                }
+                            }
+                            if (Program.vaccumOn)
+                            {
+                                if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
+                                {
+                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Space[i], 3));
+                                }
+                                else
+                                {
+                                    linha[3] = "-";
+                                }
+                            }
+                            if(Program.bodyOn && Program.paperOn && Program.vaccumOn)
+                            {
+                                writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Papel: [{linha[2],-5}] | Corpo no vácuo: [{linha[3],-5}]");
+                            }
+                            else
+                            {
+                                if(Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
+                                {
+                                    writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Papel: [{linha[2],-5}]");
+                                }
+                                else
+                                {
+                                    if(Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
+                                    {
+                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Corpo no vácuo: [{linha[3],-5}]");
+                                    }
+                                    else
+                                    {
+                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}]");
+                                    }
+                                }
+                            }
+                            
                         }
                         writer.WriteLine(" ----------------------------------------- ");
                     }
