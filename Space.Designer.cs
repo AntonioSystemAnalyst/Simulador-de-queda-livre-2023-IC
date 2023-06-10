@@ -29,16 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Space));
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SalveImage = new System.Windows.Forms.Button();
             this.SalveXLS = new System.Windows.Forms.Button();
@@ -47,6 +43,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
+            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -57,16 +57,16 @@
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend1);
             this.chartSpace.Location = new System.Drawing.Point(6, 15);
             this.chartSpace.Name = "chartSpace";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chartSpace.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chartSpace.Series.Add(series1);
             this.chartSpace.Size = new System.Drawing.Size(739, 456);
             this.chartSpace.TabIndex = 1;
             this.chartSpace.Text = "chart1";
@@ -87,27 +87,6 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.Size = new System.Drawing.Size(356, 352);
             this.dataGridView.TabIndex = 16;
-            // 
-            // Tempo
-            // 
-            this.Tempo.HeaderText = "Tempo";
-            this.Tempo.Name = "Tempo";
-            // 
-            // Bóla
-            // 
-            this.Bóla.HeaderText = "Bóla";
-            this.Bóla.Name = "Bóla";
-            // 
-            // Papel
-            // 
-            this.Papel.HeaderText = "Papel";
-            this.Papel.Name = "Papel";
-            // 
-            // Vácuo
-            // 
-            this.Vácuo.HeaderText = "Vácuo";
-            this.Vácuo.Name = "Vácuo";
-            this.Vácuo.ReadOnly = true;
             // 
             // groupBox1
             // 
@@ -200,12 +179,33 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
+            // Tempo
+            // 
+            this.Tempo.HeaderText = "Tempo (s)";
+            this.Tempo.Name = "Tempo";
+            // 
+            // Bóla
+            // 
+            this.Bóla.HeaderText = "Bóla - S (m)";
+            this.Bóla.Name = "Bóla";
+            // 
+            // Papel
+            // 
+            this.Papel.HeaderText = "Papel - S (m)";
+            this.Papel.Name = "Papel";
+            // 
+            // Vácuo
+            // 
+            this.Vácuo.HeaderText = "Vácuo - S (m)";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
+            // 
             // Space
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(1136, 480);
+            this.ClientSize = new System.Drawing.Size(1132, 480);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

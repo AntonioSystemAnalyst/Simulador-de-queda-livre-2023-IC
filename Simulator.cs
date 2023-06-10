@@ -518,23 +518,27 @@ namespace freeFall
         {
             int spaceDiv;
             chartSpace.Series.Clear();
-            spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
+            spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 2);
 
             if (Program.greatestValueTime == 0)
             {
                 spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+                speedGraphic(Program.corpo.NumberOfTerms, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
             }
             if (Program.greatestValueTime == 1)
             {
                 spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+                speedGraphic(Program.corpo.NumberOfTerms, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
             }
             if (Program.greatestValueTime == 2)
             {
                 spaceGraphic(Program.paper.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0);
+                speedGraphic(Program.paper.NumberOfTerms, 0, Program.paper.FinalVelocity + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0);
             }
             if (Program.greatestValueTime == 3)
             {
                 spaceGraphic(Program.vaccum.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0);
+                speedGraphic(Program.vaccum.NumberOfTerms, 0, Program.vaccum.FinalVelocity + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0);
             }
 
         }
@@ -552,6 +556,12 @@ namespace freeFall
             chartSpace.Series.Clear();
             chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
             chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
+            chartSpace.Titles.Add("Espaço pelo tempo");
+            chartSpace.ChartAreas[0].AxisX.Title = "T(s/100)";
+            chartSpace.ChartAreas[0].AxisY.Title = "S(m)";
+            chartSpace.Titles[0].ForeColor = Color.Cyan;
+            chartSpace.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
+            chartSpace.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
@@ -566,6 +576,7 @@ namespace freeFall
             chartSpace.Series.Add(Serie);
             chartSpace.Series[Serie].ChartType = SeriesChartType.Spline;
             chartSpace.Series[Serie].Color = Color.Blue;
+            chartSpace.Series[Serie].Points.AddXY(0, 0);
             //for (i = 0; i < n; i++)
             //{
             //  chartSpace.Series[Serie].Points.AddXY((i), Program.corpo.Space[i]);
@@ -580,6 +591,12 @@ namespace freeFall
             chartSpeed.Series.Clear();
             chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
             chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
+            chartSpeed.Titles.Add("Velocidade pelo tempo");
+            chartSpeed.ChartAreas[0].AxisX.Title = "T(s/100)";
+            chartSpeed.ChartAreas[0].AxisY.Title = "V(m/s)";
+            chartSpeed.Titles[0].ForeColor = Color.Cyan;
+            chartSpeed.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
+            chartSpeed.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
             chartSpeed.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
@@ -594,6 +611,7 @@ namespace freeFall
             chartSpeed.Series.Add(Serie);
             chartSpeed.Series[Serie].ChartType = SeriesChartType.Spline;
             chartSpeed.Series[Serie].Color = Color.Blue;
+            chartSpeed.Series[Serie].Points.AddXY(0, 0);
             //for (i = 0; i < n; i++)
             //{
             //    chartSpeed.Series[Serie].Points.AddXY((i), Program.corpo.Velocity[i]);
@@ -1316,8 +1334,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.Blue;
                 dataGridDataView.ForeColor = Color.Blue;
                 labelTextColor.ForeColor = Color.Blue;
-                labelGraficSpace.ForeColor = Color.Blue;
-                labelGraficVelocity.ForeColor = Color.Blue;
                 labelDetails.ForeColor = Color.Blue;
                 comboPaper.ForeColor = Color.Blue;
                 comboBoxVacuum.ForeColor = Color.Blue;
@@ -1347,8 +1363,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.Red;
                 dataGridDataView.ForeColor = Color.Red;
                 labelTextColor.ForeColor = Color.Red;
-                labelGraficSpace.ForeColor = Color.Red; ;
-                labelGraficVelocity.ForeColor = Color.Red;
                 labelDetails.ForeColor = Color.Red;
                 comboPaper.ForeColor = Color.Red;
                 comboBoxVacuum.ForeColor = Color.Red;
@@ -1378,8 +1392,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.Green;
                 dataGridDataView.ForeColor = Color.Green;
                 labelTextColor.ForeColor = Color.Green;
-                labelGraficSpace.ForeColor = Color.Green;
-                labelGraficVelocity.ForeColor = Color.Green;
                 labelDetails.ForeColor = Color.Green;
                 comboPaper.ForeColor = Color.Green;
                 comboBoxVacuum.ForeColor = Color.Green;
@@ -1409,8 +1421,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.Gray;
                 dataGridDataView.ForeColor = Color.Gray;
                 labelTextColor.ForeColor = Color.Gray;
-                labelGraficSpace.ForeColor = Color.Gray;
-                labelGraficVelocity.ForeColor = Color.Gray;
                 labelDetails.ForeColor = Color.Gray;
                 comboPaper.ForeColor = Color.Gray;
                 comboBoxVacuum.ForeColor = Color.Gray;
@@ -1440,8 +1450,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.White;
                 dataGridDataView.ForeColor = Color.White;
                 labelTextColor.ForeColor = Color.White;
-                labelGraficSpace.ForeColor = Color.White;
-                labelGraficVelocity.ForeColor = Color.White;
                 labelDetails.ForeColor = Color.White;
                 comboPaper.ForeColor = Color.White;
                 comboBoxVacuum.ForeColor = Color.White;
@@ -1471,8 +1479,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.HotPink;
                 dataGridDataView.ForeColor = Color.HotPink;
                 labelTextColor.ForeColor = Color.HotPink;
-                labelGraficSpace.ForeColor = Color.HotPink;
-                labelGraficVelocity.ForeColor = Color.HotPink;
                 labelDetails.ForeColor = Color.HotPink;
                 comboPaper.ForeColor = Color.HotPink;
                 comboBoxVacuum.ForeColor = Color.HotPink;
@@ -1502,8 +1508,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.LightBlue;
                 dataGridDataView.ForeColor = Color.LightBlue;
                 labelTextColor.ForeColor = Color.LightBlue;
-                labelGraficSpace.ForeColor = Color.LightBlue;
-                labelGraficVelocity.ForeColor = Color.LightBlue;
                 labelDetails.ForeColor = Color.LightBlue;
                 comboPaper.ForeColor = Color.LightBlue;
                 comboBoxVacuum.ForeColor = Color.LightBlue;
@@ -1533,8 +1537,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.LightSalmon;
                 dataGridDataView.ForeColor = Color.LightSalmon;
                 labelTextColor.ForeColor = Color.LightSalmon;
-                labelGraficSpace.ForeColor = Color.LightSalmon;
-                labelGraficVelocity.ForeColor = Color.LightSalmon;
                 labelDetails.ForeColor = Color.LightSalmon;
                 comboPaper.ForeColor = Color.LightSalmon;
                 comboBoxVacuum.ForeColor = Color.LightSalmon;
@@ -1564,8 +1566,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.LightPink;
                 dataGridDataView.ForeColor = Color.LightPink;
                 labelTextColor.ForeColor = Color.LightPink;
-                labelGraficSpace.ForeColor = Color.LightPink;
-                labelGraficVelocity.ForeColor = Color.LightPink;
                 labelDetails.ForeColor = Color.LightPink;
                 comboPaper.ForeColor = Color.LightPink;
                 comboBoxVacuum.ForeColor = Color.LightPink;
@@ -1595,8 +1595,6 @@ namespace freeFall
                 groupBoxData.ForeColor = Color.Cyan;
                 dataGridDataView.ForeColor = Color.Cyan;
                 labelTextColor.ForeColor = Color.Cyan;
-                labelGraficSpace.ForeColor = Color.Cyan;
-                labelGraficVelocity.ForeColor = Color.Cyan;
                 labelDetails.ForeColor = Color.Cyan;
                 comboPaper.ForeColor = Color.Cyan;
                 comboBoxVacuum.ForeColor = Color.Cyan;

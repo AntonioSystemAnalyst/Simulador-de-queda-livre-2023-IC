@@ -28,51 +28,219 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Speed));
-            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox3D = new System.Windows.Forms.CheckBox();
+            this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SalveImage = new System.Windows.Forms.Button();
+            this.SalveXLS = new System.Windows.Forms.Button();
+            this.SalveTXT = new System.Windows.Forms.Button();
+            this.timerFocus = new System.Windows.Forms.Timer(this.components);
+            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // chartSpeed
+            // groupBox3
             // 
-            this.chartSpeed.BackColor = System.Drawing.Color.Black;
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox3.Controls.Add(this.checkBox3D);
+            this.groupBox3.Controls.Add(this.chartSpace);
+            this.groupBox3.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBox3.Location = new System.Drawing.Point(3, 1);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(751, 477);
+            this.groupBox3.TabIndex = 23;
+            this.groupBox3.TabStop = false;
+            // 
+            // checkBox3D
+            // 
+            this.checkBox3D.AutoSize = true;
+            this.checkBox3D.Location = new System.Drawing.Point(707, 450);
+            this.checkBox3D.Name = "checkBox3D";
+            this.checkBox3D.Size = new System.Drawing.Size(38, 17);
+            this.checkBox3D.TabIndex = 36;
+            this.checkBox3D.Text = "3d";
+            this.checkBox3D.UseVisualStyleBackColor = true;
+            this.checkBox3D.CheckStateChanged += new System.EventHandler(this.checkBox3D_CheckStateChanged);
+            // 
+            // chartSpace
+            // 
+            this.chartSpace.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea1);
+            this.chartSpace.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend1);
-            this.chartSpeed.Location = new System.Drawing.Point(-1, 0);
-            this.chartSpeed.Name = "chartSpeed";
+            this.chartSpace.Legends.Add(legend1);
+            this.chartSpace.Location = new System.Drawing.Point(6, 15);
+            this.chartSpace.Name = "chartSpace";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chartSpeed.Series.Add(series1);
-            this.chartSpeed.Size = new System.Drawing.Size(811, 488);
-            this.chartSpeed.TabIndex = 2;
-            this.chartSpeed.Text = "chart1";
+            this.chartSpace.Series.Add(series1);
+            this.chartSpace.Size = new System.Drawing.Size(739, 456);
+            this.chartSpace.TabIndex = 1;
+            this.chartSpace.Text = "chart1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dataGridView);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBox2.Location = new System.Drawing.Point(760, 1);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(368, 376);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Resultados";
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.BackgroundColor = System.Drawing.Color.Black;
+            this.dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tempo,
+            this.Bóla,
+            this.Papel,
+            this.Vácuo});
+            this.dataGridView.GridColor = System.Drawing.Color.Black;
+            this.dataGridView.Location = new System.Drawing.Point(6, 15);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.RowHeadersVisible = false;
+            this.dataGridView.Size = new System.Drawing.Size(356, 352);
+            this.dataGridView.TabIndex = 16;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.SalveImage);
+            this.groupBox1.Controls.Add(this.SalveXLS);
+            this.groupBox1.Controls.Add(this.SalveTXT);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBox1.Location = new System.Drawing.Point(760, 379);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(368, 99);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Salvar dados";
+            // 
+            // SalveImage
+            // 
+            this.SalveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SalveImage.ForeColor = System.Drawing.Color.Black;
+            this.SalveImage.Location = new System.Drawing.Point(14, 37);
+            this.SalveImage.Name = "SalveImage";
+            this.SalveImage.Size = new System.Drawing.Size(112, 33);
+            this.SalveImage.TabIndex = 30;
+            this.SalveImage.Text = "Salvar imagem";
+            this.SalveImage.UseVisualStyleBackColor = true;
+            this.SalveImage.Click += new System.EventHandler(this.SalveImage_Click);
+            // 
+            // SalveXLS
+            // 
+            this.SalveXLS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SalveXLS.ForeColor = System.Drawing.Color.Black;
+            this.SalveXLS.Location = new System.Drawing.Point(250, 37);
+            this.SalveXLS.Name = "SalveXLS";
+            this.SalveXLS.Size = new System.Drawing.Size(112, 33);
+            this.SalveXLS.TabIndex = 29;
+            this.SalveXLS.Text = "Salvar em xml";
+            this.SalveXLS.UseVisualStyleBackColor = true;
+            this.SalveXLS.Click += new System.EventHandler(this.SalveXLS_Click);
+            // 
+            // SalveTXT
+            // 
+            this.SalveTXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SalveTXT.ForeColor = System.Drawing.Color.Black;
+            this.SalveTXT.Location = new System.Drawing.Point(132, 37);
+            this.SalveTXT.Name = "SalveTXT";
+            this.SalveTXT.Size = new System.Drawing.Size(112, 33);
+            this.SalveTXT.TabIndex = 28;
+            this.SalveTXT.Text = "Salvar em txt";
+            this.SalveTXT.UseVisualStyleBackColor = true;
+            this.SalveTXT.Click += new System.EventHandler(this.SalveTXT_Click);
+            // 
+            // timerFocus
+            // 
+            this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
+            // 
+            // Tempo
+            // 
+            this.Tempo.HeaderText = "Tempo (s)";
+            this.Tempo.Name = "Tempo";
+            // 
+            // Bóla
+            // 
+            this.Bóla.HeaderText = "Bóla - S (m/s)";
+            this.Bóla.Name = "Bóla";
+            // 
+            // Papel
+            // 
+            this.Papel.HeaderText = "Papel - S (m/s)";
+            this.Papel.Name = "Papel";
+            // 
+            // Vácuo
+            // 
+            this.Vácuo.HeaderText = "Vácuo - S (m/s)";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
             // 
             // Speed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(1044, 503);
-            this.Controls.Add(this.chartSpeed);
+            this.ClientSize = new System.Drawing.Size(1132, 480);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Speed";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Speed";
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
+            this.Text = "Gráfico da velocidade pelo tempo";
+            this.Load += new System.EventHandler(this.Speed_Load);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpeed;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox checkBox3D;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpace;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button SalveImage;
+        private System.Windows.Forms.Button SalveXLS;
+        private System.Windows.Forms.Button SalveTXT;
+        private System.Windows.Forms.Timer timerFocus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tempo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bóla;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Papel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vácuo;
     }
 }

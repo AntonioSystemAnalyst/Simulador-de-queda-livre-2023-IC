@@ -18,12 +18,8 @@ namespace freeFall
 {
     public partial class Space : Form
     {
-        public static string dirSalvar = "";
-        public static string dirAbrir = "";
-        public static string TxtBar = "";
-        public static int OpSalve = 0;
 
-        string[] linha = new string[1000];
+        string[] linha = new string[5];
         string[] timeLarge;
         public Space()
         {
@@ -268,7 +264,7 @@ namespace freeFall
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string xmlFilePath = saveFileDialog.FileName;
-                    using (StreamWriter writer = new StreamWriter(dirSalvar, false))
+                    using (StreamWriter writer = new StreamWriter(xmlFilePath, false))
                     {
                         writer.Flush();
                         writer.WriteLine(" ----------------------------------------- ");
@@ -304,6 +300,28 @@ namespace freeFall
                         writer.WriteLine(" ----------------------------------------- ");
                         writer.WriteLine(" Resultados  ");
                         writer.WriteLine(" ----------------------------------------- ");
+                        if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
+                        {
+                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Papel: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                        }
+                        else
+                        {
+                            if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
+                            {
+                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Papel: S-[{"m",-5}]");
+                            }
+                            else
+                            {
+                                if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
+                                {
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                                }
+                                else
+                                {
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}]");
+                                }
+                            }
+                        }
                         for (i = 0; i < Program.numberOfPoints; i++)
                         {
                             linha[0] = timeLarge[i];
@@ -392,6 +410,80 @@ namespace freeFall
                     XmlElement rootElement = xmlDoc.CreateElement("Dados");
                     xmlDoc.AppendChild(rootElement);
 
+                    if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
+                    {
+                        XmlElement itemElement = xmlDoc.CreateElement("Item");
+                        rootElement.AppendChild(itemElement);
+
+                        XmlElement Tempo = xmlDoc.CreateElement("Tempo");
+                        Tempo.InnerText = "s/100";
+                        itemElement.AppendChild(Tempo);
+
+                        XmlElement Espaco_Bola = xmlDoc.CreateElement("Espaco_Bola");
+                        Espaco_Bola.InnerText = "m";
+                        itemElement.AppendChild(Espaco_Bola);
+
+                        XmlElement Espaco_Papel = xmlDoc.CreateElement("Espaco_Papel");
+                        Espaco_Papel.InnerText = "m";
+                        itemElement.AppendChild(Espaco_Papel);
+
+                        XmlElement Espaco_Vacuo = xmlDoc.CreateElement("Espaco_Vacuo");
+                        Espaco_Vacuo.InnerText = "m";
+                        itemElement.AppendChild(Espaco_Vacuo);
+                    }
+                    else
+                    {
+                        if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
+                        {
+                            XmlElement itemElement = xmlDoc.CreateElement("Item");
+                            rootElement.AppendChild(itemElement);
+
+                            XmlElement Tempo = xmlDoc.CreateElement("Tempo");
+                            Tempo.InnerText = "s/100";
+                            itemElement.AppendChild(Tempo);
+
+                            XmlElement Espaco_Bola = xmlDoc.CreateElement("Espaco_Bola");
+                            Espaco_Bola.InnerText = "m";
+                            itemElement.AppendChild(Espaco_Bola);
+
+                            XmlElement Espaco_Papel = xmlDoc.CreateElement("Espaco_Papel");
+                            Espaco_Papel.InnerText = "m";
+                            itemElement.AppendChild(Espaco_Papel);
+                        }
+                        else
+                        {
+                            if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
+                            {
+                                XmlElement itemElement = xmlDoc.CreateElement("Item");
+                                rootElement.AppendChild(itemElement);
+
+                                XmlElement Espaco_Tempo = xmlDoc.CreateElement("Tempo");
+                                Espaco_Tempo.InnerText = "s/100";
+                                itemElement.AppendChild(Espaco_Tempo);
+
+                                XmlElement Espaco_Bola = xmlDoc.CreateElement("Espaco_Bola");
+                                Espaco_Bola.InnerText = "m";
+                                itemElement.AppendChild(Espaco_Bola);
+
+                                XmlElement Espaco_Vacuo = xmlDoc.CreateElement("Espaco_Vacuo");
+                                Espaco_Vacuo.InnerText = "m";
+                                itemElement.AppendChild(Espaco_Vacuo);
+                            }
+                            else
+                            {
+                                XmlElement itemElement = xmlDoc.CreateElement("Item");
+                                rootElement.AppendChild(itemElement);
+
+                                XmlElement Tempo = xmlDoc.CreateElement("Tempo");
+                                Tempo.InnerText = "s/100";
+                                itemElement.AppendChild(Tempo);
+
+                                XmlElement Espaco_Bola = xmlDoc.CreateElement("Espaco_Bola");
+                                Espaco_Bola.InnerText = "m";
+                                itemElement.AppendChild(Espaco_Bola);
+                            }
+                        }
+                    }
                     for (int i = 0; i < Program.numberOfPoints; i++)
                     {
                         linha[0] = timeLarge[i];
