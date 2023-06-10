@@ -60,7 +60,6 @@ namespace freeFall
             calculateValues();
             receveidGreatestValueTime();
             dataGridConfigure();
-            buildGrafic();
             loadData();
             startGrid();
             Flip();

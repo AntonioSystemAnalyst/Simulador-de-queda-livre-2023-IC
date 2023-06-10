@@ -69,7 +69,7 @@ namespace freeFall
         }
         private void Flip()
         {
-            DataSet new_ds = FlipDataSet(ds); // Flip the DataSet
+            DataSet new_ds = FlipDataSet(ds); 
             DataView my_DataView = new_ds.Tables[0].DefaultView;
             this.dataGridViewPlanets.DataSource = my_DataView;
         }
@@ -107,22 +107,22 @@ namespace freeFall
             table.Columns.Add("Nome", typeof(string));
             table.Columns.Add("Gravidade", typeof(string));
             table.Columns.Add("Resistência do ar", typeof(string));
-            table.Columns.Add("Tempo para o corpo", typeof(string));
-            table.Columns.Add("Velcoidade inicial do corpo", typeof(string));
-            table.Columns.Add("Velcoidade infinal do corpo", typeof(string));
+            table.Columns.Add("Tempo para a bóla", typeof(string));
+            table.Columns.Add("Velcoidade inicial da bóla", typeof(string));
+            table.Columns.Add("Velcoidade final da bóla", typeof(string));
 
             if (Program.paperOn)
             {
                 table.Columns.Add("Tempo para o papel", typeof(string));
                 table.Columns.Add("Velcoidade inicial do papel", typeof(string));
-                table.Columns.Add("Velcoidade infinal do papel", typeof(string));
+                table.Columns.Add("Velcoidade final do papel", typeof(string));
 
             }
             if (Program.vaccumOn)
             {
                 table.Columns.Add("Tempo para o vacuo", typeof(string));
-                table.Columns.Add("Velcoidade inicial do vacuo", typeof(string));
-                table.Columns.Add("Velcoidade infinal do vacuo", typeof(string));
+                table.Columns.Add("Velcoidade inicial do vácuo", typeof(string));
+                table.Columns.Add("Velcoidade final do vácuo", typeof(string));
 
             }
 

@@ -788,8 +788,7 @@
             "Júpter",
             "Saturno",
             "Urano",
-            "Netuno",
-            "Outro"});
+            "Netuno"});
             this.cmbPlaneta.Location = new System.Drawing.Point(123, 79);
             this.cmbPlaneta.Name = "cmbPlaneta";
             this.cmbPlaneta.Size = new System.Drawing.Size(85, 21);
