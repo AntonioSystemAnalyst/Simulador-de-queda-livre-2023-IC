@@ -189,6 +189,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="astronomy.ico" />
+    <None Include="Resources\woman.png" />
     <None Include="Resources\xls1.png" />
     <None Include="Resources\xls.png" />
     <None Include="Resources\txt.png" />

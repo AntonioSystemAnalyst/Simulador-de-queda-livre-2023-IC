@@ -73,7 +73,7 @@
             this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
             this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
             this.buttonData = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonBall = new System.Windows.Forms.Button();
             this.txtgravit = new System.Windows.Forms.TextBox();
             this.comboPaper = new System.Windows.Forms.ComboBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
@@ -546,7 +546,7 @@
             this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.buttonData);
-            this.groupBoxConfiguracao.Controls.Add(this.button1);
+            this.groupBoxConfiguracao.Controls.Add(this.buttonBall);
             this.groupBoxConfiguracao.Controls.Add(this.txtgravit);
             this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxEixo);
@@ -665,18 +665,18 @@
             this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
             this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
             // 
-            // button1
+            // buttonBall
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(11, 212);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 26);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Bóla";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
+            this.buttonBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBall.ForeColor = System.Drawing.Color.Black;
+            this.buttonBall.Location = new System.Drawing.Point(11, 212);
+            this.buttonBall.Name = "buttonBall";
+            this.buttonBall.Size = new System.Drawing.Size(75, 26);
+            this.buttonBall.TabIndex = 31;
+            this.buttonBall.Text = "Bóla";
+            this.buttonBall.UseVisualStyleBackColor = true;
+            this.buttonBall.Click += new System.EventHandler(this.button1_Click);
+            this.buttonBall.MouseHover += new System.EventHandler(this.button1_MouseHover);
             // 
             // txtgravit
             // 
@@ -1204,7 +1204,7 @@
         private System.Windows.Forms.CheckBox checkBoxEixo;
         private System.Windows.Forms.CheckBox checkBoxGrafico;
         private System.Windows.Forms.TrackBar trackBarColors;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonBall;
         private System.Windows.Forms.Button buttonData;
         private System.Windows.Forms.PictureBox pictureBoxSetaX;
         private System.Windows.Forms.Timer timerEixos;

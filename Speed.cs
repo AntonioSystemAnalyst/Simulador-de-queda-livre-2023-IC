@@ -234,7 +234,7 @@ namespace freeFall
                 DateTime dataHoraAtual = DateTime.Now;
                 string dataHoraString = dataHoraAtual.ToString("yyyy-MM-dd-HH.mm.ss");
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Arquivos de Imagem|*.png;*.jpg;*.bmp|Todos os arquivos|*.*";
+                saveFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.png;*.bmp|Todos os arquivos|*.*";
                 saveFileDialog.Title = "Salvar Gráfico como Imagem";
                 saveFileDialog.FileName = "Queda dos corpos.Gráfico SxT-" + dataHoraString;
 

@@ -84,7 +84,7 @@
             // pictureBoxPlanets
             // 
             this.pictureBoxPlanets.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxPlanets.Image = global::freeFall.Properties.Resources.planetMercury;
+            this.pictureBoxPlanets.Image = global::freeFall.Properties.Resources.planetEarth;
             this.pictureBoxPlanets.Location = new System.Drawing.Point(830, 24);
             this.pictureBoxPlanets.Name = "pictureBoxPlanets";
             this.pictureBoxPlanets.Size = new System.Drawing.Size(94, 85);

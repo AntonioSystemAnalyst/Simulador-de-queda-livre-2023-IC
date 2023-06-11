@@ -16,9 +16,9 @@ namespace freeFall
         DataTable dt = null;
        
         public static int ControleMenu = 0;
-        public static string planetName = Program.planetName;
-        public static int planetCounter = Program.planetCounter;
-        public static int planetCounterSave = Program.planetCounter;
+        public static string planetName;
+        public static int planetCounter;
+        public static int planetCounterSave;
         public static string n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19;
 
         private void timerFocus_Tick(object sender, EventArgs e)
@@ -47,29 +47,123 @@ namespace freeFall
         public Data()
         {
             InitializeComponent();
+            planetName = Program.planetName;
+            planetCounter = Program.planetCounter;
+            planetCounterSave = Program.planetCounter;
             timerFocus.Enabled = true;
             dataGridViewPlanets.BackgroundColor = Color.Black;
             dataGridViewPlanets.DefaultCellStyle.BackColor = Color.Black;
-            dataGridViewPlanets.GridColor = Color.Cyan;
-            dataGridViewPlanets.DefaultCellStyle.ForeColor = Color.Cyan;
             dataGridViewPlanets.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
             dataGridViewPlanets.DefaultCellStyle.Font = new Font(dataGridViewPlanets.DefaultCellStyle.Font.FontFamily, 12);
             dataGridViewPlanets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            colorAll();
             labelPlanet.Text = Program.planetName;
             Program.dataControl = 1;
-            loadData(planetCounter);
+            loadPlaentData(planetCounter);
             startGrid();
             Flip();
+        }
+
+        private void colorAll()
+        {
+            labelPlanet.ForeColor = Program.colorSimulator;
+            richTextBoxPlanet.ForeColor = Program.colorSimulator;
+            dataGridViewPlanets.GridColor = Program.colorSimulator;
+            dataGridViewPlanets.DefaultCellStyle.ForeColor = Program.colorSimulator;
         }
 
         private void Data_Load(object sender, EventArgs e)
         {
 
         }
+        private void loadPlaentData(int Planet)
+        {
+            Program.planetNameReceveid(planetCounter);
+            if (planetCounter == 1)
+            {
+                labelPlanet.Text = "Terra";
+                pictureBoxPlanets.Image = Properties.Resources.planetEarth;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 2)
+            {
+                labelPlanet.Text = "Lua";
+                pictureBoxPlanets.Image = Properties.Resources.planetMoon;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 3)
+            {
+                labelPlanet.Text = "Mercúrio";
+                pictureBoxPlanets.Image = Properties.Resources.planetMercury;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 4)
+            {
+                labelPlanet.Text = "Vênus";
+                pictureBoxPlanets.Image = Properties.Resources.planetVenus;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 5)
+            {
+                labelPlanet.Text = "Marte";
+                pictureBoxPlanets.Image = Properties.Resources.planetMars;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 6)
+            {
+                labelPlanet.Text = "Júpter";
+                pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 7)
+            {
+                labelPlanet.Text = "Saturno";
+                pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 8)
+            {
+                labelPlanet.Text = "Urano";
+                pictureBoxPlanets.Image = Properties.Resources.planetUranus;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 9)
+            {
+                labelPlanet.Text = "Netuno";
+                pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+            if (planetCounter == 0)
+            {
+                planetCounter = 9;
+                labelPlanet.Text = "Netuno";
+                pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
+                loadData(planetCounter);
+                startGrid();
+                Flip();
+            }
+        }
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
             planetCounter -= 1;
-            Program.planetCounter = planetCounter;
             Program.planetNameReceveid(planetCounter);
             if (planetCounter == 1)
             {
@@ -157,7 +251,6 @@ namespace freeFall
         private void pictureBoxNext_Click(object sender, EventArgs e)
         {
             planetCounter += 1;
-            Program.planetCounter = planetCounter;
             Program.planetNameReceveid(planetCounter);
             if (planetCounter == 1)
             {

@@ -187,6 +187,7 @@ namespace freeFall
                 pictureBoxBack.Visible = false;
                 pictureBoxNext.Visible = false;
                 txtgravit.Enabled = false;
+                buttonBall.Enabled = false;
             }
             else
             {
@@ -202,6 +203,7 @@ namespace freeFall
                 pictureBoxBack.Visible = true;
                 pictureBoxNext.Visible = true;
                 txtgravit.Enabled = true;
+                buttonBall.Enabled = true;
             }
         }
         public void animation()
@@ -1249,7 +1251,6 @@ namespace freeFall
                 cmbPlaneta.Text = "Vênus";
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonVenus;
                 pictureBoxPlanets.Image = Properties.Resources.planetVenus;
-                buttonPlanet.Text = "Vênus";
             }
             if (planetCounter == 5)
             {
@@ -1415,7 +1416,7 @@ namespace freeFall
         }
         private void button1_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(button1, "Muda a imagem do corpo.");
+            toolTip.SetToolTip(buttonBall, "Muda a imagem do corpo.");
         }
 
         private void buttonData_MouseHover(object sender, EventArgs e)
