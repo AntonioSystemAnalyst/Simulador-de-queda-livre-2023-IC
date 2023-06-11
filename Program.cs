@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,6 +20,8 @@ namespace freeFall
         public static int dataControl = 0; 
         public static int configurePlanetControl = 0;
         public static int experimentDataControl = 0;
+
+        public static Color colorSimulator = Color.Cyan;
 
         // define se tera ou não resistencia do ar
         public static int airResistance = 0;

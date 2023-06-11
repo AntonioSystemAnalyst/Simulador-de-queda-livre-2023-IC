@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-
+using System.Windows.Input;
 
 namespace freeFall
 {
     public partial class Simulator : Form
     {
+
+        ExperimentData windowExperiment;
+        Space windowSpace;
+        Speed windowSpeed;
+
         // define objeto para ser usado nas tooltips
         System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
 
@@ -30,8 +36,10 @@ namespace freeFall
 
         public int greatestValueTime = 0;
 
+        public int openGraficsControl = 0;
+
         private bool isPictureBoxClickedRight = false;
-        private bool isPictureBoxClickedLeft  = false;
+        private bool isPictureBoxClickedLeft = false;
 
         public int countVaccum = 0;
         public int countPaper = 0;
@@ -53,7 +61,7 @@ namespace freeFall
             Opacity = 0;
             timerEixos.Enabled = true;
             initialConfigure();
-
+           
             spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
 
@@ -63,11 +71,32 @@ namespace freeFall
             loadData();
             startGrid();
             Flip();
-
+            colorAll();
             timerOpacity.Enabled = true;
 
         }
-        
+        private void closeAllWindows()
+        {
+           if (windowExperiment != null && !windowExperiment.IsDisposed)
+           {
+               windowExperiment.Close();
+               windowExperiment = null;
+               Program.experimentDataControl = 0;
+           }
+            if (windowSpace != null && !windowSpace.IsDisposed)
+            {
+                windowSpace.Close();
+                windowSpace = null;
+                openGraficsControl = 1;
+            }
+            if (windowSpeed != null && !windowSpeed.IsDisposed)
+            {
+                windowSpeed.Close();
+                windowSpeed = null;
+                openGraficsControl = 1;
+            }
+        }
+
         private void timerRight_Tick(object sender, EventArgs e)
         {
             rightPosition();
@@ -75,6 +104,14 @@ namespace freeFall
         private void timerLeft_Tick(object sender, EventArgs e)
         {
             leftPosition();
+        }
+        private void Simulator_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.J)
+            {
+                MessageBox.Show("Log Liberado!!!");
+                buttonLogo.Visible = true;
+            }
         }
         private void pictureBoxTimeRight_MouseDown(object sender, MouseEventArgs e)
         {
@@ -219,14 +256,6 @@ namespace freeFall
             }
         }
 
-        private void organizeGrafics()
-        {
-            int espacodiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
-            int velocidadediv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 5);
-
-            spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 20, espacodiv, 0, (Program.corpo.TimeAllExperiment * 100), 0);
-            speedGraphic(Program.corpo.NumberOfTerms, 0, Convert.ToInt32(Program.corpo.FinalVelocity) + 20, velocidadediv, 0, (Program.corpo.TimeAllExperiment * 100), 0);
-        }
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
@@ -244,6 +273,8 @@ namespace freeFall
                 {
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
+                    openGraficsControl = 1;
+                    labelGraficDetails.Visible = true;
                     enabledConfigure(0);
                 }
             }
@@ -263,6 +294,8 @@ namespace freeFall
                 timerAnimationPaper.Enabled = false;
                 BTNIniciar.Text = "Posicionar";
                 buttonStartControl = 3;
+                openGraficsControl = 1;
+                labelGraficDetails.Visible = true;
                 enabledConfigure(0);
             }
         }
@@ -282,6 +315,8 @@ namespace freeFall
                 timerAnimationVacuum.Enabled = false;
                 BTNIniciar.Text = "Posicionar";
                 buttonStartControl = 3;
+                openGraficsControl = 1;
+                labelGraficDetails.Visible = true;
                 enabledConfigure(0);
             }
         }
@@ -311,14 +346,37 @@ namespace freeFall
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
-
-
-            if (countGrafic / 2 == 0)
+            Task.Run(() =>
             {
-                chartSpace.Series["Espaço"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
-                chartSpeed.Series["Velocidade"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
-            }
-            countGrafic += 1;
+                chartSpace.Invoke((MethodInvoker)delegate
+                {
+                    if(countGrafic/1000 == 0)
+                    {
+                        if (Program.bodyOn)
+                        {
+                            chartSpace.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
+                            chartSpeed.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+                        }
+                        if (Program.paperOn)
+                        {
+                            chartSpace.Series["Papel"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
+                            chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+                        }
+                        if (Program.vaccumOn)
+                        {
+                            chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
+                            chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+                        }
+                        Console.WriteLine("" + countGrafic);
+                    }
+                    
+                    countGrafic += 1;
+                    if (countGrafic == Program.numberOfPoints)
+                    {
+                        timerGrafic.Enabled = false;
+                    }
+                });
+            });
         }
         private void timerEixos_Tick(object sender, EventArgs e)
         {
@@ -342,16 +400,19 @@ namespace freeFall
             if (buttonStartControl == 0)
             {
                 clear();
+                closeAllWindows();
                 calculateValues();
                 receveidGreatestValueTime();
                 enabledConfigure(1);
                 loadData();
                 startGrid();
                 Flip();
-                organizeGrafics();
+                buildGrafic();
                 animation();
                 BTNIniciar.Text = "Parar";
                 buttonStartControl = 1;
+                openGraficsControl = 0;
+                labelGraficDetails.Visible = false;
             }
             else
             {
@@ -445,9 +506,10 @@ namespace freeFall
 
         private void buttonData_Click(object sender, EventArgs e)
         {
+           
             if (Program.experimentDataControl == 0)
             {
-                ExperimentData windowExperiment = new ExperimentData();
+                windowExperiment = new ExperimentData();
                 windowExperiment.Show();
             }
         }
@@ -512,6 +574,9 @@ namespace freeFall
             textBoxPaperVelocity.Text = " --";
             textBoxVaccumHeight.Text = " --";
             textBoxVaccumVelocity.Text = " --";
+            checkBox3D.Checked = true;
+            KeyPreview = true; // Permite que o formulário capture os eventos de teclado
+            KeyDown += Simulator_KeyDown; // Associa o evento KeyDown ao manipulador de eventos MeuForm_KeyDown
         }
         public void buildGrafic()
         {
@@ -549,19 +614,52 @@ namespace freeFall
 
         public void spaceGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
-            int i;
-            string Serie = "Espaço";
+
             var chart = chartSpace.ChartAreas[0];
             chartSpace.Series.Clear();
-            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
-            chartSpace.Titles.Add("Espaço pelo tempo");
-            chartSpace.ChartAreas[0].AxisX.Title = "T(s/100)";
-            chartSpace.ChartAreas[0].AxisY.Title = "S(m)";
-            chartSpace.Titles[0].ForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
             chartSpace.Visible = true;
+            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
+            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
+            chart.AxisX.Minimum = Mmx;
+            chart.AxisX.Maximum = Max;
+            chart.AxisY.Minimum = Mm;
+            chart.AxisY.Maximum = MM;
+            chart.AxisY.Interval = InterY;
+            chart.AxisX.Interval = interX;
+
+            chartSpace.Series.Add("teste");
+
+            if (Program.bodyOn)
+            {
+                chartSpace.Series.Add("Bóla");
+                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Bóla"].Color = Color.Red;
+                chartSpace.Series[0].IsVisibleInLegend = false;
+
+            }
+            if (Program.paperOn)
+            {
+                chartSpace.Series.Add("Papel");
+                chartSpace.Series["Papel"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Papel"].Color = Color.Blue;
+                chartSpace.Series[0].IsVisibleInLegend = false;
+
+            }
+            if (Program.vaccumOn)
+            {
+                chartSpace.Series.Add("Objeto no vácuo");
+                chartSpace.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpace.Series[0].IsVisibleInLegend = false;
+
+            }
+        }
+
+        public void speedGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
+        {
+            var chart = chartSpeed.ChartAreas[0];
+            chartSpeed.Series.Clear();
+            chartSpeed.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.Format = "";
@@ -572,22 +670,41 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-            chartSpace.Series.Add(Serie);
-            chartSpace.Series[Serie].ChartType = SeriesChartType.Spline;
-            chartSpace.Series[Serie].Color = Color.Blue;
-            chartSpace.Series[Serie].Points.AddXY(0, 0);
-            //for (i = 0; i < n; i++)
-            //{
-            //  chartSpace.Series[Serie].Points.AddXY((i), Program.corpo.Space[i]);
-            //}
+
+            chartSpeed.Series.Add("teste");
+
+            if (Program.bodyOn)
+            {
+                chartSpeed.Series.Add("Bóla");
+                chartSpeed.Series["Bóla"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Bóla"].Color = Color.Red;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series["Bóla"].Points.AddXY(0, 0);
+
+            }
+            if (Program.paperOn)
+            {
+                chartSpeed.Series.Add("Papel");
+                chartSpeed.Series["Papel"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Papel"].Color = Color.Blue;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series["Papel"].Points.AddXY(0, 0);
+
+            }
+            if (Program.vaccumOn)
+            {
+                chartSpeed.Series.Add("Objeto no vácuo");
+                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(0, 0);
+            }
+
         }
 
-        public void speedGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
+        public void speedGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
-            int i;
-            string Serie = "Velocidade";
             var chart = chartSpeed.ChartAreas[0];
-            chartSpeed.Series.Clear();
             chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
             chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
             chartSpeed.Titles.Add("Velocidade pelo tempo");
@@ -607,43 +724,49 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-            chartSpeed.Series.Add(Serie);
-            chartSpeed.Series[Serie].ChartType = SeriesChartType.Spline;
-            chartSpeed.Series[Serie].Color = Color.Blue;
-            chartSpeed.Series[Serie].Points.AddXY(0, 0);
-            //for (i = 0; i < n; i++)
-            //{
-            //    chartSpeed.Series[Serie].Points.AddXY((i), Program.corpo.Velocity[i]);
-            // }
-        }
 
-        public void speedGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
-        {
-            string Serie = "Velocidade";
-            var chart = chartSpeed.ChartAreas[0];
-            chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
-            chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
-            chartSpeed.Visible = true;
-            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
-            chart.AxisX.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
-            chart.AxisX.Minimum = Mmx;
-            chart.AxisX.Maximum = Max;
-            chart.AxisY.Minimum = Mm;
-            chart.AxisY.Maximum = MM;
-            chart.AxisY.Interval = InterY;
-            chart.AxisX.Interval = interX;
-            chartSpeed.Series.Add(Serie);
-            chartSpeed.Series[Serie].ChartType = SeriesChartType.Spline;
-            chartSpeed.Series[Serie].Points.AddXY(0, 0);
+            chartSpeed.Series.Add("teste");
+
+            if (Program.bodyOn)
+            {
+                chartSpeed.Series.Add("Bóla");
+                chartSpeed.Series["Bóla"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Bóla"].Color = Color.Red;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series["Bóla"].BorderWidth = 10;
+                chartSpeed.Series["Bóla"].Points.AddXY(0, 0);
+
+            }
+            if (Program.paperOn)
+            {
+                chartSpeed.Series.Add("Papel");
+                chartSpeed.Series["Papel"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Papel"].Color = Color.Blue;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series["Papel"].Points.AddXY(0, 0);
+
+            }
+            if (Program.vaccumOn)
+            {
+                chartSpeed.Series.Add("Objeto no vácuo");
+                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(0, 0);
+            }
+
         }
         public void spaceGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
-            string Serie = "Espaço";
             var chart = chartSpace.ChartAreas[0];
             chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
             chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
+            chartSpace.Titles.Add("Espaço pelo tempo");
+            chartSpace.ChartAreas[0].AxisX.Title = "T(s/100)";
+            chartSpace.ChartAreas[0].AxisY.Title = "S(m)";
+            chartSpace.Titles[0].ForeColor = Color.Cyan;
+            chartSpace.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
+            chartSpace.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
@@ -655,10 +778,37 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-            chartSpace.Series.Add(Serie);
-            chartSpace.Series[Serie].ChartType = SeriesChartType.Spline;
-            chartSpace.Series[Serie].Color = Color.Blue;
-            chartSpace.Series[Serie].Points.AddXY(0, 0);
+
+
+
+            chartSpace.Series.Add("teste");
+
+            if (Program.bodyOn)
+            {
+                chartSpace.Series.Add("Bóla");
+                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Bóla"].Color = Color.Red;
+                chartSpace.Series[0].IsVisibleInLegend = false;
+                chartSpace.Series["Bóla"].Points.AddXY(0, 0);
+
+            }
+            if (Program.paperOn)
+            {
+                chartSpace.Series.Add("Papel");
+                chartSpace.Series["Papel"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Papel"].Color = Color.Blue;
+                chartSpace.Series[0].IsVisibleInLegend = false;
+                chartSpace.Series["Papel"].Points.AddXY(0, 0);
+
+            }
+            if (Program.vaccumOn)
+            {
+                chartSpace.Series.Add("Objeto no vácuo");
+                chartSpace.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpace.Series[0].IsVisibleInLegend = false;
+                chartSpace.Series["Objeto no vácuo"].Points.AddXY(0, 0);
+            }
         }
 
         private void checkBoxVacuum_CheckStateChanged(object sender, EventArgs e)
@@ -751,14 +901,19 @@ namespace freeFall
 
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
-            Space windowSpace = new Space();
-            windowSpace.Show();
+            if(openGraficsControl == 1)
+            {
+                windowSpace = new Space();
+                windowSpace.Show();
+            }
         }
-
         private void chartSpeed_Click(object sender, EventArgs e)
         {
-            Speed windowSpeed = new Speed();
-            windowSpeed.Show();
+            if(openGraficsControl == 1)
+            {
+                windowSpeed = new Speed();
+                windowSpeed.Show();
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1311,293 +1466,53 @@ namespace freeFall
             i = trackBarColors.Value;
             if (i == 2)
             {
-                groupBoxControl.ForeColor = Color.Blue;
-                groupBoxConfiguracao.ForeColor = Color.Blue;
-                groupBoxPlanetas.ForeColor = Color.Blue;
-                groupBoxGraficos.ForeColor = Color.Blue;
-                groupBoxResultados.ForeColor = Color.Blue;
-                groupBoxExperimento.ForeColor = Color.Blue;
-                cmbPlaneta.ForeColor = Color.Blue;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Blue;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Blue;
-                boxHeight.ForeColor = Color.Blue;
-                txtEspaco.ForeColor = Color.Blue;
-                txtgravit.ForeColor = Color.Blue;
-                txtVelocidade.ForeColor = Color.Blue;
-                textBoxPaperHeight.ForeColor = Color.Blue;
-                textBoxPaperVelocity.ForeColor = Color.Blue;
-                textBoxVaccumHeight.ForeColor = Color.Blue;
-                textBoxVaccumVelocity.ForeColor = Color.Blue;
-                groupBoxData.ForeColor = Color.Blue;
-                dataGridDataView.ForeColor = Color.Blue;
-                labelTextColor.ForeColor = Color.Blue;
-                labelDetails.ForeColor = Color.Blue;
-                comboPaper.ForeColor = Color.Blue;
-                comboBoxVacuum.ForeColor = Color.Blue;
-                textTempo.ForeColor = Color.Blue;
+                Program.colorSimulator = Color.Blue;
+                colorAll();
             }
             if (i == 3)
             {
-                groupBoxControl.ForeColor = Color.Red;
-                groupBoxConfiguracao.ForeColor = Color.Red;
-                groupBoxPlanetas.ForeColor = Color.Red;
-                groupBoxGraficos.ForeColor = Color.Red;
-                groupBoxResultados.ForeColor = Color.Red;
-                groupBoxExperimento.ForeColor = Color.Red;
-                cmbPlaneta.ForeColor = Color.Red;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Red;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Red;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Red;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Red;
-                boxHeight.ForeColor = Color.Red;
-                txtEspaco.ForeColor = Color.Red;
-                txtgravit.ForeColor = Color.Red;
-                txtVelocidade.ForeColor = Color.Red;
-                textBoxPaperHeight.ForeColor = Color.Red;
-                textBoxPaperVelocity.ForeColor = Color.Red;
-                textBoxVaccumHeight.ForeColor = Color.Red;
-                textBoxVaccumVelocity.ForeColor = Color.Red;
-                groupBoxData.ForeColor = Color.Red;
-                dataGridDataView.ForeColor = Color.Red;
-                labelTextColor.ForeColor = Color.Red;
-                labelDetails.ForeColor = Color.Red;
-                comboPaper.ForeColor = Color.Red;
-                comboBoxVacuum.ForeColor = Color.Red;
-                textTempo.ForeColor = Color.Red;
+                Program.colorSimulator = Color.Red;
+                colorAll();
             }
             if (i == 4)
             {
-                groupBoxControl.ForeColor = Color.Green;
-                groupBoxConfiguracao.ForeColor = Color.Green;
-                groupBoxPlanetas.ForeColor = Color.Green;
-                groupBoxGraficos.ForeColor = Color.Green;
-                groupBoxResultados.ForeColor = Color.Green;
-                groupBoxExperimento.ForeColor = Color.Green;
-                cmbPlaneta.ForeColor = Color.Green;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Green;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Green;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Green;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Green;
-                boxHeight.ForeColor = Color.Green;
-                txtEspaco.ForeColor = Color.Green;
-                txtgravit.ForeColor = Color.Green;
-                txtVelocidade.ForeColor = Color.Green;
-                textBoxPaperHeight.ForeColor = Color.Green;
-                textBoxPaperVelocity.ForeColor = Color.Green;
-                textBoxVaccumHeight.ForeColor = Color.Green;
-                textBoxVaccumVelocity.ForeColor = Color.Green;
-                groupBoxData.ForeColor = Color.Green;
-                dataGridDataView.ForeColor = Color.Green;
-                labelTextColor.ForeColor = Color.Green;
-                labelDetails.ForeColor = Color.Green;
-                comboPaper.ForeColor = Color.Green;
-                comboBoxVacuum.ForeColor = Color.Green;
-                textTempo.ForeColor = Color.Green;
+                Program.colorSimulator = Color.Green;
+                colorAll();
             }
             if (i == 5)
             {
-                groupBoxControl.ForeColor = Color.Gray;
-                groupBoxConfiguracao.ForeColor = Color.Gray;
-                groupBoxPlanetas.ForeColor = Color.Gray;
-                groupBoxGraficos.ForeColor = Color.Gray;
-                groupBoxResultados.ForeColor = Color.Gray;
-                groupBoxExperimento.ForeColor = Color.Gray;
-                cmbPlaneta.ForeColor = Color.Gray;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Gray;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Gray;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Gray;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Gray;
-                boxHeight.ForeColor = Color.Gray;
-                txtEspaco.ForeColor = Color.Gray;
-                txtgravit.ForeColor = Color.Gray;
-                txtVelocidade.ForeColor = Color.Gray;
-                textBoxPaperHeight.ForeColor = Color.Gray;
-                textBoxPaperVelocity.ForeColor = Color.Gray;
-                textBoxVaccumHeight.ForeColor = Color.Gray;
-                textBoxVaccumVelocity.ForeColor = Color.Gray;
-                groupBoxData.ForeColor = Color.Gray;
-                dataGridDataView.ForeColor = Color.Gray;
-                labelTextColor.ForeColor = Color.Gray;
-                labelDetails.ForeColor = Color.Gray;
-                comboPaper.ForeColor = Color.Gray;
-                comboBoxVacuum.ForeColor = Color.Gray;
-                textTempo.ForeColor = Color.Gray;
+                Program.colorSimulator = Color.Gray;
+                colorAll();
             }
             if (i == 6)
             {
-                groupBoxControl.ForeColor = Color.White;
-                groupBoxConfiguracao.ForeColor = Color.White;
-                groupBoxPlanetas.ForeColor = Color.White;
-                groupBoxGraficos.ForeColor = Color.White;
-                groupBoxResultados.ForeColor = Color.White;
-                groupBoxExperimento.ForeColor = Color.White;
-                cmbPlaneta.ForeColor = Color.White;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.White;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.White;
-                boxHeight.ForeColor = Color.White;
-                txtEspaco.ForeColor = Color.White;
-                txtgravit.ForeColor = Color.White;
-                txtVelocidade.ForeColor = Color.White;
-                textBoxPaperHeight.ForeColor = Color.White;
-                textBoxPaperVelocity.ForeColor = Color.White;
-                textBoxVaccumHeight.ForeColor = Color.White;
-                textBoxVaccumVelocity.ForeColor = Color.White;
-                groupBoxData.ForeColor = Color.White;
-                dataGridDataView.ForeColor = Color.White;
-                labelTextColor.ForeColor = Color.White;
-                labelDetails.ForeColor = Color.White;
-                comboPaper.ForeColor = Color.White;
-                comboBoxVacuum.ForeColor = Color.White;
-                textTempo.ForeColor = Color.White;
+                Program.colorSimulator = Color.White;
+                colorAll();
             }
             if (i == 7)
             {
-                groupBoxControl.ForeColor = Color.HotPink;
-                groupBoxConfiguracao.ForeColor = Color.HotPink;
-                groupBoxPlanetas.ForeColor = Color.HotPink;
-                groupBoxGraficos.ForeColor = Color.HotPink;
-                groupBoxResultados.ForeColor = Color.HotPink;
-                groupBoxExperimento.ForeColor = Color.HotPink;
-                cmbPlaneta.ForeColor = Color.HotPink;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.HotPink;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.HotPink;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.HotPink;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.HotPink;
-                boxHeight.ForeColor = Color.HotPink;
-                txtEspaco.ForeColor = Color.HotPink;
-                txtgravit.ForeColor = Color.HotPink;
-                txtVelocidade.ForeColor = Color.HotPink;
-                textBoxPaperHeight.ForeColor = Color.HotPink;
-                textBoxPaperVelocity.ForeColor = Color.HotPink;
-                textBoxVaccumHeight.ForeColor = Color.HotPink;
-                textBoxVaccumVelocity.ForeColor = Color.HotPink;
-                groupBoxData.ForeColor = Color.HotPink;
-                dataGridDataView.ForeColor = Color.HotPink;
-                labelTextColor.ForeColor = Color.HotPink;
-                labelDetails.ForeColor = Color.HotPink;
-                comboPaper.ForeColor = Color.HotPink;
-                comboBoxVacuum.ForeColor = Color.HotPink;
-                textTempo.ForeColor = Color.HotPink;
+                Program.colorSimulator = Color.HotPink;
+                colorAll();
             }
             if (i == 8)
             {
-                groupBoxControl.ForeColor = Color.LightBlue;
-                groupBoxConfiguracao.ForeColor = Color.LightBlue;
-                groupBoxPlanetas.ForeColor = Color.LightBlue;
-                groupBoxGraficos.ForeColor = Color.LightBlue;
-                groupBoxResultados.ForeColor = Color.LightBlue;
-                groupBoxExperimento.ForeColor = Color.LightBlue;
-                cmbPlaneta.ForeColor = Color.LightBlue;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightBlue;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightBlue;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightBlue;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightBlue;
-                boxHeight.ForeColor = Color.LightBlue;
-                txtEspaco.ForeColor = Color.LightBlue;
-                txtgravit.ForeColor = Color.LightBlue;
-                txtVelocidade.ForeColor = Color.LightBlue;
-                textBoxPaperHeight.ForeColor = Color.LightBlue;
-                textBoxPaperVelocity.ForeColor = Color.LightBlue;
-                textBoxVaccumHeight.ForeColor = Color.LightBlue;
-                textBoxVaccumVelocity.ForeColor = Color.LightBlue;
-                groupBoxData.ForeColor = Color.LightBlue;
-                dataGridDataView.ForeColor = Color.LightBlue;
-                labelTextColor.ForeColor = Color.LightBlue;
-                labelDetails.ForeColor = Color.LightBlue;
-                comboPaper.ForeColor = Color.LightBlue;
-                comboBoxVacuum.ForeColor = Color.LightBlue;
-                textTempo.ForeColor = Color.LightBlue;
+                Program.colorSimulator = Color.LightBlue;
+                colorAll();
             }
             if (i == 9)
             {
-                groupBoxControl.ForeColor = Color.LightSalmon;
-                groupBoxConfiguracao.ForeColor = Color.LightSalmon;
-                groupBoxPlanetas.ForeColor = Color.LightSalmon;
-                groupBoxGraficos.ForeColor = Color.LightSalmon;
-                groupBoxResultados.ForeColor = Color.LightSalmon;
-                groupBoxExperimento.ForeColor = Color.LightSalmon;
-                cmbPlaneta.ForeColor = Color.LightSalmon;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightSalmon;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightSalmon;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightSalmon;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightSalmon;
-                boxHeight.ForeColor = Color.LightSalmon;
-                txtEspaco.ForeColor = Color.LightSalmon;
-                txtgravit.ForeColor = Color.LightSalmon;
-                txtVelocidade.ForeColor = Color.LightSalmon;
-                textBoxPaperHeight.ForeColor = Color.LightSalmon;
-                textBoxPaperVelocity.ForeColor = Color.LightSalmon;
-                textBoxVaccumHeight.ForeColor = Color.LightSalmon;
-                textBoxVaccumVelocity.ForeColor = Color.LightSalmon;
-                groupBoxData.ForeColor = Color.LightSalmon;
-                dataGridDataView.ForeColor = Color.LightSalmon;
-                labelTextColor.ForeColor = Color.LightSalmon;
-                labelDetails.ForeColor = Color.LightSalmon;
-                comboPaper.ForeColor = Color.LightSalmon;
-                comboBoxVacuum.ForeColor = Color.LightSalmon;
-                textTempo.ForeColor = Color.LightSalmon;
+                Program.colorSimulator = Color.LightSalmon;
+                colorAll();
             }
             if (i == 10)
             {
-                groupBoxControl.ForeColor = Color.LightPink;
-                groupBoxConfiguracao.ForeColor = Color.LightPink;
-                groupBoxPlanetas.ForeColor = Color.LightPink;
-                groupBoxGraficos.ForeColor = Color.LightPink;
-                groupBoxResultados.ForeColor = Color.LightPink;
-                groupBoxExperimento.ForeColor = Color.LightPink;
-                cmbPlaneta.ForeColor = Color.LightPink;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightPink;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightPink;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.LightPink;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.LightPink;
-                boxHeight.ForeColor = Color.LightPink;
-                txtEspaco.ForeColor = Color.LightPink;
-                txtgravit.ForeColor = Color.LightPink;
-                txtVelocidade.ForeColor = Color.LightPink;
-                textBoxPaperHeight.ForeColor = Color.LightPink;
-                textBoxPaperVelocity.ForeColor = Color.LightPink;
-                textBoxVaccumHeight.ForeColor = Color.LightPink;
-                textBoxVaccumVelocity.ForeColor = Color.LightPink;
-                groupBoxData.ForeColor = Color.LightPink;
-                dataGridDataView.ForeColor = Color.LightPink;
-                labelTextColor.ForeColor = Color.LightPink;
-                labelDetails.ForeColor = Color.LightPink;
-                comboPaper.ForeColor = Color.LightPink;
-                comboBoxVacuum.ForeColor = Color.LightPink;
-                textTempo.ForeColor = Color.LightPink;
+                Program.colorSimulator = Color.LightPink;
+                colorAll();
             }
             if (i == 1)
             {
-                groupBoxControl.ForeColor = Color.Cyan;
-                groupBoxConfiguracao.ForeColor = Color.Cyan;
-                groupBoxExperimento.ForeColor = Color.Cyan;
-                cmbPlaneta.ForeColor = Color.Cyan;
-                chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
-                chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
-                chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
-                chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
-                groupBoxPlanetas.ForeColor = Color.Cyan;
-                groupBoxGraficos.ForeColor = Color.Cyan;
-                groupBoxResultados.ForeColor = Color.Cyan;
-                boxHeight.ForeColor = Color.Cyan;
-                txtEspaco.ForeColor = Color.Cyan;
-                txtgravit.ForeColor = Color.Cyan;
-                txtVelocidade.ForeColor = Color.Cyan;
-                textBoxPaperHeight.ForeColor = Color.Cyan;
-                textBoxPaperVelocity.ForeColor = Color.Cyan;
-                textBoxVaccumHeight.ForeColor = Color.Cyan;
-                textBoxVaccumVelocity.ForeColor = Color.Cyan;
-                groupBoxData.ForeColor = Color.Cyan;
-                dataGridDataView.ForeColor = Color.Cyan;
-                labelTextColor.ForeColor = Color.Cyan;
-                labelDetails.ForeColor = Color.Cyan;
-                comboPaper.ForeColor = Color.Cyan;
-                comboBoxVacuum.ForeColor = Color.Cyan;
-                textTempo.ForeColor = Color.Cyan;
+                Program.colorSimulator = Color.Cyan;
+                colorAll();
             }
         }
 
@@ -1773,7 +1688,35 @@ namespace freeFall
                 chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
             }
         }
-
+        public void colorAll()
+        {
+            groupBoxControl.ForeColor = Program.colorSimulator;
+            groupBoxConfiguracao.ForeColor = Program.colorSimulator;
+            groupBoxPlanetas.ForeColor = Program.colorSimulator;
+            groupBoxGraficos.ForeColor = Program.colorSimulator;
+            groupBoxResultados.ForeColor = Program.colorSimulator;
+            groupBoxExperimento.ForeColor = Program.colorSimulator;
+            cmbPlaneta.ForeColor = Program.colorSimulator;
+            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
+            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
+            chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
+            chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
+            boxHeight.ForeColor = Program.colorSimulator;
+            txtEspaco.ForeColor = Program.colorSimulator;
+            txtgravit.ForeColor = Program.colorSimulator;
+            txtVelocidade.ForeColor = Program.colorSimulator;
+            textBoxPaperHeight.ForeColor = Program.colorSimulator;
+            textBoxPaperVelocity.ForeColor = Program.colorSimulator;
+            textBoxVaccumHeight.ForeColor = Program.colorSimulator;
+            textBoxVaccumVelocity.ForeColor = Program.colorSimulator;
+            groupBoxData.ForeColor = Program.colorSimulator;
+            dataGridDataView.ForeColor = Program.colorSimulator;
+            labelTextColor.ForeColor = Program.colorSimulator;
+            labelGraficDetails.ForeColor = Program.colorSimulator;
+            comboPaper.ForeColor = Program.colorSimulator;
+            comboBoxVacuum.ForeColor = Program.colorSimulator;
+            textTempo.ForeColor = Program.colorSimulator;
+        }
         private void Altura_Click(object sender, EventArgs e)
         {
 
@@ -1783,6 +1726,15 @@ namespace freeFall
 
         }
 
+        private void chartSpace_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerLog_Tick(object sender, EventArgs e)
+        {
+
+        }
         private void label26_Click(object sender, EventArgs e)
         {
 

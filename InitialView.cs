@@ -114,93 +114,63 @@ namespace freeFall
             i = trackBarColors.Value;
             if (i == 2)
             {
-                richTextBoxPlanetsData.ForeColor = Color.Blue;
-                labelSimulador.ForeColor = Color.Blue;
-                richTextBoxText.ForeColor = Color.Blue;
-                labellogon.ForeColor = Color.Blue;
-                labelTextColor.ForeColor = Color.Blue;
-
+                Program.colorSimulator = Color.Blue;
+                colorAll();
             }
             if (i == 3)
             {
-                richTextBoxPlanetsData.ForeColor = Color.Red;
-                labelSimulador.ForeColor = Color.Red;
-                richTextBoxText.ForeColor = Color.Red;
-                labellogon.ForeColor = Color.Red;
-                labelTextColor.ForeColor = Color.Red;
+                Program.colorSimulator = Color.Red;
+                colorAll();
             }
             if (i == 4)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.Green;
-                labelSimulador.ForeColor = Color.Green;
-                richTextBoxText.ForeColor = Color.Green;
-                labellogon.ForeColor = Color.Green;
-                labelTextColor.ForeColor = Color.Green;
+                Program.colorSimulator = Color.Green;
+                colorAll();
             }
             if (i == 5)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.Gray;
-                labelSimulador.ForeColor = Color.Gray;
-                richTextBoxText.ForeColor = Color.Gray;
-                labellogon.ForeColor = Color.Gray;
-                labelTextColor.ForeColor = Color.Gray;
+                Program.colorSimulator = Color.Gray;
+                colorAll();
             }
             if (i == 6)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.White;
-                labelSimulador.ForeColor = Color.White;
-                richTextBoxText.ForeColor = Color.White;
-                labellogon.ForeColor = Color.White;
-                labelTextColor.ForeColor= Color.White;
+                Program.colorSimulator = Color.White;
+                colorAll();
             }
             if (i == 7)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.HotPink;
-                labelSimulador.ForeColor = Color.HotPink;
-                richTextBoxText.ForeColor = Color.HotPink;
-                labellogon.ForeColor = Color.HotPink;
-                labelTextColor.ForeColor = Color.HotPink;
+                Program.colorSimulator = Color.HotPink;
+                colorAll();
             }
             if (i == 8)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.LightBlue;
-                labelSimulador.ForeColor = Color.LightBlue;
-                richTextBoxText.ForeColor = Color.LightBlue;
-                labellogon.ForeColor = Color.LightBlue;
-                labelTextColor.ForeColor = Color.LightBlue;
+                Program.colorSimulator = Color.LightBlue;
+                colorAll();
             }
             if (i == 9)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.LightSalmon;
-                labelSimulador.ForeColor = Color.LightSalmon;
-                richTextBoxText.ForeColor = Color.LightSalmon;
-                labellogon.ForeColor = Color.LightSalmon;
-                labelTextColor.ForeColor = Color.LightSalmon;
+                Program.colorSimulator = Color.LightSalmon;
+                colorAll();
             }
             if (i == 10)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.LightPink;
-                labelSimulador.ForeColor = Color.LightPink;
-                richTextBoxText.ForeColor = Color.LightPink;
-                labellogon.ForeColor = Color.LightPink;
-                labelTextColor.ForeColor= Color.LightPink;
+                Program.colorSimulator = Color.LightPink;
+                colorAll();
             }
             if (i == 1)
             {
-
-                richTextBoxPlanetsData.ForeColor = Color.Cyan;
-                labelSimulador.ForeColor = Color.Cyan;
-                richTextBoxText.ForeColor = Color.Cyan;
-                labellogon.ForeColor = Color.Cyan;
-                labelTextColor.ForeColor = Color.Cyan;
+                Program.colorSimulator = Color.Cyan;
+                colorAll();
             }
+        }
+
+        public void colorAll ()
+        {
+            richTextBoxPlanetsData.ForeColor = Program.colorSimulator;
+            labelSimulador.ForeColor = Program.colorSimulator;
+            richTextBoxText.ForeColor = Program.colorSimulator;
+            labellogon.ForeColor = Program.colorSimulator;
+            labelTextColor.ForeColor = Program.colorSimulator;
         }
         private void timerCarousel_Tick(object sender, EventArgs e)
         {

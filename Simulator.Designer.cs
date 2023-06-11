@@ -35,9 +35,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
-            this.labelDetails = new System.Windows.Forms.Label();
-            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.labelGraficDetails = new System.Windows.Forms.Label();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
             this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
@@ -112,9 +112,10 @@
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.timerRight = new System.Windows.Forms.Timer(this.components);
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
+            this.timerLog = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -149,9 +150,9 @@
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
-            this.groupBoxGraficos.Controls.Add(this.labelDetails);
-            this.groupBoxGraficos.Controls.Add(this.chartSpeed);
+            this.groupBoxGraficos.Controls.Add(this.labelGraficDetails);
             this.groupBoxGraficos.Controls.Add(this.chartSpace);
+            this.groupBoxGraficos.Controls.Add(this.chartSpeed);
             this.groupBoxGraficos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxGraficos.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxGraficos.Location = new System.Drawing.Point(4, 278);
@@ -161,43 +162,47 @@
             this.groupBoxGraficos.TabStop = false;
             this.groupBoxGraficos.Text = "Gráficos";
             // 
-            // labelDetails
+            // labelGraficDetails
             // 
-            this.labelDetails.AutoSize = true;
-            this.labelDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDetails.Location = new System.Drawing.Point(340, 325);
-            this.labelDetails.Name = "labelDetails";
-            this.labelDetails.Size = new System.Drawing.Size(185, 12);
-            this.labelDetails.TabIndex = 3;
-            this.labelDetails.Text = "[Clique nos gráficos para detalhes.]";
-            // 
-            // chartSpeed
-            // 
-            this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            chartArea1.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend1);
-            this.chartSpeed.Location = new System.Drawing.Point(13, 172);
-            this.chartSpeed.Name = "chartSpeed";
-            this.chartSpeed.Size = new System.Drawing.Size(851, 147);
-            this.chartSpeed.TabIndex = 1;
-            this.chartSpeed.Text = "chart2";
-            this.chartSpeed.Click += new System.EventHandler(this.chartSpeed_Click);
+            this.labelGraficDetails.AutoSize = true;
+            this.labelGraficDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGraficDetails.Location = new System.Drawing.Point(674, 320);
+            this.labelGraficDetails.Name = "labelGraficDetails";
+            this.labelGraficDetails.Size = new System.Drawing.Size(185, 12);
+            this.labelGraficDetails.TabIndex = 3;
+            this.labelGraficDetails.Text = "[Clique nos gráficos para detalhes.]";
+            this.labelGraficDetails.Visible = false;
             // 
             // chartSpace
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
-            chartArea2.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend2);
-            this.chartSpace.Location = new System.Drawing.Point(16, 19);
+            this.chartSpace.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea1.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend1);
+            this.chartSpace.Location = new System.Drawing.Point(13, 19);
             this.chartSpace.Name = "chartSpace";
             this.chartSpace.Size = new System.Drawing.Size(851, 147);
             this.chartSpace.TabIndex = 0;
             this.chartSpace.Text = "chart1";
+            this.chartSpace.Click += new System.EventHandler(this.chartSpace_Click);
             this.chartSpace.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartSpace_MouseClick);
+            // 
+            // chartSpeed
+            // 
+            this.chartSpeed.BackColor = System.Drawing.Color.Black;
+            this.chartSpeed.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea2.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend2);
+            this.chartSpeed.Location = new System.Drawing.Point(13, 173);
+            this.chartSpeed.Name = "chartSpeed";
+            this.chartSpeed.Size = new System.Drawing.Size(851, 163);
+            this.chartSpeed.TabIndex = 1;
+            this.chartSpeed.Text = "chart2";
+            this.chartSpeed.Click += new System.EventHandler(this.chartSpeed_Click);
             // 
             // buttonLogo
             // 
@@ -209,6 +214,7 @@
             this.buttonLogo.TabIndex = 35;
             this.buttonLogo.Text = "Log";
             this.buttonLogo.UseVisualStyleBackColor = true;
+            this.buttonLogo.Visible = false;
             this.buttonLogo.Click += new System.EventHandler(this.buttonLogo_Click);
             // 
             // groupBoxResultados
@@ -305,7 +311,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 25;
-            this.label7.Text = "Vacúo";
+            this.label7.Text = "Vácuo";
             // 
             // label10
             // 
@@ -1097,6 +1103,10 @@
             // 
             this.timerLeft.Tick += new System.EventHandler(this.timerLeft_Tick);
             // 
+            // timerLog
+            // 
+            this.timerLog.Tick += new System.EventHandler(this.timerLog_Tick);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1118,10 +1128,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UFSCAR - Simulador de queda livre";
             this.Load += new System.EventHandler(this.Simulator_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Simulator_KeyDown);
             this.groupBoxGraficos.ResumeLayout(false);
             this.groupBoxGraficos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
             this.groupBoxResultados.ResumeLayout(false);
             this.groupBoxResultados.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).EndInit();
@@ -1236,7 +1247,8 @@
         private System.Windows.Forms.Timer timerOpacity;
         private System.Windows.Forms.Timer timerRight;
         private System.Windows.Forms.Timer timerLeft;
-        private System.Windows.Forms.Label labelDetails;
+        private System.Windows.Forms.Label labelGraficDetails;
         private System.Windows.Forms.NumericUpDown boxHeight;
+        private System.Windows.Forms.Timer timerLog;
     }
 }
