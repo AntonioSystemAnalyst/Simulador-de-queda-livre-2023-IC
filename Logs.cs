@@ -43,6 +43,9 @@ namespace freeFall
             richTextBoxConsoleView.Text += " Velocidade final objeto: " + Program.corpo.FinalVelocity + "\n";
             richTextBoxConsoleView.Text += " Tempo total: " + Program.corpo.TimeAllExperiment + "\n";
             richTextBoxConsoleView.Text += " ------------------------------------------------------\n";
+            richTextBoxConsoleView.Text += " Space quantidade de termos: " + Program.corpo.Space.Length +"\n";
+            richTextBoxConsoleView.Text += " Speed quantidade de termos: " + Program.corpo.Velocity.Length + "\n";
+            richTextBoxConsoleView.Text += " ------------------------------------------------------\n";
             richTextBoxConsoleView.Text += spaceObjectTime;
         }
 

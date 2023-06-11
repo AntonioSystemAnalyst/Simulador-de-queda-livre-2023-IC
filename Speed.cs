@@ -25,13 +25,27 @@ namespace freeFall
             buildGrafic();
             dataGridConfigure();
             toComplete();
+            colorAll();
         }
 
         private void Speed_Load(object sender, EventArgs e)
         {
             dataGridView.CurrentCell = null;
         }
-
+        public void colorAll()
+        {
+            groupBoxResults.ForeColor = Program.colorSimulator;
+            groupBoxSalve.ForeColor = Program.colorSimulator;
+            dataGridView.GridColor = Program.colorSimulator;
+            dataGridView.DefaultCellStyle.ForeColor = Program.colorSimulator;
+            chartSpeed.Titles[0].ForeColor = Program.colorSimulator;
+            chartSpeed.ChartAreas[0].AxisX.TitleForeColor = Program.colorSimulator;
+            chartSpeed.ChartAreas[0].AxisY.TitleForeColor = Program.colorSimulator;
+            chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
+            chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
+            labelTextColor.ForeColor = Program.colorSimulator;
+            checkBox3D.ForeColor = Program.colorSimulator;
+        }
         private void timerFocus_Tick(object sender, EventArgs e)
         {
             SalveImage.Focus();
@@ -77,25 +91,30 @@ namespace freeFall
             dataGridView.DefaultCellStyle.ForeColor = Color.Cyan;
             dataGridView.AllowUserToResizeColumns = false;
             dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AllowUserToOrderColumns = false;
+            dataGridView.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         public void graficContinuosSpeed(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
             int i;
-            var chart = chartSpace.ChartAreas[0];
+            var chart = chartSpeed.ChartAreas[0];
 
-            chartSpace.Visible = true;
+            chartSpeed.Visible = true;
 
 
-            chartSpace.Titles.Add("Velocidade pelo tempo");
-            chartSpace.ChartAreas[0].AxisX.Title = "T(segundos/100)";
-            chartSpace.ChartAreas[0].AxisY.Title = "V(metros/segundos)";
+            chartSpeed.Titles.Add("Velocidade pelo tempo");
+            chartSpeed.ChartAreas[0].AxisX.Title = "T(segundos/100)";
+            chartSpeed.ChartAreas[0].AxisY.Title = "V(metros/segundos)";
 
-            chartSpace.Titles[0].ForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
+            chartSpeed.Titles[0].ForeColor = Color.Cyan;
+            chartSpeed.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
+            chartSpeed.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
+            chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
+            chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
 
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
@@ -110,42 +129,42 @@ namespace freeFall
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
 
-            chartSpace.Series.Add("teste");
+            chartSpeed.Series.Add("teste");
 
             if (Program.bodyOn)
             {
-                chartSpace.Series.Add("Bóla");
-                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Bóla"].Color = Color.Red;
-                chartSpace.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series.Add("Bóla");
+                chartSpeed.Series["Bóla"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Bóla"].Color = Color.Red;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
 
                 for (i = 0; i < Program.corpo.NumberOfTerms; i++)
                 {
-                    chartSpace.Series["Bóla"].Points.AddXY((i), Program.corpo.Velocity[i]);
+                    chartSpeed.Series["Bóla"].Points.AddXY((i), Program.corpo.Velocity[i]);
                 }
             }
             if (Program.paperOn)
             {
-                chartSpace.Series.Add("Papel");
-                chartSpace.Series["Papel"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Papel"].Color = Color.Blue;
-                chartSpace.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series.Add("Papel");
+                chartSpeed.Series["Papel"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Papel"].Color = Color.Blue;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
 
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    chartSpace.Series["Papel"].Points.AddXY((i), Program.paper.Velocity[i]);
+                    chartSpeed.Series["Papel"].Points.AddXY((i), Program.paper.Velocity[i]);
                 }
             }
             if (Program.vaccumOn)
             {
-                chartSpace.Series.Add("Objeto no vácuo");
-                chartSpace.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
-                chartSpace.Series[0].IsVisibleInLegend = false;
+                chartSpeed.Series.Add("Objeto no vácuo");
+                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpeed.Series[0].IsVisibleInLegend = false;
 
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    chartSpace.Series["Objeto no vácuo"].Points.AddXY((i), Program.vaccum.Velocity[i]);
+                    chartSpeed.Series["Objeto no vácuo"].Points.AddXY((i), Program.vaccum.Velocity[i]);
                 }
             }
         }
@@ -153,7 +172,7 @@ namespace freeFall
         public void buildGrafic()
         {
             int spaceDiv, i;
-            chartSpace.Series.Clear();
+            chartSpeed.Series.Clear();
             spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
 
             if (Program.greatestValueTime == 0)
@@ -196,7 +215,7 @@ namespace freeFall
 
         private void SalveImage_Click(object sender, EventArgs e)
         {
-            SaveImage(chartSpace);
+            SaveImage(chartSpeed);
         }
 
         private void SalveTXT_Click(object sender, EventArgs e)
@@ -610,12 +629,73 @@ namespace freeFall
         {
             if (checkBox3D.Checked)
             {
-                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
             }
             else
             {
-                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
             }
+        }
+
+        private void trackBarColors_Scroll(object sender, EventArgs e)
+        {
+            int i;
+            i = trackBarColors.Value;
+            if (i == 2)
+            {
+                Program.colorSimulator = Color.Blue;
+                colorAll();
+            }
+            if (i == 3)
+            {
+                Program.colorSimulator = Color.Red;
+                colorAll();
+            }
+            if (i == 4)
+            {
+                Program.colorSimulator = Color.Green;
+                colorAll();
+            }
+            if (i == 5)
+            {
+                Program.colorSimulator = Color.Gray;
+                colorAll();
+            }
+            if (i == 6)
+            {
+                Program.colorSimulator = Color.White;
+                colorAll();
+            }
+            if (i == 7)
+            {
+                Program.colorSimulator = Color.HotPink;
+                colorAll();
+            }
+            if (i == 8)
+            {
+                Program.colorSimulator = Color.LightBlue;
+                colorAll();
+            }
+            if (i == 9)
+            {
+                Program.colorSimulator = Color.LightSalmon;
+                colorAll();
+            }
+            if (i == 10)
+            {
+                Program.colorSimulator = Color.LightPink;
+                colorAll();
+            }
+            if (i == 1)
+            {
+                Program.colorSimulator = Color.Cyan;
+                colorAll();
+            }
+        }
+
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
         }
     }
 }

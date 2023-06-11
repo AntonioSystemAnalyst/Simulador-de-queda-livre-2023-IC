@@ -24,13 +24,12 @@ namespace freeFall
             richTextBoxExperimentData.Text = Program.experimentData;
             dataGridViewPlanets.BackgroundColor = Color.Black;
             dataGridViewPlanets.DefaultCellStyle.BackColor = Color.Black;
-            dataGridViewPlanets.GridColor = Color.Cyan;
-            dataGridViewPlanets.DefaultCellStyle.ForeColor = Color.Cyan;
             dataGridViewPlanets.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
             dataGridViewPlanets.DefaultCellStyle.Font = new Font(dataGridViewPlanets.DefaultCellStyle.Font.FontFamily, 12);
             dataGridViewPlanets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridViewPlanets.AllowUserToResizeColumns = false;
             dataGridViewPlanets.AllowUserToResizeRows = false;
+            colorAll();
             loadData();
             startGrid();
             Flip();
@@ -41,6 +40,11 @@ namespace freeFall
             dataGridViewPlanets.CurrentCell = null;
         }
 
+        public void colorAll()
+        {
+            dataGridViewPlanets.GridColor = Program.colorSimulator;
+            dataGridViewPlanets.DefaultCellStyle.ForeColor = Program.colorSimulator;
+        }
         private void experimentData_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.experimentDataControl = 0;

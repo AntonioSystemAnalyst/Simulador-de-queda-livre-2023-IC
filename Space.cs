@@ -13,6 +13,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using static System.Windows.Forms.LinkLabel;
 using System.Xml;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace freeFall
 {
@@ -29,11 +30,26 @@ namespace freeFall
             buildGrafic();
             dataGridConfigure();
             toComplete();
+            colorAll();
         }
 
         private void Space_Load(object sender, EventArgs e)
         {
             dataGridView.CurrentCell = null;
+        }
+        public void colorAll()
+        {
+            groupBoxResults.ForeColor = Program.colorSimulator;
+            groupBoxSalve.ForeColor = Program.colorSimulator;
+            dataGridView.GridColor = Program.colorSimulator;
+            dataGridView.DefaultCellStyle.ForeColor = Program.colorSimulator;
+            chartSpace.Titles[0].ForeColor = Program.colorSimulator;
+            chartSpace.ChartAreas[0].AxisX.TitleForeColor = Program.colorSimulator;
+            chartSpace.ChartAreas[0].AxisY.TitleForeColor = Program.colorSimulator;
+            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
+            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
+            labelTextColor.ForeColor = Program.colorSimulator;
+            checkBox3D.ForeColor = Program.colorSimulator;
         }
         private void toComplete()
         {
@@ -71,10 +87,13 @@ namespace freeFall
         {
             dataGridView.BackgroundColor = Color.Black;
             dataGridView.DefaultCellStyle.BackColor = Color.Black;
-            dataGridView.GridColor = Color.Cyan;
-            dataGridView.DefaultCellStyle.ForeColor = Color.Cyan;
             dataGridView.AllowUserToResizeColumns = false;
             dataGridView.AllowUserToResizeRows = false;
+            dataGridView.AllowUserToOrderColumns = false;
+            dataGridView.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+            dataGridView.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         public void graficContinuosSpace(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
@@ -89,12 +108,6 @@ namespace freeFall
 
             chartSpace.ChartAreas[0].AxisX.Title = "T(segundos/100)";
             chartSpace.ChartAreas[0].AxisY.Title = "S(metros)";
-
-            chartSpace.Titles[0].ForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Color.Cyan;
-            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Color.Cyan;
 
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
@@ -619,6 +632,62 @@ namespace freeFall
             else
             {
                 chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
+            }
+        }
+
+        private void trackBarColors_Scroll(object sender, EventArgs e)
+        {
+            int i;
+            i = trackBarColors.Value;
+            if (i == 2)
+            {
+                Program.colorSimulator = Color.Blue;
+                colorAll();
+            }
+            if (i == 3)
+            {
+                Program.colorSimulator = Color.Red;
+                colorAll();
+            }
+            if (i == 4)
+            {
+                Program.colorSimulator = Color.Green;
+                colorAll();
+            }
+            if (i == 5)
+            {
+                Program.colorSimulator = Color.Gray;
+                colorAll();
+            }
+            if (i == 6)
+            {
+                Program.colorSimulator = Color.White;
+                colorAll();
+            }
+            if (i == 7)
+            {
+                Program.colorSimulator = Color.HotPink;
+                colorAll();
+            }
+            if (i == 8)
+            {
+                Program.colorSimulator = Color.LightBlue;
+                colorAll();
+            }
+            if (i == 9)
+            {
+                Program.colorSimulator = Color.LightSalmon;
+                colorAll();
+            }
+            if (i == 10)
+            {
+                Program.colorSimulator = Color.LightPink;
+                colorAll();
+            }
+            if (i == 1)
+            {
+                Program.colorSimulator = Color.Cyan;
+                colorAll();
             }
         }
     }

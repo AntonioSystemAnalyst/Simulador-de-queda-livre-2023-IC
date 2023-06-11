@@ -21,6 +21,7 @@ namespace freeFall
         public static int configurePlanetControl = 0;
         public static int experimentDataControl = 0;
 
+        // controle das cores
         public static Color colorSimulator = Color.Cyan;
 
         // define se tera ou não resistencia do ar
@@ -33,6 +34,9 @@ namespace freeFall
 
         // define a quantidade de termos do maior entre corpo = 1, paper = 2, vaccum = 3
         public static int numberOfPoints = 0;
+
+        // vetor para controlar o contador de graficos
+        public static int[] vetorCountPointGrafic;  
 
         public static bool bodyOn = true;
         public static bool paperOn = false;

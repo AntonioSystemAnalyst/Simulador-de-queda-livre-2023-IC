@@ -35,30 +35,35 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Speed));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
-            this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelTextColor = new System.Windows.Forms.Label();
+            this.trackBarColors = new System.Windows.Forms.TrackBar();
+            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBoxResults = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.SalveImage = new System.Windows.Forms.Button();
-            this.SalveXLS = new System.Windows.Forms.Button();
-            this.SalveTXT = new System.Windows.Forms.Button();
-            this.timerFocus = new System.Windows.Forms.Timer(this.components);
             this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBoxSalve = new System.Windows.Forms.GroupBox();
+            this.SalveImage = new System.Windows.Forms.Button();
+            this.SalveXLS = new System.Windows.Forms.Button();
+            this.SalveTXT = new System.Windows.Forms.Button();
+            this.timerFocus = new System.Windows.Forms.Timer(this.components);
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
-            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
+            this.groupBoxResults.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxSalve.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.checkBox3D);
-            this.groupBox3.Controls.Add(this.chartSpace);
+            this.groupBox3.Controls.Add(this.labelTextColor);
+            this.groupBox3.Controls.Add(this.trackBarColors);
+            this.groupBox3.Controls.Add(this.chartSpeed);
             this.groupBox3.ForeColor = System.Drawing.Color.Cyan;
             this.groupBox3.Location = new System.Drawing.Point(3, 1);
             this.groupBox3.Name = "groupBox3";
@@ -69,7 +74,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(707, 450);
+            this.checkBox3D.Location = new System.Drawing.Point(707, 457);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(38, 17);
             this.checkBox3D.TabIndex = 36;
@@ -77,35 +82,58 @@
             this.checkBox3D.UseVisualStyleBackColor = true;
             this.checkBox3D.CheckStateChanged += new System.EventHandler(this.checkBox3D_CheckStateChanged);
             // 
-            // chartSpace
+            // labelTextColor
             // 
-            this.chartSpace.BackColor = System.Drawing.Color.Transparent;
+            this.labelTextColor.AutoSize = true;
+            this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
+            this.labelTextColor.Location = new System.Drawing.Point(661, 400);
+            this.labelTextColor.Name = "labelTextColor";
+            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
+            this.labelTextColor.TabIndex = 44;
+            this.labelTextColor.Text = "Cor do texto";
+            // 
+            // trackBarColors
+            // 
+            this.trackBarColors.BackColor = System.Drawing.Color.Black;
+            this.trackBarColors.Location = new System.Drawing.Point(660, 418);
+            this.trackBarColors.Maximum = 9;
+            this.trackBarColors.Minimum = 1;
+            this.trackBarColors.Name = "trackBarColors";
+            this.trackBarColors.Size = new System.Drawing.Size(85, 45);
+            this.trackBarColors.TabIndex = 43;
+            this.trackBarColors.Value = 1;
+            this.trackBarColors.Scroll += new System.EventHandler(this.trackBarColors_Scroll);
+            // 
+            // chartSpeed
+            // 
+            this.chartSpeed.BackColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea1);
+            this.chartSpeed.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend1);
-            this.chartSpace.Location = new System.Drawing.Point(6, 15);
-            this.chartSpace.Name = "chartSpace";
+            this.chartSpeed.Legends.Add(legend1);
+            this.chartSpeed.Location = new System.Drawing.Point(6, 15);
+            this.chartSpeed.Name = "chartSpeed";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chartSpace.Series.Add(series1);
-            this.chartSpace.Size = new System.Drawing.Size(739, 456);
-            this.chartSpace.TabIndex = 1;
-            this.chartSpace.Text = "chart1";
+            this.chartSpeed.Series.Add(series1);
+            this.chartSpeed.Size = new System.Drawing.Size(739, 456);
+            this.chartSpeed.TabIndex = 1;
+            this.chartSpeed.Text = "chart1";
             // 
-            // groupBox2
+            // groupBoxResults
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.dataGridView);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox2.Location = new System.Drawing.Point(760, 1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(368, 376);
-            this.groupBox2.TabIndex = 22;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Resultados";
+            this.groupBoxResults.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxResults.Controls.Add(this.dataGridView);
+            this.groupBoxResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxResults.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBoxResults.Location = new System.Drawing.Point(760, 1);
+            this.groupBoxResults.Name = "groupBoxResults";
+            this.groupBoxResults.Size = new System.Drawing.Size(368, 376);
+            this.groupBoxResults.TabIndex = 22;
+            this.groupBoxResults.TabStop = false;
+            this.groupBoxResults.Text = "Resultados";
             // 
             // dataGridView
             // 
@@ -123,21 +151,43 @@
             this.dataGridView.RowHeadersVisible = false;
             this.dataGridView.Size = new System.Drawing.Size(356, 352);
             this.dataGridView.TabIndex = 16;
+            this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             // 
-            // groupBox1
+            // Tempo
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.SalveImage);
-            this.groupBox1.Controls.Add(this.SalveXLS);
-            this.groupBox1.Controls.Add(this.SalveTXT);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox1.Location = new System.Drawing.Point(760, 379);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(368, 99);
-            this.groupBox1.TabIndex = 21;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Salvar dados";
+            this.Tempo.HeaderText = "Tempo (s)";
+            this.Tempo.Name = "Tempo";
+            // 
+            // Bóla
+            // 
+            this.Bóla.HeaderText = "Bóla - S (m/s)";
+            this.Bóla.Name = "Bóla";
+            // 
+            // Papel
+            // 
+            this.Papel.HeaderText = "Papel - S (m/s)";
+            this.Papel.Name = "Papel";
+            // 
+            // Vácuo
+            // 
+            this.Vácuo.HeaderText = "Vácuo - S (m/s)";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
+            // 
+            // groupBoxSalve
+            // 
+            this.groupBoxSalve.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxSalve.Controls.Add(this.SalveImage);
+            this.groupBoxSalve.Controls.Add(this.SalveXLS);
+            this.groupBoxSalve.Controls.Add(this.SalveTXT);
+            this.groupBoxSalve.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxSalve.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBoxSalve.Location = new System.Drawing.Point(760, 379);
+            this.groupBoxSalve.Name = "groupBoxSalve";
+            this.groupBoxSalve.Size = new System.Drawing.Size(368, 99);
+            this.groupBoxSalve.TabIndex = 21;
+            this.groupBoxSalve.TabStop = false;
+            this.groupBoxSalve.Text = "Salvar dados";
             // 
             // SalveImage
             // 
@@ -179,27 +229,6 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
-            // Tempo
-            // 
-            this.Tempo.HeaderText = "Tempo (s)";
-            this.Tempo.Name = "Tempo";
-            // 
-            // Bóla
-            // 
-            this.Bóla.HeaderText = "Bóla - S (m/s)";
-            this.Bóla.Name = "Bóla";
-            // 
-            // Papel
-            // 
-            this.Papel.HeaderText = "Papel - S (m/s)";
-            this.Papel.Name = "Papel";
-            // 
-            // Vácuo
-            // 
-            this.Vácuo.HeaderText = "Vácuo - S (m/s)";
-            this.Vácuo.Name = "Vácuo";
-            this.Vácuo.ReadOnly = true;
-            // 
             // Speed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,8 +236,8 @@
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(1132, 480);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxResults);
+            this.Controls.Add(this.groupBoxSalve);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -218,10 +247,11 @@
             this.Load += new System.EventHandler(this.Speed_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
-            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
+            this.groupBoxResults.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxSalve.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -230,10 +260,10 @@
 
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox checkBox3D;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpace;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpeed;
+        private System.Windows.Forms.GroupBox groupBoxResults;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxSalve;
         private System.Windows.Forms.Button SalveImage;
         private System.Windows.Forms.Button SalveXLS;
         private System.Windows.Forms.Button SalveTXT;
@@ -242,5 +272,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bóla;
         private System.Windows.Forms.DataGridViewTextBoxColumn Papel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vácuo;
+        private System.Windows.Forms.Label labelTextColor;
+        private System.Windows.Forms.TrackBar trackBarColors;
     }
 }

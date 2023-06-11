@@ -86,7 +86,7 @@ namespace freeFall
             timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
             numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
 
-            space = new double[numberOfTerms + 2];
+            space    = new double[numberOfTerms + 2];
             velocity = new double[numberOfTerms + 2];
             countTimeExperiment = new double[numberOfTerms + 2];
 

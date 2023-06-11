@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
             this.labelGraficDetails = new System.Windows.Forms.Label();
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -177,10 +177,10 @@
             // 
             this.chartSpace.BackColor = System.Drawing.Color.Black;
             this.chartSpace.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea1.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.chartSpace.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartSpace.Legends.Add(legend5);
             this.chartSpace.Location = new System.Drawing.Point(13, 19);
             this.chartSpace.Name = "chartSpace";
             this.chartSpace.Size = new System.Drawing.Size(851, 147);
@@ -193,10 +193,10 @@
             // 
             this.chartSpeed.BackColor = System.Drawing.Color.Black;
             this.chartSpeed.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea2.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chartSpeed.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartSpeed.Legends.Add(legend6);
             this.chartSpeed.Location = new System.Drawing.Point(13, 173);
             this.chartSpeed.Name = "chartSpeed";
             this.chartSpeed.Size = new System.Drawing.Size(851, 163);
@@ -503,7 +503,7 @@
             // 
             this.pictureBoxNext.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxNext.Image = global::freeFall.Properties.Resources.arrowsBlue__1_;
-            this.pictureBoxNext.Location = new System.Drawing.Point(194, 240);
+            this.pictureBoxNext.Location = new System.Drawing.Point(194, 239);
             this.pictureBoxNext.Name = "pictureBoxNext";
             this.pictureBoxNext.Size = new System.Drawing.Size(35, 27);
             this.pictureBoxNext.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1050,17 +1050,17 @@
             // 
             // timerAnimationVacuum
             // 
-            this.timerAnimationVacuum.Interval = 10;
+            this.timerAnimationVacuum.Interval = 1;
             this.timerAnimationVacuum.Tick += new System.EventHandler(this.timerAnimationVacuum_Tick);
             // 
             // timerAnimationPaper
             // 
-            this.timerAnimationPaper.Interval = 10;
+            this.timerAnimationPaper.Interval = 1;
             this.timerAnimationPaper.Tick += new System.EventHandler(this.timerAnimationPaper_Tick);
             // 
             // timerGrafic
             // 
-            this.timerGrafic.Interval = 10;
+            this.timerGrafic.Interval = 1;
             this.timerGrafic.Tick += new System.EventHandler(this.timerGrafic_Tick);
             // 
             // dataGridDataView
@@ -1097,10 +1097,12 @@
             // 
             // timerRight
             // 
+            this.timerRight.Interval = 50;
             this.timerRight.Tick += new System.EventHandler(this.timerRight_Tick);
             // 
             // timerLeft
             // 
+            this.timerLeft.Interval = 50;
             this.timerLeft.Tick += new System.EventHandler(this.timerLeft_Tick);
             // 
             // timerLog
