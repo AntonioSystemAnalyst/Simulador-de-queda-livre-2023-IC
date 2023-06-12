@@ -82,7 +82,7 @@
             // 
             // timerCarousel
             // 
-            this.timerCarousel.Interval = 2000;
+            this.timerCarousel.Interval = 30000;
             this.timerCarousel.Tick += new System.EventHandler(this.timerCarousel_Tick);
             // 
             // pictureBoxCarrocel

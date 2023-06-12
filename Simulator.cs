@@ -266,7 +266,7 @@ namespace freeFall
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
-            txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
+            txtEspaco.Text = "" + Math.Round(-1 * (Math.Round(Program.corpo.Space[countBody], 3) - Program.height),2);
             txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
             if (greatestValueTime == 1 || greatestValueTime == 0)
             {
@@ -289,7 +289,7 @@ namespace freeFall
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
-            textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
+            textBoxPaperHeight.Text = "" + Math.Round(-1 * (Math.Round(Program.paper.Space[countPaper], 3)- Program.height), 2);
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
             if (greatestValueTime == 2)
             {
@@ -310,7 +310,7 @@ namespace freeFall
         private void timerAnimationVacuum_Tick(object sender, EventArgs e)
         {
             pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
-            textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
+            textBoxVaccumHeight.Text = "" + Math.Round(-1 * (Math.Round(Program.vaccum.Space[countVaccum], 3)- Program.height),2);
             textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
             if (greatestValueTime == 3)
             {
@@ -503,13 +503,21 @@ namespace freeFall
             {
                 pictureBoxSetaY.Visible = true;
                 pictureBoxSetaX.Visible = true;
-                pictureBoxBase.Visible = false;
+                pictureBoxBase.Visible  = false;
+                pictureBoxAx.Visible    = true;
+                labelZero.Visible       = true;
+                labelY.Visible          = true;
+                labelX.Visible          = true;
             }
             else
             {
                 pictureBoxSetaY.Visible = false;
                 pictureBoxSetaX.Visible = false;
-                pictureBoxBase.Visible = true;
+                pictureBoxBase.Visible  = true;
+                pictureBoxAx.Visible    = false;
+                labelZero.Visible       = false;
+                labelY.Visible          = false;
+                labelX.Visible          = false;
             }
         }
 
@@ -1914,6 +1922,17 @@ namespace freeFall
         {
 
         }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelY_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void label26_Click(object sender, EventArgs e)
         {
 
