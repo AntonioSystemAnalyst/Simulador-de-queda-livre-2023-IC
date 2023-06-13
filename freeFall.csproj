@@ -69,6 +69,18 @@
     <Compile Include="ExperimentData.Designer.cs">
       <DependentUpon>ExperimentData.cs</DependentUpon>
     </Compile>
+    <Compile Include="GraficSpaceWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraficSpaceWindow.Designer.cs">
+      <DependentUpon>GraficSpaceWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GraficSpeedWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GraficSpeedWindow.Designer.cs">
+      <DependentUpon>GraficSpeedWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="InitialView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +126,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ExperimentData.resx">
       <DependentUpon>ExperimentData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraficSpaceWindow.resx">
+      <DependentUpon>GraficSpaceWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GraficSpeedWindow.resx">
+      <DependentUpon>GraficSpeedWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InitialView.resx">
       <DependentUpon>InitialView.cs</DependentUpon>

@@ -57,6 +57,9 @@ namespace freeFall
         public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum;
         // -- 
 
+        GraficSpaceWindow spaceWindow = new GraficSpaceWindow();
+        GraficSpeedWindow speedWindow = new GraficSpeedWindow();
+
         public static int[] Ax = new int[15];
         public Simulator()
         {
@@ -65,8 +68,10 @@ namespace freeFall
             timerEixos.Enabled = true;
             initialConfigure();
 
-            spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-            speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
+            initiWindows();
+
+            spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
+            speedWindow.speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
 
             calculateValues();
             receveidGreatestValueTime();
@@ -79,6 +84,21 @@ namespace freeFall
 
             timerOpacity.Enabled = true;
 
+        }
+
+        public void initiWindows()
+        {
+            spaceWindow.TopLevel = false;
+            spaceWindow.FormBorderStyle = FormBorderStyle.None;
+            spaceWindow.Dock = DockStyle.Fill;
+            panelSpace.Controls.Add(spaceWindow);
+            spaceWindow.Show();
+
+            speedWindow.TopLevel = false;
+            speedWindow.FormBorderStyle = FormBorderStyle.None;
+            speedWindow.Dock = DockStyle.Fill;
+            panelSpeed.Controls.Add(speedWindow);
+            speedWindow.Show();
         }
         private void closeAllWindows()
         {
@@ -353,46 +373,35 @@ namespace freeFall
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
-            Task.Run(() =>
+            if (Program.bodyOn)
             {
-                chartSpace.Invoke((MethodInvoker)delegate
+                if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    if (countGrafic % 20 == 0)
-                    {
-
-                        if (Program.bodyOn)
-                        {
-                            if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
-                            {
-                                chartSpace.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
-                                chartSpeed.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
-                            }
-                        }
-                        if (Program.paperOn)
-                        {
-                            if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
-                            {
-                                chartSpace.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Space[countGrafic]);
-                                chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Velocity[countGrafic]);
-                            }
-                        }
-                        if (Program.vaccumOn)
-                        {
-                            if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
-                            {
-                                chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
-                                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
-                            }
-                        }
-                        Console.WriteLine("" + countGrafic);
-                    }
-                    countGrafic = countGrafic + 1;
-                    if (countGrafic == Program.numberOfPoints)
-                    {
-                        timerGrafic.Enabled = false;
-                    }
-                });
-            });
+                    spaceWindow.addPointCorpo(countGrafic);
+                    speedWindow.addPointCorpo(countGrafic);
+                }
+            }
+            if (Program.paperOn)
+            {
+                if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
+                {
+                    spaceWindow.addPointPaper(countPaper);
+                    speedWindow.addPointPaper(countPaper);
+                }
+            }
+            if (Program.vaccumOn)
+            {
+                if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
+                {
+                    spaceWindow.addPointVaccum(countPaper);
+                    speedWindow.addPointVaccum(countPaper);
+                }
+            }
+            countGrafic = countGrafic + 1;
+            if (countGrafic == Program.numberOfPoints)
+            {
+                timerGrafic.Enabled = false;
+            }
         }
         public void CountDivisibleByValue(int value)
         {
@@ -436,8 +445,8 @@ namespace freeFall
                     {
                         if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
-                            speedGraphic(countGrafic, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
+                            spaceWindow.spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
+                            speedWindow.speedGraphic(countGrafic, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
                             Console.WriteLine("Space - countGrafic +: " + countGrafic);
                             
                         }
@@ -446,8 +455,8 @@ namespace freeFall
                     {
                         if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            chartSpace.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Space[countGrafic]);
-                            chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Velocity[countGrafic]);
+                            //chartSpace.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Space[countGrafic]);
+                            //chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Velocity[countGrafic]);
 
                         }
                     }
@@ -455,8 +464,8 @@ namespace freeFall
                     {
                         if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
-                            chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
+                            //chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
+                            //chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
 
                         }
                     }
@@ -467,8 +476,8 @@ namespace freeFall
                     {
                         if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
-                            speedGraphic(countGrafic, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
+                            //spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
+                            //speedGraphic(countGrafic, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
                             Console.WriteLine("Space - countGrafic -: " + countGrafic);
                         }
                     }
@@ -476,10 +485,10 @@ namespace freeFall
                     {
                         if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            lastIndexSpace = chartSpace.Series["Papel"].Points.Count - 1;
-                            chartSpace.Series["Papel"].Points.RemoveAt(lastIndexSpace);
-                            lastIndexSpeed = chartSpeed.Series["Papel"].Points.Count - 1;
-                            chartSpeed.Series["Papel"].Points.RemoveAt(lastIndexSpeed);
+                            //lastIndexSpace = chartSpace.Series["Papel"].Points.Count - 1;
+                            //chartSpace.Series["Papel"].Points.RemoveAt(lastIndexSpace);
+                           // lastIndexSpeed = chartSpeed.Series["Papel"].Points.Count - 1;
+                            //chartSpeed.Series["Papel"].Points.RemoveAt(lastIndexSpeed);
 
                         }
                     }
@@ -487,10 +496,10 @@ namespace freeFall
                     {
                         if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            lastIndexSpace = chartSpace.Series["Objeto no vácuo"].Points.Count - 1;
-                            chartSpace.Series["Objeto no vácuo"].Points.RemoveAt(lastIndexSpace);
-                            lastIndexSpeed = chartSpeed.Series["Objeto no vácuo"].Points.Count - 1;
-                            chartSpeed.Series["Objeto no vácuo"].Points.RemoveAt(lastIndexSpeed);
+                            //lastIndexSpace = chartSpace.Series["Objeto no vácuo"].Points.Count - 1;
+                            //chartSpace.Series["Objeto no vácuo"].Points.RemoveAt(lastIndexSpace);
+                           // lastIndexSpeed = chartSpeed.Series["Objeto no vácuo"].Points.Count - 1;
+                           // chartSpeed.Series["Objeto no vácuo"].Points.RemoveAt(lastIndexSpeed);
                         }
                     }
                 }
@@ -535,7 +544,8 @@ namespace freeFall
                 loadData();
                 startGrid();
                 Flip();
-                buildGrafic();
+                spaceWindow.buildGrafic();
+                speedWindow.buildGrafic();
                 animation();
                 BTNIniciar.Text = "Parar";
                 buttonStartControl = 1;
@@ -711,270 +721,7 @@ namespace freeFall
             KeyPreview = true;
             KeyDown += Simulator_KeyDown;
         }
-        public void buildGrafic()
-        {
-            chartSpace.Series.Clear();
-            spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 2);
-
-            if (Program.greatestValueTime == 0)
-            {
-               spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
-               speedGraphic(Program.corpo.NumberOfTerms, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
-            }
-            if (Program.greatestValueTime == 1)
-            {
-                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
-                speedGraphic(Program.corpo.NumberOfTerms, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
-            }
-            if (Program.greatestValueTime == 2)
-            {
-                spaceGraphic(Program.paper.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 0);
-                speedGraphic(Program.paper.NumberOfTerms, 0, Program.paper.FinalVelocity + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 0);
-            }
-            if (Program.greatestValueTime == 3)
-            {
-                spaceGraphic(Program.vaccum.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 0);
-                speedGraphic(Program.vaccum.NumberOfTerms, 0, Program.vaccum.FinalVelocity + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 0);
-            }
-
-        }
-        // --------------------------------------
-
-        // chart Configuration // n = quantidade de termos // Mm = Y minimo
-        // Mm = Y minimo // MM = Y max // interY = intervalo em Y
-        // interX = intervalo em X    // Max = X max // Mmx = X minimu
-
-        public void spaceGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx, int op)
-        {
-            int i;
-            var chart = chartSpace.ChartAreas[0];
-            chartSpace.Series.Clear();
-            chartSpace.Visible = true;
-            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
-            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
-            chart.AxisX.Minimum = Mmx;
-            chart.AxisX.Maximum = Max;
-            chart.AxisY.Minimum = Mm;
-            chart.AxisY.Maximum = MM;
-            chart.AxisY.Interval = InterY;
-            chart.AxisX.Interval = interX;
-
-            chartSpace.Series.Add("teste");
-
-            if (Program.bodyOn)
-            {
-                chartSpace.Series.Add("Bóla");
-                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Bóla"].Color = Color.Red;
-                chartSpace.Series[0].IsVisibleInLegend = false;
-                if(op == 1)
-                {
-                    for (i=0; i<n; i++)
-                    {
-                        chartSpace.Series["Bóla"].Points.AddXY(i, Program.corpo.Space[i]);
-                    }
-                }
-            }
-            if (Program.paperOn)
-            {
-                chartSpace.Series.Add("Papel");
-                chartSpace.Series["Papel"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Papel"].Color = Color.Blue;
-                chartSpace.Series[0].IsVisibleInLegend = false;
-                if (op == 1)
-                {
-                    for (i = 0; i < n; i++)
-                    {
-                        chartSpace.Series["Papel"].Points.AddXY(i, Program.paper.Space[i]);
-                    }
-                }
-            }
-            if (Program.vaccumOn)
-            {
-                chartSpace.Series.Add("Objeto no vácuo");
-                chartSpace.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
-                chartSpace.Series[0].IsVisibleInLegend = false;
-                if (op == 1)
-                {
-                    for (i = 0; i < n; i++)
-                    {
-                        chartSpace.Series["Objeto no vácuo"].Points.AddXY(i, Program.vaccum.Space[i]);
-                    }
-                }
-            }
-        }
-
-
-        public void speedGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx, int op)
-        {
-            int i;
-
-            var chart = chartSpeed.ChartAreas[0];
-            chartSpeed.Series.Clear();
-            chartSpeed.Visible = true;
-            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
-            chart.AxisX.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
-            chart.AxisX.Minimum = Mmx;
-            chart.AxisX.Maximum = Max;
-            chart.AxisY.Minimum = Mm;
-            chart.AxisY.Maximum = MM;
-            chart.AxisY.Interval = InterY;
-            chart.AxisX.Interval = interX;
-
-            chartSpeed.Series.Add("teste");
-
-            if (Program.bodyOn)
-            {
-                chartSpeed.Series.Add("Bóla");
-                chartSpeed.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Bóla"].Color = Color.Red;
-                chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Bóla"].Points.AddXY(0, 0);
-                if (op == 1)
-                {
-                    for (i = 0; i < n; i++)
-                    {
-                        chartSpeed.Series["Bóla"].Points.AddXY(i, Program.corpo.Velocity[i]);
-                    }
-                }
-
-            }
-            if (Program.paperOn)
-            {
-                chartSpeed.Series.Add("Papel");
-                chartSpeed.Series["Papel"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Papel"].Color = Color.Blue;
-                chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Papel"].Points.AddXY(0, 0);
-                if (op == 1)
-                {
-                    for (i = 0; i < n; i++)
-                    {
-                        chartSpeed.Series["Papel"].Points.AddXY(i, Program.paper.Velocity[i]);
-                    }
-                }
-
-            }
-            if (Program.vaccumOn)
-            {
-                chartSpeed.Series.Add("Objeto no vácuo");
-                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
-                chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(0, 0);
-                if (op == 1)
-                {
-                    for (i = 0; i < n; i++)
-                    {
-                        chartSpeed.Series["Objeto no vácuo"].Points.AddXY(i, Program.vaccum.Velocity[i]);
-                    }
-                }
-            }
-
-        }
-
-        public void speedGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
-        {
-            var chart = chartSpeed.ChartAreas[0];
-
-            chartSpeed.Titles.Add("Velocidade pelo tempo");
-            chartSpeed.ChartAreas[0].AxisX.Title = "T(s/100)";
-            chartSpeed.ChartAreas[0].AxisY.Title = "V(m/s)";
-            chartSpeed.Visible = true;
-            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
-            chart.AxisX.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
-            chart.AxisX.Minimum = Mmx;
-            chart.AxisX.Maximum = Max;
-            chart.AxisY.Minimum = Mm;
-            chart.AxisY.Maximum = MM;
-            chart.AxisY.Interval = InterY;
-            chart.AxisX.Interval = interX;
-
-            chartSpeed.Series.Add("teste");
-
-            if (Program.bodyOn)
-            {
-                chartSpeed.Series.Add("Bóla");
-                chartSpeed.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Bóla"].Color = Color.Red;
-                chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Bóla"].BorderWidth = 10;
-                chartSpeed.Series["Bóla"].Points.AddXY(0, 0);
-
-            }
-            if (Program.paperOn)
-            {
-                chartSpeed.Series.Add("Papel");
-                chartSpeed.Series["Papel"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Papel"].Color = Color.Blue;
-                chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Papel"].Points.AddXY(0, 0);
-
-            }
-            if (Program.vaccumOn)
-            {
-                chartSpeed.Series.Add("Objeto no vácuo");
-                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
-                chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(0, 0);
-            }
-
-        }
-        public void spaceGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
-        {
-            var chart = chartSpace.ChartAreas[0];
-
-            chartSpace.Titles.Add("Espaço pelo tempo");
-            chartSpace.ChartAreas[0].AxisX.Title = "T(s/100)";
-            chartSpace.ChartAreas[0].AxisY.Title = "S(m)";
-            chartSpace.Visible = true;
-            chart.AxisX.IntervalType = DateTimeIntervalType.Number;
-            chart.AxisX.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.Format = "";
-            chart.AxisY.LabelStyle.IsEndLabelVisible = true;
-            chart.AxisX.Minimum = Mmx;
-            chart.AxisX.Maximum = Max;
-            chart.AxisY.Minimum = Mm;
-            chart.AxisY.Maximum = MM;
-            chart.AxisY.Interval = InterY;
-            chart.AxisX.Interval = interX;
-
-            chartSpace.Series.Add("teste");
-
-            if (Program.bodyOn)
-            {
-                chartSpace.Series.Add("Bóla");
-                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Bóla"].Color = Color.Red;
-                chartSpace.Series[0].IsVisibleInLegend = false;
-                chartSpace.Series["Bóla"].Points.AddXY(0, 0);
-
-            }
-            if (Program.paperOn)
-            {
-                chartSpace.Series.Add("Papel");
-                chartSpace.Series["Papel"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Papel"].Color = Color.Blue;
-                chartSpace.Series[0].IsVisibleInLegend = false;
-                chartSpace.Series["Papel"].Points.AddXY(0, 0);
-
-            }
-            if (Program.vaccumOn)
-            {
-                chartSpace.Series.Add("Objeto no vácuo");
-                chartSpace.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
-                chartSpace.Series[0].IsVisibleInLegend = false;
-                chartSpace.Series["Objeto no vácuo"].Points.AddXY(0, 0);
-            }
-        }
-
+        
         private void checkBoxVacuum_CheckStateChanged(object sender, EventArgs e)
         {
             if (checkBoxVacuum.Checked)
@@ -1856,13 +1603,13 @@ namespace freeFall
         {
             if (checkBox3D.Checked)
             {
-                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
-                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
+                //chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
+                //chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
             }
             else
             {
-                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
-                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
+                //chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
+                //chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
             }
         }
         public void colorAll()
@@ -1874,10 +1621,6 @@ namespace freeFall
             groupBoxResultados.ForeColor = Program.colorSimulator;
             groupBoxExperimento.ForeColor = Program.colorSimulator;
             cmbPlaneta.ForeColor = Program.colorSimulator;
-            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
-            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
-            chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
-            chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
             boxHeight.ForeColor = Program.colorSimulator;
             txtEspaco.ForeColor = Program.colorSimulator;
             txtgravit.ForeColor = Program.colorSimulator;
@@ -1893,16 +1636,8 @@ namespace freeFall
             comboPaper.ForeColor = Program.colorSimulator;
             comboBoxVacuum.ForeColor = Program.colorSimulator;
             textTempo.ForeColor = Program.colorSimulator;
-            chartSpeed.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
-            chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
-            chartSpeed.Titles[0].ForeColor = Program.colorSimulator;
-            chartSpeed.ChartAreas[0].AxisX.TitleForeColor = Program.colorSimulator;
-            chartSpeed.ChartAreas[0].AxisY.TitleForeColor = Program.colorSimulator;
-            chartSpace.ChartAreas[0].AxisX.LabelStyle.ForeColor = Program.colorSimulator;
-            chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
-            chartSpace.Titles[0].ForeColor = Program.colorSimulator;
-            chartSpace.ChartAreas[0].AxisX.TitleForeColor = Program.colorSimulator;
-            chartSpace.ChartAreas[0].AxisY.TitleForeColor = Program.colorSimulator;
+            spaceWindow.colorAll();
+            speedWindow.colorAll();
         }
         private void Altura_Click(object sender, EventArgs e)
         {

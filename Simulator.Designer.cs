@@ -30,14 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea12 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend12 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
+            this.panelSpeed = new System.Windows.Forms.Panel();
+            this.panelSpace = new System.Windows.Forms.Panel();
             this.labelGraficDetails = new System.Windows.Forms.Label();
-            this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
             this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
@@ -93,6 +89,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.timerEixos = new System.Windows.Forms.Timer(this.components);
             this.groupBoxExperimento = new System.Windows.Forms.GroupBox();
+            this.labelY = new System.Windows.Forms.Label();
+            this.labelZero = new System.Windows.Forms.Label();
+            this.pictureBoxAx = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxVacuum = new System.Windows.Forms.GroupBox();
             this.pictureBoxVacuum = new System.Windows.Forms.PictureBox();
@@ -100,9 +99,10 @@
             this.pictureBoxSetaY = new System.Windows.Forms.PictureBox();
             this.pictureBoxCorpoPaper = new System.Windows.Forms.PictureBox();
             this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
-            this.pictureBoxSetaX = new System.Windows.Forms.PictureBox();
             this.pictureBoxGauge = new System.Windows.Forms.PictureBox();
             this.pictureBoxResistence = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSetaX = new System.Windows.Forms.PictureBox();
+            this.labelX = new System.Windows.Forms.Label();
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
             this.timerAnimationVacuum = new System.Windows.Forms.Timer(this.components);
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
@@ -113,13 +113,7 @@
             this.timerRight = new System.Windows.Forms.Timer(this.components);
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
             this.timerLog = new System.Windows.Forms.Timer(this.components);
-            this.pictureBoxAx = new System.Windows.Forms.PictureBox();
-            this.labelZero = new System.Windows.Forms.Label();
-            this.labelY = new System.Windows.Forms.Label();
-            this.labelX = new System.Windows.Forms.Label();
             this.groupBoxGraficos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -137,6 +131,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
             this.groupBoxExperimento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxVacuum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVacuum)).BeginInit();
@@ -144,20 +139,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoPaper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDataView)).BeginInit();
             this.groupBoxData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAx)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
+            this.groupBoxGraficos.Controls.Add(this.panelSpeed);
+            this.groupBoxGraficos.Controls.Add(this.panelSpace);
             this.groupBoxGraficos.Controls.Add(this.labelGraficDetails);
-            this.groupBoxGraficos.Controls.Add(this.chartSpace);
-            this.groupBoxGraficos.Controls.Add(this.chartSpeed);
             this.groupBoxGraficos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxGraficos.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxGraficos.Location = new System.Drawing.Point(4, 278);
@@ -167,47 +161,32 @@
             this.groupBoxGraficos.TabStop = false;
             this.groupBoxGraficos.Text = "Gráficos";
             // 
+            // panelSpeed
+            // 
+            this.panelSpeed.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpeed.Location = new System.Drawing.Point(440, 15);
+            this.panelSpeed.Name = "panelSpeed";
+            this.panelSpeed.Size = new System.Drawing.Size(428, 307);
+            this.panelSpeed.TabIndex = 5;
+            // 
+            // panelSpace
+            // 
+            this.panelSpace.BackColor = System.Drawing.Color.Transparent;
+            this.panelSpace.Location = new System.Drawing.Point(3, 15);
+            this.panelSpace.Name = "panelSpace";
+            this.panelSpace.Size = new System.Drawing.Size(434, 307);
+            this.panelSpace.TabIndex = 4;
+            // 
             // labelGraficDetails
             // 
             this.labelGraficDetails.AutoSize = true;
             this.labelGraficDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGraficDetails.Location = new System.Drawing.Point(729, 316);
+            this.labelGraficDetails.Location = new System.Drawing.Point(751, 325);
             this.labelGraficDetails.Name = "labelGraficDetails";
             this.labelGraficDetails.Size = new System.Drawing.Size(120, 12);
             this.labelGraficDetails.TabIndex = 3;
             this.labelGraficDetails.Text = "[Clique para detalhes.]";
             this.labelGraficDetails.Visible = false;
-            // 
-            // chartSpace
-            // 
-            this.chartSpace.BackColor = System.Drawing.Color.Black;
-            this.chartSpace.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea11.Name = "ChartArea1";
-            this.chartSpace.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.chartSpace.Legends.Add(legend11);
-            this.chartSpace.Location = new System.Drawing.Point(13, 19);
-            this.chartSpace.Name = "chartSpace";
-            this.chartSpace.Size = new System.Drawing.Size(438, 316);
-            this.chartSpace.TabIndex = 0;
-            this.chartSpace.Text = "chart1";
-            this.chartSpace.Click += new System.EventHandler(this.chartSpace_Click);
-            this.chartSpace.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartSpace_MouseClick);
-            // 
-            // chartSpeed
-            // 
-            this.chartSpeed.BackColor = System.Drawing.Color.Black;
-            this.chartSpeed.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea12.Name = "ChartArea1";
-            this.chartSpeed.ChartAreas.Add(chartArea12);
-            legend12.Name = "Legend1";
-            this.chartSpeed.Legends.Add(legend12);
-            this.chartSpeed.Location = new System.Drawing.Point(457, 19);
-            this.chartSpeed.Name = "chartSpeed";
-            this.chartSpeed.Size = new System.Drawing.Size(402, 316);
-            this.chartSpeed.TabIndex = 1;
-            this.chartSpeed.Text = "chart2";
-            this.chartSpeed.Click += new System.EventHandler(this.chartSpeed_Click);
             // 
             // buttonLogo
             // 
@@ -939,6 +918,41 @@
             this.groupBoxExperimento.TabStop = false;
             this.groupBoxExperimento.Text = "Experimento";
             // 
+            // labelY
+            // 
+            this.labelY.AutoSize = true;
+            this.labelY.BackColor = System.Drawing.Color.Black;
+            this.labelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelY.Location = new System.Drawing.Point(2, 15);
+            this.labelY.Name = "labelY";
+            this.labelY.Size = new System.Drawing.Size(11, 12);
+            this.labelY.TabIndex = 16;
+            this.labelY.Text = "Y";
+            this.labelY.Visible = false;
+            this.labelY.Click += new System.EventHandler(this.labelY_Click);
+            // 
+            // labelZero
+            // 
+            this.labelZero.AutoSize = true;
+            this.labelZero.BackColor = System.Drawing.Color.Transparent;
+            this.labelZero.Location = new System.Drawing.Point(12, 595);
+            this.labelZero.Name = "labelZero";
+            this.labelZero.Size = new System.Drawing.Size(14, 13);
+            this.labelZero.TabIndex = 15;
+            this.labelZero.Text = "0";
+            this.labelZero.Visible = false;
+            this.labelZero.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // pictureBoxAx
+            // 
+            this.pictureBoxAx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(139)))), ((int)(((byte)(141)))));
+            this.pictureBoxAx.Location = new System.Drawing.Point(1, 609);
+            this.pictureBoxAx.Name = "pictureBoxAx";
+            this.pictureBoxAx.Size = new System.Drawing.Size(18, 2);
+            this.pictureBoxAx.TabIndex = 14;
+            this.pictureBoxAx.TabStop = false;
+            this.pictureBoxAx.Visible = false;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
@@ -1016,18 +1030,6 @@
             this.pictureBoxCorpo.TabStop = false;
             this.pictureBoxCorpo.Click += new System.EventHandler(this.pictureBoxCorpo_Click);
             // 
-            // pictureBoxSetaX
-            // 
-            this.pictureBoxSetaX.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.pictureBoxSetaX.Image = global::freeFall.Properties.Resources.setaX;
-            this.pictureBoxSetaX.Location = new System.Drawing.Point(1, 605);
-            this.pictureBoxSetaX.Name = "pictureBoxSetaX";
-            this.pictureBoxSetaX.Size = new System.Drawing.Size(331, 10);
-            this.pictureBoxSetaX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxSetaX.TabIndex = 8;
-            this.pictureBoxSetaX.TabStop = false;
-            this.pictureBoxSetaX.Visible = false;
-            // 
             // pictureBoxGauge
             // 
             this.pictureBoxGauge.BackColor = System.Drawing.Color.Transparent;
@@ -1051,6 +1053,30 @@
             this.pictureBoxResistence.TabIndex = 13;
             this.pictureBoxResistence.TabStop = false;
             this.pictureBoxResistence.Visible = false;
+            // 
+            // pictureBoxSetaX
+            // 
+            this.pictureBoxSetaX.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.pictureBoxSetaX.Image = global::freeFall.Properties.Resources.setaX;
+            this.pictureBoxSetaX.Location = new System.Drawing.Point(1, 605);
+            this.pictureBoxSetaX.Name = "pictureBoxSetaX";
+            this.pictureBoxSetaX.Size = new System.Drawing.Size(331, 10);
+            this.pictureBoxSetaX.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxSetaX.TabIndex = 8;
+            this.pictureBoxSetaX.TabStop = false;
+            this.pictureBoxSetaX.Visible = false;
+            // 
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.BackColor = System.Drawing.Color.Transparent;
+            this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX.Location = new System.Drawing.Point(321, 592);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(12, 12);
+            this.labelX.TabIndex = 17;
+            this.labelX.Text = "X";
+            this.labelX.Visible = false;
             // 
             // timerAnimation
             // 
@@ -1118,60 +1144,13 @@
             // 
             this.timerLog.Tick += new System.EventHandler(this.timerLog_Tick);
             // 
-            // pictureBoxAx
-            // 
-            this.pictureBoxAx.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(139)))), ((int)(((byte)(141)))));
-            this.pictureBoxAx.Location = new System.Drawing.Point(1, 609);
-            this.pictureBoxAx.Name = "pictureBoxAx";
-            this.pictureBoxAx.Size = new System.Drawing.Size(18, 2);
-            this.pictureBoxAx.TabIndex = 14;
-            this.pictureBoxAx.TabStop = false;
-            this.pictureBoxAx.Visible = false;
-            // 
-            // labelZero
-            // 
-            this.labelZero.AutoSize = true;
-            this.labelZero.BackColor = System.Drawing.Color.Transparent;
-            this.labelZero.Location = new System.Drawing.Point(12, 595);
-            this.labelZero.Name = "labelZero";
-            this.labelZero.Size = new System.Drawing.Size(14, 13);
-            this.labelZero.TabIndex = 15;
-            this.labelZero.Text = "0";
-            this.labelZero.Visible = false;
-            this.labelZero.Click += new System.EventHandler(this.label13_Click);
-            // 
-            // labelY
-            // 
-            this.labelY.AutoSize = true;
-            this.labelY.BackColor = System.Drawing.Color.Black;
-            this.labelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelY.Location = new System.Drawing.Point(2, 15);
-            this.labelY.Name = "labelY";
-            this.labelY.Size = new System.Drawing.Size(11, 12);
-            this.labelY.TabIndex = 16;
-            this.labelY.Text = "Y";
-            this.labelY.Visible = false;
-            this.labelY.Click += new System.EventHandler(this.labelY_Click);
-            // 
-            // labelX
-            // 
-            this.labelX.AutoSize = true;
-            this.labelX.BackColor = System.Drawing.Color.Transparent;
-            this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX.Location = new System.Drawing.Point(321, 592);
-            this.labelX.Name = "labelX";
-            this.labelX.Size = new System.Drawing.Size(12, 12);
-            this.labelX.TabIndex = 17;
-            this.labelX.Text = "X";
-            this.labelX.Visible = false;
-            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1225, 621);
+            this.ClientSize = new System.Drawing.Size(1223, 621);
             this.Controls.Add(this.groupBoxData);
             this.Controls.Add(this.groupBoxControl);
             this.Controls.Add(this.groupBoxGraficos);
@@ -1189,8 +1168,6 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Simulator_KeyDown);
             this.groupBoxGraficos.ResumeLayout(false);
             this.groupBoxGraficos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).EndInit();
             this.groupBoxResultados.ResumeLayout(false);
             this.groupBoxResultados.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).EndInit();
@@ -1212,6 +1189,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).EndInit();
             this.groupBoxExperimento.ResumeLayout(false);
             this.groupBoxExperimento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxVacuum.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVacuum)).EndInit();
@@ -1219,12 +1197,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoPaper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridDataView)).EndInit();
             this.groupBoxData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAx)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1253,8 +1230,6 @@
         private System.Windows.Forms.GroupBox groupBoxControl;
         private System.Windows.Forms.Button BTNIniciar;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpeed;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartSpace;
         private System.Windows.Forms.PictureBox pictureBoxBack;
         private System.Windows.Forms.PictureBox pictureBoxNext;
         private System.Windows.Forms.CheckBox checkBoxPaper;
@@ -1314,5 +1289,7 @@
         private System.Windows.Forms.Label labelZero;
         private System.Windows.Forms.Label labelY;
         private System.Windows.Forms.Label labelX;
+        private System.Windows.Forms.Panel panelSpace;
+        private System.Windows.Forms.Panel panelSpeed;
     }
 }
