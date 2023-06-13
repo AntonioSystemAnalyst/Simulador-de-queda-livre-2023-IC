@@ -13,9 +13,11 @@ namespace freeFall
 {
     public partial class GraficSpaceWindow : Form
     {
+        Space windowSpace;
         public GraficSpaceWindow()
         {
             InitializeComponent();
+            //colorAll();
         }
 
         private void GraficSpaceWindow_Load(object sender, EventArgs e)
@@ -23,6 +25,17 @@ namespace freeFall
 
         }
 
+        public void grafic3dSpace(int op)
+        {
+            if(op == 0)
+            {
+                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
+            }
+            else
+            {
+                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
+            }
+        }
 
         public void addPointCorpo(int countGrafic)
         {
@@ -30,11 +43,11 @@ namespace freeFall
         }
         public void addPointPaper(int countGrafic)
         {
-            chartSpace.Series["Paper"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
+            chartSpace.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Space[countGrafic]);
         }
         public void addPointVaccum(int countGrafic)
         {
-            chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
+            chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
         }
 
         public void colorAll()
@@ -178,6 +191,15 @@ namespace freeFall
                 chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
                 chartSpace.Series[0].IsVisibleInLegend = false;
                 chartSpace.Series["Objeto no vácuo"].Points.AddXY(0, 0);
+            }
+        }
+
+        private void chartSpace_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (Program.openGraficsControl == 1)
+            {
+                windowSpace = new Space();
+                windowSpace.Show();
             }
         }
 

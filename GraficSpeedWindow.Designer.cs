@@ -47,6 +47,7 @@
             this.chartSpeed.Size = new System.Drawing.Size(367, 304);
             this.chartSpeed.TabIndex = 2;
             this.chartSpeed.Text = "chart1";
+            this.chartSpeed.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartSpeed_MouseClick);
             // 
             // GraficSpeedWindow
             // 

@@ -74,7 +74,6 @@
             this.comboPaper = new System.Windows.Forms.ComboBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
             this.checkBoxPaper = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrafico = new System.Windows.Forms.CheckBox();
             this.checkBoxResistance = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.LbAltura = new System.Windows.Forms.Label();
@@ -535,7 +534,6 @@
             this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxEixo);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxPaper);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafico);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistance);
             this.groupBoxConfiguracao.Controls.Add(this.label6);
             this.groupBoxConfiguracao.Controls.Add(this.LbAltura);
@@ -575,7 +573,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(157, 187);
+            this.checkBox3D.Location = new System.Drawing.Point(8, 189);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -599,7 +597,7 @@
             // 
             this.buttonResistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonResistencia.ForeColor = System.Drawing.Color.Black;
-            this.buttonResistencia.Location = new System.Drawing.Point(11, 244);
+            this.buttonResistencia.Location = new System.Drawing.Point(8, 244);
             this.buttonResistencia.Name = "buttonResistencia";
             this.buttonResistencia.Size = new System.Drawing.Size(156, 24);
             this.buttonResistencia.TabIndex = 39;
@@ -640,7 +638,7 @@
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(92, 212);
+            this.buttonData.Location = new System.Drawing.Point(89, 212);
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(75, 26);
             this.buttonData.TabIndex = 30;
@@ -653,7 +651,7 @@
             // 
             this.buttonBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBall.ForeColor = System.Drawing.Color.Black;
-            this.buttonBall.Location = new System.Drawing.Point(11, 212);
+            this.buttonBall.Location = new System.Drawing.Point(8, 212);
             this.buttonBall.Name = "buttonBall";
             this.buttonBall.Size = new System.Drawing.Size(75, 26);
             this.buttonBall.TabIndex = 31;
@@ -695,7 +693,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(95, 187);
+            this.checkBoxEixo.Location = new System.Drawing.Point(54, 189);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -715,18 +713,6 @@
             this.checkBoxPaper.CheckedChanged += new System.EventHandler(this.checkBoxLeaf_CheckedChanged);
             this.checkBoxPaper.CheckStateChanged += new System.EventHandler(this.checkBoxLeaf_CheckStateChanged);
             this.checkBoxPaper.MouseHover += new System.EventHandler(this.checkBoxLeaf_MouseHover);
-            // 
-            // checkBoxGrafico
-            // 
-            this.checkBoxGrafico.AutoSize = true;
-            this.checkBoxGrafico.Location = new System.Drawing.Point(8, 187);
-            this.checkBoxGrafico.Name = "checkBoxGrafico";
-            this.checkBoxGrafico.Size = new System.Drawing.Size(73, 17);
-            this.checkBoxGrafico.TabIndex = 28;
-            this.checkBoxGrafico.Text = "Gráficos";
-            this.checkBoxGrafico.UseVisualStyleBackColor = true;
-            this.checkBoxGrafico.CheckedChanged += new System.EventHandler(this.checkBoxGrafico_CheckedChanged);
-            this.checkBoxGrafico.MouseHover += new System.EventHandler(this.checkBoxGrafico_MouseHover);
             // 
             // checkBoxResistance
             // 
@@ -1235,7 +1221,6 @@
         private System.Windows.Forms.CheckBox checkBoxPaper;
         private System.Windows.Forms.CheckBox checkBoxResistance;
         private System.Windows.Forms.CheckBox checkBoxEixo;
-        private System.Windows.Forms.CheckBox checkBoxGrafico;
         private System.Windows.Forms.TrackBar trackBarColors;
         private System.Windows.Forms.Button buttonBall;
         private System.Windows.Forms.Button buttonData;

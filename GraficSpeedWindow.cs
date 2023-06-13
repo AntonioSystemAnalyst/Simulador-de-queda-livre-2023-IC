@@ -13,10 +13,25 @@ namespace freeFall
 {
     public partial class GraficSpeedWindow : Form
     {
+        Speed windowSpeed;
+
         public GraficSpeedWindow()
         {
             InitializeComponent();
         }
+
+        public void grafic3dSpeed(int op)
+        {
+            if (op == 0)
+            {
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
+            }
+            else
+            {
+                chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
+            }
+        }
+
 
         public void addPointCorpo(int countGrafic)
         {
@@ -24,7 +39,7 @@ namespace freeFall
         }
         public void addPointPaper(int countGrafic)
         {
-            chartSpeed.Series["Paper"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+            chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
         }
         public void addPointVaccum(int countGrafic)
         {
@@ -172,6 +187,15 @@ namespace freeFall
                 chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
                 chartSpeed.Series["Objeto no vácuo"].Points.AddXY(0, 0);
+            }
+        }
+
+        public void chartSpeed_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (Program.openGraficsControl == 1)
+            {
+                windowSpeed = new Speed();
+                windowSpeed.Show();
             }
         }
 

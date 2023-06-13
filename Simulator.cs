@@ -75,7 +75,6 @@ namespace freeFall
 
             calculateValues();
             receveidGreatestValueTime();
-            CountDivisibleByValue(20);
 
             dataGridConfigure();
             loadData();
@@ -112,13 +111,13 @@ namespace freeFall
             {
                 windowSpace.Close();
                 windowSpace = null;
-                openGraficsControl = 1;
+                Program.openGraficsControl = 1;
             }
             if (windowSpeed != null && !windowSpeed.IsDisposed)
             {
                 windowSpeed.Close();
                 windowSpeed = null;
-                openGraficsControl = 1;
+                Program.openGraficsControl = 1;
             }
         }
 
@@ -300,7 +299,7 @@ namespace freeFall
                 {
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
-                    openGraficsControl = 1;
+                    Program.openGraficsControl = 1;
                     labelGraficDetails.Visible = true;
                     enabledConfigure(0);
                 }
@@ -321,7 +320,7 @@ namespace freeFall
                 timerAnimationPaper.Enabled = false;
                 BTNIniciar.Text = "Posicionar";
                 buttonStartControl = 3;
-                openGraficsControl = 1;
+                Program.openGraficsControl = 1;
                 labelGraficDetails.Visible = true;
                 enabledConfigure(0);
             }
@@ -342,7 +341,7 @@ namespace freeFall
                 timerAnimationVacuum.Enabled = false;
                 BTNIniciar.Text = "Posicionar";
                 buttonStartControl = 3;
-                openGraficsControl = 1;
+                Program.openGraficsControl = 1;
                 labelGraficDetails.Visible = true;
                 enabledConfigure(0);
             }
@@ -385,16 +384,16 @@ namespace freeFall
             {
                 if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    spaceWindow.addPointPaper(countPaper);
-                    speedWindow.addPointPaper(countPaper);
+                    spaceWindow.addPointPaper(countGrafic);
+                    speedWindow.addPointPaper(countGrafic);
                 }
             }
             if (Program.vaccumOn)
             {
                 if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    spaceWindow.addPointVaccum(countPaper);
-                    speedWindow.addPointVaccum(countPaper);
+                    spaceWindow.addPointVaccum(countGrafic);
+                    speedWindow.addPointVaccum(countGrafic);
                 }
             }
             countGrafic = countGrafic + 1;
@@ -403,42 +402,9 @@ namespace freeFall
                 timerGrafic.Enabled = false;
             }
         }
-        public void CountDivisibleByValue(int value)
-        {
-            int count = 1, contVetor = 0;
 
-            for (int i = 0; i <= Program.numberOfPoints; i++)
-            {
-                if (i % value == 0)
-                {
-                    count++;
-                }
-            }
-            Program.vetorCountPointGrafic = new int[count+2];
-            Program.vetorCountPointGrafic[0] = 0;
-            for (int i = 0; i <= Program.numberOfPoints; i++)
-            {
-                if (i % value == 0)
-                {
-                    Program.vetorCountPointGrafic[contVetor] = i;
-                    contVetor++;
-                }
-            }
-
-        }
         public void updateGrafic(int countGrafic, int op)
         {
-            int lastIndexSpace, lastIndexSpeed, i;
-            bool status = false;
-            for(i=0; i<Program.vetorCountPointGrafic.Length; i++)
-            {
-                if(countGrafic == Program.vetorCountPointGrafic[i])
-                {
-                    status = true;
-                }
-            }
-            if(status)
-            {
                 if (op == 0)
                 {
                     if (Program.bodyOn)
@@ -455,8 +421,8 @@ namespace freeFall
                     {
                         if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            //chartSpace.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Space[countGrafic]);
-                            //chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Velocity[countGrafic]);
+                            spaceWindow.spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 1);
+                            speedWindow.speedGraphic(countGrafic, 0, Program.paper.FinalVelocity + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 1);
 
                         }
                     }
@@ -464,8 +430,8 @@ namespace freeFall
                     {
                         if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            //chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
-                            //chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
+                            spaceWindow.spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 1);
+                            speedWindow.speedGraphic(countGrafic, 0, Program.vaccum.FinalVelocity + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 1);
 
                         }
                     }
@@ -476,19 +442,16 @@ namespace freeFall
                     {
                         if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            //spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
-                            //speedGraphic(countGrafic, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
-                            Console.WriteLine("Space - countGrafic -: " + countGrafic);
+                            spaceWindow.spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
+                            speedWindow.speedGraphic(countGrafic, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 1);
                         }
                     }
                     if (Program.paperOn)
                     {
                         if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            //lastIndexSpace = chartSpace.Series["Papel"].Points.Count - 1;
-                            //chartSpace.Series["Papel"].Points.RemoveAt(lastIndexSpace);
-                           // lastIndexSpeed = chartSpeed.Series["Papel"].Points.Count - 1;
-                            //chartSpeed.Series["Papel"].Points.RemoveAt(lastIndexSpeed);
+                            spaceWindow.spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 1);
+                            speedWindow.speedGraphic(countGrafic, 0, Program.paper.FinalVelocity + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 1);
 
                         }
                     }
@@ -496,14 +459,11 @@ namespace freeFall
                     {
                         if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                         {
-                            //lastIndexSpace = chartSpace.Series["Objeto no vácuo"].Points.Count - 1;
-                            //chartSpace.Series["Objeto no vácuo"].Points.RemoveAt(lastIndexSpace);
-                           // lastIndexSpeed = chartSpeed.Series["Objeto no vácuo"].Points.Count - 1;
-                           // chartSpeed.Series["Objeto no vácuo"].Points.RemoveAt(lastIndexSpeed);
+                            spaceWindow.spaceGraphic(countGrafic, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 1);
+                            speedWindow.speedGraphic(countGrafic, 0, Program.vaccum.FinalVelocity + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 1);
                         }
                     }
                 }
-            }
         }
 
         private void timerEixos_Tick(object sender, EventArgs e)
@@ -538,18 +498,17 @@ namespace freeFall
                 clear();
                 closeAllWindows();
                 calculateValues();
+                spaceWindow.buildGrafic();
+                speedWindow.buildGrafic();
                 receveidGreatestValueTime();
-                CountDivisibleByValue(20);
                 enabledConfigure(1);
                 loadData();
                 startGrid();
                 Flip();
-                spaceWindow.buildGrafic();
-                speedWindow.buildGrafic();
                 animation();
                 BTNIniciar.Text = "Parar";
                 buttonStartControl = 1;
-                openGraficsControl = 0;
+                Program.openGraficsControl = 0;
                 labelGraficDetails.Visible = false;
             }
             else
@@ -812,7 +771,7 @@ namespace freeFall
 
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
-            if (openGraficsControl == 1)
+            if (Program.openGraficsControl == 1)
             {
                 windowSpace = new Space();
                 windowSpace.Show();
@@ -820,7 +779,7 @@ namespace freeFall
         }
         private void chartSpeed_Click(object sender, EventArgs e)
         {
-            if (openGraficsControl == 1)
+            if (Program.openGraficsControl == 1)
             {
                 windowSpeed = new Speed();
                 windowSpeed.Show();
@@ -1158,11 +1117,6 @@ namespace freeFall
         private void checkBoxResistance_MouseHover(object sender, EventArgs e)
         {
             toolTip.SetToolTip(checkBoxResistance, "Adiciona a resistência do ar ao experimênto.");
-        }
-
-        private void checkBoxGrafico_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxGrafico, "Adiciona animação aos gráficos.");
         }
 
         private void checkBoxEixo_MouseHover(object sender, EventArgs e)
@@ -1603,13 +1557,13 @@ namespace freeFall
         {
             if (checkBox3D.Checked)
             {
-                //chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
-                //chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = true;
+                spaceWindow.grafic3dSpace(0);
+                speedWindow.grafic3dSpeed(0);
             }
             else
             {
-                //chartSpace.ChartAreas[0].Area3DStyle.Enable3D = false;
-                //chartSpeed.ChartAreas[0].Area3DStyle.Enable3D = false;
+                spaceWindow.grafic3dSpace(1);
+                speedWindow.grafic3dSpeed(1);
             }
         }
         public void colorAll()

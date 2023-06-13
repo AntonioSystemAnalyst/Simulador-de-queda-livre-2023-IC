@@ -36,7 +36,10 @@ namespace freeFall
         public static int numberOfPoints = 0;
 
         // vetor para controlar o contador de graficos
-        public static int[] vetorCountPointGrafic;  
+        public static int[] vetorCountPointGrafic;
+        
+        // controla o momento que os graficos sao abertos
+        public static int openGraficsControl = 0;
 
         public static bool bodyOn = true;
         public static bool paperOn = false;
