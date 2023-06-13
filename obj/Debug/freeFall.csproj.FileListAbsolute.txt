@@ -35,3 +35,4 @@ E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.InitialView.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.GraficSpaceWindow.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.GraficSpeedWindow.resources
+E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.AnimationWindow.resources

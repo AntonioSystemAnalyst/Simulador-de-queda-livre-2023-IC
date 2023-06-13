@@ -112,6 +112,7 @@
             this.timerRight = new System.Windows.Forms.Timer(this.components);
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
             this.timerLog = new System.Windows.Forms.Timer(this.components);
+            this.panelAnimation = new System.Windows.Forms.Panel();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -699,6 +700,7 @@
             this.checkBoxEixo.TabIndex = 29;
             this.checkBoxEixo.Text = "Eixos";
             this.checkBoxEixo.UseVisualStyleBackColor = true;
+            this.checkBoxEixo.CheckStateChanged += new System.EventHandler(this.checkBoxEixo_CheckStateChanged);
             this.checkBoxEixo.MouseHover += new System.EventHandler(this.checkBoxEixo_MouseHover);
             // 
             // checkBoxPaper
@@ -897,7 +899,7 @@
             this.groupBoxExperimento.Controls.Add(this.labelX);
             this.groupBoxExperimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxExperimento.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxExperimento.Location = new System.Drawing.Point(883, 1);
+            this.groupBoxExperimento.Location = new System.Drawing.Point(1267, 1);
             this.groupBoxExperimento.Name = "groupBoxExperimento";
             this.groupBoxExperimento.Size = new System.Drawing.Size(337, 618);
             this.groupBoxExperimento.TabIndex = 5;
@@ -1130,13 +1132,22 @@
             // 
             this.timerLog.Tick += new System.EventHandler(this.timerLog_Tick);
             // 
+            // panelAnimation
+            // 
+            this.panelAnimation.BackColor = System.Drawing.Color.Transparent;
+            this.panelAnimation.Location = new System.Drawing.Point(880, 1);
+            this.panelAnimation.Name = "panelAnimation";
+            this.panelAnimation.Size = new System.Drawing.Size(365, 618);
+            this.panelAnimation.TabIndex = 12;
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1223, 621);
+            this.ClientSize = new System.Drawing.Size(1608, 621);
+            this.Controls.Add(this.panelAnimation);
             this.Controls.Add(this.groupBoxData);
             this.Controls.Add(this.groupBoxControl);
             this.Controls.Add(this.groupBoxGraficos);
@@ -1276,5 +1287,6 @@
         private System.Windows.Forms.Label labelX;
         private System.Windows.Forms.Panel panelSpace;
         private System.Windows.Forms.Panel panelSpeed;
+        private System.Windows.Forms.Panel panelAnimation;
     }
 }

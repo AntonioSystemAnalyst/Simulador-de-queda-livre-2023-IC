@@ -59,6 +59,7 @@ namespace freeFall
 
         GraficSpaceWindow spaceWindow = new GraficSpaceWindow();
         GraficSpeedWindow speedWindow = new GraficSpeedWindow();
+        AnimationWindow animationWindow = new AnimationWindow();
 
         public static int[] Ax = new int[15];
         public Simulator()
@@ -98,6 +99,12 @@ namespace freeFall
             speedWindow.Dock = DockStyle.Fill;
             panelSpeed.Controls.Add(speedWindow);
             speedWindow.Show();
+
+            animationWindow.TopLevel = false;
+            animationWindow.FormBorderStyle = FormBorderStyle.None;
+            animationWindow.Dock = DockStyle.Fill;
+            panelAnimation.Controls.Add(animationWindow);
+            animationWindow.Show();
         }
         private void closeAllWindows()
         {
@@ -179,6 +186,9 @@ namespace freeFall
             pictureBoxCorpo.Location = new Point(145, 30);
             pictureBoxCorpoPaper.Location = new Point(222, 30);
             pictureBoxVacuum.Location = new Point(16, 13);
+
+
+            animationWindow.clearPostion();
 
             countVaccum = 0;
             countPaper  = 0;
@@ -285,6 +295,7 @@ namespace freeFall
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+            animationWindow.animationCorpo(countBody);
             txtEspaco.Text = "" + Math.Round(-1 * (Math.Round(Program.corpo.Space[countBody], 3) - Program.height),2);
             txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
             if (greatestValueTime == 1 || greatestValueTime == 0)
@@ -308,6 +319,7 @@ namespace freeFall
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
             pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
+            animationWindow.animationPaper(countPaper);
             textBoxPaperHeight.Text = "" + Math.Round(-1 * (Math.Round(Program.paper.Space[countPaper], 3)- Program.height), 2);
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
             if (greatestValueTime == 2)
@@ -329,6 +341,7 @@ namespace freeFall
         private void timerAnimationVacuum_Tick(object sender, EventArgs e)
         {
             pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
+            animationWindow.animationVaccum(countVaccum);
             textBoxVaccumHeight.Text = "" + Math.Round(-1 * (Math.Round(Program.vaccum.Space[countVaccum], 3)- Program.height),2);
             textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
             if (greatestValueTime == 3)
@@ -468,26 +481,7 @@ namespace freeFall
 
         private void timerEixos_Tick(object sender, EventArgs e)
         {
-            if (checkBoxEixo.Checked)
-            {
-                pictureBoxSetaY.Visible = true;
-                pictureBoxSetaX.Visible = true;
-                pictureBoxBase.Visible  = false;
-                pictureBoxAx.Visible    = true;
-                labelZero.Visible       = true;
-                labelY.Visible          = true;
-                labelX.Visible          = true;
-            }
-            else
-            {
-                pictureBoxSetaY.Visible = false;
-                pictureBoxSetaX.Visible = false;
-                pictureBoxBase.Visible  = true;
-                pictureBoxAx.Visible    = false;
-                labelZero.Visible       = false;
-                labelY.Visible          = false;
-                labelX.Visible          = false;
-            }
+           
         }
 
         private void BTNIniciar_Click(object sender, EventArgs e)
@@ -687,8 +681,8 @@ namespace freeFall
             {
                 comboBoxVacuum.Enabled = true;
                 groupBoxVacuum.Visible = true;
+                animationWindow.picutureVaccum(0);
                 pictureBoxVacuum.Visible = true;
-                pictureBoxGauge.Visible = true;
                 Program.vaccumOn = true;
                 textBoxVaccumHeight.Text = "";
                 textBoxVaccumVelocity.Text = "";
@@ -697,8 +691,8 @@ namespace freeFall
             {
                 comboBoxVacuum.Enabled = false;
                 groupBoxVacuum.Visible = false;
+                animationWindow.picutureVaccum(1);
                 pictureBoxVacuum.Visible = false;
-                pictureBoxGauge.Visible = false;
                 Program.vaccumOn = false;
                 textBoxVaccumHeight.Text = " --";
                 textBoxVaccumVelocity.Text = " --";
@@ -711,6 +705,7 @@ namespace freeFall
             {
                 comboPaper.Enabled = true;
                 pictureBoxCorpoPaper.Visible = true;
+                animationWindow.picuturePaper(0);
                 Program.paperOn = true;
                 textBoxPaperHeight.Text = "";
                 textBoxPaperVelocity.Text = "";
@@ -719,6 +714,7 @@ namespace freeFall
             {
                 comboPaper.Enabled = false;
                 pictureBoxCorpoPaper.Visible = false;
+                animationWindow.picuturePaper(1);
                 Program.paperOn = false;
                 textBoxPaperHeight.Text = " --";
                 textBoxPaperVelocity.Text = " --";
@@ -729,12 +725,13 @@ namespace freeFall
         {
             if (comboBoxVacuum.Text == "Bóla")
             {
-                pictureBoxVacuum.Image = pictureBoxCorpo.Image;
+                animationWindow.vacuumSelectedValueChange(0);
                 pictureBoxVaccumObject.Image = pictureBoxCorpo.Image;
                 flagVaccumObject = 1;
             }
             else
             {
+                animationWindow.vacuumSelectedValueChange(1);
                 pictureBoxVacuum.Image = Properties.Resources.paper2;
                 pictureBoxVaccumObject.Image = Properties.Resources.paper2;
                 flagVaccumObject = 0;
@@ -746,11 +743,13 @@ namespace freeFall
             if (comboPaper.Text == "Aberta")
             {
                 pictureBoxCorpoPaper.Image = Properties.Resources.paper2;
+                animationWindow.pictureBoxCorpoPaperSelected(0);
                 pictureBoxPaper.Image = Properties.Resources.paper2;
             }
             else
             {
                 pictureBoxCorpoPaper.Image = Properties.Resources.paper3;
+                animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
             }
         }
@@ -760,11 +759,13 @@ namespace freeFall
             if (checkBoxResistance.Checked)
             {
                 pictureBoxResistence.Visible = true;
+                animationWindow.picutureResistence(0);
                 Program.airResistance = 1;
             }
             else
             {
                 pictureBoxResistence.Visible = false;
+                animationWindow.picutureResistence(1);
                 Program.airResistance = 0;
             }
         }
@@ -798,6 +799,7 @@ namespace freeFall
                     pictureBoxVacuum.Image = Properties.Resources.corpoBall4;
                     pictureBoxVaccumObject.Image = Properties.Resources.corpoBall4;
                 }
+                animationWindow.picuture(corpoCounter, flagVaccumObject);
             }
             if (corpoCounter == 2)
             {
@@ -805,9 +807,10 @@ namespace freeFall
                 pictureBoxCorpoView.Image = Properties.Resources.corpoBasketball;
                 if (flagVaccumObject == 1)
                 {
-                    pictureBoxVacuum.Image = Properties.Resources.corpoBasketball;
+                    //antimationWindow.pictureBoxVacuum.Image = Properties.Resources.corpoBasketball;
                     pictureBoxVaccumObject.Image = Properties.Resources.corpoBasketball;
                 }
+                animationWindow.picuture(corpoCounter, flagVaccumObject);
             }
             if (corpoCounter == 3)
             {
@@ -818,6 +821,7 @@ namespace freeFall
                     pictureBoxVacuum.Image = Properties.Resources.corpoBowling;
                     pictureBoxVaccumObject.Image = Properties.Resources.corpoBowling;
                 }
+                animationWindow.picuture(corpoCounter, flagVaccumObject);
             }
             if (corpoCounter == 4)
             {
@@ -828,6 +832,7 @@ namespace freeFall
                     pictureBoxVacuum.Image = Properties.Resources.corpoGolf;
                     pictureBoxVaccumObject.Image = Properties.Resources.corpoGolf;
                 }
+                animationWindow.picuture(corpoCounter, flagVaccumObject);
             }
             if (corpoCounter == 5)
             {
@@ -838,6 +843,7 @@ namespace freeFall
                     pictureBoxVacuum.Image = Properties.Resources.corpoSoccer;
                     pictureBoxVaccumObject.Image = Properties.Resources.corpoSoccer;
                 }
+                animationWindow.picuture(corpoCounter, flagVaccumObject);
                 corpoCounter = 0;
             }
         }
@@ -853,6 +859,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonEarth;
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 2)
             {
@@ -861,6 +868,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonMoon;
                 pictureBoxPlanets.Image = Properties.Resources.planetMoon;
                 buttonPlanet.Text = "Lua";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 3)
             {
@@ -869,6 +877,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonMercury;
                 pictureBoxPlanets.Image = Properties.Resources.planetMercury;
                 buttonPlanet.Text = "Mercúrio";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 4)
             {
@@ -877,6 +886,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonVenus;
                 pictureBoxPlanets.Image = Properties.Resources.planetVenus;
                 buttonPlanet.Text = "Vênus";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 5)
             {
@@ -885,6 +895,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonMars;
                 pictureBoxPlanets.Image = Properties.Resources.planetMars;
                 buttonPlanet.Text = "Marte";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 6)
             {
@@ -893,6 +904,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonJupiter;
                 pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
                 buttonPlanet.Text = "Júpter";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 7)
             {
@@ -901,6 +913,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonSaturn;
                 pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
                 buttonPlanet.Text = "Saturno";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 8)
             {
@@ -909,6 +922,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonUranus;
                 pictureBoxPlanets.Image = Properties.Resources.planetUranus;
                 buttonPlanet.Text = "Urano";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 9)
             {
@@ -917,6 +931,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonNeptune;
                 pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
                 buttonPlanet.Text = "Netuno";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 10)
             {
@@ -926,6 +941,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonEarth;
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
+                animationWindow.backgroundPicture(planetCounter);
 
             }
         }
@@ -942,6 +958,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonEarth;
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 2)
             {
@@ -950,6 +967,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonMoon;
                 pictureBoxPlanets.Image = Properties.Resources.planetMoon;
                 buttonPlanet.Text = "Lua";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 3)
             {
@@ -958,18 +976,22 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonMercury;
                 pictureBoxPlanets.Image = Properties.Resources.planetMercury;
                 buttonPlanet.Text = "Mercúrio";
+                animationWindow.backgroundPicture(planetCounter);
             }
             if (planetCounter == 4)
             {
                 txtgravit.Text = "8,87";
                 cmbPlaneta.Text = "Vênus";
+                animationWindow.backgroundPicture(planetCounter);
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonVenus;
                 pictureBoxPlanets.Image = Properties.Resources.planetVenus;
+                buttonPlanet.Text = "Vênus";
             }
             if (planetCounter == 5)
             {
                 txtgravit.Text = "3,71";
                 cmbPlaneta.Text = "Marte";
+                animationWindow.backgroundPicture(planetCounter);
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonMars;
                 pictureBoxPlanets.Image = Properties.Resources.planetMars;
                 buttonPlanet.Text = "Marte";
@@ -978,6 +1000,7 @@ namespace freeFall
             {
                 txtgravit.Text = "24,79";
                 cmbPlaneta.Text = "Júpter";
+                animationWindow.backgroundPicture(planetCounter);
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonJupiter;
                 pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
                 buttonPlanet.Text = "Júpter";
@@ -986,6 +1009,7 @@ namespace freeFall
             {
                 txtgravit.Text = "10,4";
                 cmbPlaneta.Text = "Saturno";
+                animationWindow.backgroundPicture(planetCounter);
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonSaturn;
                 pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
                 buttonPlanet.Text = "Saturno";
@@ -994,6 +1018,7 @@ namespace freeFall
             {
                 txtgravit.Text = "8,87";
                 cmbPlaneta.Text = "Urano";
+                animationWindow.backgroundPicture(planetCounter);
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonUranus;
                 pictureBoxPlanets.Image = Properties.Resources.planetUranus;
                 buttonPlanet.Text = "Urano";
@@ -1002,6 +1027,7 @@ namespace freeFall
             {
                 txtgravit.Text = "11,15";
                 cmbPlaneta.Text = "Netuno";
+                animationWindow.backgroundPicture(planetCounter);
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonNeptune;
                 pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
                 buttonPlanet.Text = "Netuno";
@@ -1012,6 +1038,7 @@ namespace freeFall
                 planetCounter = 9;
                 txtgravit.Text = "11,15";
                 cmbPlaneta.Text = "Netuno";
+                animationWindow.backgroundPicture(planetCounter);
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonNeptune;
                 pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
                 buttonPlanet.Text = "Netuno";
@@ -1620,6 +1647,32 @@ namespace freeFall
         private void labelY_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxEixo_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBoxEixo.Checked)
+            {
+                pictureBoxSetaY.Visible = true;
+                pictureBoxSetaX.Visible = true;
+                pictureBoxBase.Visible = false;
+                pictureBoxAx.Visible = true;
+                labelZero.Visible = true;
+                labelY.Visible = true;
+                labelX.Visible = true;
+                animationWindow.picutureEixos(0);
+            }
+            else
+            {
+                pictureBoxSetaY.Visible = false;
+                pictureBoxSetaX.Visible = false;
+                pictureBoxBase.Visible = true;
+                pictureBoxAx.Visible = false;
+                labelZero.Visible = false;
+                labelY.Visible = false;
+                labelX.Visible = false;
+                animationWindow.picutureEixos(1);
+            }
         }
 
         private void label26_Click(object sender, EventArgs e)

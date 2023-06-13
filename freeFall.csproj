@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimationWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AnimationWindow.Designer.cs">
+      <DependentUpon>AnimationWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="body.cs" />
     <Compile Include="ConfigurePlanet.cs">
       <SubType>Form</SubType>
@@ -118,6 +124,9 @@
     <Compile Include="Speed.Designer.cs">
       <DependentUpon>Speed.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AnimationWindow.resx">
+      <DependentUpon>AnimationWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfigurePlanet.resx">
       <DependentUpon>ConfigurePlanet.cs</DependentUpon>
     </EmbeddedResource>
