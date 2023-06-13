@@ -1163,14 +1163,14 @@ namespace freeFall
         {
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
-                pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                animationWindow.animationCorpo(countBody);
                 txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                 txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
                     textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
                 }
-                pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
+                animationWindow.animationPaper(countPaper);
                 Console.WriteLine(Program.paper.Pixels[countPaper]);
                 textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
                 textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
@@ -1179,7 +1179,7 @@ namespace freeFall
                 {
                     textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
                 }
-                pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
+                animationWindow.animationVaccum(countVaccum);
                 textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
                 textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
                 if (greatestValueTime == 3)
@@ -1192,14 +1192,14 @@ namespace freeFall
             {
                 if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
                 {
-                    pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                    animationWindow.animationCorpo(countBody);
                     txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                     txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
                     if (greatestValueTime == 1 || greatestValueTime == 0)
                     {
                         textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
                     }
-                    pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
+                    animationWindow.animationPaper(countPaper);
                     Console.WriteLine(Program.paper.Pixels[countPaper]);
                     textBoxPaperHeight.Text = "" + Math.Round(Program.paper.Space[countPaper], 3);
                     textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
@@ -1214,14 +1214,14 @@ namespace freeFall
                 {
                     if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
                     {
-                        pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                        animationWindow.animationCorpo(countBody);
                         txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                         txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
                         if (greatestValueTime == 1 || greatestValueTime == 0)
                         {
                             textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
                         }
-                        pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
+                        animationWindow.animationVaccum(countVaccum);
                         textBoxVaccumHeight.Text = "" + Math.Round(Program.vaccum.Space[countVaccum], 3);
                         textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
                         if (greatestValueTime == 3)
@@ -1232,7 +1232,7 @@ namespace freeFall
                     }
                     else
                     {
-                        pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+                        animationWindow.animationCorpo(countBody);
                         txtEspaco.Text = "" + Math.Round(Program.corpo.Space[countBody], 3);
                         txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
                         if (greatestValueTime == 1 || greatestValueTime == 0)
