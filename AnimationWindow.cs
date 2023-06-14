@@ -22,6 +22,11 @@ namespace freeFall
 
         }
 
+        public Image vaccumImage()
+        {
+            return pictureBoxCorpo.Image;
+        }
+
         public void animationCorpo (int countBody)
         {
             pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
