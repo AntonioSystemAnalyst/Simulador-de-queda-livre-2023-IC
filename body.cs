@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace freeFall
 {
@@ -11,7 +13,16 @@ namespace freeFall
         private double finalVelocity = 0.0;
         private double initialVelocity = 0.0;
         private double timeAllExperiment = 0.0;
+        private double dragCoefficient = 0.0;
+        private double terminalVelocity = 0.0;
         private int numberOfTerms = 0;
+        private int mass = 0;
+
+        // --- Para testes
+        private double EspacoVelicidadeLimite = 0.0;
+        private double TempoLimiteChao        = 0.0;
+        // ---
+
 
         private double[] spaceTime;
         private double[] spacePixel;
@@ -122,21 +133,126 @@ namespace freeFall
 
         }
 
-        public void CalculateWithResistence(double height, double gravity, double initialVelocity, double coeficiente)
+        public void CalculateWithResistence(double height, double gravity, double initialVelocity)
+        {
+            int i = 0;
+            double countTime = 0;
+            double term1;
+            double term2;
+            double term3;
+
+            // para testes
+            double Ter1 = 0;
+            double Ter2 = 0;
+            double Ter3 = 0;
+
+            //Velocidade limite
+            Ter1 = (height * dragCoefficient) / mass;
+            Ter2 = Math.Sqrt(mass / (gravity * dragCoefficient));
+            Ter3 = 0.693147 + Ter1; //  ln(2)
+            timeAllExperiment = Ter1 * Ter3;
+
+            // velocidade limite:
+            terminalVelocity = Math.Sqrt((2 * mass * gravity) / dragCoefficient * Program.crossSectionalArea * Program.airDensity);
+
+            //Espaço onde o movimento é mudado
+            EspacoVelicidadeLimite = ((terminalVelocity * terminalVelocity) - (initialVelocity * initialVelocity) / (2 * gravity));
+            //tempo do espaço limite ao chao
+            TempoLimiteChao = EspacoVelicidadeLimite * terminalVelocity;
+
+            //timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
+            numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
+
+            space = new double[numberOfTerms + 200];
+            velocity = new double[numberOfTerms + 200];
+
+            // Espaço 
+            for (i = 0; i < numberOfTerms + 1; i++)
+            {
+                term1 = (gravity * dragCoefficient) / mass;
+                term3 = Math.Cosh((countTime * (Math.Sqrt(term1))));
+                Space[i] = (mass / dragCoefficient) * Math.Log(term3);
+                countTime = countTime + 0.01;
+            }
+            countTime = 0;
+            // Velocidade
+            for (i = 0; i < numberOfTerms + 1; i++)
+            {
+                term1 = Math.Sqrt((mass * gravity) / dragCoefficient);
+                term2 = (gravity * dragCoefficient) / gravity;
+                term3 = (countTime * (Math.Sqrt(term2)));
+                Velocity[i] = term1 * Math.Tanh(term3);
+                countTime = countTime + 0.01;
+            }
+
+            animationVector(534, height);
+        }
+
+        public void CalculateWithResistenceNew(double height, double gravity, double initialVelocity)
         {
             double QtdTempox = Program.timeExperiment / (0.01);
             double QtdSpace = Program.height / 534;
             int timeExperiment = Convert.ToInt32(QtdTempox);
             int i = 0;
-
-            finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
-            timeAllExperiment = (finalVelocity - initialVelocity) / gravity;
+            double countTime = 0;
+            double term1;
+            double term2;
+            double term3;
+            double term4;
+            double velocityPoint;
 
             space = new double[timeExperiment + 2];
             velocity = new double[timeExperiment + 2];
 
+            timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
+            numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
+
+            // Velocidade
+            for (i = 0; i < numberOfTerms + 1; i++)
+            {
+                term1 = Math.Sqrt(Program.gravity / (dragCoefficient * Program.airDensity * Program.crossSectionalArea));
+                term2 = -1 * (Math.Sqrt((dragCoefficient * Program.airDensity * Program.crossSectionalArea) * Program.gravity) * countTime);
+                term3 = Math.Pow(2.71828, term2);
+                term4 = ((1 + term3) / (1 - term3));
+                velocityPoint = term1 * term4;
+
+                velocity[i] = velocityPoint;
+                countTime = countTime + 0.01;
+            }
+            countTime = 0;
         }
 
+        public double CalculateIntegral(double[] valueX, double[] valueY, double[] valueYZ)
+        {
+            double integral = 0;
+            int l = 5;
+            int n = l - 1;
+
+            if (n % 2 != 0)
+            {
+                n--; // Make sure we have an even number of intervals for Simpson's 1/3 rule
+            }
+
+            double h = (valueX[n] - valueY[0]) / n;
+
+            for (int i = 1; i < n; i += 2)
+            {
+                integral += (h / 3) * (valueYZ[i - 1] + 4 * valueYZ[i] + valueYZ[i + 1]);
+            }
+            return integral;
+        }
+
+        public double DragCoefficient
+        {
+            get { return dragCoefficient; }
+            set { dragCoefficient = value; }
+        }
+
+        public int Mass
+        {
+            get { return mass; }
+            set { mass = value; }
+        }
         public int[] Pixels
         {
             get { return pixels; }

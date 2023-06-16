@@ -150,7 +150,7 @@ namespace freeFall
             var chart = chartSpace.ChartAreas[0];
 
             chartSpace.Titles.Add("Espaço pelo tempo");
-            chartSpace.ChartAreas[0].AxisX.Title = "T(s/100)";
+            chartSpace.ChartAreas[0].AxisX.Title = "T(s)";
             chartSpace.ChartAreas[0].AxisY.Title = "S(m)";
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;

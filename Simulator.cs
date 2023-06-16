@@ -281,8 +281,8 @@ namespace freeFall
             }
             else
             {
-                Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0, 1);
-                Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0, 1);
+                Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
+                Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
                 Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
             }
         }
@@ -818,11 +818,9 @@ namespace freeFall
                 corpoCounter = 0;
             }
         }
-        private void pictureBoxNext_Click(object sender, EventArgs e)
+
+        private void planetData()
         {
-            planetCounter += 1;
-            Program.planetCounter = planetCounter;
-            Program.planetNameReceveid(planetCounter);
             if (planetCounter == 1)
             {
                 txtgravit.Text = "9,8";
@@ -830,6 +828,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 1.225;
             }
             if (planetCounter == 2)
             {
@@ -838,6 +837,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetMoon;
                 buttonPlanet.Text = "Lua";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 0;
             }
             if (planetCounter == 3)
             {
@@ -846,6 +846,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetMercury;
                 buttonPlanet.Text = "Mercúrio";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 0.0054;
             }
             if (planetCounter == 4)
             {
@@ -854,6 +855,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetVenus;
                 buttonPlanet.Text = "Vênus";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 67;
             }
             if (planetCounter == 5)
             {
@@ -862,6 +864,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetMars;
                 buttonPlanet.Text = "Marte";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 0.020;
             }
             if (planetCounter == 6)
             {
@@ -870,6 +873,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
                 buttonPlanet.Text = "Júpter";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 0.16;
             }
             if (planetCounter == 7)
             {
@@ -878,6 +882,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
                 buttonPlanet.Text = "Saturno";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 0.13;
             }
             if (planetCounter == 8)
             {
@@ -886,6 +891,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetUranus;
                 buttonPlanet.Text = "Urano";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 0.46;
             }
             if (planetCounter == 9)
             {
@@ -894,173 +900,81 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
                 buttonPlanet.Text = "Netuno";
                 animationWindow.backgroundPicture(planetCounter);
+                Program.airDensity = 0.0054;
             }
             if (planetCounter == 10)
             {
-                planetCounter = 1;
                 txtgravit.Text = "9,8";
                 cmbPlaneta.Text = "Terra";
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
                 animationWindow.backgroundPicture(planetCounter);
-
+                Program.airDensity = 0.45;
             }
         }
+        private void pictureBoxNext_Click(object sender, EventArgs e)
+        {
+            planetCounter += 1;
+            Program.planetCounter = planetCounter;
+            Program.planetNameReceveid(planetCounter);
+            planetData();
+            if (planetCounter == 10)
+            {
+                planetCounter = 1;
+            }
+        }
+
 
         private void pictureBoxBack_Click(object sender, EventArgs e)
         {
             planetCounter -= 1;
             Program.planetCounter = planetCounter;
             Program.planetNameReceveid(planetCounter);
-            if (planetCounter == 1)
-            {
-                txtgravit.Text = "9,8";
-                cmbPlaneta.Text = "Terra";
-                pictureBoxPlanets.Image = Properties.Resources.planetEarth;
-                buttonPlanet.Text = "Terra";
-                animationWindow.backgroundPicture(planetCounter);
-            }
-            if (planetCounter == 2)
-            {
-                txtgravit.Text = "1,624";
-                cmbPlaneta.Text = "Lua";
-                pictureBoxPlanets.Image = Properties.Resources.planetMoon;
-                buttonPlanet.Text = "Lua";
-                animationWindow.backgroundPicture(planetCounter);
-            }
-            if (planetCounter == 3)
-            {
-                txtgravit.Text = "3,7";
-                cmbPlaneta.Text = "Mercúrio";
-                pictureBoxPlanets.Image = Properties.Resources.planetMercury;
-                buttonPlanet.Text = "Mercúrio";
-                animationWindow.backgroundPicture(planetCounter);
-            }
-            if (planetCounter == 4)
-            {
-                txtgravit.Text = "8,87";
-                cmbPlaneta.Text = "Vênus";
-                animationWindow.backgroundPicture(planetCounter);
-                pictureBoxPlanets.Image = Properties.Resources.planetVenus;
-                buttonPlanet.Text = "Vênus";
-            }
-            if (planetCounter == 5)
-            {
-                txtgravit.Text = "3,71";
-                cmbPlaneta.Text = "Marte";
-                animationWindow.backgroundPicture(planetCounter);
-                pictureBoxPlanets.Image = Properties.Resources.planetMars;
-                buttonPlanet.Text = "Marte";
-            }
-            if (planetCounter == 6)
-            {
-                txtgravit.Text = "24,79";
-                cmbPlaneta.Text = "Júpter";
-                animationWindow.backgroundPicture(planetCounter);
-                pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
-                buttonPlanet.Text = "Júpter";
-            }
-            if (planetCounter == 7)
-            {
-                txtgravit.Text = "10,4";
-                cmbPlaneta.Text = "Saturno";
-                animationWindow.backgroundPicture(planetCounter);
-                pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
-                buttonPlanet.Text = "Saturno";
-            }
-            if (planetCounter == 8)
-            {
-                txtgravit.Text = "8,87";
-                cmbPlaneta.Text = "Urano";
-                animationWindow.backgroundPicture(planetCounter);
-                pictureBoxPlanets.Image = Properties.Resources.planetUranus;
-                buttonPlanet.Text = "Urano";
-            }
-            if (planetCounter == 9)
-            {
-                txtgravit.Text = "11,15";
-                cmbPlaneta.Text = "Netuno";
-                animationWindow.backgroundPicture(planetCounter);
-                pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
-                buttonPlanet.Text = "Netuno";
-            }
-
             if (planetCounter == 0)
             {
                 planetCounter = 9;
-                txtgravit.Text = "11,15";
-                cmbPlaneta.Text = "Netuno";
-                animationWindow.backgroundPicture(planetCounter);
-                pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
-                buttonPlanet.Text = "Netuno";
             }
+            planetData();
         }
         private void cmbPlaneta_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbPlaneta.Text == "Terra")
             {
-                txtgravit.Text = "9,8";
-                pictureBoxPlanets.Image = Properties.Resources.planetEarth;
-                buttonPlanet.Text = "Terra";
                 planetCounter = 1;
             }
             if (cmbPlaneta.Text == "Lua")
             {
-                txtgravit.Text = "1,624";
-                pictureBoxPlanets.Image = Properties.Resources.planetMoon;
-                buttonPlanet.Text = "Lua";
                 planetCounter = 2;
             }
             if (cmbPlaneta.Text == "Mercúrio")
             {
-                txtgravit.Text = "3,7";
-                pictureBoxPlanets.Image = Properties.Resources.planetMercury;
-                buttonPlanet.Text = "Mercúrio";
                 planetCounter = 3;
             }
             if (cmbPlaneta.Text == "Vênus")
             {
-                txtgravit.Text = "8,87";
-                pictureBoxPlanets.Image = Properties.Resources.planetVenus;
-                buttonPlanet.Text = "Vênus";
                 planetCounter = 4;
             }
             if (cmbPlaneta.Text == "Marte")
             {
-                txtgravit.Text = "3,71";
-                pictureBoxPlanets.Image = Properties.Resources.planetMars;
-                buttonPlanet.Text = "Marte";
                 planetCounter = 5;
             }
             if (cmbPlaneta.Text == "Júpter")
             {
-                txtgravit.Text = "24,79";
-                pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
-                buttonPlanet.Text = "Júpter";
                 planetCounter = 6;
             }
             if (cmbPlaneta.Text == "Saturno")
             {
-                txtgravit.Text = "10,4";
-                pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
-                buttonPlanet.Text = "Saturno";
                 planetCounter = 7;
             }
             if (cmbPlaneta.Text == "Urano")
             {
-                txtgravit.Text = "8,87";
-                pictureBoxPlanets.Image = Properties.Resources.planetUranus;
-                buttonPlanet.Text = "Urano";
                 planetCounter = 8;
             }
             if (cmbPlaneta.Text == "Netuno")
             {
-                txtgravit.Text = "11,15";
-                pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
-                buttonPlanet.Text = "Netuno";
                 planetCounter = 9;
             }
-
+            planetData();
             Program.planetCounter = planetCounter;
         }
         private void Altura_MouseHover(object sender, EventArgs e)

@@ -145,9 +145,9 @@ namespace freeFall
         {
             var chart = chartSpeed.ChartAreas[0];
 
-            chartSpeed.Titles.Add("Espaço pelo tempo");
-            chartSpeed.ChartAreas[0].AxisX.Title = "T(s/100)";
-            chartSpeed.ChartAreas[0].AxisY.Title = "S(m)";
+            chartSpeed.Titles.Add("Velocidade pelo tempo");
+            chartSpeed.ChartAreas[0].AxisX.Title = "T(s)";
+            chartSpeed.ChartAreas[0].AxisY.Title = "V(m/s)";
             chartSpeed.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
