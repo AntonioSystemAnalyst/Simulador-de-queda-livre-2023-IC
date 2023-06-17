@@ -135,6 +135,51 @@ namespace freeFall
 
         public void CalculateWithResistence(double height, double gravity, double initialVelocity)
         {
+            double countTime = 0;
+            int i = 0;
+
+            finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
+            timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
+            numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
+            numberOfTerms += 150;
+
+            space = new double[numberOfTerms + 2];
+            velocity = new double[numberOfTerms + 2];
+            countTimeExperiment = new double[numberOfTerms + 2];
+
+            spaceTime = new double[numberOfTerms + 2];
+            spacePixel = new double[Convert.ToInt32(534)];
+
+            // Espaço 
+            for (i = 0; i < numberOfTerms + 1; i++)
+            {
+                space[i] = ((initialVelocity * countTime) + (gravity * (countTime * countTime)) / 2);
+                spaceTime[i] = Math.Round(countTime, 3);
+                countTime = countTime + 0.01;
+            }
+
+            countTime = 0;
+
+            // Velocidade
+            for (i = 0; i < numberOfTerms + 1; i++)
+            {
+                velocity[i] = (initialVelocity + (gravity * countTime));
+                countTime = countTime + 0.01;
+            }
+
+            countTime = 0;
+            // time
+            for (i = 0; i < numberOfTerms + 1; i++)
+            {
+                countTimeExperiment[i] = countTime;
+                countTime = countTime + 0.01;
+            }
+
+            animationVector(534, height);
+        }
+
+        public void CalculateWithResistenceVersao2(double height, double gravity, double initialVelocity)
+        {
             int i = 0;
             double countTime = 0;
             double term1;
@@ -188,7 +233,7 @@ namespace freeFall
             animationVector(534, height);
         }
 
-        public void CalculateWithResistenceNew(double height, double gravity, double initialVelocity)
+        public void CalculateWithResistenceVersao1(double height, double gravity, double initialVelocity)
         {
             double QtdTempox = Program.timeExperiment / (0.01);
             double QtdSpace = Program.height / 534;

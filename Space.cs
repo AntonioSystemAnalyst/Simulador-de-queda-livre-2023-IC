@@ -60,21 +60,21 @@ namespace freeFall
                 linha[0] = timeLarge[i];
                 if (Program.bodyOn)
                 {
-                    if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                    if (Program.corpo.NumberOfTerms >= Program.numberOfPoints)
                     {
                         linha[1] = Convert.ToString(Math.Round(Program.corpo.Space[i], 3));
                     }
                 }
                 if (Program.paperOn)
                 {
-                    if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
+                    if (Program.paper.NumberOfTerms >= Program.numberOfPoints)
                     {
                         linha[2] = Convert.ToString(Math.Round(Program.paper.Space[i], 3));
                     }
                 }
                 if (Program.vaccumOn)
                 {
-                    if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
+                    if (Program.vaccum.NumberOfTerms >= Program.numberOfPoints)
                     {
                         linha[3] = Convert.ToString(Math.Round(Program.vaccum.Space[i], 3));
                     }

@@ -281,6 +281,14 @@ namespace freeFall
             }
             else
             {
+                if(Program.crumpledPaper == 0)
+                {
+                    Program.paper.DragCoefficient = 0.7;
+                }
+                else
+                {
+                    Program.paper.DragCoefficient = 0.1;
+                }
                 Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
                 Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
                 Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
@@ -729,11 +737,13 @@ namespace freeFall
             {
                 animationWindow.pictureBoxCorpoPaperSelected(0);
                 pictureBoxPaper.Image = Properties.Resources.paper2;
+                Program.crumpledPaper = 1;
             }
             else
             {
                 animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
+                Program.crumpledPaper = 0;
             }
         }
 

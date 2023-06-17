@@ -28,6 +28,9 @@ namespace freeFall
         // define se tera ou não resistencia do ar
         public static int airResistance = 0;
 
+        // define se o papel esta massado ou não
+        public static int crumpledPaper = 0;
+
         public static string experimentData = ""; // dados do experimento
 
         // define qual tem o maior tempo, corpo = 1, paper = 2, vaccum = 3
