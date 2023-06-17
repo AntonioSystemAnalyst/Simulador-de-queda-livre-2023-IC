@@ -76,7 +76,7 @@ namespace freeFall
 
             if (Program.greatestValueTime == 0)
             {
-                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
+                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height, spaceDiv, Convert.ToInt32(((Program.corpo.TimeAllExperiment))/4), ((Program.corpo.TimeAllExperiment)), 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
@@ -120,7 +120,7 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpace.Series["Bóla"].Points.AddXY(i, Program.corpo.Space[i]);
+                        chartSpace.Series["Bóla"].Points.AddXY(i, Program.corpo.Space[i]);                   
                     }
                 }
             }
