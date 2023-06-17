@@ -37,20 +37,20 @@
             this.dataGridViewGeneral = new System.Windows.Forms.DataGridView();
             this.groupBoxCorpo = new System.Windows.Forms.GroupBox();
             this.groupBoxPaper = new System.Windows.Forms.GroupBox();
+            this.richTextBoxPaper = new System.Windows.Forms.RichTextBox();
             this.groupBoxVaccum = new System.Windows.Forms.GroupBox();
+            this.richTextBoxVaccum = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.richTextBoxPaper = new System.Windows.Forms.RichTextBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.generalData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewGeneral)).BeginInit();
             this.groupBoxCorpo.SuspendLayout();
@@ -58,15 +58,15 @@
             this.groupBoxVaccum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBoxCorpo
@@ -85,12 +85,13 @@
             // 
             this.buttonVetors.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonVetors.ForeColor = System.Drawing.Color.Black;
-            this.buttonVetors.Location = new System.Drawing.Point(272, 312);
+            this.buttonVetors.Location = new System.Drawing.Point(549, 12);
             this.buttonVetors.Name = "buttonVetors";
             this.buttonVetors.Size = new System.Drawing.Size(62, 23);
             this.buttonVetors.TabIndex = 1;
             this.buttonVetors.Text = "Vetors";
             this.buttonVetors.UseVisualStyleBackColor = true;
+            this.buttonVetors.Click += new System.EventHandler(this.buttonVetors_Click);
             // 
             // timerFocus
             // 
@@ -99,7 +100,6 @@
             // generalData
             // 
             this.generalData.BackColor = System.Drawing.Color.Transparent;
-            this.generalData.Controls.Add(this.buttonVetors);
             this.generalData.Controls.Add(this.dataGridViewGeneral);
             this.generalData.ForeColor = System.Drawing.Color.Cyan;
             this.generalData.Location = new System.Drawing.Point(4, 0);
@@ -145,10 +145,22 @@
             this.groupBoxPaper.TabStop = false;
             this.groupBoxPaper.Text = "Paper Data";
             // 
+            // richTextBoxPaper
+            // 
+            this.richTextBoxPaper.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxPaper.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxPaper.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxPaper.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxPaper.Location = new System.Drawing.Point(6, 19);
+            this.richTextBoxPaper.Name = "richTextBoxPaper";
+            this.richTextBoxPaper.Size = new System.Drawing.Size(263, 316);
+            this.richTextBoxPaper.TabIndex = 1;
+            this.richTextBoxPaper.Text = "";
+            // 
             // groupBoxVaccum
             // 
             this.groupBoxVaccum.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxVaccum.Controls.Add(this.richTextBox1);
+            this.groupBoxVaccum.Controls.Add(this.richTextBoxVaccum);
             this.groupBoxVaccum.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxVaccum.Location = new System.Drawing.Point(902, 0);
             this.groupBoxVaccum.Name = "groupBoxVaccum";
@@ -156,6 +168,18 @@
             this.groupBoxVaccum.TabIndex = 5;
             this.groupBoxVaccum.TabStop = false;
             this.groupBoxVaccum.Text = "Vaccum Data";
+            // 
+            // richTextBoxVaccum
+            // 
+            this.richTextBoxVaccum.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxVaccum.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxVaccum.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxVaccum.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxVaccum.Location = new System.Drawing.Point(4, 19);
+            this.richTextBoxVaccum.Name = "richTextBoxVaccum";
+            this.richTextBoxVaccum.Size = new System.Drawing.Size(265, 316);
+            this.richTextBoxVaccum.TabIndex = 2;
+            this.richTextBoxVaccum.Text = "";
             // 
             // pictureBox1
             // 
@@ -171,6 +195,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.buttonVetors);
             this.groupBox1.Controls.Add(this.pictureBox10);
             this.groupBox1.Controls.Add(this.pictureBox9);
             this.groupBox1.Controls.Add(this.pictureBox8);
@@ -187,82 +212,16 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
-            // pictureBox2
+            // pictureBox10
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::freeFall.Properties.Resources.planetVenus;
-            this.pictureBox2.Location = new System.Drawing.Point(126, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::freeFall.Properties.Resources.planetEarth;
-            this.pictureBox3.Location = new System.Drawing.Point(241, 9);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 8;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::freeFall.Properties.Resources.planetMars;
-            this.pictureBox4.Location = new System.Drawing.Point(353, 9);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 9;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox5.Image = global::freeFall.Properties.Resources.planetJupiter;
-            this.pictureBox5.Location = new System.Drawing.Point(598, 9);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 10;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox6.Image = global::freeFall.Properties.Resources.planetSaturn;
-            this.pictureBox6.Location = new System.Drawing.Point(475, 9);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 11;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox7.Image = global::freeFall.Properties.Resources.planetUranus;
-            this.pictureBox7.Location = new System.Drawing.Point(715, 9);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox7.TabIndex = 12;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox8.Image = global::freeFall.Properties.Resources.planetNeptune;
-            this.pictureBox8.Location = new System.Drawing.Point(834, 9);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 13;
-            this.pictureBox8.TabStop = false;
+            this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox10.Image = global::freeFall.Properties.Resources.dfqm;
+            this.pictureBox10.Location = new System.Drawing.Point(950, 9);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 15;
+            this.pictureBox10.TabStop = false;
             // 
             // pictureBox9
             // 
@@ -275,40 +234,82 @@
             this.pictureBox9.TabIndex = 14;
             this.pictureBox9.TabStop = false;
             // 
-            // pictureBox10
+            // pictureBox8
             // 
-            this.pictureBox10.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox10.Image = global::freeFall.Properties.Resources.dfqm;
-            this.pictureBox10.Location = new System.Drawing.Point(950, 9);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(95, 93);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 15;
-            this.pictureBox10.TabStop = false;
+            this.pictureBox8.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox8.Image = global::freeFall.Properties.Resources.planetNeptune;
+            this.pictureBox8.Location = new System.Drawing.Point(834, 9);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 13;
+            this.pictureBox8.TabStop = false;
             // 
-            // richTextBoxPaper
+            // pictureBox7
             // 
-            this.richTextBoxPaper.BackColor = System.Drawing.Color.Black;
-            this.richTextBoxPaper.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxPaper.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBoxPaper.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxPaper.Location = new System.Drawing.Point(6, 19);
-            this.richTextBoxPaper.Name = "richTextBoxPaper";
-            this.richTextBoxPaper.Size = new System.Drawing.Size(263, 316);
-            this.richTextBoxPaper.TabIndex = 1;
-            this.richTextBoxPaper.Text = "";
+            this.pictureBox7.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox7.Image = global::freeFall.Properties.Resources.planetUranus;
+            this.pictureBox7.Location = new System.Drawing.Point(715, 9);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 12;
+            this.pictureBox7.TabStop = false;
             // 
-            // richTextBox1
+            // pictureBox6
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBox1.Location = new System.Drawing.Point(4, 19);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(265, 316);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.pictureBox6.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox6.Image = global::freeFall.Properties.Resources.planetSaturn;
+            this.pictureBox6.Location = new System.Drawing.Point(475, 9);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 11;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox5.Image = global::freeFall.Properties.Resources.planetJupiter;
+            this.pictureBox5.Location = new System.Drawing.Point(598, 9);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 10;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::freeFall.Properties.Resources.planetMars;
+            this.pictureBox4.Location = new System.Drawing.Point(353, 9);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 9;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::freeFall.Properties.Resources.planetEarth;
+            this.pictureBox3.Location = new System.Drawing.Point(241, 9);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 8;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::freeFall.Properties.Resources.planetVenus;
+            this.pictureBox2.Location = new System.Drawing.Point(126, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(95, 93);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
             // 
             // programView
             // 
@@ -335,15 +336,15 @@
             this.groupBoxVaccum.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -370,6 +371,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.RichTextBox richTextBoxPaper;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxVaccum;
     }
 }
