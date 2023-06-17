@@ -36,11 +36,14 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.richTextBoxVaccum = new System.Windows.Forms.RichTextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxCorpoAntimation = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxPaperAnimation = new System.Windows.Forms.RichTextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxVaccumAnimation = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxCorpoAnimationPixel = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxPaperAnimationPixel = new System.Windows.Forms.RichTextBox();
+            this.richTextVaccumAnimationPixel = new System.Windows.Forms.RichTextBox();
             this.Corpo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -55,7 +58,7 @@
             this.Corpo.ForeColor = System.Drawing.Color.Cyan;
             this.Corpo.Location = new System.Drawing.Point(3, 0);
             this.Corpo.Name = "Corpo";
-            this.Corpo.Size = new System.Drawing.Size(502, 193);
+            this.Corpo.Size = new System.Drawing.Size(490, 193);
             this.Corpo.TabIndex = 0;
             this.Corpo.TabStop = false;
             this.Corpo.Text = "Corpo";
@@ -68,7 +71,7 @@
             this.richTextBoxCorpo.ForeColor = System.Drawing.Color.Cyan;
             this.richTextBoxCorpo.Location = new System.Drawing.Point(6, 19);
             this.richTextBoxCorpo.Name = "richTextBoxCorpo";
-            this.richTextBoxCorpo.Size = new System.Drawing.Size(476, 165);
+            this.richTextBoxCorpo.Size = new System.Drawing.Size(463, 165);
             this.richTextBoxCorpo.TabIndex = 1;
             this.richTextBoxCorpo.Text = "";
             // 
@@ -78,7 +81,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Cyan;
             this.groupBox1.Location = new System.Drawing.Point(3, 199);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(502, 184);
+            this.groupBox1.Size = new System.Drawing.Size(490, 184);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Papel";
@@ -91,7 +94,7 @@
             this.richTextBoxPaper.ForeColor = System.Drawing.Color.Cyan;
             this.richTextBoxPaper.Location = new System.Drawing.Point(5, 19);
             this.richTextBoxPaper.Name = "richTextBoxPaper";
-            this.richTextBoxPaper.Size = new System.Drawing.Size(477, 147);
+            this.richTextBoxPaper.Size = new System.Drawing.Size(464, 147);
             this.richTextBoxPaper.TabIndex = 2;
             this.richTextBoxPaper.Text = "";
             // 
@@ -101,7 +104,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Cyan;
             this.groupBox2.Location = new System.Drawing.Point(3, 389);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(502, 184);
+            this.groupBox2.Size = new System.Drawing.Size(490, 184);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Vaco";
@@ -114,78 +117,117 @@
             this.richTextBoxVaccum.ForeColor = System.Drawing.Color.Cyan;
             this.richTextBoxVaccum.Location = new System.Drawing.Point(6, 18);
             this.richTextBoxVaccum.Name = "richTextBoxVaccum";
-            this.richTextBoxVaccum.Size = new System.Drawing.Size(476, 160);
+            this.richTextBoxVaccum.Size = new System.Drawing.Size(463, 160);
             this.richTextBoxVaccum.TabIndex = 2;
             this.richTextBoxVaccum.Text = "";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.richTextBoxCorpoAnimationPixel);
+            this.groupBox3.Controls.Add(this.richTextBoxCorpoAntimation);
             this.groupBox3.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox3.Location = new System.Drawing.Point(511, 0);
+            this.groupBox3.Location = new System.Drawing.Point(499, 0);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(502, 193);
+            this.groupBox3.Size = new System.Drawing.Size(479, 193);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Corpo Anitmation";
+            this.groupBox3.Text = "Corpo Animation";
             // 
-            // richTextBox1
+            // richTextBoxCorpoAntimation
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.Black;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBox1.Location = new System.Drawing.Point(6, 19);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(476, 165);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.richTextBoxCorpoAntimation.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxCorpoAntimation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxCorpoAntimation.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxCorpoAntimation.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxCorpoAntimation.Location = new System.Drawing.Point(10, 18);
+            this.richTextBoxCorpoAntimation.Name = "richTextBoxCorpoAntimation";
+            this.richTextBoxCorpoAntimation.Size = new System.Drawing.Size(220, 165);
+            this.richTextBoxCorpoAntimation.TabIndex = 1;
+            this.richTextBoxCorpoAntimation.Text = "";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.richTextBox2);
+            this.groupBox4.Controls.Add(this.richTextBoxPaperAnimationPixel);
+            this.groupBox4.Controls.Add(this.richTextBoxPaperAnimation);
             this.groupBox4.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox4.Location = new System.Drawing.Point(511, 199);
+            this.groupBox4.Location = new System.Drawing.Point(499, 199);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(502, 184);
+            this.groupBox4.Size = new System.Drawing.Size(479, 184);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Paper Animation";
             // 
-            // richTextBox2
+            // richTextBoxPaperAnimation
             // 
-            this.richTextBox2.BackColor = System.Drawing.Color.Black;
-            this.richTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBox2.Location = new System.Drawing.Point(6, 19);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(476, 147);
-            this.richTextBox2.TabIndex = 1;
-            this.richTextBox2.Text = "";
+            this.richTextBoxPaperAnimation.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxPaperAnimation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxPaperAnimation.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxPaperAnimation.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxPaperAnimation.Location = new System.Drawing.Point(10, 19);
+            this.richTextBoxPaperAnimation.Name = "richTextBoxPaperAnimation";
+            this.richTextBoxPaperAnimation.Size = new System.Drawing.Size(220, 147);
+            this.richTextBoxPaperAnimation.TabIndex = 1;
+            this.richTextBoxPaperAnimation.Text = "";
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.richTextBox3);
+            this.groupBox5.Controls.Add(this.richTextVaccumAnimationPixel);
+            this.groupBox5.Controls.Add(this.richTextBoxVaccumAnimation);
             this.groupBox5.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox5.Location = new System.Drawing.Point(511, 389);
+            this.groupBox5.Location = new System.Drawing.Point(499, 389);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(502, 184);
+            this.groupBox5.Size = new System.Drawing.Size(479, 184);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Corpo Animation";
+            this.groupBox5.Text = "Vaccum Animation";
             // 
-            // richTextBox3
+            // richTextBoxVaccumAnimation
             // 
-            this.richTextBox3.BackColor = System.Drawing.Color.Black;
-            this.richTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox3.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox3.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBox3.Location = new System.Drawing.Point(6, 19);
-            this.richTextBox3.Name = "richTextBox3";
-            this.richTextBox3.Size = new System.Drawing.Size(476, 159);
-            this.richTextBox3.TabIndex = 1;
-            this.richTextBox3.Text = "";
+            this.richTextBoxVaccumAnimation.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxVaccumAnimation.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxVaccumAnimation.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxVaccumAnimation.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxVaccumAnimation.Location = new System.Drawing.Point(10, 15);
+            this.richTextBoxVaccumAnimation.Name = "richTextBoxVaccumAnimation";
+            this.richTextBoxVaccumAnimation.Size = new System.Drawing.Size(220, 159);
+            this.richTextBoxVaccumAnimation.TabIndex = 1;
+            this.richTextBoxVaccumAnimation.Text = "";
+            // 
+            // richTextBoxCorpoAnimationPixel
+            // 
+            this.richTextBoxCorpoAnimationPixel.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxCorpoAnimationPixel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxCorpoAnimationPixel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxCorpoAnimationPixel.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxCorpoAnimationPixel.Location = new System.Drawing.Point(236, 19);
+            this.richTextBoxCorpoAnimationPixel.Name = "richTextBoxCorpoAnimationPixel";
+            this.richTextBoxCorpoAnimationPixel.Size = new System.Drawing.Size(220, 165);
+            this.richTextBoxCorpoAnimationPixel.TabIndex = 2;
+            this.richTextBoxCorpoAnimationPixel.Text = "";
+            // 
+            // richTextBoxPaperAnimationPixel
+            // 
+            this.richTextBoxPaperAnimationPixel.BackColor = System.Drawing.Color.Black;
+            this.richTextBoxPaperAnimationPixel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBoxPaperAnimationPixel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxPaperAnimationPixel.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextBoxPaperAnimationPixel.Location = new System.Drawing.Point(236, 13);
+            this.richTextBoxPaperAnimationPixel.Name = "richTextBoxPaperAnimationPixel";
+            this.richTextBoxPaperAnimationPixel.Size = new System.Drawing.Size(220, 165);
+            this.richTextBoxPaperAnimationPixel.TabIndex = 3;
+            this.richTextBoxPaperAnimationPixel.Text = "";
+            // 
+            // richTextVaccumAnimationPixel
+            // 
+            this.richTextVaccumAnimationPixel.BackColor = System.Drawing.Color.Black;
+            this.richTextVaccumAnimationPixel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextVaccumAnimationPixel.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextVaccumAnimationPixel.ForeColor = System.Drawing.Color.Cyan;
+            this.richTextVaccumAnimationPixel.Location = new System.Drawing.Point(236, 13);
+            this.richTextVaccumAnimationPixel.Name = "richTextVaccumAnimationPixel";
+            this.richTextVaccumAnimationPixel.Size = new System.Drawing.Size(220, 165);
+            this.richTextVaccumAnimationPixel.TabIndex = 3;
+            this.richTextVaccumAnimationPixel.Text = "";
             // 
             // logVetors
             // 
@@ -193,7 +235,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(1018, 575);
+            this.ClientSize = new System.Drawing.Size(983, 575);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -226,10 +268,13 @@
         private System.Windows.Forms.RichTextBox richTextBoxPaper;
         private System.Windows.Forms.RichTextBox richTextBoxVaccum;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxCorpoAntimation;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBoxPaperAnimation;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBoxVaccumAnimation;
+        private System.Windows.Forms.RichTextBox richTextBoxCorpoAnimationPixel;
+        private System.Windows.Forms.RichTextBox richTextBoxPaperAnimationPixel;
+        private System.Windows.Forms.RichTextBox richTextVaccumAnimationPixel;
     }
 }

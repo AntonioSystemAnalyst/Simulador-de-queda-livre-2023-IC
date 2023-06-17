@@ -29,5 +29,18 @@ namespace freeFall
             richTextBoxVaccum.Text = Vaccum;
         }
 
+        public void loadDataAnimation(string Corpo, string Paper, string Vaccum)
+        {
+            richTextBoxCorpoAntimation.Text = Corpo;
+            richTextBoxPaperAnimation.Text  = Paper;
+            richTextBoxVaccumAnimation.Text = Vaccum;
+        }
+
+        public void loadDataAnimationPixel(string Corpo, string Paper, string Vaccum)
+        {
+            richTextBoxCorpoAnimationPixel.Text = Corpo;
+            richTextBoxPaperAnimationPixel.Text = Paper;
+            richTextVaccumAnimationPixel.Text   = Vaccum;
+        }
     }
 }

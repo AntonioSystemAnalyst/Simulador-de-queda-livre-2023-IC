@@ -17,6 +17,8 @@ namespace freeFall
         public static string planetName, gravity, height, airResistence, airDensity, initialVelocityBody, finalVelocityBody, experimentTimeBody, DragCoefficientBody;
         public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper, DragCoefficientPaper;
         public static string corpoVetors = "", paperVetors = "", vaccumVetors = "";
+        public static string corpoAnimation = "", paperAnimation = "", vaccumAnimation = "";
+        public static string corpoAnimationPixel = "", paperAnimationPixel = "", vaccumAnimationPixel = "";
         private void richTextBoxCorpoVetors_TextChanged(object sender, EventArgs e)
         {
 
@@ -37,6 +39,8 @@ namespace freeFall
             logVetors x = new logVetors();
             x.Show();
             x.loadData(corpoVetors, paperVetors, vaccumVetors);
+            x.loadDataAnimation(corpoAnimation, paperAnimation, paperAnimation);
+            x.loadDataAnimationPixel(corpoAnimationPixel, paperAnimationPixel, vaccumAnimationPixel);
         }
 
         public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum, DragCoefficientVaccum;
@@ -48,7 +52,6 @@ namespace freeFall
             view();
             configureDataGrid();
             dataGridViewGeneral.CurrentCell = null;
-            //colorAll();
             configureDataGrid();
             loadData();
             startGrid();
@@ -98,11 +101,17 @@ namespace freeFall
 
             for(i=0; i<Program.corpo.NumberOfTerms; i++)
             {
-                corpoVetors += "[" + (i + 1) + "]->|Ts:" + Program.corpo.SpaceTime[i] + "|S: " + Program.corpo.Space[i] + "|V:" + Program.corpo.Velocity[i] 
+                corpoVetors += "[" +i+ "]->|Ts:" + Program.corpo.SpaceTime[i] + "|S: " + Program.corpo.Space[i] + "|V:" + Program.corpo.Velocity[i] 
                     + "|countTime:" + Program.corpo.CountTimeExperiment[i] + "\n";
+                corpoAnimation += "[" +i+ "]->|Ani.Space: " + Program.corpo.AnimationSpace[i] + "\n";
             }
 
-            if(Program.paperOn)
+            for (i = 0; i < Program.corpo.AnimationPixel.Length; i++)
+            {
+               corpoAnimationPixel += "[" +i+ "]->| Ani.Pixel: " + Program.corpo.AnimationPixel[i] + "\n";
+            }
+
+            if (Program.paperOn)
             {
                 richTextBoxPaper.Text += " ----------------------------\n";
                 richTextBoxPaper.Text += " Console View paper\n";
@@ -133,8 +142,15 @@ namespace freeFall
 
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    paperVetors += "["+(i+1)+"]->|Ts:" + Program.paper.SpaceTime[i] + "|S: " + Program.paper.Space[i] + "|V:" + Program.paper.Velocity[i] + "\n";
+                    paperVetors += "["+i+"]->|Ts:" + Program.paper.SpaceTime[i] + "|S: " + Program.paper.Space[i] + "|V:" + Program.paper.Velocity[i] + "\n";
+                    paperAnimation += "[" +i+ "]->|Ani.Space: " + Program.paper.AnimationSpace[i] + "\n";
                 }
+
+                for (i = 0; i < Program.paper.AnimationPixel.Length; i++)
+                {
+                    paperAnimationPixel += "[" +i+ "]->| Ani.Pixel: " + Program.paper.AnimationPixel[i] + "\n";
+                }
+
             }
 
             if (Program.vaccumOn)
@@ -168,7 +184,13 @@ namespace freeFall
 
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    vaccumVetors += "[" + (i + 1) + "]->|Ts:" + Program.vaccum.SpaceTime[i] + "|S: " + Program.vaccum.Space[i] + "|V:" + Program.vaccum.Velocity[i] + "\n";
+                    vaccumVetors += "[" +i+ "]->|Ts:" + Program.vaccum.SpaceTime[i] + "|S: " + Program.vaccum.Space[i] + "|V:" + Program.vaccum.Velocity[i] + "\n";
+                    vaccumAnimation += "[" +i+ "]->|Ani.Space: " + Program.vaccum.AnimationSpace[i];
+                }
+
+                for (i = 0; i < Program.vaccum.AnimationPixel.Length; i++)
+                { 
+                    vaccumAnimationPixel += "["+i+ "]->|Ani.Pixel: " + Program.vaccum.AnimationPixel[i] + "\n";
                 }
             }
         }

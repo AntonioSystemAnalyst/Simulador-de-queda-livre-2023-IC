@@ -55,7 +55,7 @@ namespace freeFall
         {
             if (countGrafic <= Program.vaccum.NumberOfTerms)
             {
-                chartSpace.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
+                chartSpace.Series["vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
             }  
         }
 
@@ -140,15 +140,15 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpace.Series.Add("Objeto no vácuo");
-                chartSpace.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpace.Series.Add("vácuo");
+                chartSpace.Series["vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["vácuo"].Color = Color.Cyan;
                 chartSpace.Series[0].IsVisibleInLegend = false;
                 if (op == 1)
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpace.Series["Objeto no vácuo"].Points.AddXY(i, Program.vaccum.Space[i]);
+                        chartSpace.Series["vácuo"].Points.AddXY(i, Program.vaccum.Space[i]);
                     }
                 }
             }
@@ -195,11 +195,11 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpace.Series.Add("Objeto no vácuo");
-                chartSpace.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpace.Series.Add("vácuo");
+                chartSpace.Series["vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["vácuo"].Color = Color.Cyan;
                 chartSpace.Series[0].IsVisibleInLegend = false;
-                chartSpace.Series["Objeto no vácuo"].Points.AddXY(0, 0);
+                chartSpace.Series["vácuo"].Points.AddXY(0, 0);
             }
         }
 

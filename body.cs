@@ -63,7 +63,7 @@ namespace freeFall
             //Console.WriteLine("pixels");
             //Console.WriteLine("-----------------------");
             countSpace = 0.0;
-            for (i = 0; i < quantityPixel + 1; i++) // passa o valor de unidade inteirando para o vetor animationPixel
+            for (i = 0; i <= quantityPixel; i++) // passa o valor de unidade inteirando para o vetor animationPixel
             {
                 animationPixel[i] = countSpace;
                 countSpace = countSpace + qtdSpaceForPixels;
@@ -72,10 +72,10 @@ namespace freeFall
             //Console.WriteLine("-----------------------");
             //Console.WriteLine("aqui");
             //Console.WriteLine("-----------------------");
-            for (i = 0; i < numberOfTerms + 1; i++) // compara o espaço animationPixel e animationSpace, e passa o indice do animationPixel com valor do pixel
+            for (i = 0; i < numberOfTerms; i++) // compara o espaço animationPixel e animationSpace, e passa o indice do animationPixel com valor do pixel
             {
                 status = 0;
-                for (k = 0; k < quantityPixel; k++)
+                for (k = 0; k <= quantityPixel; k++)
                 {
                     if (animationPixel[k] >= animationSpace[i] && status == 0)
                     {
@@ -86,6 +86,12 @@ namespace freeFall
                 }
             }
             pixels[numberOfTerms] = quantityPixel; // garante que o ultimo pixel é igual ao ultimo valor setado 
+            
+            for(i=0; i < numberOfTerms; i++)
+            {
+                Console.WriteLine("->" +i+ "Pixel = " + pixels[i] + "-" + i);
+            }
+
             //Console.WriteLine("-----------------------");
             //Console.WriteLine("-----------------------");
             //Console.WriteLine("height = "+height);
@@ -97,7 +103,8 @@ namespace freeFall
 
             finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
             timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
-            numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
+            //numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01)+1;
 
             space    = new double[numberOfTerms + 2];
             velocity = new double[numberOfTerms + 2];
@@ -107,7 +114,7 @@ namespace freeFall
             spacePixel = new double[Convert.ToInt32(534)];
 
             // Espaço 
-            for (i = 0; i < numberOfTerms + 1; i++)
+            for (i = 0; i < numberOfTerms; i++)
             {
                 space[i] = ((initialVelocity * countTime) + (gravity * (countTime * countTime)) / 2);
                 spaceTime[i] = Math.Round(countTime, 3);
@@ -117,7 +124,7 @@ namespace freeFall
             countTime = 0;
 
             // Velocidade
-            for (i = 0; i < numberOfTerms + 1; i++)
+            for (i = 0; i < numberOfTerms; i++)
             {
                 velocity[i] = (initialVelocity + (gravity * countTime));
                 countTime = countTime + 0.01;
@@ -125,7 +132,7 @@ namespace freeFall
 
             countTime = 0;
             // time
-            for (i = 0; i < numberOfTerms + 1; i++)
+            for (i = 0; i < numberOfTerms; i++)
             {
                 countTimeExperiment[i] = countTime;
                 countTime = countTime + 0.01;

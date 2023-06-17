@@ -329,7 +329,7 @@ namespace freeFall
                 textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
             }
             countBody = countBody + 1;
-            if (countBody == Program.corpo.NumberOfTerms + 1)
+            if (countBody == Program.corpo.NumberOfTerms)
             {
                 timerAnimation.Enabled = false;
                 if (greatestValueTime == 1 || greatestValueTime == 0)
@@ -352,7 +352,7 @@ namespace freeFall
                 textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
             }
             countPaper = countPaper + 1;
-            if (countPaper == Program.paper.NumberOfTerms + 1)
+            if (countPaper == Program.paper.NumberOfTerms)
             {
                 timerAnimationPaper.Enabled = false;
                 BTNIniciar.Text = "Posicionar";
@@ -373,7 +373,7 @@ namespace freeFall
                 textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
             }
             countVaccum = countVaccum + 1;
-            if (countVaccum == Program.vaccum.NumberOfTerms + 1)
+            if (countVaccum == Program.vaccum.NumberOfTerms)
             {
                 timerAnimationVacuum.Enabled = false;
                 BTNIniciar.Text = "Posicionar";

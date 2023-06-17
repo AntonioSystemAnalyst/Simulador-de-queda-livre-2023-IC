@@ -52,7 +52,7 @@ namespace freeFall
         {
             if (Program.vaccum.NumberOfTerms >= countGrafic)
             {
-                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
+                chartSpeed.Series["vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
             }
         }
 
@@ -137,15 +137,15 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpeed.Series.Add("Objeto no vácuo");
-                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpeed.Series.Add("vácuo");
+                chartSpeed.Series["vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["vácuo"].Color = Color.Cyan;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
                 if (op == 1)
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpeed.Series["Objeto no vácuo"].Points.AddXY(i, Program.vaccum.Velocity[i]);
+                        chartSpeed.Series["vácuo"].Points.AddXY(i, Program.vaccum.Velocity[i]);
                     }
                 }
             }
@@ -192,11 +192,11 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpeed.Series.Add("Objeto no vácuo");
-                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpeed.Series.Add("vácuo");
+                chartSpeed.Series["vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["vácuo"].Color = Color.Cyan;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(0, 0);
+                chartSpeed.Series["vácuo"].Points.AddXY(0, 0);
             }
         }
 
