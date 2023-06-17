@@ -70,20 +70,20 @@
             this.dataGridViewPlanets.Size = new System.Drawing.Size(316, 352);
             this.dataGridViewPlanets.TabIndex = 15;
             // 
-            // experimentData
+            // ExperimentData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(319, 358);
+            this.ClientSize = new System.Drawing.Size(282, 358);
             this.Controls.Add(this.dataGridViewPlanets);
             this.Controls.Add(this.richTextBoxExperimentData);
             this.Controls.Add(this.buttonFocus);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "experimentData";
+            this.Name = "ExperimentData";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dados do experimento ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.experimentData_FormClosing);

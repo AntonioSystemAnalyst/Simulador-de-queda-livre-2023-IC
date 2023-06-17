@@ -14,9 +14,9 @@ namespace freeFall
     {
         DataSet ds = null;
         DataTable dt = null;
-        public static string planetName, gravity, airResistence, initialVelocityBody, finalVelocityBody, experimentTimeBody;
-        public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper;
-        public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum;
+        public static string planetName, gravity, airResistence, airDensity, initialVelocityBody, finalVelocityBody, experimentTimeBody, DragCoefficientBody;
+        public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper, DragCoefficientPaper;
+        public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum, DragCoefficientVaccum;
         public ExperimentData()
         {
             InitializeComponent();
@@ -108,52 +108,104 @@ namespace freeFall
         {
             DataTable table = new DataTable();
             table.TableName = "Customers";
+            table.Columns.Clear();
             table.Columns.Add("Nome", typeof(string));
             table.Columns.Add("Gravidade", typeof(string));
-            table.Columns.Add("Resistência do ar", typeof(string));
-            table.Columns.Add("Tempo para a bóla", typeof(string));
-            table.Columns.Add("Velcoidade inicial da bóla", typeof(string));
-            table.Columns.Add("Velcoidade final da bóla", typeof(string));
+            table.Columns.Add("Resis. Ar", typeof(string));
+
+            if (Program.airResistance == 1)
+            {
+                table.Columns.Add("Atm. dens.", typeof(string));
+            }
+            table.Columns.Add("T.corpo", typeof(string));
+            table.Columns.Add("V.ini. corpo", typeof(string));
+            table.Columns.Add("V.fin. corpo", typeof(string));
+            if (Program.airResistance == 1)
+            {
+
+                table.Columns.Add("C. arrasto corpo", typeof(string));
+            }
 
             if (Program.paperOn)
             {
-                table.Columns.Add("Tempo para o papel", typeof(string));
-                table.Columns.Add("Velcoidade inicial do papel", typeof(string));
-                table.Columns.Add("Velcoidade final do papel", typeof(string));
+                table.Columns.Add("T. papel", typeof(string));
+                table.Columns.Add("V.ini. papel", typeof(string));
+                table.Columns.Add("V.fin. papel", typeof(string));
+                if (Program.airResistance == 1)
+                {
 
+                    table.Columns.Add("C. arrasto papel", typeof(string));
+                }
             }
             if (Program.vaccumOn)
             {
-                table.Columns.Add("Tempo para o vacuo", typeof(string));
-                table.Columns.Add("Velcoidade inicial do vácuo", typeof(string));
-                table.Columns.Add("Velcoidade final do vácuo", typeof(string));
+                table.Columns.Add("T. vácuo", typeof(string));
+                table.Columns.Add("V.ini. vácuo", typeof(string));
+                table.Columns.Add("V.fin. vácuo", typeof(string));
+                if (Program.airResistance == 1)
+                {
 
+                    table.Columns.Add("C. arrasto vácuo", typeof(string));
+                }
             }
 
-            if(Program.paperOn && Program.vaccumOn)
+            if (Program.paperOn && Program.vaccumOn)
             {
-                table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
-                initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper,
-                 experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum});
+                if (Program.airResistance == 0)
+                {
+                    table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                    initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper,
+                    experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum});
+                }
+                else
+                {
+                    table.Rows.Add(new object[] {planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                    initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper, DragCoefficientPaper,
+                    experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum, DragCoefficientVaccum});
+                }
             }
             else
             {
-                if(Program.paperOn == false && Program.vaccumOn)
+                if (Program.paperOn == false && Program.vaccumOn)
                 {
+                    if (Program.airResistance == 0)
+                    {
                         table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
-                    initialVelocityBody, finalVelocityBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum });
+                        initialVelocityBody, finalVelocityBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum });
+                    }
+                    else
+                    {
+                        table.Rows.Add(new object[] {planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                        initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum, DragCoefficientVaccum});
+                    }
                 }
                 else
                 {
                     if (Program.paperOn && Program.vaccumOn == false)
                     {
-                                table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
-                        initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper });
+                        if (Program.airResistance == 0)
+                        {
+                            table.Rows.Add(new object[] { planetName, gravity, airResistence, experimentTimeBody,
+                            initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper });
+                        }
+                        else
+                        {
+                            table.Rows.Add(new object[] { planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                            initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper, DragCoefficientPaper });
+                        }
                     }
                     else
                     {
-                                table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
-                        initialVelocityBody, finalVelocityBody });
+                        if (Program.airResistance == 0)
+                        {
+                            table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                            initialVelocityBody, finalVelocityBody });
+                        }
+                        else
+                        {
+                            table.Rows.Add(new object[] {planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                            initialVelocityBody, DragCoefficientBody, finalVelocityBody });
+                        }
                     }
                 }
             }
@@ -165,7 +217,11 @@ namespace freeFall
         {
             planetName = Program.planetName;
             gravity = "" + Math.Round(Program.gravity, 2) + " m/s²";
-            //--
+            airDensity = "" + Program.airDensity;
+
+            DragCoefficientBody = "" + Program.corpo.DragCoefficient;
+            DragCoefficientPaper = "" + Program.paper.DragCoefficient;
+            DragCoefficientVaccum = "" + Program.vaccum.DragCoefficient;
             initialVelocityBody = "" + Math.Round(Program.corpo.InitialVelocity, 2) + " m/s";
             finalVelocityBody = "" + Math.Round(Program.corpo.FinalVelocity, 2) + " m/s";
             if (Program.airResistance == 0)
@@ -178,7 +234,6 @@ namespace freeFall
                 airResistence = "Sim";
                 experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
             }
-            //--
             initialVelocityPaper = "" + Math.Round(Program.paper.InitialVelocity, 2) + " m/s";
             finalVelocityPaper = "" + Math.Round(Program.paper.FinalVelocity, 2) + " m/s";
             if (Program.airResistance == 0)
@@ -189,7 +244,6 @@ namespace freeFall
             {
                 experimentTimePaper = "" + Math.Round(Program.paper.TimeAllExperiment, 2) + " s";
             }
-            //--
             initialVelocityVaccum = "" + Math.Round(Program.vaccum.InitialVelocity, 2) + " m/s";
             finalVelocityVaccum = "" + Math.Round(Program.vaccum.FinalVelocity, 2) + " m/s";
             if (Program.airResistance == 0)
