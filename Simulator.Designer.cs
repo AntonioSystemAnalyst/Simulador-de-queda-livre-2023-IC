@@ -98,6 +98,7 @@
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
             this.timerLog = new System.Windows.Forms.Timer(this.components);
             this.panelAnimation = new System.Windows.Forms.Panel();
+            this.comboBoxFonts = new System.Windows.Forms.ComboBox();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -165,9 +166,9 @@
             // 
             this.buttonLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(174, 156);
+            this.buttonLogo.Location = new System.Drawing.Point(170, 242);
             this.buttonLogo.Name = "buttonLogo";
-            this.buttonLogo.Size = new System.Drawing.Size(36, 21);
+            this.buttonLogo.Size = new System.Drawing.Size(40, 26);
             this.buttonLogo.TabIndex = 35;
             this.buttonLogo.Text = "Log";
             this.buttonLogo.UseVisualStyleBackColor = true;
@@ -495,6 +496,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.comboBoxFonts);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
             this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
@@ -612,7 +614,7 @@
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(89, 212);
+            this.buttonData.Location = new System.Drawing.Point(131, 206);
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(75, 26);
             this.buttonData.TabIndex = 30;
@@ -625,7 +627,7 @@
             // 
             this.buttonBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBall.ForeColor = System.Drawing.Color.Black;
-            this.buttonBall.Location = new System.Drawing.Point(8, 212);
+            this.buttonBall.Location = new System.Drawing.Point(131, 169);
             this.buttonBall.Name = "buttonBall";
             this.buttonBall.Size = new System.Drawing.Size(75, 26);
             this.buttonBall.TabIndex = 31;
@@ -692,7 +694,7 @@
             // checkBoxResistance
             // 
             this.checkBoxResistance.AutoSize = true;
-            this.checkBoxResistance.Location = new System.Drawing.Point(8, 160);
+            this.checkBoxResistance.Location = new System.Drawing.Point(8, 168);
             this.checkBoxResistance.Name = "checkBoxResistance";
             this.checkBoxResistance.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistance.TabIndex = 12;
@@ -928,6 +930,17 @@
             this.panelAnimation.Size = new System.Drawing.Size(365, 618);
             this.panelAnimation.TabIndex = 12;
             // 
+            // comboBoxFonts
+            // 
+            this.comboBoxFonts.BackColor = System.Drawing.Color.Black;
+            this.comboBoxFonts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxFonts.ForeColor = System.Drawing.Color.Cyan;
+            this.comboBoxFonts.FormattingEnabled = true;
+            this.comboBoxFonts.Location = new System.Drawing.Point(8, 211);
+            this.comboBoxFonts.Name = "comboBoxFonts";
+            this.comboBoxFonts.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxFonts.TabIndex = 0;
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1047,5 +1060,6 @@
         private System.Windows.Forms.Panel panelSpace;
         private System.Windows.Forms.Panel panelSpeed;
         private System.Windows.Forms.Panel panelAnimation;
+        private System.Windows.Forms.ComboBox comboBoxFonts;
     }
 }

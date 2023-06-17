@@ -15,11 +15,12 @@ namespace freeFall
         public AnimationWindow()
         {
             InitializeComponent();
+            colorAll();
         }
 
         public void colorAll()
         {
-
+            groupBoxExperimento.ForeColor = Program.colorSimulator;
         }
 
         public Image vaccumImage()

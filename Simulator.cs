@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -52,7 +53,7 @@ namespace freeFall
         // -- 
         DataSet ds = null;
         DataTable dt = null;
-        public static string planetName, gravity, airResistence, airDensity, initialVelocityBody, finalVelocityBody, experimentTimeBody, DragCoefficientBody;
+        public static string planetName, gravity, height, airResistence, airDensity, initialVelocityBody, finalVelocityBody, experimentTimeBody, DragCoefficientBody;
         public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper, DragCoefficientPaper;
         public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum, DragCoefficientVaccum;
         // -- 
@@ -83,7 +84,7 @@ namespace freeFall
             Flip();
 
             timerOpacity.Enabled = true;
-
+            InitializeFontComboBox();
         }
 
         public void initiWindows()
@@ -128,6 +129,28 @@ namespace freeFall
             }
         }
 
+        private void InitializeFontComboBox()
+        {
+            // Limpar itens existentes, se houver
+            comboBoxFonts.Items.Clear();
+
+            // Obter a coleção de famílias de fontes instaladas no sistema
+            InstalledFontCollection installedFonts = new InstalledFontCollection();
+            FontFamily[] fontFamilies = installedFonts.Families;
+
+            // Adicionar cada família de fonte ao ComboBox
+            foreach (FontFamily fontFamily in fontFamilies)
+            {
+                comboBoxFonts.Items.Add(fontFamily.Name);
+            }
+
+            // Definir um valor padrão para o ComboBox
+            if (comboBoxFonts.Items.Count > 0)
+            {
+                comboBoxFonts.SelectedIndex = 0;
+            }
+        }
+
         private void timerRight_Tick(object sender, EventArgs e)
         {
             rightPosition();
@@ -140,7 +163,6 @@ namespace freeFall
         {
             if (e.Control && e.KeyCode == Keys.J)
             {
-                MessageBox.Show("Log Liberado!!!");
                 buttonLogo.Visible = true;
             }
         }
@@ -180,6 +202,7 @@ namespace freeFall
         private void Simulator_Load(object sender, EventArgs e)
         {
             dataGridDataView.CurrentCell = null;
+            colorAll(); 
         }
         public void clear()
         {
@@ -290,6 +313,7 @@ namespace freeFall
                     Program.paper.DragCoefficient = 0.1;
                 }
                 Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
+                Program.paper.TimeAllExperiment = 5;
                 Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
                 Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
             }
@@ -1354,6 +1378,7 @@ namespace freeFall
             table.Columns.Clear();
             table.Columns.Add("Nome", typeof(string));
             table.Columns.Add("Gravidade", typeof(string));
+            table.Columns.Add("Altura", typeof(string));
             table.Columns.Add("Resis. Ar", typeof(string));
 
             if(Program.airResistance == 1)
@@ -1396,13 +1421,13 @@ namespace freeFall
             {
                 if(Program.airResistance == 0)
                 {
-                    table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                    table.Rows.Add(new object[] {planetName, gravity, height, airResistence, experimentTimeBody,
                     initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper,
                     experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum});
                 }
                 else
                 {
-                    table.Rows.Add(new object[] {planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                    table.Rows.Add(new object[] {planetName, gravity, height, airResistence, airDensity, experimentTimeBody,
                     initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper, DragCoefficientPaper,
                     experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum, DragCoefficientVaccum}); 
                 }
@@ -1413,12 +1438,12 @@ namespace freeFall
                 {
                     if (Program.airResistance == 0)
                     {
-                        table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                        table.Rows.Add(new object[] {planetName, gravity, height, airResistence, experimentTimeBody,
                         initialVelocityBody, finalVelocityBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum });
                     }
                     else
                     {
-                        table.Rows.Add(new object[] {planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                        table.Rows.Add(new object[] {planetName, gravity, height, airResistence, airDensity, experimentTimeBody,
                         initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum, DragCoefficientVaccum});
                     }
                 }
@@ -1428,12 +1453,12 @@ namespace freeFall
                     {
                         if (Program.airResistance == 0)
                         {
-                            table.Rows.Add(new object[] { planetName, gravity, airResistence, experimentTimeBody,
+                            table.Rows.Add(new object[] { planetName, gravity, height, airResistence, experimentTimeBody,
                             initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper });
                         }
                         else
                         {
-                            table.Rows.Add(new object[] { planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                            table.Rows.Add(new object[] { planetName, gravity, height, airResistence, airDensity, experimentTimeBody,
                             initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper, DragCoefficientPaper });
                         }
                     }
@@ -1441,12 +1466,12 @@ namespace freeFall
                     {
                         if (Program.airResistance == 0)
                         {
-                            table.Rows.Add(new object[] {planetName, gravity, airResistence, experimentTimeBody,
+                            table.Rows.Add(new object[] {planetName, gravity,height, airResistence, experimentTimeBody,
                             initialVelocityBody, finalVelocityBody });
                         }
                         else
                         {
-                            table.Rows.Add(new object[] {planetName, gravity, airResistence, airDensity, experimentTimeBody,
+                            table.Rows.Add(new object[] {planetName, gravity,height, airResistence, airDensity, experimentTimeBody,
                             initialVelocityBody, DragCoefficientBody, finalVelocityBody });
                         }
                     }
@@ -1462,7 +1487,7 @@ namespace freeFall
             planetName = Program.planetName;
             gravity = "" + Math.Round(Program.gravity, 2) + " m/s²";
             airDensity = "" + Program.airDensity;
-            
+            height = Program.height + " m";
             DragCoefficientBody = "" + Program.corpo.DragCoefficient;
             DragCoefficientPaper = "" + Program.paper.DragCoefficient;
             DragCoefficientVaccum = "" + Program.vaccum.DragCoefficient;
@@ -1540,6 +1565,7 @@ namespace freeFall
             textTempo.ForeColor = Program.colorSimulator;
             spaceWindow.colorAll();
             speedWindow.colorAll();
+            animationWindow.colorAll();
         }
         private void Altura_Click(object sender, EventArgs e)
         {

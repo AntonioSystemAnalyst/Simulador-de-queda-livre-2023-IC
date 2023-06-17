@@ -35,15 +35,25 @@ namespace freeFall
 
         public void addPointCorpo(int countGrafic)
         {
-            chartSpeed.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+            if(Program.corpo.NumberOfTerms >= countGrafic)
+            {
+                chartSpeed.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+            }
         }
         public void addPointPaper(int countGrafic)
         {
-            chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+            if (Program.paper.NumberOfTerms >= countGrafic)
+            {
+                chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Velocity[countGrafic]);
+            }
+           
         }
         public void addPointVaccum(int countGrafic)
         {
-            chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+            if (Program.vaccum.NumberOfTerms >= countGrafic)
+            {
+                chartSpeed.Series["Objeto no vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
+            }
         }
 
         public void colorAll()

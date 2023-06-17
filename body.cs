@@ -21,7 +21,9 @@ namespace freeFall
         // --- Para testes
         private double EspacoVelicidadeLimite = 0.0;
         private double TempoLimiteChao        = 0.0;
-        // ---
+        // --- Antimation
+        double qtdSpaceForNumberOfTermes;
+        double qtdSpaceForPixels;
 
 
         private double[] spaceTime;
@@ -40,8 +42,8 @@ namespace freeFall
         }
         public void animationVector(int quantityPixel, double height)
         {
-            double qtdSpaceForNumberOfTermes = height / numberOfTerms;  // altura pelo numero de termos 
-            double qtdSpaceForPixels = height / quantityPixel; // altura pela quatidade de pixels
+            qtdSpaceForNumberOfTermes = height / numberOfTerms;  // altura pelo numero de termos 
+            qtdSpaceForPixels = height / quantityPixel; // altura pela quatidade de pixels
             double countSpace = 0.0; // auxilar
             int i = 0, k = 0; // para loops
             int status = 0; // para acionar o for uma unica vez
@@ -139,7 +141,7 @@ namespace freeFall
             int i = 0;
 
             finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
-            timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
+            timeAllExperiment = timeAllExperiment + Round((finalVelocity - initialVelocity) / gravity, 3);
             numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
             numberOfTerms += 150;
 
@@ -287,6 +289,16 @@ namespace freeFall
             return integral;
         }
 
+        public double QtdSpaceForNumberOfTermes
+        {
+            get { return qtdSpaceForNumberOfTermes; }
+            set { qtdSpaceForNumberOfTermes = value; }
+        }
+        public double QtdSpaceForPixels
+        {
+            get { return qtdSpaceForPixels; }
+            set { qtdSpaceForPixels = value; }
+        }
         public double DragCoefficient
         {
             get { return dragCoefficient; }
@@ -308,6 +320,7 @@ namespace freeFall
             get { return animationPixel; }
             set { animationPixel = value; }
         }
+
         public int NumberOfTerms
         {
             get { return numberOfTerms; }
@@ -359,6 +372,12 @@ namespace freeFall
         {
             get { return velocity; }
             set { velocity = value; }
+        }
+        
+        public double[] AnimationSpace
+        {
+            get { return animationSpace; }
+            set { animationSpace = value; }
         }
 
     }

@@ -102,21 +102,13 @@ namespace freeFall
                 }
                 else
                 {
-                    Console.WriteLine(" -----------------------------------------------");
-                    Console.WriteLine(" Function organizeData (string data) LOGS: ");
-                    Console.WriteLine(" -----------------------------------------------");
                     output = Convert.ToDouble(result); 
-                    Console.WriteLine("Number   -> " + output);
                     output = output / (Math.Pow(10, numberCount)); 
-                    Console.WriteLine("Number Count   -> " + numberCount);
-                    Console.WriteLine("Divide by -> " + (Math.Pow(10, numberCount)));
-                    Console.WriteLine("Result     -> " + output);
-                    Console.WriteLine(" -----------------------------------------------");
                 }
             }
             catch
             {
-                MessageBox.Show("Error! Forbidden characters or very large numbers!");
+                MessageBox.Show("Erro! Caracteres proibidos ou números muito grandes!");
             }
             return output;
         }
