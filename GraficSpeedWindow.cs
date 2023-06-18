@@ -35,24 +35,30 @@ namespace freeFall
 
         public void addPointCorpo(int countGrafic)
         {
-            if(Program.corpo.NumberOfTerms >= countGrafic)
+            double result;
+            if (Program.corpo.NumberOfTerms >= countGrafic)
             {
-                chartSpeed.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Velocity[countGrafic]);
+                result = (double)countGrafic / 100.0;
+                chartSpeed.Series["Bóla"].Points.AddXY(result, Program.corpo.Velocity[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
         {
+            double result;
             if (Program.paper.NumberOfTerms >= countGrafic)
             {
-                chartSpeed.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Velocity[countGrafic]);
+                result = (double)countGrafic / 100.0;
+                chartSpeed.Series["Papel"].Points.AddXY(result, Program.paper.Velocity[countGrafic]);
             }
            
         }
         public void addPointVaccum(int countGrafic)
         {
+            double result;
             if (Program.vaccum.NumberOfTerms >= countGrafic)
             {
-                chartSpeed.Series["vácuo"].Points.AddXY(countGrafic, Program.vaccum.Velocity[countGrafic]);
+                result = (double)countGrafic / 100.0;
+                chartSpeed.Series["vácuo"].Points.AddXY(result, Program.vaccum.Velocity[countGrafic]);
             }
         }
 
@@ -67,33 +73,55 @@ namespace freeFall
 
         public void buildGrafic()
         {
-            int spaceDiv;
+            int speedDiv;
+            double Y = 0.0;
+            double X = 0.0;
             chartSpeed.Series.Clear();
-            spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 2);
+           
 
             if (Program.greatestValueTime == 0)
             {
-                speedGraphic(Program.corpo.NumberOfTerms, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.corpo.FinalVelocity), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
+                speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 2);
+                speedGraphic(Program.corpo.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
-                speedGraphic(Program.corpo.NumberOfTerms, 0, Program.corpo.FinalVelocity + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.corpo.FinalVelocity), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
+                speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 2);
+                speedGraphic(Program.corpo.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 2)
             {
-                speedGraphic(Program.paper.NumberOfTerms, 0, Program.paper.FinalVelocity + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.paper.FinalVelocity), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
+                speedDiv = Convert.ToInt32(Math.Round(Program.paper.FinalVelocity, 0) / 2);
+                speedGraphic(Program.paper.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 3)
             {
-                speedGraphic(Program.vaccum.NumberOfTerms, 0, Program.vaccum.FinalVelocity + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.vaccum.FinalVelocity), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
+                speedDiv = Convert.ToInt32(Math.Round(Program.vaccum.FinalVelocity, 0) / 2);
+                speedGraphic(Program.vaccum.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
             }
+        }
 
+        double CalculateValueWithTenPercent(double value)
+        {
+            double percentage = 0.05;
+            double tenPercent = value * percentage;
+            double result = value + tenPercent;
+            return result;
         }
 
         public void speedGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx, int op)
         {
             int i;
             var chart = chartSpeed.ChartAreas[0];
+            double result = 0.0; 
             chartSpeed.Series.Clear();
             chartSpeed.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
@@ -117,7 +145,8 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpeed.Series["Bóla"].Points.AddXY(i, Program.corpo.Velocity[i]);
+                        result = (double)i / 100.0;
+                        chartSpeed.Series["Bóla"].Points.AddXY(result, Program.corpo.Velocity[i]);
                     }
                 }
             }
@@ -131,7 +160,8 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpeed.Series["Papel"].Points.AddXY(i, Program.paper.Velocity[i]);
+                        result = (double)i / 100.0;
+                        chartSpeed.Series["Papel"].Points.AddXY(result, Program.paper.Velocity[i]);
                     }
                 }
             }
@@ -145,7 +175,8 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpeed.Series["vácuo"].Points.AddXY(i, Program.vaccum.Velocity[i]);
+                        result = (double)i / 100.0;
+                        chartSpeed.Series["vácuo"].Points.AddXY(result, Program.vaccum.Velocity[i]);
                     }
                 }
             }

@@ -78,44 +78,42 @@ namespace freeFall
         public void buildGrafic()
         {
             int spaceDiv;
-            double Y;
-            double X;
+            double Y = 0.0;
+            double X = 0.0;
             chartSpace.Series.Clear();
             spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 2);
 
-
             if (Program.greatestValueTime == 0)
             {
-                Y = CalculateValueWithTenPercent(Program.height);
-                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                 spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
-                Y = CalculateValueWithTenPercent(Program.height);
-                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                 spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 2)
             {
-                Y = CalculateValueWithTenPercent(Program.height);
-                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
                 spaceGraphic(Program.paper.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 3)
             {
-                Y = CalculateValueWithTenPercent(Program.height);
-                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
                 spaceGraphic(Program.vaccum.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
         }
 
         double CalculateValueWithTenPercent(double value)
         {
-            double percentage = 0.05; // 10% represented as a decimal
-            double tenPercent = value * percentage; // Obtains 10% of the value
-            double result = value + tenPercent; // Adds 10% to the original value
-
+            double percentage = 0.05; 
+            double tenPercent = value * percentage; 
+            double result = value + tenPercent; 
             return result;
         }
 
@@ -147,8 +145,8 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        //result = (double)i/ 100.0;
-                        chartSpace.Series["Bóla"].Points.AddXY(i, Program.corpo.Space[i]);
+                        result = (double)i/ 100.0;
+                        chartSpace.Series["Bóla"].Points.AddXY(result, Program.corpo.Space[i]);
                       
                     }
                 }
@@ -164,7 +162,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpace.Series["Papel"].Points.AddXY(i, Program.paper.Space[i]);
+                        chartSpace.Series["Papel"].Points.AddXY(result, Program.paper.Space[i]);
                     }
                 }
             }
@@ -179,7 +177,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpace.Series["vácuo"].Points.AddXY(i, Program.vaccum.Space[i]);
+                        chartSpace.Series["vácuo"].Points.AddXY(result, Program.vaccum.Space[i]);
                     }
                 }
             }

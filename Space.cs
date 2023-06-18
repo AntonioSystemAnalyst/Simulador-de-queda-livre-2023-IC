@@ -100,28 +100,21 @@ namespace freeFall
         {
             int i;
             var chart = chartSpace.ChartAreas[0];
-
+            double result = 0.0;
             chartSpace.Visible = true;
-
-
             chartSpace.Titles.Add("Espaço pelo tempo");
-
-            chartSpace.ChartAreas[0].AxisX.Title = "T(segundos/100)";
+            chartSpace.ChartAreas[0].AxisX.Title = "T(segundos)";
             chartSpace.ChartAreas[0].AxisY.Title = "S(metros)";
-
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.IsEndLabelVisible = true;
-
             chart.AxisX.Minimum = Mmx;
             chart.AxisX.Maximum = Max;
-
             chart.AxisY.Minimum = Mm;
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-
             chartSpace.Series.Add("teste");
 
             if (Program.bodyOn)
@@ -133,7 +126,8 @@ namespace freeFall
 
                 for (i = 0; i < Program.corpo.NumberOfTerms; i++)
                 {
-                    chartSpace.Series["Bóla"].Points.AddXY((i), Program.corpo.Space[i]);
+                    result = (double)i / 100.0;
+                    chartSpace.Series["Bóla"].Points.AddXY(result, Program.corpo.Space[i]);
                 }
             }
             if (Program.paperOn)
@@ -145,7 +139,8 @@ namespace freeFall
 
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    chartSpace.Series["Papel"].Points.AddXY((i), Program.paper.Space[i]);
+                    result = (double)i / 100.0;
+                    chartSpace.Series["Papel"].Points.AddXY(result, Program.paper.Space[i]);
                 }
             }
             if (Program.vaccumOn)
@@ -157,7 +152,8 @@ namespace freeFall
 
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    chartSpace.Series["Objeto no vácuo"].Points.AddXY((i), Program.vaccum.Space[i]);
+                    result = (double)i / 100.0;
+                    chartSpace.Series["Objeto no vácuo"].Points.AddXY(result, Program.vaccum.Space[i]);
                 }
             }
         }
@@ -165,12 +161,16 @@ namespace freeFall
         public void buildGrafic()
         {
             int spaceDiv, i;
+            double Y = 0.0;
+            double X = 0.0;
             chartSpace.Series.Clear();
             spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
 
             if (Program.greatestValueTime == 0)
             {
-                graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
+                graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
                 timeLarge = new string[Program.corpo.NumberOfTerms];
                 for (i = 0; i < Program.corpo.NumberOfTerms; i++)
                 {
@@ -179,7 +179,9 @@ namespace freeFall
             }
             if (Program.greatestValueTime == 1)
             {
-                graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
+                graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
                 timeLarge = new string[Program.corpo.NumberOfTerms];
                 for (i = 0; i < Program.corpo.NumberOfTerms; i++)
                 {
@@ -188,7 +190,9 @@ namespace freeFall
             }
             if (Program.greatestValueTime == 2)
             {
-                graficContinuosSpace(Program.paper.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
+                graficContinuosSpace(Program.paper.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
@@ -197,7 +201,9 @@ namespace freeFall
             }
             if (Program.greatestValueTime == 3)
             {
-                graficContinuosSpace(Program.vaccum.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
+                X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
+                graficContinuosSpace(Program.vaccum.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
                 timeLarge = new string[Program.vaccum.NumberOfTerms];
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
@@ -205,7 +211,13 @@ namespace freeFall
                 }
             }
         }
-
+        double CalculateValueWithTenPercent(double value)
+        {
+            double percentage = 0.05;
+            double tenPercent = value * percentage;
+            double result = value + tenPercent;
+            return result;
+        }
 
         private void SalveImage_Click(object sender, EventArgs e)
         {

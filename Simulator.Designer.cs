@@ -62,7 +62,6 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
-            this.comboBoxFonts = new System.Windows.Forms.ComboBox();
             this.boxHeight = new System.Windows.Forms.NumericUpDown();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.labelTextColor = new System.Windows.Forms.Label();
@@ -497,7 +496,6 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
-            this.groupBoxConfiguracao.Controls.Add(this.comboBoxFonts);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
             this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
@@ -525,18 +523,6 @@
             this.groupBoxConfiguracao.TabIndex = 6;
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
-            // 
-            // comboBoxFonts
-            // 
-            this.comboBoxFonts.BackColor = System.Drawing.Color.Black;
-            this.comboBoxFonts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxFonts.ForeColor = System.Drawing.Color.Cyan;
-            this.comboBoxFonts.FormattingEnabled = true;
-            this.comboBoxFonts.Location = new System.Drawing.Point(8, 211);
-            this.comboBoxFonts.Name = "comboBoxFonts";
-            this.comboBoxFonts.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxFonts.TabIndex = 0;
-            this.comboBoxFonts.SelectedValueChanged += new System.EventHandler(this.comboBoxFonts_SelectedValueChanged);
             // 
             // boxHeight
             // 
@@ -586,9 +572,9 @@
             // 
             this.buttonResistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonResistencia.ForeColor = System.Drawing.Color.Black;
-            this.buttonResistencia.Location = new System.Drawing.Point(8, 244);
+            this.buttonResistencia.Location = new System.Drawing.Point(8, 242);
             this.buttonResistencia.Name = "buttonResistencia";
-            this.buttonResistencia.Size = new System.Drawing.Size(156, 24);
+            this.buttonResistencia.Size = new System.Drawing.Size(156, 26);
             this.buttonResistencia.TabIndex = 39;
             this.buttonResistencia.Text = "Reiniciar simulador";
             this.buttonResistencia.UseVisualStyleBackColor = true;
@@ -627,7 +613,7 @@
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(131, 206);
+            this.buttonData.Location = new System.Drawing.Point(89, 210);
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(75, 26);
             this.buttonData.TabIndex = 30;
@@ -640,7 +626,7 @@
             // 
             this.buttonBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBall.ForeColor = System.Drawing.Color.Black;
-            this.buttonBall.Location = new System.Drawing.Point(131, 169);
+            this.buttonBall.Location = new System.Drawing.Point(8, 210);
             this.buttonBall.Name = "buttonBall";
             this.buttonBall.Size = new System.Drawing.Size(75, 26);
             this.buttonBall.TabIndex = 31;
@@ -847,7 +833,7 @@
             // 
             this.BTNIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNIniciar.ForeColor = System.Drawing.Color.Black;
-            this.BTNIniciar.Location = new System.Drawing.Point(28, 45);
+            this.BTNIniciar.Location = new System.Drawing.Point(15, 44);
             this.BTNIniciar.Name = "BTNIniciar";
             this.BTNIniciar.Size = new System.Drawing.Size(113, 26);
             this.BTNIniciar.TabIndex = 27;
@@ -970,6 +956,7 @@
             this.Text = "UFSCAR - Simulador de queda livre";
             this.Load += new System.EventHandler(this.Simulator_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Simulator_KeyDown);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Simulator_PreviewKeyDown);
             this.groupBoxGraficos.ResumeLayout(false);
             this.groupBoxGraficos.PerformLayout();
             this.groupBoxResultados.ResumeLayout(false);
@@ -1067,7 +1054,6 @@
         private System.Windows.Forms.Panel panelSpace;
         private System.Windows.Forms.Panel panelSpeed;
         private System.Windows.Forms.Panel panelAnimation;
-        private System.Windows.Forms.ComboBox comboBoxFonts;
         private System.Windows.Forms.Timer timerColors;
     }
 }
