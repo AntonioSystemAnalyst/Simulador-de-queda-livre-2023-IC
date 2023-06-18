@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,7 +77,7 @@ namespace freeFall
 
             if (Program.greatestValueTime == 0)
             {
-                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height, spaceDiv, Convert.ToInt32(((Program.corpo.TimeAllExperiment))/4), ((Program.corpo.TimeAllExperiment)), 0, 0);
+                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
@@ -93,6 +94,8 @@ namespace freeFall
 
         }
 
+
+
         public void spaceGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx, int op)
         {
             int i;
@@ -107,7 +110,7 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-
+           // chartSpace.ChartAreas[0].AxisX.LabelStyle.Format = "{0:0,000}";
             chartSpace.Series.Add("teste");
 
             if (Program.bodyOn)
@@ -120,7 +123,8 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpace.Series["Bóla"].Points.AddXY(i, Program.corpo.Space[i]);                   
+                        chartSpace.Series["Bóla"].Points.AddXY(i, Program.corpo.Space[i]);
+                      
                     }
                 }
             }
@@ -152,6 +156,8 @@ namespace freeFall
                     }
                 }
             }
+
+           
         }
 
         public void spaceGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
@@ -172,6 +178,12 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
+
+            //chart.AxisX.LabelStyle.Format += "2.2"; // Adiciona a divisão por 100 ao formato do rótulo
+
+            //chartSpace.ChartAreas[0].AxisX.LabelStyle.Format = "{0,0}";
+
+            //double divisor = 100.0;
 
             chartSpace.Series.Add("teste");
 
@@ -201,6 +213,7 @@ namespace freeFall
                 chartSpace.Series[0].IsVisibleInLegend = false;
                 chartSpace.Series["vácuo"].Points.AddXY(0, 0);
             }
+          
         }
 
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)

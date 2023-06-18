@@ -20,7 +20,7 @@ namespace freeFall
 
         // --- Para testes
         private double EspacoVelicidadeLimite = 0.0;
-        private double TempoLimiteChao        = 0.0;
+        private double TempoLimiteChao = 0.0;
         // --- Antimation
         double qtdSpaceForNumberOfTermes;
         double qtdSpaceForPixels;
@@ -86,10 +86,10 @@ namespace freeFall
                 }
             }
             pixels[numberOfTerms] = quantityPixel; // garante que o ultimo pixel é igual ao ultimo valor setado 
-            
-            for(i=0; i < numberOfTerms; i++)
+
+            for (i = 0; i < numberOfTerms; i++)
             {
-                Console.WriteLine("->" +i+ "Pixel = " + pixels[i] + "-" + i);
+                Console.WriteLine("->" + i + "Pixel = " + pixels[i] + "-" + i);
             }
 
             //Console.WriteLine("-----------------------");
@@ -103,10 +103,11 @@ namespace freeFall
 
             finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
             timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
-            //numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01)+1;
+            numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
 
-            space    = new double[numberOfTerms + 2];
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
+
+            space = new double[numberOfTerms + 2];
             velocity = new double[numberOfTerms + 2];
             countTimeExperiment = new double[numberOfTerms + 2];
 
@@ -150,7 +151,7 @@ namespace freeFall
             finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
             timeAllExperiment = timeAllExperiment + Round((finalVelocity - initialVelocity) / gravity, 3);
             numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
-            numberOfTerms += 150;
+            numberOfTerms += -50;
 
             space = new double[numberOfTerms + 2];
             velocity = new double[numberOfTerms + 2];
