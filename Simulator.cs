@@ -862,7 +862,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 1.225;
+                Program.airDensity = 1.2;
             }
             if (planetCounter == 2)
             {
@@ -880,7 +880,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetMercury;
                 buttonPlanet.Text = "Mercúrio";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 0.0054;
+                Program.airDensity = 0;
             }
             if (planetCounter == 4)
             {
@@ -889,7 +889,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetVenus;
                 buttonPlanet.Text = "Vênus";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 67;
+                Program.airDensity = 65;
             }
             if (planetCounter == 5)
             {
@@ -898,7 +898,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetMars;
                 buttonPlanet.Text = "Marte";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 0.020;
+                Program.airDensity = 0.02;
             }
             if (planetCounter == 6)
             {
@@ -916,7 +916,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
                 buttonPlanet.Text = "Saturno";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 0.13;
+                Program.airDensity = 0.19;
             }
             if (planetCounter == 8)
             {
@@ -925,7 +925,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetUranus;
                 buttonPlanet.Text = "Urano";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 0.46;
+                Program.airDensity = 0.42;
             }
             if (planetCounter == 9)
             {
@@ -934,7 +934,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
                 buttonPlanet.Text = "Netuno";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 0.0054;
+                Program.airDensity = 0.45;
             }
             if (planetCounter == 10)
             {
@@ -943,7 +943,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 0.45;
+                Program.airDensity = 1.2;
             }
         }
         private void pictureBoxNext_Click(object sender, EventArgs e)
@@ -1576,6 +1576,23 @@ namespace freeFall
 
         }
 
+        private void timerColors_Tick(object sender, EventArgs e)
+        {
+            colorAll();
+        }
+
+        private void comboBoxFonts_SelectedValueChanged(object sender, EventArgs e)
+        {
+            UpdateGroupFont(comboBoxFonts.Text);
+        }
+
+        public void UpdateGroupFont(string font)
+        {
+            int fontSize = 8;
+            FontFamily fontFamily = new FontFamily(font);
+            Font newFont = new Font(fontFamily, fontSize, FontStyle.Bold);
+            groupBoxConfiguracao.Font = newFont;
+        }
         private void chartSpace_Click(object sender, EventArgs e)
         {
 

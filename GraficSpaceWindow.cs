@@ -40,23 +40,29 @@ namespace freeFall
 
         public void addPointCorpo(int countGrafic)
         {
+            double result;
             if (countGrafic <= Program.corpo.NumberOfTerms)
             {
-                chartSpace.Series["Bóla"].Points.AddXY(countGrafic, Program.corpo.Space[countGrafic]);
+                result = (double)countGrafic / 100.0;
+                chartSpace.Series["Bóla"].Points.AddXY(result, Program.corpo.Space[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
         {
-            if(countGrafic <= Program.paper.NumberOfTerms)
+            double result;
+            if (countGrafic <= Program.paper.NumberOfTerms)
             {
-                chartSpace.Series["Papel"].Points.AddXY(countGrafic, Program.paper.Space[countGrafic]);
+                result = (double)countGrafic / 100.0;
+                chartSpace.Series["Papel"].Points.AddXY(result, Program.paper.Space[countGrafic]);
             }
         }
         public void addPointVaccum(int countGrafic)
         {
+            double result;
             if (countGrafic <= Program.vaccum.NumberOfTerms)
             {
-                chartSpace.Series["vácuo"].Points.AddXY(countGrafic, Program.vaccum.Space[countGrafic]);
+                result = (double)countGrafic / 100.0;
+                chartSpace.Series["vácuo"].Points.AddXY(result, Program.vaccum.Space[countGrafic]);
             }  
         }
 
@@ -72,34 +78,52 @@ namespace freeFall
         public void buildGrafic()
         {
             int spaceDiv;
+            double Y;
+            double X;
             chartSpace.Series.Clear();
             spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 2);
 
+
             if (Program.greatestValueTime == 0)
             {
-                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = CalculateValueWithTenPercent(Program.height);
+                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
-                spaceGraphic(Program.corpo.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.corpo.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = CalculateValueWithTenPercent(Program.height);
+                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 2)
             {
-                spaceGraphic(Program.paper.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.paper.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = CalculateValueWithTenPercent(Program.height);
+                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                spaceGraphic(Program.paper.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 3)
             {
-                spaceGraphic(Program.vaccum.NumberOfTerms, 0, Program.height + 1, spaceDiv, 0, ((Program.vaccum.TimeAllExperiment * 100) + 1), 0, 0);
+                Y = CalculateValueWithTenPercent(Program.height);
+                X = CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment);
+                spaceGraphic(Program.vaccum.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
-
         }
 
+        double CalculateValueWithTenPercent(double value)
+        {
+            double percentage = 0.05; // 10% represented as a decimal
+            double tenPercent = value * percentage; // Obtains 10% of the value
+            double result = value + tenPercent; // Adds 10% to the original value
 
+            return result;
+        }
 
         public void spaceGraphic(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx, int op)
         {
             int i;
             var chart = chartSpace.ChartAreas[0];
+            double result = 0.0;
             chartSpace.Series.Clear();
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
@@ -110,7 +134,7 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-           // chartSpace.ChartAreas[0].AxisX.LabelStyle.Format = "{0:0,000}";
+
             chartSpace.Series.Add("teste");
 
             if (Program.bodyOn)
@@ -123,6 +147,7 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
+                        //result = (double)i/ 100.0;
                         chartSpace.Series["Bóla"].Points.AddXY(i, Program.corpo.Space[i]);
                       
                     }
@@ -138,6 +163,7 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
+                        result = (double)i / 100.0;
                         chartSpace.Series["Papel"].Points.AddXY(i, Program.paper.Space[i]);
                     }
                 }
@@ -152,12 +178,11 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
+                        result = (double)i / 100.0;
                         chartSpace.Series["vácuo"].Points.AddXY(i, Program.vaccum.Space[i]);
                     }
                 }
             }
-
-           
         }
 
         public void spaceGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
@@ -178,12 +203,6 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-
-            //chart.AxisX.LabelStyle.Format += "2.2"; // Adiciona a divisão por 100 ao formato do rótulo
-
-            //chartSpace.ChartAreas[0].AxisX.LabelStyle.Format = "{0,0}";
-
-            //double divisor = 100.0;
 
             chartSpace.Series.Add("teste");
 
@@ -224,7 +243,5 @@ namespace freeFall
                 windowSpace.Show();
             }
         }
-
-        // ---
     }
 }

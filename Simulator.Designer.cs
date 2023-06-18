@@ -62,6 +62,7 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.comboBoxFonts = new System.Windows.Forms.ComboBox();
             this.boxHeight = new System.Windows.Forms.NumericUpDown();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.labelTextColor = new System.Windows.Forms.Label();
@@ -98,7 +99,7 @@
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
             this.timerLog = new System.Windows.Forms.Timer(this.components);
             this.panelAnimation = new System.Windows.Forms.Panel();
-            this.comboBoxFonts = new System.Windows.Forms.ComboBox();
+            this.timerColors = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -525,6 +526,18 @@
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
             // 
+            // comboBoxFonts
+            // 
+            this.comboBoxFonts.BackColor = System.Drawing.Color.Black;
+            this.comboBoxFonts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxFonts.ForeColor = System.Drawing.Color.Cyan;
+            this.comboBoxFonts.FormattingEnabled = true;
+            this.comboBoxFonts.Location = new System.Drawing.Point(8, 211);
+            this.comboBoxFonts.Name = "comboBoxFonts";
+            this.comboBoxFonts.Size = new System.Drawing.Size(101, 21);
+            this.comboBoxFonts.TabIndex = 0;
+            this.comboBoxFonts.SelectedValueChanged += new System.EventHandler(this.comboBoxFonts_SelectedValueChanged);
+            // 
             // boxHeight
             // 
             this.boxHeight.BackColor = System.Drawing.Color.Black;
@@ -930,16 +943,10 @@
             this.panelAnimation.Size = new System.Drawing.Size(365, 618);
             this.panelAnimation.TabIndex = 12;
             // 
-            // comboBoxFonts
+            // timerColors
             // 
-            this.comboBoxFonts.BackColor = System.Drawing.Color.Black;
-            this.comboBoxFonts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBoxFonts.ForeColor = System.Drawing.Color.Cyan;
-            this.comboBoxFonts.FormattingEnabled = true;
-            this.comboBoxFonts.Location = new System.Drawing.Point(8, 211);
-            this.comboBoxFonts.Name = "comboBoxFonts";
-            this.comboBoxFonts.Size = new System.Drawing.Size(101, 21);
-            this.comboBoxFonts.TabIndex = 0;
+            this.timerColors.Interval = 500;
+            this.timerColors.Tick += new System.EventHandler(this.timerColors_Tick);
             // 
             // Simulator
             // 
@@ -1061,5 +1068,6 @@
         private System.Windows.Forms.Panel panelSpeed;
         private System.Windows.Forms.Panel panelAnimation;
         private System.Windows.Forms.ComboBox comboBoxFonts;
+        private System.Windows.Forms.Timer timerColors;
     }
 }
