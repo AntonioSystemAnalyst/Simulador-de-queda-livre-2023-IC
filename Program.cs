@@ -55,22 +55,13 @@ namespace freeFall
         public static double height = 0;
         public static double timeExperiment = 0;
         public static double airDensity = 1.225;
-        public static double crossSectionalArea = 0;
+      
 
 
         public static body corpo  = new body();
         public static body paper  = new body();
         public static body vaccum = new body();
 
-        //densidade (kg/m³)
-        //Mercúrio 0,0054
-        //Vênus	67
-        //Terra	1,225
-        //Marte	0,020
-        //Júpiter	0,16
-        //Saturno	0,13
-        //Urano	0,46
-        //Netuno	0,45
 
         public static double organizeData(string data) 
         {
@@ -172,13 +163,19 @@ namespace freeFall
             y = null;
             if (Key == "open")
             {
-                corpo.Mass  = 10;
-                paper.Mass  = 5;
+                // bola da fifa
+                // folha A4
+                corpo.Mass  = 0.45;
+                paper.Mass  = 0.00465;
                 vaccum.Mass = corpo.Mass;
 
                 corpo.DragCoefficient = 0.4;
-                paper.DragCoefficient = 0.4;
+                paper.DragCoefficient = 1.2;
                 vaccum.DragCoefficient = corpo.DragCoefficient;
+
+                corpo.CrossSectionalArea = 0.038806;
+                paper.CrossSectionalArea = 0.06237; // amaçada 0.001341640872
+                vaccum.CrossSectionalArea = corpo.CrossSectionalArea;
 
                 x.ShowDialog();
             }

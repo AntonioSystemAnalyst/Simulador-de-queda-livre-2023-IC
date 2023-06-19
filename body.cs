@@ -15,8 +15,10 @@ namespace freeFall
         private double timeAllExperiment = 0.0;
         private double dragCoefficient = 0.0;
         private double terminalVelocity = 0.0;
+        private double mass = 0.0;
+        public static double crossSectionalArea = 0;
         private int numberOfTerms = 0;
-        private int mass = 0;
+        
 
         // --- Para testes
         private double EspacoVelicidadeLimite = 0.0;
@@ -103,7 +105,7 @@ namespace freeFall
 
             finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
             timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
-            numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
+            //numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
 
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
 
@@ -208,7 +210,7 @@ namespace freeFall
             timeAllExperiment = Ter1 * Ter3;
 
             // velocidade limite:
-            terminalVelocity = Math.Sqrt((2 * mass * gravity) / dragCoefficient * Program.crossSectionalArea * Program.airDensity);
+            terminalVelocity = Math.Sqrt((2 * mass * gravity) / dragCoefficient * crossSectionalArea * Program.airDensity);
 
             //Espaço onde o movimento é mudado
             EspacoVelicidadeLimite = ((terminalVelocity * terminalVelocity) - (initialVelocity * initialVelocity) / (2 * gravity));
@@ -261,12 +263,14 @@ namespace freeFall
 
             timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
             numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
+            
+            terminalVelocity = Math.Sqrt((2 * mass * gravity) / dragCoefficient * crossSectionalArea * Program.airDensity);
 
             // Velocidade
             for (i = 0; i < numberOfTerms + 1; i++)
             {
-                term1 = Math.Sqrt(Program.gravity / (dragCoefficient * Program.airDensity * Program.crossSectionalArea));
-                term2 = -1 * (Math.Sqrt((dragCoefficient * Program.airDensity * Program.crossSectionalArea) * Program.gravity) * countTime);
+                term1 = Math.Sqrt(Program.gravity / (dragCoefficient * Program.airDensity * crossSectionalArea));
+                term2 = -1 * (Math.Sqrt((dragCoefficient * Program.airDensity * crossSectionalArea) * Program.gravity) * countTime);
                 term3 = Math.Pow(2.71828, term2);
                 term4 = ((1 + term3) / (1 - term3));
                 velocityPoint = term1 * term4;
@@ -297,6 +301,11 @@ namespace freeFall
             return integral;
         }
 
+        public double CrossSectionalArea
+        {
+            get { return crossSectionalArea; }
+            set { crossSectionalArea = value; }
+        }
         public double QtdSpaceForNumberOfTermes
         {
             get { return qtdSpaceForNumberOfTermes; }
@@ -313,7 +322,7 @@ namespace freeFall
             set { dragCoefficient = value; }
         }
 
-        public int Mass
+        public double Mass
         {
             get { return mass; }
             set { mass = value; }

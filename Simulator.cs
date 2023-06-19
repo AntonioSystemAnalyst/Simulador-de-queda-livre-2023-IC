@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 
 namespace freeFall
 {
@@ -767,12 +768,16 @@ namespace freeFall
                 animationWindow.vacuumSelectedValueChange(0);
                 pictureBoxVaccumObject.Image = animationWindow.vaccumImage();
                 flagVaccumObject = 1;
+                Program.vaccum.DragCoefficient = Program.corpo.DragCoefficient;
+                Program. vaccum.CrossSectionalArea = Program.corpo.CrossSectionalArea;
             }
             else
             {
                 animationWindow.vacuumSelectedValueChange(1);
                 pictureBoxVaccumObject.Image = Properties.Resources.paper2;
                 flagVaccumObject = 0;
+                Program.vaccum.DragCoefficient = 1.2;
+                Program.vaccum.CrossSectionalArea = 0.06237;
             }
         }
 
@@ -782,13 +787,17 @@ namespace freeFall
             {
                 animationWindow.pictureBoxCorpoPaperSelected(0);
                 pictureBoxPaper.Image = Properties.Resources.paper2;
-                Program.crumpledPaper = 1;
+                Program.crumpledPaper = 0;
+                Program.paper.DragCoefficient = 1.2;
+                Program.paper.CrossSectionalArea = 0.06237;
             }
             else
             {
                 animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
-                Program.crumpledPaper = 0;
+                Program.crumpledPaper = 1;
+                Program.paper.DragCoefficient = 0.4;
+                Program.paper.CrossSectionalArea = 0.00134;
             }
         }
 
