@@ -237,7 +237,7 @@ namespace freeFall
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
                 timerAnimation.Enabled = true;
-                timerGrafic.Enabled = true;
+                //timerGrafic.Enabled = true;
                 timerAnimationPaper.Enabled = true;
                 timerAnimationVacuum.Enabled = true;
             }
@@ -379,6 +379,7 @@ namespace freeFall
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
+            timerGrafic.Enabled = false;
             if (Program.bodyOn)
             {
                 if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
