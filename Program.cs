@@ -171,11 +171,12 @@ namespace freeFall
 
                 corpo.DragCoefficient = 0.4;
                 paper.DragCoefficient = 1.2;
-                vaccum.DragCoefficient = corpo.DragCoefficient;
+                vaccum.DragCoefficient = paper.DragCoefficient;
 
                 corpo.CrossSectionalArea = 0.038806;
                 paper.CrossSectionalArea = 0.06237; // amaçada 0.001341640872
                 vaccum.CrossSectionalArea = corpo.CrossSectionalArea;
+
 
                 x.ShowDialog();
             }

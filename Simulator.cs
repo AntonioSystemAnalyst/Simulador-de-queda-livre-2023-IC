@@ -283,16 +283,7 @@ namespace freeFall
             }
             else
             {
-                if (Program.crumpledPaper == 0)
-                {
-                    Program.paper.DragCoefficient = 0.7;
-                }
-                else
-                {
-                    Program.paper.DragCoefficient = 0.1;
-                }
                 Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
-                Program.paper.TimeAllExperiment = 5;
                 Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
                 Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
             }

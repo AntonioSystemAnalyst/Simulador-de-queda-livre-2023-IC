@@ -91,7 +91,7 @@ namespace freeFall
 
             for (i = 0; i < numberOfTerms; i++)
             {
-                Console.WriteLine("->" + i + "Pixel = " + pixels[i] + "-" + i);
+                //Console.WriteLine("->" + i + "Pixel = " + pixels[i] + "-" + i);
             }
 
             //Console.WriteLine("-----------------------");
@@ -145,7 +145,7 @@ namespace freeFall
 
         }
 
-        public void CalculateWithResistence(double height, double gravity, double initialVelocity)
+        public void CalculateWithResistenceTeste(double height, double gravity, double initialVelocity)
         {
             double countTime = 0;
             int i = 0;
@@ -245,13 +245,14 @@ namespace freeFall
             animationVector(534, height);
         }
 
-        public void CalculateWithResistenceVersao1(double height, double gravity, double initialVelocity)
+        public void CalculateWithResistence(double height, double gravity, double initialVelocity)
         {
             double QtdTempox = Program.timeExperiment / (0.01);
             double QtdSpace = Program.height / 534;
             int timeExperiment = Convert.ToInt32(QtdTempox);
             int i = 0;
-            double countTime = 0;
+            double countTime = 0.01;
+            double term0;
             double term1;
             double term2;
             double term3;
@@ -263,28 +264,51 @@ namespace freeFall
 
             timeAllExperiment = Round((finalVelocity - initialVelocity) / gravity, 3);
             numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
-            
-            terminalVelocity = Math.Sqrt((2 * mass * gravity) / dragCoefficient * crossSectionalArea * Program.airDensity);
 
-            // Velocidade
-            for (i = 0; i < numberOfTerms + 1; i++)
+            if(numberOfTerms%2 == 0)
             {
-                term1 = Math.Sqrt(Program.gravity / (dragCoefficient * Program.airDensity * crossSectionalArea));
-                term2 = -1 * (Math.Sqrt((dragCoefficient * Program.airDensity * crossSectionalArea) * Program.gravity) * countTime);
+                numberOfTerms  += 1;
+            }
+            
+
+            space = new double[numberOfTerms];
+            velocity = new double[numberOfTerms];
+
+            terminalVelocity = Math.Sqrt((2 * mass * gravity) / dragCoefficient * crossSectionalArea * Program.airDensity);
+            //timeAllExperiment
+
+            // velocidade
+            velocity[0] = 0.0;
+            for (i = 1; i < numberOfTerms; i++)
+            {
+                term0 = mass/(0.5*dragCoefficient * Program.airDensity * crossSectionalArea);
+                term1 = Math.Sqrt(Program.gravity / term0);
+                term2 = -1 * (Math.Sqrt(term0 * Program.gravity) * countTime);
                 term3 = Math.Pow(2.71828, term2);
                 term4 = ((1 + term3) / (1 - term3));
                 velocityPoint = term1 * term4;
-
-                velocity[i] = velocityPoint;
+                velocity[i] = (-1*terminalVelocity) + velocityPoint;
                 countTime = countTime + 0.01;
             }
-            countTime = 0;
-        }
 
-        public double CalculateIntegral(double[] valueX, double[] valueY, double[] valueYZ)
+            countTime = 0;
+            // espaço
+            for (i = 0; i < numberOfTerms; i++)
+            {
+
+                //space[i] = CalculateIntegral(countTime, countTime[i]);
+                spaceTime[i] = Math.Round(countTime, 3);
+                countTime = countTime + 0.01;
+            }
+
+
+        }
+        // valueX = tempo e valueYZ = velocidade
+        public double CalculateIntegral(double[] valueX, double valueYZ, double space)
         {
             double integral = 0;
-            int l = 5;
+            int l = numberOfTerms;// comprimento do vertor
+
             int n = l - 1;
 
             if (n % 2 != 0)
@@ -292,11 +316,11 @@ namespace freeFall
                 n--; // Make sure we have an even number of intervals for Simpson's 1/3 rule
             }
 
-            double h = (valueX[n] - valueY[0]) / n;
+            double h = (valueX[n] - valueX[0]) / n;
 
             for (int i = 1; i < n; i += 2)
             {
-                integral += (h / 3) * (valueYZ[i - 1] + 4 * valueYZ[i] + valueYZ[i + 1]);
+                //space += (h / 3) * (valueYZ[i - 1] + 4 * valueYZ[i] + valueYZ[i + 1]);
             }
             return integral;
         }
