@@ -163,7 +163,7 @@ namespace freeFall
             y = null;
             if (Key == "open")
             {
-                // bola da fifa
+                // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
                 // folha A4
                 corpo.Mass  = 0.45;
                 paper.Mass  = 0.00465;

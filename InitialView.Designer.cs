@@ -263,7 +263,7 @@
             this.MaximizeBox = false;
             this.Name = "InitialView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UFSCAR - Simulador de queda livre";
+            this.Text = "UFSCAR - Simulador de queda dos corpos";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).EndInit();

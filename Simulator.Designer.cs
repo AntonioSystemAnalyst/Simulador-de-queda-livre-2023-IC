@@ -68,7 +68,6 @@
             this.buttonResistencia = new System.Windows.Forms.Button();
             this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
             this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
-            this.buttonData = new System.Windows.Forms.Button();
             this.buttonBall = new System.Windows.Forms.Button();
             this.txtgravit = new System.Windows.Forms.TextBox();
             this.comboPaper = new System.Windows.Forms.ComboBox();
@@ -80,6 +79,7 @@
             this.cmbPlaneta = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarColors = new System.Windows.Forms.TrackBar();
+            this.buttonData = new System.Windows.Forms.Button();
             this.groupBoxControl = new System.Windows.Forms.GroupBox();
             this.textTempo = new System.Windows.Forms.TextBox();
             this.pictureBoxTimeLeft = new System.Windows.Forms.PictureBox();
@@ -91,7 +91,6 @@
             this.timerAnimationVacuum = new System.Windows.Forms.Timer(this.components);
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
-            this.dataGridDataView = new System.Windows.Forms.DataGridView();
             this.groupBoxData = new System.Windows.Forms.GroupBox();
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.timerRight = new System.Windows.Forms.Timer(this.components);
@@ -99,6 +98,7 @@
             this.timerLog = new System.Windows.Forms.Timer(this.components);
             this.panelAnimation = new System.Windows.Forms.Panel();
             this.timerColors = new System.Windows.Forms.Timer(this.components);
+            this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -116,7 +116,6 @@
             this.groupBoxControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridDataView)).BeginInit();
             this.groupBoxData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -166,9 +165,9 @@
             // 
             this.buttonLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(170, 242);
+            this.buttonLogo.Location = new System.Drawing.Point(160, 214);
             this.buttonLogo.Name = "buttonLogo";
-            this.buttonLogo.Size = new System.Drawing.Size(40, 26);
+            this.buttonLogo.Size = new System.Drawing.Size(50, 24);
             this.buttonLogo.TabIndex = 35;
             this.buttonLogo.Text = "Log";
             this.buttonLogo.UseVisualStyleBackColor = true;
@@ -496,6 +495,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
             this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
@@ -503,7 +503,6 @@
             this.groupBoxConfiguracao.Controls.Add(this.buttonLogo);
             this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
-            this.groupBoxConfiguracao.Controls.Add(this.buttonData);
             this.groupBoxConfiguracao.Controls.Add(this.buttonBall);
             this.groupBoxConfiguracao.Controls.Add(this.txtgravit);
             this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
@@ -548,7 +547,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(8, 189);
+            this.checkBox3D.Location = new System.Drawing.Point(8, 215);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -574,7 +573,7 @@
             this.buttonResistencia.ForeColor = System.Drawing.Color.Black;
             this.buttonResistencia.Location = new System.Drawing.Point(8, 242);
             this.buttonResistencia.Name = "buttonResistencia";
-            this.buttonResistencia.Size = new System.Drawing.Size(156, 26);
+            this.buttonResistencia.Size = new System.Drawing.Size(151, 26);
             this.buttonResistencia.TabIndex = 39;
             this.buttonResistencia.Text = "Reiniciar simulador";
             this.buttonResistencia.UseVisualStyleBackColor = true;
@@ -609,26 +608,13 @@
             this.checkBoxVacuum.CheckStateChanged += new System.EventHandler(this.checkBoxVacuum_CheckStateChanged);
             this.checkBoxVacuum.MouseHover += new System.EventHandler(this.checkBoxVacuum_MouseHover);
             // 
-            // buttonData
-            // 
-            this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(89, 210);
-            this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(75, 26);
-            this.buttonData.TabIndex = 30;
-            this.buttonData.Text = "Dados";
-            this.buttonData.UseVisualStyleBackColor = true;
-            this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
-            this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
-            // 
             // buttonBall
             // 
             this.buttonBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBall.ForeColor = System.Drawing.Color.Black;
-            this.buttonBall.Location = new System.Drawing.Point(8, 210);
+            this.buttonBall.Location = new System.Drawing.Point(160, 242);
             this.buttonBall.Name = "buttonBall";
-            this.buttonBall.Size = new System.Drawing.Size(75, 26);
+            this.buttonBall.Size = new System.Drawing.Size(50, 26);
             this.buttonBall.TabIndex = 31;
             this.buttonBall.Text = "Bóla";
             this.buttonBall.UseVisualStyleBackColor = true;
@@ -668,7 +654,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(54, 189);
+            this.checkBoxEixo.Location = new System.Drawing.Point(54, 215);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -682,9 +668,9 @@
             this.checkBoxPaper.AutoSize = true;
             this.checkBoxPaper.Location = new System.Drawing.Point(8, 59);
             this.checkBoxPaper.Name = "checkBoxPaper";
-            this.checkBoxPaper.Size = new System.Drawing.Size(61, 17);
+            this.checkBoxPaper.Size = new System.Drawing.Size(58, 17);
             this.checkBoxPaper.TabIndex = 31;
-            this.checkBoxPaper.Text = "Folha ";
+            this.checkBoxPaper.Text = "Papel";
             this.checkBoxPaper.UseVisualStyleBackColor = true;
             this.checkBoxPaper.CheckedChanged += new System.EventHandler(this.checkBoxLeaf_CheckedChanged);
             this.checkBoxPaper.CheckStateChanged += new System.EventHandler(this.checkBoxLeaf_CheckStateChanged);
@@ -693,7 +679,7 @@
             // checkBoxResistance
             // 
             this.checkBoxResistance.AutoSize = true;
-            this.checkBoxResistance.Location = new System.Drawing.Point(8, 168);
+            this.checkBoxResistance.Location = new System.Drawing.Point(8, 171);
             this.checkBoxResistance.Name = "checkBoxResistance";
             this.checkBoxResistance.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistance.TabIndex = 12;
@@ -767,6 +753,19 @@
             this.trackBarColors.TabIndex = 12;
             this.trackBarColors.Value = 1;
             this.trackBarColors.Scroll += new System.EventHandler(this.trackBarPlanets_Scroll);
+            // 
+            // buttonData
+            // 
+            this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonData.ForeColor = System.Drawing.Color.Black;
+            this.buttonData.Location = new System.Drawing.Point(15, 163);
+            this.buttonData.Name = "buttonData";
+            this.buttonData.Size = new System.Drawing.Size(86, 26);
+            this.buttonData.TabIndex = 30;
+            this.buttonData.Text = "Detalhes";
+            this.buttonData.UseVisualStyleBackColor = true;
+            this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
+            this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
             // 
             // groupBoxControl
             // 
@@ -875,24 +874,9 @@
             this.timerGrafic.Interval = 1;
             this.timerGrafic.Tick += new System.EventHandler(this.timerGrafic_Tick);
             // 
-            // dataGridDataView
-            // 
-            this.dataGridDataView.BackgroundColor = System.Drawing.Color.Black;
-            this.dataGridDataView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridDataView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridDataView.ColumnHeadersVisible = false;
-            this.dataGridDataView.Location = new System.Drawing.Point(5, 14);
-            this.dataGridDataView.Name = "dataGridDataView";
-            this.dataGridDataView.ReadOnly = true;
-            this.dataGridDataView.RowHeadersVisible = false;
-            this.dataGridDataView.Size = new System.Drawing.Size(184, 175);
-            this.dataGridDataView.TabIndex = 14;
-            this.dataGridDataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlanets_CellContentClick);
-            // 
             // groupBoxData
             // 
-            this.groupBoxData.Controls.Add(this.dataGridDataView);
+            this.groupBoxData.Controls.Add(this.buttonData);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxData.Location = new System.Drawing.Point(502, 1);
@@ -933,6 +917,16 @@
             // 
             this.timerColors.Interval = 500;
             this.timerColors.Tick += new System.EventHandler(this.timerColors_Tick);
+            // 
+            // checkBoxGrafic
+            // 
+            this.checkBoxGrafic.AutoSize = true;
+            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 192);
+            this.checkBoxGrafic.Name = "checkBoxGrafic";
+            this.checkBoxGrafic.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxGrafic.TabIndex = 41;
+            this.checkBoxGrafic.Text = "Gráficos em módulo";
+            this.checkBoxGrafic.UseVisualStyleBackColor = true;
             // 
             // Simulator
             // 
@@ -978,7 +972,6 @@
             this.groupBoxControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridDataView)).EndInit();
             this.groupBoxData.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -1041,7 +1034,6 @@
         private System.Windows.Forms.PictureBox pictureBoxVaccum;
         private System.Windows.Forms.PictureBox pictureBoxPaper;
         private System.Windows.Forms.PictureBox pictureBoxCorpoView;
-        private System.Windows.Forms.DataGridView dataGridDataView;
         private System.Windows.Forms.GroupBox groupBoxData;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBoxVaccumObject;
@@ -1055,5 +1047,6 @@
         private System.Windows.Forms.Panel panelSpeed;
         private System.Windows.Forms.Panel panelAnimation;
         private System.Windows.Forms.Timer timerColors;
+        private System.Windows.Forms.CheckBox checkBoxGrafic;
     }
 }

@@ -12,47 +12,94 @@ namespace freeFall
 {
     public partial class ExperimentData : Form
     {
-        DataSet ds = null;
-        DataTable dt = null;
-        public static string planetName, gravity , height, airResistence, airDensity, initialVelocityBody, finalVelocityBody, experimentTimeBody, DragCoefficientBody;
-        public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper, DragCoefficientPaper;
-        public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum, DragCoefficientVaccum;
+
         public ExperimentData()
         {
             InitializeComponent();
             Program.experimentDataControl = 1;
-            richTextBoxExperimentData.Text = Program.experimentData;
-            dataGridViewPlanets.BackgroundColor = Color.Black;
-            dataGridViewPlanets.DefaultCellStyle.BackColor = Color.Black;
-            dataGridViewPlanets.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Bold);
-            dataGridViewPlanets.DefaultCellStyle.Font = new Font(dataGridViewPlanets.DefaultCellStyle.Font.FontFamily, 12);
-            dataGridViewPlanets.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dataGridViewPlanets.AllowUserToResizeColumns = false;
-            dataGridViewPlanets.AllowUserToResizeRows = false;
             colorAll();
+            sizeWindo();
             loadData();
-            startGrid();
-            Flip();
+            timerFocus.Enabled = true;
+            //pictureBoxVaccumObject.Image = Simulator.animationWindow.vaccumImage();
+        }
+
+        public void loadData()
+        {
+            textBoxGravity.Text = "" + Program.gravity;
+            textBoxHeight.Text = "" + Program.height;
+            textBoxPlanetName.Text = "" + Program.planetName;
+
+            textBoxCorpoTime.Text = "" + Program.corpo.TimeAllExperiment;
+            textBoxCorpoVelocityFynal.Text = "" + Program.corpo.FinalVelocity;
+            txtEspacoCorpo.Text = "" + Program.height; 
+            txtVelocidadeCorpoInitial.Text = "" + Program.corpo.InitialVelocity;
+
+
+            textBoxPaperFynalVelocity.Text = "" + Program.paper.FinalVelocity; ;
+            textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity; ;
+            textBoxPaperHeight.Text = "" + Program.height;
+            textBoxPaperTime.Text = "" + Program.paper.TimeAllExperiment;
+
+
+            textBoxVaccumFynalVelocity.Text = "" + Program.vaccum.FinalVelocity; ;
+            textBoxVaccumHeight.Text = "" + Program.height;
+            textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity; ;
+            textBoxVaccumTime.Text = "" + Program.vaccum.TimeAllExperiment;
+        }
+        public void sizeWindo()
+        {
+           
+
+            if(Program.bodyOn && Program.paperOn && Program.vaccumOn)
+            {
+                this.Size = new Size(1079, 260);
+                groupBoxPaper.Visible = true;
+                groupBoxPaper.Location = new Point(511, 0);
+                groupBoxVaccum.Location = new Point(788, 0);
+            }
+            else
+            {
+                if(Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
+                {
+                    this.Size = new Size(801, 260);
+                    groupBoxPaper.Visible = true;
+                    groupBoxPaper.Location = new Point(511, 0);
+                    groupBoxVaccum.Location = new Point(788, 0);
+                }
+                else
+                {
+                    if(Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
+                    {
+                        this.Size = new Size(801, 260);
+                        groupBoxPaper.Visible = false;
+                        groupBoxVaccum.Location = new Point(511, 0);
+                        Console.WriteLine("aqq");
+                    }
+                    else
+                    {
+                        if(Program.bodyOn && Program.paperOn == false && Program.vaccumOn == false)
+                        {
+                            this.Size = new Size(524, 260);
+                            groupBoxVaccum.Location = new Point(788, 0);
+                        }
+                    }
+                }
+            }
         }
 
         private void experimentData_Load(object sender, EventArgs e)
         {
-            dataGridViewPlanets.CurrentCell = null;
+
         }
 
         public void colorAll()
         {
-            dataGridViewPlanets.GridColor = Program.colorSimulator;
-            dataGridViewPlanets.DefaultCellStyle.ForeColor = Program.colorSimulator;
+
         }
         private void experimentData_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.experimentDataControl = 0;
-        }
-
-        private void richTextBoxExperimentData_CursorChanged(object sender, EventArgs e)
-        {
-            Cursor= Cursors.No;
         }
 
         private void buttonFocus_Click(object sender, EventArgs e)
@@ -60,201 +107,10 @@ namespace freeFall
 
         }
 
-        public void startGrid()
+        private void timerFocus_Tick(object sender, EventArgs e)
         {
-            ds = new DataSet();
-            dt = new DataTable();
-
-            dt = GetCustomersOutAirResistence();
-            ds.Tables.Add(dt);
-
-            DataView my_DataView = ds.Tables[0].DefaultView;
-            this.dataGridViewPlanets.DataSource = my_DataView;
-        }
-        private void Flip()
-        {
-            DataSet new_ds = FlipDataSet(ds); 
-            DataView my_DataView = new_ds.Tables[0].DefaultView;
-            this.dataGridViewPlanets.DataSource = my_DataView;
-        }
-        public DataSet FlipDataSet(DataSet my_DataSet)
-        {
-            DataSet ds = new DataSet();
-
-            foreach (DataTable dt in my_DataSet.Tables)
-            {
-                DataTable table = new DataTable();
-
-                for (int i = 0; i <= dt.Rows.Count; i++)
-                {
-                    table.Columns.Add(Convert.ToString(i));
-                }
-                DataRow r;
-                for (int k = 0; k < dt.Columns.Count; k++)
-                {
-                    r = table.NewRow();
-                    r[0] = dt.Columns[k].ToString();
-                    for (int j = 1; j <= dt.Rows.Count; j++)
-                        r[j] = dt.Rows[j - 1][k];
-                    table.Rows.Add(r);
-                }
-
-                ds.Tables.Add(table);
-            }
-            return ds;
-        }
-
-        private static DataTable GetCustomersOutAirResistence()
-        {
-            DataTable table = new DataTable();
-            table.TableName = "Customers";
-            table.Columns.Clear();
-            table.Columns.Add("Nome", typeof(string));
-            table.Columns.Add("Gravidade", typeof(string));
-            table.Columns.Add("Altura", typeof(string));
-            table.Columns.Add("Resis. Ar", typeof(string));
-
-            if (Program.airResistance == 1)
-            {
-                table.Columns.Add("Atm. dens.", typeof(string));
-            }
-            table.Columns.Add("Tempo para a bóla", typeof(string));
-            table.Columns.Add("Velocidade inicial da bóla", typeof(string));
-            table.Columns.Add("Velocidade final da bóla", typeof(string));
-            if (Program.airResistance == 1)
-            {
-
-                table.Columns.Add("Coeficiente de arrasto corpo", typeof(string));
-            }
-
-            if (Program.paperOn)
-            {
-                table.Columns.Add("Tempo para o papel", typeof(string));
-                table.Columns.Add("Velocidade inicial do papel", typeof(string));
-                table.Columns.Add("Velocidade final do papel", typeof(string));
-                if (Program.airResistance == 1)
-                {
-
-                    table.Columns.Add("Coeficiente de arrasto papel", typeof(string));
-                }
-            }
-            if (Program.vaccumOn)
-            {
-                table.Columns.Add("Tempo para o vácuo", typeof(string));
-                table.Columns.Add("Velocidade inicial do vácuo", typeof(string));
-                table.Columns.Add("Velocidade final do vácuo", typeof(string));
-                if (Program.airResistance == 1)
-                {
-
-                    table.Columns.Add("Coeficiente de arrasto vácuo", typeof(string));
-                }
-            }
-
-            if (Program.paperOn && Program.vaccumOn)
-            {
-                if (Program.airResistance == 0)
-                {
-                    table.Rows.Add(new object[] {planetName, gravity, height, airResistence, experimentTimeBody,
-                    initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper,
-                    experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum});
-                }
-                else
-                {
-                    table.Rows.Add(new object[] {planetName, gravity, height, airResistence, airDensity, experimentTimeBody,
-                    initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper, DragCoefficientPaper,
-                    experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum, DragCoefficientVaccum});
-                }
-            }
-            else
-            {
-                if (Program.paperOn == false && Program.vaccumOn)
-                {
-                    if (Program.airResistance == 0)
-                    {
-                        table.Rows.Add(new object[] {planetName, gravity,height, airResistence, experimentTimeBody,
-                        initialVelocityBody, finalVelocityBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum });
-                    }
-                    else
-                    {
-                        table.Rows.Add(new object[] {planetName, gravity, height, airResistence, airDensity, experimentTimeBody,
-                        initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimeVaccum, initialVelocityVaccum, finalVelocityVaccum, DragCoefficientVaccum});
-                    }
-                }
-                else
-                {
-                    if (Program.paperOn && Program.vaccumOn == false)
-                    {
-                        if (Program.airResistance == 0)
-                        {
-                            table.Rows.Add(new object[] { planetName, gravity,height, airResistence, experimentTimeBody,
-                            initialVelocityBody, finalVelocityBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper });
-                        }
-                        else
-                        {
-                            table.Rows.Add(new object[] { planetName, gravity,height, airResistence, airDensity, experimentTimeBody,
-                            initialVelocityBody, finalVelocityBody, DragCoefficientBody, experimentTimePaper, initialVelocityPaper, finalVelocityPaper, DragCoefficientPaper });
-                        }
-                    }
-                    else
-                    {
-                        if (Program.airResistance == 0)
-                        {
-                            table.Rows.Add(new object[] {planetName, gravity, height, airResistence, experimentTimeBody,
-                            initialVelocityBody, finalVelocityBody });
-                        }
-                        else
-                        {
-                            table.Rows.Add(new object[] {planetName, gravity, height, airResistence, airDensity, experimentTimeBody,
-                            initialVelocityBody, DragCoefficientBody, finalVelocityBody });
-                        }
-                    }
-                }
-            }
-
-            table.AcceptChanges();
-            return table;
-        }
-        public void loadData()
-        {
-            planetName = Program.planetName;
-            gravity = "" + Math.Round(Program.gravity, 2) + " m/s²";
-            airDensity = "" + Program.airDensity;
-            height = Program.height + " m";
-            DragCoefficientBody = "" + Program.corpo.DragCoefficient;
-            DragCoefficientPaper = "" + Program.paper.DragCoefficient;
-            DragCoefficientVaccum = "" + Program.vaccum.DragCoefficient;
-            initialVelocityBody = "" + Math.Round(Program.corpo.InitialVelocity, 2) + " m/s";
-            finalVelocityBody = "" + Math.Round(Program.corpo.FinalVelocity, 2) + " m/s";
-            if (Program.airResistance == 0)
-            {
-                airResistence = "Não";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
-            }
-            else
-            {
-                airResistence = "Sim";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
-            }
-            initialVelocityPaper = "" + Math.Round(Program.paper.InitialVelocity, 2) + " m/s";
-            finalVelocityPaper = "" + Math.Round(Program.paper.FinalVelocity, 2) + " m/s";
-            if (Program.airResistance == 0)
-            {
-                experimentTimePaper = "" + Math.Round(Program.paper.TimeAllExperiment, 2) + " s";
-            }
-            else
-            {
-                experimentTimePaper = "" + Math.Round(Program.paper.TimeAllExperiment, 2) + " s";
-            }
-            initialVelocityVaccum = "" + Math.Round(Program.vaccum.InitialVelocity, 2) + " m/s";
-            finalVelocityVaccum = "" + Math.Round(Program.vaccum.FinalVelocity, 2) + " m/s";
-            if (Program.airResistance == 0)
-            {
-                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s";
-            }
-            else
-            {
-                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s";
-            }
+            button1.Focus();
+            timerFocus.Enabled = false;
         }
     }
 }

@@ -52,8 +52,6 @@ namespace freeFall
         public int countGrafic = 0;
 
         // -- 
-        DataSet ds = null;
-        DataTable dt = null;
         public static string planetName, gravity, height, airResistence, airDensity, initialVelocityBody, finalVelocityBody, experimentTimeBody, DragCoefficientBody;
         public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper, DragCoefficientPaper;
         public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum, DragCoefficientVaccum;
@@ -79,10 +77,7 @@ namespace freeFall
             calculateValues();
             receveidGreatestValueTime();
 
-            dataGridConfigure();
             loadData();
-            startGrid();
-            Flip();
 
             timerOpacity.Enabled = true;
         }
@@ -180,7 +175,6 @@ namespace freeFall
 
         private void Simulator_Load(object sender, EventArgs e)
         {
-            dataGridDataView.CurrentCell = null;
             colorAll();
         }
         public void clear()
@@ -379,7 +373,7 @@ namespace freeFall
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
-            timerGrafic.Enabled = false;
+            //timerGrafic.Enabled = false;
             if (Program.bodyOn)
             {
                 if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
@@ -535,8 +529,6 @@ namespace freeFall
                 receveidGreatestValueTime();
                 enabledConfigure(1);
                 loadData();
-                startGrid();
-                Flip();
                 animation();
                 BTNIniciar.Text = "Parar";
                 buttonStartControl = 1;
@@ -685,17 +677,6 @@ namespace freeFall
         {
             programView x = new programView();
             x.Show();
-        }
-        public void dataGridConfigure()
-        {
-            dataGridDataView.BackgroundColor = Color.Black;
-            dataGridDataView.DefaultCellStyle.BackColor = Color.Black;
-            dataGridDataView.GridColor = Color.Cyan;
-            dataGridDataView.DefaultCellStyle.ForeColor = Color.Cyan;
-            dataGridDataView.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 11, FontStyle.Bold);
-            dataGridDataView.DefaultCellStyle.Font = new Font(dataGridDataView.DefaultCellStyle.Font.FontFamily, 9);
-            dataGridDataView.AllowUserToResizeColumns = false;
-            dataGridDataView.AllowUserToResizeRows = false;
         }
         public void initialConfigure()
         {
@@ -1332,50 +1313,7 @@ namespace freeFall
             }
         }
 
-        public void startGrid()
-        {
-            ds = new DataSet();
-            dt = new DataTable();
-
-            dt = GetCustomersOutAirResistence();
-            ds.Tables.Add(dt);
-
-            DataView my_DataView = ds.Tables[0].DefaultView;
-            this.dataGridDataView.DataSource = my_DataView;
-        }
-        private void Flip()
-        {
-            DataSet new_ds = FlipDataSet(ds);
-            DataView my_DataView = new_ds.Tables[0].DefaultView;
-            this.dataGridDataView.DataSource = my_DataView;
-            dataGridDataView.CurrentCell = null;
-        }
-        public DataSet FlipDataSet(DataSet my_DataSet)
-        {
-            DataSet ds = new DataSet();
-
-            foreach (DataTable dt in my_DataSet.Tables)
-            {
-                DataTable table = new DataTable();
-
-                for (int i = 0; i <= dt.Rows.Count; i++)
-                {
-                    table.Columns.Add(Convert.ToString(i));
-                }
-                DataRow r;
-                for (int k = 0; k < dt.Columns.Count; k++)
-                {
-                    r = table.NewRow();
-                    r[0] = dt.Columns[k].ToString();
-                    for (int j = 1; j <= dt.Rows.Count; j++)
-                        r[j] = dt.Rows[j - 1][k];
-                    table.Rows.Add(r);
-                }
-
-                ds.Tables.Add(table);
-            }
-            return ds;
-        }
+        
 
         private void timerOpacity_Tick(object sender, EventArgs e)
         {
@@ -1579,7 +1517,6 @@ namespace freeFall
             textBoxVaccumHeight.ForeColor = Program.colorSimulator;
             textBoxVaccumVelocity.ForeColor = Program.colorSimulator;
             groupBoxData.ForeColor = Program.colorSimulator;
-            dataGridDataView.ForeColor = Program.colorSimulator;
             labelTextColor.ForeColor = Program.colorSimulator;
             labelGraficDetails.ForeColor = Program.colorSimulator;
             comboPaper.ForeColor = Program.colorSimulator;
