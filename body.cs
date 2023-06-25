@@ -162,6 +162,8 @@ namespace freeFall
             finalVelocity = terminalVelocity;
             timeAllExperiment = getTimeAll();
 
+            finalVelocity = terminalVelocity;
+
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01);
 
             space = new double[numberOfTerms + 2];
@@ -195,7 +197,8 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
 
-            finalVelocity = velocity[0];
+            initialVelocity = velocity[0];
+
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("dragCoefficient ->" + dragCoefficient);
             Console.WriteLine("Program.airDensity ->" + Program.airDensity);
@@ -302,6 +305,12 @@ namespace freeFall
             }
             integration = Math.Round(((h / 3) * sum), precision);
             return integration;
+        }
+
+        public double TerminalVelocity
+        {
+            get { return terminalVelocity; }
+            set { terminalVelocity = value; }
         }
 
         public double CrossSectionalArea

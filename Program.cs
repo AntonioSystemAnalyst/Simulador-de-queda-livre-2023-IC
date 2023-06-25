@@ -36,11 +36,11 @@ namespace freeFall
         // define qual tem o maior tempo, corpo = 1, paper = 2, vaccum = 3
         public static int greatestValueTime;
 
-        // define qual tem o maior velocidade, corpo = 1, paper = 2, vaccum = 3
-        public static int greatestValueVelocity;
+        //  o maior velocidade
+        public static double greatestValueVelocity;
 
-        // define qual tem o maior espaço, corpo = 1, paper = 2, vaccum = 3
-        public static int greatestValueSpace;
+        //  o maior espaço
+        public static double greatestValueSpace;
 
 
         // define a quantidade de termos do maior entre corpo = 1, paper = 2, vaccum = 3

@@ -62,6 +62,7 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
             this.boxHeight = new System.Windows.Forms.NumericUpDown();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.labelTextColor = new System.Windows.Forms.Label();
@@ -92,13 +93,14 @@
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.groupBoxData = new System.Windows.Forms.GroupBox();
+            this.pictureBoxCount = new System.Windows.Forms.PictureBox();
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.timerRight = new System.Windows.Forms.Timer(this.components);
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
             this.timerLog = new System.Windows.Forms.Timer(this.components);
             this.panelAnimation = new System.Windows.Forms.Panel();
             this.timerColors = new System.Windows.Forms.Timer(this.components);
-            this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
+            this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -117,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
             this.groupBoxData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCount)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
@@ -523,6 +526,16 @@
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
             // 
+            // checkBoxGrafic
+            // 
+            this.checkBoxGrafic.AutoSize = true;
+            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 192);
+            this.checkBoxGrafic.Name = "checkBoxGrafic";
+            this.checkBoxGrafic.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxGrafic.TabIndex = 41;
+            this.checkBoxGrafic.Text = "Gráficos em módulo";
+            this.checkBoxGrafic.UseVisualStyleBackColor = true;
+            // 
             // boxHeight
             // 
             this.boxHeight.BackColor = System.Drawing.Color.Black;
@@ -758,7 +771,7 @@
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(15, 163);
+            this.buttonData.Location = new System.Drawing.Point(55, 156);
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(86, 26);
             this.buttonData.TabIndex = 30;
@@ -876,6 +889,8 @@
             // 
             // groupBoxData
             // 
+            this.groupBoxData.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxData.Controls.Add(this.pictureBoxCount);
             this.groupBoxData.Controls.Add(this.buttonData);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
@@ -885,6 +900,16 @@
             this.groupBoxData.TabIndex = 11;
             this.groupBoxData.TabStop = false;
             this.groupBoxData.Text = "Dados";
+            // 
+            // pictureBoxCount
+            // 
+            this.pictureBoxCount.Image = global::freeFall.Properties.Resources.zero;
+            this.pictureBoxCount.Location = new System.Drawing.Point(45, 28);
+            this.pictureBoxCount.Name = "pictureBoxCount";
+            this.pictureBoxCount.Size = new System.Drawing.Size(116, 120);
+            this.pictureBoxCount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCount.TabIndex = 31;
+            this.pictureBoxCount.TabStop = false;
             // 
             // timerOpacity
             // 
@@ -918,15 +943,10 @@
             this.timerColors.Interval = 500;
             this.timerColors.Tick += new System.EventHandler(this.timerColors_Tick);
             // 
-            // checkBoxGrafic
+            // timerNumerAnimationIniti
             // 
-            this.checkBoxGrafic.AutoSize = true;
-            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 192);
-            this.checkBoxGrafic.Name = "checkBoxGrafic";
-            this.checkBoxGrafic.Size = new System.Drawing.Size(137, 17);
-            this.checkBoxGrafic.TabIndex = 41;
-            this.checkBoxGrafic.Text = "Gráficos em módulo";
-            this.checkBoxGrafic.UseVisualStyleBackColor = true;
+            this.timerNumerAnimationIniti.Interval = 800;
+            this.timerNumerAnimationIniti.Tick += new System.EventHandler(this.timerNumerAnimationIniti_Tick);
             // 
             // Simulator
             // 
@@ -973,6 +993,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).EndInit();
             this.groupBoxData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCount)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1048,5 +1069,7 @@
         private System.Windows.Forms.Panel panelAnimation;
         private System.Windows.Forms.Timer timerColors;
         private System.Windows.Forms.CheckBox checkBoxGrafic;
+        private System.Windows.Forms.PictureBox pictureBoxCount;
+        private System.Windows.Forms.Timer timerNumerAnimationIniti;
     }
 }

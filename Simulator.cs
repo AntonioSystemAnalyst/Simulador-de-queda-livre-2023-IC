@@ -1,7 +1,9 @@
-﻿using System;
+﻿using freeFall.Properties;
+using System;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
@@ -27,6 +29,9 @@ namespace freeFall
         // controla o botão iniciar 
         public int buttonStartControl = 0;
 
+        //controla animationnumberiniti
+        public int animationNumberCounter = 0;
+
         public int corpoCounter = 0;
 
         public int countAnimation = 0;
@@ -38,6 +43,7 @@ namespace freeFall
         public double NumberTermsTime = 0.0;
 
         public int greatestValueTime = 0;
+        public int greatestValueVelocity = 0;
 
         public int openGraficsControl = 0;
 
@@ -81,6 +87,7 @@ namespace freeFall
             loadinDataCorpos();
             timerOpacity.Enabled = true;
         }
+        
 
         public void initiWindows()
         {
@@ -208,6 +215,7 @@ namespace freeFall
             countPaper = 0;
             countBody = 0;
             countGrafic = 0;
+            animationNumberCounter = 0;
 
             Program.corpo.TimeAllExperiment = 0.0;
             Program.paper.TimeAllExperiment = 0.0;
@@ -318,13 +326,13 @@ namespace freeFall
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
             animationWindow.animationCorpo(countBody);
-            txtEspaco.Text = "" + Math.Round(-1 * (Math.Round(Program.corpo.Space[countBody], 3) - Program.height), 2);
-            txtVelocidade.Text = "" + Math.Round(Program.corpo.Velocity[countBody], 3);
             if (greatestValueTime == 1 || greatestValueTime == 0)
             {
-                textTempo.Text = "" + Math.Round(Program.corpo.CountTimeExperiment[countBody], 3);
+                textTempo.Text = " " + Math.Round(Program.corpo.CountTimeExperiment[countBody], 2);
             }
+            txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
             countBody = countBody + 1;
+            txtEspaco.Text = " " + Math.Round(Program.corpo.Space[Program.corpo.Space.Length - countBody], 2);
             if (countBody == Program.corpo.NumberOfTerms)
             {
                 timerAnimation.Enabled = false;
@@ -341,13 +349,14 @@ namespace freeFall
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
             animationWindow.animationPaper(countPaper);
-            textBoxPaperHeight.Text = "" + Math.Round(-1 * (Math.Round(Program.paper.Space[countPaper], 3) - Program.height), 2);
-            textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
+           
             if (greatestValueTime == 2)
             {
                 textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
             }
+            textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
             countPaper = countPaper + 1;
+            textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[Program.paper.Space.Length - countPaper], 2);
             if (countPaper == Program.paper.NumberOfTerms)
             {
                 timerAnimationPaper.Enabled = false;
@@ -365,13 +374,13 @@ namespace freeFall
         private void timerAnimationVacuum_Tick(object sender, EventArgs e)
         {
             animationWindow.animationVaccum(countVaccum);
-            textBoxVaccumHeight.Text = "" + Math.Round(-1 * (Math.Round(Program.vaccum.Space[countVaccum], 3) - Program.height), 2);
-            textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
             if (greatestValueTime == 3)
             {
                 textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
             }
+            textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
             countVaccum = countVaccum + 1;
+            textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[Program.vaccum.Space.Length - countVaccum], 2);
             if (countVaccum == Program.vaccum.NumberOfTerms)
             {
                 timerAnimationVacuum.Enabled = false;
@@ -407,7 +416,36 @@ namespace freeFall
                 Program.greatestValueTime = 0;
                 Program.numberOfPoints = Program.corpo.NumberOfTerms;
             }
+            
             greatestValueTime = Program.greatestValueTime;
+        }
+
+        public void receveidGreatestValueVelocity()
+        {
+            if(Program.airResistance == 0)
+            {
+                Program.greatestValueVelocity = Program.corpo.FinalVelocity;
+            }
+            else
+            {
+                if (Program.corpo.InitialVelocity > Program.paper.InitialVelocity && Program.corpo.InitialVelocity > Program.vaccum.FinalVelocity)
+                {
+                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                }
+                else if (Program.paper.InitialVelocity > Program.corpo.InitialVelocity && Program.paper.InitialVelocity > Program.vaccum.FinalVelocity)
+                {
+                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                }
+                else if (Program.vaccum.FinalVelocity > Program.corpo.InitialVelocity && Program.vaccum.FinalVelocity > Program.paper.InitialVelocity)
+                {
+                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                }
+                else
+                {
+                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                }
+            }
+           
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
@@ -553,18 +591,35 @@ namespace freeFall
 
         }
 
-        private void BTNIniciar_Click(object sender, EventArgs e)
+        private void timerNumerAnimationIniti_Tick(object sender, EventArgs e)
         {
-
-            if (buttonStartControl == 0)
+            buttonData.Enabled = false;
+            if (animationNumberCounter == 0)
             {
+                pictureBoxCount.Image = Properties.Resources.zero;
+            }
+            if (animationNumberCounter == 1)
+            {
+                pictureBoxCount.Image = Properties.Resources.one;
+            }
+            if (animationNumberCounter == 2)
+            {
+                pictureBoxCount.Image = Properties.Resources.two;
+            }
+            if (animationNumberCounter == 3)
+            {
+                pictureBoxCount.Image = Properties.Resources.three;
+            }
+            if(animationNumberCounter == 4)
+            {
+                buttonData.Enabled = true;
                 clear();
                 closeAllWindows();
                 calculateValues();
                 receveidGreatestValueTime();
+                receveidGreatestValueVelocity();
                 spaceWindow.buildGrafic();
                 speedWindow.buildGrafic();
-              
                 enabledConfigure(1);
                 loadData();
                 animation();
@@ -572,6 +627,20 @@ namespace freeFall
                 buttonStartControl = 1;
                 Program.openGraficsControl = 0;
                 labelGraficDetails.Visible = false;
+                animationNumberCounter = 0;
+                pictureBoxCount.Image = Properties.Resources.zero;
+                timerNumerAnimationIniti.Enabled = false;
+            }
+            animationNumberCounter += 1;
+        }
+
+
+        private void BTNIniciar_Click(object sender, EventArgs e)
+        {
+
+            if (buttonStartControl == 0)
+            {
+                timerNumerAnimationIniti.Enabled = true;
             }
             else
             {
@@ -1598,6 +1667,7 @@ namespace freeFall
             }
         }
 
+        
         private void chartSpace_Click(object sender, EventArgs e)
         {
 
