@@ -36,11 +36,18 @@ namespace freeFall
         // define qual tem o maior tempo, corpo = 1, paper = 2, vaccum = 3
         public static int greatestValueTime;
 
+        // define qual tem o maior velocidade, corpo = 1, paper = 2, vaccum = 3
+        public static int greatestValueVelocity;
+
+        // define qual tem o maior espaço, corpo = 1, paper = 2, vaccum = 3
+        public static int greatestValueSpace;
+
+
         // define a quantidade de termos do maior entre corpo = 1, paper = 2, vaccum = 3
         public static int numberOfPoints = 0;
 
         // vetor para controlar o contador de graficos
-        public static int[] vetorCountPointGrafic;
+        //public static int[] vetorCountPointGrafic;
         
         // controla o momento que os graficos sao abertos
         public static int openGraficsControl = 0;
@@ -54,7 +61,7 @@ namespace freeFall
         public static double gravity = 0;
         public static double height = 0;
         public static double timeExperiment = 0;
-        public static double airDensity = 1.225;
+        public static double airDensity = 0;
       
 
 
@@ -163,21 +170,6 @@ namespace freeFall
             y = null;
             if (Key == "open")
             {
-                // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
-                // folha A4
-                corpo.Mass  = 0.45;
-                paper.Mass  = 0.00465;
-                vaccum.Mass = corpo.Mass;
-
-                corpo.DragCoefficient = 0.4;
-                paper.DragCoefficient = 1.2;
-                vaccum.DragCoefficient = paper.DragCoefficient;
-
-                corpo.CrossSectionalArea = 0.038806;
-                paper.CrossSectionalArea = 0.06237; // amaçada 0.001341640872
-                vaccum.CrossSectionalArea = corpo.CrossSectionalArea;
-
-
                 x.ShowDialog();
             }
         }

@@ -78,7 +78,7 @@ namespace freeFall
             receveidGreatestValueTime();
 
             loadData();
-
+            loadinDataCorpos();
             timerOpacity.Enabled = true;
         }
 
@@ -103,6 +103,29 @@ namespace freeFall
             animationWindow.Show();
 
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(Simulator_PreviewKeyDown);
+        }
+        private void loadinDataCorpos()
+        {
+            Program.corpo.CrossSectionalArea = 0.038806;
+            Program.airDensity = 1.225;
+            Program.gravity = 9.8;
+            // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
+            // folha A4
+            Program.corpo.Mass = 0.045;
+            Program.paper.Mass = 0.085; //0.00465;
+            Program.vaccum.Mass = Program.corpo.Mass;
+
+            Program.corpo.DragCoefficient = 0.3;
+            Program.paper.DragCoefficient = Program.corpo.DragCoefficient;//1.2;
+            Program.vaccum.DragCoefficient = Program.paper.DragCoefficient;
+
+
+
+            Program.paper.CrossSectionalArea = Program.corpo.CrossSectionalArea; //0.06237; // amaçada 0.001341640872
+            //paper.CrossSectionalArea = 0.8237; // amaçada 0.001341640872
+
+            Program.corpo.CrossSectionalArea = 0.038806;
+            Program.vaccum.CrossSectionalArea = Program.corpo.CrossSectionalArea;
         }
         private void closeAllWindows()
         {
@@ -231,7 +254,7 @@ namespace freeFall
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
                 timerAnimation.Enabled = true;
-                //timerGrafic.Enabled = true;
+                timerGrafic.Enabled = true;
                 timerAnimationPaper.Enabled = true;
                 timerAnimationVacuum.Enabled = true;
             }
@@ -269,7 +292,7 @@ namespace freeFall
             Program.height = Program.organizeData(boxHeight.Text);
             Program.gravity = Program.organizeData(txtgravit.Text);
 
-            if (Program.airResistance == 0)
+            if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 5)
             {
                 Program.corpo.CalculateOutResistence(Program.height, Program.gravity, 0);
                 Program.paper.CalculateOutResistence(Program.height, Program.gravity, 0);
@@ -277,9 +300,18 @@ namespace freeFall
             }
             else
             {
-                Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
-                Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
-                Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
+                if(Program.bodyOn)
+                {
+                    Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
+                }
+                if(Program.paperOn)
+                {
+                    Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
+                }
+                if(Program.vaccumOn)
+                {
+                    Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
+                }
             }
         }
 
@@ -319,11 +351,14 @@ namespace freeFall
             if (countPaper == Program.paper.NumberOfTerms)
             {
                 timerAnimationPaper.Enabled = false;
-                BTNIniciar.Text = "Posicionar";
-                buttonStartControl = 3;
-                Program.openGraficsControl = 1;
-                labelGraficDetails.Visible = true;
-                enabledConfigure(0);
+                if(greatestValueTime == 2)
+                {
+                    BTNIniciar.Text = "Posicionar";
+                    buttonStartControl = 3;
+                    Program.openGraficsControl = 1;
+                    labelGraficDetails.Visible = true;
+                    enabledConfigure(0);
+                }
             }
         }
 
@@ -340,11 +375,14 @@ namespace freeFall
             if (countVaccum == Program.vaccum.NumberOfTerms)
             {
                 timerAnimationVacuum.Enabled = false;
-                BTNIniciar.Text = "Posicionar";
-                buttonStartControl = 3;
-                Program.openGraficsControl = 1;
-                labelGraficDetails.Visible = true;
-                enabledConfigure(0);
+                if (greatestValueTime == 3)
+                {
+                    BTNIniciar.Text = "Posicionar";
+                    buttonStartControl = 3;
+                    Program.openGraficsControl = 1;
+                    labelGraficDetails.Visible = true;
+                    enabledConfigure(0);
+                }
             }
         }
         public void receveidGreatestValueTime()
@@ -373,7 +411,6 @@ namespace freeFall
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
-            //timerGrafic.Enabled = false;
             if (Program.bodyOn)
             {
                 if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
@@ -524,9 +561,10 @@ namespace freeFall
                 clear();
                 closeAllWindows();
                 calculateValues();
+                receveidGreatestValueTime();
                 spaceWindow.buildGrafic();
                 speedWindow.buildGrafic();
-                receveidGreatestValueTime();
+              
                 enabledConfigure(1);
                 loadData();
                 animation();

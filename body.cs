@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,17 +18,19 @@ namespace freeFall
         private double dragCoefficient = 0.0;
         private double terminalVelocity = 0.0;
         private double mass = 0.0;
-        public static double crossSectionalArea = 0;
+        public  double crossSectionalArea = 0;
         private int numberOfTerms = 0;
-        
 
-        // --- Para testes
-        private double EspacoVelicidadeLimite = 0.0;
-        private double TempoLimiteChao = 0.0;
+        // ---
+        public  double term0, term1, term2, term3, term4, term5;
+        public  double term6, term7, term8, term9, term10;
+        public  int precision = 5;
+        public  double velocityPoint;
+        public  double spacePoint;
+
         // --- Antimation
         double qtdSpaceForNumberOfTermes;
         double qtdSpaceForPixels;
-
 
         private double[] spaceTime;
         private double[] spacePixel;
@@ -106,7 +109,6 @@ namespace freeFall
 
             finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
             timeAllExperiment = Math.Round((finalVelocity - initialVelocity) / gravity, 3);
-            //numberOfTerms = Convert.ToInt32(timeAllExperiment / 0.01);
 
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
 
@@ -126,7 +128,6 @@ namespace freeFall
             }
 
             countTime = 0;
-
             // Velocidade
             for (i = 0; i < numberOfTerms; i++)
             {
@@ -148,69 +149,144 @@ namespace freeFall
 
         public void CalculateWithResistence(double height, double gravity, double initialVelocity)
         {
-
-            double countTime = 0.01;
-            double term0, term1, term2, term3, term4;
-            double velocityPoint;
+            double Ax;
+            double countTime;
             int i;
 
-            space = new double[1000];
-            velocity = new double[1000];
+            term0 = Math.Round((0.5 * dragCoefficient * Program.airDensity * crossSectionalArea), precision);
+            term1 = Math.Round(mass / term0);
 
-            terminalVelocity = Math.Sqrt((2 * mass * gravity) / dragCoefficient * crossSectionalArea * Program.airDensity);
 
-            velocity[0] = 0.0;
-            space[0] = 0.0 ;
-            numberOfTerms = 1;
-            countTime = 0.0;
+            Ax = gravity / term1;
+            terminalVelocity = Math.Sqrt(Ax);
+            finalVelocity = terminalVelocity;
+            timeAllExperiment = getTimeAll();
 
-            term0 = mass / (0.5 * dragCoefficient * Program.airDensity * crossSectionalArea);
-            term1 = Math.Sqrt(Program.gravity / term0);
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01);
 
-            do
+            space = new double[numberOfTerms + 2];
+            velocity = new double[numberOfTerms + 2];
+            countTimeExperiment = new double[numberOfTerms + 2];
+
+            spaceTime = new double[numberOfTerms + 2];
+            spacePixel = new double[Convert.ToInt32(534)];
+
+            countTime = 0.01;
+            for (i=0; i < numberOfTerms; i++)
             {
-                term2 = -1 * (Math.Sqrt(term0 * Program.gravity) * countTime);
-                term3 = Math.Pow(2.71828, term2);
-                term4 = ((1 + term3) / (1 - term3));
-                velocityPoint = term1 * term4;
-                //velocity[i] = (-1 * terminalVelocity) + velocityPoint;
-                velocity[numberOfTerms] = velocityPoint;
-                space[numberOfTerms] = SimpsonIntegrationMethod(countTime, (countTime + 0.01), 4);
-                countTime = countTime + 0.01;
-                numberOfTerms += 1;
-            } while (space[numberOfTerms - 1] >= height);
-            //numberOfTerms -= 1;
-
-            countTime = 0;
-            // time
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                countTimeExperiment[i] = countTime;
+                velocityPoint = Function(countTime);
+                velocity[i] = velocityPoint;
                 countTime = countTime + 0.01;
             }
 
-            animationVector(534, height);
+            countTime = 0.01;
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                spacePoint = SimpsonIntegrationMethod(0.01, countTime, 40);
+                space[i] = spacePoint;
+                countTime = countTime + 0.01;
+            }
 
+            countTime = 0.01;
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                countTimeExperiment[i] = countTime;
+                spaceTime[i] = Math.Round(countTime, 3);
+                countTime = countTime + 0.01;
+            }
+
+            finalVelocity = velocity[0];
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine("dragCoefficient ->" + dragCoefficient);
+            Console.WriteLine("Program.airDensity ->" + Program.airDensity);
+            Console.WriteLine("crossSectionalArea ->" + crossSectionalArea);
+            Console.WriteLine("term1 ->" + term1);
+            Console.WriteLine("terminalVelocity ->" + terminalVelocity);
+            Console.WriteLine("timeAllExperiment-> " + timeAllExperiment);
+            Console.WriteLine("numberOfTerms-> " + numberOfTerms);
+            Console.WriteLine("----------------------------------------------------------");
+            animationVector(534, height);
         }
 
-        public double Function(double countTime)
-        {
-            double term0, term1, term2, term3, term4;
 
-            double velocityPoint;
-            term0 = mass / (0.5 * dragCoefficient * Program.airDensity * crossSectionalArea);
-            term1 = Math.Sqrt(Program.gravity / term0);
-            term2 = -1 * (Math.Sqrt(term0 * Program.gravity) * countTime);
-            term3 = Math.Pow(2.71828, term2);
-            term4 = ((1 + term3) / (1 - term3));
-            velocityPoint = term1 * term4;
+        public  double CalculateCircleArea(double circumference)
+        {
+            double radius = circumference / (2 * Math.PI);
+            double area = Math.PI * Math.Pow(radius, 2);
+            return area;
+        }
+
+        public  double getTimeAll()
+        {
+            double velocityTerminalTime = 0.01;
+            double velocityInTime;
+            double timeAll = 0.0;
+            double spaceTerminal = 0.0;
+            double spaceTravel = 0.0;
+            double timeTravel = 0.0;
+            int breakStatus = 0;
+            do
+            {
+                velocityInTime = Function(velocityTerminalTime);
+                velocityTerminalTime += 0.01;
+                if ((velocityInTime - terminalVelocity) < 0.008)
+                {
+                    breakStatus = 1;
+                    Console.WriteLine(" veloctyTerminal = " + velocityTerminalTime);
+                }
+            } while (breakStatus == 0);
+
+            spaceTerminal = SimpsonIntegrationMethod(0.01, velocityTerminalTime, 40);
+            spaceTravel = Program.height - spaceTerminal;
+            timeTravel = spaceTravel / terminalVelocity;
+            timeAll = timeTravel + velocityTerminalTime;
+
+            Console.WriteLine(" ------------------------------------");
+            Console.WriteLine(" spaceTermial = " + spaceTerminal);
+            Console.WriteLine(" spaceTravel = " + spaceTravel);
+            Console.WriteLine(" timeTravel = " + timeTravel);
+            Console.WriteLine(" totalTime = " + timeAll);
+            Console.WriteLine(" ------------------------------------");
+            return timeAll;
+        }
+
+        public  double Function(double countTime)
+        {
+
+
+            //term1 = 1.3; -> para deixar igual o excel
+            term2 = Math.Round((Program.gravity / term1), precision);
+            term3 = Math.Sqrt(term2);
+            term4 = Math.Round((term1 * Program.gravity), precision);
+            term5 = Math.Sqrt(term4);
+            term6 = Math.Round((-1 * countTime * term5), precision);
+            term7 = Math.Pow(Math.E, term6);
+            term8 = Math.Round((1 + term7), precision);
+            term9 = Math.Round((1 - term7), precision);
+            term10 = Math.Round((term8 / term9), precision);
+            velocityPoint = Math.Round((term10 * term3), precision);
             return velocityPoint;
         }
 
-        public double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
+        public  double trapezoidalIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
         {
             double integration = 0.0;
 
+            double h = (timeTwo - timeOne) / numberDivision;
+            double sum = (Function(timeOne) + Function(timeTwo)) / 2.0;
+
+            for (int i = 1; i < numberDivision; i++)
+            {
+                double x = timeOne + i * h;
+                sum += Function(x);
+            }
+            integration = Math.Round((h * sum), precision);
+            return integration;
+        }
+
+        public  double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
+        {
+            double integration = 0.0;
 
             double h = (timeTwo - timeOne) / numberDivision;
             double sum = Function(timeOne) + Function(timeTwo);
@@ -224,24 +300,7 @@ namespace freeFall
                 else
                     sum += 4 * Function(x);
             }
-            integration = (h / 3) * sum;
-            Console.WriteLine("" + integration);
-            return integration;
-        }
-
-        public double trapezoidalIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
-        {
-            double integration = 0.0;
-
-            double h = (timeTwo - timeOne) / numberDivision;
-            double sum = (Function(timeOne) + Function(timeTwo)) / 2.0;
-
-            for (int i = 1; i < numberDivision; i++)
-            {
-                double x = timeOne + i * h;
-                sum += Function(x);
-            }
-            integration = h * sum;
+            integration = Math.Round(((h / 3) * sum), precision);
             return integration;
         }
 
