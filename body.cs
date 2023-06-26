@@ -102,19 +102,19 @@ namespace freeFall
             //Console.WriteLine("-----------------------");
             //Console.WriteLine("height = "+height);
         }
-        public void CalculateOutResistence(double height, double gravity, double initialVelocity)
+        public void CalculateOutResistence(double height, double gravity, double initialVelocityExperiment)
         {
             double countTime = 0;
             int i = 0;
 
-            finalVelocity = Math.Sqrt((initialVelocity * initialVelocity) + (2 * gravity * height));
-            timeAllExperiment = Math.Round((finalVelocity - initialVelocity) / gravity, 3);
+            finalVelocity = Math.Sqrt((initialVelocityExperiment * initialVelocityExperiment) + (2 * gravity * height));
+            timeAllExperiment = Math.Round((finalVelocity - initialVelocityExperiment) / gravity, 3);
 
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
 
-            space = new double[numberOfTerms + 2];
-            velocity = new double[numberOfTerms + 2];
-            countTimeExperiment = new double[numberOfTerms + 2];
+            space = new double[numberOfTerms];
+            velocity = new double[numberOfTerms];
+            countTimeExperiment = new double[numberOfTerms];
 
             spaceTime = new double[numberOfTerms + 2];
             spacePixel = new double[Convert.ToInt32(534)];
@@ -122,7 +122,7 @@ namespace freeFall
             // Espaço 
             for (i = 0; i < numberOfTerms; i++)
             {
-                space[i] = ((initialVelocity * countTime) + (gravity * (countTime * countTime)) / 2);
+                space[i] = ((initialVelocityExperiment * countTime) + (gravity * (countTime * countTime)) / 2);
                 spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
@@ -131,7 +131,7 @@ namespace freeFall
             // Velocidade
             for (i = 0; i < numberOfTerms; i++)
             {
-                velocity[i] = (initialVelocity + (gravity * countTime));
+                velocity[i] = (initialVelocityExperiment + (gravity * countTime));
                 countTime = countTime + 0.01;
             }
 
@@ -147,7 +147,7 @@ namespace freeFall
 
         }
 
-        public void CalculateWithResistence(double height, double gravity, double initialVelocity)
+        public void CalculateWithResistence(double height, double gravity, double initialVelocityExperiment)
         {
             double Ax;
             double countTime;
@@ -164,11 +164,11 @@ namespace freeFall
 
             finalVelocity = terminalVelocity;
 
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01);
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01)+1;
 
-            space = new double[numberOfTerms + 2];
-            velocity = new double[numberOfTerms + 2];
-            countTimeExperiment = new double[numberOfTerms + 2];
+            space = new double[numberOfTerms];
+            velocity = new double[numberOfTerms];
+            countTimeExperiment = new double[numberOfTerms];
 
             spaceTime = new double[numberOfTerms + 2];
             spacePixel = new double[Convert.ToInt32(534)];

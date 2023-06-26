@@ -36,7 +36,7 @@ namespace freeFall
         public void addPointCorpo(int countGrafic)
         {
             double result;
-            if (Program.corpo.NumberOfTerms >= countGrafic)
+            if (Program.corpo.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
                 chartSpeed.Series["Bóla"].Points.AddXY(result, -1 * Program.corpo.Velocity[countGrafic]);
@@ -45,17 +45,17 @@ namespace freeFall
         public void addPointPaper(int countGrafic)
         {
             double result;
-            if (Program.paper.NumberOfTerms >= countGrafic)
+            if (Program.paper.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
-                chartSpeed.Series["Papel"].Points.AddXY(result, -1 * Program.paper.Velocity[countGrafic]);
+               chartSpeed.Series["Papel"].Points.AddXY(result, -1 * Program.paper.Velocity[countGrafic]);
             }
            
         }
         public void addPointVaccum(int countGrafic)
         {
             double result;
-            if (Program.vaccum.NumberOfTerms >= countGrafic)
+            if (Program.vaccum.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
                 chartSpeed.Series["vácuo"].Points.AddXY(result, -1 * Program.vaccum.Velocity[countGrafic]);
@@ -81,39 +81,41 @@ namespace freeFall
 
             if (Program.greatestValueTime == 0)
             {
-                Y = -1 * Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 2);
-                speedGraphic(Program.corpo.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
-                Y = -1 * Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 2);
-                speedGraphic(Program.corpo.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 2)
             {
-                Y = -1 * Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.paper.FinalVelocity, 0) / 2);
-                speedGraphic(Program.paper.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
+
+                speedGraphic(Program.paper.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 3)
             {
-                Y = -1 * Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.vaccum.FinalVelocity, 0) / 2);
-                speedGraphic(Program.vaccum.NumberOfTerms, 0, Y, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.vaccum.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
             }
         }
 
-        double CalculateValueWithTenPercent(double value)
+        public double CalculateValueWithTenPercent(double value)
         {
             double percentage = 0.05;
             double tenPercent = value * percentage;
             double result = value + tenPercent;
+            Console.WriteLine("RESULT" + result);
             return result;
         }
 
@@ -146,8 +148,8 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["Bóla"].Points.AddXY(result, -1 * Program.corpo.Velocity[i]);
-                    }
+                        chartSpeed.Series["Bóla"].Points.AddXY(result, (-1 * Program.corpo.Velocity[i]));
+                }
                 }
             }
             if (Program.paperOn)
@@ -161,8 +163,8 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["Papel"].Points.AddXY(result, -1 * Program.paper.Velocity[i]);
-                    }
+                        chartSpeed.Series["Papel"].Points.AddXY(result, (-1 * Program.paper.Velocity[i]));
+                }
                 }
             }
             if (Program.vaccumOn)
@@ -176,7 +178,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["vácuo"].Points.AddXY(result, -1 * Program.vaccum.Velocity[i]);
+                        chartSpeed.Series["vácuo"].Points.AddXY(result, (-1 * Program.vaccum.Velocity[i]));
                     }
                 }
             }

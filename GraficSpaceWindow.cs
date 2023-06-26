@@ -40,29 +40,35 @@ namespace freeFall
 
         public void addPointCorpo(int countGrafic)
         {
-            double result;
-            if (countGrafic <= Program.corpo.NumberOfTerms)
+            double resultX;
+            int resultY;
+            if (countGrafic <= Program.corpo.NumberOfTerms && countGrafic != 0)
             {
-                result = (double)countGrafic / 100.0;
-                chartSpace.Series["Bóla"].Points.AddXY(result, Program.corpo.Space[countGrafic]);
+                resultX = (double)countGrafic / 100.0;
+                resultY = Program.corpo.Space.Length - countGrafic;
+                chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[resultY]);
             }
         }
         public void addPointPaper(int countGrafic)
         {
-            double result;
-            if (countGrafic <= Program.paper.NumberOfTerms)
+            double resultX;
+            int resultY;
+            if (countGrafic <= Program.paper.NumberOfTerms && countGrafic != 0)
             {
-                result = (double)countGrafic / 100.0;
-                chartSpace.Series["Papel"].Points.AddXY(result, Program.paper.Space[countGrafic]);
+                resultX = (double)countGrafic / 100.0;
+                resultY = Program.paper.Space.Length - countGrafic;
+                chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[resultY]);
             }
         }
         public void addPointVaccum(int countGrafic)
         {
-            double result;
-            if (countGrafic <= Program.vaccum.NumberOfTerms)
+            double resultX;
+            int resultY;
+            if (countGrafic <= Program.vaccum.NumberOfTerms && countGrafic != 0)
             {
-                result = (double)countGrafic / 100.0;
-                chartSpace.Series["vácuo"].Points.AddXY(result, Program.vaccum.Space[countGrafic]);
+                resultX = (double)countGrafic / 100.0;
+                resultY = Program.vaccum.Space.Length - countGrafic;
+                chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[resultY]);
             }  
         }
 
@@ -121,7 +127,8 @@ namespace freeFall
         {
             int i;
             var chart = chartSpace.ChartAreas[0];
-            double result = 0.0;
+            double resultX = 0.0;
+            int resultY = 0;
             chartSpace.Series.Clear();
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
@@ -145,8 +152,9 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        result = (double)i/ 100.0;
-                        chartSpace.Series["Bóla"].Points.AddXY(result, Program.corpo.Space[i]);
+                        resultX = (double)i/ 100.0;
+                        resultY = Program.corpo.Space.Length - i;
+                        chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[resultY]);
                       
                     }
                 }
@@ -161,8 +169,8 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        result = (double)i / 100.0;
-                        chartSpace.Series["Papel"].Points.AddXY(result, Program.paper.Space[i]);
+                        resultX = (double)i / 100.0;
+                        chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[Program.paper.Space.Length-i]);
                     }
                 }
             }
@@ -176,8 +184,8 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        result = (double)i / 100.0;
-                        chartSpace.Series["vácuo"].Points.AddXY(result, Program.vaccum.Space[i]);
+                        resultX = (double)i / 100.0;
+                        chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[Program.vaccum.Space.Length-i]);
                     }
                 }
             }

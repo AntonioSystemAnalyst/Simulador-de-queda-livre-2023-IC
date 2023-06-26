@@ -423,27 +423,28 @@ namespace freeFall
         {
             if(Program.airResistance == 0)
             {
-                Program.greatestValueVelocity = Program.corpo.FinalVelocity;
+                Program.greatestValueVelocity = (Program.corpo.FinalVelocity * -1);
             }
             else
             {
                 if (Program.corpo.InitialVelocity > Program.paper.InitialVelocity && Program.corpo.InitialVelocity > Program.vaccum.FinalVelocity)
                 {
-                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                    Program.greatestValueVelocity = (Program.corpo.InitialVelocity * -1);
                 }
                 else if (Program.paper.InitialVelocity > Program.corpo.InitialVelocity && Program.paper.InitialVelocity > Program.vaccum.FinalVelocity)
                 {
-                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                    Program.greatestValueVelocity = (Program.paper.InitialVelocity * -1);
                 }
                 else if (Program.vaccum.FinalVelocity > Program.corpo.InitialVelocity && Program.vaccum.FinalVelocity > Program.paper.InitialVelocity)
                 {
-                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                    Program.greatestValueVelocity = (Program.vaccum.InitialVelocity * -1);
                 }
                 else
                 {
-                    Program.greatestValueVelocity = Program.corpo.InitialVelocity;
+                    Program.greatestValueVelocity = (Program.corpo.InitialVelocity * -1);
                 }
             }
+            Console.WriteLine("Aqui:::::" + Program.greatestValueVelocity);
            
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
@@ -593,10 +594,6 @@ namespace freeFall
         private void timerNumerAnimationIniti_Tick(object sender, EventArgs e)
         {
             BTNIniciar.Enabled = false;
-            if (animationNumberCounter == 0)
-            {
-                pictureBoxCount.Image = Properties.Resources.zero;
-            }
             if (animationNumberCounter == 1)
             {
                 pictureBoxCount.Image = Properties.Resources.one;
