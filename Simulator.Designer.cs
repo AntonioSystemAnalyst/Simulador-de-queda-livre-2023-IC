@@ -130,7 +130,7 @@
             this.groupBoxGraficos.Controls.Add(this.labelGraficDetails);
             this.groupBoxGraficos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxGraficos.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxGraficos.Location = new System.Drawing.Point(4, 278);
+            this.groupBoxGraficos.Location = new System.Drawing.Point(2, 0);
             this.groupBoxGraficos.Name = "groupBoxGraficos";
             this.groupBoxGraficos.Size = new System.Drawing.Size(873, 341);
             this.groupBoxGraficos.TabIndex = 9;
@@ -168,7 +168,7 @@
             // 
             this.buttonLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(160, 214);
+            this.buttonLogo.Location = new System.Drawing.Point(160, 203);
             this.buttonLogo.Name = "buttonLogo";
             this.buttonLogo.Size = new System.Drawing.Size(50, 24);
             this.buttonLogo.TabIndex = 35;
@@ -202,7 +202,7 @@
             this.groupBoxResultados.Controls.Add(this.txtVelocidade);
             this.groupBoxResultados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxResultados.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxResultados.Location = new System.Drawing.Point(703, 1);
+            this.groupBoxResultados.Location = new System.Drawing.Point(701, 342);
             this.groupBoxResultados.Name = "groupBoxResultados";
             this.groupBoxResultados.Size = new System.Drawing.Size(176, 277);
             this.groupBoxResultados.TabIndex = 8;
@@ -440,7 +440,7 @@
             this.groupBoxPlanetas.Controls.Add(this.pictureBoxPlanets);
             this.groupBoxPlanetas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxPlanetas.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxPlanetas.Location = new System.Drawing.Point(226, 1);
+            this.groupBoxPlanetas.Location = new System.Drawing.Point(224, 342);
             this.groupBoxPlanetas.Name = "groupBoxPlanetas";
             this.groupBoxPlanetas.Size = new System.Drawing.Size(270, 277);
             this.groupBoxPlanetas.TabIndex = 7;
@@ -519,7 +519,7 @@
             this.groupBoxConfiguracao.Controls.Add(this.trackBarColors);
             this.groupBoxConfiguracao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxConfiguracao.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxConfiguracao.Location = new System.Drawing.Point(4, 1);
+            this.groupBoxConfiguracao.Location = new System.Drawing.Point(2, 342);
             this.groupBoxConfiguracao.Name = "groupBoxConfiguracao";
             this.groupBoxConfiguracao.Size = new System.Drawing.Size(216, 277);
             this.groupBoxConfiguracao.TabIndex = 6;
@@ -584,9 +584,9 @@
             // 
             this.buttonResistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonResistencia.ForeColor = System.Drawing.Color.Black;
-            this.buttonResistencia.Location = new System.Drawing.Point(8, 242);
+            this.buttonResistencia.Location = new System.Drawing.Point(6, 239);
             this.buttonResistencia.Name = "buttonResistencia";
-            this.buttonResistencia.Size = new System.Drawing.Size(151, 26);
+            this.buttonResistencia.Size = new System.Drawing.Size(151, 27);
             this.buttonResistencia.TabIndex = 39;
             this.buttonResistencia.Text = "Reiniciar simulador";
             this.buttonResistencia.UseVisualStyleBackColor = true;
@@ -625,7 +625,7 @@
             // 
             this.buttonBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBall.ForeColor = System.Drawing.Color.Black;
-            this.buttonBall.Location = new System.Drawing.Point(160, 242);
+            this.buttonBall.Location = new System.Drawing.Point(160, 239);
             this.buttonBall.Name = "buttonBall";
             this.buttonBall.Size = new System.Drawing.Size(50, 26);
             this.buttonBall.TabIndex = 31;
@@ -775,7 +775,7 @@
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(86, 26);
             this.buttonData.TabIndex = 30;
-            this.buttonData.Text = "Detalhes";
+            this.buttonData.Text = "Dados ";
             this.buttonData.UseVisualStyleBackColor = true;
             this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
             this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
@@ -790,7 +790,7 @@
             this.groupBoxControl.Controls.Add(this.label12);
             this.groupBoxControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxControl.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxControl.Location = new System.Drawing.Point(502, 196);
+            this.groupBoxControl.Location = new System.Drawing.Point(500, 537);
             this.groupBoxControl.Name = "groupBoxControl";
             this.groupBoxControl.Size = new System.Drawing.Size(196, 82);
             this.groupBoxControl.TabIndex = 10;
@@ -804,7 +804,7 @@
             this.textTempo.Cursor = System.Windows.Forms.Cursors.No;
             this.textTempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textTempo.ForeColor = System.Drawing.Color.Cyan;
-            this.textTempo.Location = new System.Drawing.Point(66, 12);
+            this.textTempo.Location = new System.Drawing.Point(77, 12);
             this.textTempo.Name = "textTempo";
             this.textTempo.ReadOnly = true;
             this.textTempo.Size = new System.Drawing.Size(75, 26);
@@ -845,7 +845,7 @@
             // 
             this.BTNIniciar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BTNIniciar.ForeColor = System.Drawing.Color.Black;
-            this.BTNIniciar.Location = new System.Drawing.Point(15, 44);
+            this.BTNIniciar.Location = new System.Drawing.Point(39, 44);
             this.BTNIniciar.Name = "BTNIniciar";
             this.BTNIniciar.Size = new System.Drawing.Size(113, 26);
             this.BTNIniciar.TabIndex = 27;
@@ -857,7 +857,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(3, 19);
+            this.label12.Location = new System.Drawing.Point(14, 19);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(63, 13);
             this.label12.TabIndex = 22;
@@ -894,12 +894,11 @@
             this.groupBoxData.Controls.Add(this.buttonData);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBoxData.Location = new System.Drawing.Point(502, 1);
+            this.groupBoxData.Location = new System.Drawing.Point(500, 342);
             this.groupBoxData.Name = "groupBoxData";
             this.groupBoxData.Size = new System.Drawing.Size(195, 195);
             this.groupBoxData.TabIndex = 11;
             this.groupBoxData.TabStop = false;
-            this.groupBoxData.Text = "Dados";
             // 
             // pictureBoxCount
             // 
@@ -955,10 +954,10 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1229, 621);
+            this.Controls.Add(this.groupBoxGraficos);
             this.Controls.Add(this.panelAnimation);
             this.Controls.Add(this.groupBoxData);
             this.Controls.Add(this.groupBoxControl);
-            this.Controls.Add(this.groupBoxGraficos);
             this.Controls.Add(this.groupBoxPlanetas);
             this.Controls.Add(this.groupBoxConfiguracao);
             this.Controls.Add(this.groupBoxResultados);

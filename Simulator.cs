@@ -43,7 +43,6 @@ namespace freeFall
         public double NumberTermsTime = 0.0;
 
         public int greatestValueTime = 0;
-        public int greatestValueVelocity = 0;
 
         public int openGraficsControl = 0;
 
@@ -593,7 +592,7 @@ namespace freeFall
 
         private void timerNumerAnimationIniti_Tick(object sender, EventArgs e)
         {
-            buttonData.Enabled = false;
+            BTNIniciar.Enabled = false;
             if (animationNumberCounter == 0)
             {
                 pictureBoxCount.Image = Properties.Resources.zero;
@@ -612,7 +611,7 @@ namespace freeFall
             }
             if(animationNumberCounter == 4)
             {
-                buttonData.Enabled = true;
+                BTNIniciar.Enabled = true;
                 clear();
                 closeAllWindows();
                 calculateValues();
