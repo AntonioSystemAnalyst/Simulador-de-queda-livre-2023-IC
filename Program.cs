@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Collections.Specialized.BitVector32;
 
 namespace freeFall
 {
@@ -18,7 +14,7 @@ namespace freeFall
         public static string planetName = "Terra"; // label com o nome do planeta
 
         // controles de janelas
-        public static int dataControl = 0; 
+        public static int dataControl = 0;
         public static int configurePlanetControl = 0;
         public static int experimentDataControl = 0;
 
@@ -48,7 +44,7 @@ namespace freeFall
 
         // vetor para controlar o contador de graficos
         //public static int[] vetorCountPointGrafic;
-        
+
         // controla o momento que os graficos sao abertos
         public static int openGraficsControl = 0;
 
@@ -62,15 +58,15 @@ namespace freeFall
         public static double height = 0;
         public static double timeExperiment = 0;
         public static double airDensity = 0;
-      
 
 
-        public static body corpo  = new body();
-        public static body paper  = new body();
+
+        public static body corpo = new body();
+        public static body paper = new body();
         public static body vaccum = new body();
 
 
-        public static double organizeData(string data) 
+        public static double organizeData(string data)
         {
             int i, numberCount = 0, status = 0;
             char ax = 'A';
@@ -80,18 +76,18 @@ namespace freeFall
             {
                 for (i = 0; i < data.Length; i++)
                 {
-                    ax = data[i]; 
-                    if (status == 1) 
+                    ax = data[i];
+                    if (status == 1)
                     {
                         numberCount = numberCount + 1;
                     }
-                    if (ax == ',' || ax == '.') 
+                    if (ax == ',' || ax == '.')
                     {
                         status = 1;
                     }
                     else
                     {
-                        result += data[i]; 
+                        result += data[i];
                     }
                 }
                 if (status == 0)
@@ -100,8 +96,8 @@ namespace freeFall
                 }
                 else
                 {
-                    output = Convert.ToDouble(result); 
-                    output = output / (Math.Pow(10, numberCount)); 
+                    output = Convert.ToDouble(result);
+                    output = output / (Math.Pow(10, numberCount));
                 }
             }
             catch

@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -28,7 +21,7 @@ namespace freeFall
 
         public void grafic3dSpace(int op)
         {
-            if(op == 0)
+            if (op == 0)
             {
                 chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
             }
@@ -63,7 +56,7 @@ namespace freeFall
             {
                 resultX = (double)countGrafic / 100.0;
                 chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[countGrafic]);
-            }  
+            }
         }
 
         public void colorAll()
@@ -111,9 +104,9 @@ namespace freeFall
 
         double CalculateValueWithTenPercent(double value)
         {
-            double percentage = 0.05; 
-            double tenPercent = value * percentage; 
-            double result = value + tenPercent; 
+            double percentage = 0.05;
+            double tenPercent = value * percentage;
+            double result = value + tenPercent;
             return result;
         }
 
@@ -145,9 +138,9 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        resultX = (double)i/ 100.0;
+                        resultX = (double)i / 100.0;
                         chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[i]);
-                      
+
                     }
                 }
             }
@@ -230,7 +223,7 @@ namespace freeFall
                 chartSpace.Series[0].IsVisibleInLegend = false;
                 chartSpace.Series["vácuo"].Points.AddXY(0, 0);
             }
-          
+
         }
 
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)

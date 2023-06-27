@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace freeFall
@@ -14,7 +9,7 @@ namespace freeFall
     {
         DataSet ds = null;
         DataTable dt = null;
-       
+
         public static int ControleMenu = 0;
         public static string planetName;
         public static int planetCounter;

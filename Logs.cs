@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace freeFall
@@ -99,16 +94,16 @@ namespace freeFall
             richTextBoxCorpo.Text += " animationSpace: " + Program.corpo.AnimationSpace.Length + "\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
 
-            for(i=0; i<Program.corpo.NumberOfTerms; i++)
+            for (i = 0; i < Program.corpo.NumberOfTerms; i++)
             {
-                corpoVetors += "[" +i+ "]->|Ts:" + Program.corpo.SpaceTime[i] + "|S: " + Program.corpo.Space[i] + "|V:" + Program.corpo.Velocity[i] 
+                corpoVetors += "[" + i + "]->|Ts:" + Program.corpo.SpaceTime[i] + "|S: " + Program.corpo.Space[i] + "|V:" + Program.corpo.Velocity[i]
                     + "|countTime:" + Program.corpo.CountTimeExperiment[i] + "\n";
-                corpoAnimation += "[" +i+ "]->|Ani.Space: " + Program.corpo.AnimationSpace[i] + "\n";
+                corpoAnimation += "[" + i + "]->|Ani.Space: " + Program.corpo.AnimationSpace[i] + "\n";
             }
 
             for (i = 0; i < Program.corpo.AnimationPixel.Length; i++)
             {
-               corpoAnimationPixel += "[" +i+ "]->| Ani.Pixel: " + Program.corpo.AnimationPixel[i] + "\n";
+                corpoAnimationPixel += "[" + i + "]->| Ani.Pixel: " + Program.corpo.AnimationPixel[i] + "\n";
             }
 
             if (Program.paperOn)
@@ -142,13 +137,13 @@ namespace freeFall
 
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    paperVetors += "["+i+"]->|Ts:" + Program.paper.SpaceTime[i] + "|S: " + Program.paper.Space[i] + "|V:" + Program.paper.Velocity[i] + "\n";
-                    paperAnimation += "[" +i+ "]->|Ani.Space: " + Program.paper.AnimationSpace[i] + "\n";
+                    paperVetors += "[" + i + "]->|Ts:" + Program.paper.SpaceTime[i] + "|S: " + Program.paper.Space[i] + "|V:" + Program.paper.Velocity[i] + "\n";
+                    paperAnimation += "[" + i + "]->|Ani.Space: " + Program.paper.AnimationSpace[i] + "\n";
                 }
 
                 for (i = 0; i < Program.paper.AnimationPixel.Length; i++)
                 {
-                    paperAnimationPixel += "[" +i+ "]->| Ani.Pixel: " + Program.paper.AnimationPixel[i] + "\n";
+                    paperAnimationPixel += "[" + i + "]->| Ani.Pixel: " + Program.paper.AnimationPixel[i] + "\n";
                 }
 
             }
@@ -184,13 +179,13 @@ namespace freeFall
 
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    vaccumVetors += "[" +i+ "]->|Ts:" + Program.vaccum.SpaceTime[i] + "|S: " + Program.vaccum.Space[i] + "|V:" + Program.vaccum.Velocity[i] + "\n";
-                    vaccumAnimation += "[" +i+ "]->|Ani.Space: " + Program.vaccum.AnimationSpace[i];
+                    vaccumVetors += "[" + i + "]->|Ts:" + Program.vaccum.SpaceTime[i] + "|S: " + Program.vaccum.Space[i] + "|V:" + Program.vaccum.Velocity[i] + "\n";
+                    vaccumAnimation += "[" + i + "]->|Ani.Space: " + Program.vaccum.AnimationSpace[i];
                 }
 
                 for (i = 0; i < Program.vaccum.AnimationPixel.Length; i++)
-                { 
-                    vaccumAnimationPixel += "["+i+ "]->|Ani.Pixel: " + Program.vaccum.AnimationPixel[i] + "\n";
+                {
+                    vaccumAnimationPixel += "[" + i + "]->|Ani.Pixel: " + Program.vaccum.AnimationPixel[i] + "\n";
                 }
             }
         }

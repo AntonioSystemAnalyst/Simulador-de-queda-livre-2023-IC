@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace freeFall
 {
@@ -81,7 +73,7 @@ namespace freeFall
 
         private void buttonCredits_Click(object sender, EventArgs e)
         {
-            if(visibleAboutControl == 0)
+            if (visibleAboutControl == 0)
             {
                 visibleAboutControl = 1;
                 richTextBoxText.Visible = true;
@@ -91,15 +83,15 @@ namespace freeFall
                 visibleAboutControl = 0;
                 richTextBoxText.Visible = false;
             }
-          
+
         }
 
 
         private void buttonFreeFall_Click(object sender, EventArgs e)
         {
-            
+
         }
- 
+
 
         public void planetData(string name, string equatorialRadius, string diameter, string volume, string mass, string gravity)
         {
@@ -164,7 +156,7 @@ namespace freeFall
             }
         }
 
-        public void colorAll ()
+        public void colorAll()
         {
             richTextBoxPlanetsData.ForeColor = Program.colorSimulator;
             labelSimulador.ForeColor = Program.colorSimulator;

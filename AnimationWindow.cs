@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace freeFall
@@ -28,7 +21,7 @@ namespace freeFall
             return pictureBoxCorpo.Image;
         }
 
-        public void animationCorpo (int countBody)
+        public void animationCorpo(int countBody)
         {
             pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
         }
@@ -86,7 +79,7 @@ namespace freeFall
                 groupBoxExperimento.BackgroundImage = Properties.Resources.horizonEarth;
             }
         }
-        public void picuture (int corpoCounter, int flagVaccumObject)
+        public void picuture(int corpoCounter, int flagVaccumObject)
         {
             if (corpoCounter == 1)
             {
@@ -132,7 +125,7 @@ namespace freeFall
 
         public void picuturePaper(int op)
         {
-            if(op == 0)
+            if (op == 0)
             {
                 pictureBoxCorpoPaper.Visible = true;
             }
@@ -172,7 +165,7 @@ namespace freeFall
 
         public void vacuumSelectedValueChange(int op)
         {
-            if(op == 0)
+            if (op == 0)
             {
                 pictureBoxVacuum.Image = pictureBoxCorpo.Image;
             }

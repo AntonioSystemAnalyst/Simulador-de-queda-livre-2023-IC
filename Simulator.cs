@@ -1,15 +1,7 @@
-﻿using freeFall.Properties;
-using System;
+﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Drawing.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Windows.Input;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 
 namespace freeFall
 {
@@ -86,7 +78,7 @@ namespace freeFall
             loadinDataCorpos();
             timerOpacity.Enabled = true;
         }
-        
+
 
         public void initiWindows()
         {
@@ -308,15 +300,15 @@ namespace freeFall
             }
             else
             {
-                if(Program.bodyOn)
+                if (Program.bodyOn)
                 {
                     Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
                 }
-                if(Program.paperOn)
+                if (Program.paperOn)
                 {
                     Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
                 }
-                if(Program.vaccumOn)
+                if (Program.vaccumOn)
                 {
                     Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
                 }
@@ -333,7 +325,7 @@ namespace freeFall
             txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
             txtEspaco.Text = " " + Math.Round(Program.corpo.Space[countBody], 2);
             countBody = countBody + 1;
-           
+
             if (countBody == Program.corpo.NumberOfTerms)
             {
                 timerAnimation.Enabled = false;
@@ -350,7 +342,7 @@ namespace freeFall
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
             animationWindow.animationPaper(countPaper);
-           
+
             if (greatestValueTime == 2)
             {
                 textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
@@ -358,11 +350,11 @@ namespace freeFall
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
             textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countPaper], 2);
             countPaper = countPaper + 1;
-           
+
             if (countPaper == Program.paper.NumberOfTerms)
             {
                 timerAnimationPaper.Enabled = false;
-                if(greatestValueTime == 2)
+                if (greatestValueTime == 2)
                 {
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -383,7 +375,7 @@ namespace freeFall
             textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
             textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[countVaccum], 2);
             countVaccum = countVaccum + 1;
-           
+
             if (countVaccum == Program.vaccum.NumberOfTerms)
             {
                 timerAnimationVacuum.Enabled = false;
@@ -419,13 +411,13 @@ namespace freeFall
                 Program.greatestValueTime = 0;
                 Program.numberOfPoints = Program.corpo.NumberOfTerms;
             }
-            
+
             greatestValueTime = Program.greatestValueTime;
         }
 
         public void receveidGreatestValueVelocity()
         {
-            if(Program.airResistance == 0)
+            if (Program.airResistance == 0)
             {
                 Program.greatestValueVelocity = (Program.corpo.FinalVelocity * -1);
             }
@@ -449,7 +441,7 @@ namespace freeFall
                 }
             }
             Console.WriteLine("Aqui:::::" + Program.greatestValueVelocity);
-           
+
         }
         private void timerGrafic_Tick(object sender, EventArgs e)
         {
@@ -502,12 +494,11 @@ namespace freeFall
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
                         spaceX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
+
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.corpo.FinalVelocity), 3);
                         speedX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
-                        speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 2);
-                        speedWindow.speedGraphic(countGrafic, 0, speedY, speedDiv, 0, speedX, 0, 1);
-                        Console.WriteLine("Space - countGrafic +: " + countGrafic);
-
+                        speedDiv = Convert.ToInt32(Math.Round(Program.greatestValueVelocity, 0) / 2);
+                        speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
                 if (Program.paperOn)
@@ -517,10 +508,11 @@ namespace freeFall
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
                         spaceX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
+
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.paper.FinalVelocity), 3);
                         speedX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
-                        speedDiv = Convert.ToInt32(Math.Round(Program.paper.FinalVelocity, 0) / 2);
-                        speedWindow.speedGraphic(countGrafic, 0, speedY, speedDiv, 0, speedX, 0, 1);
+                        speedDiv = Convert.ToInt32(Math.Round(Program.greatestValueVelocity, 0) / 2);
+                        speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
                 if (Program.vaccumOn)
@@ -531,11 +523,11 @@ namespace freeFall
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
                         spaceX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
+
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.vaccum.FinalVelocity), 3);
                         speedX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
-                        speedDiv = Convert.ToInt32(Math.Round(Program.vaccum.FinalVelocity, 0) / 2);
-                        speedWindow.speedGraphic(countGrafic, 0, speedY, speedDiv, 0, speedX, 0, 1);
-
+                        speedDiv = Convert.ToInt32(Math.Round(Program.greatestValueVelocity, 0) / 2);
+                        speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
             }
@@ -548,10 +540,11 @@ namespace freeFall
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
                         spaceX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
+
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.corpo.FinalVelocity), 3);
                         speedX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
-                        speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 2);
-                        speedWindow.speedGraphic(countGrafic, 0, speedY, speedDiv, 0, speedX, 0, 1);
+                        speedDiv = Convert.ToInt32(Math.Round(Program.greatestValueVelocity, 0) / 2);
+                        speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
                 if (Program.paperOn)
@@ -561,11 +554,11 @@ namespace freeFall
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
                         spaceX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
+
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.paper.FinalVelocity), 3);
                         speedX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
-                        speedDiv = Convert.ToInt32(Math.Round(Program.paper.FinalVelocity, 0) / 2);
-                        speedWindow.speedGraphic(countGrafic, 0, speedY, speedDiv, 0, speedX, 0, 1);
-
+                        speedDiv = Convert.ToInt32(Math.Round(Program.greatestValueVelocity, 0) / 2);
+                        speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
                 if (Program.vaccumOn)
@@ -575,10 +568,11 @@ namespace freeFall
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
                         spaceX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
+
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.vaccum.FinalVelocity), 3);
                         speedX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
-                        speedDiv = Convert.ToInt32(Math.Round(Program.vaccum.FinalVelocity, 0) / 2);
-                        speedWindow.speedGraphic(countGrafic, 0, speedY, speedDiv, 0, speedX, 0, 1);
+                        speedDiv = Convert.ToInt32(Math.Round(Program.greatestValueVelocity, 0) / 2);
+                        speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
             }
@@ -612,7 +606,7 @@ namespace freeFall
             {
                 pictureBoxCount.Image = Properties.Resources.numberThree;
             }
-            if(animationNumberCounter == 4)
+            if (animationNumberCounter == 4)
             {
                 pictureBoxCount.Image = Properties.Resources.numberOn;
                 BTNIniciar.Enabled = true;
@@ -850,7 +844,7 @@ namespace freeFall
                 pictureBoxVaccumObject.Image = animationWindow.vaccumImage();
                 flagVaccumObject = 1;
                 Program.vaccum.DragCoefficient = Program.corpo.DragCoefficient;
-                Program. vaccum.CrossSectionalArea = Program.corpo.CrossSectionalArea;
+                Program.vaccum.CrossSectionalArea = Program.corpo.CrossSectionalArea;
             }
             else
             {
@@ -1291,10 +1285,9 @@ namespace freeFall
                     }
                     else
                     {
-                        updatePosition(countGrafic, 1, countBody, 0, 0);
                         countBody--;
                         countGrafic--;
-
+                        updatePosition(countGrafic, 1, countBody, 0, 0);
                         if (countBody == 0)
                         {
                             pictureBoxTimeLeft.Visible = false;
@@ -1421,7 +1414,7 @@ namespace freeFall
             }
         }
 
-        
+
 
         private void timerOpacity_Tick(object sender, EventArgs e)
         {
@@ -1668,7 +1661,7 @@ namespace freeFall
             }
         }
 
-        
+
         private void chartSpace_Click(object sender, EventArgs e)
         {
 

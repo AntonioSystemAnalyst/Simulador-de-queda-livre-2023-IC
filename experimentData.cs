@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace freeFall
@@ -32,7 +26,7 @@ namespace freeFall
 
             textBoxCorpoTime.Text = "" + Program.corpo.TimeAllExperiment;
             textBoxCorpoVelocityFynal.Text = "" + Program.corpo.FinalVelocity;
-            txtEspacoCorpo.Text = "" + Program.height; 
+            txtEspacoCorpo.Text = "" + Program.height;
             txtVelocidadeCorpoInitial.Text = "" + Program.corpo.InitialVelocity;
 
 
@@ -49,9 +43,9 @@ namespace freeFall
         }
         public void sizeWindo()
         {
-           
 
-            if(Program.bodyOn && Program.paperOn && Program.vaccumOn)
+
+            if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
             {
                 this.Size = new Size(1079, 260);
                 groupBoxPaper.Visible = true;
@@ -60,7 +54,7 @@ namespace freeFall
             }
             else
             {
-                if(Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
+                if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                 {
                     this.Size = new Size(801, 260);
                     groupBoxPaper.Visible = true;
@@ -69,7 +63,7 @@ namespace freeFall
                 }
                 else
                 {
-                    if(Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
+                    if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                     {
                         this.Size = new Size(801, 260);
                         groupBoxPaper.Visible = false;
@@ -78,7 +72,7 @@ namespace freeFall
                     }
                     else
                     {
-                        if(Program.bodyOn && Program.paperOn == false && Program.vaccumOn == false)
+                        if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn == false)
                         {
                             this.Size = new Size(524, 260);
                             groupBoxVaccum.Location = new Point(788, 0);

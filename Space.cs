@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
-using System.Xml.Linq;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using static System.Windows.Forms.LinkLabel;
 using System.Xml;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace freeFall
 {
@@ -626,7 +616,7 @@ namespace freeFall
             }
             catch
             {
-               // MessageBox.Show("Não foi possivel efetuar a operação.");
+                // MessageBox.Show("Não foi possivel efetuar a operação.");
             }
         }
         private void timerFocus_Tick(object sender, EventArgs e)

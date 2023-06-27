@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace freeFall
@@ -32,7 +25,7 @@ namespace freeFall
         public void loadDataAnimation(string Corpo, string Paper, string Vaccum)
         {
             richTextBoxCorpoAntimation.Text = Corpo;
-            richTextBoxPaperAnimation.Text  = Paper;
+            richTextBoxPaperAnimation.Text = Paper;
             richTextBoxVaccumAnimation.Text = Vaccum;
         }
 
@@ -40,7 +33,7 @@ namespace freeFall
         {
             richTextBoxCorpoAnimationPixel.Text = Corpo;
             richTextBoxPaperAnimationPixel.Text = Paper;
-            richTextVaccumAnimationPixel.Text   = Vaccum;
+            richTextVaccumAnimationPixel.Text = Vaccum;
         }
     }
 }

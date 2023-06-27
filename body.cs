@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace freeFall
 {
@@ -18,15 +10,15 @@ namespace freeFall
         private double dragCoefficient = 0.0;
         private double terminalVelocity = 0.0;
         private double mass = 0.0;
-        public  double crossSectionalArea = 0;
+        public double crossSectionalArea = 0;
         private int numberOfTerms = 0;
 
         // ---
-        public  double term0, term1, term2, term3, term4, term5;
-        public  double term6, term7, term8, term9, term10;
-        public  int precision = 5;
-        public  double velocityPoint;
-        public  double spacePoint;
+        public double term0, term1, term2, term3, term4, term5;
+        public double term6, term7, term8, term9, term10;
+        public int precision = 5;
+        public double velocityPoint;
+        public double spacePoint;
 
         // --- Antimation
         double qtdSpaceForNumberOfTermes;
@@ -122,7 +114,7 @@ namespace freeFall
             // Espaço 
             for (i = 0; i < numberOfTerms; i++)
             {
-                space[i] = height+((initialVelocityExperiment * countTime) + (-gravity * (countTime * countTime)) / 2);
+                space[i] = height + ((initialVelocityExperiment * countTime) + (-gravity * (countTime * countTime)) / 2);
                 spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
@@ -164,7 +156,7 @@ namespace freeFall
 
             finalVelocity = terminalVelocity;
 
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01)+1;
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
 
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
@@ -174,7 +166,7 @@ namespace freeFall
             spacePixel = new double[Convert.ToInt32(534)];
 
             countTime = 0.01;
-            for (i=0; i < numberOfTerms; i++)
+            for (i = 0; i < numberOfTerms; i++)
             {
                 velocityPoint = Function(countTime);
                 velocity[i] = -velocityPoint;
@@ -199,11 +191,11 @@ namespace freeFall
 
             initialVelocity = -velocity[0];
 
-            Program.height = space[space.Length-1];
+            Program.height = space[space.Length - 1];
 
             for (i = 0; i < numberOfTerms; i++)
             {
-                space[i] = (Program.height-space[i]);
+                space[i] = (Program.height - space[i]);
             }
 
             Console.WriteLine("----------------------------------------------------------");
@@ -220,14 +212,14 @@ namespace freeFall
         }
 
 
-        public  double CalculateCircleArea(double circumference)
+        public double CalculateCircleArea(double circumference)
         {
             double radius = circumference / (2 * Math.PI);
             double area = Math.PI * Math.Pow(radius, 2);
             return area;
         }
 
-        public  double getTimeAll()
+        public double getTimeAll()
         {
             double velocityTerminalTime = 0.01;
             double velocityInTime;
@@ -261,7 +253,7 @@ namespace freeFall
             return timeAll;
         }
 
-        public  double Function(double countTime)
+        public double Function(double countTime)
         {
 
 
@@ -279,7 +271,7 @@ namespace freeFall
             return velocityPoint;
         }
 
-        public  double trapezoidalIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
+        public double trapezoidalIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
         {
             double integration = 0.0;
 
@@ -295,7 +287,7 @@ namespace freeFall
             return integration;
         }
 
-        public  double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
+        public double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
         {
             double integration = 0.0;
 
@@ -410,7 +402,7 @@ namespace freeFall
             get { return velocity; }
             set { velocity = value; }
         }
-        
+
         public double[] AnimationSpace
         {
             get { return animationSpace; }

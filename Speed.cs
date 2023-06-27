@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
@@ -221,7 +215,7 @@ namespace freeFall
                     timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i]);
                 }
             }
-            
+
             if (Program.greatestValueTime == 3)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
