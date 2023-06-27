@@ -175,10 +175,10 @@ namespace freeFall
 
             if (Program.greatestValueTime == 0)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.corpo.FinalVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 5);
-                graficContinuosSpeed(Program.corpo.NumberOfTerms, 0, Y, speedDiv, 0, X, 0);
+                graficContinuosSpeed(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
                 timeLarge = new string[Program.corpo.NumberOfTerms];
                 for (i = 0; i < Program.corpo.NumberOfTerms; i++)
                 {
@@ -187,10 +187,10 @@ namespace freeFall
             }
             if (Program.greatestValueTime == 1)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.corpo.FinalVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 5);
-                graficContinuosSpeed(Program.corpo.NumberOfTerms, 0, Y, speedDiv, 0, X, 0);
+                graficContinuosSpeed(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
                 timeLarge = new string[Program.corpo.NumberOfTerms];
                 for (i = 0; i < Program.corpo.NumberOfTerms; i++)
                 {
@@ -199,22 +199,23 @@ namespace freeFall
             }
             if (Program.greatestValueTime == 2)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.paper.FinalVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.paper.FinalVelocity, 0) / 5);
-                graficContinuosSpeed(Program.paper.NumberOfTerms, 0, Y, speedDiv, 0, X, 0);
+                graficContinuosSpeed(Program.paper.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
                     timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i]);
                 }
             }
+            
             if (Program.greatestValueTime == 3)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.vaccum.FinalVelocity), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
                 speedDiv = Convert.ToInt32(Math.Round(Program.vaccum.FinalVelocity, 0) / 5);
-                graficContinuosSpeed(Program.vaccum.NumberOfTerms, 0, Y, speedDiv, 0, X, 0);
+                graficContinuosSpeed(Program.vaccum.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
                 timeLarge = new string[Program.vaccum.NumberOfTerms];
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
@@ -337,23 +338,23 @@ namespace freeFall
                         writer.WriteLine(" ----------------------------------------- ");
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: V-[{"m/s",-5}] | Papel: V-[{"m/s",-5}] | Corpo no vácuo: V-[{"m/s",-5}]");
+                            writer.WriteLine($" Tempo: [{"s",-5}] | Bóla: V-[{"m/s",-5}] | Papel: V-[{"m/s",-5}] | Corpo no vácuo: V-[{"m/s",-5}]");
                         }
                         else
                         {
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                             {
-                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: V-[{"m/s",-5}] | Papel: V-[{"m/s",-5}]");
+                                writer.WriteLine($" Tempo: [{"s",-5}] | Bóla: V-[{"m/s",-5}] | Papel: V-[{"m/s",-5}]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: V-[{"m/s",-5}] | Corpo no vácuo: V-[{"m/s",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s",-5}] | Bóla: V-[{"m/s",-5}] | Corpo no vácuo: V-[{"m/s",-5}]");
                                 }
                                 else
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: V-[{"m/s",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s",-5}] | Bóla: V-[{"m/s",-5}]");
                                 }
                             }
                         }
@@ -451,7 +452,7 @@ namespace freeFall
                         rootElement.AppendChild(itemElement);
 
                         XmlElement Tempo = xmlDoc.CreateElement("Tempo");
-                        Tempo.InnerText = "s/100";
+                        Tempo.InnerText = "s";
                         itemElement.AppendChild(Tempo);
 
                         XmlElement Espaco_Bola = xmlDoc.CreateElement("Velocidade_Bola");
@@ -474,7 +475,7 @@ namespace freeFall
                             rootElement.AppendChild(itemElement);
 
                             XmlElement Tempo = xmlDoc.CreateElement("Tempo");
-                            Tempo.InnerText = "s/100";
+                            Tempo.InnerText = "s";
                             itemElement.AppendChild(Tempo);
 
                             XmlElement Espaco_Bola = xmlDoc.CreateElement("Velocidade_Bola");
@@ -493,7 +494,7 @@ namespace freeFall
                                 rootElement.AppendChild(itemElement);
 
                                 XmlElement Espaco_Tempo = xmlDoc.CreateElement("Tempo");
-                                Espaco_Tempo.InnerText = "s/100";
+                                Espaco_Tempo.InnerText = "s";
                                 itemElement.AppendChild(Espaco_Tempo);
 
                                 XmlElement Espaco_Bola = xmlDoc.CreateElement("Velocidade_Bola");
@@ -510,7 +511,7 @@ namespace freeFall
                                 rootElement.AppendChild(itemElement);
 
                                 XmlElement Tempo = xmlDoc.CreateElement("Tempo");
-                                Tempo.InnerText = "s/100";
+                                Tempo.InnerText = "s";
                                 itemElement.AppendChild(Tempo);
 
                                 XmlElement Espaco_Bola = xmlDoc.CreateElement("Velocidade_Bola");

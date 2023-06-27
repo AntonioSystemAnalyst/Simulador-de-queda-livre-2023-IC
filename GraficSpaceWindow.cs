@@ -41,34 +41,28 @@ namespace freeFall
         public void addPointCorpo(int countGrafic)
         {
             double resultX;
-            int resultY;
-            if (countGrafic <= Program.corpo.NumberOfTerms && countGrafic != 0)
+            if (countGrafic < Program.corpo.NumberOfTerms)
             {
                 resultX = (double)countGrafic / 100.0;
-                resultY = Program.corpo.Space.Length - countGrafic;
-                chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[resultY]);
+                chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
         {
             double resultX;
-            int resultY;
-            if (countGrafic <= Program.paper.NumberOfTerms && countGrafic != 0)
+            if (countGrafic < Program.paper.NumberOfTerms)
             {
                 resultX = (double)countGrafic / 100.0;
-                resultY = Program.paper.Space.Length - countGrafic;
-                chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[resultY]);
+                chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[countGrafic]);
             }
         }
         public void addPointVaccum(int countGrafic)
         {
             double resultX;
-            int resultY;
-            if (countGrafic <= Program.vaccum.NumberOfTerms && countGrafic != 0)
+            if (countGrafic < Program.vaccum.NumberOfTerms)
             {
                 resultX = (double)countGrafic / 100.0;
-                resultY = Program.vaccum.Space.Length - countGrafic;
-                chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[resultY]);
+                chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[countGrafic]);
             }  
         }
 
@@ -128,7 +122,6 @@ namespace freeFall
             int i;
             var chart = chartSpace.ChartAreas[0];
             double resultX = 0.0;
-            int resultY = 0;
             chartSpace.Series.Clear();
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
@@ -153,8 +146,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         resultX = (double)i/ 100.0;
-                        resultY = Program.corpo.Space.Length - i;
-                        chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[resultY]);
+                        chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[i]);
                       
                     }
                 }
@@ -170,7 +162,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         resultX = (double)i / 100.0;
-                        chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[Program.paper.Space.Length-i]);
+                        chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[i]);
                     }
                 }
             }
@@ -185,7 +177,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         resultX = (double)i / 100.0;
-                        chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[Program.vaccum.Space.Length-i]);
+                        chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[i]);
                     }
                 }
             }

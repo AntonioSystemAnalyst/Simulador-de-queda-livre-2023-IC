@@ -39,7 +39,7 @@ namespace freeFall
             if (Program.corpo.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
-                chartSpeed.Series["Bóla"].Points.AddXY(result, -1 * Program.corpo.Velocity[countGrafic]);
+                chartSpeed.Series["Bóla"].Points.AddXY(result, Program.corpo.Velocity[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
@@ -48,7 +48,7 @@ namespace freeFall
             if (Program.paper.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
-               chartSpeed.Series["Papel"].Points.AddXY(result, -1 * Program.paper.Velocity[countGrafic]);
+               chartSpeed.Series["Papel"].Points.AddXY(result, Program.paper.Velocity[countGrafic]);
             }
            
         }
@@ -58,7 +58,7 @@ namespace freeFall
             if (Program.vaccum.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
-                chartSpeed.Series["vácuo"].Points.AddXY(result, -1 * Program.vaccum.Velocity[countGrafic]);
+                chartSpeed.Series["vácuo"].Points.AddXY(result, Program.vaccum.Velocity[countGrafic]);
             }
         }
 
@@ -148,7 +148,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["Bóla"].Points.AddXY(result, (-1 * Program.corpo.Velocity[i]));
+                        chartSpeed.Series["Bóla"].Points.AddXY(result, (Program.corpo.Velocity[i]));
                 }
                 }
             }
@@ -163,7 +163,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["Papel"].Points.AddXY(result, (-1 * Program.paper.Velocity[i]));
+                        chartSpeed.Series["Papel"].Points.AddXY(result, (Program.paper.Velocity[i]));
                 }
                 }
             }
@@ -178,7 +178,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["vácuo"].Points.AddXY(result, (-1 * Program.vaccum.Velocity[i]));
+                        chartSpeed.Series["vácuo"].Points.AddXY(result, (Program.vaccum.Velocity[i]));
                     }
                 }
             }

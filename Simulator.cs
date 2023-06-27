@@ -330,8 +330,9 @@ namespace freeFall
                 textTempo.Text = " " + Math.Round(Program.corpo.CountTimeExperiment[countBody], 2);
             }
             txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
+            txtEspaco.Text = " " + Math.Round(Program.corpo.Space[countBody], 2);
             countBody = countBody + 1;
-            txtEspaco.Text = " " + Math.Round(Program.corpo.Space[Program.corpo.Space.Length - countBody], 2);
+           
             if (countBody == Program.corpo.NumberOfTerms)
             {
                 timerAnimation.Enabled = false;
@@ -354,8 +355,9 @@ namespace freeFall
                 textTempo.Text = "" + Math.Round(Program.paper.CountTimeExperiment[countPaper], 3);
             }
             textBoxPaperVelocity.Text = "" + Math.Round(Program.paper.Velocity[countPaper], 3);
+            textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countPaper], 2);
             countPaper = countPaper + 1;
-            textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[Program.paper.Space.Length - countPaper], 2);
+           
             if (countPaper == Program.paper.NumberOfTerms)
             {
                 timerAnimationPaper.Enabled = false;
@@ -378,8 +380,9 @@ namespace freeFall
                 textTempo.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 3);
             }
             textBoxVaccumVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[countVaccum], 3);
+            textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[countVaccum], 2);
             countVaccum = countVaccum + 1;
-            textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[Program.vaccum.Space.Length - countVaccum], 2);
+           
             if (countVaccum == Program.vaccum.NumberOfTerms)
             {
                 timerAnimationVacuum.Enabled = false;

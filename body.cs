@@ -110,19 +110,19 @@ namespace freeFall
             finalVelocity = Math.Sqrt((initialVelocityExperiment * initialVelocityExperiment) + (2 * gravity * height));
             timeAllExperiment = Math.Round((finalVelocity - initialVelocityExperiment) / gravity, 3);
 
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01);
 
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
 
-            spaceTime = new double[numberOfTerms + 2];
+            spaceTime = new double[numberOfTerms];
             spacePixel = new double[Convert.ToInt32(534)];
 
             // Espaço 
             for (i = 0; i < numberOfTerms; i++)
             {
-                space[i] = ((initialVelocityExperiment * countTime) + (gravity * (countTime * countTime)) / 2);
+                space[i] = height+((initialVelocityExperiment * countTime) + (-gravity * (countTime * countTime)) / 2);
                 spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
@@ -131,7 +131,7 @@ namespace freeFall
             // Velocidade
             for (i = 0; i < numberOfTerms; i++)
             {
-                velocity[i] = (initialVelocityExperiment + (gravity * countTime));
+                velocity[i] = (initialVelocityExperiment + (-gravity * countTime));
                 countTime = countTime + 0.01;
             }
 
@@ -177,7 +177,7 @@ namespace freeFall
             for (i=0; i < numberOfTerms; i++)
             {
                 velocityPoint = Function(countTime);
-                velocity[i] = velocityPoint;
+                velocity[i] = -velocityPoint;
                 countTime = countTime + 0.01;
             }
 
@@ -197,7 +197,14 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
 
-            initialVelocity = velocity[0];
+            initialVelocity = -velocity[0];
+
+            Program.height = space[space.Length-1];
+
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                space[i] = (Program.height-space[i]);
+            }
 
             Console.WriteLine("----------------------------------------------------------");
             Console.WriteLine("dragCoefficient ->" + dragCoefficient);
@@ -208,6 +215,7 @@ namespace freeFall
             Console.WriteLine("timeAllExperiment-> " + timeAllExperiment);
             Console.WriteLine("numberOfTerms-> " + numberOfTerms);
             Console.WriteLine("----------------------------------------------------------");
+
             animationVector(534, height);
         }
 
