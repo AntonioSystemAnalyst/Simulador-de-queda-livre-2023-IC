@@ -225,6 +225,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="astronomy.ico" />
+    <None Include="Resources\numberZero.png" />
+    <None Include="Resources\numberTwo.png" />
+    <None Include="Resources\numberThree.png" />
+    <None Include="Resources\numberStart.png" />
+    <None Include="Resources\numberOne.png" />
+    <None Include="Resources\numberOn.png" />
     <None Include="Resources\zero.png" />
     <None Include="Resources\two.png" />
     <None Include="Resources\three.png" />

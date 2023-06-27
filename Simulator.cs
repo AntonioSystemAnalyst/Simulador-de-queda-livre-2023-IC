@@ -254,6 +254,7 @@ namespace freeFall
                 pictureBoxNext.Visible = true;
                 txtgravit.Enabled = true;
                 buttonBall.Enabled = true;
+                pictureBoxCount.Image = Properties.Resources.numberStart;
             }
         }
         public void animation()
@@ -597,20 +598,23 @@ namespace freeFall
         private void timerNumerAnimationIniti_Tick(object sender, EventArgs e)
         {
             BTNIniciar.Enabled = false;
+            enabledConfigure(1);
+            buttonData.Focus();
             if (animationNumberCounter == 1)
             {
-                pictureBoxCount.Image = Properties.Resources.one;
+                pictureBoxCount.Image = Properties.Resources.numberOne;
             }
             if (animationNumberCounter == 2)
             {
-                pictureBoxCount.Image = Properties.Resources.two;
+                pictureBoxCount.Image = Properties.Resources.numberTwo;
             }
             if (animationNumberCounter == 3)
             {
-                pictureBoxCount.Image = Properties.Resources.three;
+                pictureBoxCount.Image = Properties.Resources.numberThree;
             }
             if(animationNumberCounter == 4)
             {
+                pictureBoxCount.Image = Properties.Resources.numberOn;
                 BTNIniciar.Enabled = true;
                 clear();
                 closeAllWindows();
@@ -619,7 +623,6 @@ namespace freeFall
                 receveidGreatestValueVelocity();
                 spaceWindow.buildGrafic();
                 speedWindow.buildGrafic();
-                enabledConfigure(1);
                 loadData();
                 animation();
                 BTNIniciar.Text = "Parar";
@@ -627,7 +630,6 @@ namespace freeFall
                 Program.openGraficsControl = 0;
                 labelGraficDetails.Visible = false;
                 animationNumberCounter = 0;
-                pictureBoxCount.Image = Properties.Resources.zero;
                 timerNumerAnimationIniti.Enabled = false;
             }
             animationNumberCounter += 1;

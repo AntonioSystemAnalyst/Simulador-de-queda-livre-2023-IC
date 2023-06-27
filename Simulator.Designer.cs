@@ -771,7 +771,7 @@
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(55, 156);
+            this.buttonData.Location = new System.Drawing.Point(58, 150);
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(86, 26);
             this.buttonData.TabIndex = 30;
@@ -902,10 +902,10 @@
             // 
             // pictureBoxCount
             // 
-            this.pictureBoxCount.Image = global::freeFall.Properties.Resources.zero;
-            this.pictureBoxCount.Location = new System.Drawing.Point(45, 28);
+            this.pictureBoxCount.Image = global::freeFall.Properties.Resources.numberStart;
+            this.pictureBoxCount.Location = new System.Drawing.Point(48, 35);
             this.pictureBoxCount.Name = "pictureBoxCount";
-            this.pictureBoxCount.Size = new System.Drawing.Size(116, 120);
+            this.pictureBoxCount.Size = new System.Drawing.Size(107, 104);
             this.pictureBoxCount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxCount.TabIndex = 31;
             this.pictureBoxCount.TabStop = false;
