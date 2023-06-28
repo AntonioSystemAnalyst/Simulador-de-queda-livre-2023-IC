@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace freeFall
 {
@@ -149,10 +150,87 @@ namespace freeFall
             term1 = Math.Round(mass / term0);
 
 
+            Ax = (2*mass*gravity) / (dragCoefficient * Program.airDensity * crossSectionalArea);
+            
+            terminalVelocity = Math.Sqrt(Ax);
+            finalVelocity = terminalVelocity;
+
+            
+             
+            timeAllExperiment = getTimeAllRV2();
+
+            finalVelocity = terminalVelocity;
+
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
+
+            space = new double[numberOfTerms];
+            velocity = new double[numberOfTerms];
+            countTimeExperiment = new double[numberOfTerms];
+
+            spaceTime = new double[numberOfTerms + 2];
+            spacePixel = new double[Convert.ToInt32(534)];
+
+            countTime = 0.01;
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                velocityPoint = Function(countTime);
+                velocity[i] = -velocityPoint;
+                countTime = countTime + 0.01;
+            }
+
+            countTime = 0.01;
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                spacePoint = SimpsonIntegrationMethod(0.01, countTime, 40);
+                space[i] = spacePoint;
+                countTime = countTime + 0.01;
+            }
+
+            countTime = 0.01;
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                countTimeExperiment[i] = countTime;
+                spaceTime[i] = Math.Round(countTime, 3);
+                countTime = countTime + 0.01;
+            }
+
+            initialVelocity = -velocity[0];
+
+            Program.height = space[space.Length - 1];
+
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                space[i] = (Program.height - space[i]);
+            }
+
+            Console.WriteLine("----------------------------------------------------------");
+            Console.WriteLine("dragCoefficient ->" + dragCoefficient);
+            Console.WriteLine("Program.airDensity ->" + Program.airDensity);
+            Console.WriteLine("crossSectionalArea ->" + crossSectionalArea);
+            Console.WriteLine("term1 ->" + term1);
+            Console.WriteLine("terminalVelocity ->" + terminalVelocity);
+            Console.WriteLine("timeAllExperiment-> " + timeAllExperiment);
+            Console.WriteLine("numberOfTerms-> " + numberOfTerms);
+            Console.WriteLine("----------------------------------------------------------");
+
+            animationVector(534, height);
+        }
+
+
+        public void CalculateWithResistenceRV2(double height, double gravity, double initialVelocityExperiment)
+        {
+            double Ax;
+            double countTime;
+            int i;
+
+            term0 = Math.Round((0.5 * dragCoefficient * Program.airDensity * crossSectionalArea), precision);
+            term1 = Math.Round(mass / term0);
+
+
             Ax = gravity / term1;
             terminalVelocity = Math.Sqrt(Ax);
             finalVelocity = terminalVelocity;
-            timeAllExperiment = getTimeAll();
+            timeAllExperiment = getTimeAllRV2();
 
             finalVelocity = terminalVelocity;
 
@@ -219,7 +297,7 @@ namespace freeFall
             return area;
         }
 
-        public double getTimeAll()
+        public double getTimeAllRV2()
         {
             double velocityTerminalTime = 0.01;
             double velocityInTime;
