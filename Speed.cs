@@ -111,6 +111,7 @@ namespace freeFall
             double result = 0.0;
             chartSpeed.Visible = true;
             chartSpeed.Titles.Add("Velocidade pelo tempo");
+            chartSpeed.Titles[0].Font = new Font(chartSpeed.Titles[0].Font.FontFamily, chartSpeed.Titles[0].Font.Size, FontStyle.Bold);
             chartSpeed.ChartAreas[0].AxisX.Title = "T(segundos/100)";
             chartSpeed.ChartAreas[0].AxisY.Title = "V(metros/segundos)";
             chartSpeed.Titles[0].ForeColor = Color.Cyan;
@@ -129,7 +130,21 @@ namespace freeFall
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
 
+            chart.AxisX.TitleFont = new Font(chart.AxisX.TitleFont, FontStyle.Bold);
+            chart.AxisY.TitleFont = new Font(chart.AxisY.TitleFont, FontStyle.Bold);
+            chart.AxisX.LabelStyle.Font = new Font(chart.AxisX.LabelStyle.Font, FontStyle.Bold);
+            chart.AxisY.LabelStyle.Font = new Font(chart.AxisY.LabelStyle.Font, FontStyle.Bold);
+
             chartSpeed.Series.Add("teste");
+
+            if (Program.directionOfYaxis == 0)
+            {
+                chart.AxisY.IsReversed = true;
+            }
+            else
+            {
+                chart.AxisY.IsReversed = false;
+            }
 
             if (Program.bodyOn)
             {

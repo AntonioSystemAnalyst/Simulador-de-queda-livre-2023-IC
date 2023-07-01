@@ -185,6 +185,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\digital-7 %28mono%29.ttf" />
     <None Include="Resources\horizonEarth.png" />
   </ItemGroup>
   <ItemGroup>
@@ -225,6 +226,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="astronomy.ico" />
+    <None Include="Resources\timerCronometer.wav" />
+    <None Include="Resources\timer3.wav" />
     <None Include="Resources\numberZero.png" />
     <None Include="Resources\numberTwo.png" />
     <None Include="Resources\numberThree.png" />

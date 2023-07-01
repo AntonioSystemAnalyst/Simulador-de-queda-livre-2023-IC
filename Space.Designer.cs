@@ -46,9 +46,9 @@
             this.groupBoxResults = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
-            this.timerFocus = new System.Windows.Forms.Timer(this.components);
             this.labelTextColor = new System.Windows.Forms.Label();
             this.trackBarColors = new System.Windows.Forms.TrackBar();
+            this.timerFocus = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBoxSalve.SuspendLayout();
@@ -193,17 +193,14 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(707, 457);
+            this.checkBox3D.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox3D.Location = new System.Drawing.Point(705, 457);
             this.checkBox3D.Name = "checkBox3D";
-            this.checkBox3D.Size = new System.Drawing.Size(38, 17);
+            this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 36;
             this.checkBox3D.Text = "3d";
             this.checkBox3D.UseVisualStyleBackColor = true;
             this.checkBox3D.CheckStateChanged += new System.EventHandler(this.checkBox3D_CheckStateChanged);
-            // 
-            // timerFocus
-            // 
-            this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
             // labelTextColor
             // 
@@ -227,6 +224,10 @@
             this.trackBarColors.TabIndex = 41;
             this.trackBarColors.Value = 1;
             this.trackBarColors.Scroll += new System.EventHandler(this.trackBarColors_Scroll);
+            // 
+            // timerFocus
+            // 
+            this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
             // Space
             // 

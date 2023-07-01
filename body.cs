@@ -119,12 +119,14 @@ namespace freeFall
                 spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
+            
+            
 
             countTime = 0;
             // Velocidade
             for (i = 0; i < numberOfTerms; i++)
             {
-                velocity[i] = (initialVelocityExperiment + (-gravity * countTime));
+                velocity[i] = initialVelocityExperiment + (-gravity * countTime);
                 countTime = countTime + 0.01;
             }
 
@@ -155,8 +157,6 @@ namespace freeFall
             terminalVelocity = Math.Sqrt(Ax);
             finalVelocity = terminalVelocity;
 
-            
-             
             timeAllExperiment = getTimeAllRV2();
 
             finalVelocity = terminalVelocity;

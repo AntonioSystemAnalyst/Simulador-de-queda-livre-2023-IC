@@ -59,7 +59,7 @@ namespace freeFall
         public static double timeExperiment = 0;
         public static double airDensity = 0;
 
-
+        public static int directionOfYaxis = 0;
 
         public static body corpo = new body();
         public static body paper = new body();

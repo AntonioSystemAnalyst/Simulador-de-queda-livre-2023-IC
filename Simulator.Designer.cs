@@ -93,7 +93,8 @@
             this.timerAnimationPaper = new System.Windows.Forms.Timer(this.components);
             this.timerGrafic = new System.Windows.Forms.Timer(this.components);
             this.groupBoxData = new System.Windows.Forms.GroupBox();
-            this.pictureBoxCount = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelTextStart = new System.Windows.Forms.Label();
             this.timerOpacity = new System.Windows.Forms.Timer(this.components);
             this.timerRight = new System.Windows.Forms.Timer(this.components);
             this.timerLeft = new System.Windows.Forms.Timer(this.components);
@@ -101,6 +102,7 @@
             this.panelAnimation = new System.Windows.Forms.Panel();
             this.timerColors = new System.Windows.Forms.Timer(this.components);
             this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
+            this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -119,7 +121,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
             this.groupBoxData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCount)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBoxExperiment.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
@@ -531,10 +534,11 @@
             this.checkBoxGrafic.AutoSize = true;
             this.checkBoxGrafic.Location = new System.Drawing.Point(8, 192);
             this.checkBoxGrafic.Name = "checkBoxGrafic";
-            this.checkBoxGrafic.Size = new System.Drawing.Size(137, 17);
+            this.checkBoxGrafic.Size = new System.Drawing.Size(82, 17);
             this.checkBoxGrafic.TabIndex = 41;
-            this.checkBoxGrafic.Text = "Gráficos em módulo";
+            this.checkBoxGrafic.Text = "Inverter Y";
             this.checkBoxGrafic.UseVisualStyleBackColor = true;
+            this.checkBoxGrafic.CheckStateChanged += new System.EventHandler(this.checkBoxGrafic_CheckStateChanged);
             // 
             // boxHeight
             // 
@@ -627,7 +631,7 @@
             this.buttonBall.ForeColor = System.Drawing.Color.Black;
             this.buttonBall.Location = new System.Drawing.Point(160, 239);
             this.buttonBall.Name = "buttonBall";
-            this.buttonBall.Size = new System.Drawing.Size(50, 26);
+            this.buttonBall.Size = new System.Drawing.Size(50, 27);
             this.buttonBall.TabIndex = 31;
             this.buttonBall.Text = "Bóla";
             this.buttonBall.UseVisualStyleBackColor = true;
@@ -771,9 +775,9 @@
             // 
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(58, 150);
+            this.buttonData.Location = new System.Drawing.Point(39, 21);
             this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(86, 26);
+            this.buttonData.Size = new System.Drawing.Size(116, 26);
             this.buttonData.TabIndex = 30;
             this.buttonData.Text = "Dados ";
             this.buttonData.UseVisualStyleBackColor = true;
@@ -890,25 +894,33 @@
             // groupBoxData
             // 
             this.groupBoxData.BackColor = System.Drawing.Color.Transparent;
-            this.groupBoxData.Controls.Add(this.pictureBoxCount);
-            this.groupBoxData.Controls.Add(this.buttonData);
+            this.groupBoxData.Controls.Add(this.groupBox1);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxData.Location = new System.Drawing.Point(500, 342);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(195, 195);
+            this.groupBoxData.Size = new System.Drawing.Size(195, 127);
             this.groupBoxData.TabIndex = 11;
             this.groupBoxData.TabStop = false;
             // 
-            // pictureBoxCount
+            // groupBox1
             // 
-            this.pictureBoxCount.Image = global::freeFall.Properties.Resources.numberStart;
-            this.pictureBoxCount.Location = new System.Drawing.Point(48, 35);
-            this.pictureBoxCount.Name = "pictureBoxCount";
-            this.pictureBoxCount.Size = new System.Drawing.Size(107, 104);
-            this.pictureBoxCount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCount.TabIndex = 31;
-            this.pictureBoxCount.TabStop = false;
+            this.groupBox1.Controls.Add(this.labelTextStart);
+            this.groupBox1.Location = new System.Drawing.Point(32, 30);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(136, 65);
+            this.groupBox1.TabIndex = 33;
+            this.groupBox1.TabStop = false;
+            // 
+            // labelTextStart
+            // 
+            this.labelTextStart.AutoSize = true;
+            this.labelTextStart.Font = new System.Drawing.Font("Digital-7 Mono", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTextStart.Location = new System.Drawing.Point(21, 18);
+            this.labelTextStart.Name = "labelTextStart";
+            this.labelTextStart.Size = new System.Drawing.Size(95, 35);
+            this.labelTextStart.TabIndex = 32;
+            this.labelTextStart.Text = "START";
             // 
             // timerOpacity
             // 
@@ -944,8 +956,19 @@
             // 
             // timerNumerAnimationIniti
             // 
-            this.timerNumerAnimationIniti.Interval = 800;
             this.timerNumerAnimationIniti.Tick += new System.EventHandler(this.timerNumerAnimationIniti_Tick);
+            // 
+            // groupBoxExperiment
+            // 
+            this.groupBoxExperiment.Controls.Add(this.buttonData);
+            this.groupBoxExperiment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxExperiment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.groupBoxExperiment.Location = new System.Drawing.Point(500, 472);
+            this.groupBoxExperiment.Name = "groupBoxExperiment";
+            this.groupBoxExperiment.Size = new System.Drawing.Size(195, 61);
+            this.groupBoxExperiment.TabIndex = 13;
+            this.groupBoxExperiment.TabStop = false;
+            this.groupBoxExperiment.Text = "Experimento";
             // 
             // Simulator
             // 
@@ -954,6 +977,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1229, 621);
+            this.Controls.Add(this.groupBoxExperiment);
             this.Controls.Add(this.groupBoxGraficos);
             this.Controls.Add(this.panelAnimation);
             this.Controls.Add(this.groupBoxData);
@@ -992,7 +1016,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeLeft)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).EndInit();
             this.groupBoxData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCount)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBoxExperiment.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1068,7 +1094,9 @@
         private System.Windows.Forms.Panel panelAnimation;
         private System.Windows.Forms.Timer timerColors;
         private System.Windows.Forms.CheckBox checkBoxGrafic;
-        private System.Windows.Forms.PictureBox pictureBoxCount;
         private System.Windows.Forms.Timer timerNumerAnimationIniti;
+        private System.Windows.Forms.Label labelTextStart;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxExperiment;
     }
 }

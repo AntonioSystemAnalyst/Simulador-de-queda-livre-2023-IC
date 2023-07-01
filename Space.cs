@@ -93,6 +93,7 @@ namespace freeFall
             double result = 0.0;
             chartSpace.Visible = true;
             chartSpace.Titles.Add("Espaço pelo tempo");
+            chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
             chartSpace.ChartAreas[0].AxisX.Title = "T(segundos)";
             chartSpace.ChartAreas[0].AxisY.Title = "S(metros)";
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
@@ -105,7 +106,21 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
+            chart.AxisX.TitleFont = new Font(chart.AxisX.TitleFont, FontStyle.Bold);
+            chart.AxisY.TitleFont = new Font(chart.AxisY.TitleFont, FontStyle.Bold);
+            chart.AxisX.LabelStyle.Font = new Font(chart.AxisX.LabelStyle.Font, FontStyle.Bold);
+            chart.AxisY.LabelStyle.Font = new Font(chart.AxisY.LabelStyle.Font, FontStyle.Bold);
+
             chartSpace.Series.Add("teste");
+
+            if (Program.directionOfYaxis == 0)
+            {
+                chart.AxisY.IsReversed = true;
+            }
+            else
+            {
+                chart.AxisY.IsReversed = false;
+            }
 
             if (Program.bodyOn)
             {

@@ -11,6 +11,8 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "freeFallSetup", "..\freeFal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirResistenceTestes", "..\AirResistenceTestes\AirResistenceTestes.csproj", "{74ABB220-92AC-474A-955C-DA9073BB0573}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "chartTeste", "..\chartTeste\chartTeste.csproj", "{C364343B-158D-4C17-97B9-10B57B6DD1C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{74ABB220-92AC-474A-955C-DA9073BB0573}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74ABB220-92AC-474A-955C-DA9073BB0573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74ABB220-92AC-474A-955C-DA9073BB0573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C364343B-158D-4C17-97B9-10B57B6DD1C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C364343B-158D-4C17-97B9-10B57B6DD1C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C364343B-158D-4C17-97B9-10B57B6DD1C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C364343B-158D-4C17-97B9-10B57B6DD1C6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

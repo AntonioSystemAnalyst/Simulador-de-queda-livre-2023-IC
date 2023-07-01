@@ -74,30 +74,30 @@ namespace freeFall
             double Y = 0.0;
             double X = 0.0;
             chartSpace.Series.Clear();
-            spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 2);
+            spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
 
             if (Program.greatestValueTime == 0)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
                 spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
+                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
                 spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 2)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
+                X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 2);
                 spaceGraphic(Program.paper.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 3)
             {
-                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
+                Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
+                X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 2);
                 spaceGraphic(Program.vaccum.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
         }
@@ -125,6 +125,18 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
+
+
+           
+
+            if (Program.directionOfYaxis == 0)
+            {
+                chart.AxisY.IsReversed = true;
+            }
+            else
+            {
+                chart.AxisY.IsReversed = false;
+            }
 
             chartSpace.Series.Add("teste");
 
@@ -180,7 +192,8 @@ namespace freeFall
         {
             var chart = chartSpace.ChartAreas[0];
 
-            chartSpace.Titles.Add("Espaço pelo tempo");
+            chartSpace.Titles.Add("Espaço pelo tempo").Docking = Docking.Bottom;
+            chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
             chartSpace.ChartAreas[0].AxisX.Title = "T(s)";
             chartSpace.ChartAreas[0].AxisY.Title = "S(m)";
             chartSpace.Visible = true;
@@ -194,6 +207,13 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
+
+            chart.AxisX.TitleFont = new Font(chart.AxisX.TitleFont, FontStyle.Bold);
+            chart.AxisY.TitleFont = new Font(chart.AxisY.TitleFont, FontStyle.Bold);
+            chart.AxisX.LabelStyle.Font = new Font(chart.AxisX.LabelStyle.Font, FontStyle.Bold);
+            chart.AxisY.LabelStyle.Font = new Font(chart.AxisY.LabelStyle.Font, FontStyle.Bold);
+
+            
 
             chartSpace.Series.Add("teste");
 

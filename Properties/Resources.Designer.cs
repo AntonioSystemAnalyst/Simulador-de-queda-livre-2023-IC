@@ -301,6 +301,16 @@ namespace freeFall.Properties {
         }
         
         /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Byte[].
+        /// </summary>
+        internal static byte[] digitalFont {
+            get {
+                object obj = ResourceManager.GetObject("digitalFont", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap gauge {
@@ -647,6 +657,24 @@ namespace freeFall.Properties {
             get {
                 object obj = ResourceManager.GetObject("three", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.IO.UnmanagedMemoryStream semelhante a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream timer3 {
+            get {
+                return ResourceManager.GetStream("timer3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.IO.UnmanagedMemoryStream semelhante a System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream timerCronometer {
+            get {
+                return ResourceManager.GetStream("timerCronometer", resourceCulture);
             }
         }
         
