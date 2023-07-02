@@ -13,13 +13,10 @@ namespace freeFall
         {
             InitializeComponent();
             timerCarousel.Enabled = true;
-            timerWindowControl.Enabled = true;
             timerAnimation.Enabled = true;
-            trackBarPlanets.Value = 0;
-            planetData("Mercurio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10²³", "3,7");
+            trackBarPlanets.Value = 2;
+            planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10²⁴", "9,80665");
             richTextBoxText.Text = "QUEDA LIVRE\n\nA queda livre é um fenômeno físico que ocorre quando um corpo é liberado no ar ou vacúo, e é deixado para cair devido à gravidade.\n\nRESISTÊNCIA DO AR\n\nA resistência do ar é a força que se opõe ao movimento de um objeto pelo ar.\n\nREFERÊNCIAS\n\nImagens\n\nAs ilustrações dos horizontes dos planetas, no campo ''Experimento'', foram feitas com a inteligência artifical da Microsoft, ''Bing Image Creator'', que pode ser acessada em: https://www.bing.com/create. Acessada em 14 de maio de 2023.\n\nAs demais imagens foram retiradas da plataforma ''Pixabay'', que esta disponível no site: https://pixabay.com/pt/. Acessada em 14 de maio de 2023.\n\nCRÉDITOS\n\n";
-
-
         }
 
         private void timerAnimation_Tick(object sender, EventArgs e)
@@ -60,14 +57,15 @@ namespace freeFall
         {
 
         }
-        private void timerWindowControl_Tick(object sender, EventArgs e)
-        {
-
-        }
 
         private void buttonSimulador_Click(object sender, EventArgs e)
         {
-            freeFall.Program.Key = "open";
+            
+            timerCarousel.Enabled = false;
+            timerAnimation.Enabled = false;
+            timerSetTrackPlanet.Enabled = false;
+            Program.planeTrackBar = setPlanetTrackBar(carouselCounter);
+            Program.Key = "open";
             this.Close();
         }
 
@@ -104,6 +102,7 @@ namespace freeFall
         {
             int i;
             i = trackBarColors.Value;
+            Program.colorTrackBar = i;
             if (i == 2)
             {
                 Program.colorSimulator = Color.Blue;
@@ -166,6 +165,7 @@ namespace freeFall
         }
         private void timerCarousel_Tick(object sender, EventArgs e)
         {
+            Program.planeTrackBar = carouselCounter;
             if (carouselCounter == 0)
             {
                 trackBarPlanets.Value = 0;
@@ -211,15 +211,15 @@ namespace freeFall
             if (carouselCounter == 7)
             {
                 trackBarPlanets.Value = 7;
-                pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
-                planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10²⁶", "11,15");
+                pictureBoxCarrocel.Image = Properties.Resources.planetUranus;
+                planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10²⁵", "8,87");
             }
             if (carouselCounter == 8)
             {
                 trackBarPlanets.Value = 8;
                 carouselCounter = -1;
-                pictureBoxCarrocel.Image = Properties.Resources.planetUranus;
-                planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10²⁵", "8,87");
+                pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
+                planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10²⁶", "11,15");
             }
             carouselCounter++;
         }
@@ -227,7 +227,7 @@ namespace freeFall
         {
             int i;
             i = trackBarPlanets.Value;
-
+            Program.planeTrackBar = i;
             if (i == 0)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetMercury;
@@ -272,20 +272,67 @@ namespace freeFall
             }
             if (i == 7)
             {
-                pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
-                planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10^²6", "11,15");
+                pictureBoxCarrocel.Image = Properties.Resources.planetUranus;
+                planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10^²5", "8,87");
                 carouselCounter = 7;
             }
             if (i == 8)
             {
-                carouselCounter = 0;
-                pictureBoxCarrocel.Image = Properties.Resources.planetUranus;
-                planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10^²5", "8,87");
+                carouselCounter = 8;
+                pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
+                planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10^²6", "11,15");
             }
+        }
+
+        public static int setPlanetTrackBar(int carouselCounter)
+        {
+            int value = 0;
+            if (carouselCounter == 0)
+            {
+                value = 3;
+            }
+            if (carouselCounter == 1)
+            {
+                value = 4;
+            }
+            if (carouselCounter == 2)
+            {
+                value = 1;
+            }
+            if (carouselCounter == 3)
+            {
+                value = 2;
+            }
+            if (carouselCounter == 4)
+            {
+                value = 5;
+            }
+            if (carouselCounter == 5)
+            {
+                value = 6;
+            }
+            if (carouselCounter == 6)
+            {
+                value = 7;
+            }
+            if (carouselCounter == 7)
+            {
+                value = 8;
+            }
+            if (carouselCounter == 8)
+            {
+                value = 9;
+            }
+            return value;
         }
 
         private void richTextBoxPlanetsData_MouseEnter(object sender, EventArgs e)
         {
+        }
+
+        private void timerSetTrackPlanet_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

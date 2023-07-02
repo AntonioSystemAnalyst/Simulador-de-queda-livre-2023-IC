@@ -15,7 +15,15 @@ namespace freeFall
             sizeWindo();
             loadData();
             timerFocus.Enabled = true;
-            //pictureBoxVaccumObject.Image = Simulator.animationWindow.vaccumImage();
+            timerLoadImage.Enabled = true;
+        }
+
+        public void loadImageValue()
+        {
+            pictureBoxCorpoView.Image = Program.ballImage;
+            pictureBoxPaper.Image = Program.paperImage;
+            pictureBoxVaccumObject.Image =Program.vaccumImage;
+            pictureBoxPlanet.Image = Program.planetImage;
         }
 
         public void loadData()
@@ -24,21 +32,21 @@ namespace freeFall
             textBoxHeight.Text = "" + Program.height;
             textBoxPlanetName.Text = "" + Program.planetName;
 
-            textBoxCorpoTime.Text = "" + Program.corpo.TimeAllExperiment;
-            textBoxCorpoVelocityFynal.Text = "" + Program.corpo.FinalVelocity;
+            textBoxCorpoTime.Text = "" + Program.ball.TimeAllExperiment;
+            textBoxCorpoVelocityFynal.Text = "" + Program.ball.FinalVelocity;
             txtEspacoCorpo.Text = "" + Program.height;
-            txtVelocidadeCorpoInitial.Text = "" + Program.corpo.InitialVelocity;
+            txtVelocidadeCorpoInitial.Text = "" + Program.ball.InitialVelocity;
 
 
-            textBoxPaperFynalVelocity.Text = "" + Program.paper.FinalVelocity; ;
-            textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity; ;
+            textBoxPaperFynalVelocity.Text = "" + Program.paper.FinalVelocity; 
+            textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity; 
             textBoxPaperHeight.Text = "" + Program.height;
             textBoxPaperTime.Text = "" + Program.paper.TimeAllExperiment;
 
 
-            textBoxVaccumFynalVelocity.Text = "" + Program.vaccum.FinalVelocity; ;
+            textBoxVaccumFynalVelocity.Text = "" + Program.vaccum.FinalVelocity; 
             textBoxVaccumHeight.Text = "" + Program.height;
-            textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity; ;
+            textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity; 
             textBoxVaccumTime.Text = "" + Program.vaccum.TimeAllExperiment;
         }
         public void sizeWindo()
@@ -68,7 +76,6 @@ namespace freeFall
                         this.Size = new Size(801, 260);
                         groupBoxPaper.Visible = false;
                         groupBoxVaccum.Location = new Point(511, 0);
-                        Console.WriteLine("aqq");
                     }
                     else
                     {
@@ -105,6 +112,13 @@ namespace freeFall
         {
             button1.Focus();
             timerFocus.Enabled = false;
+        }
+
+        private void timerLoadImage_Tick(object sender, EventArgs e)
+        {
+            loadImageValue();
+            loadData();
+            sizeWindo();
         }
     }
 }

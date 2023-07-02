@@ -30,10 +30,10 @@ namespace freeFall
         public void addPointCorpo(int countGrafic)
         {
             double result;
-            if (Program.corpo.NumberOfTerms > countGrafic)
+            if (Program.ball.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
-                chartSpeed.Series["Bóla"].Points.AddXY(result, Program.corpo.Velocity[countGrafic]);
+                chartSpeed.Series["Bóla"].Points.AddXY(result, Program.ball.Velocity[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
@@ -78,17 +78,15 @@ namespace freeFall
             if (Program.greatestValueTime == 0)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
 
-                speedGraphic(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
-                speedGraphic(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
-
-                Console.WriteLine("AQQ: " + Y);
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
+                speedGraphic(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 2)
             {
@@ -136,6 +134,7 @@ namespace freeFall
             else
             {
                 chart.AxisY.IsReversed = false;
+                Console.WriteLine("ENTROUUUUUUUU");
             }
 
             chartSpeed.Series.Add("teste");
@@ -151,7 +150,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["Bóla"].Points.AddXY(result, (Program.corpo.Velocity[i]));
+                        chartSpeed.Series["Bóla"].Points.AddXY(result, (Program.ball.Velocity[i]));
                     }
                 }
             }

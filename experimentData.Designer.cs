@@ -74,6 +74,8 @@
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
+            this.timerLoadImage = new System.Windows.Forms.Timer(this.components);
+            this.pictureBoxPlanet = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoView)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
             this.groupBoxPaper.SuspendLayout();
@@ -83,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanet)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxCorpoView
@@ -517,7 +520,7 @@
             // 
             this.LbAltura.AutoSize = true;
             this.LbAltura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LbAltura.Location = new System.Drawing.Point(8, 72);
+            this.LbAltura.Location = new System.Drawing.Point(8, 107);
             this.LbAltura.Name = "LbAltura";
             this.LbAltura.Size = new System.Drawing.Size(61, 13);
             this.LbAltura.TabIndex = 39;
@@ -527,7 +530,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(8, 102);
+            this.label6.Location = new System.Drawing.Point(8, 137);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(102, 13);
             this.label6.TabIndex = 40;
@@ -536,6 +539,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.pictureBoxPlanet);
             this.groupBox1.Controls.Add(this.textBoxPlanetName);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.textBoxGravity);
@@ -558,7 +562,7 @@
             this.textBoxPlanetName.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxPlanetName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPlanetName.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxPlanetName.Location = new System.Drawing.Point(124, 32);
+            this.textBoxPlanetName.Location = new System.Drawing.Point(124, 67);
             this.textBoxPlanetName.Name = "textBoxPlanetName";
             this.textBoxPlanetName.ReadOnly = true;
             this.textBoxPlanetName.Size = new System.Drawing.Size(83, 26);
@@ -568,7 +572,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(8, 40);
+            this.label13.Location = new System.Drawing.Point(8, 75);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 13);
             this.label13.TabIndex = 43;
@@ -581,7 +585,7 @@
             this.textBoxGravity.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxGravity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxGravity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxGravity.Location = new System.Drawing.Point(124, 95);
+            this.textBoxGravity.Location = new System.Drawing.Point(124, 130);
             this.textBoxGravity.Name = "textBoxGravity";
             this.textBoxGravity.ReadOnly = true;
             this.textBoxGravity.Size = new System.Drawing.Size(83, 26);
@@ -594,7 +598,7 @@
             this.textBoxHeight.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxHeight.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxHeight.Location = new System.Drawing.Point(124, 64);
+            this.textBoxHeight.Location = new System.Drawing.Point(124, 99);
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.ReadOnly = true;
             this.textBoxHeight.Size = new System.Drawing.Size(83, 26);
@@ -613,13 +617,27 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
+            // timerLoadImage
+            // 
+            this.timerLoadImage.Tick += new System.EventHandler(this.timerLoadImage_Tick);
+            // 
+            // pictureBoxPlanet
+            // 
+            this.pictureBoxPlanet.Image = global::freeFall.Properties.Resources.planetUranus;
+            this.pictureBoxPlanet.Location = new System.Drawing.Point(11, 19);
+            this.pictureBoxPlanet.Name = "pictureBoxPlanet";
+            this.pictureBoxPlanet.Size = new System.Drawing.Size(45, 42);
+            this.pictureBoxPlanet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPlanet.TabIndex = 45;
+            this.pictureBoxPlanet.TabStop = false;
+            // 
             // ExperimentData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
-            this.ClientSize = new System.Drawing.Size(1116, 339);
+            this.ClientSize = new System.Drawing.Size(1116, 236);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBoxVaccum);
             this.Controls.Add(this.groupBoxPaper);
@@ -646,6 +664,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -695,5 +714,7 @@
         private System.Windows.Forms.TextBox textBoxVaccumInitialVelocity;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timerFocus;
+        private System.Windows.Forms.Timer timerLoadImage;
+        private System.Windows.Forms.PictureBox pictureBoxPlanet;
     }
 }

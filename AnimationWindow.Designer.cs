@@ -37,7 +37,7 @@
             this.pictureBoxVacuum = new System.Windows.Forms.PictureBox();
             this.pictureBoxBase = new System.Windows.Forms.PictureBox();
             this.pictureBoxSetaY = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCorpoPaper = new System.Windows.Forms.PictureBox();
+            this.pictureBoxPaper = new System.Windows.Forms.PictureBox();
             this.pictureBoxCorpo = new System.Windows.Forms.PictureBox();
             this.pictureBoxGauge = new System.Windows.Forms.PictureBox();
             this.pictureBoxResistence = new System.Windows.Forms.PictureBox();
@@ -50,7 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVacuum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoPaper)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
@@ -67,7 +67,7 @@
             this.groupBoxExperimento.Controls.Add(this.groupBoxVacuum);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxBase);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxSetaY);
-            this.groupBoxExperimento.Controls.Add(this.pictureBoxCorpoPaper);
+            this.groupBoxExperimento.Controls.Add(this.pictureBoxPaper);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxCorpo);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxGauge);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxResistence);
@@ -168,17 +168,17 @@
             this.pictureBoxSetaY.TabStop = false;
             this.pictureBoxSetaY.Visible = false;
             // 
-            // pictureBoxCorpoPaper
+            // pictureBoxPaper
             // 
-            this.pictureBoxCorpoPaper.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCorpoPaper.Image = global::freeFall.Properties.Resources.paper2;
-            this.pictureBoxCorpoPaper.Location = new System.Drawing.Point(222, 30);
-            this.pictureBoxCorpoPaper.Name = "pictureBoxCorpoPaper";
-            this.pictureBoxCorpoPaper.Size = new System.Drawing.Size(45, 41);
-            this.pictureBoxCorpoPaper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCorpoPaper.TabIndex = 1;
-            this.pictureBoxCorpoPaper.TabStop = false;
-            this.pictureBoxCorpoPaper.Visible = false;
+            this.pictureBoxPaper.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxPaper.Image = global::freeFall.Properties.Resources.paper2;
+            this.pictureBoxPaper.Location = new System.Drawing.Point(222, 30);
+            this.pictureBoxPaper.Name = "pictureBoxPaper";
+            this.pictureBoxPaper.Size = new System.Drawing.Size(45, 41);
+            this.pictureBoxPaper.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPaper.TabIndex = 1;
+            this.pictureBoxPaper.TabStop = false;
+            this.pictureBoxPaper.Visible = false;
             // 
             // pictureBoxCorpo
             // 
@@ -239,7 +239,7 @@
             this.labelX.Text = "X";
             this.labelX.Visible = false;
             // 
-            // Animation
+            // AnimationWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -248,7 +248,7 @@
             this.ClientSize = new System.Drawing.Size(348, 624);
             this.Controls.Add(this.groupBoxExperimento);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Animation";
+            this.Name = "AnimationWindow";
             this.Text = "Animation";
             this.groupBoxExperimento.ResumeLayout(false);
             this.groupBoxExperimento.PerformLayout();
@@ -258,7 +258,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVacuum)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSetaY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoPaper)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPaper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGauge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
@@ -278,7 +278,7 @@
         private System.Windows.Forms.PictureBox pictureBoxVacuum;
         private System.Windows.Forms.PictureBox pictureBoxBase;
         private System.Windows.Forms.PictureBox pictureBoxSetaY;
-        private System.Windows.Forms.PictureBox pictureBoxCorpoPaper;
+        private System.Windows.Forms.PictureBox pictureBoxPaper;
         private System.Windows.Forms.PictureBox pictureBoxCorpo;
         private System.Windows.Forms.PictureBox pictureBoxGauge;
         private System.Windows.Forms.PictureBox pictureBoxResistence;

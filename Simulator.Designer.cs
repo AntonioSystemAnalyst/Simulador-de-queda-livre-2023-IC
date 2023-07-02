@@ -103,6 +103,7 @@
             this.timerColors = new System.Windows.Forms.Timer(this.components);
             this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
+            this.checkBoxSound = new System.Windows.Forms.CheckBox();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -171,7 +172,7 @@
             // 
             this.buttonLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(160, 203);
+            this.buttonLogo.Location = new System.Drawing.Point(156, 185);
             this.buttonLogo.Name = "buttonLogo";
             this.buttonLogo.Size = new System.Drawing.Size(50, 24);
             this.buttonLogo.TabIndex = 35;
@@ -501,6 +502,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxSound);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
@@ -970,6 +972,17 @@
             this.groupBoxExperiment.TabStop = false;
             this.groupBoxExperiment.Text = "Experimento";
             // 
+            // checkBoxSound
+            // 
+            this.checkBoxSound.AutoSize = true;
+            this.checkBoxSound.Location = new System.Drawing.Point(116, 215);
+            this.checkBoxSound.Name = "checkBoxSound";
+            this.checkBoxSound.Size = new System.Drawing.Size(54, 17);
+            this.checkBoxSound.TabIndex = 42;
+            this.checkBoxSound.Text = "Sons";
+            this.checkBoxSound.UseVisualStyleBackColor = true;
+            this.checkBoxSound.CheckedChanged += new System.EventHandler(this.checkBoxSound_CheckedChanged);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1098,5 +1111,6 @@
         private System.Windows.Forms.Label labelTextStart;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBoxExperiment;
+        private System.Windows.Forms.CheckBox checkBoxSound;
     }
 }

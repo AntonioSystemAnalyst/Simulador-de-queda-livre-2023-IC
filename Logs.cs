@@ -70,40 +70,40 @@ namespace freeFall
             richTextBoxCorpo.Text += " ----------------------------\n";
             richTextBoxCorpo.Text += " Console View Corpo\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
-            richTextBoxCorpo.Text += " finalVelocity: " + Program.corpo.FinalVelocity + "\n";
-            richTextBoxCorpo.Text += " timeAllExperiment: " + Program.corpo.TimeAllExperiment + "\n";
-            richTextBoxCorpo.Text += " numberOfTerms: " + Program.corpo.NumberOfTerms + "\n";
+            richTextBoxCorpo.Text += " finalVelocity: " + Program.ball.FinalVelocity + "\n";
+            richTextBoxCorpo.Text += " timeAllExperiment: " + Program.ball.TimeAllExperiment + "\n";
+            richTextBoxCorpo.Text += " numberOfTerms: " + Program.ball.NumberOfTerms + "\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
             richTextBoxCorpo.Text += " Calculos - Qtd Termos\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
-            richTextBoxCorpo.Text += " Space: " + Program.corpo.Space.Length + "\n";
-            richTextBoxCorpo.Text += " Speed: " + Program.corpo.Velocity.Length + "\n";
-            richTextBoxCorpo.Text += " countTimeExp.: " + Program.corpo.CountTimeExperiment.Length + "\n";
-            richTextBoxCorpo.Text += " SpaceTime: " + Program.corpo.SpaceTime.Length + "\n";
+            richTextBoxCorpo.Text += " Space: " + Program.ball.Space.Length + "\n";
+            richTextBoxCorpo.Text += " Speed: " + Program.ball.Velocity.Length + "\n";
+            richTextBoxCorpo.Text += " countTimeExp.: " + Program.ball.CountTimeExperiment.Length + "\n";
+            richTextBoxCorpo.Text += " SpaceTime: " + Program.ball.SpaceTime.Length + "\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
             richTextBoxCorpo.Text += " Animação\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
             richTextBoxCorpo.Text += " qtdSpaceForNumberOfTermes: \n";
-            richTextBoxCorpo.Text += " " + Program.corpo.QtdSpaceForNumberOfTermes + "\n";
+            richTextBoxCorpo.Text += " " + Program.ball.QtdSpaceForNumberOfTermes + "\n";
             richTextBoxCorpo.Text += " qtdSpaceForPixels: \n";
-            richTextBoxCorpo.Text += " " + Program.corpo.QtdSpaceForPixels + "\n";
+            richTextBoxCorpo.Text += " " + Program.ball.QtdSpaceForPixels + "\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
             richTextBoxCorpo.Text += " Qtd Termos\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
-            richTextBoxCorpo.Text += " animationPixel: " + Program.corpo.AnimationPixel.Length + "\n";
-            richTextBoxCorpo.Text += " animationSpace: " + Program.corpo.AnimationSpace.Length + "\n";
+            richTextBoxCorpo.Text += " animationPixel: " + Program.ball.AnimationPixel.Length + "\n";
+            richTextBoxCorpo.Text += " animationSpace: " + Program.ball.AnimationSpace.Length + "\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
 
-            for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+            for (i = 0; i < Program.ball.NumberOfTerms; i++)
             {
-                corpoVetors += "[" + i + "]->|Ts:" + Program.corpo.SpaceTime[i] + "|S: " + Program.corpo.Space[i] + "|V:" + Program.corpo.Velocity[i]
-                    + "|countTime:" + Program.corpo.CountTimeExperiment[i] + "\n";
-                corpoAnimation += "[" + i + "]->|Ani.Space: " + Program.corpo.AnimationSpace[i] + "\n";
+                corpoVetors += "[" + i + "]->|Ts:" + Program.ball.SpaceTime[i] + "|S: " + Program.ball.Space[i] + "|V:" + Program.ball.Velocity[i]
+                    + "|countTime:" + Program.ball.CountTimeExperiment[i] + "\n";
+                corpoAnimation += "[" + i + "]->|Ani.Space: " + Program.ball.AnimationSpace[i] + "\n";
             }
 
-            for (i = 0; i < Program.corpo.AnimationPixel.Length; i++)
+            for (i = 0; i < Program.ball.AnimationPixel.Length; i++)
             {
-                corpoAnimationPixel += "[" + i + "]->| Ani.Pixel: " + Program.corpo.AnimationPixel[i] + "\n";
+                corpoAnimationPixel += "[" + i + "]->| Ani.Pixel: " + Program.ball.AnimationPixel[i] + "\n";
             }
 
             if (Program.paperOn)
@@ -361,20 +361,20 @@ namespace freeFall
             gravity = "" + Math.Round(Program.gravity, 2) + " m/s²";
             airDensity = "" + Program.airDensity;
             height = "" + Program.height + " m";
-            DragCoefficientBody = "" + Program.corpo.DragCoefficient;
+            DragCoefficientBody = "" + Program.ball.DragCoefficient;
             DragCoefficientPaper = "" + Program.paper.DragCoefficient;
             DragCoefficientVaccum = "" + Program.vaccum.DragCoefficient;
-            initialVelocityBody = "" + Math.Round(Program.corpo.InitialVelocity, 2) + " m/s";
-            finalVelocityBody = "" + Math.Round(Program.corpo.FinalVelocity, 2) + " m/s";
+            initialVelocityBody = "" + Math.Round(Program.ball.InitialVelocity, 2) + " m/s";
+            finalVelocityBody = "" + Math.Round(Program.ball.FinalVelocity, 2) + " m/s";
             if (Program.airResistance == 0)
             {
                 airResistence = "Não";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
+                experimentTimeBody = "" + Math.Round(Program.ball.TimeAllExperiment, 2) + " s";
             }
             else
             {
                 airResistence = "Sim";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
+                experimentTimeBody = "" + Math.Round(Program.ball.TimeAllExperiment, 2) + " s";
             }
             initialVelocityPaper = "" + Math.Round(Program.paper.InitialVelocity, 2) + " m/s";
             finalVelocityPaper = "" + Math.Round(Program.paper.FinalVelocity, 2) + " m/s";

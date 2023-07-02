@@ -34,10 +34,10 @@ namespace freeFall
         public void addPointCorpo(int countGrafic)
         {
             double resultX;
-            if (countGrafic < Program.corpo.NumberOfTerms)
+            if (countGrafic < Program.ball.NumberOfTerms)
             {
                 resultX = (double)countGrafic / 100.0;
-                chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[countGrafic]);
+                chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.ball.Space[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
@@ -79,14 +79,14 @@ namespace freeFall
             if (Program.greatestValueTime == 0)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
-                spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
+                spaceGraphic(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 1)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
-                spaceGraphic(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
+                spaceGraphic(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
             }
             if (Program.greatestValueTime == 2)
             {
@@ -151,7 +151,7 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         resultX = (double)i / 100.0;
-                        chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.corpo.Space[i]);
+                        chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.ball.Space[i]);
 
                     }
                 }

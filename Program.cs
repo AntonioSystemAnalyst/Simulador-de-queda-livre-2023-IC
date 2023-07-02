@@ -35,18 +35,27 @@ namespace freeFall
         //  o maior velocidade
         public static double greatestValueVelocity;
 
-        //  o maior espaço
-        public static double greatestValueSpace;
-
-
         // define a quantidade de termos do maior entre corpo = 1, paper = 2, vaccum = 3
         public static int numberOfPoints = 0;
 
-        // vetor para controlar o contador de graficos
-        //public static int[] vetorCountPointGrafic;
-
         // controla o momento que os graficos sao abertos
         public static int openGraficsControl = 0;
+
+        // controla o eixo y
+        public static int directionOfYaxis = 0;
+
+        // controla a possibilidade de inverção em y
+        public static int directionFlag = 0;
+
+        public static Image ballImage;
+        public static Image paperImage;
+        public static Image vaccumImage;
+        public static Image planetImage;
+
+        // controle de trackbars
+        public static int colorTrackBar = 1;
+        public static int planeTrackBar = 7;
+
 
         public static bool bodyOn = true;
         public static bool paperOn = false;
@@ -59,9 +68,9 @@ namespace freeFall
         public static double timeExperiment = 0;
         public static double airDensity = 0;
 
-        public static int directionOfYaxis = 0;
+       
 
-        public static body corpo = new body();
+        public static body ball = new body();
         public static body paper = new body();
         public static body vaccum = new body();
 
@@ -154,18 +163,17 @@ namespace freeFall
 
             }
         }
-
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             InitialView y = new InitialView();
-            Simulator x = new Simulator();
             y.ShowDialog();
             y = null;
             if (Key == "open")
             {
+                Simulator x = new Simulator();
                 x.ShowDialog();
             }
         }

@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
-using System.Reflection.Emit;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Media;
-using System.Threading;
 
 namespace freeFall
 {
@@ -46,6 +43,8 @@ namespace freeFall
 
         public int spaceDiv = 0;
 
+        public int sound = 1;
+
         private bool isPictureBoxClickedLeft = false;
         private bool isPictureBoxClickedRight = false;
 
@@ -55,19 +54,20 @@ namespace freeFall
         public int countBody = 0;
         public int countGrafic = 0;
 
-        public static string planetName, gravity, height, airResistence, airDensity, initialVelocityBody, 
+        public static string planetName, gravity, height, airResistence, airDensity, initialVelocityBody,
             finalVelocityBody, experimentTimeBody, DragCoefficientBody;
         public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper, DragCoefficientPaper;
         public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum, DragCoefficientVaccum;
 
-        GraficSpaceWindow spaceWindow = new GraficSpaceWindow();
-        GraficSpeedWindow speedWindow = new GraficSpeedWindow();
-        AnimationWindow animationWindow = new AnimationWindow();
+        public GraficSpaceWindow spaceWindow = new GraficSpaceWindow();
+        public GraficSpeedWindow speedWindow = new GraficSpeedWindow();
+        public AnimationWindow animationWindow = new AnimationWindow();
 
         public static int[] Ax = new int[15];
         public Simulator()
         {
             InitializeComponent();
+            planetCounter = Program.planeTrackBar;
             Opacity = 0;
             timerEixos.Enabled = true;
             fontLoad();
@@ -98,32 +98,26 @@ namespace freeFall
             animationWindow.Dock = DockStyle.Fill;
             panelAnimation.Controls.Add(animationWindow);
             animationWindow.Show();
+            checkBoxSound.Checked = true;
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(Simulator_PreviewKeyDown);
         }
         private void loadinDataCorpos()
         {
-            Program.corpo.CrossSectionalArea = 0.038806;
+            Program.ball.CrossSectionalArea = 0.038806;
             Program.airDensity = 1.225;
             Program.gravity = 9.8;
             // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
             // folha A4
-            Program.corpo.Mass = 0.045;
+            Program.ball.Mass = 0.045;
             Program.paper.Mass = 0.085; //0.00465;
-            Program.vaccum.Mass = Program.corpo.Mass;
-
-            Program.corpo.DragCoefficient = 0.3;
-            Program.paper.DragCoefficient = Program.corpo.DragCoefficient;//1.2;
+            Program.vaccum.Mass = Program.ball.Mass;
+            Program.ball.DragCoefficient = 0.3;
+            Program.paper.DragCoefficient = Program.ball.DragCoefficient;//1.2;
             Program.vaccum.DragCoefficient = Program.paper.DragCoefficient;
-
-
-
-            Program.paper.CrossSectionalArea = Program.corpo.CrossSectionalArea; //0.06237; // amaçada 0.001341640872
+            Program.paper.CrossSectionalArea = Program.ball.CrossSectionalArea; //0.06237; // amaçada 0.001341640872
             //paper.CrossSectionalArea = 0.8237; // amaçada 0.001341640872
-
-            Program.corpo.CrossSectionalArea = 0.038806;
-            Program.vaccum.CrossSectionalArea = Program.corpo.CrossSectionalArea;
-
-
+            Program.ball.CrossSectionalArea = 0.038806;
+            Program.vaccum.CrossSectionalArea = Program.ball.CrossSectionalArea;
         }
 
         public void fontLoad()
@@ -215,6 +209,7 @@ namespace freeFall
 
         private void Simulator_Load(object sender, EventArgs e)
         {
+            trackBarColors.Value = Program.colorTrackBar;
             colorAll();
         }
         public void clear()
@@ -227,7 +222,7 @@ namespace freeFall
             countGrafic = 0;
             animationNumberCounter = 0;
 
-            Program.corpo.TimeAllExperiment = 0.0;
+            Program.ball.TimeAllExperiment = 0.0;
             Program.paper.TimeAllExperiment = 0.0;
             Program.vaccum.TimeAllExperiment = 0.0;
         }
@@ -316,7 +311,7 @@ namespace freeFall
 
             if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 5)
             {
-                Program.corpo.CalculateOutResistence(Program.height, Program.gravity, 0);
+                Program.ball.CalculateOutResistence(Program.height, Program.gravity, 0);
                 Program.paper.CalculateOutResistence(Program.height, Program.gravity, 0);
                 Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
             }
@@ -324,7 +319,7 @@ namespace freeFall
             {
                 if (Program.bodyOn)
                 {
-                    Program.corpo.CalculateWithResistence(Program.height, Program.gravity, 0);
+                    Program.ball.CalculateWithResistence(Program.height, Program.gravity, 0);
                 }
                 if (Program.paperOn)
                 {
@@ -341,17 +336,17 @@ namespace freeFall
             animationWindow.animationCorpo(countBody);
             if (greatestValueTime == 1 || greatestValueTime == 0)
             {
-                textTempo.Text = " " + Math.Round(Program.corpo.CountTimeExperiment[countBody], 2);
+                textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
             }
-            txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
-            txtEspaco.Text = " " + Math.Round(Program.corpo.Space[countBody], 2);
-            if (Program.corpo.Space[countBody] < 0.3)
+            txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 2);
+            txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 2);
+            if (Program.ball.Space[countBody] < 0.3)
             {
                 txtEspaco.Text = " " + 0;
             }
             countBody = countBody + 1;
 
-            if (countBody == Program.corpo.NumberOfTerms)
+            if (countBody == Program.ball.NumberOfTerms)
             {
                 timerAnimation.Enabled = false;
                 if (greatestValueTime == 1 || greatestValueTime == 0)
@@ -424,17 +419,17 @@ namespace freeFall
         }
         public void receveidGreatestValueTime()
         {
-            if (Program.corpo.TimeAllExperiment > Program.paper.TimeAllExperiment && Program.corpo.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
+            if (Program.ball.TimeAllExperiment > Program.paper.TimeAllExperiment && Program.ball.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
             {
                 Program.greatestValueTime = 1;
-                Program.numberOfPoints = Program.corpo.NumberOfTerms;
+                Program.numberOfPoints = Program.ball.NumberOfTerms;
             }
-            else if (Program.paper.TimeAllExperiment > Program.corpo.TimeAllExperiment && Program.paper.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
+            else if (Program.paper.TimeAllExperiment > Program.ball.TimeAllExperiment && Program.paper.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
             {
                 Program.greatestValueTime = 2;
                 Program.numberOfPoints = Program.paper.NumberOfTerms;
             }
-            else if (Program.vaccum.TimeAllExperiment > Program.corpo.TimeAllExperiment && Program.vaccum.TimeAllExperiment > Program.paper.TimeAllExperiment)
+            else if (Program.vaccum.TimeAllExperiment > Program.ball.TimeAllExperiment && Program.vaccum.TimeAllExperiment > Program.paper.TimeAllExperiment)
             {
                 Program.greatestValueTime = 3;
                 Program.numberOfPoints = Program.vaccum.NumberOfTerms;
@@ -442,7 +437,7 @@ namespace freeFall
             else
             {
                 Program.greatestValueTime = 0;
-                Program.numberOfPoints = Program.corpo.NumberOfTerms;
+                Program.numberOfPoints = Program.ball.NumberOfTerms;
             }
 
             greatestValueTime = Program.greatestValueTime;
@@ -452,25 +447,25 @@ namespace freeFall
         {
             if (Program.airResistance == 0)
             {
-                Program.greatestValueVelocity = (Program.corpo.FinalVelocity * -1);
+                Program.greatestValueVelocity = (Program.ball.FinalVelocity * -1);
             }
             else
             {
-                if (Program.corpo.InitialVelocity > Program.paper.InitialVelocity && Program.corpo.InitialVelocity > Program.vaccum.FinalVelocity)
+                if (Program.ball.InitialVelocity > Program.paper.InitialVelocity && Program.ball.InitialVelocity > Program.vaccum.FinalVelocity)
                 {
-                    Program.greatestValueVelocity = (Program.corpo.InitialVelocity * -1);
+                    Program.greatestValueVelocity = (Program.ball.InitialVelocity * -1);
                 }
-                else if (Program.paper.InitialVelocity > Program.corpo.InitialVelocity && Program.paper.InitialVelocity > Program.vaccum.FinalVelocity)
+                else if (Program.paper.InitialVelocity > Program.ball.InitialVelocity && Program.paper.InitialVelocity > Program.vaccum.FinalVelocity)
                 {
                     Program.greatestValueVelocity = (Program.paper.InitialVelocity * -1);
                 }
-                else if (Program.vaccum.FinalVelocity > Program.corpo.InitialVelocity && Program.vaccum.FinalVelocity > Program.paper.InitialVelocity)
+                else if (Program.vaccum.FinalVelocity > Program.ball.InitialVelocity && Program.vaccum.FinalVelocity > Program.paper.InitialVelocity)
                 {
                     Program.greatestValueVelocity = (Program.vaccum.InitialVelocity * -1);
                 }
                 else
                 {
-                    Program.greatestValueVelocity = (Program.corpo.InitialVelocity * -1);
+                    Program.greatestValueVelocity = (Program.ball.InitialVelocity * -1);
                 }
             }
             Console.WriteLine("greatestValueVelocity: " + Program.greatestValueVelocity);
@@ -479,7 +474,7 @@ namespace freeFall
         {
             if (Program.bodyOn)
             {
-                if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                 {
                     spaceWindow.addPointCorpo(countGrafic);
                     speedWindow.addPointCorpo(countGrafic);
@@ -521,14 +516,14 @@ namespace freeFall
             {
                 if (Program.bodyOn)
                 {
-                    if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                    if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                     {
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -564,14 +559,14 @@ namespace freeFall
             {
                 if (Program.bodyOn)
                 {
-                    if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                    if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                     {
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -612,22 +607,26 @@ namespace freeFall
         }
         public void timerSound()
         {
-            byte[] audioBytes;
-            using (MemoryStream stream = new MemoryStream())
+            if (sound == 1)
             {
-                Properties.Resources.timerCronometer.CopyTo(stream);
-                audioBytes = stream.ToArray();
-            }
-            using (MemoryStream memoryStream = new MemoryStream(audioBytes))
-            {
-                using (SoundPlayer player = new SoundPlayer(memoryStream))
+                byte[] audioBytes;
+                using (MemoryStream stream = new MemoryStream())
                 {
-                    player.Play();
+                    Properties.Resources.timerCronometer.CopyTo(stream);
+                    audioBytes = stream.ToArray();
+                }
+                using (MemoryStream memoryStream = new MemoryStream(audioBytes))
+                {
+                    using (SoundPlayer player = new SoundPlayer(memoryStream))
+                    {
+                        player.Play();
+                    }
                 }
             }
         }
         private void timerNumerAnimationIniti_Tick(object sender, EventArgs e)
         {
+            closeAllWindows();
             BTNIniciar.Enabled = false;
             enabledConfigure(1);
             buttonData.Focus();
@@ -655,7 +654,6 @@ namespace freeFall
                 labelTextStart.Text = "CAINDO"; ;
                 BTNIniciar.Enabled = true;
                 clear();
-                closeAllWindows();
                 calculateValues();
                 receveidGreatestValueTime();
                 receveidGreatestValueVelocity();
@@ -666,11 +664,12 @@ namespace freeFall
                 BTNIniciar.Focus();
                 BTNIniciar.Text = "Parar";
                 buttonStartControl = 1;
-                Program.openGraficsControl = 0;
                 labelGraficDetails.Visible = false;
                 animationNumberCounter = 0;
                 timerNumerAnimationIniti.Enabled = false;
                 timerNumerAnimationIniti.Interval = 100;
+                Program.openGraficsControl = 0;
+                Program.directionFlag = 1;
             }
             animationNumberCounter += 1;
         }
@@ -767,6 +766,8 @@ namespace freeFall
                         {
                             clear();
                             calculateValues();
+                            receveidGreatestValueTime();
+                            receveidGreatestValueVelocity();
                             BTNIniciar.Text = "Iniciar";
                             buttonStartControl = 0;
                         }
@@ -822,10 +823,9 @@ namespace freeFall
             x.Show();
         }
         public void initialConfigure()
-        {
-            cmbPlaneta.Text = "Terra";
-            boxHeight.Text = "10";
-            txtgravit.Text = "9,8";
+        { 
+            planetCounter = Program.planeTrackBar;
+            planetData();
             comboBoxVacuum.Text = "Folha";
             comboPaper.Text = "Aberta";
             textBoxPaperHeight.Text = " --";
@@ -884,8 +884,8 @@ namespace freeFall
                 animationWindow.vacuumSelectedValueChange(0);
                 pictureBoxVaccumObject.Image = animationWindow.vaccumImage();
                 flagVaccumObject = 1;
-                Program.vaccum.DragCoefficient = Program.corpo.DragCoefficient;
-                Program.vaccum.CrossSectionalArea = Program.corpo.CrossSectionalArea;
+                Program.vaccum.DragCoefficient = Program.ball.DragCoefficient;
+                Program.vaccum.CrossSectionalArea = Program.ball.CrossSectionalArea;
             }
             else
             {
@@ -1090,6 +1090,7 @@ namespace freeFall
                 animationWindow.backgroundPicture(planetCounter);
                 Program.airDensity = 1.2;
             }
+            Program.planetImage = pictureBoxPlanets.Image;
         }
         private void pictureBoxNext_Click(object sender, EventArgs e)
         {
@@ -1198,18 +1199,18 @@ namespace freeFall
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
                 animationWindow.animationCorpo(countBody);
-                if (Program.corpo.Space[countBody] < 0.3)
+                if (Program.ball.Space[countBody] < 0.3)
                 {
                     txtEspaco.Text = " " + 0;
                 }
                 else
                 {
-                    txtEspaco.Text = " " + Math.Round(Program.corpo.Space[countBody], 2);
+                    txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 2);
                 }
-                txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
+                txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 2);
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
-                    textTempo.Text = " " + Math.Round(Program.corpo.CountTimeExperiment[countBody], 2);
+                    textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
                 }
                 animationWindow.animationPaper(countPaper);
                 if (Program.paper.Space[countPaper] < 0.3)
@@ -1221,7 +1222,7 @@ namespace freeFall
                     textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countPaper], 2);
                 }
                 textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countPaper], 2);
-              
+
                 if (greatestValueTime == 2)
                 {
                     textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countPaper], 2);
@@ -1247,18 +1248,18 @@ namespace freeFall
                 if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
                 {
                     animationWindow.animationCorpo(countBody);
-                    if (Program.corpo.Space[countBody] < 0.3)
+                    if (Program.ball.Space[countBody] < 0.3)
                     {
                         txtEspaco.Text = " " + 0;
                     }
                     else
                     {
-                        txtEspaco.Text = " " + Math.Round(Program.corpo.Space[countBody], 2);
+                        txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 2);
                     }
-                    txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
+                    txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 2);
                     if (greatestValueTime == 1 || greatestValueTime == 0)
                     {
-                        textTempo.Text = " " + Math.Round(Program.corpo.CountTimeExperiment[countBody], 2);
+                        textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
                     }
                     animationWindow.animationPaper(countPaper);
                     if (Program.paper.Space[countPaper] < 0.3)
@@ -1282,18 +1283,18 @@ namespace freeFall
                     if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
                     {
                         animationWindow.animationCorpo(countBody);
-                        if (Program.corpo.Space[countBody] < 0.3)
+                        if (Program.ball.Space[countBody] < 0.3)
                         {
                             txtEspaco.Text = " " + 0;
                         }
                         else
                         {
-                            txtEspaco.Text = " " + Math.Round(Program.corpo.Space[countBody], 2);
+                            txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 2);
                         }
-                        txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
+                        txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 2);
                         if (greatestValueTime == 1 || greatestValueTime == 0)
                         {
-                            textTempo.Text = " " + Math.Round(Program.corpo.CountTimeExperiment[countBody], 2);
+                            textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
                         }
                         animationWindow.animationVaccum(countVaccum);
                         if (Program.vaccum.Space[countVaccum] < 0.3)
@@ -1314,18 +1315,18 @@ namespace freeFall
                     else
                     {
                         animationWindow.animationCorpo(countBody);
-                        if (Program.corpo.Space[countBody] < 0.3)
+                        if (Program.ball.Space[countBody] < 0.3)
                         {
                             txtEspaco.Text = " " + 0;
                         }
                         else
                         {
-                            txtEspaco.Text = " " + Math.Round(Program.corpo.Space[countBody], 2);
+                            txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 2);
                         }
-                        txtVelocidade.Text = " " + Math.Round(Program.corpo.Velocity[countBody], 2);
+                        txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 2);
                         if (greatestValueTime == 1 || greatestValueTime == 0)
                         {
-                            textTempo.Text = " " + Math.Round(Program.corpo.CountTimeExperiment[countBody], 2);
+                            textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
                         }
                         updateGrafic(countGrafic, op);
                     }
@@ -1520,21 +1521,21 @@ namespace freeFall
             gravity = "" + Math.Round(Program.gravity, 2) + " m/s²";
             airDensity = "" + Program.airDensity;
             height = Program.height + " m";
-            DragCoefficientBody = "" + Program.corpo.DragCoefficient;
+            DragCoefficientBody = "" + Program.ball.DragCoefficient;
             DragCoefficientPaper = "" + Program.paper.DragCoefficient;
             DragCoefficientVaccum = "" + Program.vaccum.DragCoefficient;
 
-            initialVelocityBody = "" + Math.Round(Program.corpo.InitialVelocity, 2) + " m/s";
-            finalVelocityBody = "" + Math.Round(Program.corpo.FinalVelocity, 2) + " m/s";
+            initialVelocityBody = "" + Math.Round(Program.ball.InitialVelocity, 2) + " m/s";
+            finalVelocityBody = "" + Math.Round(Program.ball.FinalVelocity, 2) + " m/s";
             if (Program.airResistance == 0)
             {
                 airResistence = "Não";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
+                experimentTimeBody = "" + Math.Round(Program.ball.TimeAllExperiment, 2) + " s";
             }
             else
             {
                 airResistence = "Sim";
-                experimentTimeBody = "" + Math.Round(Program.corpo.TimeAllExperiment, 2) + " s";
+                experimentTimeBody = "" + Math.Round(Program.ball.TimeAllExperiment, 2) + " s";
             }
 
             initialVelocityPaper = "" + Math.Round(Program.paper.InitialVelocity, 2) + " m/s";
@@ -1599,7 +1600,7 @@ namespace freeFall
             speedWindow.colorAll();
             animationWindow.colorAll();
         }
-        
+
         private void timerColors_Tick(object sender, EventArgs e)
         {
             colorAll();
@@ -1620,15 +1621,68 @@ namespace freeFall
             if (checkBoxGrafic.Checked == true)
             {
                 Program.directionOfYaxis = 1;
+
+                if (Program.openGraficsControl == 1)
+                {
+                    RestartChildWindow();
+                    resetWindows();
+                    spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
+                    speedWindow.speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
+                    spaceWindow.buildGrafic();
+                    speedWindow.buildGrafic();
+                    spaceWindow.colorAll();
+                    speedWindow.colorAll();
+                    Console.WriteLine("-" + Program.greatestValueVelocity);
+                    Console.WriteLine("-" + Program.ball.TimeAllExperiment);
+                    Console.WriteLine("-" + Program.ball.NumberOfTerms);
+                    Console.WriteLine("-" + Program.greatestValueTime);
+                }
             }
             else
             {
                 Program.directionOfYaxis = 0;
+
+                if (Program.openGraficsControl == 1)
+                {
+                    RestartChildWindow();
+                    resetWindows();
+                    spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
+                    speedWindow.speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
+                    //spaceWindow.buildGrafic();
+                    //speedWindow.buildGrafic();
+                    spaceWindow.colorAll();
+                    speedWindow.colorAll();
+                }
             }
-            //spaceWindow.buildGrafic();
-            //speedWindow.buildGrafic();
         }
 
+        public void resetWindows()
+        {
+            spaceWindow.TopLevel = false;
+            spaceWindow.FormBorderStyle = FormBorderStyle.None;
+            spaceWindow.Dock = DockStyle.Fill;
+            panelSpace.Controls.Add(spaceWindow);
+            spaceWindow.Show();
+            speedWindow.TopLevel = false;
+            speedWindow.FormBorderStyle = FormBorderStyle.None;
+            speedWindow.Dock = DockStyle.Fill;
+            panelSpeed.Controls.Add(speedWindow);
+            speedWindow.Show();
+        }
+        private void RestartChildWindow()
+        {
+            if (speedWindow != null && !speedWindow.IsDisposed)
+            {
+                speedWindow.Close();
+                speedWindow = new GraficSpeedWindow();
+            }
+
+            if (spaceWindow != null && !spaceWindow.IsDisposed)
+            {
+                spaceWindow.Close();
+                spaceWindow = new GraficSpaceWindow();
+            }
+        }
         private void checkBoxEixo_CheckStateChanged(object sender, EventArgs e)
         {
             if (checkBoxEixo.Checked)
@@ -1640,7 +1694,17 @@ namespace freeFall
                 animationWindow.picutureEixos(1);
             }
         }
-
+        private void checkBoxSound_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSound.Checked == true)
+            {
+                sound = 1;
+            }
+            else
+            {
+                sound = 0;
+            }
+        }
         private void comboBoxFonts_SelectedValueChanged(object sender, EventArgs e)
         {
 
@@ -1653,6 +1717,7 @@ namespace freeFall
         {
 
         }
+
         private void chartSpace_Click(object sender, EventArgs e)
         {
 

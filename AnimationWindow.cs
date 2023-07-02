@@ -9,6 +9,14 @@ namespace freeFall
         {
             InitializeComponent();
             colorAll();
+            addImageValue();
+        }
+
+        public void addImageValue()
+        {
+            Program.ballImage = pictureBoxCorpo.Image;
+            Program.paperImage = pictureBoxPaper.Image;
+            Program.vaccumImage = pictureBoxVacuum.Image;
         }
 
         public void colorAll()
@@ -18,17 +26,18 @@ namespace freeFall
 
         public Image vaccumImage()
         {
+            addImageValue();
             return pictureBoxCorpo.Image;
         }
 
         public void animationCorpo(int countBody)
         {
-            pictureBoxCorpo.Location = new Point(145, 30 + Program.corpo.Pixels[countBody]);
+            pictureBoxCorpo.Location = new Point(145, 30 + Program.ball.Pixels[countBody]);
         }
 
         public void animationPaper(int countPaper)
         {
-            pictureBoxCorpoPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
+            pictureBoxPaper.Location = new Point(222, 30 + Program.paper.Pixels[countPaper]);
         }
 
         public void animationVaccum(int countVaccum)
@@ -121,17 +130,18 @@ namespace freeFall
                     pictureBoxVacuum.Image = Properties.Resources.corpoSoccer;
                 }
             }
+            addImageValue();
         }
 
         public void picuturePaper(int op)
         {
             if (op == 0)
             {
-                pictureBoxCorpoPaper.Visible = true;
+                pictureBoxPaper.Visible = true;
             }
             else
             {
-                pictureBoxCorpoPaper.Visible = false;
+                pictureBoxPaper.Visible = false;
             }
         }
 
@@ -140,12 +150,13 @@ namespace freeFall
         {
             if (op == 0)
             {
-                pictureBoxCorpoPaper.Image = Properties.Resources.paper2;
+                pictureBoxPaper.Image = Properties.Resources.paper2;
             }
             else
             {
-                pictureBoxCorpoPaper.Image = Properties.Resources.paper3;
+                pictureBoxPaper.Image = Properties.Resources.paper3;
             }
+            addImageValue();
         }
         public void picutureVaccum(int op)
         {
@@ -173,6 +184,7 @@ namespace freeFall
             {
                 pictureBoxVacuum.Image = Properties.Resources.paper2;
             }
+            addImageValue();
         }
 
         public void picutureResistence(int op)
@@ -213,7 +225,7 @@ namespace freeFall
         public void clearPostion()
         {
             pictureBoxCorpo.Location = new Point(145, 30);
-            pictureBoxCorpoPaper.Location = new Point(222, 30);
+            pictureBoxPaper.Location = new Point(222, 30);
             pictureBoxVacuum.Location = new Point(16, 13);
         }
     }

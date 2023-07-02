@@ -54,9 +54,9 @@ namespace freeFall
                 linha[0] = timeLarge[i];
                 if (Program.bodyOn)
                 {
-                    if (Program.corpo.NumberOfTerms > i)
+                    if (Program.ball.NumberOfTerms > i)
                     {
-                        linha[1] = Convert.ToString(Math.Round(Program.corpo.Velocity[i], 3));
+                        linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3));
                     }
                     else
                     {
@@ -153,10 +153,10 @@ namespace freeFall
                 chartSpeed.Series["Bóla"].Color = Color.Red;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
 
-                for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+                for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
                     result = (double)i / 100.0;
-                    chartSpeed.Series["Bóla"].Points.AddXY(result, Program.corpo.Velocity[i]);
+                    chartSpeed.Series["Bóla"].Points.AddXY(result, Program.ball.Velocity[i]);
                 }
             }
             if (Program.paperOn)
@@ -193,36 +193,33 @@ namespace freeFall
             double Y = 0.0;
             double X = 0.0;
             chartSpeed.Series.Clear();
-
+            speedDiv = Convert.ToInt32(Math.Round(Program.greatestValueVelocity, 0) / 5);
             if (Program.greatestValueTime == 0)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
-                speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 5);
-                graficContinuosSpeed(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
-                timeLarge = new string[Program.corpo.NumberOfTerms];
-                for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 3);
+                graficContinuosSpeed(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
+                timeLarge = new string[Program.ball.NumberOfTerms];
+                for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.corpo.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i]);
                 }
             }
             if (Program.greatestValueTime == 1)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
-                speedDiv = Convert.ToInt32(Math.Round(Program.corpo.FinalVelocity, 0) / 5);
-                graficContinuosSpeed(Program.corpo.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
-                timeLarge = new string[Program.corpo.NumberOfTerms];
-                for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 3);
+                graficContinuosSpeed(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
+                timeLarge = new string[Program.ball.NumberOfTerms];
+                for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.corpo.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i]);
                 }
             }
             if (Program.greatestValueTime == 2)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 3);
-                speedDiv = Convert.ToInt32(Math.Round(Program.paper.FinalVelocity, 0) / 5);
                 graficContinuosSpeed(Program.paper.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
@@ -235,7 +232,6 @@ namespace freeFall
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 3);
                 X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 3);
-                speedDiv = Convert.ToInt32(Math.Round(Program.vaccum.FinalVelocity, 0) / 5);
                 graficContinuosSpeed(Program.vaccum.NumberOfTerms, Y, 0, speedDiv, 0, X, 0);
                 timeLarge = new string[Program.vaccum.NumberOfTerms];
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
@@ -337,9 +333,9 @@ namespace freeFall
                         {
                             writer.WriteLine(" Resis. ar  : Sim");
                         }
-                        writer.WriteLine(" Tempo para a bóla           : " + Program.corpo.TimeAllExperiment + " s");
-                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.corpo.InitialVelocity + " m/s");
-                        writer.WriteLine(" Velocidade final da bóla    : " + Program.corpo.FinalVelocity + " m/s");
+                        writer.WriteLine(" Tempo para a bóla           : " + Program.ball.TimeAllExperiment + " s");
+                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.ball.InitialVelocity + " m/s");
+                        writer.WriteLine(" Velocidade final da bóla    : " + Program.ball.FinalVelocity + " m/s");
                         if (Program.paperOn)
                         {
                             writer.WriteLine(" Tempo para o papel          : " + Program.paper.TimeAllExperiment + " s");
@@ -384,9 +380,9 @@ namespace freeFall
                             linha[0] = timeLarge[i];
                             if (Program.bodyOn)
                             {
-                                if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                                 {
-                                    linha[1] = Convert.ToString(Math.Round(Program.corpo.Velocity[i], 3));
+                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3));
                                 }
                                 else
                                 {
@@ -547,9 +543,9 @@ namespace freeFall
                         linha[0] = timeLarge[i];
                         if (Program.bodyOn)
                         {
-                            if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                            if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                             {
-                                linha[1] = Convert.ToString(Math.Round(Program.corpo.Velocity[i], 3));
+                                linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3));
                             }
                             else
                             {

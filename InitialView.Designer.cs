@@ -38,7 +38,6 @@
             this.buttonAbout = new System.Windows.Forms.Button();
             this.trackBarColors = new System.Windows.Forms.TrackBar();
             this.trackBarPlanets = new System.Windows.Forms.TrackBar();
-            this.timerWindowControl = new System.Windows.Forms.Timer(this.components);
             this.labellogon = new System.Windows.Forms.Label();
             this.richTextBoxText = new System.Windows.Forms.RichTextBox();
             this.labelTextColor = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.pictureBoxBase = new System.Windows.Forms.PictureBox();
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
             this.groupBoxaAnimation = new System.Windows.Forms.GroupBox();
+            this.timerSetTrackPlanet = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).BeginInit();
@@ -88,7 +88,7 @@
             // pictureBoxCarrocel
             // 
             this.pictureBoxCarrocel.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxCarrocel.Image = global::freeFall.Properties.Resources.planetMercury;
+            this.pictureBoxCarrocel.Image = global::freeFall.Properties.Resources.planetEarth;
             this.pictureBoxCarrocel.Location = new System.Drawing.Point(373, 25);
             this.pictureBoxCarrocel.Name = "pictureBoxCarrocel";
             this.pictureBoxCarrocel.Size = new System.Drawing.Size(394, 364);
@@ -140,10 +140,6 @@
             this.trackBarPlanets.Size = new System.Drawing.Size(104, 45);
             this.trackBarPlanets.TabIndex = 12;
             this.trackBarPlanets.Scroll += new System.EventHandler(this.trackBarPlanets_Scroll);
-            // 
-            // timerWindowControl
-            // 
-            this.timerWindowControl.Tick += new System.EventHandler(this.timerWindowControl_Tick);
             // 
             // labellogon
             // 
@@ -238,6 +234,11 @@
             this.groupBoxaAnimation.TabIndex = 20;
             this.groupBoxaAnimation.TabStop = false;
             // 
+            // timerSetTrackPlanet
+            // 
+            this.timerSetTrackPlanet.Interval = 50;
+            this.timerSetTrackPlanet.Tick += new System.EventHandler(this.timerSetTrackPlanet_Tick);
+            // 
             // InitialView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,7 +289,6 @@
         private System.Windows.Forms.Button buttonAbout;
         private System.Windows.Forms.TrackBar trackBarColors;
         private System.Windows.Forms.TrackBar trackBarPlanets;
-        private System.Windows.Forms.Timer timerWindowControl;
         private System.Windows.Forms.Label labellogon;
         private System.Windows.Forms.RichTextBox richTextBoxText;
         private System.Windows.Forms.Label labelTextColor;
@@ -298,6 +298,7 @@
         private System.Windows.Forms.PictureBox pictureBoxBase;
         private System.Windows.Forms.Timer timerAnimation;
         private System.Windows.Forms.GroupBox groupBoxaAnimation;
+        private System.Windows.Forms.Timer timerSetTrackPlanet;
     }
 }
 

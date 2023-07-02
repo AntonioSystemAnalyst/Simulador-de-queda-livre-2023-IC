@@ -50,9 +50,9 @@ namespace freeFall
                 linha[0] = timeLarge[i];
                 if (Program.bodyOn)
                 {
-                    if (Program.corpo.NumberOfTerms > i)
+                    if (Program.ball.NumberOfTerms > i)
                     {
-                        linha[1] = Convert.ToString(Math.Round(Program.corpo.Space[i], 3));
+                        linha[1] = Convert.ToString(Math.Round(Program.ball.Space[i], 3));
                     }
                 }
                 if (Program.paperOn)
@@ -129,10 +129,10 @@ namespace freeFall
                 chartSpace.Series["Bóla"].Color = Color.Red;
                 chartSpace.Series[0].IsVisibleInLegend = false;
 
-                for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+                for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
                     result = (double)i / 100.0;
-                    chartSpace.Series["Bóla"].Points.AddXY(result, Program.corpo.Space[i]);
+                    chartSpace.Series["Bóla"].Points.AddXY(result, Program.ball.Space[i]);
                 }
             }
             if (Program.paperOn)
@@ -174,23 +174,23 @@ namespace freeFall
             if (Program.greatestValueTime == 0)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
-                graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
-                timeLarge = new string[Program.corpo.NumberOfTerms];
-                for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 3);
+                graficContinuosSpace(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
+                timeLarge = new string[Program.ball.NumberOfTerms];
+                for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.corpo.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i]);
                 }
             }
             if (Program.greatestValueTime == 1)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 3);
-                X = Math.Round(CalculateValueWithTenPercent(Program.corpo.TimeAllExperiment), 3);
-                graficContinuosSpace(Program.corpo.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
-                timeLarge = new string[Program.corpo.NumberOfTerms];
-                for (i = 0; i < Program.corpo.NumberOfTerms; i++)
+                X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 3);
+                graficContinuosSpace(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0);
+                timeLarge = new string[Program.ball.NumberOfTerms];
+                for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.corpo.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i]);
                 }
             }
             if (Program.greatestValueTime == 2)
@@ -310,9 +310,9 @@ namespace freeFall
                         {
                             writer.WriteLine(" Resis. ar  : Sim");
                         }
-                        writer.WriteLine(" Tempo para a bóla           : " + Program.corpo.TimeAllExperiment + " s");
-                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.corpo.InitialVelocity + " m/s");
-                        writer.WriteLine(" Velocidade final da bóla    : " + Program.corpo.FinalVelocity + " m/s");
+                        writer.WriteLine(" Tempo para a bóla           : " + Program.ball.TimeAllExperiment + " s");
+                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.ball.InitialVelocity + " m/s");
+                        writer.WriteLine(" Velocidade final da bóla    : " + Program.ball.FinalVelocity + " m/s");
                         if (Program.paperOn)
                         {
                             writer.WriteLine(" Tempo para o papel          : " + Program.paper.TimeAllExperiment + " s");
@@ -357,9 +357,9 @@ namespace freeFall
                             linha[0] = timeLarge[i];
                             if (Program.bodyOn)
                             {
-                                if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                                 {
-                                    linha[1] = Convert.ToString(Math.Round(Program.corpo.Space[i], 3));
+                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Space[i], 3));
                                 }
                                 else
                                 {
@@ -519,9 +519,9 @@ namespace freeFall
                         linha[0] = timeLarge[i];
                         if (Program.bodyOn)
                         {
-                            if (Program.corpo.NumberOfTerms <= Program.numberOfPoints)
+                            if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                             {
-                                linha[1] = Convert.ToString(Math.Round(Program.corpo.Space[i], 3));
+                                linha[1] = Convert.ToString(Math.Round(Program.ball.Space[i], 3));
                             }
                             else
                             {
