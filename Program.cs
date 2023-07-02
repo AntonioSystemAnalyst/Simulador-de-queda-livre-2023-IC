@@ -17,6 +17,9 @@ namespace freeFall
         public static int dataControl = 0;
         public static int configurePlanetControl = 0;
         public static int experimentDataControl = 0;
+        public static int spaceGraficControl = 0;
+        public static int speedGraficControl = 0;
+
 
         // controle das cores
         public static Color colorSimulator = Color.Cyan;
@@ -47,9 +50,16 @@ namespace freeFall
         // controla a possibilidade de inverção em y
         public static int directionFlag = 0;
 
+        // flag para elemento dentro da camara de vacuo 0 - ball 1 - paper
+        public static int objectVaccum = 1;
+
+        // 0 - ball, paper, vaccum 1 -  ball 2 -  ball, paper 3 -  ball, vaccum 
+        public static int experimentFlag = 1;
+
         public static Image ballImage;
         public static Image paperImage;
         public static Image vaccumImage;
+        public static Image vaccumImageExperiment;
         public static Image planetImage;
 
         // controle de trackbars

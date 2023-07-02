@@ -146,18 +146,8 @@ namespace freeFall
                 windowExperiment = null;
                 Program.experimentDataControl = 0;
             }
-            if (windowSpace != null && !windowSpace.IsDisposed)
-            {
-                windowSpace.Close();
-                windowSpace = null;
-                Program.openGraficsControl = 1;
-            }
-            if (windowSpeed != null && !windowSpeed.IsDisposed)
-            {
-                windowSpeed.Close();
-                windowSpeed = null;
-                Program.openGraficsControl = 1;
-            }
+           spaceWindow.closeAllWindow();
+           speedWindow.closeAllWindow();
         }
         private void timerRight_Tick(object sender, EventArgs e)
         {
@@ -245,15 +235,16 @@ namespace freeFall
                 txtgravit.Enabled = false;
                 buttonBall.Enabled = false;
                 checkBoxGrafic.Enabled = false;
+                buttonData.Text = "Sem dados";
+                buttonData.Enabled = false;
+
             }
             else
             {
                 boxHeight.Enabled = true;
                 cmbPlaneta.Enabled = true;
-                comboBoxVacuum.Enabled = true;
-                comboPaper.Enabled = true;
-                checkBoxVacuum.Enabled = true;
                 checkBoxPaper.Enabled = true;
+                checkBoxVacuum.Enabled = true;
                 checkBoxResistance.Enabled = true;
                 pictureBoxBack.Enabled = true;
                 pictureBoxNext.Enabled = true;
@@ -264,6 +255,17 @@ namespace freeFall
                 labelTextStart.Location = new Point(21, 18);
                 labelTextStart.Text = "START";
                 checkBoxGrafic.Enabled = true;
+                buttonData.Text = "Dados";
+                buttonData.Enabled = true;
+
+                if (checkBoxPaper.Checked == true)
+                {
+                    comboPaper.Enabled = true;
+                }
+                if (checkBoxVacuum.Checked == true)
+                {
+                    comboBoxVacuum.Enabled = true;
+                }
             }
         }
         public void animation()
@@ -629,7 +631,7 @@ namespace freeFall
             closeAllWindows();
             BTNIniciar.Enabled = false;
             enabledConfigure(1);
-            buttonData.Focus();
+            buttonPlanet.Focus();
             if (animationNumberCounter == 1)
             {
 
@@ -654,12 +656,14 @@ namespace freeFall
                 labelTextStart.Text = "CAINDO"; ;
                 BTNIniciar.Enabled = true;
                 clear();
+                experimentFlag();
+                objectVaccumFlag();
                 calculateValues();
                 receveidGreatestValueTime();
                 receveidGreatestValueVelocity();
-                spaceWindow.buildGrafic();
-                speedWindow.buildGrafic();
                 loadData();
+                spaceWindow.buildGrafic(0);
+                speedWindow.buildGrafic(0);
                 animation();
                 BTNIniciar.Focus();
                 BTNIniciar.Text = "Parar";
@@ -670,8 +674,48 @@ namespace freeFall
                 timerNumerAnimationIniti.Interval = 100;
                 Program.openGraficsControl = 0;
                 Program.directionFlag = 1;
+                Console.WriteLine("kkk" + Program.objectVaccum);
             }
             animationNumberCounter += 1;
+        }
+        public void experimentFlag()
+        {
+            if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
+            {
+                Program.experimentFlag = 0;
+            }
+            else
+            {
+                if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
+                {
+                    Program.experimentFlag = 2;
+                }
+                else
+                {
+                    if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
+                    {
+                        Program.experimentFlag = 3;
+                    }
+                    else
+                    {
+                        if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn == false)
+                        {
+                            Program.experimentFlag = 1;
+                        }
+                    }
+                }
+            }
+        }
+        public void objectVaccumFlag()
+        {
+            if (comboBoxVacuum.Text == "Bóla")
+            {
+                Program.objectVaccum = 0;
+            }
+            else
+            {
+                Program.objectVaccum = 1;
+            }
         }
         private void BTNIniciar_Click(object sender, EventArgs e)
         {
@@ -778,11 +822,19 @@ namespace freeFall
         }
         private void buttonData_Click(object sender, EventArgs e)
         {
-
             if (Program.experimentDataControl == 0)
             {
                 windowExperiment = new ExperimentData();
                 windowExperiment.Show();
+            }
+
+            if (Application.OpenForms["ExperimentData"] != null)
+            {
+                if (Application.OpenForms["ExperimentData"].WindowState == FormWindowState.Minimized)
+                {
+                    Application.OpenForms["ExperimentData"].WindowState = FormWindowState.Normal;
+                }
+                Application.OpenForms["ExperimentData"].Focus();
             }
         }
         private void buttonResistencia_Click(object sender, EventArgs e)
@@ -823,7 +875,8 @@ namespace freeFall
             x.Show();
         }
         public void initialConfigure()
-        { 
+        {
+
             planetCounter = Program.planeTrackBar;
             planetData();
             comboBoxVacuum.Text = "Folha";
@@ -933,19 +986,11 @@ namespace freeFall
 
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
-            if (Program.openGraficsControl == 1)
-            {
-                windowSpace = new Space();
-                windowSpace.Show();
-            }
+           
         }
         private void chartSpeed_Click(object sender, EventArgs e)
         {
-            if (Program.openGraficsControl == 1)
-            {
-                windowSpeed = new Speed();
-                windowSpeed.Show();
-            }
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -996,6 +1041,10 @@ namespace freeFall
                 }
                 animationWindow.picuture(corpoCounter, flagVaccumObject);
                 corpoCounter = 0;
+            }
+            if (flagVaccumObject == 1)
+            {
+                Program.vaccumImageExperiment = pictureBoxVaccumObject.Image;
             }
         }
         private void planetData()
@@ -1618,24 +1667,21 @@ namespace freeFall
         }
         private void checkBoxGrafic_CheckStateChanged(object sender, EventArgs e)
         {
+        }
+
+        private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
+        {
+
             if (checkBoxGrafic.Checked == true)
             {
                 Program.directionOfYaxis = 1;
-
                 if (Program.openGraficsControl == 1)
                 {
-                    RestartChildWindow();
+                    spaceWindow.closeAllWindow();
+                    speedWindow.closeAllWindow();
                     resetWindows();
-                    spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-                    speedWindow.speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-                    spaceWindow.buildGrafic();
-                    speedWindow.buildGrafic();
-                    spaceWindow.colorAll();
-                    speedWindow.colorAll();
-                    Console.WriteLine("-" + Program.greatestValueVelocity);
-                    Console.WriteLine("-" + Program.ball.TimeAllExperiment);
-                    Console.WriteLine("-" + Program.ball.NumberOfTerms);
-                    Console.WriteLine("-" + Program.greatestValueTime);
+                    spaceWindow.buildGrafic(1);
+                    speedWindow.buildGrafic(1);
                 }
             }
             else
@@ -1644,14 +1690,11 @@ namespace freeFall
 
                 if (Program.openGraficsControl == 1)
                 {
-                    RestartChildWindow();
+                    spaceWindow.closeAllWindow();
+                    speedWindow.closeAllWindow();
                     resetWindows();
-                    spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-                    speedWindow.speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-                    //spaceWindow.buildGrafic();
-                    //speedWindow.buildGrafic();
-                    spaceWindow.colorAll();
-                    speedWindow.colorAll();
+                    spaceWindow.buildGrafic(1);
+                    speedWindow.buildGrafic(1);
                 }
             }
         }

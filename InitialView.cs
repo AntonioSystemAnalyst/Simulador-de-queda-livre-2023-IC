@@ -7,7 +7,7 @@ namespace freeFall
     public partial class InitialView : Form
     {
         public int visibleAboutControl = 0;
-        public int carouselCounter = 1;
+        public int carouselCounter = 2;
         public int animationCounter = 1;
         public InitialView()
         {
@@ -165,6 +165,7 @@ namespace freeFall
         }
         private void timerCarousel_Tick(object sender, EventArgs e)
         {
+            carouselCounter++;
             Program.planeTrackBar = carouselCounter;
             if (carouselCounter == 0)
             {
@@ -221,7 +222,6 @@ namespace freeFall
                 pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
                 planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10²⁶", "11,15");
             }
-            carouselCounter++;
         }
         private void trackBarPlanets_Scroll(object sender, EventArgs e)
         {

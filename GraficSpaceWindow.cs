@@ -68,7 +68,7 @@ namespace freeFall
             chartSpace.ChartAreas[0].AxisY.TitleForeColor = Program.colorSimulator;
         }
 
-        public void buildGrafic()
+        public void buildGrafic(int op)
         {
             int spaceDiv;
             double Y = 0.0;
@@ -80,25 +80,25 @@ namespace freeFall
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
-                spaceGraphic(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
+                spaceGraphic(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, op);
             }
             if (Program.greatestValueTime == 1)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
-                spaceGraphic(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
+                spaceGraphic(Program.ball.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, op);
             }
             if (Program.greatestValueTime == 2)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 2);
-                spaceGraphic(Program.paper.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
+                spaceGraphic(Program.paper.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, op);
             }
             if (Program.greatestValueTime == 3)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 2);
-                spaceGraphic(Program.vaccum.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, 0);
+                spaceGraphic(Program.vaccum.NumberOfTerms, 0, Y, spaceDiv, 0, X, 0, op);
             }
         }
 
@@ -125,9 +125,6 @@ namespace freeFall
             chart.AxisY.Maximum = MM;
             chart.AxisY.Interval = InterY;
             chart.AxisX.Interval = interX;
-
-
-           
 
             if (Program.directionOfYaxis == 0)
             {
@@ -245,14 +242,39 @@ namespace freeFall
             }
 
         }
-
+        public void closeAllWindow()
+        {
+            if (windowSpace != null)
+            {
+                windowSpace.Close();
+                windowSpace.Dispose(); 
+                windowSpace = null;
+            }
+        }
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
             if (Program.openGraficsControl == 1)
             {
-                windowSpace = new Space();
-                windowSpace.Show();
+                if (Program.spaceGraficControl == 0)
+                {
+                    Program.spaceGraficControl = 1;
+                    windowSpace = new Space();
+                    windowSpace.Show();
+                }
+                if (Application.OpenForms["Space"] != null)
+                {
+                    if (Application.OpenForms["Space"].WindowState == FormWindowState.Minimized)
+                    {
+                        Application.OpenForms["Space"].WindowState = FormWindowState.Normal;
+                    }
+                    Application.OpenForms["Space"].Focus();
+                }
             }
+        }
+
+        private void GraficSpaceWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           
         }
     }
 }

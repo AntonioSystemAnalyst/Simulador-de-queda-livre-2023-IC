@@ -244,6 +244,7 @@
             this.Name = "Space";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gráfico do espaço pelo tempo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Space_FormClosing);
             this.Load += new System.EventHandler(this.Space_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

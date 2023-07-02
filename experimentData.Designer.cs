@@ -67,15 +67,15 @@
             this.textBoxVaccumTime = new System.Windows.Forms.TextBox();
             this.LbAltura = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxGeneralData = new System.Windows.Forms.GroupBox();
+            this.pictureBoxPlanet = new System.Windows.Forms.PictureBox();
             this.textBoxPlanetName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxGravity = new System.Windows.Forms.TextBox();
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
-            this.timerLoadImage = new System.Windows.Forms.Timer(this.components);
-            this.pictureBoxPlanet = new System.Windows.Forms.PictureBox();
+            this.timerLaodImage = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoView)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
             this.groupBoxPaper.SuspendLayout();
@@ -84,7 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxGeneralData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanet)).BeginInit();
             this.SuspendLayout();
             // 
@@ -536,24 +536,34 @@
             this.label6.TabIndex = 40;
             this.label6.Text = "Gravidade (m/s²)";
             // 
-            // groupBox1
+            // groupBoxGeneralData
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.pictureBoxPlanet);
-            this.groupBox1.Controls.Add(this.textBoxPlanetName);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBoxGravity);
-            this.groupBox1.Controls.Add(this.textBoxHeight);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.LbAltura);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox1.Location = new System.Drawing.Point(4, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(225, 219);
-            this.groupBox1.TabIndex = 10;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dados Gerais";
+            this.groupBoxGeneralData.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxGeneralData.Controls.Add(this.pictureBoxPlanet);
+            this.groupBoxGeneralData.Controls.Add(this.textBoxPlanetName);
+            this.groupBoxGeneralData.Controls.Add(this.label13);
+            this.groupBoxGeneralData.Controls.Add(this.textBoxGravity);
+            this.groupBoxGeneralData.Controls.Add(this.textBoxHeight);
+            this.groupBoxGeneralData.Controls.Add(this.label6);
+            this.groupBoxGeneralData.Controls.Add(this.LbAltura);
+            this.groupBoxGeneralData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxGeneralData.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBoxGeneralData.Location = new System.Drawing.Point(4, 0);
+            this.groupBoxGeneralData.Name = "groupBoxGeneralData";
+            this.groupBoxGeneralData.Size = new System.Drawing.Size(225, 219);
+            this.groupBoxGeneralData.TabIndex = 10;
+            this.groupBoxGeneralData.TabStop = false;
+            this.groupBoxGeneralData.Text = "Dados Gerais";
+            // 
+            // pictureBoxPlanet
+            // 
+            this.pictureBoxPlanet.Image = global::freeFall.Properties.Resources.planetUranus;
+            this.pictureBoxPlanet.Location = new System.Drawing.Point(11, 19);
+            this.pictureBoxPlanet.Name = "pictureBoxPlanet";
+            this.pictureBoxPlanet.Size = new System.Drawing.Size(45, 42);
+            this.pictureBoxPlanet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxPlanet.TabIndex = 45;
+            this.pictureBoxPlanet.TabStop = false;
             // 
             // textBoxPlanetName
             // 
@@ -617,19 +627,9 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
-            // timerLoadImage
+            // timerLaodImage
             // 
-            this.timerLoadImage.Tick += new System.EventHandler(this.timerLoadImage_Tick);
-            // 
-            // pictureBoxPlanet
-            // 
-            this.pictureBoxPlanet.Image = global::freeFall.Properties.Resources.planetUranus;
-            this.pictureBoxPlanet.Location = new System.Drawing.Point(11, 19);
-            this.pictureBoxPlanet.Name = "pictureBoxPlanet";
-            this.pictureBoxPlanet.Size = new System.Drawing.Size(45, 42);
-            this.pictureBoxPlanet.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxPlanet.TabIndex = 45;
-            this.pictureBoxPlanet.TabStop = false;
+            this.timerLaodImage.Tick += new System.EventHandler(this.timerLaodImage_Tick);
             // 
             // ExperimentData
             // 
@@ -641,7 +641,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBoxVaccum);
             this.Controls.Add(this.groupBoxPaper);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxGeneralData);
             this.Controls.Add(this.groupBoxResultados);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -662,8 +662,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxGeneralData.ResumeLayout(false);
+            this.groupBoxGeneralData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanet)).EndInit();
             this.ResumeLayout(false);
 
@@ -699,7 +699,7 @@
         private System.Windows.Forms.TextBox textBoxCorpoVelocityFynal;
         private System.Windows.Forms.Label LbAltura;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxGeneralData;
         private System.Windows.Forms.TextBox textBoxPlanetName;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxGravity;
@@ -714,7 +714,7 @@
         private System.Windows.Forms.TextBox textBoxVaccumInitialVelocity;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer timerFocus;
-        private System.Windows.Forms.Timer timerLoadImage;
         private System.Windows.Forms.PictureBox pictureBoxPlanet;
+        private System.Windows.Forms.Timer timerLaodImage;
     }
 }

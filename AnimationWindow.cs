@@ -179,6 +179,7 @@ namespace freeFall
             if (op == 0)
             {
                 pictureBoxVacuum.Image = pictureBoxCorpo.Image;
+                Program.vaccumImageExperiment = pictureBoxCorpo.Image;
             }
             else
             {

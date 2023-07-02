@@ -26,6 +26,11 @@ namespace freeFall
         {
             dataGridView.CurrentCell = null;
         }
+
+        public void closeWindo()
+        {
+            this.Close();
+        }
         public void colorAll()
         {
             groupBoxResults.ForeColor = Program.colorSimulator;
@@ -728,6 +733,16 @@ namespace freeFall
         }
 
         private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+
+        private void Speed_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.speedGraficControl = 0;
+        }
+
+        private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
         {
 
         }

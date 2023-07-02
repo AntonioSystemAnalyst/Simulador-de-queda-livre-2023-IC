@@ -40,15 +40,15 @@
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxResults = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxSalve = new System.Windows.Forms.GroupBox();
             this.SalveImage = new System.Windows.Forms.Button();
             this.SalveXLS = new System.Windows.Forms.Button();
             this.SalveTXT = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
-            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
@@ -74,9 +74,10 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(707, 457);
+            this.checkBox3D.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox3D.Location = new System.Drawing.Point(705, 457);
             this.checkBox3D.Name = "checkBox3D";
-            this.checkBox3D.Size = new System.Drawing.Size(38, 17);
+            this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 36;
             this.checkBox3D.Text = "3d";
             this.checkBox3D.UseVisualStyleBackColor = true;
@@ -153,6 +154,27 @@
             this.dataGridView.TabIndex = 16;
             this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             // 
+            // Tempo
+            // 
+            this.Tempo.HeaderText = "Tempo (s)";
+            this.Tempo.Name = "Tempo";
+            // 
+            // Bóla
+            // 
+            this.Bóla.HeaderText = "Bóla - V (m/s)";
+            this.Bóla.Name = "Bóla";
+            // 
+            // Papel
+            // 
+            this.Papel.HeaderText = "Papel - V (m/s)";
+            this.Papel.Name = "Papel";
+            // 
+            // Vácuo
+            // 
+            this.Vácuo.HeaderText = "Vácuo - V (m/s)";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
+            // 
             // groupBoxSalve
             // 
             this.groupBoxSalve.BackColor = System.Drawing.Color.Transparent;
@@ -208,27 +230,6 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
-            // Tempo
-            // 
-            this.Tempo.HeaderText = "Tempo (s)";
-            this.Tempo.Name = "Tempo";
-            // 
-            // Bóla
-            // 
-            this.Bóla.HeaderText = "Bóla - V (m/s)";
-            this.Bóla.Name = "Bóla";
-            // 
-            // Papel
-            // 
-            this.Papel.HeaderText = "Papel - V (m/s)";
-            this.Papel.Name = "Papel";
-            // 
-            // Vácuo
-            // 
-            this.Vácuo.HeaderText = "Vácuo - V (m/s)";
-            this.Vácuo.Name = "Vácuo";
-            this.Vácuo.ReadOnly = true;
-            // 
             // Speed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +245,7 @@
             this.Name = "Speed";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gráfico da velocidade pelo tempo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Speed_FormClosing);
             this.Load += new System.EventHandler(this.Speed_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

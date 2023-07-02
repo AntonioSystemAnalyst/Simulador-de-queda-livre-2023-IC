@@ -22,7 +22,10 @@ namespace freeFall
             toComplete();
             colorAll();
         }
-
+        public void closeWindo()
+        {
+            this.Close();
+        }
         private void Space_Load(object sender, EventArgs e)
         {
             dataGridView.CurrentCell = null;
@@ -706,6 +709,11 @@ namespace freeFall
                 Program.colorSimulator = Color.Cyan;
                 colorAll();
             }
+        }
+
+        private void Space_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Program.spaceGraficControl = 0;
         }
     }
 }

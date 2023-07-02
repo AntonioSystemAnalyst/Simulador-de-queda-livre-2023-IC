@@ -62,6 +62,7 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.checkBoxSound = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
             this.boxHeight = new System.Windows.Forms.NumericUpDown();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
@@ -103,7 +104,6 @@
             this.timerColors = new System.Windows.Forms.Timer(this.components);
             this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
-            this.checkBoxSound = new System.Windows.Forms.CheckBox();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -531,6 +531,17 @@
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
             // 
+            // checkBoxSound
+            // 
+            this.checkBoxSound.AutoSize = true;
+            this.checkBoxSound.Location = new System.Drawing.Point(116, 215);
+            this.checkBoxSound.Name = "checkBoxSound";
+            this.checkBoxSound.Size = new System.Drawing.Size(54, 17);
+            this.checkBoxSound.TabIndex = 42;
+            this.checkBoxSound.Text = "Sons";
+            this.checkBoxSound.UseVisualStyleBackColor = true;
+            this.checkBoxSound.CheckedChanged += new System.EventHandler(this.checkBoxSound_CheckedChanged);
+            // 
             // checkBoxGrafic
             // 
             this.checkBoxGrafic.AutoSize = true;
@@ -540,6 +551,7 @@
             this.checkBoxGrafic.TabIndex = 41;
             this.checkBoxGrafic.Text = "Inverter Y";
             this.checkBoxGrafic.UseVisualStyleBackColor = true;
+            this.checkBoxGrafic.CheckedChanged += new System.EventHandler(this.checkBoxGrafic_CheckedChanged);
             this.checkBoxGrafic.CheckStateChanged += new System.EventHandler(this.checkBoxGrafic_CheckStateChanged);
             // 
             // boxHeight
@@ -775,13 +787,14 @@
             // 
             // buttonData
             // 
+            this.buttonData.Enabled = false;
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
             this.buttonData.Location = new System.Drawing.Point(39, 21);
             this.buttonData.Name = "buttonData";
             this.buttonData.Size = new System.Drawing.Size(116, 26);
             this.buttonData.TabIndex = 30;
-            this.buttonData.Text = "Dados ";
+            this.buttonData.Text = "Sem dados";
             this.buttonData.UseVisualStyleBackColor = true;
             this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
             this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
@@ -971,17 +984,6 @@
             this.groupBoxExperiment.TabIndex = 13;
             this.groupBoxExperiment.TabStop = false;
             this.groupBoxExperiment.Text = "Experimento";
-            // 
-            // checkBoxSound
-            // 
-            this.checkBoxSound.AutoSize = true;
-            this.checkBoxSound.Location = new System.Drawing.Point(116, 215);
-            this.checkBoxSound.Name = "checkBoxSound";
-            this.checkBoxSound.Size = new System.Drawing.Size(54, 17);
-            this.checkBoxSound.TabIndex = 42;
-            this.checkBoxSound.Text = "Sons";
-            this.checkBoxSound.UseVisualStyleBackColor = true;
-            this.checkBoxSound.CheckedChanged += new System.EventHandler(this.checkBoxSound_CheckedChanged);
             // 
             // Simulator
             // 

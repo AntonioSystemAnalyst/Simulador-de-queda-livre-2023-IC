@@ -26,7 +26,6 @@ namespace freeFall
             }
         }
 
-
         public void addPointCorpo(int countGrafic)
         {
             double result;
@@ -65,7 +64,7 @@ namespace freeFall
             chartSpeed.ChartAreas[0].AxisY.TitleForeColor = Program.colorSimulator;
         }
 
-        public void buildGrafic()
+        public void buildGrafic(int op)
         {
             int speedDiv;
             double Y = 0.0;
@@ -80,25 +79,25 @@ namespace freeFall
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
 
-                speedGraphic(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, op);
             }
             if (Program.greatestValueTime == 1)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
-                speedGraphic(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.ball.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, op);
             }
             if (Program.greatestValueTime == 2)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 2);
-                speedGraphic(Program.paper.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.paper.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, op);
             }
             if (Program.greatestValueTime == 3)
             {
                 Y = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
                 X = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 2);
-                speedGraphic(Program.vaccum.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, 0);
+                speedGraphic(Program.vaccum.NumberOfTerms, Y, 0, speedDiv, 0, X, 0, op);
             }
         }
 
@@ -241,15 +240,36 @@ namespace freeFall
             }
         }
 
+        public void closeAllWindow()
+        {
+            if (windowSpeed != null)
+            {
+                windowSpeed.Close();
+                windowSpeed.Dispose();
+                windowSpeed = null;
+            }
+        }
         public void chartSpeed_MouseClick(object sender, MouseEventArgs e)
         {
             if (Program.openGraficsControl == 1)
             {
-                windowSpeed = new Speed();
-                windowSpeed.Show();
+
+                if (Program.speedGraficControl == 0)
+                {
+                    Program.speedGraficControl = 1;
+                    windowSpeed = new Speed();
+                    windowSpeed.Show();
+                }
+            }
+            if (Application.OpenForms["Speed"] != null)
+            {
+                if (Application.OpenForms["Speed"].WindowState == FormWindowState.Minimized)
+                {
+                    Application.OpenForms["Speed"].WindowState = FormWindowState.Normal;
+                }
+                Application.OpenForms["Speed"].Focus();
             }
         }
-
         // ---
     }
 }

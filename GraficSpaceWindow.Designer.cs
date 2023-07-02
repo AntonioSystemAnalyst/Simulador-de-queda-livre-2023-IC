@@ -60,6 +60,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "GraficSpaceWindow";
             this.Text = "GraficSpaceWindow";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GraficSpaceWindow_FormClosing);
             this.Load += new System.EventHandler(this.GraficSpaceWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).EndInit();
             this.ResumeLayout(false);

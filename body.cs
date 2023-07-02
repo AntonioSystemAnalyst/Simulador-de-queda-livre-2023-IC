@@ -109,6 +109,7 @@ namespace freeFall
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
 
+
             spaceTime = new double[numberOfTerms];
             spacePixel = new double[Convert.ToInt32(534)];
 
@@ -119,8 +120,6 @@ namespace freeFall
                 spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
-            
-            
 
             countTime = 0;
             // Velocidade
@@ -139,7 +138,6 @@ namespace freeFall
             }
 
             animationVector(534, height);
-
         }
 
         public void CalculateWithResistence(double height, double gravity, double initialVelocityExperiment)
