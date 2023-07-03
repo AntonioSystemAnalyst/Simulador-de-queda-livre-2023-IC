@@ -70,7 +70,6 @@ namespace freeFall
             planetCounter = Program.planeTrackBar;
             Opacity = 0;
             timerEixos.Enabled = true;
-            fontLoad();
             initialConfigure();
             initiWindows();
             spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
@@ -120,24 +119,6 @@ namespace freeFall
             Program.vaccum.CrossSectionalArea = Program.ball.CrossSectionalArea;
         }
 
-        public void fontLoad()
-        {
-            byte[] fontBytes = Properties.Resources.digitalFont;
-
-            PrivateFontCollection fontCollection = new PrivateFontCollection();
-
-            IntPtr fontBuffer = Marshal.AllocCoTaskMem(fontBytes.Length);
-            Marshal.Copy(fontBytes, 0, fontBuffer, fontBytes.Length);
-            fontCollection.AddMemoryFont(fontBuffer, fontBytes.Length);
-
-            FontFamily fontFamily = fontCollection.Families[0];
-
-            float fontSize = 26f;
-            Font font = new Font(fontFamily, fontSize);
-
-            labelTextStart.Font = font;
-            labelTextStart.Location = new Point(21, 18);
-        }
         private void closeAllWindows()
         {
             if (windowExperiment != null && !windowExperiment.IsDisposed)
@@ -252,7 +233,7 @@ namespace freeFall
                 pictureBoxNext.Visible = true;
                 txtgravit.Enabled = true;
                 buttonBall.Enabled = true;
-                labelTextStart.Location = new Point(21, 18);
+                labelTextStart.Location = new Point(16, 18);
                 labelTextStart.Text = "START";
                 checkBoxGrafic.Enabled = true;
                 buttonData.Text = "Dados";
@@ -652,7 +633,7 @@ namespace freeFall
             }
             if (animationNumberCounter == 4)
             {
-                labelTextStart.Location = new Point(16, 18);
+                labelTextStart.Location = new Point(7, 18);
                 labelTextStart.Text = "CAINDO"; ;
                 BTNIniciar.Enabled = true;
                 clear();
@@ -876,7 +857,7 @@ namespace freeFall
         }
         public void initialConfigure()
         {
-
+            labelTextStart.Location = new Point(16, 18);
             planetCounter = Program.planeTrackBar;
             planetData();
             comboBoxVacuum.Text = "Folha";

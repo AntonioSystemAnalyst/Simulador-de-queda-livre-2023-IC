@@ -930,10 +930,10 @@
             // labelTextStart
             // 
             this.labelTextStart.AutoSize = true;
-            this.labelTextStart.Font = new System.Drawing.Font("Digital-7 Mono", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTextStart.Location = new System.Drawing.Point(21, 18);
+            this.labelTextStart.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTextStart.Location = new System.Drawing.Point(16, 18);
             this.labelTextStart.Name = "labelTextStart";
-            this.labelTextStart.Size = new System.Drawing.Size(95, 35);
+            this.labelTextStart.Size = new System.Drawing.Size(108, 34);
             this.labelTextStart.TabIndex = 32;
             this.labelTextStart.Text = "START";
             // 
