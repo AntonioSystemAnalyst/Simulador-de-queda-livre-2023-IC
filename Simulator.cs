@@ -76,6 +76,7 @@ namespace freeFall
             speedWindow.speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             calculateValues();
             receveidGreatestValueTime();
+            receveidGreatestValueVelocity();
             loadData();
             loadinDataCorpos();
             timerOpacity.Enabled = true;
