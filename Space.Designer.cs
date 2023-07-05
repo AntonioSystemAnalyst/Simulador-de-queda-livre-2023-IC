@@ -49,6 +49,7 @@
             this.labelTextColor = new System.Windows.Forms.Label();
             this.trackBarColors = new System.Windows.Forms.TrackBar();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
+            this.buttonTableForDot = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBoxSalve.SuspendLayout();
@@ -115,6 +116,7 @@
             // groupBoxSalve
             // 
             this.groupBoxSalve.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxSalve.Controls.Add(this.buttonTableForDot);
             this.groupBoxSalve.Controls.Add(this.SalveImage);
             this.groupBoxSalve.Controls.Add(this.SalveXLS);
             this.groupBoxSalve.Controls.Add(this.SalveTXT);
@@ -131,11 +133,11 @@
             // 
             this.SalveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SalveImage.ForeColor = System.Drawing.Color.Black;
-            this.SalveImage.Location = new System.Drawing.Point(14, 37);
+            this.SalveImage.Location = new System.Drawing.Point(7, 37);
             this.SalveImage.Name = "SalveImage";
-            this.SalveImage.Size = new System.Drawing.Size(112, 33);
+            this.SalveImage.Size = new System.Drawing.Size(84, 33);
             this.SalveImage.TabIndex = 30;
-            this.SalveImage.Text = "Salvar imagem";
+            this.SalveImage.Text = "Imagem";
             this.SalveImage.UseVisualStyleBackColor = true;
             this.SalveImage.Click += new System.EventHandler(this.SalveImage_Click);
             // 
@@ -143,11 +145,11 @@
             // 
             this.SalveXLS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SalveXLS.ForeColor = System.Drawing.Color.Black;
-            this.SalveXLS.Location = new System.Drawing.Point(250, 37);
+            this.SalveXLS.Location = new System.Drawing.Point(187, 37);
             this.SalveXLS.Name = "SalveXLS";
-            this.SalveXLS.Size = new System.Drawing.Size(112, 33);
+            this.SalveXLS.Size = new System.Drawing.Size(87, 33);
             this.SalveXLS.TabIndex = 29;
-            this.SalveXLS.Text = "Salvar em xml";
+            this.SalveXLS.Text = "Tabela";
             this.SalveXLS.UseVisualStyleBackColor = true;
             this.SalveXLS.Click += new System.EventHandler(this.SalveXLS_Click);
             // 
@@ -155,11 +157,11 @@
             // 
             this.SalveTXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SalveTXT.ForeColor = System.Drawing.Color.Black;
-            this.SalveTXT.Location = new System.Drawing.Point(132, 37);
+            this.SalveTXT.Location = new System.Drawing.Point(97, 37);
             this.SalveTXT.Name = "SalveTXT";
-            this.SalveTXT.Size = new System.Drawing.Size(112, 33);
+            this.SalveTXT.Size = new System.Drawing.Size(84, 33);
             this.SalveTXT.TabIndex = 28;
-            this.SalveTXT.Text = "Salvar em txt";
+            this.SalveTXT.Text = "Dados";
             this.SalveTXT.UseVisualStyleBackColor = true;
             this.SalveTXT.Click += new System.EventHandler(this.SalveTXT_Click);
             // 
@@ -229,6 +231,18 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
+            // buttonTableForDot
+            // 
+            this.buttonTableForDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTableForDot.ForeColor = System.Drawing.Color.Black;
+            this.buttonTableForDot.Location = new System.Drawing.Point(277, 37);
+            this.buttonTableForDot.Name = "buttonTableForDot";
+            this.buttonTableForDot.Size = new System.Drawing.Size(84, 33);
+            this.buttonTableForDot.TabIndex = 32;
+            this.buttonTableForDot.Text = "CSV";
+            this.buttonTableForDot.UseVisualStyleBackColor = true;
+            this.buttonTableForDot.Click += new System.EventHandler(this.buttonTableForDot_Click);
+            // 
             // Space
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,5 +289,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Vácuo;
         private System.Windows.Forms.Label labelTextColor;
         private System.Windows.Forms.TrackBar trackBarColors;
+        private System.Windows.Forms.Button buttonTableForDot;
     }
 }

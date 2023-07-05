@@ -279,7 +279,7 @@ namespace freeFall
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "Arquivos de Imagem|*.jpg;*.png;*.bmp|Todos os arquivos|*.*";
                 saveFileDialog.Title = "Salvar Gráfico como Imagem";
-                saveFileDialog.FileName = "Queda dos corpos.Gráfico SxT-" + dataHoraString;
+                saveFileDialog.FileName = "Queda dos corpos.Gráfico VxT-" + dataHoraString;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -304,8 +304,8 @@ namespace freeFall
                     }
 
                     chart.SaveImage(saveFileDialog.FileName, imageFormat);
+                    MessageBox.Show("Salvo com sucesso!");
                 }
-                MessageBox.Show("Salvo com sucesso!");
             }
             catch
             {
@@ -319,7 +319,7 @@ namespace freeFall
                 DateTime dataHoraAtual = DateTime.Now;
                 string dataHoraString = dataHoraAtual.ToString("yyyy-MM-dd-HH.mm.ss");
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.FileName = "Queda dos corpos.Resultados-" + dataHoraString;
+                saveFileDialog.FileName = "Queda dos corpos.Resultados de velocidade-" + dataHoraString;
                 saveFileDialog.Title = "Salvar Documento";
                 saveFileDialog.Filter = "Documentos de texto (*.txt)|*.txt|Todos os arquivos|*.*";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -360,8 +360,8 @@ namespace freeFall
                         }
                         writer.WriteLine(" ----------------------------------------- ");
                     }
+                    MessageBox.Show("Salvo com sucesso!");
                 }
-                MessageBox.Show("Salvo com sucesso!");
             }
             catch
             {
@@ -377,7 +377,7 @@ namespace freeFall
                 DateTime dataHoraAtual = DateTime.Now;
                 string dataHoraString = dataHoraAtual.ToString("yyyy-MM-dd-HH.mm.ss");
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.FileName = "Queda dos corpos.Tabelas-" + dataHoraString;
+                saveFileDialog.FileName = "Queda dos corpos.Tabelas de velocidade-" + dataHoraString;
                 saveFileDialog.Title = "Salvar Documento";
                 saveFileDialog.Filter = "Documentos de texto (*.txt)|*.txt|Todos os arquivos|*.*";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -472,8 +472,8 @@ namespace freeFall
                         }
                         writer.WriteLine(" ----------------------------------------- ");
                     }
+                    MessageBox.Show("Salvo com sucesso!");
                 }
-                MessageBox.Show("Salvo com sucesso!");
             }
             catch
             {
@@ -488,7 +488,7 @@ namespace freeFall
                 DateTime dataHoraAtual = DateTime.Now;
                 string dataHoraString = dataHoraAtual.ToString("yyyy-MM-dd-HH.mm.ss");
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.FileName = "Queda dos corpos.Valores-" + dataHoraString;
+                saveFileDialog.FileName = "Queda dos corpos.Valores de velocidade-" + dataHoraString;
                 saveFileDialog.Title = "Salvar Documento";
                 saveFileDialog.Filter = "Arquivos CSV (*.csv)|*.csv|Todos os arquivos (*.*)|*.*";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -580,8 +580,8 @@ namespace freeFall
 
                         }
                     }
+                    MessageBox.Show("Salvo com sucesso!");
                 }
-                MessageBox.Show("Salvo com sucesso!");
             }
             catch
             {
