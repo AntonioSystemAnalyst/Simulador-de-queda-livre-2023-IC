@@ -966,7 +966,7 @@
             // 
             // timerColors
             // 
-            this.timerColors.Interval = 500;
+            this.timerColors.Interval = 10;
             this.timerColors.Tick += new System.EventHandler(this.timerColors_Tick);
             // 
             // timerNumerAnimationIniti

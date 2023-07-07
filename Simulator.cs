@@ -69,7 +69,8 @@ namespace freeFall
             InitializeComponent();
             planetCounter = Program.planeTrackBar;
             Opacity = 0;
-            timerEixos.Enabled = true;
+            timerEixos.Enabled  = true;
+            timerColors.Enabled = true;
             initialConfigure();
             initiWindows();
             spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
@@ -1631,7 +1632,6 @@ namespace freeFall
             speedWindow.colorAll();
             animationWindow.colorAll();
         }
-
         private void timerColors_Tick(object sender, EventArgs e)
         {
             colorAll();
@@ -1739,6 +1739,11 @@ namespace freeFall
 
         }
         private void checkBoxVacuum_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
         {
 
         }
