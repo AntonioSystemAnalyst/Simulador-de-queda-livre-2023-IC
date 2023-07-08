@@ -104,6 +104,7 @@
             this.timerColors = new System.Windows.Forms.Timer(this.components);
             this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
+            this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -985,6 +986,11 @@
             this.groupBoxExperiment.TabStop = false;
             this.groupBoxExperiment.Text = "Experimento";
             // 
+            // timerTrackBar
+            // 
+            this.timerTrackBar.Interval = 10;
+            this.timerTrackBar.Tick += new System.EventHandler(this.timerTrackBar_Tick);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1114,5 +1120,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBoxExperiment;
         private System.Windows.Forms.CheckBox checkBoxSound;
+        private System.Windows.Forms.Timer timerTrackBar;
     }
 }

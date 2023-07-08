@@ -56,6 +56,9 @@ namespace freeFall
         // 0 - ball, paper, vaccum 1 -  ball 2 -  ball, paper 3 -  ball, vaccum 
         public static int experimentFlag = 1;
 
+        //flag para trackBar
+        public static int simulatorTrackBarValueFlag = 0;
+
         public static Image ballImage;
         public static Image paperImage;
         public static Image vaccumImage;

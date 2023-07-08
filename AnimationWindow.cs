@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 
 namespace freeFall
@@ -8,6 +9,7 @@ namespace freeFall
         public AnimationWindow()
         {
             InitializeComponent();
+            picutureEixos(1);
             colorAll();
             addImageValue();
         }
@@ -22,6 +24,11 @@ namespace freeFall
         public void colorAll()
         {
             groupBoxExperimento.ForeColor = Program.colorSimulator;
+            labelY.ForeColor = Program.colorSimulator;
+            labelX.ForeColor = Program.colorSimulator;
+            labelZero.ForeColor = Program.colorSimulator;
+            pictureBoxAxesY.BackColor = Program.colorSimulator;
+            pictureBoxAxesX.BackColor = Program.colorSimulator;
         }
 
         public Image vaccumImage()
@@ -204,23 +211,25 @@ namespace freeFall
         {
             if (op == 0)
             {
-                pictureBoxSetaY.Visible = true;
-                pictureBoxSetaX.Visible = true;
-                pictureBoxBase.Visible = false;
-                pictureBoxAx.Visible = true;
                 labelZero.Visible = true;
                 labelY.Visible = true;
                 labelX.Visible = true;
+                pictureBoxBackY.Visible = true;
+                pictureBoxBackX.Visible = true;
+                pictureBoxAxesY.Visible = true;
+                pictureBoxAxesX.Visible = true;
+                pictureBoxBase.Visible  = false;
             }
             else
             {
-                pictureBoxSetaY.Visible = false;
-                pictureBoxSetaX.Visible = false;
-                pictureBoxBase.Visible = true;
-                pictureBoxAx.Visible = false;
                 labelZero.Visible = false;
                 labelY.Visible = false;
                 labelX.Visible = false;
+                pictureBoxBackY.Visible = false;
+                pictureBoxBackX.Visible = false;
+                pictureBoxAxesY.Visible = false;
+                pictureBoxAxesX.Visible = false;
+                pictureBoxBase.Visible = true;
             }
         }
         public void clearPostion()

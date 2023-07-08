@@ -45,11 +45,11 @@
             this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxSalve = new System.Windows.Forms.GroupBox();
+            this.buttonTableForDot = new System.Windows.Forms.Button();
             this.SalveImage = new System.Windows.Forms.Button();
             this.SalveXLS = new System.Windows.Forms.Button();
             this.SalveTXT = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
-            this.buttonTableForDot = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
@@ -192,6 +192,18 @@
             this.groupBoxSalve.TabStop = false;
             this.groupBoxSalve.Text = "Salvar dados";
             // 
+            // buttonTableForDot
+            // 
+            this.buttonTableForDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTableForDot.ForeColor = System.Drawing.Color.Black;
+            this.buttonTableForDot.Location = new System.Drawing.Point(278, 37);
+            this.buttonTableForDot.Name = "buttonTableForDot";
+            this.buttonTableForDot.Size = new System.Drawing.Size(84, 33);
+            this.buttonTableForDot.TabIndex = 31;
+            this.buttonTableForDot.Text = "CSV";
+            this.buttonTableForDot.UseVisualStyleBackColor = true;
+            this.buttonTableForDot.Click += new System.EventHandler(this.buttonTableForDot_Click);
+            // 
             // SalveImage
             // 
             this.SalveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -232,18 +244,6 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
-            // buttonTableForDot
-            // 
-            this.buttonTableForDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTableForDot.ForeColor = System.Drawing.Color.Black;
-            this.buttonTableForDot.Location = new System.Drawing.Point(278, 37);
-            this.buttonTableForDot.Name = "buttonTableForDot";
-            this.buttonTableForDot.Size = new System.Drawing.Size(84, 33);
-            this.buttonTableForDot.TabIndex = 31;
-            this.buttonTableForDot.Text = "CSV";
-            this.buttonTableForDot.UseVisualStyleBackColor = true;
-            this.buttonTableForDot.Click += new System.EventHandler(this.buttonTableForDot_Click);
-            // 
             // Speed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,6 +261,7 @@
             this.Text = "Gráfico da velocidade pelo tempo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Speed_FormClosing);
             this.Load += new System.EventHandler(this.Speed_Load);
+            this.Resize += new System.EventHandler(this.Speed_Resize);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).EndInit();

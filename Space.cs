@@ -28,6 +28,7 @@ namespace freeFall
         }
         private void Space_Load(object sender, EventArgs e)
         {
+            trackBarColors.Value = Program.colorTrackBar;
             dataGridView.CurrentCell = null;
         }
         public void colorAll()
@@ -43,6 +44,7 @@ namespace freeFall
             chartSpace.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
             labelTextColor.ForeColor = Program.colorSimulator;
             checkBox3D.ForeColor = Program.colorSimulator;
+            Program.simulatorTrackBarValueFlag = 1;
         }
         private void toComplete()
         {
@@ -726,9 +728,13 @@ namespace freeFall
 
         private void Space_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Program.simulatorTrackBarValueFlag = 1;
             Program.spaceGraficControl = 0;
         }
 
-     
+        private void Space_Resize(object sender, EventArgs e)
+        {
+
+        }
     }
 }

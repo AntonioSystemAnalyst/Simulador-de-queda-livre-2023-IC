@@ -71,6 +71,7 @@ namespace freeFall
             Opacity = 0;
             timerEixos.Enabled  = true;
             timerColors.Enabled = true;
+            timerTrackBar.Enabled = true; 
             initialConfigure();
             initiWindows();
             spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
@@ -104,20 +105,22 @@ namespace freeFall
         }
         private void loadinDataCorpos()
         {
-            Program.ball.CrossSectionalArea = 0.038806;
-            Program.airDensity = 1.225;
-            Program.gravity = 9.8;
             // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
             // folha A4
+
+            Program.airDensity = 1.225;
+            Program.gravity = 9.8;
+
             Program.ball.Mass = 0.045;
-            Program.paper.Mass = 0.085; //0.00465;
-            Program.vaccum.Mass = Program.ball.Mass;
             Program.ball.DragCoefficient = 0.3;
-            Program.paper.DragCoefficient = Program.ball.DragCoefficient;//1.2;
-            Program.vaccum.DragCoefficient = Program.paper.DragCoefficient;
-            Program.paper.CrossSectionalArea = Program.ball.CrossSectionalArea; //0.06237; // amaçada 0.001341640872
-            //paper.CrossSectionalArea = 0.8237; // amaçada 0.001341640872
             Program.ball.CrossSectionalArea = 0.038806;
+
+            Program.paper.Mass = 0.00465;
+            Program.paper.DragCoefficient = 0.8;
+            Program.paper.CrossSectionalArea = 0.06237; // amaçada 0.001341640872
+
+            Program.vaccum.Mass = Program.ball.Mass;
+            Program.vaccum.DragCoefficient = Program.paper.DragCoefficient;
             Program.vaccum.CrossSectionalArea = Program.ball.CrossSectionalArea;
         }
 
@@ -184,6 +187,15 @@ namespace freeFall
         {
             trackBarColors.Value = Program.colorTrackBar;
             colorAll();
+        }
+
+        private void timerTrackBar_Tick(object sender, EventArgs e)
+        {
+                trackBarColors.Value = Program.colorTrackBar;
+        }
+        public void simulatorTrackBarValue()
+        {
+            trackBarColors.Value = Program.colorTrackBar;
         }
         public void clear()
         {
@@ -966,7 +978,7 @@ namespace freeFall
                 Program.airResistance = 0;
             }
         }
-
+       
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
            
@@ -1488,6 +1500,7 @@ namespace freeFall
         {
             int i;
             i = trackBarColors.Value;
+            Program.colorTrackBar = i;
             if (i == 2)
             {
                 Program.colorSimulator = Color.Blue;
@@ -1747,7 +1760,6 @@ namespace freeFall
         {
 
         }
-
         private void chartSpace_Click(object sender, EventArgs e)
         {
 

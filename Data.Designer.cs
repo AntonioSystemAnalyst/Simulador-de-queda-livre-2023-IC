@@ -37,10 +37,13 @@
             this.dataGridViewPlanets = new System.Windows.Forms.DataGridView();
             this.labelPlanet = new System.Windows.Forms.Label();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
+            this.labelTextColor = new System.Windows.Forms.Label();
+            this.trackBarColors = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanets)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBoxPlanet
@@ -49,7 +52,7 @@
             this.richTextBoxPlanet.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxPlanet.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxPlanet.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxPlanet.Location = new System.Drawing.Point(461, 154);
+            this.richTextBoxPlanet.Location = new System.Drawing.Point(461, 128);
             this.richTextBoxPlanet.Name = "richTextBoxPlanet";
             this.richTextBoxPlanet.ReadOnly = true;
             this.richTextBoxPlanet.Size = new System.Drawing.Size(472, 222);
@@ -119,12 +122,38 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
+            // labelTextColor
+            // 
+            this.labelTextColor.AutoSize = true;
+            this.labelTextColor.BackColor = System.Drawing.Color.Transparent;
+            this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
+            this.labelTextColor.Location = new System.Drawing.Point(461, 346);
+            this.labelTextColor.Name = "labelTextColor";
+            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
+            this.labelTextColor.TabIndex = 46;
+            this.labelTextColor.Text = "Cor do texto";
+            // 
+            // trackBarColors
+            // 
+            this.trackBarColors.BackColor = System.Drawing.Color.Black;
+            this.trackBarColors.Location = new System.Drawing.Point(460, 367);
+            this.trackBarColors.Maximum = 9;
+            this.trackBarColors.Minimum = 1;
+            this.trackBarColors.Name = "trackBarColors";
+            this.trackBarColors.Size = new System.Drawing.Size(85, 45);
+            this.trackBarColors.TabIndex = 45;
+            this.trackBarColors.Value = 1;
+            this.trackBarColors.Scroll += new System.EventHandler(this.trackBarColors_Scroll);
+            // 
             // Data
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::freeFall.Properties.Resources.background;
             this.ClientSize = new System.Drawing.Size(945, 419);
+            this.Controls.Add(this.labelTextColor);
+            this.Controls.Add(this.trackBarColors);
             this.Controls.Add(this.labelPlanet);
             this.Controls.Add(this.pictureBoxPlanets);
             this.Controls.Add(this.dataGridViewPlanets);
@@ -139,10 +168,12 @@
             this.Text = "Data";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Data_FormClosing);
             this.Load += new System.EventHandler(this.Data_Load);
+            this.Resize += new System.EventHandler(this.Data_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanets)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlanets)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -157,5 +188,7 @@
         private System.Windows.Forms.DataGridView dataGridViewPlanets;
         private System.Windows.Forms.Label labelPlanet;
         private System.Windows.Forms.Timer timerFocus;
+        private System.Windows.Forms.Label labelTextColor;
+        private System.Windows.Forms.TrackBar trackBarColors;
     }
 }

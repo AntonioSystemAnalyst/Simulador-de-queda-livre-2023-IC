@@ -16,6 +16,68 @@ namespace freeFall
         public static int planetCounterSave;
         public static string n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19;
 
+        private void Data_Resize(object sender, EventArgs e)
+        {
+
+        }
+
+        private void trackBarColors_Scroll(object sender, EventArgs e)
+        {
+            int i;
+            i = trackBarColors.Value;
+            if (i == 2)
+            {
+                Program.colorSimulator = Color.Blue;
+                colorAll();
+            }
+            if (i == 3)
+            {
+                Program.colorSimulator = Color.Red;
+                colorAll();
+            }
+            if (i == 4)
+            {
+                Program.colorSimulator = Color.Green;
+                colorAll();
+            }
+            if (i == 5)
+            {
+                Program.colorSimulator = Color.Gray;
+                colorAll();
+            }
+            if (i == 6)
+            {
+                Program.colorSimulator = Color.White;
+                colorAll();
+            }
+            if (i == 7)
+            {
+                Program.colorSimulator = Color.HotPink;
+                colorAll();
+            }
+            if (i == 8)
+            {
+                Program.colorSimulator = Color.LightBlue;
+                colorAll();
+            }
+            if (i == 9)
+            {
+                Program.colorSimulator = Color.LightSalmon;
+                colorAll();
+            }
+            if (i == 10)
+            {
+                Program.colorSimulator = Color.LightPink;
+                colorAll();
+            }
+            if (i == 1)
+            {
+                Program.colorSimulator = Color.Cyan;
+                colorAll();
+            }
+            
+        }
+
         private void timerFocus_Tick(object sender, EventArgs e)
         {
             pictureBoxNext.Focus();
@@ -29,6 +91,7 @@ namespace freeFall
 
         private void Data_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Program.simulatorTrackBarValueFlag = 1;
             Program.planetCounter = planetCounterSave;
             Program.planetName = planetName;
             Program.dataControl = 0;
@@ -65,11 +128,13 @@ namespace freeFall
             richTextBoxPlanet.ForeColor = Program.colorSimulator;
             dataGridViewPlanets.GridColor = Program.colorSimulator;
             dataGridViewPlanets.DefaultCellStyle.ForeColor = Program.colorSimulator;
+            labelTextColor.ForeColor= Program.colorSimulator;
+            Program.simulatorTrackBarValueFlag = 1;
         }
 
         private void Data_Load(object sender, EventArgs e)
         {
-
+            trackBarColors.Value = Program.colorTrackBar;
         }
         private void loadPlaentData(int Planet)
         {

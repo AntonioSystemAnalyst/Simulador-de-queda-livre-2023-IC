@@ -24,6 +24,7 @@ namespace freeFall
 
         private void Speed_Load(object sender, EventArgs e)
         {
+            trackBarColors.Value = Program.colorTrackBar;
             dataGridView.CurrentCell = null;
         }
 
@@ -44,6 +45,7 @@ namespace freeFall
             chartSpeed.ChartAreas[0].AxisY.LabelStyle.ForeColor = Program.colorSimulator;
             labelTextColor.ForeColor = Program.colorSimulator;
             checkBox3D.ForeColor = Program.colorSimulator;
+            Program.simulatorTrackBarValueFlag = 1;
         }
         private void timerFocus_Tick(object sender, EventArgs e)
         {
@@ -665,6 +667,7 @@ namespace freeFall
         private void Speed_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.speedGraficControl = 0;
+            Program.simulatorTrackBarValueFlag = 1;
         }
 
         private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
@@ -672,6 +675,9 @@ namespace freeFall
 
         }
 
-    
+        private void Speed_Resize(object sender, EventArgs e)
+        {
+
+        }
     }
 }
