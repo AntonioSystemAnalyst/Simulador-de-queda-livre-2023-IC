@@ -171,11 +171,11 @@
             this.labelTextColor.AutoSize = true;
             this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
-            this.labelTextColor.Location = new System.Drawing.Point(990, 565);
+            this.labelTextColor.Location = new System.Drawing.Point(1006, 568);
             this.labelTextColor.Name = "labelTextColor";
-            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
+            this.labelTextColor.Size = new System.Drawing.Size(44, 15);
             this.labelTextColor.TabIndex = 15;
-            this.labelTextColor.Text = "Cor do texto";
+            this.labelTextColor.Text = "Cores";
             // 
             // pictureBoxDFQM
             // 

@@ -75,7 +75,7 @@
             this.comboPaper = new System.Windows.Forms.ComboBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
             this.checkBoxPaper = new System.Windows.Forms.CheckBox();
-            this.checkBoxResistance = new System.Windows.Forms.CheckBox();
+            this.checkBoxResistanceIntegration = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.LbAltura = new System.Windows.Forms.Label();
             this.cmbPlaneta = new System.Windows.Forms.ComboBox();
@@ -105,6 +105,7 @@
             this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
+            this.checkBoxResistance = new System.Windows.Forms.CheckBox();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -173,9 +174,9 @@
             // 
             this.buttonLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(156, 185);
+            this.buttonLogo.Location = new System.Drawing.Point(174, 185);
             this.buttonLogo.Name = "buttonLogo";
-            this.buttonLogo.Size = new System.Drawing.Size(50, 24);
+            this.buttonLogo.Size = new System.Drawing.Size(32, 24);
             this.buttonLogo.TabIndex = 35;
             this.buttonLogo.Text = "Log";
             this.buttonLogo.UseVisualStyleBackColor = true;
@@ -503,6 +504,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistance);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxSound);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
@@ -517,7 +519,7 @@
             this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxEixo);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxPaper);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistance);
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceIntegration);
             this.groupBoxConfiguracao.Controls.Add(this.label6);
             this.groupBoxConfiguracao.Controls.Add(this.LbAltura);
             this.groupBoxConfiguracao.Controls.Add(this.cmbPlaneta);
@@ -535,7 +537,7 @@
             // checkBoxSound
             // 
             this.checkBoxSound.AutoSize = true;
-            this.checkBoxSound.Location = new System.Drawing.Point(116, 215);
+            this.checkBoxSound.Location = new System.Drawing.Point(116, 219);
             this.checkBoxSound.Name = "checkBoxSound";
             this.checkBoxSound.Size = new System.Drawing.Size(54, 17);
             this.checkBoxSound.TabIndex = 42;
@@ -546,7 +548,7 @@
             // checkBoxGrafic
             // 
             this.checkBoxGrafic.AutoSize = true;
-            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 192);
+            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 200);
             this.checkBoxGrafic.Name = "checkBoxGrafic";
             this.checkBoxGrafic.Size = new System.Drawing.Size(82, 17);
             this.checkBoxGrafic.TabIndex = 41;
@@ -579,7 +581,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(8, 215);
+            this.checkBox3D.Location = new System.Drawing.Point(8, 219);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -593,11 +595,11 @@
             this.labelTextColor.AutoSize = true;
             this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
-            this.labelTextColor.Location = new System.Drawing.Point(122, 108);
+            this.labelTextColor.Location = new System.Drawing.Point(126, 107);
             this.labelTextColor.Name = "labelTextColor";
-            this.labelTextColor.Size = new System.Drawing.Size(84, 15);
+            this.labelTextColor.Size = new System.Drawing.Size(44, 15);
             this.labelTextColor.TabIndex = 40;
-            this.labelTextColor.Text = "Cor do texto";
+            this.labelTextColor.Text = "Cores";
             // 
             // buttonResistencia
             // 
@@ -686,7 +688,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(54, 215);
+            this.checkBoxEixo.Location = new System.Drawing.Point(54, 219);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -708,17 +710,17 @@
             this.checkBoxPaper.CheckStateChanged += new System.EventHandler(this.checkBoxLeaf_CheckStateChanged);
             this.checkBoxPaper.MouseHover += new System.EventHandler(this.checkBoxLeaf_MouseHover);
             // 
-            // checkBoxResistance
+            // checkBoxResistanceIntegration
             // 
-            this.checkBoxResistance.AutoSize = true;
-            this.checkBoxResistance.Location = new System.Drawing.Point(8, 171);
-            this.checkBoxResistance.Name = "checkBoxResistance";
-            this.checkBoxResistance.Size = new System.Drawing.Size(125, 17);
-            this.checkBoxResistance.TabIndex = 12;
-            this.checkBoxResistance.Text = "Resistência do ar";
-            this.checkBoxResistance.UseVisualStyleBackColor = true;
-            this.checkBoxResistance.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged);
-            this.checkBoxResistance.MouseHover += new System.EventHandler(this.checkBoxResistance_MouseHover);
+            this.checkBoxResistanceIntegration.AutoSize = true;
+            this.checkBoxResistanceIntegration.Location = new System.Drawing.Point(8, 162);
+            this.checkBoxResistanceIntegration.Name = "checkBoxResistanceIntegration";
+            this.checkBoxResistanceIntegration.Size = new System.Drawing.Size(164, 17);
+            this.checkBoxResistanceIntegration.TabIndex = 12;
+            this.checkBoxResistanceIntegration.Text = "Resistência do ar - RxV²";
+            this.checkBoxResistanceIntegration.UseVisualStyleBackColor = true;
+            this.checkBoxResistanceIntegration.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged);
+            this.checkBoxResistanceIntegration.MouseHover += new System.EventHandler(this.checkBoxResistance_MouseHover);
             // 
             // label6
             // 
@@ -991,6 +993,17 @@
             this.timerTrackBar.Interval = 10;
             this.timerTrackBar.Tick += new System.EventHandler(this.timerTrackBar_Tick);
             // 
+            // checkBoxResistance
+            // 
+            this.checkBoxResistance.AutoSize = true;
+            this.checkBoxResistance.Location = new System.Drawing.Point(8, 181);
+            this.checkBoxResistance.Name = "checkBoxResistance";
+            this.checkBoxResistance.Size = new System.Drawing.Size(160, 17);
+            this.checkBoxResistance.TabIndex = 43;
+            this.checkBoxResistance.Text = "Resistência do ar - RxV";
+            this.checkBoxResistance.UseVisualStyleBackColor = true;
+            this.checkBoxResistance.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged_1);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1066,7 +1079,7 @@
         private System.Windows.Forms.PictureBox pictureBoxBack;
         private System.Windows.Forms.PictureBox pictureBoxNext;
         private System.Windows.Forms.CheckBox checkBoxPaper;
-        private System.Windows.Forms.CheckBox checkBoxResistance;
+        private System.Windows.Forms.CheckBox checkBoxResistanceIntegration;
         private System.Windows.Forms.CheckBox checkBoxEixo;
         private System.Windows.Forms.TrackBar trackBarColors;
         private System.Windows.Forms.Button buttonBall;
@@ -1121,5 +1134,6 @@
         private System.Windows.Forms.GroupBox groupBoxExperiment;
         private System.Windows.Forms.CheckBox checkBoxSound;
         private System.Windows.Forms.Timer timerTrackBar;
+        private System.Windows.Forms.CheckBox checkBoxResistance;
     }
 }

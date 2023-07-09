@@ -10,68 +10,48 @@ namespace freeFall
 {
     public partial class Simulator : Form
     {
-
         ExperimentData windowExperiment;
         Space windowSpace;
         Speed windowSpeed;
-
         // define objeto para ser usado nas tooltips
         System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
-
         // define o planeta para exibir os dados - errado!!!
         public int planetCounter = 1;
-
         // controla o botão iniciar 
         public int buttonStartControl = 0;
-
         //controla animationnumberiniti
         public int animationNumberCounter = 0;
-
         public int corpoCounter = 0;
-
         public int countAnimation = 0;
-
         public int countFocus = 0;
-
         public int flagVaccumObject = 0;
-
-        public double NumberTermsTime = 0.0;
-
         public int greatestValueTime = 0;
-
         public int openGraficsControl = 0;
-
         public int spaceDiv = 0;
-
         public int sound = 1;
-
-        private bool isPictureBoxClickedLeft = false;
-        private bool isPictureBoxClickedRight = false;
-
-
         public int countVaccum = 0;
         public int countPaper = 0;
         public int countBody = 0;
         public int countGrafic = 0;
-
-        public static string planetName, gravity, height, airResistence, airDensity, initialVelocityBody,
-            finalVelocityBody, experimentTimeBody, DragCoefficientBody;
+        private bool isPictureBoxClickedLeft = false;
+        private bool isPictureBoxClickedRight = false;
+        public double NumberTermsTime = 0.0;
+        public static string planetName, gravity, height, airResistence, airDensity, initialVelocityBody, finalVelocityBody, experimentTimeBody, DragCoefficientBody;
         public static string initialVelocityPaper, finalVelocityPaper, experimentTimePaper, DragCoefficientPaper;
         public static string initialVelocityVaccum, finalVelocityVaccum, experimentTimeVaccum, DragCoefficientVaccum;
-
+        public static int[] Ax = new int[15];
         public GraficSpaceWindow spaceWindow = new GraficSpaceWindow();
         public GraficSpeedWindow speedWindow = new GraficSpeedWindow();
         public AnimationWindow animationWindow = new AnimationWindow();
 
-        public static int[] Ax = new int[15];
         public Simulator()
         {
             InitializeComponent();
             planetCounter = Program.planeTrackBar;
             Opacity = 0;
-            timerEixos.Enabled  = true;
+            timerEixos.Enabled = true;
             timerColors.Enabled = true;
-            timerTrackBar.Enabled = true; 
+            timerTrackBar.Enabled = true;
             initialConfigure();
             initiWindows();
             spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
@@ -106,7 +86,7 @@ namespace freeFall
         private void loadinDataCorpos()
         {
             // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
-            // folha A4
+            // folha A4  0.06237; // amaçada 0.001341640872
 
             Program.airDensity = 1.225;
             Program.gravity = 9.8;
@@ -119,9 +99,9 @@ namespace freeFall
             Program.paper.DragCoefficient = 0.8;
             Program.paper.CrossSectionalArea = 0.06237; // amaçada 0.001341640872
 
-            Program.vaccum.Mass = Program.ball.Mass;
+            Program.vaccum.Mass = Program.paper.Mass;
             Program.vaccum.DragCoefficient = Program.paper.DragCoefficient;
-            Program.vaccum.CrossSectionalArea = Program.ball.CrossSectionalArea;
+            Program.vaccum.CrossSectionalArea = Program.paper.CrossSectionalArea;
         }
 
         private void closeAllWindows()
@@ -132,8 +112,8 @@ namespace freeFall
                 windowExperiment = null;
                 Program.experimentDataControl = 0;
             }
-           spaceWindow.closeAllWindow();
-           speedWindow.closeAllWindow();
+            spaceWindow.closeAllWindow();
+            speedWindow.closeAllWindow();
         }
         private void timerRight_Tick(object sender, EventArgs e)
         {
@@ -191,7 +171,7 @@ namespace freeFall
 
         private void timerTrackBar_Tick(object sender, EventArgs e)
         {
-                trackBarColors.Value = Program.colorTrackBar;
+            trackBarColors.Value = Program.colorTrackBar;
         }
         public void simulatorTrackBarValue()
         {
@@ -216,43 +196,43 @@ namespace freeFall
         {
             if (Operation == 1)
             {
+                buttonData.Text = "Sem dados";
+                buttonData.Enabled = false;
+                buttonBall.Enabled = false;
                 boxHeight.Enabled = false;
                 cmbPlaneta.Enabled = false;
                 comboBoxVacuum.Enabled = false;
                 comboPaper.Enabled = false;
                 checkBoxVacuum.Enabled = false;
                 checkBoxPaper.Enabled = false;
+                checkBoxGrafic.Enabled = false;
                 checkBoxResistance.Enabled = false;
+                checkBoxResistanceIntegration.Enabled = false;
                 pictureBoxBack.Enabled = false;
                 pictureBoxNext.Enabled = false;
                 pictureBoxBack.Visible = false;
                 pictureBoxNext.Visible = false;
                 txtgravit.Enabled = false;
-                buttonBall.Enabled = false;
-                checkBoxGrafic.Enabled = false;
-                buttonData.Text = "Sem dados";
-                buttonData.Enabled = false;
-
             }
             else
             {
+                buttonData.Text = "Dados";
+                buttonData.Enabled = true;
+                buttonBall.Enabled = true;
                 boxHeight.Enabled = true;
                 cmbPlaneta.Enabled = true;
                 checkBoxPaper.Enabled = true;
                 checkBoxVacuum.Enabled = true;
+                checkBoxGrafic.Enabled = true;
                 checkBoxResistance.Enabled = true;
+                checkBoxResistanceIntegration.Enabled = true;
+                labelTextStart.Location = new Point(16, 18);
+                labelTextStart.Text = "START";
                 pictureBoxBack.Enabled = true;
                 pictureBoxNext.Enabled = true;
                 pictureBoxBack.Visible = true;
                 pictureBoxNext.Visible = true;
                 txtgravit.Enabled = true;
-                buttonBall.Enabled = true;
-                labelTextStart.Location = new Point(16, 18);
-                labelTextStart.Text = "START";
-                checkBoxGrafic.Enabled = true;
-                buttonData.Text = "Dados";
-                buttonData.Enabled = true;
-
                 if (checkBoxPaper.Checked == true)
                 {
                     comboPaper.Enabled = true;
@@ -263,6 +243,21 @@ namespace freeFall
                 }
             }
         }
+        private void checkBoxResistance_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (checkBoxResistanceIntegration.Checked)
+            {
+                animationWindow.picutureResistence(0);
+                Program.airResistance = 2;
+                checkBoxResistanceIntegration.Checked = false;
+            }
+            else
+            {
+                animationWindow.picutureResistence(1);
+                Program.airResistance = 0;
+            }
+        }
+
         public void animation()
         {
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
@@ -314,17 +309,38 @@ namespace freeFall
             }
             else
             {
-                if (Program.bodyOn)
+                if (Program.airResistance == 1)
                 {
-                    Program.ball.CalculateWithResistence(Program.height, Program.gravity, 0);
+                    if (Program.bodyOn)
+                    {
+                        Program.ball.CalculateWithResistence(Program.height, Program.gravity, 0);
+                    }
+                    if (Program.paperOn)
+                    {
+                        Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
+                    }
+                    if (Program.vaccumOn)
+                    {
+                        Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
+                    }
                 }
-                if (Program.paperOn)
+                else
                 {
-                    Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
-                }
-                if (Program.vaccumOn)
-                {
-                    Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
+                    if (Program.airResistance == 2)
+                    {
+                        if (Program.bodyOn)
+                        {
+                            Program.ball.CalculateWithResistence(Program.height, Program.gravity, 0);
+                        }
+                        if (Program.paperOn)
+                        {
+                            Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
+                        }
+                        if (Program.vaccumOn)
+                        {
+                            Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
+                        }
+                    }
                 }
             }
         }
@@ -967,25 +983,17 @@ namespace freeFall
 
         private void checkBoxResistance_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxResistance.Checked)
+            if (checkBoxResistanceIntegration.Checked)
             {
                 animationWindow.picutureResistence(0);
                 Program.airResistance = 1;
+                checkBoxResistance.Checked = false;
             }
             else
             {
                 animationWindow.picutureResistence(1);
                 Program.airResistance = 0;
             }
-        }
-       
-        private void chartSpace_MouseClick(object sender, MouseEventArgs e)
-        {
-           
-        }
-        private void chartSpeed_Click(object sender, EventArgs e)
-        {
-
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1222,7 +1230,7 @@ namespace freeFall
 
         private void checkBoxResistance_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(checkBoxResistance, "Adiciona a resistência do ar ao experimênto.");
+            toolTip.SetToolTip(checkBoxResistanceIntegration, "Adiciona a resistência do ar ao experimênto.");
         }
 
         private void checkBoxEixo_MouseHover(object sender, EventArgs e)
@@ -1693,7 +1701,6 @@ namespace freeFall
                 }
             }
         }
-
         public void resetWindows()
         {
             spaceWindow.TopLevel = false;
@@ -1743,6 +1750,14 @@ namespace freeFall
                 sound = 0;
             }
         }
+        private void chartSpace_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+        private void chartSpeed_Click(object sender, EventArgs e)
+        {
+
+        }
         private void comboBoxFonts_SelectedValueChanged(object sender, EventArgs e)
         {
 
@@ -1755,7 +1770,6 @@ namespace freeFall
         {
 
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
 
@@ -1769,7 +1783,6 @@ namespace freeFall
         {
 
         }
-
         private void label13_Click(object sender, EventArgs e)
         {
 
@@ -1787,7 +1800,6 @@ namespace freeFall
         {
 
         }
-
         private void checkBoxGrafico_CheckedChanged(object sender, EventArgs e)
         {
 
