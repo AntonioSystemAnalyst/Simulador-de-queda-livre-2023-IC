@@ -332,8 +332,6 @@ namespace freeFall
         public double Function(double countTime)
         {
 
-
-            //term1 = 1.3; -> para deixar igual o excel
             term2 = Math.Round((Program.gravity / term1), precision);
             term3 = Math.Sqrt(term2);
             term4 = Math.Round((term1 * Program.gravity), precision);
