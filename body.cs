@@ -171,7 +171,7 @@ namespace freeFall
             countTime = 0.01;
             for (i = 0; i < numberOfTerms; i++)
             {
-                velocityPoint = Function(countTime);
+                velocityPoint = velocityFunctionRV2(countTime);
                 velocity[i] = -velocityPoint;
                 countTime = countTime + 0.01;
             }
@@ -224,7 +224,6 @@ namespace freeFall
             term0 = Math.Round((0.5 * dragCoefficient * Program.airDensity * crossSectionalArea), precision);
             term1 = Math.Round(mass / term0);
 
-
             Ax = gravity / term1;
             terminalVelocity = Math.Sqrt(Ax);
             finalVelocity = terminalVelocity;
@@ -244,7 +243,7 @@ namespace freeFall
             countTime = 0.01;
             for (i = 0; i < numberOfTerms; i++)
             {
-                velocityPoint = Function(countTime);
+                velocityPoint = velocityFunctionRV2(countTime);
                 velocity[i] = -velocityPoint;
                 countTime = countTime + 0.01;
             }
@@ -306,7 +305,7 @@ namespace freeFall
             int breakStatus = 0;
             do
             {
-                velocityInTime = Function(velocityTerminalTime);
+                velocityInTime = velocityFunctionRV2(velocityTerminalTime);
                 velocityTerminalTime += 0.01;
                 if ((velocityInTime - terminalVelocity) < 0.008)
                 {
@@ -326,10 +325,11 @@ namespace freeFall
             Console.WriteLine(" timeTravel = " + timeTravel);
             Console.WriteLine(" totalTime = " + timeAll);
             Console.WriteLine(" ------------------------------------");
+            
             return timeAll;
         }
 
-        public double Function(double countTime)
+        public double velocityFunctionRV2(double countTime)
         {
 
             term2 = Math.Round((Program.gravity / term1), precision);
@@ -344,38 +344,21 @@ namespace freeFall
             velocityPoint = Math.Round((term10 * term3), precision);
             return velocityPoint;
         }
-
-        public double trapezoidalIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
-        {
-            double integration = 0.0;
-
-            double h = (timeTwo - timeOne) / numberDivision;
-            double sum = (Function(timeOne) + Function(timeTwo)) / 2.0;
-
-            for (int i = 1; i < numberDivision; i++)
-            {
-                double x = timeOne + i * h;
-                sum += Function(x);
-            }
-            integration = Math.Round((h * sum), precision);
-            return integration;
-        }
-
         public double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
         {
             double integration = 0.0;
 
             double h = (timeTwo - timeOne) / numberDivision;
-            double sum = Function(timeOne) + Function(timeTwo);
+            double sum = velocityFunctionRV2(timeOne) + velocityFunctionRV2(timeTwo);
 
             for (int i = 1; i < numberDivision; i++)
             {
                 double x = timeOne + i * h;
 
                 if (i % 2 == 0)
-                    sum += 2 * Function(x);
+                    sum += 2 * velocityFunctionRV2(x);
                 else
-                    sum += 4 * Function(x);
+                    sum += 4 * velocityFunctionRV2(x);
             }
             integration = Math.Round(((h / 3) * sum), precision);
             return integration;
