@@ -313,11 +313,11 @@ namespace freeFall
                 {
                     if (Program.bodyOn)
                     {
-                        Program.ball.CalculateWithResistence(Program.height, Program.gravity, 0);
+                        Program.ball.CalculateWithResistenceRV1(Program.height, Program.gravity, 0, Program.airDensity);
                     }
                     if (Program.paperOn)
                     {
-                        Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
+                        Program.paper.CalculateWithResistenceRV1(Program.height, Program.gravity, 0, Program.airDensity);
                     }
                     if (Program.vaccumOn)
                     {
@@ -330,11 +330,11 @@ namespace freeFall
                     {
                         if (Program.bodyOn)
                         {
-                            Program.ball.CalculateWithResistence(Program.height, Program.gravity, 0);
+                            Program.ball.CalculateWithResistenceVR2(Program.height, Program.gravity, 0, Program.airDensity);
                         }
                         if (Program.paperOn)
                         {
-                            Program.paper.CalculateWithResistence(Program.height, Program.gravity, 0);
+                            Program.paper.CalculateWithResistenceVR2(Program.height, Program.gravity, 0, Program.airDensity);
                         }
                         if (Program.vaccumOn)
                         {
@@ -489,24 +489,24 @@ namespace freeFall
             {
                 if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    spaceWindow.addPointCorpo(countGrafic);
-                    speedWindow.addPointCorpo(countGrafic);
+                    //spaceWindow.addPointCorpo(countGrafic);
+                    //speedWindow.addPointCorpo(countGrafic);
                 }
             }
             if (Program.paperOn)
             {
                 if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    spaceWindow.addPointPaper(countGrafic);
-                    speedWindow.addPointPaper(countGrafic);
+                    //spaceWindow.addPointPaper(countGrafic);
+                    //speedWindow.addPointPaper(countGrafic);
                 }
             }
             if (Program.vaccumOn)
             {
                 if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    spaceWindow.addPointVaccum(countGrafic);
-                    speedWindow.addPointVaccum(countGrafic);
+                    //spaceWindow.addPointVaccum(countGrafic);
+                    //speedWindow.addPointVaccum(countGrafic);
                 }
             }
             countGrafic = countGrafic + 1;

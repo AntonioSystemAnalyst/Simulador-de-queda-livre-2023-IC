@@ -20,7 +20,8 @@ namespace freeFall
         public int precision = 5;
         public double velocityPoint;
         public double spacePoint;
-
+        public double greatValueVelocity;
+        public static double countTime;
         // --- Antimation
         double qtdSpaceForNumberOfTermes;
         double qtdSpaceForPixels;
@@ -140,229 +141,274 @@ namespace freeFall
             animationVector(534, height);
         }
 
-        public void CalculateWithResistence(double height, double gravity, double initialVelocityExperiment)
+        public  void CalculateWithResistenceRV1(double height, double gravity, double initialVelocity, double airDensity)
         {
-            double Ax;
-            double countTime;
+            double spacePoint;
             int i;
 
-            term0 = Math.Round((0.5 * dragCoefficient * Program.airDensity * crossSectionalArea), precision);
-            term1 = Math.Round(mass / term0);
+            term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
+            term1 = Math.Round((term0 / mass), precision);
+            terminalVelocity = gravity / term1;
 
-
-            Ax = (2*mass*gravity) / (dragCoefficient * Program.airDensity * crossSectionalArea);
-            
-            terminalVelocity = Math.Sqrt(Ax);
-            finalVelocity = terminalVelocity;
-
-            timeAllExperiment = getTimeAllRV2();
-
+            greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
+            timeAllExperiment = getTimeAllVR11(gravity, height);
             finalVelocity = terminalVelocity;
 
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
+            numberOfTerms = 150;
 
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
 
-            spaceTime = new double[numberOfTerms + 2];
-            spacePixel = new double[Convert.ToInt32(534)];
-
             countTime = 0.01;
-            for (i = 0; i < numberOfTerms; i++)
+            for (i = 1; i < numberOfTerms; i++)
             {
-                velocityPoint = velocityFunctionRV2(countTime);
-                velocity[i] = -velocityPoint;
+                velocityPoint = velocityFunctionRV1(countTime, 1, gravity);
+                velocity[i] = velocityPoint;
                 countTime = countTime + 0.01;
             }
 
             countTime = 0.01;
             for (i = 0; i < numberOfTerms; i++)
             {
-                spacePoint = SimpsonIntegrationMethod(0.01, countTime, 40);
-                space[i] = spacePoint;
+                spacePoint = spaceFunctionRV1(countTime, gravity, height);
+                if (spacePoint < 0.2)
+                {
+                    space[i] = 0;
+                }
+                else
+                {
+                    if (spacePoint > height)
+                    {
+                        space[i] = height;
+                    }
+                    else
+                    {
+                        space[i] = spacePoint;
+                    }
+                }
                 countTime = countTime + 0.01;
             }
-
-            countTime = 0.01;
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                countTimeExperiment[i] = countTime;
-                spaceTime[i] = Math.Round(countTime, 3);
-                countTime = countTime + 0.01;
-            }
-
-            initialVelocity = -velocity[0];
-
-            Program.height = space[space.Length - 1];
-
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                space[i] = (Program.height - space[i]);
-            }
-
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("dragCoefficient ->" + dragCoefficient);
-            Console.WriteLine("Program.airDensity ->" + Program.airDensity);
-            Console.WriteLine("crossSectionalArea ->" + crossSectionalArea);
-            Console.WriteLine("term1 ->" + term1);
-            Console.WriteLine("terminalVelocity ->" + terminalVelocity);
-            Console.WriteLine("timeAllExperiment-> " + timeAllExperiment);
-            Console.WriteLine("numberOfTerms-> " + numberOfTerms);
-            Console.WriteLine("----------------------------------------------------------");
-
-            animationVector(534, height);
+            space[0] = height;
         }
-
-
-        public void CalculateWithResistenceRV2(double height, double gravity, double initialVelocityExperiment)
+        public  double getTimeAllVR11(double gravity, double height)
         {
-            double Ax;
-            double countTime;
-            int i;
-
-            term0 = Math.Round((0.5 * dragCoefficient * Program.airDensity * crossSectionalArea), precision);
-            term1 = Math.Round(mass / term0);
-
-            Ax = gravity / term1;
-            terminalVelocity = Math.Sqrt(Ax);
-            finalVelocity = terminalVelocity;
-            timeAllExperiment = getTimeAllRV2();
-
-            finalVelocity = terminalVelocity;
-
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
-
-            space = new double[numberOfTerms];
-            velocity = new double[numberOfTerms];
-            countTimeExperiment = new double[numberOfTerms];
-
-            spaceTime = new double[numberOfTerms + 2];
-            spacePixel = new double[Convert.ToInt32(534)];
-
-            countTime = 0.01;
-            for (i = 0; i < numberOfTerms; i++)
+            double terminalTime = 0.0;
+            double timeAll = 0.0;
+            double space = 0.0;
+            int breakStatus = 0;
+            do
             {
-                velocityPoint = velocityFunctionRV2(countTime);
-                velocity[i] = -velocityPoint;
-                countTime = countTime + 0.01;
-            }
-
-            countTime = 0.01;
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                spacePoint = SimpsonIntegrationMethod(0.01, countTime, 40);
-                space[i] = spacePoint;
-                countTime = countTime + 0.01;
-            }
-
-            countTime = 0.01;
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                countTimeExperiment[i] = countTime;
-                spaceTime[i] = Math.Round(countTime, 3);
-                countTime = countTime + 0.01;
-            }
-
-            initialVelocity = -velocity[0];
-
-            Program.height = space[space.Length - 1];
-
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                space[i] = (Program.height - space[i]);
-            }
-
-            Console.WriteLine("----------------------------------------------------------");
-            Console.WriteLine("dragCoefficient ->" + dragCoefficient);
-            Console.WriteLine("Program.airDensity ->" + Program.airDensity);
-            Console.WriteLine("crossSectionalArea ->" + crossSectionalArea);
-            Console.WriteLine("term1 ->" + term1);
-            Console.WriteLine("terminalVelocity ->" + terminalVelocity);
-            Console.WriteLine("timeAllExperiment-> " + timeAllExperiment);
-            Console.WriteLine("numberOfTerms-> " + numberOfTerms);
-            Console.WriteLine("----------------------------------------------------------");
-
-            animationVector(534, height);
+                space = spaceFunctionRV1(terminalTime, gravity, height);
+                if ((height - space) < 0.0001)
+                {
+                    breakStatus = 1;
+                }
+                terminalTime += 0.01;
+            } while (breakStatus == 0);
+            timeAll = terminalTime;
+            return timeAll;
         }
 
+        public  double spaceFunctionRV1(double timeValue, double gravity, double height)
+        {
+            double spacePoint = 0.0;
+            term2 = Math.Round(gravity / (term1 * term1), precision);
+            term3 = Math.Round((-1 * term1 * timeValue), precision);
+            term5 = Math.Pow(Math.E, term3);
+            term4 = Math.Round((term1 * timeValue), precision);
+            term6 = Math.Round((term5 + term4 - 1), precision);
+            term7 = Math.Round((term2 * term6), precision);
+            spacePoint = height - Math.Round(term7, precision);
+            return spacePoint;
+        }
 
-        public double CalculateCircleArea(double circumference)
+        public  double velocityFunctionRV1(double timeValue, int op, double gravity)
+        {
+            double velocityPointF = 0.0;
+            if (op == 0)
+            {
+                term2 = Math.Round((gravity / term1), precision);
+                term3 = Math.Round((-1 * term1 * timeValue), precision);
+                term4 = Math.Pow(Math.E, term3);
+                term5 = Math.Round((1 - term4), precision);
+                term6 = Math.Round((term2 * term5), precision);
+                velocityPointF = term6;
+            }
+            else
+            {
+                term2 = Math.Round(gravity / term1, precision);
+                term3 = Math.Round(-1 * term1 * timeValue, precision);
+                term4 = Math.Pow(Math.E, term3);
+                term5 = Math.Round((1 - term4), precision);
+                term6 = Math.Round((term2 * term5), precision);
+                velocityPointF = greatValueVelocity - term6;
+            }
+            return velocityPointF;
+        }
+
+        public  double timeVelocityFunctionRV1(double velocity, double gravity)
+        {
+            double timVelocity = 0.0;
+            term2 = Math.Round((-1 / term1), precision);
+            term3 = Math.Round(((velocity - greatValueVelocity) / gravity), precision);
+            term4 = Math.Round((term1 * term3), precision);
+            term5 = Math.Round((1 - term4), precision);
+            term6 = Math.Log(term5);
+            term7 = Math.Round((term2 * term6), precision);
+            timVelocity = term7;
+            return timVelocity;
+        }
+
+        public static double CalculateCircleArea(double circumference)
         {
             double radius = circumference / (2 * Math.PI);
             double area = Math.PI * Math.Pow(radius, 2);
             return area;
         }
-
-        public double getTimeAllRV2()
+        // ----------------------------------------------------------------------------------------//
+        public  void CalculateWithResistenceVR2(double height, double gravity, double initialVelocity, double airDensity)
         {
-            double velocityTerminalTime = 0.01;
-            double velocityInTime;
+
+            double Ax;
+
+            double spacePoint;
+            int i;
+
+            term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
+            term1 = Math.Round(mass / term0);
+            Ax = gravity / term1;
+            greatValueVelocity = velocityFunctionRV2(0.01, 0, gravity);
+            terminalVelocity = greatValueVelocity - Math.Sqrt(Ax);
+            timeAllExperiment = getTimeAllVR22(gravity, height);
+            finalVelocity = terminalVelocity;
+            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
+            space = new double[numberOfTerms];
+            velocity = new double[numberOfTerms];
+            countTimeExperiment = new double[numberOfTerms];
+
+            countTime = 0.01;
+            for (i = 1; i < numberOfTerms; i++)
+            {
+                velocityPoint = velocityFunctionRV2(countTime, 1, gravity);
+                velocity[i] = velocityPoint;
+                countTime = countTime + 0.01;
+            }
+
+            countTime = 0.01;
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                spacePoint = SimpsonIntegrationMethod(0.01, countTime, 40, gravity) + height;
+                if (spacePoint < 0.2)
+                {
+                    space[i] = 0;
+                }
+                else
+                {
+                    if (spacePoint > height)
+                    {
+                        space[i] = height;
+                    }
+                    else
+                    {
+                        space[i] = spacePoint;
+                    }
+                }
+                countTime = countTime + 0.01;
+            }
+            space[0] = height;
+        }
+
+
+        public  double getTimeAllVR22(double gravity, double height)
+        {
+            double terminalTime = 0.01;
             double timeAll = 0.0;
-            double spaceTerminal = 0.0;
-            double spaceTravel = 0.0;
-            double timeTravel = 0.0;
+            double space = 0.0;
             int breakStatus = 0;
+
             do
             {
-                velocityInTime = velocityFunctionRV2(velocityTerminalTime);
-                velocityTerminalTime += 0.01;
-                if ((velocityInTime - terminalVelocity) < 0.008)
+                space = SimpsonIntegrationMethod(0.01, terminalTime, 40, gravity);
+                if ((height + space) <= 0.0001)
                 {
                     breakStatus = 1;
-                    Console.WriteLine(" veloctyTerminal = " + velocityTerminalTime);
                 }
+                terminalTime += 0.01;
             } while (breakStatus == 0);
-
-            spaceTerminal = SimpsonIntegrationMethod(0.01, velocityTerminalTime, 40);
-            spaceTravel = Program.height - spaceTerminal;
-            timeTravel = spaceTravel / terminalVelocity;
-            timeAll = timeTravel + velocityTerminalTime;
-
-            Console.WriteLine(" ------------------------------------");
-            Console.WriteLine(" spaceTermial = " + spaceTerminal);
-            Console.WriteLine(" spaceTravel = " + spaceTravel);
-            Console.WriteLine(" timeTravel = " + timeTravel);
-            Console.WriteLine(" totalTime = " + timeAll);
-            Console.WriteLine(" ------------------------------------");
-            
+            timeAll = terminalTime;
             return timeAll;
         }
 
-        public double velocityFunctionRV2(double countTime)
+        public  double velocityFunctionRV2(double countTime, int op, double gravity)
         {
-
-            term2 = Math.Round((Program.gravity / term1), precision);
-            term3 = Math.Sqrt(term2);
-            term4 = Math.Round((term1 * Program.gravity), precision);
-            term5 = Math.Sqrt(term4);
-            term6 = Math.Round((-1 * countTime * term5), precision);
-            term7 = Math.Pow(Math.E, term6);
-            term8 = Math.Round((1 + term7), precision);
-            term9 = Math.Round((1 - term7), precision);
-            term10 = Math.Round((term8 / term9), precision);
-            velocityPoint = Math.Round((term10 * term3), precision);
+            if (op == 0)
+            {
+                term2 = Math.Round((gravity / term1), precision);
+                term3 = Math.Sqrt(term2);
+                term4 = Math.Round((term1 * gravity), precision);
+                term5 = Math.Sqrt(term4);
+                term6 = Math.Round((-1 * countTime * term5), precision);
+                term7 = Math.Pow(Math.E, term6);
+                term8 = Math.Round((1 + term7), precision);
+                term9 = Math.Round((1 - term7), precision);
+                term10 = Math.Round((term8 / term9), precision);
+                velocityPoint = Math.Round((term10 * term3), precision);
+            }
+            else
+            {
+                term2 = Math.Round((gravity / term1), precision);
+                term3 = Math.Sqrt(term2);
+                term4 = Math.Round((term1 * gravity), precision);
+                term5 = Math.Sqrt(term4);
+                term6 = Math.Round((-1 * countTime * term5), precision);
+                term7 = Math.Pow(Math.E, term6);
+                term8 = Math.Round((1 + term7), precision);
+                term9 = Math.Round((1 - term7), precision);
+                term10 = Math.Round((term8 / term9), precision);
+                velocityPoint = Math.Round((term10 * term3), precision) - greatValueVelocity;
+            }
             return velocityPoint;
         }
-        public double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision)
+
+        public  double trapezoidalIntegrationMethod(double timeOne, double timeTwo, int numberDivision, double gravity)
         {
             double integration = 0.0;
 
             double h = (timeTwo - timeOne) / numberDivision;
-            double sum = velocityFunctionRV2(timeOne) + velocityFunctionRV2(timeTwo);
+            double sum = (velocityFunctionRV2(timeOne, 1, gravity) + velocityFunctionRV2(timeTwo, 1, gravity)) / 2.0;
+
+            for (int i = 1; i < numberDivision; i++)
+            {
+                double x = timeOne + i * h;
+                sum += velocityFunctionRV2(x, 1, gravity);
+            }
+            integration = Math.Round((h * sum), precision);
+            return integration;
+        }
+
+        public  double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision, double gravity)
+        {
+            double integration = 0.0;
+
+            double h = (timeTwo - timeOne) / numberDivision;
+            double sum = velocityFunctionRV2(timeOne, 1, gravity) + velocityFunctionRV2(timeTwo, 1, gravity);
 
             for (int i = 1; i < numberDivision; i++)
             {
                 double x = timeOne + i * h;
 
                 if (i % 2 == 0)
-                    sum += 2 * velocityFunctionRV2(x);
+                    sum += 2 * velocityFunctionRV2(x, 1, gravity);
                 else
-                    sum += 4 * velocityFunctionRV2(x);
+                    sum += 4 * velocityFunctionRV2(x, 1, gravity);
             }
             integration = Math.Round(((h / 3) * sum), precision);
             return integration;
         }
+
+        // ----------------------------------------------------------------------------------------//
 
         public double TerminalVelocity
         {
