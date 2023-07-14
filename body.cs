@@ -17,7 +17,7 @@ namespace freeFall
         // ---
         public double term0, term1, term2, term3, term4, term5;
         public double term6, term7, term8, term9, term10;
-        public int precision = 5;
+        public int precision = 13;
         public double velocityPoint;
         public double spacePoint;
         public double greatValueVelocity;
@@ -103,21 +103,17 @@ namespace freeFall
 
             finalVelocity = Math.Sqrt((initialVelocityExperiment * initialVelocityExperiment) + (2 * gravity * height));
             timeAllExperiment = Math.Round((finalVelocity - initialVelocityExperiment) / gravity, 3);
-
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01);
-
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
-
-
             spaceTime = new double[numberOfTerms];
             spacePixel = new double[Convert.ToInt32(534)];
 
             // Espaço 
             for (i = 0; i < numberOfTerms; i++)
             {
-                space[i] = height + ((initialVelocityExperiment * countTime) + (-gravity * (countTime * countTime)) / 2);
+                space[i] = height + ((initialVelocityExperiment * countTime) + (-1*gravity * (countTime * countTime)) / 2);
                 spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
@@ -126,7 +122,7 @@ namespace freeFall
             // Velocidade
             for (i = 0; i < numberOfTerms; i++)
             {
-                velocity[i] = initialVelocityExperiment + (-gravity * countTime);
+                velocity[i] = initialVelocityExperiment + (-1*gravity * countTime);
                 countTime = countTime + 0.01;
             }
 
@@ -137,7 +133,6 @@ namespace freeFall
                 countTimeExperiment[i] = countTime;
                 countTime = countTime + 0.01;
             }
-
             animationVector(534, height);
         }
 
@@ -151,7 +146,7 @@ namespace freeFall
             terminalVelocity = gravity / term1;
 
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
-            timeAllExperiment = getTimeAllVR11(gravity, height);
+            timeAllExperiment = getTimeAllVR1(gravity, height);
             finalVelocity = terminalVelocity;
 
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
@@ -168,6 +163,7 @@ namespace freeFall
                 velocity[i] = velocityPoint;
                 countTime = countTime + 0.01;
             }
+            finalVelocity = velocity[velocity.Length-1];
 
             countTime = 0.01;
             for (i = 0; i < numberOfTerms; i++)
@@ -191,8 +187,16 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
             space[0] = height;
+            countTime = 0;
+            // time
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                countTimeExperiment[i] = countTime;
+                countTime = countTime + 0.01;
+            }
+            animationVector(534, height);
         }
-        public  double getTimeAllVR11(double gravity, double height)
+        public  double getTimeAllVR1(double gravity, double height)
         {
             double terminalTime = 0.0;
             double timeAll = 0.0;
@@ -270,9 +274,7 @@ namespace freeFall
         // ----------------------------------------------------------------------------------------//
         public  void CalculateWithResistenceVR2(double height, double gravity, double initialVelocity, double airDensity)
         {
-
             double Ax;
-
             double spacePoint;
             int i;
 
@@ -280,9 +282,7 @@ namespace freeFall
             term1 = Math.Round(mass / term0);
             Ax = gravity / term1;
             greatValueVelocity = velocityFunctionRV2(0.01, 0, gravity);
-            terminalVelocity = greatValueVelocity - Math.Sqrt(Ax);
-            timeAllExperiment = getTimeAllVR22(gravity, height);
-            finalVelocity = terminalVelocity;
+            timeAllExperiment = getTimeAllVR2(gravity, height);
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
@@ -295,6 +295,7 @@ namespace freeFall
                 velocity[i] = velocityPoint;
                 countTime = countTime + 0.01;
             }
+            finalVelocity = velocity[velocity.Length-1];
 
             countTime = 0.01;
             for (i = 0; i < numberOfTerms; i++)
@@ -318,10 +319,17 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
             space[0] = height;
+            countTime = 0;
+            // time
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                countTimeExperiment[i] = countTime;
+                countTime = countTime + 0.01;
+            }
+            animationVector(534, height);
         }
 
-
-        public  double getTimeAllVR22(double gravity, double height)
+        public  double getTimeAllVR2(double gravity, double height)
         {
             double terminalTime = 0.01;
             double timeAll = 0.0;
@@ -340,7 +348,6 @@ namespace freeFall
             timeAll = terminalTime;
             return timeAll;
         }
-
         public  double velocityFunctionRV2(double countTime, int op, double gravity)
         {
             if (op == 0)
@@ -370,22 +377,6 @@ namespace freeFall
                 velocityPoint = Math.Round((term10 * term3), precision) - greatValueVelocity;
             }
             return velocityPoint;
-        }
-
-        public  double trapezoidalIntegrationMethod(double timeOne, double timeTwo, int numberDivision, double gravity)
-        {
-            double integration = 0.0;
-
-            double h = (timeTwo - timeOne) / numberDivision;
-            double sum = (velocityFunctionRV2(timeOne, 1, gravity) + velocityFunctionRV2(timeTwo, 1, gravity)) / 2.0;
-
-            for (int i = 1; i < numberDivision; i++)
-            {
-                double x = timeOne + i * h;
-                sum += velocityFunctionRV2(x, 1, gravity);
-            }
-            integration = Math.Round((h * sum), precision);
-            return integration;
         }
 
         public  double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision, double gravity)

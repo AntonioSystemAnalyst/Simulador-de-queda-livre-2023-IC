@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
@@ -52,6 +53,7 @@ namespace freeFall
             timerEixos.Enabled = true;
             timerColors.Enabled = true;
             timerTrackBar.Enabled = true;
+            timerAirResistence.Enabled = true;
             initialConfigure();
             initiWindows();
             spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
@@ -91,7 +93,7 @@ namespace freeFall
             Program.airDensity = 1.225;
             Program.gravity = 9.8;
 
-            Program.ball.Mass = 0.045;
+            Program.ball.Mass = 0.45;
             Program.ball.DragCoefficient = 0.3;
             Program.ball.CrossSectionalArea = 0.038806;
 
@@ -206,8 +208,8 @@ namespace freeFall
                 checkBoxVacuum.Enabled = false;
                 checkBoxPaper.Enabled = false;
                 checkBoxGrafic.Enabled = false;
-                checkBoxResistance.Enabled = false;
-                checkBoxResistanceIntegration.Enabled = false;
+                checkBoxResistanceRV1.Enabled = false;
+                checkBoxResistanceRV2.Enabled = false;
                 pictureBoxBack.Enabled = false;
                 pictureBoxNext.Enabled = false;
                 pictureBoxBack.Visible = false;
@@ -224,8 +226,8 @@ namespace freeFall
                 checkBoxPaper.Enabled = true;
                 checkBoxVacuum.Enabled = true;
                 checkBoxGrafic.Enabled = true;
-                checkBoxResistance.Enabled = true;
-                checkBoxResistanceIntegration.Enabled = true;
+                checkBoxResistanceRV1.Enabled = true;
+                checkBoxResistanceRV2.Enabled = true;
                 labelTextStart.Location = new Point(16, 18);
                 labelTextStart.Text = "START";
                 pictureBoxBack.Enabled = true;
@@ -245,19 +247,36 @@ namespace freeFall
         }
         private void checkBoxResistance_CheckedChanged_1(object sender, EventArgs e)
         {
-            if (checkBoxResistanceIntegration.Checked)
+            if (checkBoxResistanceRV1.Checked)
+            {
+                checkBoxResistanceRV2.Checked = false;
+            }
+        }
+        private void checkBoxResistance_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxResistanceRV2.Checked)
+            {
+                checkBoxResistanceRV1.Checked = false;
+            }
+        }
+        private void timerAirResistence_Tick(object sender, EventArgs e)
+        {
+            if(checkBoxResistanceRV2.Checked == true)
             {
                 animationWindow.picutureResistence(0);
                 Program.airResistance = 2;
-                checkBoxResistanceIntegration.Checked = false;
             }
-            else
+            if(checkBoxResistanceRV1.Checked == true)
+            {
+                animationWindow.picutureResistence(0);
+                Program.airResistance = 1;
+            }
+            if(checkBoxResistanceRV1.Checked == false && checkBoxResistanceRV2.Checked == false)
             {
                 animationWindow.picutureResistence(1);
                 Program.airResistance = 0;
             }
         }
-
         public void animation()
         {
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
@@ -464,21 +483,21 @@ namespace freeFall
             }
             else
             {
-                if (Program.ball.InitialVelocity > Program.paper.InitialVelocity && Program.ball.InitialVelocity > Program.vaccum.FinalVelocity)
+                if (Program.ball.FinalVelocity < Program.paper.FinalVelocity && Program.ball.FinalVelocity < Program.vaccum.FinalVelocity)
                 {
-                    Program.greatestValueVelocity = (Program.ball.InitialVelocity * -1);
+                    Program.greatestValueVelocity = (Program.ball.FinalVelocity);
                 }
-                else if (Program.paper.InitialVelocity > Program.ball.InitialVelocity && Program.paper.InitialVelocity > Program.vaccum.FinalVelocity)
+                else if (Program.paper.FinalVelocity < Program.ball.FinalVelocity && Program.paper.FinalVelocity < Program.vaccum.FinalVelocity)
                 {
-                    Program.greatestValueVelocity = (Program.paper.InitialVelocity * -1);
+                    Program.greatestValueVelocity = (Program.paper.FinalVelocity);
                 }
-                else if (Program.vaccum.FinalVelocity > Program.ball.InitialVelocity && Program.vaccum.FinalVelocity > Program.paper.InitialVelocity)
+                else if (Program.vaccum.FinalVelocity < Program.ball.FinalVelocity && Program.vaccum.FinalVelocity < Program.paper.FinalVelocity)
                 {
-                    Program.greatestValueVelocity = (Program.vaccum.InitialVelocity * -1);
+                    Program.greatestValueVelocity = (Program.vaccum.FinalVelocity);
                 }
                 else
                 {
-                    Program.greatestValueVelocity = (Program.ball.InitialVelocity * -1);
+                    Program.greatestValueVelocity = (Program.ball.FinalVelocity);
                 }
             }
             Console.WriteLine("greatestValueVelocity: " + Program.greatestValueVelocity);
@@ -489,24 +508,24 @@ namespace freeFall
             {
                 if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    //spaceWindow.addPointCorpo(countGrafic);
-                    //speedWindow.addPointCorpo(countGrafic);
+                    spaceWindow.addPointCorpo(countGrafic);
+                    speedWindow.addPointCorpo(countGrafic);
                 }
             }
             if (Program.paperOn)
             {
                 if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    //spaceWindow.addPointPaper(countGrafic);
-                    //speedWindow.addPointPaper(countGrafic);
+                    spaceWindow.addPointPaper(countGrafic);
+                    speedWindow.addPointPaper(countGrafic);
                 }
             }
             if (Program.vaccumOn)
             {
                 if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                 {
-                    //spaceWindow.addPointVaccum(countGrafic);
-                    //speedWindow.addPointVaccum(countGrafic);
+                    spaceWindow.addPointVaccum(countGrafic);
+                    speedWindow.addPointVaccum(countGrafic);
                 }
             }
             countGrafic = countGrafic + 1;
@@ -980,21 +999,6 @@ namespace freeFall
                 Program.paper.CrossSectionalArea = 0.00134;
             }
         }
-
-        private void checkBoxResistance_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxResistanceIntegration.Checked)
-            {
-                animationWindow.picutureResistence(0);
-                Program.airResistance = 1;
-                checkBoxResistance.Checked = false;
-            }
-            else
-            {
-                animationWindow.picutureResistence(1);
-                Program.airResistance = 0;
-            }
-        }
         private void button1_Click(object sender, EventArgs e)
         {
             corpoCounter += 1;
@@ -1230,7 +1234,7 @@ namespace freeFall
 
         private void checkBoxResistance_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(checkBoxResistanceIntegration, "Adiciona a resistência do ar ao experimênto.");
+            toolTip.SetToolTip(checkBoxResistanceRV2, "Adiciona a resistência do ar ao experimênto.");
         }
 
         private void checkBoxEixo_MouseHover(object sender, EventArgs e)
@@ -1774,6 +1778,9 @@ namespace freeFall
         {
 
         }
+
+      
+
         private void chartSpace_Click(object sender, EventArgs e)
         {
 

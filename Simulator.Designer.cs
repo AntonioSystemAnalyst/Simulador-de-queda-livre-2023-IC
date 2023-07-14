@@ -62,6 +62,7 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.checkBoxResistanceRV1 = new System.Windows.Forms.CheckBox();
             this.checkBoxSound = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
             this.boxHeight = new System.Windows.Forms.NumericUpDown();
@@ -75,7 +76,7 @@
             this.comboPaper = new System.Windows.Forms.ComboBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
             this.checkBoxPaper = new System.Windows.Forms.CheckBox();
-            this.checkBoxResistanceIntegration = new System.Windows.Forms.CheckBox();
+            this.checkBoxResistanceRV2 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.LbAltura = new System.Windows.Forms.Label();
             this.cmbPlaneta = new System.Windows.Forms.ComboBox();
@@ -105,7 +106,7 @@
             this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
-            this.checkBoxResistance = new System.Windows.Forms.CheckBox();
+            this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -504,7 +505,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistance);
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceRV1);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxSound);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
@@ -519,7 +520,7 @@
             this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxEixo);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxPaper);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceIntegration);
+            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceRV2);
             this.groupBoxConfiguracao.Controls.Add(this.label6);
             this.groupBoxConfiguracao.Controls.Add(this.LbAltura);
             this.groupBoxConfiguracao.Controls.Add(this.cmbPlaneta);
@@ -533,6 +534,17 @@
             this.groupBoxConfiguracao.TabIndex = 6;
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
+            // 
+            // checkBoxResistanceRV1
+            // 
+            this.checkBoxResistanceRV1.AutoSize = true;
+            this.checkBoxResistanceRV1.Location = new System.Drawing.Point(8, 181);
+            this.checkBoxResistanceRV1.Name = "checkBoxResistanceRV1";
+            this.checkBoxResistanceRV1.Size = new System.Drawing.Size(160, 17);
+            this.checkBoxResistanceRV1.TabIndex = 43;
+            this.checkBoxResistanceRV1.Text = "Resistência do ar - RxV";
+            this.checkBoxResistanceRV1.UseVisualStyleBackColor = true;
+            this.checkBoxResistanceRV1.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged_1);
             // 
             // checkBoxSound
             // 
@@ -710,17 +722,17 @@
             this.checkBoxPaper.CheckStateChanged += new System.EventHandler(this.checkBoxLeaf_CheckStateChanged);
             this.checkBoxPaper.MouseHover += new System.EventHandler(this.checkBoxLeaf_MouseHover);
             // 
-            // checkBoxResistanceIntegration
+            // checkBoxResistanceRV2
             // 
-            this.checkBoxResistanceIntegration.AutoSize = true;
-            this.checkBoxResistanceIntegration.Location = new System.Drawing.Point(8, 162);
-            this.checkBoxResistanceIntegration.Name = "checkBoxResistanceIntegration";
-            this.checkBoxResistanceIntegration.Size = new System.Drawing.Size(164, 17);
-            this.checkBoxResistanceIntegration.TabIndex = 12;
-            this.checkBoxResistanceIntegration.Text = "Resistência do ar - RxV²";
-            this.checkBoxResistanceIntegration.UseVisualStyleBackColor = true;
-            this.checkBoxResistanceIntegration.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged);
-            this.checkBoxResistanceIntegration.MouseHover += new System.EventHandler(this.checkBoxResistance_MouseHover);
+            this.checkBoxResistanceRV2.AutoSize = true;
+            this.checkBoxResistanceRV2.Location = new System.Drawing.Point(8, 162);
+            this.checkBoxResistanceRV2.Name = "checkBoxResistanceRV2";
+            this.checkBoxResistanceRV2.Size = new System.Drawing.Size(164, 17);
+            this.checkBoxResistanceRV2.TabIndex = 12;
+            this.checkBoxResistanceRV2.Text = "Resistência do ar - RxV²";
+            this.checkBoxResistanceRV2.UseVisualStyleBackColor = true;
+            this.checkBoxResistanceRV2.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged);
+            this.checkBoxResistanceRV2.MouseHover += new System.EventHandler(this.checkBoxResistance_MouseHover);
             // 
             // label6
             // 
@@ -993,16 +1005,9 @@
             this.timerTrackBar.Interval = 10;
             this.timerTrackBar.Tick += new System.EventHandler(this.timerTrackBar_Tick);
             // 
-            // checkBoxResistance
+            // timerAirResistence
             // 
-            this.checkBoxResistance.AutoSize = true;
-            this.checkBoxResistance.Location = new System.Drawing.Point(8, 181);
-            this.checkBoxResistance.Name = "checkBoxResistance";
-            this.checkBoxResistance.Size = new System.Drawing.Size(160, 17);
-            this.checkBoxResistance.TabIndex = 43;
-            this.checkBoxResistance.Text = "Resistência do ar - RxV";
-            this.checkBoxResistance.UseVisualStyleBackColor = true;
-            this.checkBoxResistance.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged_1);
+            this.timerAirResistence.Tick += new System.EventHandler(this.timerAirResistence_Tick);
             // 
             // Simulator
             // 
@@ -1079,7 +1084,7 @@
         private System.Windows.Forms.PictureBox pictureBoxBack;
         private System.Windows.Forms.PictureBox pictureBoxNext;
         private System.Windows.Forms.CheckBox checkBoxPaper;
-        private System.Windows.Forms.CheckBox checkBoxResistanceIntegration;
+        private System.Windows.Forms.CheckBox checkBoxResistanceRV2;
         private System.Windows.Forms.CheckBox checkBoxEixo;
         private System.Windows.Forms.TrackBar trackBarColors;
         private System.Windows.Forms.Button buttonBall;
@@ -1134,6 +1139,7 @@
         private System.Windows.Forms.GroupBox groupBoxExperiment;
         private System.Windows.Forms.CheckBox checkBoxSound;
         private System.Windows.Forms.Timer timerTrackBar;
-        private System.Windows.Forms.CheckBox checkBoxResistance;
+        private System.Windows.Forms.CheckBox checkBoxResistanceRV1;
+        private System.Windows.Forms.Timer timerAirResistence;
     }
 }
