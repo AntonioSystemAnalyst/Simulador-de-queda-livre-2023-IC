@@ -106,6 +106,23 @@ namespace freeFall
             Program.vaccum.CrossSectionalArea = Program.paper.CrossSectionalArea;
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            showLogs();
+        }
+
+        public void showLogs()
+        {
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine(" Logs");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine(" airResistence: " + Program.airResistance);
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine(" C. Arrasto, papel: " + Program.paper.DragCoefficient);
+            Console.WriteLine(" Area, papel : " + Program.paper.CrossSectionalArea);
+            Console.WriteLine(" Massa, papel: " + Program.paper.Mass);
+            Console.WriteLine("---------------------------------");
+        }
         private void closeAllWindows()
         {
             if (windowExperiment != null && !windowExperiment.IsDisposed)
@@ -322,6 +339,7 @@ namespace freeFall
 
             if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 5)
             {
+                Console.WriteLine("Oi");
                 Program.ball.CalculateOutResistence(Program.height, Program.gravity, 0);
                 Program.paper.CalculateOutResistence(Program.height, Program.gravity, 0);
                 Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
@@ -477,7 +495,7 @@ namespace freeFall
 
         public void receveidGreatestValueVelocity()
         {
-            if (Program.airResistance == 0)
+            if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 5)
             {
                 Program.greatestValueVelocity = (Program.ball.FinalVelocity * -1);
             }
@@ -1778,8 +1796,6 @@ namespace freeFall
         {
 
         }
-
-      
 
         private void chartSpace_Click(object sender, EventArgs e)
         {

@@ -279,7 +279,7 @@ namespace freeFall
             int i;
 
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
-            term1 = Math.Round(mass / term0);
+            term1 = Math.Round(mass / term0, precision);
             Ax = gravity / term1;
             greatValueVelocity = velocityFunctionRV2(0.01, 0, gravity);
             timeAllExperiment = getTimeAllVR2(gravity, height);

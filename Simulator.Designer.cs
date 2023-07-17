@@ -107,6 +107,7 @@
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
+            this.buttonLog = new System.Windows.Forms.Button();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -505,6 +506,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.buttonLog);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceRV1);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxSound);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
@@ -1009,6 +1011,18 @@
             // 
             this.timerAirResistence.Tick += new System.EventHandler(this.timerAirResistence_Tick);
             // 
+            // buttonLog
+            // 
+            this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLog.ForeColor = System.Drawing.Color.Black;
+            this.buttonLog.Location = new System.Drawing.Point(174, 212);
+            this.buttonLog.Name = "buttonLog";
+            this.buttonLog.Size = new System.Drawing.Size(32, 24);
+            this.buttonLog.TabIndex = 44;
+            this.buttonLog.Text = "PL";
+            this.buttonLog.UseVisualStyleBackColor = true;
+            this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1141,5 +1155,6 @@
         private System.Windows.Forms.Timer timerTrackBar;
         private System.Windows.Forms.CheckBox checkBoxResistanceRV1;
         private System.Windows.Forms.Timer timerAirResistence;
+        private System.Windows.Forms.Button buttonLog;
     }
 }
