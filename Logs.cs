@@ -255,14 +255,14 @@ namespace freeFall
             table.Columns.Add("Altura", typeof(string));
             table.Columns.Add("Resis. Ar", typeof(string));
 
-            if (Program.airResistance == 1)
+            if (Program.airResistance == 1 || Program.airResistance == 2)
             {
                 table.Columns.Add("Atm. dens.", typeof(string));
             }
             table.Columns.Add("Tempo para a bóla", typeof(string));
             table.Columns.Add("Velocidade inicial da bóla", typeof(string));
             table.Columns.Add("Velocidade final da bóla", typeof(string));
-            if (Program.airResistance == 1)
+            if (Program.airResistance == 1 || Program.airResistance == 2)
             {
 
                 table.Columns.Add("Coeficiente de arrasto corpo", typeof(string));
@@ -273,7 +273,7 @@ namespace freeFall
                 table.Columns.Add("Tempo para o papel", typeof(string));
                 table.Columns.Add("Velocidade inicial do papel", typeof(string));
                 table.Columns.Add("Velocidade final do papel", typeof(string));
-                if (Program.airResistance == 1)
+                if (Program.airResistance == 1 || Program.airResistance == 2)
                 {
 
                     table.Columns.Add("Coeficiente de arrasto papel", typeof(string));
@@ -284,7 +284,7 @@ namespace freeFall
                 table.Columns.Add("Tempo para o vácuo", typeof(string));
                 table.Columns.Add("Velocidade inicial do vácuo", typeof(string));
                 table.Columns.Add("Velocidade final do vácuo", typeof(string));
-                if (Program.airResistance == 1)
+                if (Program.airResistance == 1 || Program.airResistance == 2)
                 {
 
                     table.Columns.Add("Coeficiente de arrasto vácuo", typeof(string));

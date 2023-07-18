@@ -135,6 +135,9 @@ namespace freeFall
             Console.WriteLine(" Massa, vaccum: " + Program.vaccum.Mass);
             Console.WriteLine(" tempo, vaccum: " + Program.vaccum.TimeAllExperiment);
             Console.WriteLine("---------------------------------");
+            Console.WriteLine(" Maior valor de tempo: " + Program.greatestValueTime);
+            Console.WriteLine(" Maior valor de velocidade: " + Program.greatestValueVelocity);
+            Console.WriteLine("---------------------------------");
         }
         private void closeAllWindows()
         {
@@ -352,7 +355,6 @@ namespace freeFall
 
             if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 3)
             {
-                Console.WriteLine("Oi");
                 Program.ball.CalculateOutResistence(Program.height, Program.gravity, 0);
                 Program.paper.CalculateOutResistence(Program.height, Program.gravity, 0);
                 Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
@@ -735,7 +737,6 @@ namespace freeFall
                 timerNumerAnimationIniti.Interval = 100;
                 Program.openGraficsControl = 0;
                 Program.directionFlag = 1;
-                Console.WriteLine("kkk" + Program.objectVaccum);
             }
             animationNumberCounter += 1;
         }

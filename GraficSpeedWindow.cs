@@ -133,7 +133,6 @@ namespace freeFall
             else
             {
                 chart.AxisY.IsReversed = false;
-                Console.WriteLine("ENTROUUUUUUUU");
             }
 
             chartSpeed.Series.Add("teste");
