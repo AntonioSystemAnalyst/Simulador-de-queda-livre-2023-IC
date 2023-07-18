@@ -148,14 +148,12 @@ namespace freeFall
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
             finalVelocity = terminalVelocity;
-
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
-            numberOfTerms = 150;
 
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
-
+            spaceTime = new double[numberOfTerms];
             countTime = 0.01;
             for (i = 1; i < numberOfTerms; i++)
             {
@@ -168,8 +166,8 @@ namespace freeFall
             countTime = 0.01;
             for (i = 0; i < numberOfTerms; i++)
             {
-                spacePoint = spaceFunctionRV1(countTime, gravity, height);
-                if (spacePoint < 0.2)
+                spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
+                if (spacePoint < 0)
                 {
                     space[i] = 0;
                 }
@@ -184,6 +182,7 @@ namespace freeFall
                         space[i] = spacePoint;
                     }
                 }
+                spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
             space[0] = height;
@@ -198,14 +197,20 @@ namespace freeFall
         }
         public  double getTimeAllVR1(double gravity, double height)
         {
-            double terminalTime = 0.0;
+            double terminalTime = 0.01;
             double timeAll = 0.0;
-            double space = 0.0;
+            double spaceFunction = 0.0;
             int breakStatus = 0;
+
             do
             {
-                space = spaceFunctionRV1(terminalTime, gravity, height);
-                if ((height - space) < 0.0001)
+                spaceFunction = spaceFunctionRV1(terminalTime, gravity, height);
+                if(spaceFunction>height)
+                {
+                    spaceFunction= height;
+                }
+
+                if ((height - spaceFunction) < 0.0001)
                 {
                     breakStatus = 1;
                 }
@@ -217,15 +222,15 @@ namespace freeFall
 
         public  double spaceFunctionRV1(double timeValue, double gravity, double height)
         {
-            double spacePoint = 0.0;
+            double spacePointFunction = 0.0;
             term2 = Math.Round(gravity / (term1 * term1), precision);
             term3 = Math.Round((-1 * term1 * timeValue), precision);
             term5 = Math.Pow(Math.E, term3);
             term4 = Math.Round((term1 * timeValue), precision);
             term6 = Math.Round((term5 + term4 - 1), precision);
             term7 = Math.Round((term2 * term6), precision);
-            spacePoint = height - Math.Round(term7, precision);
-            return spacePoint;
+            spacePointFunction = Math.Round(term7, precision);
+            return spacePointFunction;
         }
 
         public  double velocityFunctionRV1(double timeValue, int op, double gravity)
@@ -287,6 +292,7 @@ namespace freeFall
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
+            spaceTime = new double[numberOfTerms];
 
             countTime = 0.01;
             for (i = 1; i < numberOfTerms; i++)
@@ -316,6 +322,7 @@ namespace freeFall
                         space[i] = spacePoint;
                     }
                 }
+                spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
             space[0] = height;
@@ -326,20 +333,19 @@ namespace freeFall
                 countTimeExperiment[i] = countTime;
                 countTime = countTime + 0.01;
             }
+
             animationVector(534, height);
         }
-
         public  double getTimeAllVR2(double gravity, double height)
         {
             double terminalTime = 0.01;
             double timeAll = 0.0;
-            double space = 0.0;
+            double spaceFunction = 0.0;
             int breakStatus = 0;
-
             do
             {
-                space = SimpsonIntegrationMethod(0.01, terminalTime, 40, gravity);
-                if ((height + space) <= 0.0001)
+                spaceFunction = SimpsonIntegrationMethod(0.01, terminalTime, 40, gravity);
+                if ((height + spaceFunction) <= 0.0001)
                 {
                     breakStatus = 1;
                 }

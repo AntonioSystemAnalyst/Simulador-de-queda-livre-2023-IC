@@ -118,9 +118,22 @@ namespace freeFall
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" airResistence: " + Program.airResistance);
             Console.WriteLine("---------------------------------");
+            Console.WriteLine(" C. Arrasto, ball: " + Program.ball.DragCoefficient);
+            Console.WriteLine(" Area, ball : " + Program.ball.CrossSectionalArea);
+            Console.WriteLine(" Massa, ball: " + Program.ball.Mass);
+            Console.WriteLine(" tempo, ball: " + Program.ball.TimeAllExperiment);
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("---------------------------------");
             Console.WriteLine(" C. Arrasto, papel: " + Program.paper.DragCoefficient);
             Console.WriteLine(" Area, papel : " + Program.paper.CrossSectionalArea);
             Console.WriteLine(" Massa, papel: " + Program.paper.Mass);
+            Console.WriteLine(" tempo, papel: " + Program.paper.TimeAllExperiment);
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine("---------------------------------");
+            Console.WriteLine(" C. Arrasto, vaccum: " + Program.vaccum.DragCoefficient);
+            Console.WriteLine(" Area, vaccum : " + Program.vaccum.CrossSectionalArea);
+            Console.WriteLine(" Massa, vaccum: " + Program.vaccum.Mass);
+            Console.WriteLine(" tempo, vaccum: " + Program.vaccum.TimeAllExperiment);
             Console.WriteLine("---------------------------------");
         }
         private void closeAllWindows()
@@ -337,7 +350,7 @@ namespace freeFall
             Program.height = Program.organizeData(boxHeight.Text);
             Program.gravity = Program.organizeData(txtgravit.Text);
 
-            if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 5)
+            if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 3)
             {
                 Console.WriteLine("Oi");
                 Program.ball.CalculateOutResistence(Program.height, Program.gravity, 0);
@@ -495,7 +508,7 @@ namespace freeFall
 
         public void receveidGreatestValueVelocity()
         {
-            if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 5)
+            if (Program.airResistance == 0 || planetCounter == 2 || planetCounter == 3)
             {
                 Program.greatestValueVelocity = (Program.ball.FinalVelocity * -1);
             }
