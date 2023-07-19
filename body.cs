@@ -139,7 +139,7 @@ namespace freeFall
         public  void CalculateWithResistenceRV1(double height, double gravity, double initialVelocity, double airDensity)
         {
             double spacePoint;
-            int i;
+            int i, status = 0;
 
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
             term1 = Math.Round((term0 / mass), precision);
@@ -148,7 +148,26 @@ namespace freeFall
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
             finalVelocity = terminalVelocity;
+
+
+
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
+
+
+            countTime = 0.01;
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
+                if (spacePoint < 0 && status == 0)
+                {
+                    numberOfTerms = i;
+                    status = 1;
+                }
+                countTime = countTime + 0.01;
+            }
+            countTime = 0;
+
+
 
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
