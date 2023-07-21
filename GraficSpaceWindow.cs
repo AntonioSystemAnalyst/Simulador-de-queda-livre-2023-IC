@@ -37,7 +37,7 @@ namespace freeFall
             if (countGrafic < Program.ball.NumberOfTerms)
             {
                 resultX = (double)countGrafic / 100.0;
-                chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.ball.Space[countGrafic]);
+                chartSpace.Series["Bola"].Points.AddXY(resultX, Program.ball.Space[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
@@ -139,16 +139,16 @@ namespace freeFall
 
             if (Program.bodyOn)
             {
-                chartSpace.Series.Add("Bóla");
-                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Bóla"].Color = Color.Red;
+                chartSpace.Series.Add("Bola");
+                chartSpace.Series["Bola"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Bola"].Color = Color.Red;
                 chartSpace.Series[0].IsVisibleInLegend = false;
                 if (op == 1)
                 {
                     for (i = 0; i < n; i++)
                     {
                         resultX = (double)i / 100.0;
-                        chartSpace.Series["Bóla"].Points.AddXY(resultX, Program.ball.Space[i]);
+                        chartSpace.Series["Bola"].Points.AddXY(resultX, Program.ball.Space[i]);
 
                     }
                 }
@@ -189,10 +189,10 @@ namespace freeFall
         {
             var chart = chartSpace.ChartAreas[0];
 
-            chartSpace.Titles.Add("Espaço pelo tempo").Docking = Docking.Bottom;
+            chartSpace.Titles.Add("Espaço versus tempo").Docking = Docking.Bottom;
             chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpace.ChartAreas[0].AxisX.Title = "T(s)";
-            chartSpace.ChartAreas[0].AxisY.Title = "S(m)";
+            chartSpace.ChartAreas[0].AxisX.Title = "t(s)";
+            chartSpace.ChartAreas[0].AxisY.Title = "s(m)";
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
@@ -216,11 +216,11 @@ namespace freeFall
 
             if (Program.bodyOn)
             {
-                chartSpace.Series.Add("Bóla");
-                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Bóla"].Color = Color.Red;
+                chartSpace.Series.Add("Bola");
+                chartSpace.Series["Bola"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Bola"].Color = Color.Red;
                 chartSpace.Series[0].IsVisibleInLegend = false;
-                chartSpace.Series["Bóla"].Points.AddXY(0, 0);
+                chartSpace.Series["Bola"].Points.AddXY(0, 0);
 
             }
             if (Program.paperOn)

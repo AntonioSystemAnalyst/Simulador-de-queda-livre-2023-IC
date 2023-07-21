@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBoxExperimento = new System.Windows.Forms.GroupBox();
+            this.pictureBoxAxesY = new System.Windows.Forms.PictureBox();
+            this.pictureBoxAxesX = new System.Windows.Forms.PictureBox();
+            this.labelArrow2 = new System.Windows.Forms.Label();
+            this.labelArrow1 = new System.Windows.Forms.Label();
             this.labelY = new System.Windows.Forms.Label();
             this.labelZero = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,9 +46,9 @@
             this.labelX = new System.Windows.Forms.Label();
             this.pictureBoxBackY = new System.Windows.Forms.PictureBox();
             this.pictureBoxBackX = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAxesY = new System.Windows.Forms.PictureBox();
-            this.pictureBoxAxesX = new System.Windows.Forms.PictureBox();
             this.groupBoxExperimento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxVacuum.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVacuum)).BeginInit();
@@ -55,15 +59,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesX)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxExperimento
             // 
             this.groupBoxExperimento.BackgroundImage = global::freeFall.Properties.Resources.horizonEarth;
-            this.groupBoxExperimento.Controls.Add(this.pictureBoxAxesX);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxAxesY);
+            this.groupBoxExperimento.Controls.Add(this.pictureBoxAxesX);
+            this.groupBoxExperimento.Controls.Add(this.labelArrow2);
+            this.groupBoxExperimento.Controls.Add(this.labelArrow1);
             this.groupBoxExperimento.Controls.Add(this.labelY);
             this.groupBoxExperimento.Controls.Add(this.labelZero);
             this.groupBoxExperimento.Controls.Add(this.pictureBox1);
@@ -85,12 +89,56 @@
             this.groupBoxExperimento.TabStop = false;
             this.groupBoxExperimento.Text = "Experimento";
             // 
+            // pictureBoxAxesY
+            // 
+            this.pictureBoxAxesY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pictureBoxAxesY.Location = new System.Drawing.Point(8, 20);
+            this.pictureBoxAxesY.Name = "pictureBoxAxesY";
+            this.pictureBoxAxesY.Size = new System.Drawing.Size(2, 593);
+            this.pictureBoxAxesY.TabIndex = 20;
+            this.pictureBoxAxesY.TabStop = false;
+            this.pictureBoxAxesY.Visible = false;
+            // 
+            // pictureBoxAxesX
+            // 
+            this.pictureBoxAxesX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.pictureBoxAxesX.Location = new System.Drawing.Point(5, 608);
+            this.pictureBoxAxesX.Name = "pictureBoxAxesX";
+            this.pictureBoxAxesX.Size = new System.Drawing.Size(321, 2);
+            this.pictureBoxAxesX.TabIndex = 21;
+            this.pictureBoxAxesX.TabStop = false;
+            this.pictureBoxAxesX.Visible = false;
+            // 
+            // labelArrow2
+            // 
+            this.labelArrow2.AutoSize = true;
+            this.labelArrow2.BackColor = System.Drawing.Color.Black;
+            this.labelArrow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArrow2.Location = new System.Drawing.Point(318, 602);
+            this.labelArrow2.Name = "labelArrow2";
+            this.labelArrow2.Size = new System.Drawing.Size(17, 13);
+            this.labelArrow2.TabIndex = 23;
+            this.labelArrow2.Text = "▶";
+            this.labelArrow2.Visible = false;
+            // 
+            // labelArrow1
+            // 
+            this.labelArrow1.AutoSize = true;
+            this.labelArrow1.BackColor = System.Drawing.Color.Transparent;
+            this.labelArrow1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelArrow1.Location = new System.Drawing.Point(1, 9);
+            this.labelArrow1.Name = "labelArrow1";
+            this.labelArrow1.Size = new System.Drawing.Size(17, 13);
+            this.labelArrow1.TabIndex = 22;
+            this.labelArrow1.Text = "⟁";
+            this.labelArrow1.Visible = false;
+            // 
             // labelY
             // 
             this.labelY.AutoSize = true;
-            this.labelY.BackColor = System.Drawing.Color.Black;
+            this.labelY.BackColor = System.Drawing.Color.Transparent;
             this.labelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelY.Location = new System.Drawing.Point(2, 16);
+            this.labelY.Location = new System.Drawing.Point(16, 561);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(11, 12);
             this.labelY.TabIndex = 16;
@@ -143,7 +191,7 @@
             // pictureBoxBase
             // 
             this.pictureBoxBase.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.pictureBoxBase.Location = new System.Drawing.Point(2, 605);
+            this.pictureBoxBase.Location = new System.Drawing.Point(3, 605);
             this.pictureBoxBase.Name = "pictureBoxBase";
             this.pictureBoxBase.Size = new System.Drawing.Size(331, 10);
             this.pictureBoxBase.TabIndex = 3;
@@ -201,7 +249,7 @@
             this.labelX.AutoSize = true;
             this.labelX.BackColor = System.Drawing.Color.Transparent;
             this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX.Location = new System.Drawing.Point(321, 592);
+            this.labelX.Location = new System.Drawing.Point(29, 590);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(12, 12);
             this.labelX.TabIndex = 17;
@@ -210,7 +258,7 @@
             // 
             // pictureBoxBackY
             // 
-            this.pictureBoxBackY.Location = new System.Drawing.Point(3, 17);
+            this.pictureBoxBackY.Location = new System.Drawing.Point(5, 19);
             this.pictureBoxBackY.Name = "pictureBoxBackY";
             this.pictureBoxBackY.Size = new System.Drawing.Size(11, 595);
             this.pictureBoxBackY.TabIndex = 18;
@@ -223,26 +271,6 @@
             this.pictureBoxBackX.Size = new System.Drawing.Size(333, 10);
             this.pictureBoxBackX.TabIndex = 19;
             this.pictureBoxBackX.TabStop = false;
-            // 
-            // pictureBoxAxesY
-            // 
-            this.pictureBoxAxesY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.pictureBoxAxesY.Location = new System.Drawing.Point(6, 30);
-            this.pictureBoxAxesY.Name = "pictureBoxAxesY";
-            this.pictureBoxAxesY.Size = new System.Drawing.Size(3, 582);
-            this.pictureBoxAxesY.TabIndex = 20;
-            this.pictureBoxAxesY.TabStop = false;
-            this.pictureBoxAxesY.Visible = false;
-            // 
-            // pictureBoxAxesX
-            // 
-            this.pictureBoxAxesX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.pictureBoxAxesX.Location = new System.Drawing.Point(4, 608);
-            this.pictureBoxAxesX.Name = "pictureBoxAxesX";
-            this.pictureBoxAxesX.Size = new System.Drawing.Size(325, 3);
-            this.pictureBoxAxesX.TabIndex = 21;
-            this.pictureBoxAxesX.TabStop = false;
-            this.pictureBoxAxesX.Visible = false;
             // 
             // AnimationWindow
             // 
@@ -257,6 +285,8 @@
             this.Text = "Animation";
             this.groupBoxExperimento.ResumeLayout(false);
             this.groupBoxExperimento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxVacuum.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVacuum)).EndInit();
@@ -267,8 +297,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResistence)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAxesX)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -291,5 +319,7 @@
         private System.Windows.Forms.PictureBox pictureBoxAxesY;
         private System.Windows.Forms.PictureBox pictureBoxBackX;
         private System.Windows.Forms.PictureBox pictureBoxBackY;
+        private System.Windows.Forms.Label labelArrow2;
+        private System.Windows.Forms.Label labelArrow1;
     }
 }

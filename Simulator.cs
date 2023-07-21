@@ -82,6 +82,7 @@ namespace freeFall
             animationWindow.Dock = DockStyle.Fill;
             panelAnimation.Controls.Add(animationWindow);
             animationWindow.Show();
+            checkBoxGrafic.Checked = true;
             checkBoxSound.Checked = true;
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(Simulator_PreviewKeyDown);
         }
@@ -242,7 +243,6 @@ namespace freeFall
                 checkBoxPaper.Enabled = false;
                 checkBoxGrafic.Enabled = false;
                 checkBoxResistanceRV1.Enabled = false;
-                checkBoxResistanceRV2.Enabled = false;
                 pictureBoxBack.Enabled = false;
                 pictureBoxNext.Enabled = false;
                 pictureBoxBack.Visible = false;
@@ -260,9 +260,8 @@ namespace freeFall
                 checkBoxVacuum.Enabled = true;
                 checkBoxGrafic.Enabled = true;
                 checkBoxResistanceRV1.Enabled = true;
-                checkBoxResistanceRV2.Enabled = true;
-                labelTextStart.Location = new Point(16, 18);
-                labelTextStart.Text = "START";
+                labelTextStart.Location = new Point(17, 24);
+                labelTextStart.Text = "PRONTO!";
                 pictureBoxBack.Enabled = true;
                 pictureBoxNext.Enabled = true;
                 pictureBoxBack.Visible = true;
@@ -282,29 +281,17 @@ namespace freeFall
         {
             if (checkBoxResistanceRV1.Checked)
             {
-                checkBoxResistanceRV2.Checked = false;
             }
         }
-        private void checkBoxResistance_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxResistanceRV2.Checked)
-            {
-                checkBoxResistanceRV1.Checked = false;
-            }
-        }
+
         private void timerAirResistence_Tick(object sender, EventArgs e)
         {
-            if(checkBoxResistanceRV2.Checked == true)
-            {
-                animationWindow.picutureResistence(0);
-                Program.airResistance = 2;
-            }
             if(checkBoxResistanceRV1.Checked == true)
             {
                 animationWindow.picutureResistence(0);
                 Program.airResistance = 1;
             }
-            if(checkBoxResistanceRV1.Checked == false && checkBoxResistanceRV2.Checked == false)
+            if(checkBoxResistanceRV1.Checked == false)
             {
                 animationWindow.picutureResistence(1);
                 Program.airResistance = 0;
@@ -374,24 +361,6 @@ namespace freeFall
                     if (Program.vaccumOn)
                     {
                         Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
-                    }
-                }
-                else
-                {
-                    if (Program.airResistance == 2)
-                    {
-                        if (Program.bodyOn)
-                        {
-                            Program.ball.CalculateWithResistenceVR2(Program.height, Program.gravity, 0, Program.airDensity);
-                        }
-                        if (Program.paperOn)
-                        {
-                            Program.paper.CalculateWithResistenceVR2(Program.height, Program.gravity, 0, Program.airDensity);
-                        }
-                        if (Program.vaccumOn)
-                        {
-                            Program.vaccum.CalculateOutResistence(Program.height, Program.gravity, 0);
-                        }
                     }
                 }
             }
@@ -698,7 +667,7 @@ namespace freeFall
             if (animationNumberCounter == 1)
             {
 
-                labelTextStart.Location = new Point(50, 18);
+                labelTextStart.Location = new Point(57, 24);
                 labelTextStart.Text = "1";
                 timerSound();
                 timerNumerAnimationIniti.Interval = 2000;
@@ -715,8 +684,8 @@ namespace freeFall
             }
             if (animationNumberCounter == 4)
             {
-                labelTextStart.Location = new Point(7, 18);
-                labelTextStart.Text = "CAINDO"; ;
+                labelTextStart.Location = new Point(20, 24);
+                labelTextStart.Text = "CAINDO!"; 
                 BTNIniciar.Enabled = true;
                 clear();
                 experimentFlag();
@@ -770,7 +739,7 @@ namespace freeFall
         }
         public void objectVaccumFlag()
         {
-            if (comboBoxVacuum.Text == "Bóla")
+            if (comboBoxVacuum.Text == "Bola")
             {
                 Program.objectVaccum = 0;
             }
@@ -938,7 +907,7 @@ namespace freeFall
         }
         public void initialConfigure()
         {
-            labelTextStart.Location = new Point(16, 18);
+            labelTextStart.Location = new Point(17, 24);
             planetCounter = Program.planeTrackBar;
             planetData();
             comboBoxVacuum.Text = "Folha";
@@ -994,7 +963,7 @@ namespace freeFall
 
         private void comboBoxVacuum_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboBoxVacuum.Text == "Bóla")
+            if (comboBoxVacuum.Text == "Bola")
             {
                 animationWindow.vacuumSelectedValueChange(0);
                 pictureBoxVaccumObject.Image = animationWindow.vaccumImage();
@@ -1123,6 +1092,7 @@ namespace freeFall
                 buttonPlanet.Text = "Vênus";
                 animationWindow.backgroundPicture(planetCounter);
                 Program.airDensity = 65;
+                   
             }
             if (planetCounter == 5)
             {
@@ -1179,6 +1149,20 @@ namespace freeFall
                 Program.airDensity = 1.2;
             }
             Program.planetImage = pictureBoxPlanets.Image;
+            textBoxAirDensity.Text = "" + Program.airDensity;
+            if(cmbPlaneta.Text == "Vênus")
+            {
+                animationWindow.vacuumSelectedValueChange(1);
+                pictureBoxVaccumObject.Image = Properties.Resources.paper2;
+                flagVaccumObject = 0;
+                Program.vaccum.DragCoefficient = 1.2;
+                Program.vaccum.CrossSectionalArea = 0.06237;
+                comboBoxVacuum.Enabled = false;
+            }
+            else
+            {
+                comboBoxVacuum.Enabled = true;
+            }
         }
         private void pictureBoxNext_Click(object sender, EventArgs e)
         {
@@ -1264,11 +1248,6 @@ namespace freeFall
             toolTip.SetToolTip(checkBoxPaper, "Corpo com alta resistência ao ar.");
         }
 
-        private void checkBoxResistance_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxResistanceRV2, "Adiciona a resistência do ar ao experimênto.");
-        }
-
         private void checkBoxEixo_MouseHover(object sender, EventArgs e)
         {
             toolTip.SetToolTip(checkBoxEixo, "Exibe eixos no experimento.");
@@ -1277,7 +1256,14 @@ namespace freeFall
         {
             toolTip.SetToolTip(buttonBall, "Muda a imagem do corpo.");
         }
-
+        private void labelAirAirDensity_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(labelAirAirDensity, "Densidade superficial da atmosfera.");
+        }
+        private void checkBoxResistanceRV1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(checkBoxResistanceRV1, "Adiciona a resistência do ar ao experimênto.");
+        }
         private void buttonData_MouseHover(object sender, EventArgs e)
         {
             toolTip.SetToolTip(buttonData, "Exibe os dados configurados do experimento.");
@@ -1685,6 +1671,8 @@ namespace freeFall
             comboBoxVacuum.ForeColor = Program.colorSimulator;
             textTempo.ForeColor = Program.colorSimulator;
             groupBoxExperiment.ForeColor = Program.colorSimulator;
+            labelAirAirDensity.ForeColor = Program.colorSimulator;
+            textBoxAirDensity.ForeColor = Program.colorSimulator;
             spaceWindow.colorAll();
             speedWindow.colorAll();
             animationWindow.colorAll();
@@ -1786,6 +1774,10 @@ namespace freeFall
                 sound = 0;
             }
         }
+        private void timerVenus_Tick(object sender, EventArgs e)
+        {
+            
+        }
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -1811,6 +1803,15 @@ namespace freeFall
 
         }
 
+        private void labelTextStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelSpace_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
         private void chartSpace_Click(object sender, EventArgs e)
         {
 

@@ -97,10 +97,10 @@ namespace freeFall
             var chart = chartSpace.ChartAreas[0];
             double result = 0.0;
             chartSpace.Visible = true;
-            chartSpace.Titles.Add("Espaço pelo tempo");
+            chartSpace.Titles.Add("Espaço versus tempo");
             chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpace.ChartAreas[0].AxisX.Title = "T(segundos)";
-            chartSpace.ChartAreas[0].AxisY.Title = "S(metros)";
+            chartSpace.ChartAreas[0].AxisX.Title = "t(segundos)";
+            chartSpace.ChartAreas[0].AxisY.Title = "s(metros)";
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.Format = "";
@@ -129,15 +129,15 @@ namespace freeFall
 
             if (Program.bodyOn)
             {
-                chartSpace.Series.Add("Bóla");
-                chartSpace.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["Bóla"].Color = Color.Red;
+                chartSpace.Series.Add("Bola");
+                chartSpace.Series["Bola"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["Bola"].Color = Color.Red;
                 chartSpace.Series[0].IsVisibleInLegend = false;
 
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
                     result = (double)i / 100.0;
-                    chartSpace.Series["Bóla"].Points.AddXY(result, Program.ball.Space[i]);
+                    chartSpace.Series["Bola"].Points.AddXY(result, Program.ball.Space[i]);
                 }
             }
             if (Program.paperOn)
@@ -320,9 +320,9 @@ namespace freeFall
                         {
                             writer.WriteLine(" Resis. ar  : Sim");
                         }
-                        writer.WriteLine(" Tempo para a bóla           : " + Program.ball.TimeAllExperiment + " s");
-                        writer.WriteLine(" Velocidade inicial da bóla  : " + Program.ball.InitialVelocity + " m/s");
-                        writer.WriteLine(" Velocidade final da bóla    : " + Program.ball.FinalVelocity + " m/s");
+                        writer.WriteLine(" Tempo para a bola           : " + Program.ball.TimeAllExperiment + " s");
+                        writer.WriteLine(" Velocidade inicial da bola  : " + Program.ball.InitialVelocity + " m/s");
+                        writer.WriteLine(" Velocidade final da bola    : " + Program.ball.FinalVelocity + " m/s");
                         if (Program.paperOn)
                         {
                             writer.WriteLine(" Tempo para o papel          : " + Program.paper.TimeAllExperiment + " s");
@@ -342,23 +342,23 @@ namespace freeFall
                         writer.WriteLine(" ----------------------------------------- ");
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Papel: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
                         }
                         else
                         {
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                             {
-                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Papel: S-[{"m",-5}]");
+                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
                                 }
                                 else
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}]");
                                 }
                             }
                         }
@@ -400,23 +400,23 @@ namespace freeFall
                             }
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                             {
-                                writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Papel: [{linha[2],-5}] | Corpo no vácuo: [{linha[3],-5}]");
+                                writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}] | Papel: [{linha[2],-5}] | Corpo no vácuo: [{linha[3],-5}]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                                 {
-                                    writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Papel: [{linha[2],-5}]");
+                                    writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}] | Papel: [{linha[2],-5}]");
                                 }
                                 else
                                 {
                                     if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                     {
-                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Corpo no vácuo: [{linha[3],-5}]");
+                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}] | Corpo no vácuo: [{linha[3],-5}]");
                                     }
                                     else
                                     {
-                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}]");
+                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}]");
                                     }
                                 }
                             }
@@ -454,23 +454,23 @@ namespace freeFall
                         writer.WriteLine(" ----------------------------------------- ");
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Papel: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
                         }
                         else
                         {
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                             {
-                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Papel: S-[{"m",-5}]");
+                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
                                 }
                                 else
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bóla: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}]");
                                 }
                             }
                         }
@@ -512,23 +512,23 @@ namespace freeFall
                             }
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                             {
-                                writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Papel: [{linha[2],-5}] | Corpo no vácuo: [{linha[3],-5}]");
+                                writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}] | Papel: [{linha[2],-5}] | Corpo no vácuo: [{linha[3],-5}]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                                 {
-                                    writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Papel: [{linha[2],-5}]");
+                                    writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}] | Papel: [{linha[2],-5}]");
                                 }
                                 else
                                 {
                                     if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                     {
-                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}] | Corpo no vácuo: [{linha[3],-5}]");
+                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}] | Corpo no vácuo: [{linha[3],-5}]");
                                     }
                                     else
                                     {
-                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bóla: [{linha[1],-5}]");
+                                        writer.WriteLine($" Tempo: [{linha[0],-5}] | Bola: [{linha[1],-5}]");
                                     }
                                 }
                             }
@@ -563,34 +563,34 @@ namespace freeFall
 
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($"Tempo[s],Bola-S[m],Papel-S[m/s],Vacuo-S[m]");
+                            writer.WriteLine($"Tempo[s];Bola-S[m];Papel-S[m/s];Vacuo-S[m]");
                         }
                         else
                         {
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                             {
-                                writer.WriteLine($"Tempo[s],Bola-S[m],Papel-S[m]");
+                                writer.WriteLine($"Tempo[s];Bola-S[m];Papel-S[m]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($"Tempo[s],Bola-S[m],Vacuo-S[m]");
+                                    writer.WriteLine($"Tempo[s];Bola-S[m];Vacuo-S[m]");
                                 }
                                 else
                                 {
-                                    writer.WriteLine($"Tempo[s],Bola-S[m]");
+                                    writer.WriteLine($"Tempo[s];Bola-S[m]");
                                 }
                             }
                         }
                         for (i = 0; i < Program.numberOfPoints; i++)
                         {
-                            linha[0] = timeLarge[i].Replace(',', '.');
+                            linha[0] = timeLarge[i].Replace('.', ',');
                             if (Program.bodyOn)
                             {
                                 if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                                 {
-                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Space[i], 3)).Replace(',', '.');
+                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Space[i], 3)).Replace('.', ',');
                                 }
                                 else
                                 {
@@ -601,7 +601,7 @@ namespace freeFall
                             {
                                 if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                                 {
-                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Space[i], 3)).Replace(',', '.');
+                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Space[i], 3)).Replace('.', ',');
                                 }
                                 else
                                 {
@@ -612,7 +612,7 @@ namespace freeFall
                             {
                                 if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                                 {
-                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Space[i], 3)).Replace(',', '.');
+                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Space[i], 3)).Replace('.', ',');
                                 }
                                 else
                                 {
@@ -621,23 +621,23 @@ namespace freeFall
                             }
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                             {
-                                writer.WriteLine($"{linha[0]},{linha[1]},{linha[2]},{linha[3]}");
+                                writer.WriteLine($"{linha[0]};{linha[1]};{linha[2]};{linha[3]}");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                                 {
-                                    writer.WriteLine($"{linha[0]},{linha[1]},{linha[2]}");
+                                    writer.WriteLine($"{linha[0]};{linha[1]};{linha[2]}");
                                 }
                                 else
                                 {
                                     if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                     {
-                                        writer.WriteLine($"{linha[0]},{linha[1]},{linha[3]}");
+                                        writer.WriteLine($"{linha[0]};{linha[1]};{linha[3]}");
                                     }
                                     else
                                     {
-                                        writer.WriteLine($"{linha[0]},{linha[1]}");
+                                        writer.WriteLine($"{linha[0]};{linha[1]}");
                                     }
                                 }
                             }

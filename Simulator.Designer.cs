@@ -62,6 +62,7 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.buttonLog = new System.Windows.Forms.Button();
             this.checkBoxResistanceRV1 = new System.Windows.Forms.CheckBox();
             this.checkBoxSound = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
@@ -76,7 +77,6 @@
             this.comboPaper = new System.Windows.Forms.ComboBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
             this.checkBoxPaper = new System.Windows.Forms.CheckBox();
-            this.checkBoxResistanceRV2 = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.LbAltura = new System.Windows.Forms.Label();
             this.cmbPlaneta = new System.Windows.Forms.ComboBox();
@@ -107,7 +107,11 @@
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
-            this.buttonLog = new System.Windows.Forms.Button();
+            this.textBoxAirDensity = new System.Windows.Forms.TextBox();
+            this.labelAirAirDensity = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.timerVenus = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -160,6 +164,7 @@
             this.panelSpace.Name = "panelSpace";
             this.panelSpace.Size = new System.Drawing.Size(434, 307);
             this.panelSpace.TabIndex = 4;
+            this.panelSpace.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSpace_Paint);
             // 
             // labelGraficDetails
             // 
@@ -176,7 +181,7 @@
             // 
             this.buttonLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(174, 185);
+            this.buttonLogo.Location = new System.Drawing.Point(84, 96);
             this.buttonLogo.Name = "buttonLogo";
             this.buttonLogo.Size = new System.Drawing.Size(32, 24);
             this.buttonLogo.TabIndex = 35;
@@ -188,6 +193,7 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
+            this.groupBoxResultados.Controls.Add(this.buttonLog);
             this.groupBoxResultados.Controls.Add(this.pictureBoxVaccumObject);
             this.groupBoxResultados.Controls.Add(this.pictureBox2);
             this.groupBoxResultados.Controls.Add(this.pictureBoxVaccum);
@@ -196,6 +202,7 @@
             this.groupBoxResultados.Controls.Add(this.label7);
             this.groupBoxResultados.Controls.Add(this.label10);
             this.groupBoxResultados.Controls.Add(this.textBoxVaccumHeight);
+            this.groupBoxResultados.Controls.Add(this.buttonLogo);
             this.groupBoxResultados.Controls.Add(this.label11);
             this.groupBoxResultados.Controls.Add(this.textBoxVaccumVelocity);
             this.groupBoxResultados.Controls.Add(this.label5);
@@ -506,7 +513,10 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
-            this.groupBoxConfiguracao.Controls.Add(this.buttonLog);
+            this.groupBoxConfiguracao.Controls.Add(this.label14);
+            this.groupBoxConfiguracao.Controls.Add(this.label13);
+            this.groupBoxConfiguracao.Controls.Add(this.textBoxAirDensity);
+            this.groupBoxConfiguracao.Controls.Add(this.labelAirAirDensity);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceRV1);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxSound);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
@@ -514,7 +524,6 @@
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
             this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
             this.groupBoxConfiguracao.Controls.Add(this.buttonResistencia);
-            this.groupBoxConfiguracao.Controls.Add(this.buttonLogo);
             this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.buttonBall);
@@ -522,7 +531,6 @@
             this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxEixo);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxPaper);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceRV2);
             this.groupBoxConfiguracao.Controls.Add(this.label6);
             this.groupBoxConfiguracao.Controls.Add(this.LbAltura);
             this.groupBoxConfiguracao.Controls.Add(this.cmbPlaneta);
@@ -537,14 +545,26 @@
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
             // 
+            // buttonLog
+            // 
+            this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLog.ForeColor = System.Drawing.Color.Black;
+            this.buttonLog.Location = new System.Drawing.Point(122, 97);
+            this.buttonLog.Name = "buttonLog";
+            this.buttonLog.Size = new System.Drawing.Size(32, 24);
+            this.buttonLog.TabIndex = 44;
+            this.buttonLog.Text = "PL";
+            this.buttonLog.UseVisualStyleBackColor = true;
+            this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // checkBoxResistanceRV1
             // 
             this.checkBoxResistanceRV1.AutoSize = true;
-            this.checkBoxResistanceRV1.Location = new System.Drawing.Point(8, 181);
+            this.checkBoxResistanceRV1.Location = new System.Drawing.Point(8, 165);
             this.checkBoxResistanceRV1.Name = "checkBoxResistanceRV1";
-            this.checkBoxResistanceRV1.Size = new System.Drawing.Size(160, 17);
+            this.checkBoxResistanceRV1.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistanceRV1.TabIndex = 43;
-            this.checkBoxResistanceRV1.Text = "Resistência do ar - RxV";
+            this.checkBoxResistanceRV1.Text = "Resistência do ar";
             this.checkBoxResistanceRV1.UseVisualStyleBackColor = true;
             this.checkBoxResistanceRV1.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged_1);
             // 
@@ -562,7 +582,7 @@
             // checkBoxGrafic
             // 
             this.checkBoxGrafic.AutoSize = true;
-            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 200);
+            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 192);
             this.checkBoxGrafic.Name = "checkBoxGrafic";
             this.checkBoxGrafic.Size = new System.Drawing.Size(82, 17);
             this.checkBoxGrafic.TabIndex = 41;
@@ -609,7 +629,7 @@
             this.labelTextColor.AutoSize = true;
             this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
-            this.labelTextColor.Location = new System.Drawing.Point(126, 107);
+            this.labelTextColor.Location = new System.Drawing.Point(152, 164);
             this.labelTextColor.Name = "labelTextColor";
             this.labelTextColor.Size = new System.Drawing.Size(44, 15);
             this.labelTextColor.TabIndex = 40;
@@ -637,7 +657,7 @@
             this.comboBoxVacuum.Items.AddRange(new object[] {
             "Folha",
             "Bóla"});
-            this.comboBoxVacuum.Location = new System.Drawing.Point(8, 129);
+            this.comboBoxVacuum.Location = new System.Drawing.Point(8, 130);
             this.comboBoxVacuum.Name = "comboBoxVacuum";
             this.comboBoxVacuum.Size = new System.Drawing.Size(85, 21);
             this.comboBoxVacuum.TabIndex = 35;
@@ -646,7 +666,7 @@
             // checkBoxVacuum
             // 
             this.checkBoxVacuum.AutoSize = true;
-            this.checkBoxVacuum.Location = new System.Drawing.Point(8, 109);
+            this.checkBoxVacuum.Location = new System.Drawing.Point(8, 110);
             this.checkBoxVacuum.Name = "checkBoxVacuum";
             this.checkBoxVacuum.Size = new System.Drawing.Size(62, 17);
             this.checkBoxVacuum.TabIndex = 34;
@@ -664,7 +684,7 @@
             this.buttonBall.Name = "buttonBall";
             this.buttonBall.Size = new System.Drawing.Size(50, 27);
             this.buttonBall.TabIndex = 31;
-            this.buttonBall.Text = "Bóla";
+            this.buttonBall.Text = "Bola";
             this.buttonBall.UseVisualStyleBackColor = true;
             this.buttonBall.Click += new System.EventHandler(this.button1_Click);
             this.buttonBall.MouseHover += new System.EventHandler(this.button1_MouseHover);
@@ -676,10 +696,10 @@
             this.txtgravit.Cursor = System.Windows.Forms.Cursors.No;
             this.txtgravit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtgravit.ForeColor = System.Drawing.Color.Cyan;
-            this.txtgravit.Location = new System.Drawing.Point(123, 34);
+            this.txtgravit.Location = new System.Drawing.Point(114, 34);
             this.txtgravit.Name = "txtgravit";
             this.txtgravit.ReadOnly = true;
-            this.txtgravit.Size = new System.Drawing.Size(85, 20);
+            this.txtgravit.Size = new System.Drawing.Size(51, 20);
             this.txtgravit.TabIndex = 38;
             // 
             // comboPaper
@@ -692,7 +712,7 @@
             this.comboPaper.Items.AddRange(new object[] {
             "Aberta",
             "Amaçada"});
-            this.comboPaper.Location = new System.Drawing.Point(8, 79);
+            this.comboPaper.Location = new System.Drawing.Point(8, 83);
             this.comboPaper.Name = "comboPaper";
             this.comboPaper.Size = new System.Drawing.Size(85, 21);
             this.comboPaper.TabIndex = 36;
@@ -714,7 +734,7 @@
             // checkBoxPaper
             // 
             this.checkBoxPaper.AutoSize = true;
-            this.checkBoxPaper.Location = new System.Drawing.Point(8, 59);
+            this.checkBoxPaper.Location = new System.Drawing.Point(8, 63);
             this.checkBoxPaper.Name = "checkBoxPaper";
             this.checkBoxPaper.Size = new System.Drawing.Size(58, 17);
             this.checkBoxPaper.TabIndex = 31;
@@ -724,23 +744,11 @@
             this.checkBoxPaper.CheckStateChanged += new System.EventHandler(this.checkBoxLeaf_CheckStateChanged);
             this.checkBoxPaper.MouseHover += new System.EventHandler(this.checkBoxLeaf_MouseHover);
             // 
-            // checkBoxResistanceRV2
-            // 
-            this.checkBoxResistanceRV2.AutoSize = true;
-            this.checkBoxResistanceRV2.Location = new System.Drawing.Point(8, 162);
-            this.checkBoxResistanceRV2.Name = "checkBoxResistanceRV2";
-            this.checkBoxResistanceRV2.Size = new System.Drawing.Size(164, 17);
-            this.checkBoxResistanceRV2.TabIndex = 12;
-            this.checkBoxResistanceRV2.Text = "Resistência do ar - RxV²";
-            this.checkBoxResistanceRV2.UseVisualStyleBackColor = true;
-            this.checkBoxResistanceRV2.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged);
-            this.checkBoxResistanceRV2.MouseHover += new System.EventHandler(this.checkBoxResistance_MouseHover);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(123, 18);
+            this.label6.Location = new System.Drawing.Point(111, 18);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 29;
@@ -753,9 +761,9 @@
             this.LbAltura.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbAltura.Location = new System.Drawing.Point(8, 18);
             this.LbAltura.Name = "LbAltura";
-            this.LbAltura.Size = new System.Drawing.Size(40, 13);
+            this.LbAltura.Size = new System.Drawing.Size(61, 13);
             this.LbAltura.TabIndex = 20;
-            this.LbAltura.Text = "Altura";
+            this.LbAltura.Text = "Altura (m)";
             this.LbAltura.Click += new System.EventHandler(this.Altura_Click);
             this.LbAltura.MouseHover += new System.EventHandler(this.Altura_MouseHover);
             // 
@@ -775,9 +783,9 @@
             "Saturno",
             "Urano",
             "Netuno"});
-            this.cmbPlaneta.Location = new System.Drawing.Point(123, 79);
+            this.cmbPlaneta.Location = new System.Drawing.Point(114, 130);
             this.cmbPlaneta.Name = "cmbPlaneta";
-            this.cmbPlaneta.Size = new System.Drawing.Size(85, 21);
+            this.cmbPlaneta.Size = new System.Drawing.Size(93, 21);
             this.cmbPlaneta.TabIndex = 28;
             this.cmbPlaneta.SelectedValueChanged += new System.EventHandler(this.cmbPlaneta_SelectedValueChanged);
             // 
@@ -785,7 +793,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(123, 59);
+            this.label4.Location = new System.Drawing.Point(111, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 25;
@@ -793,11 +801,11 @@
             // 
             // trackBarColors
             // 
-            this.trackBarColors.Location = new System.Drawing.Point(121, 126);
+            this.trackBarColors.Location = new System.Drawing.Point(139, 181);
             this.trackBarColors.Maximum = 9;
             this.trackBarColors.Minimum = 1;
             this.trackBarColors.Name = "trackBarColors";
-            this.trackBarColors.Size = new System.Drawing.Size(85, 45);
+            this.trackBarColors.Size = new System.Drawing.Size(71, 45);
             this.trackBarColors.TabIndex = 12;
             this.trackBarColors.Value = 1;
             this.trackBarColors.Scroll += new System.EventHandler(this.trackBarPlanets_Scroll);
@@ -947,12 +955,13 @@
             // labelTextStart
             // 
             this.labelTextStart.AutoSize = true;
-            this.labelTextStart.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTextStart.Location = new System.Drawing.Point(16, 18);
+            this.labelTextStart.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTextStart.Location = new System.Drawing.Point(17, 24);
             this.labelTextStart.Name = "labelTextStart";
-            this.labelTextStart.Size = new System.Drawing.Size(108, 34);
+            this.labelTextStart.Size = new System.Drawing.Size(105, 24);
             this.labelTextStart.TabIndex = 32;
-            this.labelTextStart.Text = "START";
+            this.labelTextStart.Text = "PRONTO!";
+            this.labelTextStart.Click += new System.EventHandler(this.labelTextStart_Click);
             // 
             // timerOpacity
             // 
@@ -1011,17 +1020,52 @@
             // 
             this.timerAirResistence.Tick += new System.EventHandler(this.timerAirResistence_Tick);
             // 
-            // buttonLog
+            // textBoxAirDensity
             // 
-            this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLog.ForeColor = System.Drawing.Color.Black;
-            this.buttonLog.Location = new System.Drawing.Point(174, 212);
-            this.buttonLog.Name = "buttonLog";
-            this.buttonLog.Size = new System.Drawing.Size(32, 24);
-            this.buttonLog.TabIndex = 44;
-            this.buttonLog.Text = "PL";
-            this.buttonLog.UseVisualStyleBackColor = true;
-            this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
+            this.textBoxAirDensity.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxAirDensity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxAirDensity.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAirDensity.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxAirDensity.Location = new System.Drawing.Point(114, 83);
+            this.textBoxAirDensity.Name = "textBoxAirDensity";
+            this.textBoxAirDensity.ReadOnly = true;
+            this.textBoxAirDensity.Size = new System.Drawing.Size(51, 20);
+            this.textBoxAirDensity.TabIndex = 45;
+            // 
+            // labelAirAirDensity
+            // 
+            this.labelAirAirDensity.AutoSize = true;
+            this.labelAirAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAirAirDensity.Location = new System.Drawing.Point(111, 65);
+            this.labelAirAirDensity.Name = "labelAirAirDensity";
+            this.labelAirAirDensity.Size = new System.Drawing.Size(100, 13);
+            this.labelAirAirDensity.TabIndex = 44;
+            this.labelAirAirDensity.Text = "Densidade do ar";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(167, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 46;
+            this.label13.Text = "(m/s²)";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(165, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 13);
+            this.label14.TabIndex = 47;
+            this.label14.Text = "(kg/m³)";
+            // 
+            // timerVenus
+            // 
+            this.timerVenus.Tick += new System.EventHandler(this.timerVenus_Tick);
             // 
             // Simulator
             // 
@@ -1098,7 +1142,6 @@
         private System.Windows.Forms.PictureBox pictureBoxBack;
         private System.Windows.Forms.PictureBox pictureBoxNext;
         private System.Windows.Forms.CheckBox checkBoxPaper;
-        private System.Windows.Forms.CheckBox checkBoxResistanceRV2;
         private System.Windows.Forms.CheckBox checkBoxEixo;
         private System.Windows.Forms.TrackBar trackBarColors;
         private System.Windows.Forms.Button buttonBall;
@@ -1156,5 +1199,10 @@
         private System.Windows.Forms.CheckBox checkBoxResistanceRV1;
         private System.Windows.Forms.Timer timerAirResistence;
         private System.Windows.Forms.Button buttonLog;
+        private System.Windows.Forms.TextBox textBoxAirDensity;
+        private System.Windows.Forms.Label labelAirAirDensity;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Timer timerVenus;
     }
 }

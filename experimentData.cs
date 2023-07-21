@@ -35,7 +35,6 @@ namespace freeFall
                 pictureBoxVaccumObject.Image = Program.vaccumImageExperiment;
             }
             pictureBoxCorpoView.Image = Program.ballImage;
-            Console.WriteLine("aqui" + Program.objectVaccum);
         }
 
         public void loadData()
@@ -43,23 +42,25 @@ namespace freeFall
             textBoxGravity.Text = "" + Program.gravity;
             textBoxHeight.Text = "" + Program.height;
             textBoxPlanetName.Text = "" + Program.planetName;
+            textBoxAirDensity.Text = "" + Program.airDensity;
 
-            textBoxCorpoTime.Text = "" + Program.ball.TimeAllExperiment;
-            textBoxCorpoVelocityFynal.Text = "" + Program.ball.FinalVelocity;
+            textBoxCorpoTime.Text = "" + Math.Round(Program.ball.TimeAllExperiment, 2);
+            textBoxCorpoVelocityFynal.Text = "" + Math.Round(Program.ball.FinalVelocity, 2);
             txtEspacoCorpo.Text = "" + Program.height;
             txtVelocidadeCorpoInitial.Text = "" + Program.ball.InitialVelocity;
 
 
-            textBoxPaperFynalVelocity.Text = "" + Program.paper.FinalVelocity; 
+            textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paper.FinalVelocity, 2); 
             textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity; 
             textBoxPaperHeight.Text = "" + Program.height;
-            textBoxPaperTime.Text = "" + Program.paper.TimeAllExperiment;
+            textBoxPaperTime.Text = "" + Math.Round(Program.paper.TimeAllExperiment, 2);
 
 
-            textBoxVaccumFynalVelocity.Text = "" + Program.vaccum.FinalVelocity; 
+            textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccum.FinalVelocity, 2); 
             textBoxVaccumHeight.Text = "" + Program.height;
             textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity; 
-            textBoxVaccumTime.Text = "" + Program.vaccum.TimeAllExperiment;
+            textBoxVaccumTime.Text = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2);
+
         }
 
         public void sizeWindo()
@@ -135,6 +136,8 @@ namespace freeFall
             textBoxVaccumTime.ForeColor = Program.colorSimulator;
             textBoxVaccumInitialVelocity.ForeColor = Program.colorSimulator;
             textBoxVaccumFynalVelocity.ForeColor = Program.colorSimulator;
+            labelAirDensity.ForeColor = Program.colorSimulator;
+            labelAirDensityUnity.ForeColor = Program.colorSimulator;
         }
 
         private void buttonFocus_Click(object sender, EventArgs e)

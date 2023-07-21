@@ -32,7 +32,7 @@ namespace freeFall
             if (Program.ball.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
-                chartSpeed.Series["Bóla"].Points.AddXY(result, Program.ball.Velocity[countGrafic]);
+                chartSpeed.Series["Bola"].Points.AddXY(result, Program.ball.Velocity[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
@@ -106,7 +106,6 @@ namespace freeFall
             double percentage = 0.05;
             double tenPercent = value * percentage;
             double result = value + tenPercent;
-            Console.WriteLine("RESULT" + result);
             return result;
         }
 
@@ -139,16 +138,16 @@ namespace freeFall
 
             if (Program.bodyOn)
             {
-                chartSpeed.Series.Add("Bóla");
-                chartSpeed.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Bóla"].Color = Color.Red;
+                chartSpeed.Series.Add("Bola");
+                chartSpeed.Series["Bola"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Bola"].Color = Color.Red;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
                 if (op == 1)
                 {
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["Bóla"].Points.AddXY(result, (Program.ball.Velocity[i]));
+                        chartSpeed.Series["Bola"].Points.AddXY(result, (Program.ball.Velocity[i]));
                     }
                 }
             }
@@ -188,10 +187,10 @@ namespace freeFall
         {
             var chart = chartSpeed.ChartAreas[0];
 
-            chartSpeed.Titles.Add("Velocidade pelo tempo").Docking = Docking.Bottom;
+            chartSpeed.Titles.Add("Velocidade versus tempo").Docking = Docking.Bottom;
             chartSpeed.Titles[0].Font = new Font(chartSpeed.Titles[0].Font.FontFamily, chartSpeed.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpeed.ChartAreas[0].AxisX.Title = "T(s)";
-            chartSpeed.ChartAreas[0].AxisY.Title = "V(m/s)";
+            chartSpeed.ChartAreas[0].AxisX.Title = "t(s)";
+            chartSpeed.ChartAreas[0].AxisY.Title = "v(m/s)";
             chartSpeed.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
@@ -213,11 +212,11 @@ namespace freeFall
 
             if (Program.bodyOn)
             {
-                chartSpeed.Series.Add("Bóla");
-                chartSpeed.Series["Bóla"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Bóla"].Color = Color.Red;
+                chartSpeed.Series.Add("Bola");
+                chartSpeed.Series["Bola"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Bola"].Color = Color.Red;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["Bóla"].Points.AddXY(0, 0);
+                chartSpeed.Series["Bola"].Points.AddXY(0, 0);
 
             }
             if (Program.paperOn)

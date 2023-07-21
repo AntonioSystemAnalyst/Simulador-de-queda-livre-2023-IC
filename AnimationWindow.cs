@@ -29,6 +29,8 @@ namespace freeFall
             labelZero.ForeColor = Program.colorSimulator;
             pictureBoxAxesY.BackColor = Program.colorSimulator;
             pictureBoxAxesX.BackColor = Program.colorSimulator;
+            labelArrow2.ForeColor = Program.colorSimulator;
+            labelArrow1.ForeColor = Program.colorSimulator;
         }
 
         public Image vaccumImage()
@@ -219,6 +221,8 @@ namespace freeFall
                 pictureBoxAxesY.Visible = true;
                 pictureBoxAxesX.Visible = true;
                 pictureBoxBase.Visible  = false;
+                labelArrow2.Visible = true;
+                labelArrow1.Visible = true;
             }
             else
             {
@@ -230,6 +234,8 @@ namespace freeFall
                 pictureBoxAxesY.Visible = false;
                 pictureBoxAxesX.Visible = false;
                 pictureBoxBase.Visible = true;
+                labelArrow2.Visible = false;
+                labelArrow1.Visible = false;
             }
         }
         public void clearPostion()

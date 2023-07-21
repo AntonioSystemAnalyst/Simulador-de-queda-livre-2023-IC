@@ -40,16 +40,16 @@
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxResults = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxSalve = new System.Windows.Forms.GroupBox();
             this.buttonTableForDot = new System.Windows.Forms.Button();
             this.SalveImage = new System.Windows.Forms.Button();
             this.SalveXLS = new System.Windows.Forms.Button();
             this.SalveTXT = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
+            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
@@ -155,27 +155,6 @@
             this.dataGridView.TabIndex = 16;
             this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             // 
-            // Tempo
-            // 
-            this.Tempo.HeaderText = "Tempo (s)";
-            this.Tempo.Name = "Tempo";
-            // 
-            // Bóla
-            // 
-            this.Bóla.HeaderText = "Bóla - V (m/s)";
-            this.Bóla.Name = "Bóla";
-            // 
-            // Papel
-            // 
-            this.Papel.HeaderText = "Papel - V (m/s)";
-            this.Papel.Name = "Papel";
-            // 
-            // Vácuo
-            // 
-            this.Vácuo.HeaderText = "Vácuo - V (m/s)";
-            this.Vácuo.Name = "Vácuo";
-            this.Vácuo.ReadOnly = true;
-            // 
             // groupBoxSalve
             // 
             this.groupBoxSalve.BackColor = System.Drawing.Color.Transparent;
@@ -196,7 +175,7 @@
             // 
             this.buttonTableForDot.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTableForDot.ForeColor = System.Drawing.Color.Black;
-            this.buttonTableForDot.Location = new System.Drawing.Point(278, 37);
+            this.buttonTableForDot.Location = new System.Drawing.Point(280, 37);
             this.buttonTableForDot.Name = "buttonTableForDot";
             this.buttonTableForDot.Size = new System.Drawing.Size(84, 33);
             this.buttonTableForDot.TabIndex = 31;
@@ -208,7 +187,7 @@
             // 
             this.SalveImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SalveImage.ForeColor = System.Drawing.Color.Black;
-            this.SalveImage.Location = new System.Drawing.Point(9, 37);
+            this.SalveImage.Location = new System.Drawing.Point(4, 37);
             this.SalveImage.Name = "SalveImage";
             this.SalveImage.Size = new System.Drawing.Size(84, 33);
             this.SalveImage.TabIndex = 30;
@@ -220,7 +199,7 @@
             // 
             this.SalveXLS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SalveXLS.ForeColor = System.Drawing.Color.Black;
-            this.SalveXLS.Location = new System.Drawing.Point(188, 37);
+            this.SalveXLS.Location = new System.Drawing.Point(191, 37);
             this.SalveXLS.Name = "SalveXLS";
             this.SalveXLS.Size = new System.Drawing.Size(84, 33);
             this.SalveXLS.TabIndex = 29;
@@ -232,17 +211,38 @@
             // 
             this.SalveTXT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SalveTXT.ForeColor = System.Drawing.Color.Black;
-            this.SalveTXT.Location = new System.Drawing.Point(99, 37);
+            this.SalveTXT.Location = new System.Drawing.Point(93, 37);
             this.SalveTXT.Name = "SalveTXT";
-            this.SalveTXT.Size = new System.Drawing.Size(84, 33);
+            this.SalveTXT.Size = new System.Drawing.Size(93, 33);
             this.SalveTXT.TabIndex = 28;
-            this.SalveTXT.Text = "Dados";
+            this.SalveTXT.Text = "Parâmetros";
             this.SalveTXT.UseVisualStyleBackColor = true;
             this.SalveTXT.Click += new System.EventHandler(this.SalveTXT_Click);
             // 
             // timerFocus
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
+            // 
+            // Tempo
+            // 
+            this.Tempo.HeaderText = "Tempo (s)";
+            this.Tempo.Name = "Tempo";
+            // 
+            // Bóla
+            // 
+            this.Bóla.HeaderText = "Bola - V (m/s)";
+            this.Bóla.Name = "Bóla";
+            // 
+            // Papel
+            // 
+            this.Papel.HeaderText = "Papel - V (m/s)";
+            this.Papel.Name = "Papel";
+            // 
+            // Vácuo
+            // 
+            this.Vácuo.HeaderText = "Vácuo - V (m/s)";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
             // 
             // Speed
             // 
@@ -287,10 +287,10 @@
         private System.Windows.Forms.Timer timerFocus;
         private System.Windows.Forms.Label labelTextColor;
         private System.Windows.Forms.TrackBar trackBarColors;
+        private System.Windows.Forms.Button buttonTableForDot;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tempo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bóla;
         private System.Windows.Forms.DataGridViewTextBoxColumn Papel;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vácuo;
-        private System.Windows.Forms.Button buttonTableForDot;
     }
 }
