@@ -65,6 +65,9 @@
             this.LbAltura = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBoxGeneralData = new System.Windows.Forms.GroupBox();
+            this.labelAirDensityUnity = new System.Windows.Forms.Label();
+            this.textBoxAirDensity = new System.Windows.Forms.TextBox();
+            this.labelAirDensity = new System.Windows.Forms.Label();
             this.pictureBoxPlanet = new System.Windows.Forms.PictureBox();
             this.textBoxPlanetName = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -73,9 +76,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
             this.timerLaodImage = new System.Windows.Forms.Timer(this.components);
-            this.textBoxAirDensity = new System.Windows.Forms.TextBox();
-            this.labelAirDensity = new System.Windows.Forms.Label();
-            this.labelAirDensityUnity = new System.Windows.Forms.Label();
+            this.textBoxCEBall = new System.Windows.Forms.TextBox();
+            this.textBoxCEPaper = new System.Windows.Forms.TextBox();
+            this.textBoxCEVacuo = new System.Windows.Forms.TextBox();
+            this.labelCEBall = new System.Windows.Forms.Label();
+            this.labelCEPaper = new System.Windows.Forms.Label();
+            this.labelCEVacuo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoView)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
             this.groupBoxPaper.SuspendLayout();
@@ -102,6 +108,8 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
+            this.groupBoxResultados.Controls.Add(this.labelCEBall);
+            this.groupBoxResultados.Controls.Add(this.textBoxCEBall);
             this.groupBoxResultados.Controls.Add(this.label12);
             this.groupBoxResultados.Controls.Add(this.textBoxCorpoTime);
             this.groupBoxResultados.Controls.Add(this.label4);
@@ -137,7 +145,7 @@
             this.textBoxCorpoTime.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxCorpoTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCorpoTime.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxCorpoTime.Location = new System.Drawing.Point(164, 95);
+            this.textBoxCorpoTime.Location = new System.Drawing.Point(164, 90);
             this.textBoxCorpoTime.Name = "textBoxCorpoTime";
             this.textBoxCorpoTime.ReadOnly = true;
             this.textBoxCorpoTime.Size = new System.Drawing.Size(83, 26);
@@ -160,7 +168,7 @@
             this.textBoxCorpoVelocityFynal.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxCorpoVelocityFynal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxCorpoVelocityFynal.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxCorpoVelocityFynal.Location = new System.Drawing.Point(164, 161);
+            this.textBoxCorpoVelocityFynal.Location = new System.Drawing.Point(164, 155);
             this.textBoxCorpoVelocityFynal.Name = "textBoxCorpoVelocityFynal";
             this.textBoxCorpoVelocityFynal.ReadOnly = true;
             this.textBoxCorpoVelocityFynal.Size = new System.Drawing.Size(83, 26);
@@ -183,7 +191,7 @@
             this.txtEspacoCorpo.Cursor = System.Windows.Forms.Cursors.No;
             this.txtEspacoCorpo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEspacoCorpo.ForeColor = System.Drawing.Color.Cyan;
-            this.txtEspacoCorpo.Location = new System.Drawing.Point(164, 63);
+            this.txtEspacoCorpo.Location = new System.Drawing.Point(164, 58);
             this.txtEspacoCorpo.Name = "txtEspacoCorpo";
             this.txtEspacoCorpo.ReadOnly = true;
             this.txtEspacoCorpo.Size = new System.Drawing.Size(83, 26);
@@ -206,7 +214,7 @@
             this.txtVelocidadeCorpoInitial.Cursor = System.Windows.Forms.Cursors.No;
             this.txtVelocidadeCorpoInitial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVelocidadeCorpoInitial.ForeColor = System.Drawing.Color.Cyan;
-            this.txtVelocidadeCorpoInitial.Location = new System.Drawing.Point(164, 129);
+            this.txtVelocidadeCorpoInitial.Location = new System.Drawing.Point(164, 123);
             this.txtVelocidadeCorpoInitial.Name = "txtVelocidadeCorpoInitial";
             this.txtVelocidadeCorpoInitial.ReadOnly = true;
             this.txtVelocidadeCorpoInitial.Size = new System.Drawing.Size(83, 26);
@@ -215,6 +223,8 @@
             // groupBoxPaper
             // 
             this.groupBoxPaper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxPaper.BackgroundImage")));
+            this.groupBoxPaper.Controls.Add(this.labelCEPaper);
+            this.groupBoxPaper.Controls.Add(this.textBoxCEPaper);
             this.groupBoxPaper.Controls.Add(this.label14);
             this.groupBoxPaper.Controls.Add(this.textBoxPaperFynalVelocity);
             this.groupBoxPaper.Controls.Add(this.label15);
@@ -250,7 +260,7 @@
             this.textBoxPaperFynalVelocity.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxPaperFynalVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPaperFynalVelocity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxPaperFynalVelocity.Location = new System.Drawing.Point(165, 161);
+            this.textBoxPaperFynalVelocity.Location = new System.Drawing.Point(165, 155);
             this.textBoxPaperFynalVelocity.Name = "textBoxPaperFynalVelocity";
             this.textBoxPaperFynalVelocity.ReadOnly = true;
             this.textBoxPaperFynalVelocity.Size = new System.Drawing.Size(83, 26);
@@ -273,7 +283,7 @@
             this.textBoxPaperInitalVelocity.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxPaperInitalVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPaperInitalVelocity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxPaperInitalVelocity.Location = new System.Drawing.Point(165, 129);
+            this.textBoxPaperInitalVelocity.Location = new System.Drawing.Point(165, 123);
             this.textBoxPaperInitalVelocity.Name = "textBoxPaperInitalVelocity";
             this.textBoxPaperInitalVelocity.ReadOnly = true;
             this.textBoxPaperInitalVelocity.Size = new System.Drawing.Size(83, 26);
@@ -307,7 +317,7 @@
             this.textBoxPaperHeight.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxPaperHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPaperHeight.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxPaperHeight.Location = new System.Drawing.Point(165, 61);
+            this.textBoxPaperHeight.Location = new System.Drawing.Point(165, 57);
             this.textBoxPaperHeight.Name = "textBoxPaperHeight";
             this.textBoxPaperHeight.ReadOnly = true;
             this.textBoxPaperHeight.Size = new System.Drawing.Size(83, 26);
@@ -330,7 +340,7 @@
             this.textBoxPaperTime.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxPaperTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPaperTime.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxPaperTime.Location = new System.Drawing.Point(165, 93);
+            this.textBoxPaperTime.Location = new System.Drawing.Point(165, 90);
             this.textBoxPaperTime.Name = "textBoxPaperTime";
             this.textBoxPaperTime.ReadOnly = true;
             this.textBoxPaperTime.Size = new System.Drawing.Size(83, 26);
@@ -339,6 +349,8 @@
             // groupBoxVaccum
             // 
             this.groupBoxVaccum.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxVaccum.BackgroundImage")));
+            this.groupBoxVaccum.Controls.Add(this.labelCEVacuo);
+            this.groupBoxVaccum.Controls.Add(this.textBoxCEVacuo);
             this.groupBoxVaccum.Controls.Add(this.label16);
             this.groupBoxVaccum.Controls.Add(this.textBoxVaccumFynalVelocity);
             this.groupBoxVaccum.Controls.Add(this.label17);
@@ -376,7 +388,7 @@
             this.textBoxVaccumFynalVelocity.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxVaccumFynalVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxVaccumFynalVelocity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxVaccumFynalVelocity.Location = new System.Drawing.Point(160, 161);
+            this.textBoxVaccumFynalVelocity.Location = new System.Drawing.Point(160, 156);
             this.textBoxVaccumFynalVelocity.Name = "textBoxVaccumFynalVelocity";
             this.textBoxVaccumFynalVelocity.ReadOnly = true;
             this.textBoxVaccumFynalVelocity.Size = new System.Drawing.Size(83, 26);
@@ -399,7 +411,7 @@
             this.textBoxVaccumInitialVelocity.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxVaccumInitialVelocity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxVaccumInitialVelocity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxVaccumInitialVelocity.Location = new System.Drawing.Point(160, 129);
+            this.textBoxVaccumInitialVelocity.Location = new System.Drawing.Point(160, 123);
             this.textBoxVaccumInitialVelocity.Name = "textBoxVaccumInitialVelocity";
             this.textBoxVaccumInitialVelocity.ReadOnly = true;
             this.textBoxVaccumInitialVelocity.Size = new System.Drawing.Size(83, 26);
@@ -454,7 +466,7 @@
             this.textBoxVaccumHeight.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxVaccumHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxVaccumHeight.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxVaccumHeight.Location = new System.Drawing.Point(160, 61);
+            this.textBoxVaccumHeight.Location = new System.Drawing.Point(160, 57);
             this.textBoxVaccumHeight.Name = "textBoxVaccumHeight";
             this.textBoxVaccumHeight.ReadOnly = true;
             this.textBoxVaccumHeight.Size = new System.Drawing.Size(83, 26);
@@ -477,7 +489,7 @@
             this.textBoxVaccumTime.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxVaccumTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxVaccumTime.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxVaccumTime.Location = new System.Drawing.Point(160, 95);
+            this.textBoxVaccumTime.Location = new System.Drawing.Point(160, 89);
             this.textBoxVaccumTime.Name = "textBoxVaccumTime";
             this.textBoxVaccumTime.ReadOnly = true;
             this.textBoxVaccumTime.Size = new System.Drawing.Size(83, 26);
@@ -524,6 +536,39 @@
             this.groupBoxGeneralData.TabIndex = 10;
             this.groupBoxGeneralData.TabStop = false;
             this.groupBoxGeneralData.Text = "Dados Gerais";
+            // 
+            // labelAirDensityUnity
+            // 
+            this.labelAirDensityUnity.AutoSize = true;
+            this.labelAirDensityUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAirDensityUnity.Location = new System.Drawing.Point(8, 182);
+            this.labelAirDensityUnity.Name = "labelAirDensityUnity";
+            this.labelAirDensityUnity.Size = new System.Drawing.Size(48, 13);
+            this.labelAirDensityUnity.TabIndex = 48;
+            this.labelAirDensityUnity.Text = "(kg/m³)";
+            // 
+            // textBoxAirDensity
+            // 
+            this.textBoxAirDensity.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxAirDensity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxAirDensity.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAirDensity.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxAirDensity.Location = new System.Drawing.Point(124, 162);
+            this.textBoxAirDensity.Name = "textBoxAirDensity";
+            this.textBoxAirDensity.ReadOnly = true;
+            this.textBoxAirDensity.Size = new System.Drawing.Size(83, 26);
+            this.textBoxAirDensity.TabIndex = 47;
+            // 
+            // labelAirDensity
+            // 
+            this.labelAirDensity.AutoSize = true;
+            this.labelAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAirDensity.Location = new System.Drawing.Point(8, 169);
+            this.labelAirDensity.Name = "labelAirDensity";
+            this.labelAirDensity.Size = new System.Drawing.Size(100, 13);
+            this.labelAirDensity.TabIndex = 46;
+            this.labelAirDensity.Text = "Densidade do ar";
             // 
             // pictureBoxPlanet
             // 
@@ -601,38 +646,74 @@
             // 
             this.timerLaodImage.Tick += new System.EventHandler(this.timerLaodImage_Tick);
             // 
-            // textBoxAirDensity
+            // textBoxCEBall
             // 
-            this.textBoxAirDensity.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxAirDensity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxAirDensity.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBoxAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAirDensity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxAirDensity.Location = new System.Drawing.Point(124, 162);
-            this.textBoxAirDensity.Name = "textBoxAirDensity";
-            this.textBoxAirDensity.ReadOnly = true;
-            this.textBoxAirDensity.Size = new System.Drawing.Size(83, 26);
-            this.textBoxAirDensity.TabIndex = 47;
+            this.textBoxCEBall.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxCEBall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCEBall.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxCEBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCEBall.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxCEBall.Location = new System.Drawing.Point(164, 187);
+            this.textBoxCEBall.Name = "textBoxCEBall";
+            this.textBoxCEBall.ReadOnly = true;
+            this.textBoxCEBall.Size = new System.Drawing.Size(83, 26);
+            this.textBoxCEBall.TabIndex = 28;
             // 
-            // labelAirDensity
+            // textBoxCEPaper
             // 
-            this.labelAirDensity.AutoSize = true;
-            this.labelAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAirDensity.Location = new System.Drawing.Point(8, 169);
-            this.labelAirDensity.Name = "labelAirDensity";
-            this.labelAirDensity.Size = new System.Drawing.Size(100, 13);
-            this.labelAirDensity.TabIndex = 46;
-            this.labelAirDensity.Text = "Densidade do ar";
+            this.textBoxCEPaper.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxCEPaper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCEPaper.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxCEPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCEPaper.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxCEPaper.Location = new System.Drawing.Point(165, 187);
+            this.textBoxCEPaper.Name = "textBoxCEPaper";
+            this.textBoxCEPaper.ReadOnly = true;
+            this.textBoxCEPaper.Size = new System.Drawing.Size(83, 26);
+            this.textBoxCEPaper.TabIndex = 38;
             // 
-            // labelAirDensityUnity
+            // textBoxCEVacuo
             // 
-            this.labelAirDensityUnity.AutoSize = true;
-            this.labelAirDensityUnity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAirDensityUnity.Location = new System.Drawing.Point(8, 182);
-            this.labelAirDensityUnity.Name = "labelAirDensityUnity";
-            this.labelAirDensityUnity.Size = new System.Drawing.Size(48, 13);
-            this.labelAirDensityUnity.TabIndex = 48;
-            this.labelAirDensityUnity.Text = "(kg/m³)";
+            this.textBoxCEVacuo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxCEVacuo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCEVacuo.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxCEVacuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCEVacuo.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxCEVacuo.Location = new System.Drawing.Point(160, 188);
+            this.textBoxCEVacuo.Name = "textBoxCEVacuo";
+            this.textBoxCEVacuo.ReadOnly = true;
+            this.textBoxCEVacuo.Size = new System.Drawing.Size(83, 26);
+            this.textBoxCEVacuo.TabIndex = 29;
+            // 
+            // labelCEBall
+            // 
+            this.labelCEBall.AutoSize = true;
+            this.labelCEBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCEBall.Location = new System.Drawing.Point(6, 194);
+            this.labelCEBall.Name = "labelCEBall";
+            this.labelCEBall.Size = new System.Drawing.Size(135, 13);
+            this.labelCEBall.TabIndex = 33;
+            this.labelCEBall.Text = "Coeficiente específico";
+            // 
+            // labelCEPaper
+            // 
+            this.labelCEPaper.AutoSize = true;
+            this.labelCEPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCEPaper.Location = new System.Drawing.Point(5, 194);
+            this.labelCEPaper.Name = "labelCEPaper";
+            this.labelCEPaper.Size = new System.Drawing.Size(135, 13);
+            this.labelCEPaper.TabIndex = 39;
+            this.labelCEPaper.Text = "Coeficiente específico";
+            // 
+            // labelCEVacuo
+            // 
+            this.labelCEVacuo.AutoSize = true;
+            this.labelCEVacuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCEVacuo.Location = new System.Drawing.Point(6, 194);
+            this.labelCEVacuo.Name = "labelCEVacuo";
+            this.labelCEVacuo.Size = new System.Drawing.Size(135, 13);
+            this.labelCEVacuo.TabIndex = 40;
+            this.labelCEVacuo.Text = "Coeficiente específico";
             // 
             // ExperimentData
             // 
@@ -719,5 +800,11 @@
         private System.Windows.Forms.TextBox textBoxAirDensity;
         private System.Windows.Forms.Label labelAirDensity;
         private System.Windows.Forms.Label labelAirDensityUnity;
+        private System.Windows.Forms.Label labelCEBall;
+        private System.Windows.Forms.TextBox textBoxCEBall;
+        private System.Windows.Forms.Label labelCEPaper;
+        private System.Windows.Forms.TextBox textBoxCEPaper;
+        private System.Windows.Forms.Label labelCEVacuo;
+        private System.Windows.Forms.TextBox textBoxCEVacuo;
     }
 }

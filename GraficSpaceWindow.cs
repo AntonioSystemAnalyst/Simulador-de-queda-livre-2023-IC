@@ -148,8 +148,10 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         resultX = (double)i / 100.0;
-                        chartSpace.Series["Bola"].Points.AddXY(resultX, Program.ball.Space[i]);
-
+                        if(i < Program.ball.NumberOfTerms)
+                        {
+                            chartSpace.Series["Bola"].Points.AddXY(resultX, Program.ball.Space[i]);
+                        }
                     }
                 }
             }
@@ -179,7 +181,10 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         resultX = (double)i / 100.0;
-                        chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[i]);
+                        if (i < Program.vaccum.NumberOfTerms)
+                        {
+                            chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[i]);
+                        }
                     }
                 }
             }

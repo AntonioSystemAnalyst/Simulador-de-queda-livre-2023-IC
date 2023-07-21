@@ -36,6 +36,7 @@
             this.labelGraficDetails = new System.Windows.Forms.Label();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
+            this.buttonLog = new System.Windows.Forms.Button();
             this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxVaccum = new System.Windows.Forms.PictureBox();
@@ -62,7 +63,10 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
-            this.buttonLog = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBoxAirDensity = new System.Windows.Forms.TextBox();
+            this.labelAirAirDensity = new System.Windows.Forms.Label();
             this.checkBoxResistanceRV1 = new System.Windows.Forms.CheckBox();
             this.checkBoxSound = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
@@ -107,11 +111,8 @@
             this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
-            this.textBoxAirDensity = new System.Windows.Forms.TextBox();
-            this.labelAirAirDensity = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
+            this.labelVenus = new System.Windows.Forms.Label();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -137,6 +138,7 @@
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
+            this.groupBoxGraficos.Controls.Add(this.labelVenus);
             this.groupBoxGraficos.Controls.Add(this.panelSpeed);
             this.groupBoxGraficos.Controls.Add(this.panelSpace);
             this.groupBoxGraficos.Controls.Add(this.labelGraficDetails);
@@ -223,6 +225,18 @@
             this.groupBoxResultados.TabIndex = 8;
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Resultados";
+            // 
+            // buttonLog
+            // 
+            this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonLog.ForeColor = System.Drawing.Color.Black;
+            this.buttonLog.Location = new System.Drawing.Point(122, 97);
+            this.buttonLog.Name = "buttonLog";
+            this.buttonLog.Size = new System.Drawing.Size(32, 24);
+            this.buttonLog.TabIndex = 44;
+            this.buttonLog.Text = "PL";
+            this.buttonLog.UseVisualStyleBackColor = true;
+            this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject
             // 
@@ -545,17 +559,48 @@
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
             // 
-            // buttonLog
+            // label14
             // 
-            this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonLog.ForeColor = System.Drawing.Color.Black;
-            this.buttonLog.Location = new System.Drawing.Point(122, 97);
-            this.buttonLog.Name = "buttonLog";
-            this.buttonLog.Size = new System.Drawing.Size(32, 24);
-            this.buttonLog.TabIndex = 44;
-            this.buttonLog.Text = "PL";
-            this.buttonLog.UseVisualStyleBackColor = true;
-            this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(165, 86);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 13);
+            this.label14.TabIndex = 47;
+            this.label14.Text = "(kg/m³)";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(167, 36);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 46;
+            this.label13.Text = "(m/s²)";
+            // 
+            // textBoxAirDensity
+            // 
+            this.textBoxAirDensity.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxAirDensity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxAirDensity.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAirDensity.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxAirDensity.Location = new System.Drawing.Point(114, 83);
+            this.textBoxAirDensity.Name = "textBoxAirDensity";
+            this.textBoxAirDensity.ReadOnly = true;
+            this.textBoxAirDensity.Size = new System.Drawing.Size(51, 20);
+            this.textBoxAirDensity.TabIndex = 45;
+            // 
+            // labelAirAirDensity
+            // 
+            this.labelAirAirDensity.AutoSize = true;
+            this.labelAirAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAirAirDensity.Location = new System.Drawing.Point(111, 65);
+            this.labelAirAirDensity.Name = "labelAirAirDensity";
+            this.labelAirAirDensity.Size = new System.Drawing.Size(100, 13);
+            this.labelAirAirDensity.TabIndex = 44;
+            this.labelAirAirDensity.Text = "Densidade do ar";
             // 
             // checkBoxResistanceRV1
             // 
@@ -1020,52 +1065,20 @@
             // 
             this.timerAirResistence.Tick += new System.EventHandler(this.timerAirResistence_Tick);
             // 
-            // textBoxAirDensity
-            // 
-            this.textBoxAirDensity.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxAirDensity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxAirDensity.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBoxAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxAirDensity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxAirDensity.Location = new System.Drawing.Point(114, 83);
-            this.textBoxAirDensity.Name = "textBoxAirDensity";
-            this.textBoxAirDensity.ReadOnly = true;
-            this.textBoxAirDensity.Size = new System.Drawing.Size(51, 20);
-            this.textBoxAirDensity.TabIndex = 45;
-            // 
-            // labelAirAirDensity
-            // 
-            this.labelAirAirDensity.AutoSize = true;
-            this.labelAirAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAirAirDensity.Location = new System.Drawing.Point(111, 65);
-            this.labelAirAirDensity.Name = "labelAirAirDensity";
-            this.labelAirAirDensity.Size = new System.Drawing.Size(100, 13);
-            this.labelAirAirDensity.TabIndex = 44;
-            this.labelAirAirDensity.Text = "Densidade do ar";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(167, 36);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(40, 13);
-            this.label13.TabIndex = 46;
-            this.label13.Text = "(m/s²)";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(165, 86);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(48, 13);
-            this.label14.TabIndex = 47;
-            this.label14.Text = "(kg/m³)";
-            // 
             // timerVenus
             // 
             this.timerVenus.Tick += new System.EventHandler(this.timerVenus_Tick);
+            // 
+            // labelVenus
+            // 
+            this.labelVenus.AutoSize = true;
+            this.labelVenus.Location = new System.Drawing.Point(6, 323);
+            this.labelVenus.Name = "labelVenus";
+            this.labelVenus.Size = new System.Drawing.Size(636, 13);
+            this.labelVenus.TabIndex = 0;
+            this.labelVenus.Text = "Vênus tem uma atmosfera densa demais para que uma folha aberta possa cair num tem" +
+    "po razoavelmente curto.";
+            this.labelVenus.Visible = false;
             // 
             // Simulator
             // 
@@ -1204,5 +1217,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Timer timerVenus;
+        private System.Windows.Forms.Label labelVenus;
     }
 }

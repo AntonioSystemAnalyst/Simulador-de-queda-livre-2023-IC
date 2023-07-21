@@ -417,7 +417,7 @@ namespace freeFall
                             linha[0] = timeLarge[i];
                             if (Program.bodyOn)
                             {
-                                if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.ball.NumberOfTerms > i)
                                 {
                                     linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3));
                                 }
@@ -428,7 +428,7 @@ namespace freeFall
                             }
                             if (Program.paperOn)
                             {
-                                if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.paper.NumberOfTerms > i)
                                 {
                                     linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 3));
                                 }
@@ -439,7 +439,7 @@ namespace freeFall
                             }
                             if (Program.vaccumOn)
                             {
-                                if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.vaccum.NumberOfTerms > i)
                                 {
                                     linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 3));
                                 }
@@ -526,35 +526,35 @@ namespace freeFall
                             linha[0] = timeLarge[i].Replace('.', ',');
                             if (Program.bodyOn)
                             {
-                                if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.ball.NumberOfTerms > i)
                                 {
                                     linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3)).Replace('.', ',');
                                 }
                                 else
                                 {
-                                    linha[1] = "-";
+                                    linha[1] = "";
                                 }
                             }
                             if (Program.paperOn)
                             {
-                                if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.paper.NumberOfTerms > i)
                                 {
                                     linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 3)).Replace('.', ',');
                                 }
                                 else
                                 {
-                                    linha[2] = "-";
+                                    linha[2] = "";
                                 }
                             }
                             if (Program.vaccumOn)
                             {
-                                if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
+                                if (Program.vaccum.NumberOfTerms > i)
                                 {
                                     linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 3)).Replace('.', ',');
                                 }
                                 else
                                 {
-                                    linha[3] = "-";
+                                    linha[3] = "";
                                 }
                             }
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn)

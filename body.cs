@@ -125,6 +125,7 @@ namespace freeFall
                 velocity[i] = initialVelocityExperiment + (-1*gravity * countTime);
                 countTime = countTime + 0.01;
             }
+            
 
             countTime = 0;
             // time

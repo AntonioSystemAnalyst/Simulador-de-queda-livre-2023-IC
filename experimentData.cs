@@ -42,25 +42,35 @@ namespace freeFall
             textBoxGravity.Text = "" + Program.gravity;
             textBoxHeight.Text = "" + Program.height;
             textBoxPlanetName.Text = "" + Program.planetName;
-            textBoxAirDensity.Text = "" + Program.airDensity;
 
-            textBoxCorpoTime.Text = "" + Math.Round(Program.ball.TimeAllExperiment, 2);
-            textBoxCorpoVelocityFynal.Text = "" + Math.Round(Program.ball.FinalVelocity, 2);
+            if(Program.airResistance == 0)
+            {
+                textBoxAirDensity.Text = "--";
+            }
+            else
+            {
+                textBoxAirDensity.Text = "" + Program.airDensity;
+            }
+            
+
+            textBoxCorpoTime.Text = "" + Math.Round(Program.ball.CountTimeExperiment[Program.ball.NumberOfTerms - 1], 2);
+            textBoxCorpoVelocityFynal.Text = "" + Math.Round(Program.ball.Velocity[Program.ball.NumberOfTerms - 1], 2);
             txtEspacoCorpo.Text = "" + Program.height;
             txtVelocidadeCorpoInitial.Text = "" + Program.ball.InitialVelocity;
+            textBoxCEBall.Text = "" + Program.ball.DragCoefficient;
 
 
-            textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paper.FinalVelocity, 2); 
+            textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paper.Velocity[Program.paper.NumberOfTerms - 1], 2); 
             textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity; 
             textBoxPaperHeight.Text = "" + Program.height;
-            textBoxPaperTime.Text = "" + Math.Round(Program.paper.TimeAllExperiment, 2);
+            textBoxPaperTime.Text = "" + Math.Round(Program.paper.CountTimeExperiment[Program.paper.NumberOfTerms - 1], 2);
+            textBoxCEPaper.Text = "" + Program.paper.DragCoefficient;
 
-
-            textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccum.FinalVelocity, 2); 
+            textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[Program.vaccum.NumberOfTerms - 1], 2); 
             textBoxVaccumHeight.Text = "" + Program.height;
             textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity; 
-            textBoxVaccumTime.Text = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2);
-
+            textBoxVaccumTime.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[Program.vaccum.NumberOfTerms - 1], 2);
+            textBoxCEVacuo.Text = "" + Program.vaccum.DragCoefficient;
         }
 
         public void sizeWindo()
@@ -138,6 +148,12 @@ namespace freeFall
             textBoxVaccumFynalVelocity.ForeColor = Program.colorSimulator;
             labelAirDensity.ForeColor = Program.colorSimulator;
             labelAirDensityUnity.ForeColor = Program.colorSimulator;
+            labelCEBall.ForeColor = Program.colorSimulator;
+            labelCEPaper.ForeColor = Program.colorSimulator;
+            labelCEVacuo.ForeColor = Program.colorSimulator;
+            textBoxCEBall.ForeColor = Program.colorSimulator;
+            textBoxCEPaper.ForeColor = Program.colorSimulator;
+            textBoxCEVacuo.ForeColor= Program.colorSimulator;
         }
 
         private void buttonFocus_Click(object sender, EventArgs e)

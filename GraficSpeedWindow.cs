@@ -147,7 +147,10 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["Bola"].Points.AddXY(result, (Program.ball.Velocity[i]));
+                        if (i < Program.ball.NumberOfTerms)
+                        {
+                            chartSpeed.Series["Bola"].Points.AddXY(result, (Program.ball.Velocity[i]));
+                        }
                     }
                 }
             }
@@ -177,7 +180,10 @@ namespace freeFall
                     for (i = 0; i < n; i++)
                     {
                         result = (double)i / 100.0;
-                        chartSpeed.Series["vácuo"].Points.AddXY(result, (Program.vaccum.Velocity[i]));
+                        if (i < Program.vaccum.NumberOfTerms)
+                        {
+                            chartSpeed.Series["vácuo"].Points.AddXY(result, (Program.vaccum.Velocity[i]));
+                        }
                     }
                 }
             }
