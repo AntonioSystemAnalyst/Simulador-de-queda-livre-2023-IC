@@ -10,7 +10,6 @@ E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.exe
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.pdb
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.Data.resources
-E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.configurePlanet.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.Space.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.Speed.resources
 E:\Orpheu\Winnsenchaft\Pudicus\Projetos\Queda Livre\freeFall\obj\Debug\freeFall.experimentData.resources

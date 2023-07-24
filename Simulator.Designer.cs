@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
+            this.labelVenus = new System.Windows.Forms.Label();
             this.panelSpeed = new System.Windows.Forms.Panel();
             this.panelSpace = new System.Windows.Forms.Panel();
             this.labelGraficDetails = new System.Windows.Forms.Label();
@@ -68,7 +69,6 @@
             this.textBoxAirDensity = new System.Windows.Forms.TextBox();
             this.labelAirAirDensity = new System.Windows.Forms.Label();
             this.checkBoxResistanceRV1 = new System.Windows.Forms.CheckBox();
-            this.checkBoxSound = new System.Windows.Forms.CheckBox();
             this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
             this.boxHeight = new System.Windows.Forms.NumericUpDown();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
@@ -112,7 +112,6 @@
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
-            this.labelVenus = new System.Windows.Forms.Label();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -151,6 +150,17 @@
             this.groupBoxGraficos.TabStop = false;
             this.groupBoxGraficos.Text = "Gráficos";
             // 
+            // labelVenus
+            // 
+            this.labelVenus.AutoSize = true;
+            this.labelVenus.Location = new System.Drawing.Point(6, 323);
+            this.labelVenus.Name = "labelVenus";
+            this.labelVenus.Size = new System.Drawing.Size(636, 13);
+            this.labelVenus.TabIndex = 0;
+            this.labelVenus.Text = "Vênus tem uma atmosfera densa demais para que uma folha aberta possa cair num tem" +
+    "po razoavelmente curto.";
+            this.labelVenus.Visible = false;
+            // 
             // panelSpeed
             // 
             this.panelSpeed.BackColor = System.Drawing.Color.Transparent;
@@ -183,7 +193,7 @@
             // 
             this.buttonLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogo.ForeColor = System.Drawing.Color.Black;
-            this.buttonLogo.Location = new System.Drawing.Point(84, 96);
+            this.buttonLogo.Location = new System.Drawing.Point(91, 96);
             this.buttonLogo.Name = "buttonLogo";
             this.buttonLogo.Size = new System.Drawing.Size(32, 24);
             this.buttonLogo.TabIndex = 35;
@@ -230,12 +240,13 @@
             // 
             this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLog.ForeColor = System.Drawing.Color.Black;
-            this.buttonLog.Location = new System.Drawing.Point(122, 97);
+            this.buttonLog.Location = new System.Drawing.Point(129, 96);
             this.buttonLog.Name = "buttonLog";
             this.buttonLog.Size = new System.Drawing.Size(32, 24);
             this.buttonLog.TabIndex = 44;
             this.buttonLog.Text = "PL";
             this.buttonLog.UseVisualStyleBackColor = true;
+            this.buttonLog.Visible = false;
             this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject
@@ -510,7 +521,6 @@
             this.buttonPlanet.TabIndex = 9;
             this.buttonPlanet.Text = "Terra";
             this.buttonPlanet.UseVisualStyleBackColor = true;
-            this.buttonPlanet.Click += new System.EventHandler(this.buttonPlanet_Click);
             // 
             // pictureBoxPlanets
             // 
@@ -532,7 +542,6 @@
             this.groupBoxConfiguracao.Controls.Add(this.textBoxAirDensity);
             this.groupBoxConfiguracao.Controls.Add(this.labelAirAirDensity);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceRV1);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxSound);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
@@ -601,6 +610,7 @@
             this.labelAirAirDensity.Size = new System.Drawing.Size(100, 13);
             this.labelAirAirDensity.TabIndex = 44;
             this.labelAirAirDensity.Text = "Densidade do ar";
+            this.labelAirAirDensity.MouseHover += new System.EventHandler(this.labelAirAirDensity_MouseHover_1);
             // 
             // checkBoxResistanceRV1
             // 
@@ -612,22 +622,12 @@
             this.checkBoxResistanceRV1.Text = "Resistência do ar";
             this.checkBoxResistanceRV1.UseVisualStyleBackColor = true;
             this.checkBoxResistanceRV1.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged_1);
-            // 
-            // checkBoxSound
-            // 
-            this.checkBoxSound.AutoSize = true;
-            this.checkBoxSound.Location = new System.Drawing.Point(116, 219);
-            this.checkBoxSound.Name = "checkBoxSound";
-            this.checkBoxSound.Size = new System.Drawing.Size(54, 17);
-            this.checkBoxSound.TabIndex = 42;
-            this.checkBoxSound.Text = "Sons";
-            this.checkBoxSound.UseVisualStyleBackColor = true;
-            this.checkBoxSound.CheckedChanged += new System.EventHandler(this.checkBoxSound_CheckedChanged);
+            this.checkBoxResistanceRV1.MouseHover += new System.EventHandler(this.checkBoxResistanceRV1_MouseHover_1);
             // 
             // checkBoxGrafic
             // 
             this.checkBoxGrafic.AutoSize = true;
-            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 192);
+            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 216);
             this.checkBoxGrafic.Name = "checkBoxGrafic";
             this.checkBoxGrafic.Size = new System.Drawing.Size(82, 17);
             this.checkBoxGrafic.TabIndex = 41;
@@ -635,6 +635,7 @@
             this.checkBoxGrafic.UseVisualStyleBackColor = true;
             this.checkBoxGrafic.CheckedChanged += new System.EventHandler(this.checkBoxGrafic_CheckedChanged);
             this.checkBoxGrafic.CheckStateChanged += new System.EventHandler(this.checkBoxGrafic_CheckStateChanged);
+            this.checkBoxGrafic.MouseHover += new System.EventHandler(this.checkBoxGrafic_MouseHover);
             // 
             // boxHeight
             // 
@@ -660,7 +661,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(8, 219);
+            this.checkBox3D.Location = new System.Drawing.Point(98, 216);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -767,7 +768,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(54, 219);
+            this.checkBoxEixo.Location = new System.Drawing.Point(151, 216);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -1069,17 +1070,6 @@
             // 
             this.timerVenus.Tick += new System.EventHandler(this.timerVenus_Tick);
             // 
-            // labelVenus
-            // 
-            this.labelVenus.AutoSize = true;
-            this.labelVenus.Location = new System.Drawing.Point(6, 323);
-            this.labelVenus.Name = "labelVenus";
-            this.labelVenus.Size = new System.Drawing.Size(636, 13);
-            this.labelVenus.TabIndex = 0;
-            this.labelVenus.Text = "Vênus tem uma atmosfera densa demais para que uma folha aberta possa cair num tem" +
-    "po razoavelmente curto.";
-            this.labelVenus.Visible = false;
-            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1207,7 +1197,6 @@
         private System.Windows.Forms.Label labelTextStart;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBoxExperiment;
-        private System.Windows.Forms.CheckBox checkBoxSound;
         private System.Windows.Forms.Timer timerTrackBar;
         private System.Windows.Forms.CheckBox checkBoxResistanceRV1;
         private System.Windows.Forms.Timer timerAirResistence;

@@ -57,12 +57,6 @@
       <DependentUpon>AnimationWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="body.cs" />
-    <Compile Include="ConfigurePlanet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConfigurePlanet.Designer.cs">
-      <DependentUpon>ConfigurePlanet.cs</DependentUpon>
-    </Compile>
     <Compile Include="Data.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,9 +126,6 @@
     </Compile>
     <EmbeddedResource Include="AnimationWindow.resx">
       <DependentUpon>AnimationWindow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConfigurePlanet.resx">
-      <DependentUpon>ConfigurePlanet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Data.resx">
       <DependentUpon>Data.cs</DependentUpon>

@@ -42,37 +42,30 @@ namespace freeFall
         }
         public void animationVector(int quantityPixel, double height)
         {
-            qtdSpaceForNumberOfTermes = height / numberOfTerms;  // altura pelo numero de termos 
-            qtdSpaceForPixels = height / quantityPixel; // altura pela quatidade de pixels
-            double countSpace = 0.0; // auxilar
-            int i = 0, k = 0; // para loops
-            int status = 0; // para acionar o for uma unica vez
+            qtdSpaceForNumberOfTermes = height / numberOfTerms;  
+            qtdSpaceForPixels = height / quantityPixel; 
+            double countSpace = 0.0; 
+            int i = 0, k = 0; 
+            int status = 0; 
 
-            animationPixel = new double[quantityPixel + 2]; // para receber o espaço referente ao pixel
-            animationSpace = new double[numberOfTerms + 2]; // para receber o espaço referente ao numero de termos
-            pixels = new int[numberOfTerms + 2]; // para receber o pixel que deve estar a cada unidade de tempo 
+            animationPixel = new double[quantityPixel + 2]; 
+            animationSpace = new double[numberOfTerms + 2]; 
+            pixels = new int[numberOfTerms + 2]; 
 
-            //Console.WriteLine("-----------------------");
-            for (i = 0; i < numberOfTerms; i++)  // passa o valor de unidade inteirando para o vetor animationSpace
+            for (i = 0; i < numberOfTerms; i++)  
             {
                 animationSpace[i] = countSpace;
                 countSpace = countSpace + qtdSpaceForNumberOfTermes;
-                //Console.WriteLine("Space = " + countSpace);
             }
-            //Console.WriteLine("-----------------------");
-            //Console.WriteLine("pixels");
-            //Console.WriteLine("-----------------------");
+
             countSpace = 0.0;
-            for (i = 0; i <= quantityPixel; i++) // passa o valor de unidade inteirando para o vetor animationPixel
+            for (i = 0; i <= quantityPixel; i++) 
             {
                 animationPixel[i] = countSpace;
                 countSpace = countSpace + qtdSpaceForPixels;
-                //Console.WriteLine("Pixel = " + countSpace);
             }
-            //Console.WriteLine("-----------------------");
-            //Console.WriteLine("aqui");
-            //Console.WriteLine("-----------------------");
-            for (i = 0; i < numberOfTerms; i++) // compara o espaço animationPixel e animationSpace, e passa o indice do animationPixel com valor do pixel
+
+            for (i = 0; i < numberOfTerms; i++) 
             {
                 status = 0;
                 for (k = 0; k <= quantityPixel; k++)
@@ -81,20 +74,10 @@ namespace freeFall
                     {
                         pixels[i] = k;
                         status = 1;
-                        //Console.WriteLine("Pixel = " + pixels[i] + "-" + i );
                     }
                 }
             }
-            pixels[numberOfTerms] = quantityPixel; // garante que o ultimo pixel é igual ao ultimo valor setado 
-
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                //Console.WriteLine("->" + i + "Pixel = " + pixels[i] + "-" + i);
-            }
-
-            //Console.WriteLine("-----------------------");
-            //Console.WriteLine("-----------------------");
-            //Console.WriteLine("height = "+height);
+            pixels[numberOfTerms] = quantityPixel; 
         }
         public void CalculateOutResistence(double height, double gravity, double initialVelocityExperiment)
         {
@@ -145,16 +128,10 @@ namespace freeFall
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
             term1 = Math.Round((term0 / mass), precision);
             terminalVelocity = gravity / term1;
-
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
             finalVelocity = terminalVelocity;
-
-
-
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
-
-
             countTime = 0.01;
             for (i = 0; i < numberOfTerms; i++)
             {
@@ -167,9 +144,6 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
             countTime = 0;
-
-
-
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
@@ -239,7 +213,6 @@ namespace freeFall
             timeAll = terminalTime;
             return timeAll;
         }
-
         public  double spaceFunctionRV1(double timeValue, double gravity, double height)
         {
             double spacePointFunction = 0.0;
@@ -296,136 +269,6 @@ namespace freeFall
             double area = Math.PI * Math.Pow(radius, 2);
             return area;
         }
-        // ----------------------------------------------------------------------------------------//
-        public  void CalculateWithResistenceVR2(double height, double gravity, double initialVelocity, double airDensity)
-        {
-            double Ax;
-            double spacePoint;
-            int i;
-
-            term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
-            term1 = Math.Round(mass / term0, precision);
-            Ax = gravity / term1;
-            greatValueVelocity = velocityFunctionRV2(0.01, 0, gravity);
-            timeAllExperiment = getTimeAllVR2(gravity, height);
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
-            space = new double[numberOfTerms];
-            velocity = new double[numberOfTerms];
-            countTimeExperiment = new double[numberOfTerms];
-            spaceTime = new double[numberOfTerms];
-
-            countTime = 0.01;
-            for (i = 1; i < numberOfTerms; i++)
-            {
-                velocityPoint = velocityFunctionRV2(countTime, 1, gravity);
-                velocity[i] = velocityPoint;
-                countTime = countTime + 0.01;
-            }
-            finalVelocity = velocity[velocity.Length-1];
-
-            countTime = 0.01;
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                spacePoint = SimpsonIntegrationMethod(0.01, countTime, 40, gravity) + height;
-                if (spacePoint < 0.2)
-                {
-                    space[i] = 0;
-                }
-                else
-                {
-                    if (spacePoint > height)
-                    {
-                        space[i] = height;
-                    }
-                    else
-                    {
-                        space[i] = spacePoint;
-                    }
-                }
-                spaceTime[i] = Math.Round(countTime, 3);
-                countTime = countTime + 0.01;
-            }
-            space[0] = height;
-            countTime = 0;
-            // time
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                countTimeExperiment[i] = countTime;
-                countTime = countTime + 0.01;
-            }
-
-            animationVector(534, height);
-        }
-        public  double getTimeAllVR2(double gravity, double height)
-        {
-            double terminalTime = 0.01;
-            double timeAll = 0.0;
-            double spaceFunction = 0.0;
-            int breakStatus = 0;
-            do
-            {
-                spaceFunction = SimpsonIntegrationMethod(0.01, terminalTime, 40, gravity);
-                if ((height + spaceFunction) <= 0.0001)
-                {
-                    breakStatus = 1;
-                }
-                terminalTime += 0.01;
-            } while (breakStatus == 0);
-            timeAll = terminalTime;
-            return timeAll;
-        }
-        public  double velocityFunctionRV2(double countTime, int op, double gravity)
-        {
-            if (op == 0)
-            {
-                term2 = Math.Round((gravity / term1), precision);
-                term3 = Math.Sqrt(term2);
-                term4 = Math.Round((term1 * gravity), precision);
-                term5 = Math.Sqrt(term4);
-                term6 = Math.Round((-1 * countTime * term5), precision);
-                term7 = Math.Pow(Math.E, term6);
-                term8 = Math.Round((1 + term7), precision);
-                term9 = Math.Round((1 - term7), precision);
-                term10 = Math.Round((term8 / term9), precision);
-                velocityPoint = Math.Round((term10 * term3), precision);
-            }
-            else
-            {
-                term2 = Math.Round((gravity / term1), precision);
-                term3 = Math.Sqrt(term2);
-                term4 = Math.Round((term1 * gravity), precision);
-                term5 = Math.Sqrt(term4);
-                term6 = Math.Round((-1 * countTime * term5), precision);
-                term7 = Math.Pow(Math.E, term6);
-                term8 = Math.Round((1 + term7), precision);
-                term9 = Math.Round((1 - term7), precision);
-                term10 = Math.Round((term8 / term9), precision);
-                velocityPoint = Math.Round((term10 * term3), precision) - greatValueVelocity;
-            }
-            return velocityPoint;
-        }
-
-        public  double SimpsonIntegrationMethod(double timeOne, double timeTwo, int numberDivision, double gravity)
-        {
-            double integration = 0.0;
-
-            double h = (timeTwo - timeOne) / numberDivision;
-            double sum = velocityFunctionRV2(timeOne, 1, gravity) + velocityFunctionRV2(timeTwo, 1, gravity);
-
-            for (int i = 1; i < numberDivision; i++)
-            {
-                double x = timeOne + i * h;
-
-                if (i % 2 == 0)
-                    sum += 2 * velocityFunctionRV2(x, 1, gravity);
-                else
-                    sum += 4 * velocityFunctionRV2(x, 1, gravity);
-            }
-            integration = Math.Round(((h / 3) * sum), precision);
-            return integration;
-        }
-
-        // ----------------------------------------------------------------------------------------//
 
         public double TerminalVelocity
         {
@@ -528,7 +371,6 @@ namespace freeFall
             get { return animationSpace; }
             set { animationSpace = value; }
         }
-
     }
 }
 

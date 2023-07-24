@@ -658,12 +658,6 @@ namespace freeFall
                 colorAll();
             }
         }
-
-        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-
-        }
-
         private void Speed_FormClosing(object sender, FormClosingEventArgs e)
         {
             Program.speedGraficControl = 0;
@@ -676,6 +670,10 @@ namespace freeFall
         }
 
         private void Speed_Resize(object sender, EventArgs e)
+        {
+
+        }
+        private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
         }

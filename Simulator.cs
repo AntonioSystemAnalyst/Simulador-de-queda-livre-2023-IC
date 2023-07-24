@@ -15,13 +15,9 @@ namespace freeFall
         ExperimentData windowExperiment;
         Space windowSpace;
         Speed windowSpeed;
-        // define objeto para ser usado nas tooltips
         System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        // define o planeta para exibir os dados - errado!!!
         public int planetCounter = 1;
-        // controla o botão iniciar 
         public int buttonStartControl = 0;
-        //controla animationnumberiniti
         public int animationNumberCounter = 0;
         public int corpoCounter = 0;
         public int countAnimation = 0;
@@ -30,7 +26,7 @@ namespace freeFall
         public int greatestValueTime = 0;
         public int openGraficsControl = 0;
         public int spaceDiv = 0;
-        public int sound = 1;
+        public int sound = 0; // ativa os sons
         public int countVaccum = 0;
         public int countPaper = 0;
         public int countBody = 0;
@@ -86,7 +82,6 @@ namespace freeFall
             panelAnimation.Controls.Add(animationWindow);
             animationWindow.Show();
             checkBoxGrafic.Checked = true;
-            checkBoxSound.Checked = true;
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(Simulator_PreviewKeyDown);
         }
         private void loadinDataCorpos()
@@ -682,7 +677,7 @@ namespace freeFall
                 labelTextStart.Location = new Point(57, 24);
                 labelTextStart.Text = "1";
                 timerSound();
-                timerNumerAnimationIniti.Interval = 2000;
+                timerNumerAnimationIniti.Interval = 1000;
             }
             if (animationNumberCounter == 2)
             {
@@ -884,34 +879,7 @@ namespace freeFall
         {
             Application.Restart();
         }
-        private void buttonPlanet_Click(object sender, EventArgs e)
-        {
-            if (planetCounter == 10)
-            {
-                if (Program.configurePlanetControl == 0)
-                {
-                    ConfigurePlanet windowConfigurePlanet = new ConfigurePlanet();
-                    windowConfigurePlanet.Show();
-                }
-            }
-            else
-            {
-                if (Program.dataControl == 0)
-                {
-                    Data windowData = new Data();
-                    windowData.Show();
-                }
-            }
-        }
 
-        private void buttonConfigPlanet_Click(object sender, EventArgs e)
-        {
-            if (Program.configurePlanetControl == 0)
-            {
-                ConfigurePlanet windowConfigurePlanet = new ConfigurePlanet();
-                windowConfigurePlanet.Show();
-            }
-        }
         private void buttonLogo_Click(object sender, EventArgs e)
         {
             programView x = new programView();
@@ -1282,12 +1250,12 @@ namespace freeFall
         }
         private void Altura_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(LbAltura, "A altura deve ser menor que 101 metros.");
+            toolTip.SetToolTip(LbAltura, "A altura na qual os objetos serão soltos.");
         }
 
         private void label6_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(label6, "Gravidade do planeta selecionado.");
+            toolTip.SetToolTip(label6, "Gravidade do astro selecionado.");
         }
 
         private void checkBoxVacuum_MouseHover(object sender, EventArgs e)
@@ -1308,18 +1276,27 @@ namespace freeFall
         {
             toolTip.SetToolTip(buttonBall, "Muda a imagem do corpo.");
         }
-        private void labelAirAirDensity_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(labelAirAirDensity, "Densidade superficial da atmosfera.");
-        }
-        private void checkBoxResistanceRV1_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxResistanceRV1, "Adiciona a resistência do ar ao experimênto.");
-        }
         private void buttonData_MouseHover(object sender, EventArgs e)
         {
             toolTip.SetToolTip(buttonData, "Exibe os dados configurados do experimento.");
         }
+        private void labelAirAirDensity_MouseHover_1(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(labelAirAirDensity, "Densidade superficial da atmosfera.");
+        }
+        private void checkBoxResistanceRV1_MouseHover_1(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(checkBoxResistanceRV1, "Adiciona a resistência do ar ao experimênto.");
+        }
+        private void checkBoxGrafic_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(checkBoxGrafic, "Inverte o eixo Y nos gráficos.");
+        }
+        private void checkBox3D_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(checkBox3D, "Deixa os gráficos em 3d."); 
+        }
+
         public void updatePosition(int countGrafic, int op, int countBody, int countPaper, int countVaccum)
         {
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
@@ -1742,21 +1719,6 @@ namespace freeFall
         {
             colorAll();
         }
-        private void Simulator_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyCode == Keys.Up)
-            {
-                Console.WriteLine("Tecla de seta para cima pressionada!");
-            }
-            if (e.KeyCode == Keys.Down)
-            {
-                Console.WriteLine("Tecla de seta para baixo pressionada!");
-            }
-        }
-        private void checkBoxGrafic_CheckStateChanged(object sender, EventArgs e)
-        {
-        }
-
         private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -1824,17 +1786,6 @@ namespace freeFall
                 animationWindow.picutureEixos(1);
             }
         }
-        private void checkBoxSound_CheckedChanged(object sender, EventArgs e)
-        {
-            if (checkBoxSound.Checked == true)
-            {
-                sound = 1;
-            }
-            else
-            {
-                sound = 0;
-            }
-        }
         private void timerVenus_Tick(object sender, EventArgs e)
         {
             
@@ -1873,6 +1824,9 @@ namespace freeFall
         {
 
         }
+
+
+
         private void chartSpace_Click(object sender, EventArgs e)
         {
 
@@ -1911,10 +1865,7 @@ namespace freeFall
         {
 
         }
-        private void checkBox3D_MouseHover(object sender, EventArgs e)
-        {
 
-        }
         private void pictureBoxTimeLeft_Click(object sender, EventArgs e)
         {
 
@@ -1930,6 +1881,13 @@ namespace freeFall
         private void timerEixos_Tick(object sender, EventArgs e)
         {
 
+        }
+        private void Simulator_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+
+        }
+        private void checkBoxGrafic_CheckStateChanged(object sender, EventArgs e)
+        {
         }
     }
 }
