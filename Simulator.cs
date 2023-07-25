@@ -93,11 +93,11 @@ namespace freeFall
             Program.gravity = 9.8;
 
             Program.ball.Mass = 0.45;
-            Program.ball.DragCoefficient = 0.3;
+            Program.ball.DragCoefficient = 0.5;
             Program.ball.CrossSectionalArea = 0.038806;
 
             Program.paper.Mass = 0.00465;
-            Program.paper.DragCoefficient = 0.7;
+            Program.paper.DragCoefficient = 0.8;
             Program.paper.CrossSectionalArea = 0.04; // amaçada 0.001341640872
 
             Program.vaccum.Mass = Program.paper.Mass;
@@ -286,12 +286,12 @@ namespace freeFall
 
         private void timerAirResistence_Tick(object sender, EventArgs e)
         {
-            if(checkBoxResistanceRV1.Checked == true)
+            if (checkBoxResistanceRV1.Checked == true)
             {
                 animationWindow.picutureResistence(0);
                 Program.airResistance = 1;
             }
-            if(checkBoxResistanceRV1.Checked == false)
+            if (checkBoxResistanceRV1.Checked == false)
             {
                 animationWindow.picutureResistence(1);
                 Program.airResistance = 0;
@@ -367,7 +367,7 @@ namespace freeFall
         }
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
-            if(countBody < Program.ball.NumberOfTerms)
+            if (countBody < Program.ball.NumberOfTerms)
             {
                 animationWindow.animationCorpo(countBody);
                 if (greatestValueTime == 1 || greatestValueTime == 0)
@@ -381,7 +381,7 @@ namespace freeFall
                     txtEspaco.Text = " " + 0;
                 }
             }
-           
+
             countBody = countBody + 1;
 
             if (countBody >= Program.ball.NumberOfTerms)
@@ -399,7 +399,7 @@ namespace freeFall
         }
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
-            if(countPaper < Program.paper.NumberOfTerms)
+            if (countPaper < Program.paper.NumberOfTerms)
             {
                 animationWindow.animationPaper(countPaper);
 
@@ -692,7 +692,7 @@ namespace freeFall
             if (animationNumberCounter == 4)
             {
                 labelTextStart.Location = new Point(20, 24);
-                labelTextStart.Text = "CAINDO!"; 
+                labelTextStart.Text = "CAINDO!";
                 BTNIniciar.Enabled = true;
                 clear();
                 experimentFlag();
@@ -965,8 +965,8 @@ namespace freeFall
                 animationWindow.vacuumSelectedValueChange(1);
                 pictureBoxVaccumObject.Image = Properties.Resources.paper2;
                 flagVaccumObject = 0;
-                Program.vaccum.DragCoefficient = 1.2;
-                Program.vaccum.CrossSectionalArea = 0.06237;
+                Program.vaccum.DragCoefficient = 0.8;
+                Program.vaccum.CrossSectionalArea = 0.04;
             }
         }
 
@@ -977,18 +977,19 @@ namespace freeFall
                 animationWindow.pictureBoxCorpoPaperSelected(0);
                 pictureBoxPaper.Image = Properties.Resources.paper2;
                 Program.crumpledPaper = 0;
-                Program.paper.DragCoefficient = 1.2;
-                Program.paper.CrossSectionalArea = 0.06237;
+                Program.paper.DragCoefficient = 0.8;
+                Program.paper.CrossSectionalArea = 0.04;
             }
             else
             {
                 animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
                 Program.crumpledPaper = 1;
-                Program.paper.DragCoefficient = 0.4;
+                Program.paper.DragCoefficient = 0.5;
                 Program.paper.CrossSectionalArea = 0.00134;
             }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             corpoCounter += 1;
@@ -1044,7 +1045,48 @@ namespace freeFall
                 Program.vaccumImageExperiment = pictureBoxVaccumObject.Image;
             }
         }
-       
+
+        public void venusStates()
+        {
+            if (cmbPlaneta.Text == "Vênus")
+            {
+                animationWindow.pictureBoxCorpoPaperSelected(1);
+                pictureBoxPaper.Image = Properties.Resources.paper3;
+                Program.crumpledPaper = 1;
+                Program.paper.DragCoefficient = 0.5;
+                Program.paper.CrossSectionalArea = 0.00134;
+                if (flagVenus == 0)
+                {
+                    paperStates = comboPaper.Text;
+                    flagVenus = 1;
+                }
+                comboPaper.Text = "Amaçada";
+                comboPaper.Enabled = false;
+                labelVenus.Visible = true;
+            }
+            else
+            {
+                if (paperStates == "Aberta")
+                {
+                    animationWindow.pictureBoxCorpoPaperSelected(0);
+                    pictureBoxPaper.Image = Properties.Resources.paper2;
+                    Program.crumpledPaper = 0;
+                    Program.paper.DragCoefficient = 0.8;
+                    Program.paper.CrossSectionalArea = 0.04;
+                    comboPaper.Text = "Aberta";
+                }
+                if (checkBoxPaper.Checked == true)
+                {
+                    comboPaper.Enabled = true;
+                }
+                else
+                {
+                    comboPaper.Enabled = false;
+                }
+                labelVenus.Visible = false;
+                flagVenus = 0;
+            }
+        }
         private void planetData()
         {
             if (planetCounter == 1)
@@ -1143,47 +1185,6 @@ namespace freeFall
             Program.planetImage = pictureBoxPlanets.Image;
             textBoxAirDensity.Text = "" + Program.airDensity;
         }
-        public void venusStates()
-        {
-            if (cmbPlaneta.Text == "Vênus")
-            {
-                animationWindow.pictureBoxCorpoPaperSelected(1);
-                pictureBoxPaper.Image = Properties.Resources.paper3;
-                Program.crumpledPaper = 1;
-                Program.paper.DragCoefficient = 0.4;
-                Program.paper.CrossSectionalArea = 0.00134;
-                if(flagVenus == 0)
-                {
-                    paperStates = comboPaper.Text;
-                    flagVenus = 1;
-                }
-                comboPaper.Text = "Amaçada";
-                comboPaper.Enabled = false;
-                labelVenus.Visible = true;
-            }
-            else
-            {
-                if (paperStates == "Aberta")
-                {
-                    animationWindow.pictureBoxCorpoPaperSelected(0);
-                    pictureBoxPaper.Image = Properties.Resources.paper2;
-                    Program.crumpledPaper = 0;
-                    Program.paper.DragCoefficient = 1.2;
-                    Program.paper.CrossSectionalArea = 0.06237;
-                    comboPaper.Text = "Aberta";
-                }
-                if (checkBoxPaper.Checked == true)
-                {
-                    comboPaper.Enabled = true;
-                }
-                else
-                {
-                    comboPaper.Enabled = false;
-                }
-                labelVenus.Visible = false;
-                flagVenus = 0;
-            }
-        }
         private void pictureBoxNext_Click(object sender, EventArgs e)
         {
             planetCounter += 1;
@@ -1207,6 +1208,15 @@ namespace freeFall
             }
             planetData();
         }
+        private void buttonPlanet_Click(object sender, EventArgs e)
+        {
+            if (Program.dataControl == 0)
+            {
+                Data windowData = new Data();
+                windowData.Show();
+            }
+        }
+
         private void cmbPlaneta_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbPlaneta.Text == "Terra")
@@ -1248,55 +1258,6 @@ namespace freeFall
             planetData();
             Program.planetCounter = planetCounter;
         }
-        private void Altura_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(LbAltura, "A altura na qual os objetos serão soltos.");
-        }
-
-        private void label6_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(label6, "Gravidade do astro selecionado.");
-        }
-
-        private void checkBoxVacuum_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxVacuum, "Câmara de vácuo.");
-        }
-
-        private void checkBoxLeaf_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxPaper, "Corpo com alta resistência ao ar.");
-        }
-
-        private void checkBoxEixo_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxEixo, "Exibe eixos no experimento.");
-        }
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(buttonBall, "Muda a imagem do corpo.");
-        }
-        private void buttonData_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(buttonData, "Exibe os dados configurados do experimento.");
-        }
-        private void labelAirAirDensity_MouseHover_1(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(labelAirAirDensity, "Densidade superficial da atmosfera.");
-        }
-        private void checkBoxResistanceRV1_MouseHover_1(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxResistanceRV1, "Adiciona a resistência do ar ao experimênto.");
-        }
-        private void checkBoxGrafic_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBoxGrafic, "Inverte o eixo Y nos gráficos.");
-        }
-        private void checkBox3D_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(checkBox3D, "Deixa os gráficos em 3d."); 
-        }
-
         public void updatePosition(int countGrafic, int op, int countBody, int countPaper, int countVaccum)
         {
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
@@ -1318,7 +1279,7 @@ namespace freeFall
                         textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
                     }
                 }
-                if(countPaper < Program.paper.NumberOfTerms)
+                if (countPaper < Program.paper.NumberOfTerms)
                 {
                     animationWindow.animationPaper(countPaper);
                     if (Program.paper.Space[countPaper] < 0.3)
@@ -1336,7 +1297,7 @@ namespace freeFall
                         textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countPaper], 2);
                     }
                 }
-                if(countVaccum < Program.vaccum.NumberOfTerms)
+                if (countVaccum < Program.vaccum.NumberOfTerms)
                 {
                     animationWindow.animationVaccum(countVaccum);
                     if (Program.vaccum.Space[countVaccum] < 0.3)
@@ -1711,6 +1672,10 @@ namespace freeFall
             groupBoxExperiment.ForeColor = Program.colorSimulator;
             labelAirAirDensity.ForeColor = Program.colorSimulator;
             textBoxAirDensity.ForeColor = Program.colorSimulator;
+            labelMaskPapel.ForeColor = Program.colorSimulator;
+            labelMaskVaccum.ForeColor = Program.colorSimulator;
+            labelMaskAirResistence.ForeColor = Program.colorSimulator;
+            labelMaskInverter.ForeColor = Program.colorSimulator;
             spaceWindow.colorAll();
             speedWindow.colorAll();
             animationWindow.colorAll();
@@ -1786,9 +1751,53 @@ namespace freeFall
                 animationWindow.picutureEixos(1);
             }
         }
+        private void Altura_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(LbAltura, "A altura na qual os objetos serão soltos.");
+        }
+        private void label6_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(label6, "Gravidade do astro selecionado.");
+        }
+        private void checkBoxEixo_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(checkBoxEixo, "Exibe eixos no experimento.");
+        }
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(buttonBall, "Muda a imagem do corpo.");
+        }
+        private void buttonData_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(buttonData, "Exibe os dados configurados do experimento.");
+        }
+        private void labelAirAirDensity_MouseHover_1(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(labelAirAirDensity, "Densidade superficial da atmosfera.");
+        }
+        private void checkBox3D_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(checkBox3D, "Deixa os gráficos em 3d.");
+        }
+        private void labelMaskPapel_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(labelMaskPapel, "Corpo com alta resistência ao ar.");
+        }
+        private void labelMaskVaccum_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(labelMaskVaccum, "Câmara de vácuo.");
+        }
+        private void labelMaskAirResistence_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(labelMaskAirResistence, "Adiciona a resistência do ar ao experimênto.");
+        }
+        private void labelMaskInverter_MouseHover(object sender, EventArgs e)
+        {
+            toolTip.SetToolTip(labelMaskInverter, "Inverte o eixo Y nos gráficos.");
+        }
         private void timerVenus_Tick(object sender, EventArgs e)
         {
-            
+
         }
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1824,9 +1833,6 @@ namespace freeFall
         {
 
         }
-
-
-
         private void chartSpace_Click(object sender, EventArgs e)
         {
 
@@ -1845,6 +1851,7 @@ namespace freeFall
         {
 
         }
+
         private void label26_Click(object sender, EventArgs e)
         {
 
@@ -1888,6 +1895,24 @@ namespace freeFall
         }
         private void checkBoxGrafic_CheckStateChanged(object sender, EventArgs e)
         {
+
+        }
+        private void checkBoxVacuum_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBoxLeaf_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+        private void checkBoxResistanceRV1_MouseHover_1(object sender, EventArgs e)
+        {
+
+        }
+        private void checkBoxGrafic_MouseHover(object sender, EventArgs e)
+        {
+
         }
     }
 }

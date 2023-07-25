@@ -16,13 +16,6 @@ namespace freeFall
         public static int planetCounterSave;
         public static string n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19;
 
-        private void Data_Resize(object sender, EventArgs e)
-        {
-
-        }
-
-      
-
         private void timerFocus_Tick(object sender, EventArgs e)
         {
             pictureBoxNext.Focus();
@@ -40,11 +33,6 @@ namespace freeFall
             Program.planetCounter = planetCounterSave;
             Program.planetName = planetName;
             Program.dataControl = 0;
-        }
-
-        private void richTextBoxPlanet_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         public Data()
@@ -74,11 +62,6 @@ namespace freeFall
             dataGridViewPlanets.GridColor = Program.colorSimulator;
             dataGridViewPlanets.DefaultCellStyle.ForeColor = Program.colorSimulator;
             Program.simulatorTrackBarValueFlag = 1;
-        }
-
-        private void Data_Load(object sender, EventArgs e)
-        {
-
         }
         private void loadPlaentData(int Planet)
         {
@@ -386,16 +369,16 @@ namespace freeFall
             DataTable table = new DataTable();
             table.TableName = "Customers";
             table.Columns.Add("hue", typeof(string));
-            table.Columns.Add("Área da Superfície (km^2)", typeof(string));
+            table.Columns.Add("Área da Superfície (km²)", typeof(string));
             table.Columns.Add("Circunferência Equatorial (km)", typeof(string));
             table.Columns.Add("Raio Equatorial (km)", typeof(string));
 
             table.Columns.Add("Diâmetro (km)", typeof(string));
             table.Columns.Add("Distância Orbital Média (km)", typeof(string));
-            table.Columns.Add("Volume (km^3)", typeof(string));
+            table.Columns.Add("Volume (km³)", typeof(string));
             table.Columns.Add("Massa (kg)", typeof(string));
-            table.Columns.Add("Densidade (g/cm^3)", typeof(string));
-            table.Columns.Add("Gravidade (m/s^2)", typeof(string));
+            table.Columns.Add("Densidade (g/cm³)", typeof(string));
+            table.Columns.Add("Gravidade (m/s²)", typeof(string));
             table.Columns.Add("Velocidade de Escape (km/h)", typeof(string));
             table.Columns.Add("Período de Rotação (Dias Terres.)", typeof(string));
             table.Columns.Add("Período de órbita (Anos Terres.)", typeof(string));
@@ -427,7 +410,7 @@ namespace freeFall
                 n4 = "12.742";
                 n5 = "149.598.262";
                 n6 = "1.083.206.916.846 ";
-                n7 = "5,9722 x 10^24";
+                n7 = "5,9722 x 10²⁴";
                 n8 = "5.513";
                 n9 = "9,80665";
                 n10 = "40.284";
@@ -451,7 +434,7 @@ namespace freeFall
                 n4 = "3.474,2";
                 n5 = "384.400 ";
                 n6 = "21.971.669.064 ";
-                n7 = "7,3477 x 10^22 ";
+                n7 = "7,3477 x 10²² ";
                 n8 = "3,344";
                 n9 = "1,624";
                 n10 = "8.552";
@@ -474,8 +457,8 @@ namespace freeFall
                 n3 = "2.439,7";
                 n4 = "4.879,4";
                 n5 = "57.909.227";
-                n6 = "60.827.208.742 ";
-                n7 = "3,3010 x 10^23 ";
+                n6 = "60.827.208.742";
+                n7 = "3,3010 x 10²³";
                 n8 = "5,427";
                 n9 = "3,7";
                 n10 = "15.300";
@@ -499,7 +482,7 @@ namespace freeFall
                 n4 = "12.104";
                 n5 = "108.209.475";
                 n6 = "928.415.345.893";
-                n7 = "4,8673 x 10^24";
+                n7 = "4,8673 x 10²⁴";
                 n8 = "5,243";
                 n9 = "8,87";
                 n10 = "37.296";
@@ -523,7 +506,7 @@ namespace freeFall
                 n4 = "6.779";
                 n5 = "227.943.824";
                 n6 = "163.115.609.799 ";
-                n7 = "6,4169 x 10^23 ";
+                n7 = "6,4169 x 10²³";
                 n8 = "3.934";
                 n9 = "3,71";
                 n10 = "18.108";
@@ -547,7 +530,7 @@ namespace freeFall
                 n4 = "139.820";
                 n5 = "778.340.821";
                 n6 = "1.431.281.810.739.360 ";
-                n7 = "1.8981 x 10^27 ";
+                n7 = "1.8981 x 10²⁷";
                 n8 = "1.326";
                 n9 = "24,79";
                 n10 = "216.720";
@@ -571,7 +554,7 @@ namespace freeFall
                 n4 = "116.460";
                 n5 = "1.426.666.422";
                 n6 = "827.129.915.150.897 ";
-                n7 = "5,6832 x 10^26 ";
+                n7 = "5,6832 x 10²⁶";
                 n8 = "0,687";
                 n9 = "10,4";
                 n10 = "129.924";
@@ -595,7 +578,7 @@ namespace freeFall
                 n4 = "50.724";
                 n5 = "2.870.658.186";
                 n6 = "68.334.355.695.584 ";
-                n7 = "8,6810 x 10^25 ";
+                n7 = "8,6810 x 10²⁵";
                 n8 = "1.270";
                 n9 = "8,87";
                 n10 = "76.968";
@@ -619,7 +602,7 @@ namespace freeFall
                 n4 = "49.224";
                 n5 = "4.498.396.441";
                 n6 = "62.525.703.987.421 ";
-                n7 = "1.0241 x 10^26 ";
+                n7 = "1.0241 x 10²⁶";
                 n8 = "1.638";
                 n9 = "11,15";
                 n10 = "84.816";
@@ -634,6 +617,17 @@ namespace freeFall
                 n19 = "sim";
                 richTextBoxPlanet.Text = " Netuno, o oitavo e mais distante planeta do nosso Sistema Solar, é o único que não pode ser visto a olho nu e foi o primeiro planeta a ser previsto matematicamente antes de sua descoberta. Em Netuno, ocorrem ventos extremamente fortes que podem atingir velocidades de aproximadamente 2.000 quilômetros por hora, devido à sua natureza como um planeta gasoso. Sua atmosfera é composta principalmente de hidrogênio e hélio, além de conter vestígios de metano e hidrocarbonetos em sua composição química.";
             }
+        }
+        private void Data_Resize(object sender, EventArgs e)
+        {
+
+        }
+        private void richTextBoxPlanet_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void Data_Load(object sender, EventArgs e)
+        {
 
         }
     }

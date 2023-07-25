@@ -274,6 +274,5 @@ namespace freeFall
                 Application.OpenForms["Speed"].Focus();
             }
         }
-        // ---
     }
 }

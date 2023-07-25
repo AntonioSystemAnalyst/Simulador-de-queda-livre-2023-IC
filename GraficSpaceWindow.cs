@@ -13,12 +13,6 @@ namespace freeFall
             InitializeComponent();
             //colorAll();
         }
-
-        private void GraficSpaceWindow_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public void grafic3dSpace(int op)
         {
             if (op == 0)
@@ -280,6 +274,10 @@ namespace freeFall
         private void GraficSpaceWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
            
+        }
+        private void GraficSpaceWindow_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

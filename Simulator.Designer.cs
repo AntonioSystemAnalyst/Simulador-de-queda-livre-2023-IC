@@ -64,6 +64,10 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.labelMaskInverter = new System.Windows.Forms.Label();
+            this.labelMaskAirResistence = new System.Windows.Forms.Label();
+            this.labelMaskVaccum = new System.Windows.Forms.Label();
+            this.labelMaskPapel = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxAirDensity = new System.Windows.Forms.TextBox();
@@ -521,6 +525,7 @@
             this.buttonPlanet.TabIndex = 9;
             this.buttonPlanet.Text = "Terra";
             this.buttonPlanet.UseVisualStyleBackColor = true;
+            this.buttonPlanet.Click += new System.EventHandler(this.buttonPlanet_Click);
             // 
             // pictureBoxPlanets
             // 
@@ -537,6 +542,10 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.Controls.Add(this.labelMaskInverter);
+            this.groupBoxConfiguracao.Controls.Add(this.labelMaskAirResistence);
+            this.groupBoxConfiguracao.Controls.Add(this.labelMaskVaccum);
+            this.groupBoxConfiguracao.Controls.Add(this.labelMaskPapel);
             this.groupBoxConfiguracao.Controls.Add(this.label14);
             this.groupBoxConfiguracao.Controls.Add(this.label13);
             this.groupBoxConfiguracao.Controls.Add(this.textBoxAirDensity);
@@ -568,11 +577,55 @@
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
             // 
+            // labelMaskInverter
+            // 
+            this.labelMaskInverter.AutoSize = true;
+            this.labelMaskInverter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaskInverter.Location = new System.Drawing.Point(133, 173);
+            this.labelMaskInverter.Name = "labelMaskInverter";
+            this.labelMaskInverter.Size = new System.Drawing.Size(63, 13);
+            this.labelMaskInverter.TabIndex = 51;
+            this.labelMaskInverter.Text = "Inverter Y";
+            this.labelMaskInverter.MouseHover += new System.EventHandler(this.labelMaskInverter_MouseHover);
+            // 
+            // labelMaskAirResistence
+            // 
+            this.labelMaskAirResistence.AutoSize = true;
+            this.labelMaskAirResistence.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaskAirResistence.Location = new System.Drawing.Point(25, 218);
+            this.labelMaskAirResistence.Name = "labelMaskAirResistence";
+            this.labelMaskAirResistence.Size = new System.Drawing.Size(106, 13);
+            this.labelMaskAirResistence.TabIndex = 50;
+            this.labelMaskAirResistence.Text = "Resistência do ar";
+            this.labelMaskAirResistence.MouseHover += new System.EventHandler(this.labelMaskAirResistence_MouseHover);
+            // 
+            // labelMaskVaccum
+            // 
+            this.labelMaskVaccum.AutoSize = true;
+            this.labelMaskVaccum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaskVaccum.Location = new System.Drawing.Point(24, 110);
+            this.labelMaskVaccum.Name = "labelMaskVaccum";
+            this.labelMaskVaccum.Size = new System.Drawing.Size(43, 13);
+            this.labelMaskVaccum.TabIndex = 49;
+            this.labelMaskVaccum.Text = "Vácuo";
+            this.labelMaskVaccum.MouseHover += new System.EventHandler(this.labelMaskVaccum_MouseHover);
+            // 
+            // labelMaskPapel
+            // 
+            this.labelMaskPapel.AutoSize = true;
+            this.labelMaskPapel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMaskPapel.Location = new System.Drawing.Point(24, 62);
+            this.labelMaskPapel.Name = "labelMaskPapel";
+            this.labelMaskPapel.Size = new System.Drawing.Size(39, 13);
+            this.labelMaskPapel.TabIndex = 48;
+            this.labelMaskPapel.Text = "Papel";
+            this.labelMaskPapel.MouseHover += new System.EventHandler(this.labelMaskPapel_MouseHover);
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(165, 86);
+            this.label14.Location = new System.Drawing.Point(165, 84);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(48, 13);
             this.label14.TabIndex = 47;
@@ -595,7 +648,7 @@
             this.textBoxAirDensity.Cursor = System.Windows.Forms.Cursors.No;
             this.textBoxAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxAirDensity.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxAirDensity.Location = new System.Drawing.Point(114, 83);
+            this.textBoxAirDensity.Location = new System.Drawing.Point(114, 81);
             this.textBoxAirDensity.Name = "textBoxAirDensity";
             this.textBoxAirDensity.ReadOnly = true;
             this.textBoxAirDensity.Size = new System.Drawing.Size(51, 20);
@@ -605,7 +658,7 @@
             // 
             this.labelAirAirDensity.AutoSize = true;
             this.labelAirAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelAirAirDensity.Location = new System.Drawing.Point(111, 65);
+            this.labelAirAirDensity.Location = new System.Drawing.Point(111, 63);
             this.labelAirAirDensity.Name = "labelAirAirDensity";
             this.labelAirAirDensity.Size = new System.Drawing.Size(100, 13);
             this.labelAirAirDensity.TabIndex = 44;
@@ -615,7 +668,7 @@
             // checkBoxResistanceRV1
             // 
             this.checkBoxResistanceRV1.AutoSize = true;
-            this.checkBoxResistanceRV1.Location = new System.Drawing.Point(8, 165);
+            this.checkBoxResistanceRV1.Location = new System.Drawing.Point(8, 216);
             this.checkBoxResistanceRV1.Name = "checkBoxResistanceRV1";
             this.checkBoxResistanceRV1.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistanceRV1.TabIndex = 43;
@@ -627,7 +680,7 @@
             // checkBoxGrafic
             // 
             this.checkBoxGrafic.AutoSize = true;
-            this.checkBoxGrafic.Location = new System.Drawing.Point(8, 216);
+            this.checkBoxGrafic.Location = new System.Drawing.Point(114, 172);
             this.checkBoxGrafic.Name = "checkBoxGrafic";
             this.checkBoxGrafic.Size = new System.Drawing.Size(82, 17);
             this.checkBoxGrafic.TabIndex = 41;
@@ -661,7 +714,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(98, 216);
+            this.checkBox3D.Location = new System.Drawing.Point(114, 197);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -675,7 +728,7 @@
             this.labelTextColor.AutoSize = true;
             this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
-            this.labelTextColor.Location = new System.Drawing.Point(152, 164);
+            this.labelTextColor.Location = new System.Drawing.Point(111, 112);
             this.labelTextColor.Name = "labelTextColor";
             this.labelTextColor.Size = new System.Drawing.Size(44, 15);
             this.labelTextColor.TabIndex = 40;
@@ -702,7 +755,7 @@
             this.comboBoxVacuum.FormattingEnabled = true;
             this.comboBoxVacuum.Items.AddRange(new object[] {
             "Folha",
-            "Bóla"});
+            "Bola"});
             this.comboBoxVacuum.Location = new System.Drawing.Point(8, 130);
             this.comboBoxVacuum.Name = "comboBoxVacuum";
             this.comboBoxVacuum.Size = new System.Drawing.Size(85, 21);
@@ -758,7 +811,7 @@
             this.comboPaper.Items.AddRange(new object[] {
             "Aberta",
             "Amaçada"});
-            this.comboPaper.Location = new System.Drawing.Point(8, 83);
+            this.comboPaper.Location = new System.Drawing.Point(8, 81);
             this.comboPaper.Name = "comboPaper";
             this.comboPaper.Size = new System.Drawing.Size(85, 21);
             this.comboPaper.TabIndex = 36;
@@ -768,7 +821,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(151, 216);
+            this.checkBoxEixo.Location = new System.Drawing.Point(155, 197);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -780,7 +833,7 @@
             // checkBoxPaper
             // 
             this.checkBoxPaper.AutoSize = true;
-            this.checkBoxPaper.Location = new System.Drawing.Point(8, 63);
+            this.checkBoxPaper.Location = new System.Drawing.Point(8, 61);
             this.checkBoxPaper.Name = "checkBoxPaper";
             this.checkBoxPaper.Size = new System.Drawing.Size(58, 17);
             this.checkBoxPaper.TabIndex = 31;
@@ -829,9 +882,9 @@
             "Saturno",
             "Urano",
             "Netuno"});
-            this.cmbPlaneta.Location = new System.Drawing.Point(114, 130);
+            this.cmbPlaneta.Location = new System.Drawing.Point(8, 179);
             this.cmbPlaneta.Name = "cmbPlaneta";
-            this.cmbPlaneta.Size = new System.Drawing.Size(93, 21);
+            this.cmbPlaneta.Size = new System.Drawing.Size(85, 21);
             this.cmbPlaneta.TabIndex = 28;
             this.cmbPlaneta.SelectedValueChanged += new System.EventHandler(this.cmbPlaneta_SelectedValueChanged);
             // 
@@ -839,7 +892,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(111, 110);
+            this.label4.Location = new System.Drawing.Point(5, 159);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 25;
@@ -847,11 +900,11 @@
             // 
             // trackBarColors
             // 
-            this.trackBarColors.Location = new System.Drawing.Point(139, 181);
+            this.trackBarColors.Location = new System.Drawing.Point(108, 129);
             this.trackBarColors.Maximum = 9;
             this.trackBarColors.Minimum = 1;
             this.trackBarColors.Name = "trackBarColors";
-            this.trackBarColors.Size = new System.Drawing.Size(71, 45);
+            this.trackBarColors.Size = new System.Drawing.Size(99, 45);
             this.trackBarColors.TabIndex = 12;
             this.trackBarColors.Value = 1;
             this.trackBarColors.Scroll += new System.EventHandler(this.trackBarPlanets_Scroll);
@@ -1207,5 +1260,9 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Timer timerVenus;
         private System.Windows.Forms.Label labelVenus;
+        private System.Windows.Forms.Label labelMaskInverter;
+        private System.Windows.Forms.Label labelMaskAirResistence;
+        private System.Windows.Forms.Label labelMaskVaccum;
+        private System.Windows.Forms.Label labelMaskPapel;
     }
 }

@@ -138,7 +138,7 @@
             this.labelY.AutoSize = true;
             this.labelY.BackColor = System.Drawing.Color.Transparent;
             this.labelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelY.Location = new System.Drawing.Point(16, 561);
+            this.labelY.Location = new System.Drawing.Point(18, 576);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(11, 12);
             this.labelY.TabIndex = 16;
@@ -149,7 +149,7 @@
             // 
             this.labelZero.AutoSize = true;
             this.labelZero.BackColor = System.Drawing.Color.Transparent;
-            this.labelZero.Location = new System.Drawing.Point(11, 591);
+            this.labelZero.Location = new System.Drawing.Point(17, 591);
             this.labelZero.Name = "labelZero";
             this.labelZero.Size = new System.Drawing.Size(14, 13);
             this.labelZero.TabIndex = 15;
@@ -249,7 +249,7 @@
             this.labelX.AutoSize = true;
             this.labelX.BackColor = System.Drawing.Color.Transparent;
             this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX.Location = new System.Drawing.Point(29, 590);
+            this.labelX.Location = new System.Drawing.Point(32, 591);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(12, 12);
             this.labelX.TabIndex = 17;

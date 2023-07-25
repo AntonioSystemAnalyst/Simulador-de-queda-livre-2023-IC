@@ -85,7 +85,7 @@ namespace freeFall
             int i = 0;
 
             finalVelocity = Math.Sqrt((initialVelocityExperiment * initialVelocityExperiment) + (2 * gravity * height));
-            timeAllExperiment = Math.Round((finalVelocity - initialVelocityExperiment) / gravity, 3);
+            timeAllExperiment = Math.Round(((finalVelocity - initialVelocityExperiment) / gravity), precision);
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01);
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
@@ -97,7 +97,7 @@ namespace freeFall
             for (i = 0; i < numberOfTerms; i++)
             {
                 space[i] = height + ((initialVelocityExperiment * countTime) + (-1*gravity * (countTime * countTime)) / 2);
-                spaceTime[i] = Math.Round(countTime, 3);
+                spaceTime[i] = Math.Round(countTime, precision);
                 countTime = countTime + 0.01;
             }
 
