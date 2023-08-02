@@ -16,10 +16,9 @@ namespace freeFall
 
         // ---
         public double term0, term1, term2, term3, term4, term5;
-        public double term6, term7, term8, term9, term10;
+        public double term6, term7;
         public int precision = 13;
         public double velocityPoint;
-        public double spacePoint;
         public double greatValueVelocity;
         public static double countTime;
         // --- Antimation
@@ -30,7 +29,6 @@ namespace freeFall
         private double[] spacePixel;
         private double[] space;
         private double[] velocity;
-        private double[] animationSpace;
         private double[] countTimeExperiment;
         private double[] animationPixel;
         private int[] pixels;
@@ -42,42 +40,55 @@ namespace freeFall
         }
         public void animationVector(int quantityPixel, double height)
         {
-            qtdSpaceForNumberOfTermes = height / numberOfTerms;  
             qtdSpaceForPixels = height / quantityPixel; 
-            double countSpace = 0.0; 
+            double countSpace = 0.0;
             int i = 0, k = 0; 
-            int status = 0; 
-
-            animationPixel = new double[quantityPixel + 2]; 
-            animationSpace = new double[numberOfTerms + 2]; 
-            pixels = new int[numberOfTerms + 2]; 
-
-            for (i = 0; i < numberOfTerms; i++)  
-            {
-                animationSpace[i] = countSpace;
-                countSpace = countSpace + qtdSpaceForNumberOfTermes;
-            }
-
-            countSpace = 0.0;
+            int status = 0;
+            int start = 0;
+            int end = numberOfTerms - 1;
+            int[] auxiliary;
+            animationPixel = new double[quantityPixel + 1]; 
+            pixels = new int[numberOfTerms + 1];
+            auxiliary = new int[numberOfTerms + 1];
+  
             for (i = 0; i <= quantityPixel; i++) 
             {
                 animationPixel[i] = countSpace;
                 countSpace = countSpace + qtdSpaceForPixels;
             }
-
+            
             for (i = 0; i < numberOfTerms; i++) 
             {
                 status = 0;
                 for (k = 0; k <= quantityPixel; k++)
                 {
-                    if (animationPixel[k] >= animationSpace[i] && status == 0)
+                    if ((animationPixel[k] - space[(numberOfTerms-1)-i]) >= 0.01 && status == 0)
                     {
-                        pixels[i] = k;
+                        auxiliary[i] = k;
                         status = 1;
                     }
                 }
             }
-            pixels[numberOfTerms] = quantityPixel; 
+
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                pixels[i] = - (auxiliary[i] - quantityPixel);
+                if (auxiliary[i] == 0)
+                {
+                    pixels[i] = 0;
+                }
+            }
+
+            while (start < end)
+            {
+                int temp = pixels[start];
+                pixels[start] = pixels[end];
+                pixels[end] = temp;
+                start++;
+                end--;
+            }
+
+            pixels[numberOfTerms] = quantityPixel;
         }
         public void CalculateOutResistence(double height, double gravity, double initialVelocityExperiment)
         {
@@ -364,12 +375,6 @@ namespace freeFall
         {
             get { return velocity; }
             set { velocity = value; }
-        }
-
-        public double[] AnimationSpace
-        {
-            get { return animationSpace; }
-            set { animationSpace = value; }
         }
     }
 }

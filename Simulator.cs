@@ -277,12 +277,6 @@ namespace freeFall
                 }
             }
         }
-        private void checkBoxResistance_CheckedChanged_1(object sender, EventArgs e)
-        {
-            if (checkBoxResistanceRV1.Checked)
-            {
-            }
-        }
 
         private void timerAirResistence_Tick(object sender, EventArgs e)
         {
@@ -1798,6 +1792,9 @@ namespace freeFall
         private void timerVenus_Tick(object sender, EventArgs e)
         {
 
+        }
+        private void checkBoxResistance_CheckedChanged_1(object sender, EventArgs e)
+        {
         }
         private void chartSpace_MouseClick(object sender, MouseEventArgs e)
         {

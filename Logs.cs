@@ -91,14 +91,12 @@ namespace freeFall
             richTextBoxCorpo.Text += " Qtd Termos\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
             richTextBoxCorpo.Text += " animationPixel: " + Program.ball.AnimationPixel.Length + "\n";
-            richTextBoxCorpo.Text += " animationSpace: " + Program.ball.AnimationSpace.Length + "\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
 
             for (i = 0; i < Program.ball.NumberOfTerms; i++)
             {
                 corpoVetors += "[" + i + "]->|Ts:" + Program.ball.SpaceTime[i] + "|S: " + Program.ball.Space[i] + "|V:" + Program.ball.Velocity[i]
                     + "|countTime:" + Program.ball.CountTimeExperiment[i] + "\n";
-                corpoAnimation += "[" + i + "]->|Ani.Space: " + Program.ball.AnimationSpace[i] + "\n";
             }
 
             for (i = 0; i < Program.ball.AnimationPixel.Length; i++)
@@ -132,13 +130,11 @@ namespace freeFall
                 richTextBoxPaper.Text += " Qtd Termos\n";
                 richTextBoxPaper.Text += " ----------------------------\n";
                 richTextBoxPaper.Text += " animationPixel: " + Program.paper.AnimationPixel.Length + "\n";
-                richTextBoxPaper.Text += " animationSpace: " + Program.paper.AnimationSpace.Length + "\n";
                 richTextBoxPaper.Text += " ----------------------------\n";
 
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
                     paperVetors += "[" + i + "]->|Ts:" + Program.paper.SpaceTime[i] + "|S: " + Program.paper.Space[i] + "|V:" + Program.paper.Velocity[i] + "\n";
-                    paperAnimation += "[" + i + "]->|Ani.Space: " + Program.paper.AnimationSpace[i] + "\n";
                 }
 
                 for (i = 0; i < Program.paper.AnimationPixel.Length; i++)
@@ -174,13 +170,11 @@ namespace freeFall
                 richTextBoxVaccum.Text += " Qtd Termos\n";
                 richTextBoxVaccum.Text += " ----------------------------\n";
                 richTextBoxVaccum.Text += " animationPixel: " + Program.vaccum.AnimationPixel.Length + "\n";
-                richTextBoxVaccum.Text += " animationSpace: " + Program.vaccum.AnimationSpace.Length + "\n";
                 richTextBoxVaccum.Text += " ----------------------------\n";
 
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
                     vaccumVetors += "[" + i + "]->|Ts:" + Program.vaccum.SpaceTime[i] + "|S: " + Program.vaccum.Space[i] + "|V:" + Program.vaccum.Velocity[i] + "\n";
-                    vaccumAnimation += "[" + i + "]->|Ani.Space: " + Program.vaccum.AnimationSpace[i];
                 }
 
                 for (i = 0; i < Program.vaccum.AnimationPixel.Length; i++)

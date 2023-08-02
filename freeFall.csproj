@@ -217,6 +217,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="astronomy.ico" />
+    <None Include="Resources\paper2.png" />
+    <None Include="Resources\corpoSoccer.png" />
+    <None Include="Resources\corpoGolf.png" />
+    <None Include="Resources\corpoBowling.png" />
+    <None Include="Resources\corpoBasketball.png" />
+    <None Include="Resources\corpoBall4.png" />
+    <None Include="Resources\paper3.png" />
     <None Include="Resources\timerCronometer.wav" />
     <None Include="Resources\timer3.wav" />
     <None Include="Resources\numberZero.png" />
@@ -245,21 +252,14 @@
     <None Include="Resources\arrowsBlue %282%29.png" />
     <None Include="Resources\arrowsBlue %281%29.png" />
     <None Include="Resources\pokebola.png" />
-    <None Include="Resources\paper3.png" />
-    <None Include="Resources\paper2.png" />
     <None Include="Resources\corpoTelephone.png" />
     <None Include="Resources\corpoSphere2.png" />
     <None Include="Resources\corpoSphere.png" />
-    <None Include="Resources\corpoSoccer.png" />
     <None Include="Resources\corpoRing.png" />
     <None Include="Resources\corpoMountains.png" />
-    <None Include="Resources\corpoGolf.png" />
     <None Include="Resources\corpoEye.png" />
     <None Include="Resources\corpoCosmos.png" />
     <None Include="Resources\corpoBubble.png" />
-    <None Include="Resources\corpoBowling.png" />
-    <None Include="Resources\corpoBasketball.png" />
-    <None Include="Resources\corpoBall4.png" />
     <None Include="Resources\corpoBall.png" />
     <None Include="Resources\circuitBoard.png" />
     <None Include="Resources\planetVenus.png" />
