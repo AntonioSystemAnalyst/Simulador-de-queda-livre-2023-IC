@@ -99,8 +99,8 @@ namespace freeFall
             chartSpace.Visible = true;
             chartSpace.Titles.Add("Espaço versus tempo");
             chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpace.ChartAreas[0].AxisX.Title = "t(segundos)";
-            chartSpace.ChartAreas[0].AxisY.Title = "s(metros)";
+            chartSpace.ChartAreas[0].AxisX.Title = "t (segundos)";
+            chartSpace.ChartAreas[0].AxisY.Title = "y (metros)";
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.Format = "";
@@ -342,23 +342,23 @@ namespace freeFall
                         writer.WriteLine(" ----------------------------------------- ");
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}] | Papel: y-[{"m",-5}] | Corpo no vácuo: y-[{"m",-5}]");
                         }
                         else
                         {
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                             {
-                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}]");
+                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}] | Papel: y-[{"m",-5}]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}] | Corpo no vácuo: y-[{"m",-5}]");
                                 }
                                 else
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}]");
                                 }
                             }
                         }
@@ -454,23 +454,23 @@ namespace freeFall
                         writer.WriteLine(" ----------------------------------------- ");
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                            writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}] | Papel: y-[{"m",-5}] | Corpo no vácuo: y-[{"m",-5}]");
                         }
                         else
                         {
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                             {
-                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Papel: S-[{"m",-5}]");
+                                writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}] | Papel: y-[{"m",-5}]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}] | Corpo no vácuo: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}] | Corpo no vácuo: y-[{"m",-5}]");
                                 }
                                 else
                                 {
-                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: S-[{"m",-5}]");
+                                    writer.WriteLine($" Tempo: [{"s/100",-5}] | Bola: y-[{"m",-5}]");
                                 }
                             }
                         }
@@ -563,23 +563,23 @@ namespace freeFall
 
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($"Tempo[s];Bola-S[m];Papel-S[m/s];Vacuo-S[m]");
+                            writer.WriteLine($"Tempo[s];Bola-y[m];Papel-y[m/s];Vacuo-y[m]");
                         }
                         else
                         {
                             if (Program.bodyOn && Program.paperOn && Program.vaccumOn == false)
                             {
-                                writer.WriteLine($"Tempo[s];Bola-S[m];Papel-S[m]");
+                                writer.WriteLine($"Tempo[s];Bola-y[m];Papel-y[m]");
                             }
                             else
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($"Tempo[s];Bola-S[m];Vacuo-S[m]");
+                                    writer.WriteLine($"Tempo[s];Bola-y[m];Vacuo-y[m]");
                                 }
                                 else
                                 {
-                                    writer.WriteLine($"Tempo[s];Bola-S[m]");
+                                    writer.WriteLine($"Tempo[s];Bola-y[m]");
                                 }
                             }
                         }

@@ -193,10 +193,10 @@ namespace freeFall
         {
             var chart = chartSpeed.ChartAreas[0];
 
-            chartSpeed.Titles.Add("Velocidade versus tempo").Docking = Docking.Bottom;
+            chartSpeed.Titles.Add("Velocidade versus tempo").Docking = Docking.Top;
             chartSpeed.Titles[0].Font = new Font(chartSpeed.Titles[0].Font.FontFamily, chartSpeed.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpeed.ChartAreas[0].AxisX.Title = "t(s)";
-            chartSpeed.ChartAreas[0].AxisY.Title = "v(m/s)";
+            chartSpeed.ChartAreas[0].AxisX.Title = "t (s)";
+            chartSpeed.ChartAreas[0].AxisY.Title = "v (m/s)";
             chartSpeed.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";

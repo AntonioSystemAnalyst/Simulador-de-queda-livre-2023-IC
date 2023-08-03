@@ -64,7 +64,6 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
-            this.labelMaskInverter = new System.Windows.Forms.Label();
             this.labelMaskAirResistence = new System.Windows.Forms.Label();
             this.labelMaskVaccum = new System.Windows.Forms.Label();
             this.labelMaskPapel = new System.Windows.Forms.Label();
@@ -73,14 +72,12 @@
             this.textBoxAirDensity = new System.Windows.Forms.TextBox();
             this.labelAirAirDensity = new System.Windows.Forms.Label();
             this.checkBoxResistanceRV1 = new System.Windows.Forms.CheckBox();
-            this.checkBoxGrafic = new System.Windows.Forms.CheckBox();
             this.boxHeight = new System.Windows.Forms.NumericUpDown();
             this.checkBox3D = new System.Windows.Forms.CheckBox();
             this.labelTextColor = new System.Windows.Forms.Label();
             this.buttonResistencia = new System.Windows.Forms.Button();
             this.comboBoxVacuum = new System.Windows.Forms.ComboBox();
             this.checkBoxVacuum = new System.Windows.Forms.CheckBox();
-            this.buttonBall = new System.Windows.Forms.Button();
             this.txtgravit = new System.Windows.Forms.TextBox();
             this.comboPaper = new System.Windows.Forms.ComboBox();
             this.checkBoxEixo = new System.Windows.Forms.CheckBox();
@@ -186,7 +183,7 @@
             // 
             this.labelGraficDetails.AutoSize = true;
             this.labelGraficDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGraficDetails.Location = new System.Drawing.Point(751, 325);
+            this.labelGraficDetails.Location = new System.Drawing.Point(751, 323);
             this.labelGraficDetails.Name = "labelGraficDetails";
             this.labelGraficDetails.Size = new System.Drawing.Size(120, 12);
             this.labelGraficDetails.TabIndex = 3;
@@ -542,7 +539,6 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
-            this.groupBoxConfiguracao.Controls.Add(this.labelMaskInverter);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskAirResistence);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskVaccum);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskPapel);
@@ -551,14 +547,12 @@
             this.groupBoxConfiguracao.Controls.Add(this.textBoxAirDensity);
             this.groupBoxConfiguracao.Controls.Add(this.labelAirAirDensity);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxResistanceRV1);
-            this.groupBoxConfiguracao.Controls.Add(this.checkBoxGrafic);
             this.groupBoxConfiguracao.Controls.Add(this.boxHeight);
             this.groupBoxConfiguracao.Controls.Add(this.checkBox3D);
             this.groupBoxConfiguracao.Controls.Add(this.labelTextColor);
             this.groupBoxConfiguracao.Controls.Add(this.buttonResistencia);
             this.groupBoxConfiguracao.Controls.Add(this.comboBoxVacuum);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxVacuum);
-            this.groupBoxConfiguracao.Controls.Add(this.buttonBall);
             this.groupBoxConfiguracao.Controls.Add(this.txtgravit);
             this.groupBoxConfiguracao.Controls.Add(this.comboPaper);
             this.groupBoxConfiguracao.Controls.Add(this.checkBoxEixo);
@@ -577,22 +571,11 @@
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
             // 
-            // labelMaskInverter
-            // 
-            this.labelMaskInverter.AutoSize = true;
-            this.labelMaskInverter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaskInverter.Location = new System.Drawing.Point(133, 173);
-            this.labelMaskInverter.Name = "labelMaskInverter";
-            this.labelMaskInverter.Size = new System.Drawing.Size(63, 13);
-            this.labelMaskInverter.TabIndex = 51;
-            this.labelMaskInverter.Text = "Inverter Y";
-            this.labelMaskInverter.MouseHover += new System.EventHandler(this.labelMaskInverter_MouseHover);
-            // 
             // labelMaskAirResistence
             // 
             this.labelMaskAirResistence.AutoSize = true;
             this.labelMaskAirResistence.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMaskAirResistence.Location = new System.Drawing.Point(25, 218);
+            this.labelMaskAirResistence.Location = new System.Drawing.Point(24, 213);
             this.labelMaskAirResistence.Name = "labelMaskAirResistence";
             this.labelMaskAirResistence.Size = new System.Drawing.Size(106, 13);
             this.labelMaskAirResistence.TabIndex = 50;
@@ -668,7 +651,7 @@
             // checkBoxResistanceRV1
             // 
             this.checkBoxResistanceRV1.AutoSize = true;
-            this.checkBoxResistanceRV1.Location = new System.Drawing.Point(8, 216);
+            this.checkBoxResistanceRV1.Location = new System.Drawing.Point(9, 212);
             this.checkBoxResistanceRV1.Name = "checkBoxResistanceRV1";
             this.checkBoxResistanceRV1.Size = new System.Drawing.Size(125, 17);
             this.checkBoxResistanceRV1.TabIndex = 43;
@@ -676,19 +659,6 @@
             this.checkBoxResistanceRV1.UseVisualStyleBackColor = true;
             this.checkBoxResistanceRV1.CheckedChanged += new System.EventHandler(this.checkBoxResistance_CheckedChanged_1);
             this.checkBoxResistanceRV1.MouseHover += new System.EventHandler(this.checkBoxResistanceRV1_MouseHover_1);
-            // 
-            // checkBoxGrafic
-            // 
-            this.checkBoxGrafic.AutoSize = true;
-            this.checkBoxGrafic.Location = new System.Drawing.Point(114, 172);
-            this.checkBoxGrafic.Name = "checkBoxGrafic";
-            this.checkBoxGrafic.Size = new System.Drawing.Size(82, 17);
-            this.checkBoxGrafic.TabIndex = 41;
-            this.checkBoxGrafic.Text = "Inverter Y";
-            this.checkBoxGrafic.UseVisualStyleBackColor = true;
-            this.checkBoxGrafic.CheckedChanged += new System.EventHandler(this.checkBoxGrafic_CheckedChanged);
-            this.checkBoxGrafic.CheckStateChanged += new System.EventHandler(this.checkBoxGrafic_CheckStateChanged);
-            this.checkBoxGrafic.MouseHover += new System.EventHandler(this.checkBoxGrafic_MouseHover);
             // 
             // boxHeight
             // 
@@ -714,7 +684,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(114, 197);
+            this.checkBox3D.Location = new System.Drawing.Point(171, 181);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -738,7 +708,7 @@
             // 
             this.buttonResistencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonResistencia.ForeColor = System.Drawing.Color.Black;
-            this.buttonResistencia.Location = new System.Drawing.Point(6, 239);
+            this.buttonResistencia.Location = new System.Drawing.Point(8, 238);
             this.buttonResistencia.Name = "buttonResistencia";
             this.buttonResistencia.Size = new System.Drawing.Size(151, 27);
             this.buttonResistencia.TabIndex = 39;
@@ -775,19 +745,6 @@
             this.checkBoxVacuum.CheckStateChanged += new System.EventHandler(this.checkBoxVacuum_CheckStateChanged);
             this.checkBoxVacuum.MouseHover += new System.EventHandler(this.checkBoxVacuum_MouseHover);
             // 
-            // buttonBall
-            // 
-            this.buttonBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBall.ForeColor = System.Drawing.Color.Black;
-            this.buttonBall.Location = new System.Drawing.Point(160, 239);
-            this.buttonBall.Name = "buttonBall";
-            this.buttonBall.Size = new System.Drawing.Size(50, 27);
-            this.buttonBall.TabIndex = 31;
-            this.buttonBall.Text = "Bola";
-            this.buttonBall.UseVisualStyleBackColor = true;
-            this.buttonBall.Click += new System.EventHandler(this.button1_Click);
-            this.buttonBall.MouseHover += new System.EventHandler(this.button1_MouseHover);
-            // 
             // txtgravit
             // 
             this.txtgravit.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -821,7 +778,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(155, 197);
+            this.checkBoxEixo.Location = new System.Drawing.Point(114, 181);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -1143,7 +1100,7 @@
             this.MaximizeBox = false;
             this.Name = "Simulator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UFSCAR - Simulador de queda livre";
+            this.Text = "UFSCAR - Simulador de queda dos corpos";
             this.Load += new System.EventHandler(this.Simulator_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Simulator_KeyDown);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Simulator_PreviewKeyDown);
@@ -1200,7 +1157,6 @@
         private System.Windows.Forms.CheckBox checkBoxPaper;
         private System.Windows.Forms.CheckBox checkBoxEixo;
         private System.Windows.Forms.TrackBar trackBarColors;
-        private System.Windows.Forms.Button buttonBall;
         private System.Windows.Forms.Button buttonData;
         private System.Windows.Forms.Timer timerEixos;
         private System.Windows.Forms.ComboBox comboPaper;
@@ -1245,7 +1201,6 @@
         private System.Windows.Forms.Panel panelSpeed;
         private System.Windows.Forms.Panel panelAnimation;
         private System.Windows.Forms.Timer timerColors;
-        private System.Windows.Forms.CheckBox checkBoxGrafic;
         private System.Windows.Forms.Timer timerNumerAnimationIniti;
         private System.Windows.Forms.Label labelTextStart;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1260,7 +1215,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Timer timerVenus;
         private System.Windows.Forms.Label labelVenus;
-        private System.Windows.Forms.Label labelMaskInverter;
         private System.Windows.Forms.Label labelMaskAirResistence;
         private System.Windows.Forms.Label labelMaskVaccum;
         private System.Windows.Forms.Label labelMaskPapel;

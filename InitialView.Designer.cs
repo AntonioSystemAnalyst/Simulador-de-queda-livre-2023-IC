@@ -48,6 +48,7 @@
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
             this.groupBoxaAnimation = new System.Windows.Forms.GroupBox();
             this.timerSetTrackPlanet = new System.Windows.Forms.Timer(this.components);
+            this.timerAnimationAlone = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).BeginInit();
@@ -239,6 +240,11 @@
             this.timerSetTrackPlanet.Interval = 50;
             this.timerSetTrackPlanet.Tick += new System.EventHandler(this.timerSetTrackPlanet_Tick);
             // 
+            // timerAnimationAlone
+            // 
+            this.timerAnimationAlone.Interval = 1;
+            this.timerAnimationAlone.Tick += new System.EventHandler(this.timerAnimationAlone_Tick);
+            // 
             // InitialView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -299,6 +305,7 @@
         private System.Windows.Forms.Timer timerAnimation;
         private System.Windows.Forms.GroupBox groupBoxaAnimation;
         private System.Windows.Forms.Timer timerSetTrackPlanet;
+        private System.Windows.Forms.Timer timerAnimationAlone;
     }
 }
 

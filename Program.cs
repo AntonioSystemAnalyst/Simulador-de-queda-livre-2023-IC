@@ -20,7 +20,6 @@ namespace freeFall
         public static int spaceGraficControl = 0;
         public static int speedGraficControl = 0;
 
-
         // controle das cores
         public static Color colorSimulator = Color.Cyan;
 
@@ -45,7 +44,7 @@ namespace freeFall
         public static int openGraficsControl = 0;
 
         // controla o eixo y
-        public static int directionOfYaxis = 0;
+        public static int directionOfYaxis = 1;
 
         // controla a possibilidade de inverção em y
         public static int directionFlag = 0;

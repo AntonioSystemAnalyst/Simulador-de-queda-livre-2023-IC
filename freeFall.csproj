@@ -217,6 +217,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="astronomy.ico" />
+    <None Include="Resources\airResistence.png" />
+    <None Include="Resources\arrowsBlue Down.png" />
+    <None Include="Resources\arrowsBlue %282%29.png" />
+    <None Include="Resources\arrowsBlue %281%29.png" />
+    <None Include="Resources\arrowsBlueUp.png" />
     <None Include="Resources\paper2.png" />
     <None Include="Resources\corpoSoccer.png" />
     <None Include="Resources\corpoGolf.png" />
@@ -236,8 +241,6 @@
     <None Include="Resources\two.png" />
     <None Include="Resources\three.png" />
     <None Include="Resources\one.png" />
-    <None Include="Resources\arrowsBlue Down.png" />
-    <None Include="Resources\arrowsBlueUp.png" />
     <None Include="Resources\woman.png" />
     <None Include="Resources\xls1.png" />
     <None Include="Resources\xls.png" />
@@ -247,10 +250,7 @@
     <None Include="Resources\Logomarca_UFSCAR.png" />
     <None Include="Resources\ufscar.png" />
     <None Include="Resources\dfqm.png" />
-    <None Include="Resources\airResistence.png" />
     <None Include="Resources\gauge.png" />
-    <None Include="Resources\arrowsBlue %282%29.png" />
-    <None Include="Resources\arrowsBlue %281%29.png" />
     <None Include="Resources\pokebola.png" />
     <None Include="Resources\corpoTelephone.png" />
     <None Include="Resources\corpoSphere2.png" />

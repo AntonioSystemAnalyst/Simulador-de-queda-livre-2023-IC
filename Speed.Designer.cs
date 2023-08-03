@@ -230,17 +230,17 @@
             // 
             // Bóla
             // 
-            this.Bóla.HeaderText = "Bola - V (m/s)";
+            this.Bóla.HeaderText = "Bola - v (m/s)";
             this.Bóla.Name = "Bóla";
             // 
             // Papel
             // 
-            this.Papel.HeaderText = "Papel - V (m/s)";
+            this.Papel.HeaderText = "Papel - v (m/s)";
             this.Papel.Name = "Papel";
             // 
             // Vácuo
             // 
-            this.Vácuo.HeaderText = "Vácuo - V (m/s)";
+            this.Vácuo.HeaderText = "Vácuo - v (m/s)";
             this.Vácuo.Name = "Vácuo";
             this.Vácuo.ReadOnly = true;
             // 

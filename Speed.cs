@@ -119,8 +119,8 @@ namespace freeFall
             chartSpeed.Visible = true;
             chartSpeed.Titles.Add("Velocidade versus tempo");
             chartSpeed.Titles[0].Font = new Font(chartSpeed.Titles[0].Font.FontFamily, chartSpeed.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpeed.ChartAreas[0].AxisX.Title = "t(segundos/100)";
-            chartSpeed.ChartAreas[0].AxisY.Title = "v(metros/segundos)";
+            chartSpeed.ChartAreas[0].AxisX.Title = "t (segundos)";
+            chartSpeed.ChartAreas[0].AxisY.Title = "v (metros/segundos)";
             chartSpeed.Titles[0].ForeColor = Color.Cyan;
             chartSpeed.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
             chartSpeed.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;

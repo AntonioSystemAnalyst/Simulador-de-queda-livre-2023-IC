@@ -229,17 +229,17 @@
             // 
             // Bóla
             // 
-            this.Bóla.HeaderText = "Bola - S (m)";
+            this.Bóla.HeaderText = "Bola - y (m)";
             this.Bóla.Name = "Bóla";
             // 
             // Papel
             // 
-            this.Papel.HeaderText = "Papel - S (m)";
+            this.Papel.HeaderText = "Papel - y (m)";
             this.Papel.Name = "Papel";
             // 
             // Vácuo
             // 
-            this.Vácuo.HeaderText = "Vácuo - S (m)";
+            this.Vácuo.HeaderText = "Vácuo - y (m)";
             this.Vácuo.Name = "Vácuo";
             this.Vácuo.ReadOnly = true;
             // 

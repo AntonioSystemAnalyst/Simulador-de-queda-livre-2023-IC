@@ -81,9 +81,9 @@ namespace freeFall
             animationWindow.Dock = DockStyle.Fill;
             panelAnimation.Controls.Add(animationWindow);
             animationWindow.Show();
-            checkBoxGrafic.Checked = true;
             this.PreviewKeyDown += new PreviewKeyDownEventHandler(Simulator_PreviewKeyDown);
         }
+
         private void loadinDataCorpos()
         {
             // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
@@ -232,14 +232,12 @@ namespace freeFall
             {
                 buttonData.Text = "Sem dados";
                 buttonData.Enabled = false;
-                buttonBall.Enabled = false;
                 boxHeight.Enabled = false;
                 cmbPlaneta.Enabled = false;
                 comboBoxVacuum.Enabled = false;
                 comboPaper.Enabled = false;
                 checkBoxVacuum.Enabled = false;
                 checkBoxPaper.Enabled = false;
-                checkBoxGrafic.Enabled = false;
                 checkBoxResistanceRV1.Enabled = false;
                 pictureBoxBack.Enabled = false;
                 pictureBoxNext.Enabled = false;
@@ -252,12 +250,10 @@ namespace freeFall
             {
                 buttonData.Text = "Dados";
                 buttonData.Enabled = true;
-                buttonBall.Enabled = true;
                 boxHeight.Enabled = true;
                 cmbPlaneta.Enabled = true;
                 checkBoxPaper.Enabled = true;
                 checkBoxVacuum.Enabled = true;
-                checkBoxGrafic.Enabled = true;
                 checkBoxResistanceRV1.Enabled = true;
                 labelTextStart.Location = new Point(17, 24);
                 labelTextStart.Text = "PRONTO!";
@@ -284,11 +280,13 @@ namespace freeFall
             {
                 animationWindow.picutureResistence(0);
                 Program.airResistance = 1;
+                textBoxAirDensity.Text = "" + Program.airDensity;
             }
             if (checkBoxResistanceRV1.Checked == false)
             {
                 animationWindow.picutureResistence(1);
                 Program.airResistance = 0;
+                textBoxAirDensity.Text = " --";
             }
         }
         public void animation()
@@ -891,6 +889,8 @@ namespace freeFall
             textBoxVaccumHeight.Text = " --";
             textBoxVaccumVelocity.Text = " --";
             checkBox3D.Checked = false;
+            textBoxAirDensity.Text = "" + Program.airDensity;
+            checkBoxResistanceRV1.Checked = true;
             KeyPreview = true;
             KeyDown += Simulator_KeyDown;
         }
@@ -1177,7 +1177,14 @@ namespace freeFall
                 Program.airDensity = 1.2;
             }
             Program.planetImage = pictureBoxPlanets.Image;
-            textBoxAirDensity.Text = "" + Program.airDensity;
+            if(checkBoxResistanceRV1.Checked)
+            {
+                textBoxAirDensity.Text = "" + Program.airDensity;
+            }
+            else
+            {
+                textBoxAirDensity.Text = " --";
+            }
         }
         private void pictureBoxNext_Click(object sender, EventArgs e)
         {
@@ -1669,7 +1676,6 @@ namespace freeFall
             labelMaskPapel.ForeColor = Program.colorSimulator;
             labelMaskVaccum.ForeColor = Program.colorSimulator;
             labelMaskAirResistence.ForeColor = Program.colorSimulator;
-            labelMaskInverter.ForeColor = Program.colorSimulator;
             spaceWindow.colorAll();
             speedWindow.colorAll();
             animationWindow.colorAll();
@@ -1681,31 +1687,6 @@ namespace freeFall
         private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (checkBoxGrafic.Checked == true)
-            {
-                Program.directionOfYaxis = 1;
-                if (Program.openGraficsControl == 1)
-                {
-                    spaceWindow.closeAllWindow();
-                    speedWindow.closeAllWindow();
-                    resetWindows();
-                    spaceWindow.buildGrafic(1);
-                    speedWindow.buildGrafic(1);
-                }
-            }
-            else
-            {
-                Program.directionOfYaxis = 0;
-
-                if (Program.openGraficsControl == 1)
-                {
-                    spaceWindow.closeAllWindow();
-                    speedWindow.closeAllWindow();
-                    resetWindows();
-                    spaceWindow.buildGrafic(1);
-                    speedWindow.buildGrafic(1);
-                }
-            }
         }
         public void resetWindows()
         {
@@ -1757,10 +1738,6 @@ namespace freeFall
         {
             toolTip.SetToolTip(checkBoxEixo, "Exibe eixos no experimento.");
         }
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(buttonBall, "Muda a imagem do corpo.");
-        }
         private void buttonData_MouseHover(object sender, EventArgs e)
         {
             toolTip.SetToolTip(buttonData, "Exibe os dados configurados do experimento.");
@@ -1785,10 +1762,7 @@ namespace freeFall
         {
             toolTip.SetToolTip(labelMaskAirResistence, "Adiciona a resistência do ar ao experimênto.");
         }
-        private void labelMaskInverter_MouseHover(object sender, EventArgs e)
-        {
-            toolTip.SetToolTip(labelMaskInverter, "Inverte o eixo Y nos gráficos.");
-        }
+
         private void timerVenus_Tick(object sender, EventArgs e)
         {
 
