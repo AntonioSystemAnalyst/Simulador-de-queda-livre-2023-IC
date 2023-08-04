@@ -147,7 +147,7 @@ namespace freeFall
             for (i = 0; i < numberOfTerms; i++)
             {
                 spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
-                if (spacePoint < 0 && status == 0)
+                if (spacePoint <= 0 && status == 0)
                 {
                     numberOfTerms = i;
                     status = 1;
@@ -172,7 +172,7 @@ namespace freeFall
             for (i = 0; i < numberOfTerms; i++)
             {
                 spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
-                if (spacePoint < 0)
+                if (spacePoint <= 0)
                 {
                     space[i] = 0;
                 }
