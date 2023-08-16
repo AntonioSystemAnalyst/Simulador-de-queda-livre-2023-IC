@@ -119,8 +119,8 @@ namespace freeFall
             chartSpeed.Visible = true;
             chartSpeed.Titles.Add("Velocidade versus tempo");
             chartSpeed.Titles[0].Font = new Font(chartSpeed.Titles[0].Font.FontFamily, chartSpeed.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpeed.ChartAreas[0].AxisX.Title = "t (segundos)";
-            chartSpeed.ChartAreas[0].AxisY.Title = "v (metros/segundos)";
+            chartSpeed.ChartAreas[0].AxisX.Title = "t (s)";
+            chartSpeed.ChartAreas[0].AxisY.Title = "v (m/s)";
             chartSpeed.Titles[0].ForeColor = Color.Cyan;
             chartSpeed.ChartAreas[0].AxisX.TitleForeColor = Color.Cyan;
             chartSpeed.ChartAreas[0].AxisY.TitleForeColor = Color.Cyan;
@@ -181,15 +181,15 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpeed.Series.Add("Objeto no vácuo");
-                chartSpeed.Series["Objeto no vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["Objeto no vácuo"].Color = Color.Cyan;
+                chartSpeed.Series.Add("Corpo no vácuo");
+                chartSpeed.Series["Corpo no vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["Corpo no vácuo"].Color = Color.Purple;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
 
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
                     result = (double)i / 100.0;
-                    chartSpeed.Series["Objeto no vácuo"].Points.AddXY(result, Program.vaccum.Velocity[i]);
+                    chartSpeed.Series["Corpo no vácuo"].Points.AddXY(result, Program.vaccum.Velocity[i]);
                 }
             }
         }
@@ -331,10 +331,11 @@ namespace freeFall
                     {
                         writer.Flush();
                         writer.WriteLine(" ----------------------------------------- ");
-                        writer.WriteLine(" Simulador de queda Livre");
+                        writer.WriteLine(" Simulador de queda dos corpos");
                         writer.WriteLine(" ----------------------------------------- ");
                         writer.WriteLine(" Nome       : " + Program.planetName);
                         writer.WriteLine(" Gravidade  : " + Program.gravity + " m/s²");
+                        writer.WriteLine(" Densidade  : " + Program.airDensity + " kg/m³");
                         if (Program.airResistance == 0)
                         {
                             writer.WriteLine(" Resis. ar  : Não");
@@ -343,21 +344,33 @@ namespace freeFall
                         {
                             writer.WriteLine(" Resis. ar  : Sim");
                         }
-                        writer.WriteLine(" Tempo para a bola           : " + Program.ball.TimeAllExperiment + " s");
-                        writer.WriteLine(" Velocidade inicial da bola  : " + Program.ball.InitialVelocity + " m/s");
-                        writer.WriteLine(" Velocidade final da bola    : " + Program.ball.FinalVelocity + " m/s");
+                        writer.WriteLine(" ----------------------------------------- ");
+                        writer.WriteLine(" Tempo para a bola               : " + Program.ball.TimeAllExperiment + " s");
+                        writer.WriteLine(" Velocidade inicial da bola      : " + Program.ball.InitialVelocity + " m/s");
+                        writer.WriteLine(" Velocidade final da bola        : " + Program.ball.FinalVelocity + " m/s");
+                        writer.WriteLine(" Coeficiente de arrasto da bola  : " + Program.ball.DragCoefficient);
+                        writer.WriteLine(" Área da bola                    : " + Program.ball.CrossSectionalArea + " m²");
+                        writer.WriteLine(" Massa da bola                   : " + Program.ball.Mass + " kg");
                         if (Program.paperOn)
                         {
-                            writer.WriteLine(" Tempo para o papel          : " + Program.paper.TimeAllExperiment + " s");
-                            writer.WriteLine(" Velocidade inicial do papel : " + Program.paper.InitialVelocity + " m/s");
-                            writer.WriteLine(" Velocidade final do papel   : " + Program.paper.FinalVelocity + " m/s");
+                            writer.WriteLine(" ----------------------------------------- ");
+                            writer.WriteLine(" Tempo para o papel              : " + Program.paper.TimeAllExperiment + " s");
+                            writer.WriteLine(" Velocidade inicial do papel     : " + Program.paper.InitialVelocity + " m/s");
+                            writer.WriteLine(" Velocidade final do papel       : " + Program.paper.FinalVelocity + " m/s");
+                            writer.WriteLine(" Coeficiente de arrasto da papel : " + Program.paper.DragCoefficient);
+                            writer.WriteLine(" Área do papel                   : " + Program.paper.CrossSectionalArea + " m²");
+                            writer.WriteLine(" Massa do papel                  : " + Program.paper.Mass + " kg");
 
                         }
                         if (Program.vaccumOn)
                         {
-                            writer.WriteLine(" Tempo para o vácuo          : " + Program.vaccum.TimeAllExperiment + " s");
-                            writer.WriteLine(" Velocidade inicial no vácuo : " + Program.vaccum.InitialVelocity + " m/s");
-                            writer.WriteLine(" Velocidade final no vácuo   : " + Program.vaccum.FinalVelocity + " m/s");
+                            writer.WriteLine(" ----------------------------------------- ");
+                            writer.WriteLine(" Tempo para o c. vácuo               : " + Program.vaccum.TimeAllExperiment + " s");
+                            writer.WriteLine(" Velocidade inicial do c. vácuo      : " + Program.vaccum.InitialVelocity + " m/s");
+                            writer.WriteLine(" Velocidade final do c. vácuo        : " + Program.vaccum.FinalVelocity + " m/s");
+                            writer.WriteLine(" Coeficiente de arrasto do c. vácuo  : " + Program.vaccum.DragCoefficient);
+                            writer.WriteLine(" Área do c. vácuo                    : " + Program.vaccum.CrossSectionalArea + " m²");
+                            writer.WriteLine(" Massa do c. vácuo                   : " + Program.vaccum.Mass + " kg");
 
                         }
                         writer.WriteLine(" ----------------------------------------- ");
@@ -490,7 +503,7 @@ namespace freeFall
                 DateTime dataHoraAtual = DateTime.Now;
                 string dataHoraString = dataHoraAtual.ToString("yyyy-MM-dd-HH.mm.ss");
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.FileName = "Queda dos corpos.Valores de velocidade-" + dataHoraString;
+                saveFileDialog.FileName = "Simualdor de queda dos corpos.Valores de velocidade-" + dataHoraString;
                 saveFileDialog.Title = "Salvar Documento";
                 saveFileDialog.Filter = "Arquivos CSV (*.csv)|*.csv|Todos os arquivos (*.*)|*.*";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -501,7 +514,7 @@ namespace freeFall
 
                         if (Program.bodyOn && Program.paperOn && Program.vaccumOn)
                         {
-                            writer.WriteLine($"Tempo[s];Bola-V[m/s];Papel-V[m/s];Vacuo-V[m/s]");
+                            writer.WriteLine($"Tempo[s];Bola-V[m/s];Papel-V[m/s];C. Vacuo-V[m/s]");
                         }
                         else
                         {
@@ -513,7 +526,7 @@ namespace freeFall
                             {
                                 if (Program.bodyOn && Program.paperOn == false && Program.vaccumOn)
                                 {
-                                    writer.WriteLine($"Tempo[s];Bola-V[m/s];Vacuo-V[m/s]");
+                                    writer.WriteLine($"Tempo[s];Bola-V[m/s];C. Vacuo-V[m/s]");
                                 }
                                 else
                                 {

@@ -51,7 +51,7 @@ namespace freeFall
             if (Program.vaccum.NumberOfTerms > countGrafic)
             {
                 result = (double)countGrafic / 100.0;
-                chartSpeed.Series["vácuo"].Points.AddXY(result, Program.vaccum.Velocity[countGrafic]);
+                chartSpeed.Series["C. Vácuo"].Points.AddXY(result, Program.vaccum.Velocity[countGrafic]);
             }
         }
 
@@ -171,9 +171,9 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpeed.Series.Add("vácuo");
-                chartSpeed.Series["vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["vácuo"].Color = Color.Cyan;
+                chartSpeed.Series.Add("C. Vácuo");
+                chartSpeed.Series["C. Vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["C. Vácuo"].Color = Color.Purple;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
                 if (op == 1)
                 {
@@ -182,7 +182,7 @@ namespace freeFall
                         result = (double)i / 100.0;
                         if (i < Program.vaccum.NumberOfTerms)
                         {
-                            chartSpeed.Series["vácuo"].Points.AddXY(result, (Program.vaccum.Velocity[i]));
+                            chartSpeed.Series["C. Vácuo"].Points.AddXY(result, (Program.vaccum.Velocity[i]));
                         }
                     }
                 }
@@ -236,11 +236,11 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpeed.Series.Add("vácuo");
-                chartSpeed.Series["vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpeed.Series["vácuo"].Color = Color.Cyan;
+                chartSpeed.Series.Add("C. Vácuo");
+                chartSpeed.Series["C. Vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpeed.Series["C. Vácuo"].Color = Color.Purple;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
-                chartSpeed.Series["vácuo"].Points.AddXY(0, 0);
+                chartSpeed.Series["C. Vácuo"].Points.AddXY(0, 0);
             }
         }
 

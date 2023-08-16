@@ -239,7 +239,7 @@
             // 
             // Vácuo
             // 
-            this.Vácuo.HeaderText = "Vácuo - y (m)";
+            this.Vácuo.HeaderText = "C. Vácuo - y (m)";
             this.Vácuo.Name = "Vácuo";
             this.Vácuo.ReadOnly = true;
             // 
@@ -257,7 +257,7 @@
             this.MaximizeBox = false;
             this.Name = "Space";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gráfico do espaço pelo tempo";
+            this.Text = "Gráfico da espaço em função do tempo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Space_FormClosing);
             this.Load += new System.EventHandler(this.Space_Load);
             this.Resize += new System.EventHandler(this.Space_Resize);

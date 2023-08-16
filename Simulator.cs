@@ -93,7 +93,7 @@ namespace freeFall
             Program.gravity = 9.8;
 
             Program.ball.Mass = 0.45;
-            Program.ball.DragCoefficient = 0.5;
+            Program.ball.DragCoefficient = 0.6;
             Program.ball.CrossSectionalArea = 0.038806;
 
             Program.paper.Mass = 0.00465;
@@ -121,18 +121,21 @@ namespace freeFall
             Console.WriteLine(" Area, ball : " + Program.ball.CrossSectionalArea);
             Console.WriteLine(" Massa, ball: " + Program.ball.Mass);
             Console.WriteLine(" tempo, ball: " + Program.ball.TimeAllExperiment);
+            Console.WriteLine(" number of T: " + Program.ball.NumberOfTerms);
             Console.WriteLine("---------------------------------");
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" C. Arrasto, papel: " + Program.paper.DragCoefficient);
             Console.WriteLine(" Area, papel : " + Program.paper.CrossSectionalArea);
             Console.WriteLine(" Massa, papel: " + Program.paper.Mass);
             Console.WriteLine(" tempo, papel: " + Program.paper.TimeAllExperiment);
+            Console.WriteLine(" number of T: " + Program.paper.NumberOfTerms);
             Console.WriteLine("---------------------------------");
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" C. Arrasto, vaccum: " + Program.vaccum.DragCoefficient);
             Console.WriteLine(" Area, vaccum : " + Program.vaccum.CrossSectionalArea);
             Console.WriteLine(" Massa, vaccum: " + Program.vaccum.Mass);
             Console.WriteLine(" tempo, vaccum: " + Program.vaccum.TimeAllExperiment);
+            Console.WriteLine(" number of T: " + Program.vaccum.NumberOfTerms);
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" Maior valor de tempo: " + Program.greatestValueTime);
             Console.WriteLine(" Maior valor de velocidade: " + Program.greatestValueVelocity);
@@ -452,6 +455,32 @@ namespace freeFall
             }
         }
         public void receveidGreatestValueTime()
+        {
+            if (Program.ball.TimeAllExperiment > Program.paper.TimeAllExperiment && Program.ball.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
+            {
+                Program.greatestValueTime = 1;
+                Program.numberOfPoints = Program.ball.NumberOfTerms;
+            }
+            else if (Program.paper.TimeAllExperiment > Program.ball.TimeAllExperiment && Program.paper.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
+            {
+                Program.greatestValueTime = 2;
+                Program.numberOfPoints = Program.paper.NumberOfTerms;
+            }
+            else if (Program.vaccum.TimeAllExperiment > Program.ball.TimeAllExperiment && Program.vaccum.TimeAllExperiment > Program.paper.TimeAllExperiment)
+            {
+                Program.greatestValueTime = 3;
+                Program.numberOfPoints = Program.vaccum.NumberOfTerms;
+            }
+            else
+            {
+                Program.greatestValueTime = 0;
+                Program.numberOfPoints = Program.ball.NumberOfTerms;
+            }
+
+            greatestValueTime = Program.greatestValueTime;
+        }
+
+        public void receveidGreatestValueTimeTeste()
         {
             if (Program.ball.TimeAllExperiment > Program.paper.TimeAllExperiment && Program.ball.TimeAllExperiment > Program.vaccum.TimeAllExperiment)
             {
@@ -888,7 +917,7 @@ namespace freeFall
             textBoxPaperVelocity.Text = " --";
             textBoxVaccumHeight.Text = " --";
             textBoxVaccumVelocity.Text = " --";
-            checkBox3D.Checked = false;
+            checkBox3D.Checked = true;
             textBoxAirDensity.Text = "" + Program.airDensity;
             checkBoxResistanceRV1.Checked = true;
             KeyPreview = true;
@@ -979,7 +1008,7 @@ namespace freeFall
                 animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
                 Program.crumpledPaper = 1;
-                Program.paper.DragCoefficient = 0.5;
+                Program.paper.DragCoefficient = 0.6;
                 Program.paper.CrossSectionalArea = 0.00134;
             }
         }
@@ -1047,7 +1076,7 @@ namespace freeFall
                 animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
                 Program.crumpledPaper = 1;
-                Program.paper.DragCoefficient = 0.5;
+                Program.paper.DragCoefficient = 0.6;
                 Program.paper.CrossSectionalArea = 0.00134;
                 if (flagVenus == 0)
                 {
@@ -1827,6 +1856,12 @@ namespace freeFall
         {
 
         }
+
+        private void labelMaskVaccum_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void pictureBoxCorpo_Click(object sender, EventArgs e)
         {
 

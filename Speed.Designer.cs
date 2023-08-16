@@ -240,7 +240,7 @@
             // 
             // Vácuo
             // 
-            this.Vácuo.HeaderText = "Vácuo - v (m/s)";
+            this.Vácuo.HeaderText = "C. Vácuo - v (m/s)";
             this.Vácuo.Name = "Vácuo";
             this.Vácuo.ReadOnly = true;
             // 
@@ -258,7 +258,7 @@
             this.MaximizeBox = false;
             this.Name = "Speed";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gráfico da velocidade pelo tempo";
+            this.Text = "Gráfico da velocidade em função do tempo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Speed_FormClosing);
             this.Load += new System.EventHandler(this.Speed_Load);
             this.Resize += new System.EventHandler(this.Speed_Resize);

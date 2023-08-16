@@ -49,7 +49,7 @@ namespace freeFall
             if (countGrafic < Program.vaccum.NumberOfTerms)
             {
                 resultX = (double)countGrafic / 100.0;
-                chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[countGrafic]);
+                chartSpace.Series["C. Vácuo"].Points.AddXY(resultX, Program.vaccum.Space[countGrafic]);
             }
         }
 
@@ -166,9 +166,9 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpace.Series.Add("vácuo");
-                chartSpace.Series["vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["vácuo"].Color = Color.Cyan;
+                chartSpace.Series.Add("C. Vácuo");
+                chartSpace.Series["C. Vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["C. Vácuo"].Color = Color.Purple;
                 chartSpace.Series[0].IsVisibleInLegend = false;
                 if (op == 1)
                 {
@@ -177,7 +177,7 @@ namespace freeFall
                         resultX = (double)i / 100.0;
                         if (i < Program.vaccum.NumberOfTerms)
                         {
-                            chartSpace.Series["vácuo"].Points.AddXY(resultX, Program.vaccum.Space[i]);
+                            chartSpace.Series["C. Vácuo"].Points.AddXY(resultX, Program.vaccum.Space[i]);
                         }
                     }
                 }
@@ -233,11 +233,11 @@ namespace freeFall
             }
             if (Program.vaccumOn)
             {
-                chartSpace.Series.Add("vácuo");
-                chartSpace.Series["vácuo"].ChartType = SeriesChartType.Spline;
-                chartSpace.Series["vácuo"].Color = Color.Cyan;
+                chartSpace.Series.Add("C. Vácuo");
+                chartSpace.Series["C. Vácuo"].ChartType = SeriesChartType.Spline;
+                chartSpace.Series["C. Vácuo"].Color = Color.Cyan;
                 chartSpace.Series[0].IsVisibleInLegend = false;
-                chartSpace.Series["vácuo"].Points.AddXY(0, 0);
+                chartSpace.Series["C. Vácuo"].Points.AddXY(0, 0);
             }
 
         }

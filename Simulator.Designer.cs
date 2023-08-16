@@ -235,7 +235,7 @@
             this.groupBoxResultados.Size = new System.Drawing.Size(176, 277);
             this.groupBoxResultados.TabIndex = 8;
             this.groupBoxResultados.TabStop = false;
-            this.groupBoxResultados.Text = "Resultados";
+            this.groupBoxResultados.Text = "Valores instantâneos";
             // 
             // buttonLog
             // 
@@ -254,7 +254,7 @@
             // 
             this.pictureBoxVaccumObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.pictureBoxVaccumObject.Image = global::freeFall.Properties.Resources.paper2;
-            this.pictureBoxVaccumObject.Location = new System.Drawing.Point(84, 187);
+            this.pictureBoxVaccumObject.Location = new System.Drawing.Point(100, 187);
             this.pictureBoxVaccumObject.Name = "pictureBoxVaccumObject";
             this.pictureBoxVaccumObject.Size = new System.Drawing.Size(22, 22);
             this.pictureBoxVaccumObject.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -264,7 +264,7 @@
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.pictureBox2.Location = new System.Drawing.Point(73, 185);
+            this.pictureBox2.Location = new System.Drawing.Point(89, 185);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(43, 26);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -275,7 +275,7 @@
             // 
             this.pictureBoxVaccum.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxVaccum.Image = global::freeFall.Properties.Resources.gauge;
-            this.pictureBoxVaccum.Location = new System.Drawing.Point(47, 185);
+            this.pictureBoxVaccum.Location = new System.Drawing.Point(63, 185);
             this.pictureBoxVaccum.Name = "pictureBoxVaccum";
             this.pictureBoxVaccum.Size = new System.Drawing.Size(28, 26);
             this.pictureBoxVaccum.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -310,9 +310,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(4, 198);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 25;
-            this.label7.Text = "Vácuo";
+            this.label7.Text = "C. Vácuo";
             // 
             // label10
             // 
@@ -486,7 +486,7 @@
             this.groupBoxPlanetas.Size = new System.Drawing.Size(270, 277);
             this.groupBoxPlanetas.TabIndex = 7;
             this.groupBoxPlanetas.TabStop = false;
-            this.groupBoxPlanetas.Text = "Planetas";
+            this.groupBoxPlanetas.Text = "Astro";
             // 
             // pictureBoxBack
             // 
@@ -588,9 +588,10 @@
             this.labelMaskVaccum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelMaskVaccum.Location = new System.Drawing.Point(24, 110);
             this.labelMaskVaccum.Name = "labelMaskVaccum";
-            this.labelMaskVaccum.Size = new System.Drawing.Size(43, 13);
+            this.labelMaskVaccum.Size = new System.Drawing.Size(107, 13);
             this.labelMaskVaccum.TabIndex = 49;
-            this.labelMaskVaccum.Text = "Vácuo";
+            this.labelMaskVaccum.Text = "Câmara de Vácuo";
+            this.labelMaskVaccum.Click += new System.EventHandler(this.labelMaskVaccum_Click);
             this.labelMaskVaccum.MouseHover += new System.EventHandler(this.labelMaskVaccum_MouseHover);
             // 
             // labelMaskPapel
@@ -666,6 +667,11 @@
             this.boxHeight.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.boxHeight.ForeColor = System.Drawing.Color.Aqua;
             this.boxHeight.Location = new System.Drawing.Point(8, 34);
+            this.boxHeight.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.boxHeight.Minimum = new decimal(new int[] {
             1,
             0,
@@ -684,7 +690,7 @@
             // checkBox3D
             // 
             this.checkBox3D.AutoSize = true;
-            this.checkBox3D.Location = new System.Drawing.Point(171, 181);
+            this.checkBox3D.Location = new System.Drawing.Point(170, 191);
             this.checkBox3D.Name = "checkBox3D";
             this.checkBox3D.Size = new System.Drawing.Size(40, 17);
             this.checkBox3D.TabIndex = 35;
@@ -698,7 +704,7 @@
             this.labelTextColor.AutoSize = true;
             this.labelTextColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTextColor.ForeColor = System.Drawing.Color.Cyan;
-            this.labelTextColor.Location = new System.Drawing.Point(111, 112);
+            this.labelTextColor.Location = new System.Drawing.Point(140, 124);
             this.labelTextColor.Name = "labelTextColor";
             this.labelTextColor.Size = new System.Drawing.Size(44, 15);
             this.labelTextColor.TabIndex = 40;
@@ -778,7 +784,7 @@
             // checkBoxEixo
             // 
             this.checkBoxEixo.AutoSize = true;
-            this.checkBoxEixo.Location = new System.Drawing.Point(114, 181);
+            this.checkBoxEixo.Location = new System.Drawing.Point(113, 191);
             this.checkBoxEixo.Name = "checkBoxEixo";
             this.checkBoxEixo.Size = new System.Drawing.Size(56, 17);
             this.checkBoxEixo.TabIndex = 29;
@@ -857,7 +863,7 @@
             // 
             // trackBarColors
             // 
-            this.trackBarColors.Location = new System.Drawing.Point(108, 129);
+            this.trackBarColors.Location = new System.Drawing.Point(113, 141);
             this.trackBarColors.Maximum = 9;
             this.trackBarColors.Minimum = 1;
             this.trackBarColors.Name = "trackBarColors";
@@ -1100,7 +1106,7 @@
             this.MaximizeBox = false;
             this.Name = "Simulator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "UFSCAR - Simulador de queda dos corpos";
+            this.Text = "Simulador de queda dos corpos";
             this.Load += new System.EventHandler(this.Simulator_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Simulator_KeyDown);
             this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.Simulator_PreviewKeyDown);

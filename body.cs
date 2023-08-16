@@ -11,7 +11,7 @@ namespace freeFall
         private double dragCoefficient = 0.0;
         private double terminalVelocity = 0.0;
         private double mass = 0.0;
-        public double crossSectionalArea = 0;
+        private double crossSectionalArea = 0;
         private int numberOfTerms = 0;
 
         // ---
@@ -20,7 +20,6 @@ namespace freeFall
         public int precision = 13;
         public double velocityPoint;
         public double greatValueVelocity;
-        public static double countTime;
         // --- Antimation
         double qtdSpaceForNumberOfTermes;
         double qtdSpaceForPixels;
@@ -134,6 +133,7 @@ namespace freeFall
         public  void CalculateWithResistenceRV1(double height, double gravity, double initialVelocity, double airDensity)
         {
             double spacePoint;
+            double countTime = 0;
             int i, status = 0;
 
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
@@ -141,9 +141,9 @@ namespace freeFall
             terminalVelocity = gravity / term1;
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
-            finalVelocity = terminalVelocity;
+            //timeAllExperiment =  500;
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
-            countTime = 0.01;
+            countTime = 0;
             for (i = 0; i < numberOfTerms; i++)
             {
                 spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
@@ -168,7 +168,7 @@ namespace freeFall
             }
             finalVelocity = velocity[velocity.Length-1];
 
-            countTime = 0.01;
+            countTime = 0;
             for (i = 0; i < numberOfTerms; i++)
             {
                 spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
@@ -191,6 +191,7 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
             space[0] = height;
+
             countTime = 0;
             // time
             for (i = 0; i < numberOfTerms; i++)
@@ -202,7 +203,7 @@ namespace freeFall
         }
         public  double getTimeAllVR1(double gravity, double height)
         {
-            double terminalTime = 0.01;
+            double terminalTime = 0.0;
             double timeAll = 0.0;
             double spaceFunction = 0.0;
             int breakStatus = 0;
