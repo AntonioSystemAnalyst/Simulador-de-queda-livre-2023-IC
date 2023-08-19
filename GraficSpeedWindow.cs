@@ -71,7 +71,6 @@ namespace freeFall
             double X = 0.0;
             
             chartSpeed.Series.Clear();
-
             speedDiv = Convert.ToInt32(Math.Round((-1 * Program.greatestValueVelocity), 0) / 5);
 
             if (Program.greatestValueTime == 0)

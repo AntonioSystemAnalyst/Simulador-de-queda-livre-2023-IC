@@ -30,6 +30,7 @@ namespace freeFall
         public int countVaccum = 0;
         public int countPaper = 0;
         public int countBody = 0;
+        public int countValues = 0;
         public int countGrafic = 0;
         public int flagVenus = 0;
         private bool isPictureBoxClickedLeft = false;
@@ -122,6 +123,7 @@ namespace freeFall
             Console.WriteLine(" Massa, ball: " + Program.ball.Mass);
             Console.WriteLine(" tempo, ball: " + Program.ball.TimeAllExperiment);
             Console.WriteLine(" number of T: " + Program.ball.NumberOfTerms);
+            Console.WriteLine(" V. Final: " + Program.ball.FinalVelocity);
             Console.WriteLine("---------------------------------");
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" C. Arrasto, papel: " + Program.paper.DragCoefficient);
@@ -129,6 +131,7 @@ namespace freeFall
             Console.WriteLine(" Massa, papel: " + Program.paper.Mass);
             Console.WriteLine(" tempo, papel: " + Program.paper.TimeAllExperiment);
             Console.WriteLine(" number of T: " + Program.paper.NumberOfTerms);
+            Console.WriteLine(" V. Final: " + Program.paper.FinalVelocity);
             Console.WriteLine("---------------------------------");
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" C. Arrasto, vaccum: " + Program.vaccum.DragCoefficient);
@@ -136,6 +139,7 @@ namespace freeFall
             Console.WriteLine(" Massa, vaccum: " + Program.vaccum.Mass);
             Console.WriteLine(" tempo, vaccum: " + Program.vaccum.TimeAllExperiment);
             Console.WriteLine(" number of T: " + Program.vaccum.NumberOfTerms);
+            Console.WriteLine(" V. Final: " + Program.vaccum.FinalVelocity);
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" Maior valor de tempo: " + Program.greatestValueTime);
             Console.WriteLine(" Maior valor de velocidade: " + Program.greatestValueVelocity);
@@ -514,17 +518,17 @@ namespace freeFall
             }
             else
             {
-                if (Program.ball.FinalVelocity < Program.paper.FinalVelocity && Program.ball.FinalVelocity < Program.vaccum.FinalVelocity)
+                if (Program.ball.FinalVelocity < Program.paper.FinalVelocity && Program.ball.FinalVelocity < (-1*Program.vaccum.FinalVelocity))
                 {
                     Program.greatestValueVelocity = (Program.ball.FinalVelocity);
                 }
-                else if (Program.paper.FinalVelocity < Program.ball.FinalVelocity && Program.paper.FinalVelocity < Program.vaccum.FinalVelocity)
+                else if (Program.paper.FinalVelocity < Program.ball.FinalVelocity && Program.paper.FinalVelocity < (-1*Program.vaccum.FinalVelocity))
                 {
                     Program.greatestValueVelocity = (Program.paper.FinalVelocity);
                 }
-                else if (Program.vaccum.FinalVelocity < Program.ball.FinalVelocity && Program.vaccum.FinalVelocity < Program.paper.FinalVelocity)
+                else if ((-1*Program.vaccum.FinalVelocity) < Program.ball.FinalVelocity && (-1 * Program.vaccum.FinalVelocity) < Program.paper.FinalVelocity)
                 {
-                    Program.greatestValueVelocity = (Program.vaccum.FinalVelocity);
+                    Program.greatestValueVelocity = (-1 * Program.vaccum.FinalVelocity);
                 }
                 else
                 {
@@ -570,10 +574,38 @@ namespace freeFall
             double spaceX = 0.0;
             double speedY = 0.0;
             double speedX = 0.0;
+            double greatValueTimeForFunction = 0.0; 
             int spaceDiv = 0;
             int speedDiv = 0;
+
             spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
             speedDiv = Convert.ToInt32(Math.Round((-1 * Program.greatestValueVelocity), 0) / 5);
+
+            if(Program.greatestValueTime == 1)
+            {
+                greatValueTimeForFunction = Program.ball.TimeAllExperiment;
+            }
+            else
+            {
+                if(Program.greatestValueTime == 2)
+                {
+                    greatValueTimeForFunction = Program.paper.TimeAllExperiment;
+                }
+                else
+                {
+                    if(Program.greatestValueTime == 3)
+                    {
+                        greatValueTimeForFunction = Program.vaccum.TimeAllExperiment;
+                    }
+                    else
+                    {
+                        if(Program.greatestValueTime == 0)
+                        {
+                            greatValueTimeForFunction = Program.ball.TimeAllExperiment;
+                        }
+                    }
+                }
+            }
             if (op == 0)
             {
                 if (Program.bodyOn)
@@ -581,11 +613,11 @@ namespace freeFall
                     if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                     {
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -594,11 +626,11 @@ namespace freeFall
                     if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                     {
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -608,11 +640,11 @@ namespace freeFall
                     {
 
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -624,11 +656,11 @@ namespace freeFall
                     if (Program.ball.NumberOfTerms <= Program.numberOfPoints)
                     {
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.ball.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -637,11 +669,11 @@ namespace freeFall
                     if (Program.paper.NumberOfTerms <= Program.numberOfPoints)
                     {
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.paper.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -650,11 +682,11 @@ namespace freeFall
                     if (Program.vaccum.NumberOfTerms <= Program.numberOfPoints)
                     {
                         spaceY = Math.Round(CalculateValueWithTenPercent(Program.height), 2);
-                        spaceX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 2);
+                        spaceX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         spaceWindow.spaceGraphic(countGrafic, 0, spaceY, spaceDiv, 0, spaceX, 0, 1);
 
                         speedY = Math.Round(CalculateValueWithTenPercent(Program.greatestValueVelocity), 2);
-                        speedX = Math.Round(CalculateValueWithTenPercent(Program.vaccum.TimeAllExperiment), 2);
+                        speedX = Math.Round(CalculateValueWithTenPercent(greatValueTimeForFunction), 2);
                         speedWindow.speedGraphic(countGrafic, speedY, 0, speedDiv, 0, speedX, 0, 1);
                     }
                 }
@@ -1244,11 +1276,8 @@ namespace freeFall
             if (planetCounter == 0)
             {
                 planetCounter = Program.numberOfPlanets+1;
-                Console.WriteLine("Entrou");
             }
             planetData();
-            Console.WriteLine("planetCounter" + planetCounter);
-            Console.WriteLine("Program.numberOfPlanets"+Program.numberOfPlanets);
         }
         private void buttonPlanet_Click(object sender, EventArgs e)
         {
@@ -1448,9 +1477,38 @@ namespace freeFall
                 }
             }
         }
+        private int getGreatValueCount()
+        {
+            if (Program.greatestValueTime == 1)
+            {
+                return countBody;
+    }
+            else
+            {
+                if (Program.greatestValueTime == 2)
+                {
+                    return countPaper;
+                }
+                else
+                {
+                    if (Program.greatestValueTime == 3)
+                    {
+                        return countVaccum;
+                    }
+                    else
+                    {
+                            return countBody;
+                    }
+                }
+            }
+        }
         private void leftPosition()
         {
+            int Auxiliary = 0;
             pictureBoxTimeRight.Visible = true;
+            Auxiliary = getGreatValueCount();
+
+
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
                 countBody--;
@@ -1458,7 +1516,7 @@ namespace freeFall
                 countVaccum--;
                 countGrafic--;
                 updatePosition(countGrafic, 1, countBody, countPaper, countVaccum);
-                if (countBody == 2 || countPaper == 2 || countVaccum == 2)
+                if (Auxiliary == 2)
                 {
                     pictureBoxTimeLeft.Visible = false;
                     timerLeft.Enabled = false;
@@ -1472,7 +1530,7 @@ namespace freeFall
                     countPaper--;
                     countGrafic--;
                     updatePosition(countGrafic, 1, countBody, countPaper, 0);
-                    if (countBody == 2 || countPaper == 2)
+                    if (Auxiliary == 2)
                     {
                         pictureBoxTimeLeft.Visible = false;
                         timerLeft.Enabled = false;
@@ -1486,7 +1544,7 @@ namespace freeFall
                         countVaccum--;
                         countGrafic--;
                         updatePosition(countGrafic, 1, countBody, 0, countVaccum);
-                        if (countBody == 2 || countVaccum == 2)
+                        if (Auxiliary == 2)
                         {
                             pictureBoxTimeLeft.Visible = false;
                             timerLeft.Enabled = false;
@@ -1497,7 +1555,7 @@ namespace freeFall
                         countBody--;
                         countGrafic--;
                         updatePosition(countGrafic, 1, countBody, 0, 0);
-                        if (countBody == 2)
+                        if (Auxiliary == 2)
                         {
                             pictureBoxTimeLeft.Visible = false;
                             timerLeft.Enabled = false;

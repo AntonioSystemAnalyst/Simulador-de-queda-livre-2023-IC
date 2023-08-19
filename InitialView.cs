@@ -208,6 +208,10 @@ namespace freeFall
                 trackBarPlanets.Value = 4;
                 pictureBoxCarrocel.Image = Properties.Resources.planetMars;
                 planetData("Marte", "3.389,5", "6.779", "163.115.609.799", "6,4169 x 10²³", "3,71");
+                if(Program.numberOfPlanets == 4)
+                {
+                  carouselCounter = -1;
+                }
             }
             if (carouselCounter == 5)
             {
