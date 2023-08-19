@@ -58,6 +58,9 @@ namespace freeFall
         //flag para trackBar
         public static int simulatorTrackBarValueFlag = 0;
 
+        // 0 - ball, paper, vaccum 1 -  ball 2 -  ball, paper 3 -  ball, vaccum 
+        public static int numberOfPlanets = 4;
+
         public static Image ballImage;
         public static Image paperImage;
         public static Image vaccumImage;

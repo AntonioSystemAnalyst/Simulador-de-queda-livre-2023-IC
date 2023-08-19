@@ -67,7 +67,7 @@ namespace freeFall
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            trackBarPlanets.Maximum = Program.numberOfPlanets;
         }
 
         private void buttonSimulador_Click(object sender, EventArgs e)

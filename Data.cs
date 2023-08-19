@@ -152,6 +152,7 @@ namespace freeFall
         {
             planetCounter -= 1;
             Program.planetNameReceveid(planetCounter);
+
             if (planetCounter == 1)
             {
                 labelPlanet.Text = "Terra";
@@ -191,9 +192,10 @@ namespace freeFall
                 loadData(planetCounter);
                 startGrid();
                 Flip();
+
             }
             if (planetCounter == 6)
-            {
+            { 
                 labelPlanet.Text = "Júpter";
                 pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
                 loadData(planetCounter);
@@ -226,12 +228,24 @@ namespace freeFall
             }
             if (planetCounter == 0)
             {
-                planetCounter = 9;
-                labelPlanet.Text = "Netuno";
-                pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
-                loadData(planetCounter);
-                startGrid();
-                Flip();
+                if(Program.numberOfPlanets == 4)
+                {
+                    planetCounter = 5;
+                    labelPlanet.Text = "Marte";
+                    pictureBoxPlanets.Image = Properties.Resources.planetMars;
+                    loadData(planetCounter);
+                    startGrid();
+                    Flip();
+                }
+                else
+                {
+                    planetCounter = 9;
+                    labelPlanet.Text = "Netuno";
+                    pictureBoxPlanets.Image = Properties.Resources.planetNeptune;
+                    loadData(planetCounter);
+                    startGrid();
+                    Flip();
+                }
             }
         }
 
@@ -281,11 +295,23 @@ namespace freeFall
             }
             if (planetCounter == 6)
             {
-                labelPlanet.Text = "Júpter";
-                pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
-                loadData(planetCounter);
-                startGrid();
-                Flip();
+                if (Program.numberOfPlanets == 4)
+                {
+                    planetCounter = 1;
+                    labelPlanet.Text = "Terra";
+                    pictureBoxPlanets.Image = Properties.Resources.planetEarth;
+                    loadData(planetCounter);
+                    startGrid();
+                    Flip();
+                }
+                else
+                {
+                    labelPlanet.Text = "Júpter";
+                    pictureBoxPlanets.Image = Properties.Resources.planetJupiter;
+                    loadData(planetCounter);
+                    startGrid();
+                    Flip();
+                }
             }
             if (planetCounter == 7)
             {

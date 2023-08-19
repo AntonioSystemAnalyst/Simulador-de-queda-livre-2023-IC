@@ -840,11 +840,7 @@
             "Lua",
             "Mercúrio",
             "Vênus",
-            "Marte",
-            "Júpter",
-            "Saturno",
-            "Urano",
-            "Netuno"});
+            "Marte"});
             this.cmbPlaneta.Location = new System.Drawing.Point(8, 179);
             this.cmbPlaneta.Name = "cmbPlaneta";
             this.cmbPlaneta.Size = new System.Drawing.Size(85, 21);

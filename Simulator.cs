@@ -1168,6 +1168,15 @@ namespace freeFall
                 buttonPlanet.Text = "Júpter";
                 animationWindow.backgroundPicture(planetCounter);
                 Program.airDensity = 0.16;
+                if (Program.numberOfPlanets == 4)
+                {
+                    txtgravit.Text = "9,8";
+                    cmbPlaneta.Text = "Terra";
+                    pictureBoxPlanets.Image = Properties.Resources.planetEarth;
+                    buttonPlanet.Text = "Terra";
+                    animationWindow.backgroundPicture(planetCounter);
+                    Program.airDensity = 1.2;
+                }
             }
             if (planetCounter == 7)
             {
@@ -1221,7 +1230,7 @@ namespace freeFall
             Program.planetCounter = planetCounter;
             Program.planetNameReceveid(planetCounter);
             planetData();
-            if (planetCounter == 10)
+            if (planetCounter == Program.numberOfPlanets+2)
             {
                 planetCounter = 1;
             }
@@ -1234,9 +1243,12 @@ namespace freeFall
             Program.planetNameReceveid(planetCounter);
             if (planetCounter == 0)
             {
-                planetCounter = 9;
+                planetCounter = Program.numberOfPlanets+1;
+                Console.WriteLine("Entrou");
             }
             planetData();
+            Console.WriteLine("planetCounter" + planetCounter);
+            Console.WriteLine("Program.numberOfPlanets"+Program.numberOfPlanets);
         }
         private void buttonPlanet_Click(object sender, EventArgs e)
         {
