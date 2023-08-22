@@ -93,12 +93,12 @@ namespace freeFall
             Program.airDensity = 1.225;
             Program.gravity = 9.8;
 
-            Program.ball.Mass = 0.45;
-            Program.ball.DragCoefficient = 0.6;
+            Program.ball.Mass = 0.43;
+            Program.ball.DragCoefficient = 0.47;
             Program.ball.CrossSectionalArea = 0.038806;
 
             Program.paper.Mass = 0.00465;
-            Program.paper.DragCoefficient = 0.8;
+            Program.paper.DragCoefficient = 1.17;
             Program.paper.CrossSectionalArea = 0.04; // amaçada 0.001341640872
 
             Program.vaccum.Mass = Program.paper.Mass;
@@ -1032,7 +1032,7 @@ namespace freeFall
                 animationWindow.pictureBoxCorpoPaperSelected(0);
                 pictureBoxPaper.Image = Properties.Resources.paper2;
                 Program.crumpledPaper = 0;
-                Program.paper.DragCoefficient = 0.8;
+                Program.paper.DragCoefficient = 1.17; 
                 Program.paper.CrossSectionalArea = 0.04;
             }
             else
@@ -1040,7 +1040,7 @@ namespace freeFall
                 animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
                 Program.crumpledPaper = 1;
-                Program.paper.DragCoefficient = 0.6;
+                Program.paper.DragCoefficient = 0.8;
                 Program.paper.CrossSectionalArea = 0.00134;
             }
         }
@@ -1108,7 +1108,7 @@ namespace freeFall
                 animationWindow.pictureBoxCorpoPaperSelected(1);
                 pictureBoxPaper.Image = Properties.Resources.paper3;
                 Program.crumpledPaper = 1;
-                Program.paper.DragCoefficient = 0.6;
+                Program.paper.DragCoefficient = 0.8;
                 Program.paper.CrossSectionalArea = 0.00134;
                 if (flagVenus == 0)
                 {
@@ -1126,7 +1126,7 @@ namespace freeFall
                     animationWindow.pictureBoxCorpoPaperSelected(0);
                     pictureBoxPaper.Image = Properties.Resources.paper2;
                     Program.crumpledPaper = 0;
-                    Program.paper.DragCoefficient = 0.8;
+                    Program.paper.DragCoefficient = 1.17;
                     Program.paper.CrossSectionalArea = 0.04;
                     comboPaper.Text = "Aberta";
                 }
@@ -1179,7 +1179,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetVenus;
                 buttonPlanet.Text = "Vênus";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 65;
+                Program.airDensity = 64.8;
                 venusStates();
             }
             if (planetCounter == 5)
