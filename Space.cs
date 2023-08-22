@@ -97,7 +97,7 @@ namespace freeFall
             var chart = chartSpace.ChartAreas[0];
             double result = 0.0;
             chartSpace.Visible = true;
-            chartSpace.Titles.Add("Espaço versus tempo");
+            chartSpace.Titles.Add("Altura versus tempo");
             chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
             chartSpace.ChartAreas[0].AxisX.Title = "t (s)";
             chartSpace.ChartAreas[0].AxisY.Title = "y (m)";
@@ -315,11 +315,11 @@ namespace freeFall
                         writer.WriteLine(" Densidade  : " + Program.airDensity + " kg/m³");
                         if (Program.airResistance == 0)
                         {
-                            writer.WriteLine(" Resis. ar  : Não");
+                            writer.WriteLine(" Resistência atmosférica  : Não");
                         }
                         else
                         {
-                            writer.WriteLine(" Resis. ar  : Sim");
+                            writer.WriteLine(" Resistência atmosférica  : Sim");
                         }
                         writer.WriteLine(" ----------------------------------------- ");
                         writer.WriteLine(" Tempo para a bola               : " + Program.ball.TimeAllExperiment + " s");

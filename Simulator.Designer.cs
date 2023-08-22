@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simulator));
             this.groupBoxGraficos = new System.Windows.Forms.GroupBox();
+            this.labelGraficDetails = new System.Windows.Forms.Label();
             this.labelVenus = new System.Windows.Forms.Label();
             this.panelSpeed = new System.Windows.Forms.Panel();
             this.panelSpace = new System.Windows.Forms.Panel();
-            this.labelGraficDetails = new System.Windows.Forms.Label();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
             this.buttonLog = new System.Windows.Forms.Button();
@@ -138,10 +138,10 @@
             // groupBoxGraficos
             // 
             this.groupBoxGraficos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxGraficos.BackgroundImage")));
+            this.groupBoxGraficos.Controls.Add(this.labelGraficDetails);
             this.groupBoxGraficos.Controls.Add(this.labelVenus);
             this.groupBoxGraficos.Controls.Add(this.panelSpeed);
             this.groupBoxGraficos.Controls.Add(this.panelSpace);
-            this.groupBoxGraficos.Controls.Add(this.labelGraficDetails);
             this.groupBoxGraficos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxGraficos.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxGraficos.Location = new System.Drawing.Point(2, 0);
@@ -150,6 +150,21 @@
             this.groupBoxGraficos.TabIndex = 9;
             this.groupBoxGraficos.TabStop = false;
             this.groupBoxGraficos.Text = "Gráficos";
+            this.groupBoxGraficos.Enter += new System.EventHandler(this.groupBoxGraficos_Enter);
+            this.groupBoxGraficos.Leave += new System.EventHandler(this.groupBoxGraficos_Leave);
+            this.groupBoxGraficos.MouseHover += new System.EventHandler(this.groupBoxGraficos_MouseHover);
+            this.groupBoxGraficos.Move += new System.EventHandler(this.groupBoxGraficos_MouseHover);
+            // 
+            // labelGraficDetails
+            // 
+            this.labelGraficDetails.AutoSize = true;
+            this.labelGraficDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGraficDetails.Location = new System.Drawing.Point(681, 324);
+            this.labelGraficDetails.Name = "labelGraficDetails";
+            this.labelGraficDetails.Size = new System.Drawing.Size(185, 12);
+            this.labelGraficDetails.TabIndex = 3;
+            this.labelGraficDetails.Text = "[Clique nos gráficos para detalhes.]";
+            this.labelGraficDetails.Visible = false;
             // 
             // labelVenus
             // 
@@ -178,17 +193,6 @@
             this.panelSpace.Size = new System.Drawing.Size(434, 307);
             this.panelSpace.TabIndex = 4;
             this.panelSpace.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSpace_Paint);
-            // 
-            // labelGraficDetails
-            // 
-            this.labelGraficDetails.AutoSize = true;
-            this.labelGraficDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGraficDetails.Location = new System.Drawing.Point(751, 323);
-            this.labelGraficDetails.Name = "labelGraficDetails";
-            this.labelGraficDetails.Size = new System.Drawing.Size(120, 12);
-            this.labelGraficDetails.TabIndex = 3;
-            this.labelGraficDetails.Text = "[Clique para detalhes.]";
-            this.labelGraficDetails.Visible = false;
             // 
             // buttonLogo
             // 
@@ -644,9 +648,9 @@
             this.labelAirAirDensity.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAirAirDensity.Location = new System.Drawing.Point(111, 63);
             this.labelAirAirDensity.Name = "labelAirAirDensity";
-            this.labelAirAirDensity.Size = new System.Drawing.Size(100, 13);
+            this.labelAirAirDensity.Size = new System.Drawing.Size(91, 13);
             this.labelAirAirDensity.TabIndex = 44;
-            this.labelAirAirDensity.Text = "Densidade do ar";
+            this.labelAirAirDensity.Text = "Densidade atm";
             this.labelAirAirDensity.MouseHover += new System.EventHandler(this.labelAirAirDensity_MouseHover_1);
             // 
             // checkBoxResistanceRV1
@@ -772,8 +776,8 @@
             this.comboPaper.ForeColor = System.Drawing.Color.Cyan;
             this.comboPaper.FormattingEnabled = true;
             this.comboPaper.Items.AddRange(new object[] {
-            "Aberta",
-            "Amaçada"});
+            "Aberto",
+            "Amassado"});
             this.comboPaper.Location = new System.Drawing.Point(8, 81);
             this.comboPaper.Name = "comboPaper";
             this.comboPaper.Size = new System.Drawing.Size(85, 21);
@@ -1196,7 +1200,6 @@
         private System.Windows.Forms.Timer timerOpacity;
         private System.Windows.Forms.Timer timerRight;
         private System.Windows.Forms.Timer timerLeft;
-        private System.Windows.Forms.Label labelGraficDetails;
         private System.Windows.Forms.NumericUpDown boxHeight;
         private System.Windows.Forms.Timer timerLog;
         private System.Windows.Forms.Panel panelSpace;
@@ -1220,5 +1223,6 @@
         private System.Windows.Forms.Label labelMaskAirResistence;
         private System.Windows.Forms.Label labelMaskVaccum;
         private System.Windows.Forms.Label labelMaskPapel;
+        private System.Windows.Forms.Label labelGraficDetails;
     }
 }

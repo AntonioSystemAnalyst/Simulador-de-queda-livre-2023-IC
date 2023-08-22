@@ -16,6 +16,7 @@ namespace freeFall
         Space windowSpace;
         Speed windowSpeed;
         System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
+        public bool isClickable  = true;
         public int planetCounter = 1;
         public int buttonStartControl = 0;
         public int animationNumberCounter = 0;
@@ -943,8 +944,8 @@ namespace freeFall
             labelTextStart.Location = new Point(17, 24);
             planetCounter = Program.planeTrackBar;
             planetData();
-            comboBoxVacuum.Text = "Folha";
-            comboPaper.Text = "Aberta";
+            comboBoxVacuum.Text = "Papel";
+            comboPaper.Text = "Aberto";
             textBoxPaperHeight.Text = " --";
             textBoxPaperVelocity.Text = " --";
             textBoxVaccumHeight.Text = " --";
@@ -1027,7 +1028,7 @@ namespace freeFall
 
         private void comboShet_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (comboPaper.Text == "Aberta")
+            if (comboPaper.Text == "Aberto")
             {
                 animationWindow.pictureBoxCorpoPaperSelected(0);
                 pictureBoxPaper.Image = Properties.Resources.paper2;
@@ -1115,20 +1116,20 @@ namespace freeFall
                     paperStates = comboPaper.Text;
                     flagVenus = 1;
                 }
-                comboPaper.Text = "Amaçada";
+                comboPaper.Text = "Amassado";
                 comboPaper.Enabled = false;
                 labelVenus.Visible = true;
             }
             else
             {
-                if (paperStates == "Aberta")
+                if (paperStates == "Aberto")
                 {
                     animationWindow.pictureBoxCorpoPaperSelected(0);
                     pictureBoxPaper.Image = Properties.Resources.paper2;
                     Program.crumpledPaper = 0;
                     Program.paper.DragCoefficient = 1.17;
                     Program.paper.CrossSectionalArea = 0.04;
-                    comboPaper.Text = "Aberta";
+                    comboPaper.Text = "Aberto";
                 }
                 if (checkBoxPaper.Checked == true)
                 {
@@ -1922,14 +1923,35 @@ namespace freeFall
 
         }
 
-        private void label26_Click(object sender, EventArgs e)
+        private void labelMaskVaccum_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void labelMaskVaccum_Click(object sender, EventArgs e)
+        private void groupBoxGraficos_MouseHover(object sender, EventArgs e)
         {
+         
+        }
+        private void GroupBoxGraficos_MouseEnter(object sender, EventArgs e)
+        {
+            if (isClickable)
+            {
+                Cursor = Cursors.Hand;
+            }
+        }
 
+        private void GroupBoxGraficos_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+        }
+        private void groupBoxGraficos_Enter(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+        }
+
+        private void groupBoxGraficos_Leave(object sender, EventArgs e)
+        {
+           
         }
 
         private void pictureBoxCorpo_Click(object sender, EventArgs e)

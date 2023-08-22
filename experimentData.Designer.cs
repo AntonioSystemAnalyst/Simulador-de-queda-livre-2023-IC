@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExperimentData));
             this.pictureBoxCorpoView = new System.Windows.Forms.PictureBox();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
+            this.labelCEBall = new System.Windows.Forms.Label();
+            this.textBoxCEBall = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.textBoxCorpoTime = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -41,6 +43,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtVelocidadeCorpoInitial = new System.Windows.Forms.TextBox();
             this.groupBoxPaper = new System.Windows.Forms.GroupBox();
+            this.labelCEPaper = new System.Windows.Forms.Label();
+            this.textBoxCEPaper = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxPaperFynalVelocity = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -51,6 +55,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxPaperTime = new System.Windows.Forms.TextBox();
             this.groupBoxVaccum = new System.Windows.Forms.GroupBox();
+            this.labelCEVacuo = new System.Windows.Forms.Label();
+            this.textBoxCEVacuo = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.textBoxVaccumFynalVelocity = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -76,12 +82,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
             this.timerLaodImage = new System.Windows.Forms.Timer(this.components);
-            this.textBoxCEBall = new System.Windows.Forms.TextBox();
-            this.textBoxCEPaper = new System.Windows.Forms.TextBox();
-            this.textBoxCEVacuo = new System.Windows.Forms.TextBox();
-            this.labelCEBall = new System.Windows.Forms.Label();
-            this.labelCEPaper = new System.Windows.Forms.Label();
-            this.labelCEVacuo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoView)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
             this.groupBoxPaper.SuspendLayout();
@@ -127,6 +127,29 @@
             this.groupBoxResultados.TabIndex = 9;
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Bola";
+            // 
+            // labelCEBall
+            // 
+            this.labelCEBall.AutoSize = true;
+            this.labelCEBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCEBall.Location = new System.Drawing.Point(6, 194);
+            this.labelCEBall.Name = "labelCEBall";
+            this.labelCEBall.Size = new System.Drawing.Size(132, 13);
+            this.labelCEBall.TabIndex = 33;
+            this.labelCEBall.Text = "Coeficiente de arrasto";
+            // 
+            // textBoxCEBall
+            // 
+            this.textBoxCEBall.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxCEBall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCEBall.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxCEBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCEBall.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxCEBall.Location = new System.Drawing.Point(164, 187);
+            this.textBoxCEBall.Name = "textBoxCEBall";
+            this.textBoxCEBall.ReadOnly = true;
+            this.textBoxCEBall.Size = new System.Drawing.Size(83, 26);
+            this.textBoxCEBall.TabIndex = 28;
             // 
             // label12
             // 
@@ -242,6 +265,29 @@
             this.groupBoxPaper.TabIndex = 11;
             this.groupBoxPaper.TabStop = false;
             this.groupBoxPaper.Text = "Papel";
+            // 
+            // labelCEPaper
+            // 
+            this.labelCEPaper.AutoSize = true;
+            this.labelCEPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCEPaper.Location = new System.Drawing.Point(5, 194);
+            this.labelCEPaper.Name = "labelCEPaper";
+            this.labelCEPaper.Size = new System.Drawing.Size(132, 13);
+            this.labelCEPaper.TabIndex = 39;
+            this.labelCEPaper.Text = "Coeficiente de arrasto";
+            // 
+            // textBoxCEPaper
+            // 
+            this.textBoxCEPaper.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxCEPaper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCEPaper.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxCEPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCEPaper.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxCEPaper.Location = new System.Drawing.Point(165, 187);
+            this.textBoxCEPaper.Name = "textBoxCEPaper";
+            this.textBoxCEPaper.ReadOnly = true;
+            this.textBoxCEPaper.Size = new System.Drawing.Size(83, 26);
+            this.textBoxCEPaper.TabIndex = 38;
             // 
             // label14
             // 
@@ -369,7 +415,30 @@
             this.groupBoxVaccum.Size = new System.Drawing.Size(271, 219);
             this.groupBoxVaccum.TabIndex = 12;
             this.groupBoxVaccum.TabStop = false;
-            this.groupBoxVaccum.Text = "câmara de vácuo";
+            this.groupBoxVaccum.Text = "Câmara de vácuo";
+            // 
+            // labelCEVacuo
+            // 
+            this.labelCEVacuo.AutoSize = true;
+            this.labelCEVacuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCEVacuo.Location = new System.Drawing.Point(6, 194);
+            this.labelCEVacuo.Name = "labelCEVacuo";
+            this.labelCEVacuo.Size = new System.Drawing.Size(132, 13);
+            this.labelCEVacuo.TabIndex = 40;
+            this.labelCEVacuo.Text = "Coeficiente de arrasto";
+            // 
+            // textBoxCEVacuo
+            // 
+            this.textBoxCEVacuo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.textBoxCEVacuo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCEVacuo.Cursor = System.Windows.Forms.Cursors.No;
+            this.textBoxCEVacuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxCEVacuo.ForeColor = System.Drawing.Color.Cyan;
+            this.textBoxCEVacuo.Location = new System.Drawing.Point(160, 188);
+            this.textBoxCEVacuo.Name = "textBoxCEVacuo";
+            this.textBoxCEVacuo.ReadOnly = true;
+            this.textBoxCEVacuo.Size = new System.Drawing.Size(83, 26);
+            this.textBoxCEVacuo.TabIndex = 29;
             // 
             // label16
             // 
@@ -645,75 +714,6 @@
             // timerLaodImage
             // 
             this.timerLaodImage.Tick += new System.EventHandler(this.timerLaodImage_Tick);
-            // 
-            // textBoxCEBall
-            // 
-            this.textBoxCEBall.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxCEBall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxCEBall.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBoxCEBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCEBall.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxCEBall.Location = new System.Drawing.Point(164, 187);
-            this.textBoxCEBall.Name = "textBoxCEBall";
-            this.textBoxCEBall.ReadOnly = true;
-            this.textBoxCEBall.Size = new System.Drawing.Size(83, 26);
-            this.textBoxCEBall.TabIndex = 28;
-            // 
-            // textBoxCEPaper
-            // 
-            this.textBoxCEPaper.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxCEPaper.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxCEPaper.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBoxCEPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCEPaper.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxCEPaper.Location = new System.Drawing.Point(165, 187);
-            this.textBoxCEPaper.Name = "textBoxCEPaper";
-            this.textBoxCEPaper.ReadOnly = true;
-            this.textBoxCEPaper.Size = new System.Drawing.Size(83, 26);
-            this.textBoxCEPaper.TabIndex = 38;
-            // 
-            // textBoxCEVacuo
-            // 
-            this.textBoxCEVacuo.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.textBoxCEVacuo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxCEVacuo.Cursor = System.Windows.Forms.Cursors.No;
-            this.textBoxCEVacuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxCEVacuo.ForeColor = System.Drawing.Color.Cyan;
-            this.textBoxCEVacuo.Location = new System.Drawing.Point(160, 188);
-            this.textBoxCEVacuo.Name = "textBoxCEVacuo";
-            this.textBoxCEVacuo.ReadOnly = true;
-            this.textBoxCEVacuo.Size = new System.Drawing.Size(83, 26);
-            this.textBoxCEVacuo.TabIndex = 29;
-            // 
-            // labelCEBall
-            // 
-            this.labelCEBall.AutoSize = true;
-            this.labelCEBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCEBall.Location = new System.Drawing.Point(6, 194);
-            this.labelCEBall.Name = "labelCEBall";
-            this.labelCEBall.Size = new System.Drawing.Size(135, 13);
-            this.labelCEBall.TabIndex = 33;
-            this.labelCEBall.Text = "Coeficiente específico";
-            // 
-            // labelCEPaper
-            // 
-            this.labelCEPaper.AutoSize = true;
-            this.labelCEPaper.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCEPaper.Location = new System.Drawing.Point(5, 194);
-            this.labelCEPaper.Name = "labelCEPaper";
-            this.labelCEPaper.Size = new System.Drawing.Size(135, 13);
-            this.labelCEPaper.TabIndex = 39;
-            this.labelCEPaper.Text = "Coeficiente específico";
-            // 
-            // labelCEVacuo
-            // 
-            this.labelCEVacuo.AutoSize = true;
-            this.labelCEVacuo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCEVacuo.Location = new System.Drawing.Point(6, 194);
-            this.labelCEVacuo.Name = "labelCEVacuo";
-            this.labelCEVacuo.Size = new System.Drawing.Size(135, 13);
-            this.labelCEVacuo.TabIndex = 40;
-            this.labelCEVacuo.Text = "Coeficiente específico";
             // 
             // ExperimentData
             // 

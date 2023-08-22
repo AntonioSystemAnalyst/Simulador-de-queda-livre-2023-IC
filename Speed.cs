@@ -338,11 +338,11 @@ namespace freeFall
                         writer.WriteLine(" Densidade  : " + Program.airDensity + " kg/m³");
                         if (Program.airResistance == 0)
                         {
-                            writer.WriteLine(" Resis. ar  : Não");
+                            writer.WriteLine(" Resistência atmosférica  : Não");
                         }
                         else
                         {
-                            writer.WriteLine(" Resis. ar  : Sim");
+                            writer.WriteLine(" Resistência atmosférica  : Sim");
                         }
                         writer.WriteLine(" ----------------------------------------- ");
                         writer.WriteLine(" Tempo para a bola               : " + Program.ball.TimeAllExperiment + " s");

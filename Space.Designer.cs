@@ -35,6 +35,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Space));
             this.chartSpace = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxSalve = new System.Windows.Forms.GroupBox();
             this.buttonTableForDot = new System.Windows.Forms.Button();
             this.SalveImage = new System.Windows.Forms.Button();
@@ -46,10 +50,6 @@
             this.labelTextColor = new System.Windows.Forms.Label();
             this.trackBarColors = new System.Windows.Forms.TrackBar();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
-            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpace)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupBoxSalve.SuspendLayout();
@@ -92,6 +92,27 @@
             this.dataGridView.Size = new System.Drawing.Size(356, 352);
             this.dataGridView.TabIndex = 16;
             // 
+            // Tempo
+            // 
+            this.Tempo.HeaderText = "Tempo (s)";
+            this.Tempo.Name = "Tempo";
+            // 
+            // Bóla
+            // 
+            this.Bóla.HeaderText = "Bola - y (m)";
+            this.Bóla.Name = "Bóla";
+            // 
+            // Papel
+            // 
+            this.Papel.HeaderText = "Papel - y (m)";
+            this.Papel.Name = "Papel";
+            // 
+            // Vácuo
+            // 
+            this.Vácuo.HeaderText = "C. Vácuo - y (m)";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
+            // 
             // groupBoxSalve
             // 
             this.groupBoxSalve.BackColor = System.Drawing.Color.Transparent;
@@ -106,7 +127,7 @@
             this.groupBoxSalve.Size = new System.Drawing.Size(368, 99);
             this.groupBoxSalve.TabIndex = 18;
             this.groupBoxSalve.TabStop = false;
-            this.groupBoxSalve.Text = "Salvar dados";
+            this.groupBoxSalve.Text = "Exportar dados";
             // 
             // buttonTableForDot
             // 
@@ -167,7 +188,7 @@
             this.groupBoxResults.Size = new System.Drawing.Size(368, 376);
             this.groupBoxResults.TabIndex = 19;
             this.groupBoxResults.TabStop = false;
-            this.groupBoxResults.Text = "Resultados";
+            this.groupBoxResults.Text = "Dados do experimento";
             // 
             // groupBox3
             // 
@@ -222,27 +243,6 @@
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
             // 
-            // Tempo
-            // 
-            this.Tempo.HeaderText = "Tempo (s)";
-            this.Tempo.Name = "Tempo";
-            // 
-            // Bóla
-            // 
-            this.Bóla.HeaderText = "Bola - y (m)";
-            this.Bóla.Name = "Bóla";
-            // 
-            // Papel
-            // 
-            this.Papel.HeaderText = "Papel - y (m)";
-            this.Papel.Name = "Papel";
-            // 
-            // Vácuo
-            // 
-            this.Vácuo.HeaderText = "C. Vácuo - y (m)";
-            this.Vácuo.Name = "Vácuo";
-            this.Vácuo.ReadOnly = true;
-            // 
             // Space
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,7 +257,7 @@
             this.MaximizeBox = false;
             this.Name = "Space";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gráfico da espaço em função do tempo";
+            this.Text = "Gráfico da altura em função do tempo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Space_FormClosing);
             this.Load += new System.EventHandler(this.Space_Load);
             this.Resize += new System.EventHandler(this.Space_Resize);
