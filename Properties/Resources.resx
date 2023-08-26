@@ -121,14 +121,26 @@
   <data name="horizonSaturn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonSaturn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="corpoBasketball" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corpoBasketball.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="arrowsBlue (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrowsBlue (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="corpoSoccer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corpoSoccer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="planetSaturn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetSaturn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dfqm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dfqm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="horizonVenus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonVenus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="arrowsBlue Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\arrowsBlue Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="planetNeptune" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetNeptune.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -137,7 +149,7 @@
     <value>..\Resources\horizonMercury.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\background.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="horizonMars" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonMars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,11 +157,17 @@
   <data name="planetVenus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetVenus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="timerCronometer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\timerCronometer.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="horizonMoon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonMoon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="horizonEarth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonEarth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="paper3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paper3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="horizonJupiter" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonJupiter.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,17 +175,20 @@
   <data name="horizonUranus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonUranus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="paper2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\paper2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="airResistence" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\airResistence.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="planetUranus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planetUranus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="gauge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gauge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="planetMars" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetMars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="arrowsBlue Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\arrowsBlue Down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="arrowsBlueUp" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\arrowsBlueUp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,9 +198,6 @@
   </data>
   <data name="planetMoon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetMoon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dfqm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dfqm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backgroundVacuum" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backgroundVacuum.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,8 +214,8 @@
   <data name="planetMercury" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\planetMercury.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logomarca_UFSCAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logomarca_UFSCAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="corpoBowling" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\corpoBowling.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ufscar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ufscar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,34 +223,16 @@
   <data name="horizonNeptune" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\horizonNeptune.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="planetUranus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetUranus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="planetEarth" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\planetEarth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="timerCronometer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\timerCronometer.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="corpoBall4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoBall4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="corpoBasketball" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\corpoBasketball.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="corpoBowling" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\corpoBowling.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="corpoGolf" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\corpoGolf.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="corpoSoccer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\corpoSoccer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="planetEarth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\planetEarth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="paper2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\paper2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="paper3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\paper3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="background1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

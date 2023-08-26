@@ -107,6 +107,7 @@
             // 
             // groupBoxResultados
             // 
+            this.groupBoxResultados.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
             this.groupBoxResultados.Controls.Add(this.labelCEBall);
             this.groupBoxResultados.Controls.Add(this.textBoxCEBall);
@@ -245,6 +246,7 @@
             // 
             // groupBoxPaper
             // 
+            this.groupBoxPaper.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxPaper.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxPaper.BackgroundImage")));
             this.groupBoxPaper.Controls.Add(this.labelCEPaper);
             this.groupBoxPaper.Controls.Add(this.textBoxCEPaper);
@@ -394,6 +396,7 @@
             // 
             // groupBoxVaccum
             // 
+            this.groupBoxVaccum.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxVaccum.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxVaccum.BackgroundImage")));
             this.groupBoxVaccum.Controls.Add(this.labelCEVacuo);
             this.groupBoxVaccum.Controls.Add(this.textBoxCEVacuo);
@@ -720,7 +723,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImage = global::freeFall.Properties.Resources.background;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1116, 236);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBoxVaccum);

@@ -49,6 +49,7 @@
             this.groupBoxaAnimation = new System.Windows.Forms.GroupBox();
             this.timerSetTrackPlanet = new System.Windows.Forms.Timer(this.components);
             this.timerAnimationAlone = new System.Windows.Forms.Timer(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCarrocel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarPlanets)).BeginInit();
@@ -57,6 +58,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).BeginInit();
             this.groupBoxaAnimation.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelSimulador
@@ -103,10 +105,10 @@
             this.richTextBoxPlanetsData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxPlanetsData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxPlanetsData.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxPlanetsData.Location = new System.Drawing.Point(413, 426);
+            this.richTextBoxPlanetsData.Location = new System.Drawing.Point(6, 11);
             this.richTextBoxPlanetsData.Name = "richTextBoxPlanetsData";
             this.richTextBoxPlanetsData.ReadOnly = true;
-            this.richTextBoxPlanetsData.Size = new System.Drawing.Size(329, 138);
+            this.richTextBoxPlanetsData.Size = new System.Drawing.Size(290, 128);
             this.richTextBoxPlanetsData.TabIndex = 6;
             this.richTextBoxPlanetsData.Text = "";
             this.richTextBoxPlanetsData.MouseEnter += new System.EventHandler(this.richTextBoxPlanetsData_MouseEnter);
@@ -135,7 +137,7 @@
             // 
             // trackBarPlanets
             // 
-            this.trackBarPlanets.Location = new System.Drawing.Point(527, 586);
+            this.trackBarPlanets.Location = new System.Drawing.Point(528, 586);
             this.trackBarPlanets.Maximum = 8;
             this.trackBarPlanets.Name = "trackBarPlanets";
             this.trackBarPlanets.Size = new System.Drawing.Size(104, 45);
@@ -191,7 +193,7 @@
             // 
             // pictureBoxUfscar
             // 
-            this.pictureBoxUfscar.Image = global::freeFall.Properties.Resources.Logomarca_UFSCAR;
+            this.pictureBoxUfscar.Image = global::freeFall.Properties.Resources.ufscar;
             this.pictureBoxUfscar.Location = new System.Drawing.Point(20, 544);
             this.pictureBoxUfscar.Name = "pictureBoxUfscar";
             this.pictureBoxUfscar.Size = new System.Drawing.Size(104, 65);
@@ -245,6 +247,15 @@
             this.timerAnimationAlone.Interval = 1;
             this.timerAnimationAlone.Tick += new System.EventHandler(this.timerAnimationAlone_Tick);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.richTextBoxPlanetsData);
+            this.groupBox1.Location = new System.Drawing.Point(426, 418);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(301, 144);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            // 
             // InitialView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,10 +272,10 @@
             this.Controls.Add(this.trackBarPlanets);
             this.Controls.Add(this.trackBarColors);
             this.Controls.Add(this.buttonAbout);
-            this.Controls.Add(this.richTextBoxPlanetsData);
             this.Controls.Add(this.labelSimulador);
             this.Controls.Add(this.pictureBoxCarrocel);
             this.Controls.Add(this.buttonSimulator);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -280,6 +291,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBase)).EndInit();
             this.groupBoxaAnimation.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,6 +318,7 @@
         private System.Windows.Forms.GroupBox groupBoxaAnimation;
         private System.Windows.Forms.Timer timerSetTrackPlanet;
         private System.Windows.Forms.Timer timerAnimationAlone;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

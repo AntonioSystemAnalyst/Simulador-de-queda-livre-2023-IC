@@ -123,6 +123,16 @@ namespace freeFall.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background1 {
+            get {
+                object obj = ResourceManager.GetObject("background1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap backgroundVacuum {
             get {
                 object obj = ResourceManager.GetObject("backgroundVacuum", resourceCulture);
@@ -306,16 +316,6 @@ namespace freeFall.Properties {
         internal static System.Drawing.Bitmap horizonVenus {
             get {
                 object obj = ResourceManager.GetObject("horizonVenus", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Logomarca_UFSCAR {
-            get {
-                object obj = ResourceManager.GetObject("Logomarca_UFSCAR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

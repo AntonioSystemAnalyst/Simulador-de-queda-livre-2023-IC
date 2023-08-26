@@ -542,7 +542,7 @@
             // groupBoxConfiguracao
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
-            this.groupBoxConfiguracao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxConfiguracao.BackgroundImage")));
+            this.groupBoxConfiguracao.BackgroundImage = global::freeFall.Properties.Resources.background1;
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskAirResistence);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskVaccum);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskPapel);
@@ -672,7 +672,7 @@
             this.boxHeight.ForeColor = System.Drawing.Color.Aqua;
             this.boxHeight.Location = new System.Drawing.Point(8, 34);
             this.boxHeight.Maximum = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -686,7 +686,7 @@
             this.boxHeight.Size = new System.Drawing.Size(85, 20);
             this.boxHeight.TabIndex = 26;
             this.boxHeight.Value = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -996,6 +996,7 @@
             // groupBoxData
             // 
             this.groupBoxData.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxData.BackgroundImage")));
             this.groupBoxData.Controls.Add(this.groupBox1);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
@@ -1063,6 +1064,7 @@
             // 
             // groupBoxExperiment
             // 
+            this.groupBoxExperiment.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxExperiment.BackgroundImage")));
             this.groupBoxExperiment.Controls.Add(this.buttonData);
             this.groupBoxExperiment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxExperiment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
