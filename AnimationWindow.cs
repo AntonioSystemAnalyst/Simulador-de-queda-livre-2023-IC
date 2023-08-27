@@ -10,6 +10,7 @@ namespace freeFall
         public AnimationWindow()
         {
             InitializeComponent();
+            vacuumSelectedValueChange(1);
             picutureEixos(1);
             colorAll();
             addImageValue();

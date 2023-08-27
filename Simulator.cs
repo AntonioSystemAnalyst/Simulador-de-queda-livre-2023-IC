@@ -1021,7 +1021,7 @@ namespace freeFall
                 animationWindow.vacuumSelectedValueChange(1);
                 pictureBoxVaccumObject.Image = Properties.Resources.paper2;
                 flagVaccumObject = 0;
-                Program.vaccum.DragCoefficient = 0.8;
+                Program.vaccum.DragCoefficient = 1.17;
                 Program.vaccum.CrossSectionalArea = 0.04;
             }
         }

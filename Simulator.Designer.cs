@@ -734,7 +734,7 @@
             this.comboBoxVacuum.ForeColor = System.Drawing.Color.Cyan;
             this.comboBoxVacuum.FormattingEnabled = true;
             this.comboBoxVacuum.Items.AddRange(new object[] {
-            "Folha",
+            "Papel",
             "Bola"});
             this.comboBoxVacuum.Location = new System.Drawing.Point(8, 130);
             this.comboBoxVacuum.Name = "comboBoxVacuum";
