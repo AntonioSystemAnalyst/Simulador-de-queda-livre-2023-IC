@@ -24,7 +24,7 @@ namespace freeFall
         public static Color colorSimulator = Color.Cyan;
 
         // define se tera ou não resistencia do ar
-        public static int airResistance = 0;
+        public static int airResistance = 1;
 
         // define se o papel esta massado ou não
         public static int crumpledPaper = 0;

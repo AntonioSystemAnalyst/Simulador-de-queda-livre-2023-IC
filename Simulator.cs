@@ -59,10 +59,6 @@ namespace freeFall
             initiWindows();
             spaceWindow.spaceGraphicIniti(10, 0, 150, 50, 0, 10, 0);
             speedWindow.speedGraphicIniti(10, 0, 150, 50, 0, 10, 0);
-            calculateValues();
-            receveidGreatestValueTime();
-            receveidGreatestValueVelocity();
-            loadData();
             loadinDataCorpos();
             timerOpacity.Enabled = true;
         }
@@ -91,7 +87,7 @@ namespace freeFall
             // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
             // folha A4  0.06237; // amaçada 0.001341640872
 
-            Program.airDensity = 1.225;
+            Program.airDensity = 1.23;
             Program.gravity = 9.8;
 
             Program.ball.Mass = 0.43;
@@ -754,7 +750,6 @@ namespace freeFall
                 calculateValues();
                 receveidGreatestValueTime();
                 receveidGreatestValueVelocity();
-                loadData();
                 spaceWindow.buildGrafic(0);
                 speedWindow.buildGrafic(0);
                 animation();
@@ -1152,7 +1147,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 1.2;
+                Program.airDensity = 1.23;
             }
             if (planetCounter == 2)
             {
@@ -1208,7 +1203,7 @@ namespace freeFall
                     pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                     buttonPlanet.Text = "Terra";
                     animationWindow.backgroundPicture(planetCounter);
-                    Program.airDensity = 1.2;
+                    Program.airDensity = 1.23;
                 }
             }
             if (planetCounter == 7)
@@ -1245,7 +1240,7 @@ namespace freeFall
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
                 animationWindow.backgroundPicture(planetCounter);
-                Program.airDensity = 1.2;
+                Program.airDensity = 1.23;
             }
             Program.planetImage = pictureBoxPlanets.Image;
             if(checkBoxResistanceRV1.Checked)
@@ -1690,51 +1685,6 @@ namespace freeFall
             timerOpacity.Enabled = false;
         }
 
-        public void loadData()
-        {
-            planetName = Program.planetName;
-            gravity = "" + Math.Round(Program.gravity, 2) + " m/s²";
-            airDensity = "" + Program.airDensity;
-            height = Program.height + " m";
-            DragCoefficientBody = "" + Program.ball.DragCoefficient;
-            DragCoefficientPaper = "" + Program.paper.DragCoefficient;
-            DragCoefficientVaccum = "" + Program.vaccum.DragCoefficient;
-
-            initialVelocityBody = "" + Math.Round(Program.ball.InitialVelocity, 2) + " m/s";
-            finalVelocityBody = "" + Math.Round(Program.ball.FinalVelocity, 2) + " m/s";
-            if (Program.airResistance == 0)
-            {
-                airResistence = "Não";
-                experimentTimeBody = "" + Math.Round(Program.ball.TimeAllExperiment, 2) + " s";
-            }
-            else
-            {
-                airResistence = "Sim";
-                experimentTimeBody = "" + Math.Round(Program.ball.TimeAllExperiment, 2) + " s";
-            }
-
-            initialVelocityPaper = "" + Math.Round(Program.paper.InitialVelocity, 2) + " m/s";
-            finalVelocityPaper = "" + Math.Round(Program.paper.FinalVelocity, 2) + " m/s";
-            if (Program.airResistance == 0)
-            {
-                experimentTimePaper = "" + Math.Round(Program.paper.TimeAllExperiment, 2) + " s";
-            }
-            else
-            {
-                experimentTimePaper = "" + Math.Round(Program.paper.TimeAllExperiment, 2) + " s";
-            }
-
-            initialVelocityVaccum = "" + Math.Round(Program.vaccum.InitialVelocity, 2) + " m/s";
-            finalVelocityVaccum = "" + Math.Round(Program.vaccum.FinalVelocity, 2) + " m/s";
-            if (Program.airResistance == 0)
-            {
-                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s";
-            }
-            else
-            {
-                experimentTimeVaccum = "" + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s";
-            }
-        }
         private void checkBox3D_CheckStateChanged(object sender, EventArgs e)
         {
             if (checkBox3D.Checked)

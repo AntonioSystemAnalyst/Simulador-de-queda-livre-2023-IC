@@ -141,6 +141,7 @@ namespace freeFall
             terminalVelocity = gravity / term1;
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
+            Console.WriteLine("aq: " + timeAllExperiment);
             //timeAllExperiment =  500;
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
             countTime = 0;
@@ -207,22 +208,25 @@ namespace freeFall
             double timeAll = 0.0;
             double spaceFunction = 0.0;
             int breakStatus = 0;
-
             do
             {
                 spaceFunction = spaceFunctionRV1(terminalTime, gravity, height);
                 if(spaceFunction>height)
                 {
-                    spaceFunction= height;
-                }
-
-                if ((height - spaceFunction) < 0.0001)
-                {
-                    breakStatus = 1;
+                    spaceFunction = height;
                 }
                 terminalTime += 0.01;
+                if ((height - spaceFunction) < 0.001)
+                {
+                    Console.WriteLine("h" + height);
+                    Console.WriteLine("sF" + spaceFunction);
+                    Console.WriteLine("R" + (height - spaceFunction));
+                    breakStatus = 1;
+                }
             } while (breakStatus == 0);
+           
             timeAll = terminalTime;
+            Console.WriteLine("->" + timeAll);
             return timeAll;
         }
         public  double spaceFunctionRV1(double timeValue, double gravity, double height)

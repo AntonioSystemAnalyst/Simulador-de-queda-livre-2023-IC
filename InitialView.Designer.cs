@@ -105,10 +105,10 @@
             this.richTextBoxPlanetsData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxPlanetsData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBoxPlanetsData.ForeColor = System.Drawing.Color.Cyan;
-            this.richTextBoxPlanetsData.Location = new System.Drawing.Point(6, 11);
+            this.richTextBoxPlanetsData.Location = new System.Drawing.Point(6, 15);
             this.richTextBoxPlanetsData.Name = "richTextBoxPlanetsData";
             this.richTextBoxPlanetsData.ReadOnly = true;
-            this.richTextBoxPlanetsData.Size = new System.Drawing.Size(290, 128);
+            this.richTextBoxPlanetsData.Size = new System.Drawing.Size(290, 140);
             this.richTextBoxPlanetsData.TabIndex = 6;
             this.richTextBoxPlanetsData.Text = "";
             this.richTextBoxPlanetsData.MouseEnter += new System.EventHandler(this.richTextBoxPlanetsData_MouseEnter);
@@ -149,7 +149,7 @@
             this.labellogon.AutoSize = true;
             this.labellogon.Font = new System.Drawing.Font("Sitka Text", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labellogon.ForeColor = System.Drawing.Color.Cyan;
-            this.labellogon.Location = new System.Drawing.Point(15, 69);
+            this.labellogon.Location = new System.Drawing.Point(12, 85);
             this.labellogon.Name = "labellogon";
             this.labellogon.Size = new System.Drawing.Size(327, 30);
             this.labellogon.TabIndex = 13;
@@ -184,22 +184,24 @@
             // 
             this.pictureBoxDFQM.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxDFQM.Image = global::freeFall.Properties.Resources.dfqm;
-            this.pictureBoxDFQM.Location = new System.Drawing.Point(140, 544);
+            this.pictureBoxDFQM.Location = new System.Drawing.Point(330, 458);
             this.pictureBoxDFQM.Name = "pictureBoxDFQM";
             this.pictureBoxDFQM.Size = new System.Drawing.Size(67, 65);
             this.pictureBoxDFQM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxDFQM.TabIndex = 16;
             this.pictureBoxDFQM.TabStop = false;
+            this.pictureBoxDFQM.Visible = false;
             // 
             // pictureBoxUfscar
             // 
             this.pictureBoxUfscar.Image = global::freeFall.Properties.Resources.ufscar;
-            this.pictureBoxUfscar.Location = new System.Drawing.Point(20, 544);
+            this.pictureBoxUfscar.Location = new System.Drawing.Point(210, 458);
             this.pictureBoxUfscar.Name = "pictureBoxUfscar";
             this.pictureBoxUfscar.Size = new System.Drawing.Size(104, 65);
             this.pictureBoxUfscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxUfscar.TabIndex = 17;
             this.pictureBoxUfscar.TabStop = false;
+            this.pictureBoxUfscar.Visible = false;
             // 
             // pictureBoxCorpo
             // 
@@ -231,7 +233,7 @@
             this.groupBoxaAnimation.BackgroundImage = global::freeFall.Properties.Resources.background;
             this.groupBoxaAnimation.Controls.Add(this.pictureBoxCorpo);
             this.groupBoxaAnimation.Controls.Add(this.pictureBoxBase);
-            this.groupBoxaAnimation.Location = new System.Drawing.Point(23, 102);
+            this.groupBoxaAnimation.Location = new System.Drawing.Point(20, 141);
             this.groupBoxaAnimation.Name = "groupBoxaAnimation";
             this.groupBoxaAnimation.Size = new System.Drawing.Size(142, 421);
             this.groupBoxaAnimation.TabIndex = 20;
@@ -250,9 +252,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.richTextBoxPlanetsData);
-            this.groupBox1.Location = new System.Drawing.Point(426, 418);
+            this.groupBox1.Location = new System.Drawing.Point(426, 395);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(301, 144);
+            this.groupBox1.Size = new System.Drawing.Size(301, 167);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             // 

@@ -158,23 +158,23 @@
             // labelGraficDetails
             // 
             this.labelGraficDetails.AutoSize = true;
-            this.labelGraficDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGraficDetails.Location = new System.Drawing.Point(681, 324);
+            this.labelGraficDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGraficDetails.Location = new System.Drawing.Point(670, 324);
             this.labelGraficDetails.Name = "labelGraficDetails";
-            this.labelGraficDetails.Size = new System.Drawing.Size(185, 12);
+            this.labelGraficDetails.Size = new System.Drawing.Size(200, 13);
             this.labelGraficDetails.TabIndex = 3;
-            this.labelGraficDetails.Text = "[Clique nos gráficos para detalhes.]";
+            this.labelGraficDetails.Text = "Clique nos gráficos para detalhes.";
             this.labelGraficDetails.Visible = false;
             // 
             // labelVenus
             // 
             this.labelVenus.AutoSize = true;
-            this.labelVenus.Location = new System.Drawing.Point(6, 323);
+            this.labelVenus.Location = new System.Drawing.Point(6, 324);
             this.labelVenus.Name = "labelVenus";
-            this.labelVenus.Size = new System.Drawing.Size(636, 13);
+            this.labelVenus.Size = new System.Drawing.Size(592, 13);
             this.labelVenus.TabIndex = 0;
-            this.labelVenus.Text = "Vênus tem uma atmosfera densa demais para que uma folha aberta possa cair num tem" +
-    "po razoavelmente curto.";
+            this.labelVenus.Text = "Vênus tem uma atmosfera com alta densidade, portanto, um papel aberto levaria mui" +
+    "to tempo para cair.";
             this.labelVenus.Visible = false;
             // 
             // panelSpeed
@@ -855,7 +855,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 159);
+            this.label4.Location = new System.Drawing.Point(8, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 25;
