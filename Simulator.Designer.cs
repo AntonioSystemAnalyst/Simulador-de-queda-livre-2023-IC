@@ -109,7 +109,6 @@
             this.panelAnimation = new System.Windows.Forms.Panel();
             this.timerColors = new System.Windows.Forms.Timer(this.components);
             this.timerNumerAnimationIniti = new System.Windows.Forms.Timer(this.components);
-            this.groupBoxExperiment = new System.Windows.Forms.GroupBox();
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
@@ -132,7 +131,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
             this.groupBoxData.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBoxExperiment.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
@@ -171,10 +169,10 @@
             this.labelVenus.AutoSize = true;
             this.labelVenus.Location = new System.Drawing.Point(6, 324);
             this.labelVenus.Name = "labelVenus";
-            this.labelVenus.Size = new System.Drawing.Size(592, 13);
+            this.labelVenus.Size = new System.Drawing.Size(588, 13);
             this.labelVenus.TabIndex = 0;
-            this.labelVenus.Text = "Vênus tem uma atmosfera com alta densidade, portanto, um papel aberto levaria mui" +
-    "to tempo para cair.";
+            this.labelVenus.Text = "Vênus tem uma atmosfera com alta densidade, portanto um papel aberto levaria muit" +
+    "o tempo para cair.";
             this.labelVenus.Visible = false;
             // 
             // panelSpeed
@@ -210,6 +208,7 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
+            this.groupBoxResultados.Controls.Add(this.buttonData);
             this.groupBoxResultados.Controls.Add(this.buttonLog);
             this.groupBoxResultados.Controls.Add(this.pictureBoxVaccumObject);
             this.groupBoxResultados.Controls.Add(this.pictureBox2);
@@ -877,12 +876,13 @@
             this.buttonData.Enabled = false;
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(39, 21);
+            this.buttonData.Location = new System.Drawing.Point(136, 186);
             this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(116, 26);
+            this.buttonData.Size = new System.Drawing.Size(27, 23);
             this.buttonData.TabIndex = 30;
             this.buttonData.Text = "Sem dados";
             this.buttonData.UseVisualStyleBackColor = true;
+            this.buttonData.Visible = false;
             this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
             this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
             // 
@@ -1002,14 +1002,14 @@
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxData.Location = new System.Drawing.Point(500, 342);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(195, 127);
+            this.groupBoxData.Size = new System.Drawing.Size(195, 193);
             this.groupBoxData.TabIndex = 11;
             this.groupBoxData.TabStop = false;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.labelTextStart);
-            this.groupBox1.Location = new System.Drawing.Point(32, 30);
+            this.groupBox1.Location = new System.Drawing.Point(30, 65);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(136, 65);
             this.groupBox1.TabIndex = 33;
@@ -1062,19 +1062,6 @@
             // 
             this.timerNumerAnimationIniti.Tick += new System.EventHandler(this.timerNumerAnimationIniti_Tick);
             // 
-            // groupBoxExperiment
-            // 
-            this.groupBoxExperiment.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxExperiment.BackgroundImage")));
-            this.groupBoxExperiment.Controls.Add(this.buttonData);
-            this.groupBoxExperiment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxExperiment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.groupBoxExperiment.Location = new System.Drawing.Point(500, 472);
-            this.groupBoxExperiment.Name = "groupBoxExperiment";
-            this.groupBoxExperiment.Size = new System.Drawing.Size(195, 61);
-            this.groupBoxExperiment.TabIndex = 13;
-            this.groupBoxExperiment.TabStop = false;
-            this.groupBoxExperiment.Text = "Experimento";
-            // 
             // timerTrackBar
             // 
             this.timerTrackBar.Interval = 10;
@@ -1095,7 +1082,6 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1229, 621);
-            this.Controls.Add(this.groupBoxExperiment);
             this.Controls.Add(this.groupBoxGraficos);
             this.Controls.Add(this.panelAnimation);
             this.Controls.Add(this.groupBoxData);
@@ -1136,7 +1122,6 @@
             this.groupBoxData.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBoxExperiment.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1211,7 +1196,6 @@
         private System.Windows.Forms.Timer timerNumerAnimationIniti;
         private System.Windows.Forms.Label labelTextStart;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBoxExperiment;
         private System.Windows.Forms.Timer timerTrackBar;
         private System.Windows.Forms.CheckBox checkBoxResistanceRV1;
         private System.Windows.Forms.Timer timerAirResistence;

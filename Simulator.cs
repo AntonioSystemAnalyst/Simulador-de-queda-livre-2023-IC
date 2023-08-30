@@ -1720,7 +1720,6 @@ namespace freeFall
             comboPaper.ForeColor = Program.colorSimulator;
             comboBoxVacuum.ForeColor = Program.colorSimulator;
             textTempo.ForeColor = Program.colorSimulator;
-            groupBoxExperiment.ForeColor = Program.colorSimulator;
             labelAirAirDensity.ForeColor = Program.colorSimulator;
             textBoxAirDensity.ForeColor = Program.colorSimulator;
             labelMaskPapel.ForeColor = Program.colorSimulator;
