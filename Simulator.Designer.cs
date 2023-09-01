@@ -37,6 +37,7 @@
             this.panelSpace = new System.Windows.Forms.Panel();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
+            this.buttonData = new System.Windows.Forms.Button();
             this.buttonLog = new System.Windows.Forms.Button();
             this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -87,7 +88,6 @@
             this.cmbPlaneta = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.trackBarColors = new System.Windows.Forms.TrackBar();
-            this.buttonData = new System.Windows.Forms.Button();
             this.groupBoxControl = new System.Windows.Forms.GroupBox();
             this.textTempo = new System.Windows.Forms.TextBox();
             this.pictureBoxTimeLeft = new System.Windows.Forms.PictureBox();
@@ -202,7 +202,6 @@
             this.buttonLogo.TabIndex = 35;
             this.buttonLogo.Text = "Log";
             this.buttonLogo.UseVisualStyleBackColor = true;
-            this.buttonLogo.Visible = false;
             this.buttonLogo.Click += new System.EventHandler(this.buttonLogo_Click);
             // 
             // groupBoxResultados
@@ -240,6 +239,21 @@
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Valores instantâneos";
             // 
+            // buttonData
+            // 
+            this.buttonData.Enabled = false;
+            this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonData.ForeColor = System.Drawing.Color.Black;
+            this.buttonData.Location = new System.Drawing.Point(136, 186);
+            this.buttonData.Name = "buttonData";
+            this.buttonData.Size = new System.Drawing.Size(27, 23);
+            this.buttonData.TabIndex = 30;
+            this.buttonData.Text = "Sem dados";
+            this.buttonData.UseVisualStyleBackColor = true;
+            this.buttonData.Visible = false;
+            this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
+            this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
+            // 
             // buttonLog
             // 
             this.buttonLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -250,7 +264,6 @@
             this.buttonLog.TabIndex = 44;
             this.buttonLog.Text = "PL";
             this.buttonLog.UseVisualStyleBackColor = true;
-            this.buttonLog.Visible = false;
             this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject
@@ -870,21 +883,6 @@
             this.trackBarColors.TabIndex = 12;
             this.trackBarColors.Value = 1;
             this.trackBarColors.Scroll += new System.EventHandler(this.trackBarPlanets_Scroll);
-            // 
-            // buttonData
-            // 
-            this.buttonData.Enabled = false;
-            this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(136, 186);
-            this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(27, 23);
-            this.buttonData.TabIndex = 30;
-            this.buttonData.Text = "Sem dados";
-            this.buttonData.UseVisualStyleBackColor = true;
-            this.buttonData.Visible = false;
-            this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
-            this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
             // 
             // groupBoxControl
             // 

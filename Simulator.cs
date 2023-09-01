@@ -87,7 +87,6 @@ namespace freeFall
             // bola da fifa - 450 gramas - 70 cm de cicurnferencia 
             // folha A4  0.06237; // amaçada 0.001341640872
 
-            Program.airDensity = 1.23;
             Program.gravity = 9.8;
 
             Program.ball.Mass = 0.43;
