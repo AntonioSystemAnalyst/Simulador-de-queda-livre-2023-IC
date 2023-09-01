@@ -86,8 +86,14 @@ namespace freeFall
                 start++;
                 end--;
             }
-
-            pixels[numberOfTerms] = quantityPixel;
+            for (i = 0; i< pixels.Length; i++)
+            {
+                if (pixels[i] > 524)
+                {
+                    pixels[i] = 524;
+                }
+            }
+            pixels[numberOfTerms-1] = 524;
         }
         public void CalculateOutResistence(double height, double gravity, double initialVelocityExperiment)
         {
