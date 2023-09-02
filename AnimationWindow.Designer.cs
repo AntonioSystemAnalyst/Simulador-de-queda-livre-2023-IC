@@ -95,7 +95,7 @@
             this.pictureBoxAxesY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.pictureBoxAxesY.Location = new System.Drawing.Point(8, 20);
             this.pictureBoxAxesY.Name = "pictureBoxAxesY";
-            this.pictureBoxAxesY.Size = new System.Drawing.Size(2, 593);
+            this.pictureBoxAxesY.Size = new System.Drawing.Size(2, 583);
             this.pictureBoxAxesY.TabIndex = 20;
             this.pictureBoxAxesY.TabStop = false;
             this.pictureBoxAxesY.Visible = false;
@@ -103,7 +103,7 @@
             // pictureBoxAxesX
             // 
             this.pictureBoxAxesX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.pictureBoxAxesX.Location = new System.Drawing.Point(5, 599);
+            this.pictureBoxAxesX.Location = new System.Drawing.Point(5, 596);
             this.pictureBoxAxesX.Name = "pictureBoxAxesX";
             this.pictureBoxAxesX.Size = new System.Drawing.Size(321, 2);
             this.pictureBoxAxesX.TabIndex = 21;
@@ -115,7 +115,7 @@
             this.labelArrow2.AutoSize = true;
             this.labelArrow2.BackColor = System.Drawing.Color.Black;
             this.labelArrow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArrow2.Location = new System.Drawing.Point(318, 593);
+            this.labelArrow2.Location = new System.Drawing.Point(318, 590);
             this.labelArrow2.Name = "labelArrow2";
             this.labelArrow2.Size = new System.Drawing.Size(17, 13);
             this.labelArrow2.TabIndex = 23;
@@ -138,10 +138,10 @@
             // 
             this.labelY.AutoSize = true;
             this.labelY.BackColor = System.Drawing.Color.Transparent;
-            this.labelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelY.Location = new System.Drawing.Point(18, 567);
+            this.labelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelY.Location = new System.Drawing.Point(18, 24);
             this.labelY.Name = "labelY";
-            this.labelY.Size = new System.Drawing.Size(11, 12);
+            this.labelY.Size = new System.Drawing.Size(15, 13);
             this.labelY.TabIndex = 16;
             this.labelY.Text = "Y";
             this.labelY.Visible = false;
@@ -150,7 +150,7 @@
             // 
             this.labelZero.AutoSize = true;
             this.labelZero.BackColor = System.Drawing.Color.Transparent;
-            this.labelZero.Location = new System.Drawing.Point(17, 582);
+            this.labelZero.Location = new System.Drawing.Point(14, 579);
             this.labelZero.Name = "labelZero";
             this.labelZero.Size = new System.Drawing.Size(14, 13);
             this.labelZero.TabIndex = 15;
@@ -172,7 +172,7 @@
             this.groupBoxVacuum.Controls.Add(this.pictureBoxVacuum);
             this.groupBoxVacuum.Location = new System.Drawing.Point(46, 17);
             this.groupBoxVacuum.Name = "groupBoxVacuum";
-            this.groupBoxVacuum.Size = new System.Drawing.Size(71, 582);
+            this.groupBoxVacuum.Size = new System.Drawing.Size(71, 580);
             this.groupBoxVacuum.TabIndex = 11;
             this.groupBoxVacuum.TabStop = false;
             this.groupBoxVacuum.Visible = false;
@@ -192,16 +192,16 @@
             // pictureBoxBase
             // 
             this.pictureBoxBase.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.pictureBoxBase.Location = new System.Drawing.Point(3, 599);
+            this.pictureBoxBase.Location = new System.Drawing.Point(3, 597);
             this.pictureBoxBase.Name = "pictureBoxBase";
-            this.pictureBoxBase.Size = new System.Drawing.Size(331, 16);
+            this.pictureBoxBase.Size = new System.Drawing.Size(331, 18);
             this.pictureBoxBase.TabIndex = 3;
             this.pictureBoxBase.TabStop = false;
             // 
             // pictureBoxPaper
             // 
             this.pictureBoxPaper.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBoxPaper.Image = global::freeFall.Properties.Resources.paper2;
+            this.pictureBoxPaper.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPaper.Image")));
             this.pictureBoxPaper.Location = new System.Drawing.Point(222, 30);
             this.pictureBoxPaper.Name = "pictureBoxPaper";
             this.pictureBoxPaper.Size = new System.Drawing.Size(45, 41);
@@ -225,7 +225,7 @@
             // 
             this.pictureBoxGauge.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxGauge.Image = global::freeFall.Properties.Resources.gauge;
-            this.pictureBoxGauge.Location = new System.Drawing.Point(17, 30);
+            this.pictureBoxGauge.Location = new System.Drawing.Point(18, 45);
             this.pictureBoxGauge.Name = "pictureBoxGauge";
             this.pictureBoxGauge.Size = new System.Drawing.Size(30, 30);
             this.pictureBoxGauge.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -249,10 +249,10 @@
             // 
             this.labelX.AutoSize = true;
             this.labelX.BackColor = System.Drawing.Color.Transparent;
-            this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX.Location = new System.Drawing.Point(32, 582);
+            this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelX.Location = new System.Drawing.Point(313, 577);
             this.labelX.Name = "labelX";
-            this.labelX.Size = new System.Drawing.Size(12, 12);
+            this.labelX.Size = new System.Drawing.Size(15, 13);
             this.labelX.TabIndex = 17;
             this.labelX.Text = "X";
             this.labelX.Visible = false;

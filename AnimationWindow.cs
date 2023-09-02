@@ -53,7 +53,7 @@ namespace freeFall
 
         public void animationVaccum(int countVaccum)
         {
-            pictureBoxVacuum.Location = new Point(16, 13 + Program.vaccum.Pixels[countVaccum]);
+            pictureBoxVacuum.Location = new Point(16, 12 + Program.vaccum.Pixels[countVaccum]);
         }
 
         public void backgroundPicture(int planetCounter)

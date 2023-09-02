@@ -193,6 +193,8 @@
   <ItemGroup>
     <Content Include="astronomy.ico" />
     <Content Include="newAstronomy.ico" />
+    <None Include="Resources\paper2.png" />
+    <None Include="Resources\paper3.png" />
     <None Include="Resources\horizonEarth.png" />
     <None Include="Resources\background.jpg" />
     <None Include="Resources\horizonVenus.png" />
@@ -206,13 +208,11 @@
     <None Include="Resources\arrowsBlue %282%29.png" />
     <None Include="Resources\arrowsBlue %281%29.png" />
     <None Include="Resources\arrowsBlueUp.png" />
-    <None Include="Resources\paper2.png" />
     <None Include="Resources\corpoSoccer.png" />
     <None Include="Resources\corpoGolf.png" />
     <None Include="Resources\corpoBowling.png" />
     <None Include="Resources\corpoBasketball.png" />
     <None Include="Resources\corpoBall4.png" />
-    <None Include="Resources\paper3.png" />
     <None Include="Resources\timerCronometer.wav" />
     <None Include="Resources\backgroundVacuumColor.bmp" />
     <None Include="Resources\backgroundVacuum.bmp" />
