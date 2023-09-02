@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnimationWindow));
             this.groupBoxExperimento = new System.Windows.Forms.GroupBox();
             this.pictureBoxAxesY = new System.Windows.Forms.PictureBox();
             this.pictureBoxAxesX = new System.Windows.Forms.PictureBox();
@@ -63,7 +64,7 @@
             // 
             // groupBoxExperimento
             // 
-            this.groupBoxExperimento.BackgroundImage = global::freeFall.Properties.Resources.horizonEarth;
+            this.groupBoxExperimento.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxExperimento.BackgroundImage")));
             this.groupBoxExperimento.Controls.Add(this.pictureBoxAxesY);
             this.groupBoxExperimento.Controls.Add(this.pictureBoxAxesX);
             this.groupBoxExperimento.Controls.Add(this.labelArrow2);
@@ -102,7 +103,7 @@
             // pictureBoxAxesX
             // 
             this.pictureBoxAxesX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.pictureBoxAxesX.Location = new System.Drawing.Point(5, 608);
+            this.pictureBoxAxesX.Location = new System.Drawing.Point(5, 599);
             this.pictureBoxAxesX.Name = "pictureBoxAxesX";
             this.pictureBoxAxesX.Size = new System.Drawing.Size(321, 2);
             this.pictureBoxAxesX.TabIndex = 21;
@@ -114,7 +115,7 @@
             this.labelArrow2.AutoSize = true;
             this.labelArrow2.BackColor = System.Drawing.Color.Black;
             this.labelArrow2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelArrow2.Location = new System.Drawing.Point(318, 602);
+            this.labelArrow2.Location = new System.Drawing.Point(318, 593);
             this.labelArrow2.Name = "labelArrow2";
             this.labelArrow2.Size = new System.Drawing.Size(17, 13);
             this.labelArrow2.TabIndex = 23;
@@ -138,7 +139,7 @@
             this.labelY.AutoSize = true;
             this.labelY.BackColor = System.Drawing.Color.Transparent;
             this.labelY.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelY.Location = new System.Drawing.Point(18, 576);
+            this.labelY.Location = new System.Drawing.Point(18, 567);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(11, 12);
             this.labelY.TabIndex = 16;
@@ -149,7 +150,7 @@
             // 
             this.labelZero.AutoSize = true;
             this.labelZero.BackColor = System.Drawing.Color.Transparent;
-            this.labelZero.Location = new System.Drawing.Point(17, 591);
+            this.labelZero.Location = new System.Drawing.Point(17, 582);
             this.labelZero.Name = "labelZero";
             this.labelZero.Size = new System.Drawing.Size(14, 13);
             this.labelZero.TabIndex = 15;
@@ -171,7 +172,7 @@
             this.groupBoxVacuum.Controls.Add(this.pictureBoxVacuum);
             this.groupBoxVacuum.Location = new System.Drawing.Point(46, 17);
             this.groupBoxVacuum.Name = "groupBoxVacuum";
-            this.groupBoxVacuum.Size = new System.Drawing.Size(71, 588);
+            this.groupBoxVacuum.Size = new System.Drawing.Size(71, 582);
             this.groupBoxVacuum.TabIndex = 11;
             this.groupBoxVacuum.TabStop = false;
             this.groupBoxVacuum.Visible = false;
@@ -191,9 +192,9 @@
             // pictureBoxBase
             // 
             this.pictureBoxBase.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.pictureBoxBase.Location = new System.Drawing.Point(3, 605);
+            this.pictureBoxBase.Location = new System.Drawing.Point(3, 599);
             this.pictureBoxBase.Name = "pictureBoxBase";
-            this.pictureBoxBase.Size = new System.Drawing.Size(331, 10);
+            this.pictureBoxBase.Size = new System.Drawing.Size(331, 16);
             this.pictureBoxBase.TabIndex = 3;
             this.pictureBoxBase.TabStop = false;
             // 
@@ -249,7 +250,7 @@
             this.labelX.AutoSize = true;
             this.labelX.BackColor = System.Drawing.Color.Transparent;
             this.labelX.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelX.Location = new System.Drawing.Point(32, 591);
+            this.labelX.Location = new System.Drawing.Point(32, 582);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(12, 12);
             this.labelX.TabIndex = 17;
