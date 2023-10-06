@@ -237,7 +237,7 @@
             // 
             this.pictureBoxResistence.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxResistence.Image = global::freeFall.Properties.Resources.airResistence;
-            this.pictureBoxResistence.Location = new System.Drawing.Point(288, 24);
+            this.pictureBoxResistence.Location = new System.Drawing.Point(288, 22);
             this.pictureBoxResistence.Name = "pictureBoxResistence";
             this.pictureBoxResistence.Size = new System.Drawing.Size(39, 30);
             this.pictureBoxResistence.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

@@ -13,7 +13,6 @@ namespace freeFall
         private double mass = 0.0;
         private double crossSectionalArea = 0;
         private int numberOfTerms = 0;
-
         // ---
         public double term0, term1, term2, term3, term4, term5;
         public double term6, term7;
@@ -31,6 +30,7 @@ namespace freeFall
         private double[] countTimeExperiment;
         private double[] animationPixel;
         private int[] pixels;
+        private int[] paperPixels;
         public static double Round(double value, int decimalPlaces)
         {
             double factor = (double)Math.Pow(10, decimalPlaces);
@@ -95,6 +95,41 @@ namespace freeFall
             }
             pixels[numberOfTerms-1] = 524;
         }
+        public void animationPaper(int terms, double airDensity)
+        {
+            int i = 0;
+            double countTime = 0;
+            paperPixels = new int[terms]; 
+            for (i = 0; i < terms; i++)
+            {
+                paperPixels[i] = CalculateXVariation(countTime, airDensity);
+                countTime = countTime + 0.01;
+                Console.WriteLine(" " + paperPixels[i]);
+            }
+        }
+
+        public int CalculateXVariation(double timeExperiment, double density)
+        {
+            int maxLeft = 195;
+            int maxRight = 241;
+            double valueX = 0;
+
+            double period = 30; // Período da oscilação (de 203 a 241 e de volta a 203)
+            double amplitude = (maxRight - maxLeft) / 2; // Amplitude é metade da diferença entre os valores máximo e mínimo
+
+            if (density > 1)
+            {
+                valueX = maxLeft + amplitude + amplitude * Math.Sin(100 * Math.PI * timeExperiment / period);
+            }
+            else
+            {
+                valueX = maxLeft + amplitude + amplitude * Math.Sin(50 * Math.PI * timeExperiment / period);
+            }
+           
+
+            return (int)Math.Round(valueX);
+        }
+
         public void CalculateOutResistence(double height, double gravity, double initialVelocityExperiment)
         {
             double countTime = 0;
@@ -205,6 +240,7 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
             animationVector(534, height);
+            animationPaper(numberOfTerms, airDensity);
         }
         public  double getTimeAllVR1(double gravity, double height)
         {
@@ -328,6 +364,11 @@ namespace freeFall
             set { animationPixel = value; }
         }
 
+        public int[] PaperPixels
+        {
+            get { return paperPixels; }
+            set { paperPixels = value; }
+        }
         public int NumberOfTerms
         {
             get { return numberOfTerms; }
