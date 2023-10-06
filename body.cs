@@ -24,10 +24,10 @@ namespace freeFall
         double qtdSpaceForNumberOfTermes;
         double qtdSpaceForPixels;
 
-        private double[] spaceTime;
-        private double[] spacePixel;
         private double[] space;
         private double[] velocity;
+        private double[] spaceTime;
+        private double[] spacePixel;
         private double[] countTimeExperiment;
         private double[] animationPixel;
         private int[] pixels;
@@ -147,7 +147,6 @@ namespace freeFall
             terminalVelocity = gravity / term1;
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
-            //timeAllExperiment =  500;
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
             countTime = 0;
             for (i = 0; i < numberOfTerms; i++)
