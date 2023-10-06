@@ -186,14 +186,14 @@ namespace freeFall
                 {
                     trackBarPlanets.Value = 0;
                     pictureBoxCarrocel.Image = Properties.Resources.planetMercury;
-                    planetData("Mercurio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10²³", "3,70", "0,00");
+                    planetData("Mercúrio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10²³", "3,70", "0,00");
                     Program.airDensity = 0;
                 }
                 if (carouselCounter == 1)
                 {
                     trackBarPlanets.Value = 1;
                     pictureBoxCarrocel.Image = Properties.Resources.planetVenus;
-                    planetData("Venus", "6.051,8", "12.104", "928.415.345.893", "4,8673 x 10²⁴", "8,87", "64,80");
+                    planetData("Vênus", "6.051,8", "12.104", "928.415.345.893", "4,8673 x 10²⁴", "8,87", "64,80");
                     Program.airDensity = 64.8;
                 }
                 if (carouselCounter == 2)

@@ -99,7 +99,6 @@ namespace freeFall
         {
             int i = 0;
             double countTime = 0;
-            paperPixels = new int[terms]; 
             for (i = 0; i < terms; i++)
             {
                 paperPixels[i] = CalculateXVariation(countTime, airDensity);
@@ -179,6 +178,7 @@ namespace freeFall
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
             numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
+            paperPixels = new int[numberOfTerms + 1];
             countTime = 0;
             for (i = 0; i < numberOfTerms; i++)
             {
@@ -235,8 +235,8 @@ namespace freeFall
                 countTimeExperiment[i] = countTime;
                 countTime = countTime + 0.01;
             }
-            animationVector(534, height);
             animationPaper(numberOfTerms, airDensity);
+            animationVector(534, height);
         }
         public  double getTimeAllVR1(double gravity, double height)
         {

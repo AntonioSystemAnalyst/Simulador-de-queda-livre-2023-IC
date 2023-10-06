@@ -48,7 +48,7 @@ namespace freeFall
 
         public void animationPaper(int countPaper)
         {
-            if (Program.crumpledPaper == 0 && Program.airResistance == 1)
+            if (Program.crumpledPaper == 0 && Program.airResistance == 1 && Program.airDensity > 0)
             {
                 pictureBoxPaper.Location = new Point(Program.paper.PaperPixels[countPaper], 30 + Program.paper.Pixels[countPaper]);
             }
