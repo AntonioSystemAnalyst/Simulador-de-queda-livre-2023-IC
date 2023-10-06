@@ -375,10 +375,10 @@ namespace freeFall
             countBody = countBody + 1;
             if (countBody >= Program.ball.NumberOfTerms)
             {
-                timerAnimation.Enabled = false;
                 txtEspaco.Text = "0.00";
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
+                    stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
                     Program.openGraficsControl = 1;
@@ -404,9 +404,9 @@ namespace freeFall
             if (countPaper >= Program.paper.NumberOfTerms)
             {
                 textBoxPaperHeight.Text = "0.00";
-                timerAnimationPaper.Enabled = false;
                 if (greatestValueTime == 2)
                 {
+                    stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
                     Program.openGraficsControl = 1;
@@ -431,10 +431,10 @@ namespace freeFall
             countVaccum = countVaccum + 1;
             if (countVaccum >= Program.vaccum.NumberOfTerms)
             {
-                timerAnimationVacuum.Enabled = false;
                 textBoxVaccumHeight.Text = "0.00";
                 if (greatestValueTime == 3)
                 {
+                    stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
                     Program.openGraficsControl = 1;
@@ -442,6 +442,12 @@ namespace freeFall
                     enabledConfigure(0);
                 }
             }
+        }
+        public void stopAllTimes()
+        {
+            timerAnimation.Enabled = false;
+            timerAnimationPaper.Enabled = false;
+            timerAnimationVacuum.Enabled = false;
         }
         public void receveidGreatestValueTime()
         {
@@ -1480,7 +1486,6 @@ namespace freeFall
             int Auxiliary = 0;
             pictureBoxTimeRight.Visible = true;
             Auxiliary = getGreatValueCount();
-
 
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
