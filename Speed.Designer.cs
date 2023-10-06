@@ -40,16 +40,16 @@
             this.chartSpeed = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBoxResults = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxSalve = new System.Windows.Forms.GroupBox();
             this.buttonTableForDot = new System.Windows.Forms.Button();
             this.SalveImage = new System.Windows.Forms.Button();
             this.SalveXLS = new System.Windows.Forms.Button();
             this.SalveTXT = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
+            this.Tempo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bóla = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Papel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Vácuo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarColors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSpeed)).BeginInit();
@@ -155,27 +155,6 @@
             this.dataGridView.TabIndex = 16;
             this.dataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView_CellFormatting);
             // 
-            // Tempo
-            // 
-            this.Tempo.HeaderText = "Tempo (s)";
-            this.Tempo.Name = "Tempo";
-            // 
-            // Bóla
-            // 
-            this.Bóla.HeaderText = "Bola - v (m/s)";
-            this.Bóla.Name = "Bóla";
-            // 
-            // Papel
-            // 
-            this.Papel.HeaderText = "Papel - v (m/s)";
-            this.Papel.Name = "Papel";
-            // 
-            // Vácuo
-            // 
-            this.Vácuo.HeaderText = "C. Vácuo - v (m/s)";
-            this.Vácuo.Name = "Vácuo";
-            this.Vácuo.ReadOnly = true;
-            // 
             // groupBoxSalve
             // 
             this.groupBoxSalve.BackColor = System.Drawing.Color.Transparent;
@@ -243,6 +222,31 @@
             // timerFocus
             // 
             this.timerFocus.Tick += new System.EventHandler(this.timerFocus_Tick);
+            // 
+            // Tempo
+            // 
+            this.Tempo.HeaderText = "t (s)";
+            this.Tempo.Name = "Tempo";
+            this.Tempo.Width = 60;
+            // 
+            // Bóla
+            // 
+            this.Bóla.HeaderText = "Bola           v (m/s)";
+            this.Bóla.Name = "Bóla";
+            this.Bóla.Width = 85;
+            // 
+            // Papel
+            // 
+            this.Papel.HeaderText = "Papel         v (m/s)";
+            this.Papel.Name = "Papel";
+            this.Papel.Width = 85;
+            // 
+            // Vácuo
+            // 
+            this.Vácuo.HeaderText = "C. Vácuo    v (m/s)";
+            this.Vácuo.Name = "Vácuo";
+            this.Vácuo.ReadOnly = true;
+            this.Vácuo.Width = 85;
             // 
             // Speed
             // 
