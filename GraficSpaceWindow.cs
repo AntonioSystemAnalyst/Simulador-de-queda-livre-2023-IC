@@ -190,8 +190,8 @@ namespace freeFall
 
             chartSpace.Titles.Add("Altura versus tempo").Docking = Docking.Top;
             chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpace.ChartAreas[0].AxisX.Title = "t (s)";
-            chartSpace.ChartAreas[0].AxisY.Title = "y (m)";
+            chartSpace.ChartAreas[0].AxisX.Title = "t ( s )";
+            chartSpace.ChartAreas[0].AxisY.Title = "y ( m )";
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";

@@ -972,7 +972,7 @@ namespace freeFall
             {
                 if (cmbPlaneta.Text == "Vênus")
                 {
-                    comboPaper.Text = "Amaçada";
+                    comboPaper.Text = "Amassado";
                     comboPaper.Enabled = false;
                     animationWindow.picuturePaper(0);
                 }
@@ -1136,7 +1136,7 @@ namespace freeFall
         {
             if (planetCounter == 1)
             {
-                txtgravit.Text = "9,8";
+                txtgravit.Text = "9,81";
                 cmbPlaneta.Text = "Terra";
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";
@@ -1145,7 +1145,7 @@ namespace freeFall
             }
             if (planetCounter == 2)
             {
-                txtgravit.Text = "1,624";
+                txtgravit.Text = "1,62";
                 cmbPlaneta.Text = "Lua";
                 pictureBoxPlanets.Image = Properties.Resources.planetMoon;
                 buttonPlanet.Text = "Lua";
@@ -1154,7 +1154,7 @@ namespace freeFall
             }
             if (planetCounter == 3)
             {
-                txtgravit.Text = "3,7";
+                txtgravit.Text = "3,70";
                 cmbPlaneta.Text = "Mercúrio";
                 pictureBoxPlanets.Image = Properties.Resources.planetMercury;
                 buttonPlanet.Text = "Mercúrio";
@@ -1192,7 +1192,7 @@ namespace freeFall
                 Program.airDensity = 0.16;
                 if (Program.numberOfPlanets == 4)
                 {
-                    txtgravit.Text = "9,8";
+                    txtgravit.Text = "9,81";
                     cmbPlaneta.Text = "Terra";
                     pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                     buttonPlanet.Text = "Terra";
@@ -1202,7 +1202,7 @@ namespace freeFall
             }
             if (planetCounter == 7)
             {
-                txtgravit.Text = "10,4";
+                txtgravit.Text = "10,40";
                 cmbPlaneta.Text = "Saturno";
                 pictureBoxPlanets.Image = Properties.Resources.planetSaturn;
                 buttonPlanet.Text = "Saturno";
@@ -1229,7 +1229,7 @@ namespace freeFall
             }
             if (planetCounter == 10)
             {
-                txtgravit.Text = "9,8";
+                txtgravit.Text = "9,81";
                 cmbPlaneta.Text = "Terra";
                 pictureBoxPlanets.Image = Properties.Resources.planetEarth;
                 buttonPlanet.Text = "Terra";

@@ -15,7 +15,7 @@ namespace freeFall
             timerCarousel.Enabled = true;
             timerAnimationAlone.Enabled = true;
             trackBarPlanets.Value = 2;
-            planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10²⁴", "9,80665", "1,23");
+            planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10²⁴", "9,81", "1,23");
             Program.airDensity = 1.23;
             //richTextBoxText.Text = "QUEDA LIVRE\n\nA queda livre é um fenômeno físico que ocorre quando um corpo é liberado no ar ou vacúo, e é deixado para cair devido à gravidade.\n\nRESISTÊNCIA DO AR\n\nA resistência do ar é a força que se opõe ao movimento de um objeto pelo ar.\n\nREFERÊNCIAS\n\nImagens\n\nAs ilustrações dos horizontes dos planetas, no campo ''Experimento'', foram feitas com a inteligência artifical da Microsoft, ''Bing Image Creator'', que pode ser acessada em: https://www.bing.com/create. Acessada em 14 de maio de 2023.\n\nAs demais imagens foram retiradas da plataforma ''Pixabay'', que esta disponível no site: https://pixabay.com/pt/. Acessada em 14 de maio de 2023.\n\nCRÉDITOS\n\n";
             richTextBoxText.Text = "Este conteúdo será inserido futuramente.";
@@ -107,9 +107,9 @@ namespace freeFall
 
         public void planetData(string name, string equatorialRadius, string diameter, string volume, string mass, string gravity, string atmDensity)
         {
-            richTextBoxPlanetsData.Text = "Astro: " + name + "\nRaio Equatorial: " +
+            richTextBoxPlanetsData.Text = "Astro: " + name + "\nRaio equatorial: " +
                 equatorialRadius + " km" + "\nDiâmetro: " + diameter + " km" + "\nVolume: " + volume + " km³" + "\nMassa: "
-                + mass + " kg" + "\nGravidade: " + gravity + " m/s²" + "\nDensidade Atm: " + atmDensity + " kg/m³";
+                + mass + " kg" + "\nGravidade: " + gravity + " m/s²" + "\nDensidade atm: " + atmDensity + " kg/m³";
         }
 
         private void trackBarColors_Scroll(object sender, EventArgs e)
@@ -180,74 +180,81 @@ namespace freeFall
         private void timerCarousel_Tick(object sender, EventArgs e)
         {
             carouselCounter++;
-            Program.planeTrackBar = carouselCounter;
-            if (carouselCounter == 0)
-            {
-                trackBarPlanets.Value = 0;
-                pictureBoxCarrocel.Image = Properties.Resources.planetMercury;
-                planetData("Mercurio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10²³", "3,7", "0");
-                Program.airDensity = 0;
-            }
-            if (carouselCounter == 1)
-            {
-                trackBarPlanets.Value = 1;
-                pictureBoxCarrocel.Image = Properties.Resources.planetVenus;
-                planetData("Venus", "6.051,8", "12.104", "928.415.345.893", "4,8673 x 10²⁴", "8,87", "64,8");
-                Program.airDensity = 64.8;
-            }
-            if (carouselCounter == 2)
-            {
-                trackBarPlanets.Value = 2;
-                pictureBoxCarrocel.Image = Properties.Resources.planetEarth;
-                planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10²⁴", "9,80665", "1,23");
-                Program.airDensity = 1.23;
-            }
-            if (carouselCounter == 3)
-            {
-                trackBarPlanets.Value = 3;
-                pictureBoxCarrocel.Image = Properties.Resources.planetMoon;
-                planetData("Lua", "1737,5 ", "3.474,2", "21.971.669.064", "7,3477 x 10²²", "1,624", "0");
-                Program.airDensity = 0;
-            }
-            if (carouselCounter == 4)
-            {
-                trackBarPlanets.Value = 4;
-                pictureBoxCarrocel.Image = Properties.Resources.planetMars;
-                planetData("Marte", "3.389,5", "6.779", "163.115.609.799", "6,4169 x 10²³", "3,71", "0,02");
-                Program.airDensity = 0.02;
-                if (Program.numberOfPlanets == 4)
+            try {
+                Program.planeTrackBar = carouselCounter;
+                if (carouselCounter == 0)
                 {
-                  carouselCounter = -1;
+                    trackBarPlanets.Value = 0;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetMercury;
+                    planetData("Mercurio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10²³", "3,70", "0,00");
+                    Program.airDensity = 0;
+                }
+                if (carouselCounter == 1)
+                {
+                    trackBarPlanets.Value = 1;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetVenus;
+                    planetData("Venus", "6.051,8", "12.104", "928.415.345.893", "4,8673 x 10²⁴", "8,87", "64,80");
+                    Program.airDensity = 64.8;
+                }
+                if (carouselCounter == 2)
+                {
+                    trackBarPlanets.Value = 2;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetEarth;
+                    planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10²⁴", "9,81", "1,23");
+                    Program.airDensity = 1.23;
+                }
+                if (carouselCounter == 3)
+                {
+                    trackBarPlanets.Value = 3;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetMoon;
+                    planetData("Lua", "1737,5 ", "3.474,2", "21.971.669.064", "7,3477 x 10²²", "1,62", "0,00");
+                    Program.airDensity = 0;
+                }
+                if (carouselCounter == 4)
+                {
+                    trackBarPlanets.Value = 4;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetMars;
+                    planetData("Marte", "3.389,5", "6.779", "163.115.609.799", "6,4169 x 10²³", "3,71", "0,02");
+                    Program.airDensity = 0.02;
+                    if (Program.numberOfPlanets == 4)
+                    {
+                        carouselCounter = -1;
+                    }
+                }
+                if (carouselCounter == 5)
+                {
+                    trackBarPlanets.Value = 5;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetJupiter;
+                    planetData("Júpiter", "69.911", "139.820", "1.431.281.810.739.360", "1.8981 x 10²⁷", "24,79", "0,16");
+                    Program.airDensity = 0.16;
+                }
+                if (carouselCounter == 6)
+                {
+                    trackBarPlanets.Value = 6;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetSaturn;
+                    planetData("Saturno", "58.232", "116.460", "827.129.915.150.897", "5,6832 x 10²⁶", "10,40", "0,19");
+                    Program.airDensity = 0.19;
+                }
+                if (carouselCounter == 7)
+                {
+                    trackBarPlanets.Value = 7;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetUranus;
+                    planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10²⁵", "8,87", "0,42");
+                    Program.airDensity = 0.42;
+                }
+                if (carouselCounter == 8)
+                {
+                    trackBarPlanets.Value = 8;
+                    carouselCounter = -1;
+                    pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
+                    planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10²⁶", "11,15", "0,45");
+                    Program.airDensity = 0.45;
                 }
             }
-            if (carouselCounter == 5)
+            catch
             {
-                trackBarPlanets.Value = 5;
-                pictureBoxCarrocel.Image = Properties.Resources.planetJupiter;
-                planetData("Júpiter", "69.911", "139.820", "1.431.281.810.739.360", "1.8981 x 10²⁷", "24,79", "0,16");
-                Program.airDensity = 0.16;
-            }
-            if (carouselCounter == 6)
-            {
-                trackBarPlanets.Value = 6;
-                pictureBoxCarrocel.Image = Properties.Resources.planetSaturn;
-                planetData("Saturno", "58.232", "116.460", "827.129.915.150.897", "5,6832 x 10²⁶", "10,4", "0,19");
-                Program.airDensity = 0.19;
-            }
-            if (carouselCounter == 7)
-            {
-                trackBarPlanets.Value = 7;
-                pictureBoxCarrocel.Image = Properties.Resources.planetUranus;
-                planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10²⁵", "8,87", "0,42");
-                Program.airDensity = 0.42;
-            }
-            if (carouselCounter == 8)
-            {
-                trackBarPlanets.Value = 8;
-                carouselCounter = -1;
-                pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
-                planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10²⁶", "11,15", "0,45");
-                Program.airDensity = 0.45;
+                Console.WriteLine("Erro! - Valor incorreto para value!");
+                carouselCounter = 4;
             }
         }
         private void trackBarPlanets_Scroll(object sender, EventArgs e)
@@ -258,56 +265,56 @@ namespace freeFall
             if (i == 0)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetMercury;
-                planetData("Mercurio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10^²3", "3,7", "0");
+                planetData("Mercurio", "2.439,7", "4.879,4", "60.827.208.742 ", "3,3010 x 10²³", "3,70", "0,00");
                 Program.airDensity = 0;
                 carouselCounter = 0;
             }
             if (i == 1)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetVenus;
-                planetData("Venus", "6.051,8", "12.104", "928.415.345.893", "4,8673 x 10^²4", "8,87", "64,8");
+                planetData("Venus", "6.051,8", "12.104", "928.415.345.893", "4,8673 x 10²⁴", "8,87", "64,80");
                 Program.airDensity = 64.8;
                 carouselCounter = 1;
             }
             if (i == 2)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetEarth;
-                planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10^²4", "9,80665", "1,23");
+                planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10²⁴", "9,81", "1,23");
                 Program.airDensity = 1.23;
                 carouselCounter = 2;
             }
             if (i == 3)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetMoon;
-                planetData("Lua", "1737,5 ", "3.474,2", "21.971.669.064", "7,3477 x 10^²2", "1,624", "0");
+                planetData("Lua", "1737,5 ", "3.474,2", "21.971.669.064", "7,3477 x 10²²", "1,62", "0,00");
                 Program.airDensity = 0;
                 carouselCounter = 3;
             }
             if (i == 4)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetMars;
-                planetData("Marte", "3.389,5", "6.779", "163.115.609.799", "6,4169 x 10^²3", "3,71", "0,02");
+                planetData("Marte", "3.389,5", "6.779", "163.115.609.799", "6,4169 x 10²³", "3,71", "0,02");
                 Program.airDensity = 0.02;
                 carouselCounter = 4;
             }
             if (i == 5)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetJupiter;
-                planetData("Júpiter", "69.911", "139.820", "1.431.281.810.739.360", "1.8981 x 10^²7", "24,79", "0,16");
+                planetData("Júpiter", "69.911", "139.820", "1.431.281.810.739.360", "1.8981 x 10²⁷", "24,79", "0,16");
                 Program.airDensity = 0.16;
                 carouselCounter = 5;
             }
             if (i == 6)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetSaturn;
-                planetData("Saturno", "58.232", "116.460", "827.129.915.150.897", "5,6832 x 10^²6", "10,4", "0,19");
+                planetData("Saturno", "58.232", "116.460", "827.129.915.150.897", "5,6832 x 10²⁶", "10,40", "0,19");
                 Program.airDensity = 0.19;
                 carouselCounter = 6;
             }
             if (i == 7)
             {
                 pictureBoxCarrocel.Image = Properties.Resources.planetUranus;
-                planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10^²5", "8,87", "0,42");
+                planetData("Urâno", "25.362", "50.724", "68.334.355.695.584", "8,6810 x 10²⁵", "8,87", "0,42");
                 Program.airDensity = 0.42;
                 carouselCounter = 7;
             }
@@ -315,7 +322,7 @@ namespace freeFall
             {
                 carouselCounter = 8;
                 pictureBoxCarrocel.Image = Properties.Resources.planetNeptune;
-                planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10^²6", "11,15", "0,45");
+                planetData("Netuno", "24.622", "49.224", "62.525.703.987.421", "1.0241 x 10²⁶", "11,15", "0,45");
                 Program.airDensity = 0.45;
             }
         }
@@ -323,49 +330,56 @@ namespace freeFall
         public static int setPlanetTrackBar(int carouselCounter)
         {
             int value = 0;
-            if (carouselCounter == 0)
-            {
-                value = 3;
+            try {
+                if (carouselCounter == 0)
+                {
+                    value = 3;
+                }
+                if (carouselCounter == 1)
+                {
+                    value = 4;
+                }
+                if (carouselCounter == 2)
+                {
+                    value = 1;
+                }
+                if (carouselCounter == 3)
+                {
+                    value = 2;
+                }
+                if (carouselCounter == 4)
+                {
+                    value = 5;
+                }
+                if (carouselCounter == 5)
+                {
+                    value = 6;
+                }
+                if (carouselCounter == 6)
+                {
+                    value = 7;
+                }
+                if (carouselCounter == 7)
+                {
+                    value = 8;
+                }
+                if (carouselCounter == 8)
+                {
+                    value = 9;
+                }
             }
-            if (carouselCounter == 1)
+            catch 
             {
-                value = 4;
-            }
-            if (carouselCounter == 2)
-            {
-                value = 1;
-            }
-            if (carouselCounter == 3)
-            {
-                value = 2;
-            }
-            if (carouselCounter == 4)
-            {
+                Console.WriteLine("Erro! - Valor incorreto para value!");
                 value = 5;
             }
-            if (carouselCounter == 5)
-            {
-                value = 6;
-            }
-            if (carouselCounter == 6)
-            {
-                value = 7;
-            }
-            if (carouselCounter == 7)
-            {
-                value = 8;
-            }
-            if (carouselCounter == 8)
-            {
-                value = 9;
-            }
+
             return value;
         }
 
         private void richTextBoxPlanetsData_MouseEnter(object sender, EventArgs e)
         {
         }
-
         private void timerSetTrackPlanet_Tick(object sender, EventArgs e)
         {
 

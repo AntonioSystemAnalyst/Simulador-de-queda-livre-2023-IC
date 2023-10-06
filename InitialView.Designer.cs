@@ -79,7 +79,7 @@
             this.buttonSimulator.Name = "buttonSimulator";
             this.buttonSimulator.Size = new System.Drawing.Size(154, 35);
             this.buttonSimulator.TabIndex = 3;
-            this.buttonSimulator.Text = "Iniciar Simulador";
+            this.buttonSimulator.Text = "Iniciar simulador";
             this.buttonSimulator.UseVisualStyleBackColor = true;
             this.buttonSimulator.Click += new System.EventHandler(this.buttonSimulador_Click);
             // 

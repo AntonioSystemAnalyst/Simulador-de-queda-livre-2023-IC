@@ -104,7 +104,6 @@ namespace freeFall
             {
                 paperPixels[i] = CalculateXVariation(countTime, airDensity);
                 countTime = countTime + 0.01;
-                Console.WriteLine(" " + paperPixels[i]);
             }
         }
 
@@ -113,8 +112,7 @@ namespace freeFall
             int maxLeft = 195;
             int maxRight = 241;
             double valueX = 0;
-
-            double period = 30; // Período da oscilação (de 203 a 241 e de volta a 203)
+            double period = 30; // Período da oscilação
             double amplitude = (maxRight - maxLeft) / 2; // Amplitude é metade da diferença entre os valores máximo e mínimo
 
             if (density > 1)
@@ -125,8 +123,6 @@ namespace freeFall
             {
                 valueX = maxLeft + amplitude + amplitude * Math.Sin(50 * Math.PI * timeExperiment / period);
             }
-           
-
             return (int)Math.Round(valueX);
         }
 
