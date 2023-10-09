@@ -363,15 +363,15 @@ namespace freeFall
         }
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
-            if (countBody < Program.ball.NumberOfTerms)
+            if (countGrafic < Program.ball.NumberOfTerms)
             {
-                animationWindow.animationCorpo(countBody);
+                animationWindow.animationCorpo(countGrafic);
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
-                    textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
+                    textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countGrafic], 2);
                 }
-                txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 2);
-                txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 2);
+                txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countGrafic], 2);
+                txtEspaco.Text = " " + Math.Round(Program.ball.Space[countGrafic], 2);
             }
             countBody = countBody + 1;
             if (countBody >= Program.ball.NumberOfTerms)
@@ -390,16 +390,16 @@ namespace freeFall
         }
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
-            if (countPaper < Program.paper.NumberOfTerms)
+            if (countGrafic < Program.paper.NumberOfTerms)
             {
-                animationWindow.animationPaper(countPaper);
+                animationWindow.animationPaper(countGrafic);
 
                 if (greatestValueTime == 2)
                 {
-                    textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countPaper], 2);
+                    textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countGrafic], 2);
                 }
-                textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countPaper], 2);
-                textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countPaper], 2);
+                textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countGrafic], 2);
+                textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countGrafic], 2);
             }
             countPaper = countPaper + 1;
             if (countPaper >= Program.paper.NumberOfTerms)
@@ -419,15 +419,15 @@ namespace freeFall
 
         private void timerAnimationVacuum_Tick(object sender, EventArgs e)
         {
-            if (countVaccum < Program.vaccum.NumberOfTerms)
+            if (countGrafic < Program.vaccum.NumberOfTerms)
             {
-                animationWindow.animationVaccum(countVaccum);
+                animationWindow.animationVaccum(countGrafic);
                 if (greatestValueTime == 3)
                 {
-                    textTempo.Text = " " + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 2);
+                    textTempo.Text = " " + Math.Round(Program.vaccum.CountTimeExperiment[countGrafic], 2);
                 }
-                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccum.Velocity[countVaccum], 2);
-                textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[countVaccum], 2);
+                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccum.Velocity[countGrafic], 2);
+                textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[countGrafic], 2);
             }
             countVaccum = countVaccum + 1;
             if (countVaccum >= Program.vaccum.NumberOfTerms)

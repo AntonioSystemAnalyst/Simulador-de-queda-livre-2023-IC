@@ -1078,7 +1078,7 @@
             // 
             // timerButton
             // 
-            this.timerButton.Interval = 700;
+            this.timerButton.Interval = 300;
             this.timerButton.Tick += new System.EventHandler(this.timerButton_Tick);
             // 
             // Simulator
