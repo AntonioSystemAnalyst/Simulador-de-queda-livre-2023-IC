@@ -112,6 +112,7 @@
             this.timerTrackBar = new System.Windows.Forms.Timer(this.components);
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
+            this.timerButton = new System.Windows.Forms.Timer(this.components);
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -1075,6 +1076,11 @@
             // 
             this.timerVenus.Tick += new System.EventHandler(this.timerVenus_Tick);
             // 
+            // timerButton
+            // 
+            this.timerButton.Interval = 700;
+            this.timerButton.Tick += new System.EventHandler(this.timerButton_Tick);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1210,5 +1216,6 @@
         private System.Windows.Forms.Label labelMaskVaccum;
         private System.Windows.Forms.Label labelMaskPapel;
         private System.Windows.Forms.Label labelGraficDetails;
+        private System.Windows.Forms.Timer timerButton;
     }
 }

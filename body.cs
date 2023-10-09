@@ -16,7 +16,7 @@ namespace freeFall
         // ---
         public double term0, term1, term2, term3, term4, term5;
         public double term6, term7;
-        public int precision = 13;
+        public int precision = 15;
         public double velocityPoint;
         public double greatValueVelocity;
         // --- Antimation
@@ -251,11 +251,11 @@ namespace freeFall
                 {
                     spaceFunction = height;
                 }
-                terminalTime += 0.01;
                 if ((height - spaceFunction) < 0.001)
                 {
                     breakStatus = 1;
                 }
+                terminalTime += 0.01;
             } while (breakStatus == 0);
             timeAll = terminalTime;
             return timeAll;

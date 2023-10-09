@@ -6,6 +6,7 @@ using System.Drawing.Text;
 using System.IO;
 using System.Media;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace freeFall
@@ -16,7 +17,7 @@ namespace freeFall
         Space windowSpace;
         Speed windowSpeed;
         System.Windows.Forms.ToolTip toolTip = new System.Windows.Forms.ToolTip();
-        public bool isClickable  = true;
+        public bool isClickable = true;
         public int planetCounter = 1;
         public int buttonStartControl = 0;
         public int animationNumberCounter = 0;
@@ -95,7 +96,7 @@ namespace freeFall
 
             Program.paper.Mass = 0.00465;
             Program.paper.DragCoefficient = 1.17;
-            Program.paper.CrossSectionalArea = 0.04; // amaçada 0.001341640872
+            Program.paper.CrossSectionalArea = 0.04; // amassado 0.001341640872
 
             Program.vaccum.Mass = Program.paper.Mass;
             Program.vaccum.DragCoefficient = Program.paper.DragCoefficient;
@@ -443,6 +444,45 @@ namespace freeFall
                 }
             }
         }
+        public void alignVectors()
+        {
+            countBody = countGrafic;
+            countPaper = countGrafic;
+            countVaccum = countGrafic;
+
+            if (countBody < Program.ball.NumberOfTerms)
+            {
+                animationWindow.animationCorpo(countBody);
+                if (greatestValueTime == 1 || greatestValueTime == 0)
+                {
+                    textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 2);
+                }
+                txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 2);
+                txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 2);
+            }
+            if (countPaper < Program.paper.NumberOfTerms)
+            {
+                animationWindow.animationPaper(countPaper);
+
+                if (greatestValueTime == 2)
+                {
+                    textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countPaper], 2);
+                }
+                textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countPaper], 2);
+                textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countPaper], 2);
+            }
+            if (countVaccum < Program.vaccum.NumberOfTerms)
+            {
+                animationWindow.animationVaccum(countVaccum);
+                if (greatestValueTime == 3)
+                {
+                    textTempo.Text = " " + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 2);
+                }
+                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccum.Velocity[countVaccum], 2);
+                textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[countVaccum], 2);
+            }
+
+        }
         public void stopAllTimes()
         {
             timerAnimation.Enabled = false;
@@ -509,15 +549,15 @@ namespace freeFall
             }
             else
             {
-                if (Program.ball.FinalVelocity < Program.paper.FinalVelocity && Program.ball.FinalVelocity < (-1*Program.vaccum.FinalVelocity))
+                if (Program.ball.FinalVelocity < Program.paper.FinalVelocity && Program.ball.FinalVelocity < (-1 * Program.vaccum.FinalVelocity))
                 {
                     Program.greatestValueVelocity = (Program.ball.FinalVelocity);
                 }
-                else if (Program.paper.FinalVelocity < Program.ball.FinalVelocity && Program.paper.FinalVelocity < (-1*Program.vaccum.FinalVelocity))
+                else if (Program.paper.FinalVelocity < Program.ball.FinalVelocity && Program.paper.FinalVelocity < (-1 * Program.vaccum.FinalVelocity))
                 {
                     Program.greatestValueVelocity = (Program.paper.FinalVelocity);
                 }
-                else if ((-1*Program.vaccum.FinalVelocity) < Program.ball.FinalVelocity && (-1 * Program.vaccum.FinalVelocity) < Program.paper.FinalVelocity)
+                else if ((-1 * Program.vaccum.FinalVelocity) < Program.ball.FinalVelocity && (-1 * Program.vaccum.FinalVelocity) < Program.paper.FinalVelocity)
                 {
                     Program.greatestValueVelocity = (-1 * Program.vaccum.FinalVelocity);
                 }
@@ -565,32 +605,32 @@ namespace freeFall
             double spaceX = 0.0;
             double speedY = 0.0;
             double speedX = 0.0;
-            double greatValueTimeForFunction = 0.0; 
+            double greatValueTimeForFunction = 0.0;
             int spaceDiv = 0;
             int speedDiv = 0;
 
             spaceDiv = Convert.ToInt32(Math.Round(Program.height, 0) / 5);
             speedDiv = Convert.ToInt32(Math.Round((-1 * Program.greatestValueVelocity), 0) / 5);
 
-            if(Program.greatestValueTime == 1)
+            if (Program.greatestValueTime == 1)
             {
                 greatValueTimeForFunction = Program.ball.TimeAllExperiment;
             }
             else
             {
-                if(Program.greatestValueTime == 2)
+                if (Program.greatestValueTime == 2)
                 {
                     greatValueTimeForFunction = Program.paper.TimeAllExperiment;
                 }
                 else
                 {
-                    if(Program.greatestValueTime == 3)
+                    if (Program.greatestValueTime == 3)
                     {
                         greatValueTimeForFunction = Program.vaccum.TimeAllExperiment;
                     }
                     else
                     {
-                        if(Program.greatestValueTime == 0)
+                        if (Program.greatestValueTime == 0)
                         {
                             greatValueTimeForFunction = Program.ball.TimeAllExperiment;
                         }
@@ -800,34 +840,27 @@ namespace freeFall
         }
         private void BTNIniciar_Click(object sender, EventArgs e)
         {
-
-            if (buttonStartControl == 0)
+            try
             {
-                timerNumerAnimationIniti.Enabled = true;
-            }
-            else
-            {
-                if (buttonStartControl == 1)
+                BTNIniciar.Enabled = false;
+                if (buttonStartControl == 0)
                 {
-                    BTNIniciar.Text = "Continuar";
-                    buttonStartControl = 2;
-                    timerAnimation.Enabled = false;
-                    timerAnimationPaper.Enabled = false;
-                    timerAnimationVacuum.Enabled = false;
-                    timerGrafic.Enabled = false;
-                    if (greatestValueTime == 0 || greatestValueTime == 1)
+                    timerNumerAnimationIniti.Enabled = true;
+                }
+                else
+                {
+                    if (buttonStartControl == 1)
                     {
-                        if (Program.numberOfPoints - countBody > 7)
+                        BTNIniciar.Text = "Continuar";
+                        buttonStartControl = 2;
+                        timerAnimation.Enabled = false;
+                        timerAnimationPaper.Enabled = false;
+                        timerAnimationVacuum.Enabled = false;
+                        timerGrafic.Enabled = false;
+                        alignVectors();
+                        if (greatestValueTime == 0 || greatestValueTime == 1)
                         {
-                            pictureBoxTimeLeft.Visible = true;
-                            pictureBoxTimeRight.Visible = true;
-                        }
-                    }
-                    else
-                    {
-                        if (greatestValueTime == 2)
-                        {
-                            if (Program.numberOfPoints - countPaper > 7)
+                            if (Program.numberOfPoints - countBody > 7)
                             {
                                 pictureBoxTimeLeft.Visible = true;
                                 pictureBoxTimeRight.Visible = true;
@@ -835,70 +868,87 @@ namespace freeFall
                         }
                         else
                         {
-                            if (greatestValueTime == 3)
+                            if (greatestValueTime == 2)
                             {
-                                if (Program.numberOfPoints - countVaccum > 7)
+                                if (Program.numberOfPoints - countPaper > 7)
                                 {
                                     pictureBoxTimeLeft.Visible = true;
                                     pictureBoxTimeRight.Visible = true;
                                 }
                             }
-                        }
-                    }
-                }
-                else
-                {
-                    if (buttonStartControl == 2)
-                    {
-                        BTNIniciar.Text = "Parar";
-                        buttonStartControl = 1;
-                        pictureBoxTimeLeft.Visible = false;
-                        pictureBoxTimeRight.Visible = false;
-                        if (Program.paperOn && Program.vaccumOn)
-                        {
-                            timerAnimation.Enabled = true;
-                            timerAnimationPaper.Enabled = true;
-                            timerAnimationVacuum.Enabled = true;
-                            timerGrafic.Enabled = true;
-                        }
-                        else
-                        {
-                            if (Program.paperOn = false && Program.vaccumOn)
-                            {
-                                timerAnimation.Enabled = true;
-                                timerAnimationVacuum.Enabled = true;
-                                timerGrafic.Enabled = true;
-                            }
                             else
                             {
-                                if (Program.vaccumOn = false && Program.paperOn)
+                                if (greatestValueTime == 3)
                                 {
-                                    timerAnimation.Enabled = true;
-                                    timerAnimationPaper.Enabled = true;
-                                    timerGrafic.Enabled = true;
-                                }
-                                else
-                                {
-                                    timerAnimation.Enabled = true;
-                                    timerGrafic.Enabled = true;
+                                    if (Program.numberOfPoints - countVaccum > 7)
+                                    {
+                                        pictureBoxTimeLeft.Visible = true;
+                                        pictureBoxTimeRight.Visible = true;
+                                    }
                                 }
                             }
                         }
                     }
                     else
                     {
-                        if (buttonStartControl == 3)
+                        if (buttonStartControl == 2)
                         {
-                            clear();
-                            calculateValues();
-                            receveidGreatestValueTime();
-                            receveidGreatestValueVelocity();
-                            BTNIniciar.Text = "Iniciar";
-                            buttonStartControl = 0;
+                            BTNIniciar.Text = "Parar";
+                            buttonStartControl = 1;
+                            pictureBoxTimeLeft.Visible = false;
+                            pictureBoxTimeRight.Visible = false;
+                            if (Program.paperOn && Program.vaccumOn)
+                            {
+                                timerAnimation.Enabled = true;
+                                timerAnimationPaper.Enabled = true;
+                                timerAnimationVacuum.Enabled = true;
+                                timerGrafic.Enabled = true;
+                            }
+                            else
+                            {
+                                if (Program.paperOn == false && Program.vaccumOn == true)
+                                {
+                                    timerAnimation.Enabled = true;
+                                    timerAnimationVacuum.Enabled = true;
+                                    timerGrafic.Enabled = true;
+                                }
+                                else
+                                {
+                                    if (Program.vaccumOn == false && Program.paperOn == true)
+                                    {
+                                        timerAnimation.Enabled = true;
+                                        timerAnimationPaper.Enabled = true;
+                                        timerGrafic.Enabled = true;
+                                    }
+                                    else
+                                    {
+                                        timerAnimation.Enabled = true;
+                                        timerGrafic.Enabled = true;
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (buttonStartControl == 3)
+                            {
+                                clear();
+                                calculateValues();
+                                receveidGreatestValueTime();
+                                receveidGreatestValueVelocity();
+                                BTNIniciar.Text = "Iniciar";
+                                buttonStartControl = 0;
+                            }
                         }
                     }
-                }
 
+                }
+                timerButton.Enabled = true;
+            }
+            catch
+            {
+                BTNIniciar.Enabled = true;
+                Console.WriteLine("Erro! - Botão falhou");
             }
         }
         private void buttonData_Click(object sender, EventArgs e)
@@ -1022,7 +1072,7 @@ namespace freeFall
                 animationWindow.pictureBoxCorpoPaperSelected(0);
                 pictureBoxPaper.Image = Properties.Resources.paper2;
                 Program.crumpledPaper = 0;
-                Program.paper.DragCoefficient = 1.17; 
+                Program.paper.DragCoefficient = 1.17;
                 Program.paper.CrossSectionalArea = 0.04;
             }
             else
@@ -1237,7 +1287,7 @@ namespace freeFall
                 Program.airDensity = 1.23;
             }
             Program.planetImage = pictureBoxPlanets.Image;
-            if(checkBoxResistanceRV1.Checked)
+            if (checkBoxResistanceRV1.Checked)
             {
                 textBoxAirDensity.Text = "" + Program.airDensity;
             }
@@ -1252,7 +1302,7 @@ namespace freeFall
             Program.planetCounter = planetCounter;
             Program.planetNameReceveid(planetCounter);
             planetData();
-            if (planetCounter == Program.numberOfPlanets+2)
+            if (planetCounter == Program.numberOfPlanets + 2)
             {
                 planetCounter = 1;
             }
@@ -1265,7 +1315,7 @@ namespace freeFall
             Program.planetNameReceveid(planetCounter);
             if (planetCounter == 0)
             {
-                planetCounter = Program.numberOfPlanets+1;
+                planetCounter = Program.numberOfPlanets + 1;
             }
             planetData();
         }
@@ -1461,7 +1511,7 @@ namespace freeFall
             if (Program.greatestValueTime == 1)
             {
                 return countBody;
-    }
+            }
             else
             {
                 if (Program.greatestValueTime == 2)
@@ -1805,6 +1855,11 @@ namespace freeFall
         {
             Cursor = Cursors.WaitCursor;
         }
+        private void timerButton_Tick(object sender, EventArgs e)
+        {
+            BTNIniciar.Enabled = true;
+            timerButton.Enabled = false;
+        }
         private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -1875,12 +1930,13 @@ namespace freeFall
         }
         private void groupBoxGraficos_MouseHover(object sender, EventArgs e)
         {
-         
+
         }
         private void groupBoxGraficos_Leave(object sender, EventArgs e)
         {
-           
+
         }
+
         private void pictureBoxCorpo_Click(object sender, EventArgs e)
         {
 
