@@ -1548,6 +1548,7 @@ namespace freeFall
                 {
                     pictureBoxTimeLeft.Visible = false;
                     timerLeft.Enabled = false;
+                    updateGrafic(2, 1);
                 }
             }
             else
@@ -1562,6 +1563,7 @@ namespace freeFall
                     {
                         pictureBoxTimeLeft.Visible = false;
                         timerLeft.Enabled = false;
+                        updateGrafic(2, 1);
                     }
                 }
                 else
@@ -1576,6 +1578,7 @@ namespace freeFall
                         {
                             pictureBoxTimeLeft.Visible = false;
                             timerLeft.Enabled = false;
+                            updateGrafic(2, 1);
                         }
                     }
                     else
@@ -1587,6 +1590,7 @@ namespace freeFall
                         {
                             pictureBoxTimeLeft.Visible = false;
                             timerLeft.Enabled = false;
+                            updateGrafic(2, 1);
                         }
                     }
                 }
@@ -1604,7 +1608,7 @@ namespace freeFall
                     countVaccum++;
                     countGrafic++;
                     updatePosition(countGrafic, 0, countBody, countPaper, countVaccum);
-                    if (Program.numberOfPoints - 4 == countBody || Program.numberOfPoints - 4 == countPaper || Program.numberOfPoints - 4 == countVaccum)
+                    if (Program.numberOfPoints - 1 == countBody || Program.numberOfPoints - 1 == countPaper || Program.numberOfPoints - 1 == countVaccum)
                     {
                         pictureBoxTimeRight.Visible = false;
                         timerRight.Enabled = false;
@@ -1618,7 +1622,7 @@ namespace freeFall
                         countPaper++;
                         countGrafic++;
                         updatePosition(countGrafic, 0, countBody, countPaper, 0);
-                        if (Program.numberOfPoints - 4 == countBody || Program.numberOfPoints - 4 == countPaper)
+                        if (Program.numberOfPoints - 1 == countBody || Program.numberOfPoints - 1 == countPaper)
                         {
                             pictureBoxTimeRight.Visible = false;
                             timerRight.Enabled = false;
@@ -1632,7 +1636,7 @@ namespace freeFall
                             countVaccum++;
                             countGrafic++;
                             updatePosition(countGrafic, 0, countBody, 0, countVaccum);
-                            if (Program.numberOfPoints - 4 == countBody || Program.numberOfPoints - 4 == countVaccum)
+                            if (Program.numberOfPoints - 1 == countBody || Program.numberOfPoints - 1 == countVaccum)
                             {
                                 pictureBoxTimeRight.Visible = false;
                                 timerRight.Enabled = false;
@@ -1643,7 +1647,7 @@ namespace freeFall
                             countBody++;
                             countGrafic++;
                             updatePosition(countGrafic, 0, countBody, 0, 0);
-                            if (Program.numberOfPoints - 4 == countBody)
+                            if (Program.numberOfPoints - 1 == countBody)
                             {
                                 pictureBoxTimeRight.Visible = false;
                                 timerRight.Enabled = false;
