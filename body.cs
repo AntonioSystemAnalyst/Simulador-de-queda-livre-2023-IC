@@ -171,7 +171,6 @@ namespace freeFall
             double spacePoint;
             double countTime = 0;
             int i, status = 0;
-
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
             term1 = Math.Round((term0 / mass), precision);
             terminalVelocity = gravity / term1;

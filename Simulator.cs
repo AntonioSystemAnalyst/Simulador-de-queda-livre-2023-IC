@@ -90,13 +90,13 @@ namespace freeFall
 
             Program.gravity = 9.8;
 
-            Program.ball.Mass = 0.43;
-            Program.ball.DragCoefficient = 0.47;
-            Program.ball.CrossSectionalArea = 0.038806;
+            Program.ball.Mass = 0.45;
+            Program.ball.DragCoefficient = 0.45;
+            Program.ball.CrossSectionalArea = 0.03899;
 
-            Program.paper.Mass = 0.00465;
-            Program.paper.DragCoefficient = 1.17;
-            Program.paper.CrossSectionalArea = 0.04; // amassado 0.001341640872
+            Program.paper.Mass = 0.00468;
+            Program.paper.DragCoefficient = 1.17; // amassado 0.8
+            Program.paper.CrossSectionalArea = 0.06237; // amassado 0.00134
 
             Program.vaccum.Mass = Program.paper.Mass;
             Program.vaccum.DragCoefficient = Program.paper.DragCoefficient;
@@ -1809,7 +1809,7 @@ namespace freeFall
         }
         private void Altura_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(LbAltura, "A altura na qual os objetos serão soltos.");
+            toolTip.SetToolTip(LbAltura, "A altura à qual os objetos serão soltos.");
         }
         private void label6_MouseHover(object sender, EventArgs e)
         {
@@ -1841,7 +1841,7 @@ namespace freeFall
         }
         private void labelMaskAirResistence_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(labelMaskAirResistence, "Adiciona a resistência do ar ao experimênto.");
+            toolTip.SetToolTip(labelMaskAirResistence, "Adiciona a resistência do ar ao experimento.");
         }
         private void GroupBoxGraficos_MouseEnter(object sender, EventArgs e)
         {
