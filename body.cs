@@ -114,8 +114,8 @@ namespace freeFall
             int maxLeft = 195;
             int maxRight = 241;
             double valueX = 0;
-            double period = 30; // Período da oscilação
-            double amplitude = (maxRight - maxLeft) / 2; // Amplitude é metade da diferença entre os valores máximo e mínimo
+            double period = 30; 
+            double amplitude = (maxRight - maxLeft) / 2; 
 
             if (density > 1)
             {
@@ -133,7 +133,6 @@ namespace freeFall
             double countTime = 0.0;
             double result = 0.0;
             double decimalPart = 0.0;
-            double finalTime = 0.0;
 
             int i = 0;
             int status = 0;
@@ -189,14 +188,13 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
 
-            finalTime = finalVelocity / gravity;
 
             for (i = 0; i < numberOfTerms; i++)
             {
-                if (countTimeExperiment[i] >= Math.Round(finalTime, 4) && status == 0)
+                if (countTimeExperiment[i] >= Math.Round(timeAllExperiment, 4) && status == 0)
                 {
                     status = 1;
-                    countTimeExperiment[i] = Math.Round(finalTime, 4);
+                    countTimeExperiment[i] = Math.Round(timeAllExperiment, 4);
                     space[i] = 0;
                     velocity[i] = initialVelocityExperiment + (-1 * gravity * countTimeExperiment[i]);
                     numberOfTerms = i+1;
@@ -206,9 +204,9 @@ namespace freeFall
             animationVector(534, height);
         }
 
-        public void CalculateWithResistenceRV1(double height, double gravity, double initialVelocity, double airDensity)
+        public void CalculateWithResistenceRV1(double height, double gravity, double airDensity)
         {
-            double spacePoint;
+            double spacePoint = 0.0;
             double countTime = 0.0;
             double result = 0.0;
             double decimalPart = 0.0;
@@ -216,9 +214,11 @@ namespace freeFall
 
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
             term1 = Math.Round((term0 / mass), precision);
-            terminalVelocity = gravity / term1;
+
+            terminalVelocity = (gravity / term1) * 0.001;
 
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
+
             timeAllExperiment = getTimeAllVR1(gravity, height);
 
             result = timeAllExperiment / 0.01;
@@ -234,19 +234,16 @@ namespace freeFall
                 numberOfTerms = (int)Math.Floor(result);
             }
             
-            numberOfTerms = numberOfTerms + 1;
-
             for (i = 0; i < numberOfTerms; i++)
             {
-                spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
+                spacePoint = height - spaceFunctionRV1(Math.Round(countTime, 10), gravity, height);
                 if (spacePoint <= 0 && status == 0)
                 {
-                    numberOfTerms = i;
+                    numberOfTerms = i+1;
                     status = 1;
                 }
                 countTime = countTime + 0.01;
             }
-            countTime = 0;
 
             paperPixels = new int[numberOfTerms + 1];
             space = new double[numberOfTerms];
@@ -255,7 +252,6 @@ namespace freeFall
             spaceTime = new double[numberOfTerms];
 
             countTime = 0.01;
-
             for (i = 1; i < numberOfTerms; i++)
             {
                 velocityPoint = velocityFunctionRV1(countTime, 1, gravity);
@@ -267,7 +263,7 @@ namespace freeFall
             countTime = 0;
             for (i = 0; i < numberOfTerms; i++)
             {
-                spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
+                spacePoint = height - Math.Round(spaceFunctionRV1(countTime, gravity, height), 10);
                 if (spacePoint <= 0)
                 {
                     space[i] = 0;
@@ -286,39 +282,65 @@ namespace freeFall
                 spaceTime[i] = Math.Round(countTime, 3);
                 countTime = countTime + 0.01;
             }
-            space[0] = height;
-
+            
             countTime = 0;
             // time
             for (i = 0; i < numberOfTerms; i++)
             {
-                countTimeExperiment[i] = countTime;
+                countTimeExperiment[i] = Math.Round(countTime, 4);
                 countTime = countTime + 0.01;
             }
+
+            space[numberOfTerms - 1] = height - Math.Round(spaceFunctionRV1(countTimeExperiment[numberOfTerms - 1], gravity, height), 15); 
+
             animationPaper(numberOfTerms, airDensity);
             animationVector(534, height);
         }
-        public double getTimeAllVR1(double gravity, double height)
+        public double getTimeEndVR1(double gravity, double height)
         {
             double terminalTime = 0.0;
-            double timeAll = 0.0;
             double spaceFunction = 0.0;
+            double value = 0.0;
             int breakStatus = 0;
             do
             {
-                spaceFunction = spaceFunctionRV1(terminalTime, gravity, height);
-                if (spaceFunction > height)
+                spaceFunction = spaceFunctionRV1(Math.Round(terminalTime, 15), gravity, height);
+
+                if (spaceFunction >= height)
                 {
                     spaceFunction = height;
                 }
-                if ((height - spaceFunction) < 0.001)
+                value = height - spaceFunction;
+                if (Math.Round(value, 5) <= 0)
                 {
                     breakStatus = 1;
                 }
                 terminalTime += 0.01;
             } while (breakStatus == 0);
-            timeAll = terminalTime;
-            return timeAll;
+            return terminalTime;
+        }
+        public double getTimeAllVR1(double gravity, double height)
+        {
+            double terminalTime = 0.0;
+            double spaceFunction = 0.0;
+            double value = 0.0;
+            int breakStatus = 0;
+            do
+            {
+                spaceFunction = spaceFunctionRV1(Math.Round(terminalTime, 14), gravity, height);
+
+                if (spaceFunction >= height)
+                {
+                    spaceFunction = height;
+                }
+                value = height - spaceFunction;
+                if (Math.Round(value, 14) <= 0)
+                {
+                    breakStatus = 1;
+                }
+                terminalTime += 0.01;
+            } while (breakStatus == 0);
+            return terminalTime;
         }
         public double spaceFunctionRV1(double timeValue, double gravity, double height)
         {

@@ -63,7 +63,7 @@ namespace freeFall
                 {
                     if (Program.ball.NumberOfTerms > i)
                     {
-                        linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 2).ToString("0.00"));
+                        linha[1] = isNegative(Math.Round(Program.ball.Velocity[i], 2));
                     }
                     else
                     {
@@ -74,7 +74,7 @@ namespace freeFall
                 {
                     if (Program.paper.NumberOfTerms > i)
                     {
-                        linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 2).ToString("0.00"));
+                        linha[2] = isNegative(Math.Round(Program.paper.Velocity[i], 2));
                     }
                     else
                     {
@@ -85,7 +85,7 @@ namespace freeFall
                 {
                     if (Program.vaccum.NumberOfTerms > i)
                     {
-                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 2).ToString("0.00"));
+                        linha[3] = isNegative(Math.Round(Program.vaccum.Velocity[i], 2));
                     }
                     else
                     {
@@ -95,6 +95,20 @@ namespace freeFall
 
                 dataGridView.Rows.Add(linha);
             }
+        }
+        public string isNegative(double value)
+        {
+            string result = "";
+
+            if (value <= 0)
+            {
+                result = "0.00";
+            }
+            else
+            {
+                result = value.ToString("0.00");
+            }
+            return result;
         }
         public void dataGridConfigure()
         {

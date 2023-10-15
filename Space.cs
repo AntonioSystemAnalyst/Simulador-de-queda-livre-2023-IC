@@ -57,26 +57,52 @@ namespace freeFall
                 {
                     if (Program.ball.NumberOfTerms > i)
                     {
-                        linha[1] = Convert.ToString(Math.Round(Program.ball.Space[i], 4).ToString("0.0000"));
+                        linha[1] = isNegative(Math.Round(Program.ball.Space[i], 2));
+                    }
+                    else
+                    {
+                        linha[1] = "-";
                     }
                 }
                 if (Program.paperOn)
                 {
                     if (Program.paper.NumberOfTerms > i)
                     {
-                        linha[2] = Convert.ToString(Math.Round(Program.paper.Space[i], 4).ToString("0.0000"));
+                        linha[2] = isNegative(Math.Round(Program.paper.Space[i], 2));
+                    }
+                    else
+                    {
+                        linha[2] = "-";
                     }
                 }
                 if (Program.vaccumOn)
                 {
                     if (Program.vaccum.NumberOfTerms > i)
                     {
-                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Space[i], 4).ToString("0.0000"));
+                        linha[3] = isNegative(Math.Round(Program.vaccum.Space[i], 2));
+                    }
+                    else
+                    {
+                        linha[3] = "-";
                     }
                 }
 
                 dataGridView.Rows.Add(linha);
             }
+        }
+        public string isNegative(double value)
+        {
+            string result = "";
+
+            if (value <= 0)
+            {
+                result = "0.00";
+            }
+            else
+            {
+                result = value.ToString("0.00");
+            }
+            return result;
         }
         public void dataGridConfigure()
         {
