@@ -203,7 +203,6 @@
             this.buttonLogo.TabIndex = 35;
             this.buttonLogo.Text = "Log";
             this.buttonLogo.UseVisualStyleBackColor = true;
-            this.buttonLogo.Visible = false;
             this.buttonLogo.Click += new System.EventHandler(this.buttonLogo_Click);
             // 
             // groupBoxResultados
@@ -266,7 +265,6 @@
             this.buttonLog.TabIndex = 44;
             this.buttonLog.Text = "PL";
             this.buttonLog.UseVisualStyleBackColor = true;
-            this.buttonLog.Visible = false;
             this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject

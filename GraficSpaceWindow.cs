@@ -27,29 +27,23 @@ namespace freeFall
 
         public void addPointCorpo(int countGrafic)
         {
-            double resultX;
             if (countGrafic < Program.ball.NumberOfTerms)
             {
-                resultX = (double)countGrafic / 100.0;
-                chartSpace.Series["Bola"].Points.AddXY(resultX, Program.ball.Space[countGrafic]);
+                chartSpace.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperiment[countGrafic], Program.ball.Space[countGrafic]);
             }
         }
         public void addPointPaper(int countGrafic)
         {
-            double resultX;
             if (countGrafic < Program.paper.NumberOfTerms)
             {
-                resultX = (double)countGrafic / 100.0;
-                chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[countGrafic]);
+                chartSpace.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperiment[countGrafic], Program.paper.Space[countGrafic]);
             }
         }
         public void addPointVaccum(int countGrafic)
         {
-            double resultX;
             if (countGrafic < Program.vaccum.NumberOfTerms)
             {
-                resultX = (double)countGrafic / 100.0;
-                chartSpace.Series["C. Vácuo"].Points.AddXY(resultX, Program.vaccum.Space[countGrafic]);
+                chartSpace.Series["C. Vácuo"].Points.AddXY(Program.vaccum.CountTimeExperiment[countGrafic], Program.vaccum.Space[countGrafic]);
             }
         }
 
@@ -108,7 +102,6 @@ namespace freeFall
         {
             int i;
             var chart = chartSpace.ChartAreas[0];
-            double resultX = 0.0;
             chartSpace.Series.Clear();
             chartSpace.Visible = true;
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
@@ -141,10 +134,9 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        resultX = (double)i / 100.0;
                         if(i < Program.ball.NumberOfTerms)
                         {
-                            chartSpace.Series["Bola"].Points.AddXY(resultX, Program.ball.Space[i]);
+                            chartSpace.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperiment[i], Program.ball.Space[i]);
                         }
                     }
                 }
@@ -159,8 +151,7 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        resultX = (double)i / 100.0;
-                        chartSpace.Series["Papel"].Points.AddXY(resultX, Program.paper.Space[i]);
+                        chartSpace.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperiment[i], Program.paper.Space[i]);
                     }
                 }
             }
@@ -174,10 +165,9 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        resultX = (double)i / 100.0;
                         if (i < Program.vaccum.NumberOfTerms)
                         {
-                            chartSpace.Series["C. Vácuo"].Points.AddXY(resultX, Program.vaccum.Space[i]);
+                            chartSpace.Series["C. Vácuo"].Points.AddXY(Program.vaccum.CountTimeExperiment[i], Program.vaccum.Space[i]);
                         }
                     }
                 }
@@ -276,6 +266,11 @@ namespace freeFall
            
         }
         private void GraficSpaceWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chartSpace_Click(object sender, EventArgs e)
         {
 
         }

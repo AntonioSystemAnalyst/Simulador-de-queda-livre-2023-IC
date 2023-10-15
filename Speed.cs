@@ -63,7 +63,7 @@ namespace freeFall
                 {
                     if (Program.ball.NumberOfTerms > i)
                     {
-                        linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3));
+                        linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 2).ToString("0.00"));
                     }
                     else
                     {
@@ -74,7 +74,7 @@ namespace freeFall
                 {
                     if (Program.paper.NumberOfTerms > i)
                     {
-                        linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 3));
+                        linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 2).ToString("0.00"));
                     }
                     else
                     {
@@ -85,7 +85,7 @@ namespace freeFall
                 {
                     if (Program.vaccum.NumberOfTerms > i)
                     {
-                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 3));
+                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 2).ToString("0.00"));
                     }
                     else
                     {
@@ -162,8 +162,7 @@ namespace freeFall
 
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    result = (double)i / 100.0;
-                    chartSpeed.Series["Bola"].Points.AddXY(result, Program.ball.Velocity[i]);
+                    chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperiment[i], Math.Round(Program.ball.Velocity[i], 4));
                 }
             }
             if (Program.paperOn)
@@ -175,8 +174,7 @@ namespace freeFall
 
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    result = (double)i / 100.0;
-                    chartSpeed.Series["Papel"].Points.AddXY(result, Program.paper.Velocity[i]);
+                    chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperiment[i], Math.Round(Program.paper.Velocity[i], 4));
                 }
             }
             if (Program.vaccumOn)
@@ -188,8 +186,7 @@ namespace freeFall
 
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    result = (double)i / 100.0;
-                    chartSpeed.Series["Corpo no vácuo"].Points.AddXY(result, Program.vaccum.Velocity[i]);
+                    chartSpeed.Series["Corpo no vácuo"].Points.AddXY(Program.vaccum.CountTimeExperiment[i], Math.Round(Program.vaccum.Velocity[i], 4));
                 }
             }
         }
@@ -209,7 +206,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.00"));
                 }
             }
             if (Program.greatestValueTime == 1)
@@ -220,7 +217,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.00"));
                 }
             }
             if (Program.greatestValueTime == 2)
@@ -231,7 +228,7 @@ namespace freeFall
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i].ToString("0.00"));
                 }
             }
 
@@ -243,7 +240,7 @@ namespace freeFall
                 timeLarge = new string[Program.vaccum.NumberOfTerms];
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.vaccum.SpaceTime[i]);
+                    timeLarge[i] = Convert.ToString(Program.vaccum.SpaceTime[i].ToString("0.00"));
                 }
             }
         }
@@ -345,18 +342,18 @@ namespace freeFall
                             writer.WriteLine(" Resistência atmosférica  : Sim");
                         }
                         writer.WriteLine(" ----------------------------------------- ");
-                        writer.WriteLine(" Tempo para a bola               : " + Program.ball.TimeAllExperiment + " s");
-                        writer.WriteLine(" Velocidade inicial da bola      : " + Program.ball.InitialVelocity + " m/s");
-                        writer.WriteLine(" Velocidade final da bola        : " + Program.ball.FinalVelocity + " m/s");
+                        writer.WriteLine(" Tempo para a bola               : " + Math.Round(Program.ball.TimeAllExperiment, 2) + " s");
+                        writer.WriteLine(" Velocidade inicial da bola      : " + Math.Round(Program.ball.InitialVelocity, 2) + " m/s");
+                        writer.WriteLine(" Velocidade final da bola        : " + Math.Round(Program.ball.FinalVelocity, 2) + " m/s");
                         writer.WriteLine(" Coeficiente de arrasto da bola  : " + Program.ball.DragCoefficient);
                         writer.WriteLine(" Área da bola                    : " + Program.ball.CrossSectionalArea + " m²");
                         writer.WriteLine(" Massa da bola                   : " + Program.ball.Mass + " kg");
                         if (Program.paperOn)
                         {
                             writer.WriteLine(" ----------------------------------------- ");
-                            writer.WriteLine(" Tempo para o papel              : " + Program.paper.TimeAllExperiment + " s");
-                            writer.WriteLine(" Velocidade inicial do papel     : " + Program.paper.InitialVelocity + " m/s");
-                            writer.WriteLine(" Velocidade final do papel       : " + Program.paper.FinalVelocity + " m/s");
+                            writer.WriteLine(" Tempo para o papel              : " + Math.Round(Program.paper.TimeAllExperiment, 2) + " s");
+                            writer.WriteLine(" Velocidade inicial do papel     : " + Math.Round(Program.paper.InitialVelocity, 2) + " m/s");
+                            writer.WriteLine(" Velocidade final do papel       : " + Math.Round(Program.paper.FinalVelocity, 2) + " m/s");
                             writer.WriteLine(" Coeficiente de arrasto da papel : " + Program.paper.DragCoefficient);
                             writer.WriteLine(" Área do papel                   : " + Program.paper.CrossSectionalArea + " m²");
                             writer.WriteLine(" Massa do papel                  : " + Program.paper.Mass + " kg");
@@ -365,9 +362,9 @@ namespace freeFall
                         if (Program.vaccumOn)
                         {
                             writer.WriteLine(" ----------------------------------------- ");
-                            writer.WriteLine(" Tempo para o c. vácuo               : " + Program.vaccum.TimeAllExperiment + " s");
-                            writer.WriteLine(" Velocidade inicial do c. vácuo      : " + Program.vaccum.InitialVelocity + " m/s");
-                            writer.WriteLine(" Velocidade final do c. vácuo        : " + Program.vaccum.FinalVelocity + " m/s");
+                            writer.WriteLine(" Tempo para o c. vácuo               : " + Math.Round(Program.vaccum.TimeAllExperiment, 2) + " s");
+                            writer.WriteLine(" Velocidade inicial do c. vácuo      : " + Math.Round(Program.vaccum.InitialVelocity, 2) + " m/s");
+                            writer.WriteLine(" Velocidade final do c. vácuo        : " + Math.Round(Program.vaccum.FinalVelocity, 2) + " m/s");
                             writer.WriteLine(" Coeficiente de arrasto do c. vácuo  : " + Program.vaccum.DragCoefficient);
                             writer.WriteLine(" Área do c. vácuo                    : " + Program.vaccum.CrossSectionalArea + " m²");
                             writer.WriteLine(" Massa do c. vácuo                   : " + Program.vaccum.Mass + " kg");
@@ -432,7 +429,7 @@ namespace freeFall
                             {
                                 if (Program.ball.NumberOfTerms > i)
                                 {
-                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3));
+                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 2).ToString("0.00"));
                                 }
                                 else
                                 {
@@ -443,7 +440,7 @@ namespace freeFall
                             {
                                 if (Program.paper.NumberOfTerms > i)
                                 {
-                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 3));
+                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 2).ToString("0.00"));
                                 }
                                 else
                                 {
@@ -454,7 +451,7 @@ namespace freeFall
                             {
                                 if (Program.vaccum.NumberOfTerms > i)
                                 {
-                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 3));
+                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 2).ToString("0.00"));
                                 }
                                 else
                                 {
@@ -498,6 +495,7 @@ namespace freeFall
         public void salveTableTxtDot()
         {
             int i;
+            string Auxiliary = ""; 
             try
             {
                 DateTime dataHoraAtual = DateTime.Now;
@@ -541,7 +539,8 @@ namespace freeFall
                             {
                                 if (Program.ball.NumberOfTerms > i)
                                 {
-                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 3)).Replace('.', ',');
+                                    Auxiliary = Math.Round(Program.ball.Velocity[i], 2).ToString("0.00");
+                                    linha[1] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else
                                 {
@@ -552,7 +551,8 @@ namespace freeFall
                             {
                                 if (Program.paper.NumberOfTerms > i)
                                 {
-                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 3)).Replace('.', ',');
+                                    Auxiliary = Math.Round(Program.paper.Velocity[i], 2).ToString("0.00");
+                                    linha[2] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else
                                 {
@@ -563,7 +563,8 @@ namespace freeFall
                             {
                                 if (Program.vaccum.NumberOfTerms > i)
                                 {
-                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 3)).Replace('.', ',');
+                                    Auxiliary = Math.Round(Program.vaccum.Velocity[i], 2).ToString("0.00");
+                                    linha[3] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else
                                 {

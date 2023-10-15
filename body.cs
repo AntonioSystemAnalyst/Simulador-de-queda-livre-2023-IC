@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace freeFall
 {
     internal class body
     {
+        // ---
         private double finalVelocity = 0.0;
         private double initialVelocity = 0.0;
         private double timeAllExperiment = 0.0;
@@ -39,29 +42,29 @@ namespace freeFall
         }
         public void animationVector(int quantityPixel, double height)
         {
-            qtdSpaceForPixels = height / quantityPixel; 
+            qtdSpaceForPixels = height / quantityPixel;
             double countSpace = 0.0;
-            int i = 0, k = 0; 
+            int i = 0, k = 0;
             int status = 0;
             int start = 0;
             int end = numberOfTerms - 1;
             int[] auxiliary;
-            animationPixel = new double[quantityPixel + 1]; 
+            animationPixel = new double[quantityPixel + 1];
             pixels = new int[numberOfTerms + 1];
             auxiliary = new int[numberOfTerms + 1];
-  
-            for (i = 0; i <= quantityPixel; i++) 
+
+            for (i = 0; i <= quantityPixel; i++)
             {
                 animationPixel[i] = countSpace;
                 countSpace = countSpace + qtdSpaceForPixels;
             }
-            
-            for (i = 0; i < numberOfTerms; i++) 
+
+            for (i = 0; i < numberOfTerms; i++)
             {
                 status = 0;
                 for (k = 0; k <= quantityPixel; k++)
                 {
-                    if ((animationPixel[k] - space[(numberOfTerms-1)-i]) >= 0.01 && status == 0)
+                    if ((animationPixel[k] - space[(numberOfTerms - 1) - i]) >= 0.01 && status == 0)
                     {
                         auxiliary[i] = k;
                         status = 1;
@@ -71,7 +74,7 @@ namespace freeFall
 
             for (i = 0; i < numberOfTerms; i++)
             {
-                pixels[i] = - (auxiliary[i] - quantityPixel);
+                pixels[i] = -(auxiliary[i] - quantityPixel);
                 if (auxiliary[i] == 0)
                 {
                     pixels[i] = 0;
@@ -86,14 +89,14 @@ namespace freeFall
                 start++;
                 end--;
             }
-            for (i = 0; i< pixels.Length; i++)
+            for (i = 0; i < pixels.Length; i++)
             {
                 if (pixels[i] > 524)
                 {
                     pixels[i] = 524;
                 }
             }
-            pixels[numberOfTerms-1] = 524;
+            pixels[numberOfTerms - 1] = 524;
         }
         public void animationPaper(int terms, double airDensity)
         {
@@ -127,12 +130,31 @@ namespace freeFall
 
         public void CalculateOutResistence(double height, double gravity, double initialVelocityExperiment)
         {
-            double countTime = 0;
+            double countTime = 0.0;
+            double result = 0.0;
+            double decimalPart = 0.0;
+            double finalTime = 0.0;
+
             int i = 0;
+            int status = 0;
 
             finalVelocity = Math.Sqrt((initialVelocityExperiment * initialVelocityExperiment) + (2 * gravity * height));
             timeAllExperiment = Math.Round(((finalVelocity - initialVelocityExperiment) / gravity), precision);
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01);
+            result = timeAllExperiment / 0.01;
+
+            decimalPart = result - Math.Floor(result);
+
+            if (decimalPart > 0.5)
+            {
+                numberOfTerms = (int)Math.Ceiling(result);
+            }
+            else
+            {
+                numberOfTerms = (int)Math.Floor(result);
+            }
+
+            numberOfTerms = numberOfTerms + 2;
+
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
@@ -142,7 +164,11 @@ namespace freeFall
             // Espaço 
             for (i = 0; i < numberOfTerms; i++)
             {
-                space[i] = height + ((initialVelocityExperiment * countTime) + (-1*gravity * (countTime * countTime)) / 2);
+                space[i] = height + ((initialVelocityExperiment * countTime) + (-1 * gravity * (countTime * countTime)) / 2);
+                if (space[i] <= 0.0)
+                {
+                    //  space[i] = 0.0;
+                }
                 spaceTime[i] = Math.Round(countTime, precision);
                 countTime = countTime + 0.01;
             }
@@ -151,34 +177,65 @@ namespace freeFall
             // Velocidade
             for (i = 0; i < numberOfTerms; i++)
             {
-                velocity[i] = initialVelocityExperiment + (-1*gravity * countTime);
+                velocity[i] = initialVelocityExperiment + (-1 * gravity * countTime);
                 countTime = countTime + 0.01;
             }
-            
 
             countTime = 0;
             // time
             for (i = 0; i < numberOfTerms; i++)
             {
-                countTimeExperiment[i] = countTime;
+                countTimeExperiment[i] = Math.Round(countTime, 4);
                 countTime = countTime + 0.01;
             }
+
+            finalTime = finalVelocity / gravity;
+
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                if (countTimeExperiment[i] >= Math.Round(finalTime, 4) && status == 0)
+                {
+                    status = 1;
+                    countTimeExperiment[i] = Math.Round(finalTime, 4);
+                    space[i] = 0;
+                    velocity[i] = initialVelocityExperiment + (-1 * gravity * countTimeExperiment[i]);
+                    numberOfTerms = i+1;
+                }
+            }
+
             animationVector(534, height);
         }
 
-        public  void CalculateWithResistenceRV1(double height, double gravity, double initialVelocity, double airDensity)
+        public void CalculateWithResistenceRV1(double height, double gravity, double initialVelocity, double airDensity)
         {
             double spacePoint;
-            double countTime = 0;
+            double countTime = 0.0;
+            double result = 0.0;
+            double decimalPart = 0.0;
             int i, status = 0;
+
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
             term1 = Math.Round((term0 / mass), precision);
             terminalVelocity = gravity / term1;
+
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
             timeAllExperiment = getTimeAllVR1(gravity, height);
-            numberOfTerms = (int)Math.Ceiling(timeAllExperiment / 0.01) + 1;
-            paperPixels = new int[numberOfTerms + 1];
-            countTime = 0;
+
+            result = timeAllExperiment / 0.01;
+
+            decimalPart = result - Math.Floor(result);
+
+            if (decimalPart > 0.5)
+            {
+                numberOfTerms = (int)Math.Ceiling(result);
+            }
+            else
+            {
+                numberOfTerms = (int)Math.Floor(result);
+            }
+            
+            numberOfTerms = numberOfTerms + 1;
+
             for (i = 0; i < numberOfTerms; i++)
             {
                 spacePoint = height - spaceFunctionRV1(countTime, gravity, height);
@@ -190,18 +247,22 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
             countTime = 0;
+
+            paperPixels = new int[numberOfTerms + 1];
             space = new double[numberOfTerms];
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
             spaceTime = new double[numberOfTerms];
+
             countTime = 0.01;
+
             for (i = 1; i < numberOfTerms; i++)
             {
                 velocityPoint = velocityFunctionRV1(countTime, 1, gravity);
                 velocity[i] = velocityPoint;
                 countTime = countTime + 0.01;
             }
-            finalVelocity = velocity[velocity.Length-1];
+            finalVelocity = velocity[velocity.Length - 1];
 
             countTime = 0;
             for (i = 0; i < numberOfTerms; i++)
@@ -237,7 +298,7 @@ namespace freeFall
             animationPaper(numberOfTerms, airDensity);
             animationVector(534, height);
         }
-        public  double getTimeAllVR1(double gravity, double height)
+        public double getTimeAllVR1(double gravity, double height)
         {
             double terminalTime = 0.0;
             double timeAll = 0.0;
@@ -246,7 +307,7 @@ namespace freeFall
             do
             {
                 spaceFunction = spaceFunctionRV1(terminalTime, gravity, height);
-                if(spaceFunction>height)
+                if (spaceFunction > height)
                 {
                     spaceFunction = height;
                 }
@@ -259,7 +320,7 @@ namespace freeFall
             timeAll = terminalTime;
             return timeAll;
         }
-        public  double spaceFunctionRV1(double timeValue, double gravity, double height)
+        public double spaceFunctionRV1(double timeValue, double gravity, double height)
         {
             double spacePointFunction = 0.0;
             term2 = Math.Round(gravity / (term1 * term1), precision);
@@ -272,7 +333,7 @@ namespace freeFall
             return spacePointFunction;
         }
 
-        public  double velocityFunctionRV1(double timeValue, int op, double gravity)
+        public double velocityFunctionRV1(double timeValue, int op, double gravity)
         {
             double velocityPointF = 0.0;
             if (op == 0)
@@ -296,7 +357,7 @@ namespace freeFall
             return velocityPointF;
         }
 
-        public  double timeVelocityFunctionRV1(double velocity, double gravity)
+        public double timeVelocityFunctionRV1(double velocity, double gravity)
         {
             double timVelocity = 0.0;
             term2 = Math.Round((-1 / term1), precision);

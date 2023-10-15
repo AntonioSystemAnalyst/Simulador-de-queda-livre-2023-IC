@@ -76,7 +76,7 @@ namespace freeFall
             richTextBoxCorpo.Text += " ----------------------------\n";
             richTextBoxCorpo.Text += " Calculos - Qtd Termos\n";
             richTextBoxCorpo.Text += " ----------------------------\n";
-            //richTextBoxCorpo.Text += " Space: " + Program.ball.Space.Length + "\n";
+            richTextBoxCorpo.Text += " Space: " + Program.ball.Space.Length + "\n";
             richTextBoxCorpo.Text += " Speed: " + Program.ball.Velocity.Length + "\n";
             richTextBoxCorpo.Text += " countTimeExp.: " + Program.ball.CountTimeExperiment.Length + "\n";
             richTextBoxCorpo.Text += " SpaceTime: " + Program.ball.SpaceTime.Length + "\n";

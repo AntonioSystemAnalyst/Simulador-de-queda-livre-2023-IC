@@ -47,6 +47,7 @@
             this.chartSpace.Size = new System.Drawing.Size(367, 304);
             this.chartSpace.TabIndex = 1;
             this.chartSpace.Text = "chart1";
+            this.chartSpace.Click += new System.EventHandler(this.chartSpace_Click);
             this.chartSpace.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chartSpace_MouseClick);
             // 
             // GraficSpaceWindow
