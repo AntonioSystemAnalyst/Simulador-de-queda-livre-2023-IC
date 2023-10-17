@@ -96,6 +96,7 @@ namespace freeFall
         public static double[] ballFinalTimeSpace = new double[3];
         public static double[] paperFinalTimeSpace = new double[3];
         public static double[] vaccumFinalTimeSpace = new double[3];
+        public static int numberOfTermsTable = 0;
 
         public static body ball = new body();
         public static body paper = new body();
@@ -103,24 +104,30 @@ namespace freeFall
 
         public static void  makeTable()
         {
+            int i = 0;
+          
+            double countTime = 0.0;
 
             if (greatestValueTime == 1)
             {
                 timeTable = new double[ball.NumberOfTerms+4];
+                numberOfTermsTable = ball.NumberOfTerms + 4;
             }
             if (greatestValueTime == 2)
             {
                 timeTable = new double[paper.NumberOfTerms+4];
+                numberOfTermsTable = paper.NumberOfTerms + 4;
             }
             if (greatestValueTime == 3)
             {
                 timeTable = new double[vaccum.NumberOfTerms+4];
+                numberOfTermsTable = vaccum.NumberOfTerms + 4;
             }
 
             if(bodyOn)
             {
                 ballSpaceTable = new double[ball.NumberOfTerms+4];
-                ballFinalTime = ball.Space[ball.NumberOfTerms - 1];
+                ballFinalTime = ball.CountTimeExperiment[ball.NumberOfTerms - 1];
                 ballFinalTimeSpace[0] = ball.Space[ball.NumberOfTerms - 1];
                 if(paperOn)
                 {
@@ -128,14 +135,14 @@ namespace freeFall
                 }
                 if (vaccumOn)
                 {
-                    ballFinalTimeSpace[2] = 0;
+                    ballFinalTimeSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
                 }
             }
 
             if(paperOn)
             {
                 paperSpaceTable = new double[paper.NumberOfTerms+4];
-                paperFinalTime = paper.Space[paper.NumberOfTerms - 1];
+                paperFinalTime = paper.CountTimeExperiment[paper.NumberOfTerms - 1];
                 paperFinalTimeSpace[1] = paper.Space[paper.NumberOfTerms - 1];
                 if (bodyOn)
                 {
@@ -143,14 +150,14 @@ namespace freeFall
                 }
                 if (vaccumOn)
                 {
-                    paperFinalTimeSpace[2] = 0;
+                    paperFinalTimeSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
                 }
             }
 
             if(vaccumOn)
             {
                 vaccumSpaceTable= new double[vaccum.NumberOfTerms+4];
-                vaccumFinalTime = vaccum.Space[vaccum.NumberOfTerms - 1];
+                vaccumFinalTime = vaccum.CountTimeExperiment[vaccum.NumberOfTerms - 1];
                 vaccumFinalTimeSpace[2] = vaccum.Space[vaccum.NumberOfTerms - 1];
                 if (paperOn)
                 {
@@ -160,6 +167,12 @@ namespace freeFall
                 {
                     vaccumFinalTimeSpace[0] = ball.spaceFunctionRV1(vaccumFinalTime, gravity, height);
                 }
+            }
+
+            for (i=0; i< numberOfTermsTable; i++)
+            {
+                timeTable[i] = countTime;
+                countTime = countTime + 0.01;
             }
         }
 

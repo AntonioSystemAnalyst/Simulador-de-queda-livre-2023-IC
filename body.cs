@@ -167,10 +167,6 @@ namespace freeFall
             for (i = 0; i < numberOfTerms; i++)
             {
                 space[i] = height + ((initialVelocityExperiment * countTime) + (-1 * gravity * (countTime * countTime)) / 2);
-                if (space[i] <= 0.0)
-                {
-                    //  space[i] = 0.0;
-                }
                 spaceTime[i] = Math.Round(countTime, precision);
                 countTime = countTime + 0.01;
             }
@@ -213,6 +209,11 @@ namespace freeFall
                 Console.WriteLine("" + space[i]);
             }
             animationVector(534, height);
+        }
+
+        public double spaceFunction(double countTime, double initialVelocityExperiment, double gravity, double height)
+        {
+            return height + ((initialVelocityExperiment * countTime) + (-1 * gravity * (countTime * countTime)) / 2);
         }
 
         public void CalculateWithResistenceRV1(double height, double gravity, double airDensity)

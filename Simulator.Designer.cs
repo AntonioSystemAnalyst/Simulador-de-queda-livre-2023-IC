@@ -113,6 +113,7 @@
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
             this.timerButton = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -209,6 +210,7 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
+            this.groupBoxResultados.Controls.Add(this.button1);
             this.groupBoxResultados.Controls.Add(this.buttonLog);
             this.groupBoxResultados.Controls.Add(this.pictureBoxVaccumObject);
             this.groupBoxResultados.Controls.Add(this.pictureBox2);
@@ -1081,6 +1083,18 @@
             this.timerButton.Interval = 300;
             this.timerButton.Tick += new System.EventHandler(this.timerButton_Tick);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(135, 186);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 24);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "T";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1217,5 +1231,6 @@
         private System.Windows.Forms.Label labelMaskPapel;
         private System.Windows.Forms.Label labelGraficDetails;
         private System.Windows.Forms.Timer timerButton;
+        private System.Windows.Forms.Button button1;
     }
 }

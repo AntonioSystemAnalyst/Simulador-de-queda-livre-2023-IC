@@ -106,9 +106,13 @@ namespace freeFall
         private void button1_Click_1(object sender, EventArgs e)
         {
             showLogs();
-            Program.makeTable();
         }
-
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            Program.makeTable();
+            Table x = new Table();
+            x.Show();
+        }
         public void showLogs()
         {
             Console.WriteLine("---------------------------------");
@@ -236,6 +240,7 @@ namespace freeFall
             txtEspaco.Text = "";
             txtVelocidade.Text = "";
             textTempo.Text = "";
+
             if (Program.paperOn)
             {
                 textBoxPaperHeight.Text = "";
@@ -1903,6 +1908,7 @@ namespace freeFall
             BTNIniciar.Focus();
             timerButton.Enabled = false;
         }
+
         private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
         {
 
