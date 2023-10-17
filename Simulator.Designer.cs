@@ -209,7 +209,6 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
-            this.groupBoxResultados.Controls.Add(this.buttonData);
             this.groupBoxResultados.Controls.Add(this.buttonLog);
             this.groupBoxResultados.Controls.Add(this.pictureBoxVaccumObject);
             this.groupBoxResultados.Controls.Add(this.pictureBox2);
@@ -246,9 +245,9 @@
             this.buttonData.Enabled = false;
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(136, 186);
+            this.buttonData.Location = new System.Drawing.Point(53, 149);
             this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(27, 23);
+            this.buttonData.Size = new System.Drawing.Size(89, 24);
             this.buttonData.TabIndex = 30;
             this.buttonData.Text = "Sem dados";
             this.buttonData.UseVisualStyleBackColor = true;
@@ -266,6 +265,7 @@
             this.buttonLog.TabIndex = 44;
             this.buttonLog.Text = "PL";
             this.buttonLog.UseVisualStyleBackColor = true;
+            this.buttonLog.Visible = false;
             this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject
@@ -997,6 +997,7 @@
             // 
             this.groupBoxData.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxData.BackgroundImage")));
+            this.groupBoxData.Controls.Add(this.buttonData);
             this.groupBoxData.Controls.Add(this.groupBox1);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;

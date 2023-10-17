@@ -59,18 +59,24 @@ namespace freeFall
             txtVelocidadeCorpoInitial.Text = "" + Program.ball.InitialVelocity;
             textBoxCEBall.Text = "" + Program.ball.DragCoefficient;
 
+            if(Program.paperOn)
+            {
+                textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paper.Velocity[Program.paper.NumberOfTerms - 1], 2);
+                textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity;
+                textBoxPaperHeight.Text = "" + Program.height;
+                textBoxPaperTime.Text = "" + Math.Round(Program.paper.CountTimeExperiment[Program.paper.NumberOfTerms - 1], 2);
+                textBoxCEPaper.Text = "" + Program.paper.DragCoefficient;
+            }
 
-            textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paper.Velocity[Program.paper.NumberOfTerms - 1], 2); 
-            textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity; 
-            textBoxPaperHeight.Text = "" + Program.height;
-            textBoxPaperTime.Text = "" + Math.Round(Program.paper.CountTimeExperiment[Program.paper.NumberOfTerms - 1], 2);
-            textBoxCEPaper.Text = "" + Program.paper.DragCoefficient;
+            if(Program.vaccumOn)
+            {
+                textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[Program.vaccum.NumberOfTerms - 1], 2);
+                textBoxVaccumHeight.Text = "" + Program.height;
+                textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity;
+                textBoxVaccumTime.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[Program.vaccum.NumberOfTerms - 1], 2);
+                textBoxCEVacuo.Text = "" + Program.vaccum.DragCoefficient;
+            }
 
-            textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[Program.vaccum.NumberOfTerms - 1], 2); 
-            textBoxVaccumHeight.Text = "" + Program.height;
-            textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity; 
-            textBoxVaccumTime.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[Program.vaccum.NumberOfTerms - 1], 2);
-            textBoxCEVacuo.Text = "" + Program.vaccum.DragCoefficient;
         }
 
         public void sizeWindo()

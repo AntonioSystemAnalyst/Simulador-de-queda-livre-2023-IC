@@ -111,7 +111,6 @@ namespace freeFall
 
         public void showLogs()
         {
-            string endTime = " " + 1;
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" Logs");
             Console.WriteLine("---------------------------------");
@@ -143,8 +142,6 @@ namespace freeFall
             Console.WriteLine(" Maior valor de tempo: " + Program.greatestValueTime);
             Console.WriteLine(" Maior valor de velocidade: " + Program.greatestValueVelocity);
             Console.WriteLine("---------------------------------");
-            endTime = "time/space:  " + Program.ball.EndTimeWithResistence + "|" + Program.ball.EndSpaceWithResistence;
-            Console.WriteLine("" + endTime);
         }
         private void closeAllWindows()
         {
@@ -238,11 +235,17 @@ namespace freeFall
         {
             txtEspaco.Text = "";
             txtVelocidade.Text = "";
-            textBoxPaperHeight.Text = "";
-            textBoxPaperVelocity.Text = "";
-            textBoxVaccumHeight.Text = "";
-            textBoxVaccumVelocity.Text = "";
             textTempo.Text = "";
+            if (Program.paperOn)
+            {
+                textBoxPaperHeight.Text = "";
+                textBoxPaperVelocity.Text = "";
+            }
+            if(Program.vaccumOn)
+            {
+                textBoxVaccumHeight.Text = "";
+                textBoxVaccumVelocity.Text = "";
+            }
         }
 
         public void enabledConfigure(int Operation)
@@ -860,7 +863,6 @@ namespace freeFall
                 BTNIniciar.Enabled = false;
                 if (buttonStartControl == 0)
                 {
-                    clearTextBox();
                     timerNumerAnimationIniti.Enabled = true;
                 }
                 else
@@ -953,6 +955,7 @@ namespace freeFall
                                 calculateValues();
                                 receveidGreatestValueTime();
                                 receveidGreatestValueVelocity();
+                                clearTextBox();
                                 BTNIniciar.Text = "Iniciar";
                                 buttonStartControl = 0;
                             }
@@ -960,6 +963,7 @@ namespace freeFall
                     }
 
                 }
+                BTNIniciar.Focus();
                 timerButton.Enabled = true;
             }
             catch
@@ -1871,7 +1875,7 @@ namespace freeFall
         }
         private void labelMaskVaccum_MouseHover(object sender, EventArgs e)
         {
-            toolTip.SetToolTip(labelMaskVaccum, "Câmara de vácuo.");
+            toolTip.SetToolTip(labelMaskVaccum, "");
         }
         private void labelMaskAirResistence_MouseHover(object sender, EventArgs e)
         {
@@ -1896,6 +1900,7 @@ namespace freeFall
         private void timerButton_Tick(object sender, EventArgs e)
         {
             BTNIniciar.Enabled = true;
+            BTNIniciar.Focus();
             timerButton.Enabled = false;
         }
         private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)

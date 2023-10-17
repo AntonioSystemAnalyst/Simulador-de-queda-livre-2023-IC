@@ -227,9 +227,7 @@ namespace freeFall
             term1 = Math.Round((term0 / mass), precision);
 
             terminalVelocity = (gravity / term1) * 0.001;
-
             greatValueVelocity = velocityFunctionRV1(0, 0, gravity);
-
             timeAllExperiment = getTimeAllVR1(gravity, height);
 
             result = timeAllExperiment / 0.01;
