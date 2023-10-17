@@ -96,7 +96,7 @@ namespace freeFall
 
             if (value <= 0)
             {
-                result = "0.00";
+                result = value.ToString("0.00");
             }
             else
             {
@@ -124,8 +124,9 @@ namespace freeFall
             chartSpace.Visible = true;
             chartSpace.Titles.Add("Altura versus tempo");
             chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
-            chartSpace.ChartAreas[0].AxisX.Title = "t (s)";
-            chartSpace.ChartAreas[0].AxisY.Title = "y (m)";
+            chartSpace.ChartAreas[0].AxisX.Title = "t ( s )";
+            chartSpace.ChartAreas[0].AxisY.Title = "y ( m )";
+           
             chart.AxisX.IntervalType = DateTimeIntervalType.Number;
             chart.AxisX.LabelStyle.Format = "";
             chart.AxisY.LabelStyle.Format = "";
@@ -206,8 +207,9 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperiment[i].ToString("0.00"));
                 }
+                timeLarge[Program.ball.NumberOfTerms-1] = Convert.ToString(Program.ball.CountTimeExperiment[Program.ball.NumberOfTerms - 1].ToString("0.0000"));
             }
             if (Program.greatestValueTime == 1)
             {
@@ -217,8 +219,9 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperiment[i].ToString("0.00"));
                 }
+                timeLarge[Program.ball.NumberOfTerms-1] = Convert.ToString(Program.ball.CountTimeExperiment[i].ToString("0.0000"));
             }
             if (Program.greatestValueTime == 2)
             {
@@ -228,8 +231,9 @@ namespace freeFall
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.paper.CountTimeExperiment[i].ToString("0.00"));
                 }
+                timeLarge[timeLarge.Length- 1] = Convert.ToString(Program.paper.CountTimeExperiment[timeLarge.Length - 1].ToString("0.0000"));
             }
             if (Program.greatestValueTime == 3)
             {
@@ -239,8 +243,9 @@ namespace freeFall
                 timeLarge = new string[Program.vaccum.NumberOfTerms];
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.vaccum.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.vaccum.CountTimeExperiment[i].ToString("0.00"));
                 }
+                timeLarge[Program.vaccum.NumberOfTerms-1] = Convert.ToString(Program.vaccum.CountTimeExperiment[i].ToString("0.0000"));
             }
         }
         double CalculateValueWithTenPercent(double value)
@@ -314,7 +319,6 @@ namespace freeFall
 
         public void salveTxt()
         {
-            int i;
             try
             {
                 DateTime dataHoraAtual = DateTime.Now;

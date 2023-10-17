@@ -266,7 +266,6 @@
             this.buttonLog.TabIndex = 44;
             this.buttonLog.Text = "PL";
             this.buttonLog.UseVisualStyleBackColor = true;
-            this.buttonLog.Visible = false;
             this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject

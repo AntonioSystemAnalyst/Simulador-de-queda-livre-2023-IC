@@ -17,7 +17,7 @@ namespace freeFall
         {
             if (op == 0)
             {
-                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;
+                chartSpace.ChartAreas[0].Area3DStyle.Enable3D = true;  
             }
             else
             {
@@ -172,12 +172,15 @@ namespace freeFall
                     }
                 }
             }
+
+            chartSpace.ChartAreas[0].Area3DStyle.PointDepth = 50;
+            chartSpace.ChartAreas[0].Area3DStyle.PointGapDepth = 1;
         }
 
         public void spaceGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
             var chart = chartSpace.ChartAreas[0];
-
+            chartSpace.Series.Clear();
             chartSpace.Titles.Add("Altura versus tempo").Docking = Docking.Top;
             chartSpace.Titles[0].Font = new Font(chartSpace.Titles[0].Font.FontFamily, chartSpace.Titles[0].Font.Size, FontStyle.Bold);
             chartSpace.ChartAreas[0].AxisX.Title = "t ( s )";
@@ -198,8 +201,6 @@ namespace freeFall
             chart.AxisY.TitleFont = new Font(chart.AxisY.TitleFont, FontStyle.Bold);
             chart.AxisX.LabelStyle.Font = new Font(chart.AxisX.LabelStyle.Font, FontStyle.Bold);
             chart.AxisY.LabelStyle.Font = new Font(chart.AxisY.LabelStyle.Font, FontStyle.Bold);
-
-            
 
             chartSpace.Series.Add("teste");
 

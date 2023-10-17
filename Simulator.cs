@@ -106,10 +106,12 @@ namespace freeFall
         private void button1_Click_1(object sender, EventArgs e)
         {
             showLogs();
+            Program.makeTable();
         }
 
         public void showLogs()
         {
+            string endTime = " " + 1;
             Console.WriteLine("---------------------------------");
             Console.WriteLine(" Logs");
             Console.WriteLine("---------------------------------");
@@ -141,6 +143,8 @@ namespace freeFall
             Console.WriteLine(" Maior valor de tempo: " + Program.greatestValueTime);
             Console.WriteLine(" Maior valor de velocidade: " + Program.greatestValueVelocity);
             Console.WriteLine("---------------------------------");
+            endTime = "time/space:  " + Program.ball.EndTimeWithResistence + "|" + Program.ball.EndSpaceWithResistence;
+            Console.WriteLine("" + endTime);
         }
         private void closeAllWindows()
         {
@@ -228,6 +232,17 @@ namespace freeFall
             Program.ball.TimeAllExperiment = 0.0;
             Program.paper.TimeAllExperiment = 0.0;
             Program.vaccum.TimeAllExperiment = 0.0;
+        }
+
+        public void clearTextBox()
+        {
+            txtEspaco.Text = "";
+            txtVelocidade.Text = "";
+            textBoxPaperHeight.Text = "";
+            textBoxPaperVelocity.Text = "";
+            textBoxVaccumHeight.Text = "";
+            textBoxVaccumVelocity.Text = "";
+            textTempo.Text = "";
         }
 
         public void enabledConfigure(int Operation)
@@ -774,6 +789,7 @@ namespace freeFall
             }
             if (animationNumberCounter == 4)
             {
+                labelTextStart.Text = "";
                 labelTextStart.Location = new Point(20, 24);
                 labelTextStart.Text = "CAINDO!";
                 BTNIniciar.Enabled = true;
@@ -844,6 +860,7 @@ namespace freeFall
                 BTNIniciar.Enabled = false;
                 if (buttonStartControl == 0)
                 {
+                    clearTextBox();
                     timerNumerAnimationIniti.Enabled = true;
                 }
                 else

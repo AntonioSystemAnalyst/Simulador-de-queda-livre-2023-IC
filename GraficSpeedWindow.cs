@@ -183,7 +183,7 @@ namespace freeFall
         public void speedGraphicIniti(int n, double Mm, double MM, double InterY, double interX, double Max, double Mmx)
         {
             var chart = chartSpeed.ChartAreas[0];
-
+            chartSpeed.Series.Clear();
             chartSpeed.Titles.Add("Velocidade versus tempo").Docking = Docking.Top;
             chartSpeed.Titles[0].Font = new Font(chartSpeed.Titles[0].Font.FontFamily, chartSpeed.Titles[0].Font.Size, FontStyle.Bold);
             chartSpeed.ChartAreas[0].AxisX.Title = "t ( s )";

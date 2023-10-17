@@ -83,11 +83,109 @@ namespace freeFall
         public static double timeExperiment = 0;
         public static double airDensity = 0;
 
-       
+
+        public static double[] timeTable;
+        public static double[] ballSpaceTable;
+        public static double[] paperSpaceTable;
+        public static double[] vaccumSpaceTable;
+
+        public static double ballFinalTime = 0.0;
+        public static double paperFinalTime = 0.0;
+        public static double vaccumFinalTime = 0.0;
+
+        public static double[] ballFinalTimeSpace = new double[3];
+        public static double[] paperFinalTimeSpace = new double[3];
+        public static double[] vaccumFinalTimeSpace = new double[3];
 
         public static body ball = new body();
         public static body paper = new body();
         public static body vaccum = new body();
+
+        public static void  makeTable()
+        {
+
+            if (greatestValueTime == 1)
+            {
+                timeTable = new double[ball.NumberOfTerms+4];
+            }
+            if (greatestValueTime == 2)
+            {
+                timeTable = new double[paper.NumberOfTerms+4];
+            }
+            if (greatestValueTime == 3)
+            {
+                timeTable = new double[vaccum.NumberOfTerms+4];
+            }
+
+            if(bodyOn)
+            {
+                ballSpaceTable = new double[ball.NumberOfTerms+4];
+                ballFinalTime = ball.Space[ball.NumberOfTerms - 1];
+                ballFinalTimeSpace[0] = ball.Space[ball.NumberOfTerms - 1];
+                if(paperOn)
+                {
+                    ballFinalTimeSpace[1] = paper.spaceFunctionRV1(ballFinalTime, gravity, height);
+                }
+                if (vaccumOn)
+                {
+                    ballFinalTimeSpace[2] = 0;
+                }
+            }
+
+            if(paperOn)
+            {
+                paperSpaceTable = new double[paper.NumberOfTerms+4];
+                paperFinalTime = paper.Space[paper.NumberOfTerms - 1];
+                paperFinalTimeSpace[1] = paper.Space[paper.NumberOfTerms - 1];
+                if (bodyOn)
+                {
+                    paperFinalTimeSpace[0] = ball.spaceFunctionRV1(paperFinalTime, gravity, height);
+                }
+                if (vaccumOn)
+                {
+                    paperFinalTimeSpace[2] = 0;
+                }
+            }
+
+            if(vaccumOn)
+            {
+                vaccumSpaceTable= new double[vaccum.NumberOfTerms+4];
+                vaccumFinalTime = vaccum.Space[vaccum.NumberOfTerms - 1];
+                vaccumFinalTimeSpace[2] = vaccum.Space[vaccum.NumberOfTerms - 1];
+                if (paperOn)
+                {
+                    vaccumFinalTimeSpace[1] = paper.spaceFunctionRV1(vaccumFinalTime, gravity, height);
+                }
+                if (bodyOn)
+                {
+                    vaccumFinalTimeSpace[0] = ball.spaceFunctionRV1(vaccumFinalTime, gravity, height);
+                }
+            }
+        }
+
+        public static void vectorRealeing(double[] vector, double value)
+        {
+            int i;
+            int status = 0;
+            double[] auxiliary = new double[vector.Length+1];
+
+            for (i=0; i<vector.Length; i++)
+            {
+                if(status == 0)
+                {
+                    auxiliary[i] = vector[i];
+                }
+                else
+                {
+                    auxiliary[i+1] = vector[i];
+                }
+                if (vector[i] < value)
+                {
+                    vector[i] = value;
+                    status = 1;
+                }
+            }
+        }
 
 
         public static double organizeData(string data)
