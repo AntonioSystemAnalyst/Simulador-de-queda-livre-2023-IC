@@ -94,9 +94,9 @@ namespace freeFall
         public static double paperFinalTime = 0.0;
         public static double vaccumFinalTime = 0.0;
 
-        public static double[] ballFinalTimeSpace = new double[3];
-        public static double[] paperFinalTimeSpace = new double[3];
-        public static double[] vaccumFinalTimeSpace = new double[3];
+        public static double[] ballFinalSpace = new double[3];
+        public static double[] paperFinalSpace = new double[3];
+        public static double[] vaccumFinalSpace = new double[3];
         public static int numberOfTermsTable = 0;
 
         public static body ball = new body();
@@ -139,45 +139,57 @@ namespace freeFall
             if(bodyOn)
             {
                 ballSpaceTable = new double[ball.NumberOfTerms+4];
+                for (i = 0; i< ball.NumberOfTerms; i++)
+                {
+                    ballSpaceTable[i]= ball.Space[i];
+                }
                 ballFinalTime = ball.CountTimeExperiment[ball.NumberOfTerms - 1];
-                ballFinalTimeSpace[0] = ball.Space[ball.NumberOfTerms - 1];
+                ballFinalSpace[0] = ball.Space[ball.NumberOfTerms - 1];
                 if(paperOn)
                 {
-                    ballFinalTimeSpace[1] = paper.spaceFunctionRV1(ballFinalTime, gravity, height);
+                    ballFinalSpace[1] = paper.spaceFunctionRV1(ballFinalTime, gravity, height);
                 }
                 if (vaccumOn)
                 {
-                    ballFinalTimeSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
+                    ballFinalSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
                 }
             }
 
             if(paperOn)
             {
                 paperSpaceTable = new double[paper.NumberOfTerms+4];
+                for (i = 0; i < paper.NumberOfTerms; i++)
+                {
+                    paperSpaceTable[i] = paper.Space[i];
+                }
                 paperFinalTime = paper.CountTimeExperiment[paper.NumberOfTerms - 1];
-                paperFinalTimeSpace[1] = paper.Space[paper.NumberOfTerms - 1];
+                paperFinalSpace[1] = paper.Space[paper.NumberOfTerms - 1];
                 if (bodyOn)
                 {
-                    paperFinalTimeSpace[0] = ball.spaceFunctionRV1(paperFinalTime, gravity, height);
+                    paperFinalSpace[0] = ball.spaceFunctionRV1(paperFinalTime, gravity, height);
                 }
                 if (vaccumOn)
                 {
-                    paperFinalTimeSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
+                    paperFinalSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
                 }
             }
 
             if(vaccumOn)
             {
                 vaccumSpaceTable= new double[vaccum.NumberOfTerms+4];
+                for (i = 0; i < vaccum.NumberOfTerms; i++)
+                {
+                    vaccumSpaceTable[i] = vaccum.Space[i];
+                }
                 vaccumFinalTime = vaccum.CountTimeExperiment[vaccum.NumberOfTerms - 1];
-                vaccumFinalTimeSpace[2] = vaccum.Space[vaccum.NumberOfTerms - 1];
+                vaccumFinalSpace[2] = vaccum.Space[vaccum.NumberOfTerms - 1];
                 if (paperOn)
                 {
-                    vaccumFinalTimeSpace[1] = paper.spaceFunctionRV1(vaccumFinalTime, gravity, height);
+                    vaccumFinalSpace[1] = paper.spaceFunctionRV1(vaccumFinalTime, gravity, height);
                 }
                 if (bodyOn)
                 {
-                    vaccumFinalTimeSpace[0] = ball.spaceFunctionRV1(vaccumFinalTime, gravity, height);
+                    vaccumFinalSpace[0] = ball.spaceFunctionRV1(vaccumFinalTime, gravity, height);
                 }
             }
 
@@ -185,39 +197,41 @@ namespace freeFall
             {
                 vectorRealeingAddPoint(timeTable, vaccumFinalTime);
 
-                if(bodyOn)
+                if (bodyOn)
                 {
-
+                    vectorRealeingAddPoint(ballSpaceTable, vaccumFinalSpace[0]);
                 }
                 if(paperOn)
                 {
-
+                    vectorRealeingAddPoint(paperSpaceTable, vaccumFinalSpace[1]);
                 }
             }
 
             if (paperOn)
             {
-               vectorRealeingAddPoint(timeTable, paperFinalTime);
+                vectorRealeingAddPoint(timeTable, paperFinalTime);
+
                 if (bodyOn)
                 {
-
+                    vectorRealeingAddPoint(ballSpaceTable, paperFinalSpace[0]);
                 }
                 if (vaccumOn)
                 {
-
+                    vectorRealeingAddPoint(vaccumSpaceTable, paperFinalSpace[2]);
                 }
             }
 
             if (bodyOn)
             {
-              vectorRealeingAddPoint(timeTable, ballFinalTime);
+                vectorRealeingAddPoint(timeTable, ballFinalTime);
+
                 if (paperOn)
                 {
-
+                    vectorRealeingAddPoint(paperSpaceTable, ballFinalSpace[1]);
                 }
                 if (vaccumOn)
                 {
-
+                    vectorRealeingAddPoint(vaccumSpaceTable, ballFinalSpace[2]);
                 }
             }
         }
@@ -251,7 +265,6 @@ namespace freeFall
                     vector[i] = value;
                     vector[i+1] = auxiliary[i];
                     status = 1;
-                    Console.WriteLine("aq: " + value);
                 }
             }
         }
