@@ -545,7 +545,7 @@ namespace freeFall
                             {
                                 if (Program.ball.NumberOfTerms > i)
                                 {
-                                    Auxiliary = Math.Round(Program.ball.Space[i], 2).ToString("0.00");
+                                    Auxiliary = Math.Round(Program.ball.Space[i], 4).ToString("0.0000");
                                     linha[1] = Convert.ToString(Auxiliary.Replace('.', ','));
                                 }
                                 else
@@ -557,7 +557,7 @@ namespace freeFall
                             {
                                 if (Program.paper.NumberOfTerms > i)
                                 {
-                                    Auxiliary = Math.Round(Program.paper.Space[i], 2).ToString("0.00");
+                                    Auxiliary = Math.Round(Program.paper.Space[i], 4).ToString("0.0000");
                                     linha[2] = Convert.ToString(Auxiliary.Replace('.', ','));
                                 }
                                 else
@@ -569,7 +569,7 @@ namespace freeFall
                             {
                                 if (Program.vaccum.NumberOfTerms > i)
                                 {
-                                    Auxiliary = Math.Round(Program.vaccum.Space[i], 2).ToString("0.00");
+                                    Auxiliary = Math.Round(Program.vaccum.Space[i], 4).ToString("0.0000");
                                     linha[3] = Convert.ToString(Auxiliary.Replace('.', ','));
                                 }
                                 else

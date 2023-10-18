@@ -45,7 +45,7 @@ namespace freeFall
 
             for (i=0; i<Program.numberOfTermsTable; i++)
             {
-                richTextBox.Text += "Time: " + Program.timeTable[i] + "\n";
+                richTextBox.Text += "["+i+"] Time: " + Program.timeTable[i] + "\n";
             }
         }
     }

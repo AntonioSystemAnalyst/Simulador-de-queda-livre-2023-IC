@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace freeFall
 {
@@ -105,23 +106,34 @@ namespace freeFall
         public static void  makeTable()
         {
             int i = 0;
-          
-            double countTime = 0.0;
 
             if (greatestValueTime == 1)
             {
-                timeTable = new double[ball.NumberOfTerms+4];
                 numberOfTermsTable = ball.NumberOfTerms + 4;
+                timeTable = new double[numberOfTermsTable];
+                for (i = 0; i < ball.NumberOfTerms; i++)
+                {
+                    timeTable[i] = ball.CountTimeExperiment[i];
+                }
             }
             if (greatestValueTime == 2)
             {
-                timeTable = new double[paper.NumberOfTerms+4];
                 numberOfTermsTable = paper.NumberOfTerms + 4;
+                timeTable = new double[numberOfTermsTable];
+                for (i = 0; i < paper.NumberOfTerms; i++)
+                {
+                    timeTable[i] = paper.CountTimeExperiment[i];
+                }
             }
             if (greatestValueTime == 3)
             {
-                timeTable = new double[vaccum.NumberOfTerms+4];
                 numberOfTermsTable = vaccum.NumberOfTerms + 4;
+                timeTable = new double[numberOfTermsTable];
+                for (i = 0; i < vaccum.NumberOfTerms; i++)
+                {
+                    timeTable[i] = vaccum.CountTimeExperiment[i];
+                }
+
             }
 
             if(bodyOn)
@@ -169,13 +181,80 @@ namespace freeFall
                 }
             }
 
-            for (i=0; i< numberOfTermsTable; i++)
+            if (vaccumOn)
             {
-                timeTable[i] = countTime;
-                countTime = countTime + 0.01;
+                vectorRealeingAddPoint(timeTable, vaccumFinalTime);
+
+                if(bodyOn)
+                {
+
+                }
+                if(paperOn)
+                {
+
+                }
+            }
+
+            if (paperOn)
+            {
+               vectorRealeingAddPoint(timeTable, paperFinalTime);
+                if (bodyOn)
+                {
+
+                }
+                if (vaccumOn)
+                {
+
+                }
+            }
+
+            if (bodyOn)
+            {
+              vectorRealeingAddPoint(timeTable, ballFinalTime);
+                if (paperOn)
+                {
+
+                }
+                if (vaccumOn)
+                {
+
+                }
             }
         }
 
+        public static void vectorRealeingAddPoint(double[] vector, double value)
+        {
+            int i;
+            int status = 0;
+
+            double[] auxiliary = new double[vector.Length];
+
+            for (i = 0; i < vector.Length; i++)
+            {
+                auxiliary[i] = vector[i];
+            }
+            for (i = 0; i < vector.Length; i++)
+            {
+                if (status == 0)
+                {
+                    vector[i] = auxiliary[i];
+                }
+                else
+                {
+                    if((i+1) < vector.Length)
+                    {
+                        vector[i + 1] = auxiliary[i];
+                    }
+                }
+                if ((value < auxiliary[i]) && status == 0)
+                {
+                    vector[i] = value;
+                    vector[i+1] = auxiliary[i];
+                    status = 1;
+                    Console.WriteLine("aq: " + value);
+                }
+            }
+        }
         public static void vectorRealeing(double[] vector, double value)
         {
             int i;
