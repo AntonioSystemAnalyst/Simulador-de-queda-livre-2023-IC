@@ -107,6 +107,10 @@ namespace freeFall
         {
             int i = 0;
 
+            ballSpaceTable = new double[ball.NumberOfTerms + 4];
+            paperSpaceTable = new double[paper.NumberOfTerms + 4];
+            vaccumSpaceTable = new double[vaccum.NumberOfTerms + 4];
+            timeTable = new double[1];
             if (greatestValueTime == 1)
             {
                 numberOfTermsTable = ball.NumberOfTerms + 4;
@@ -133,31 +137,28 @@ namespace freeFall
                 {
                     timeTable[i] = vaccum.CountTimeExperiment[i];
                 }
-
             }
-
+            
             if(bodyOn)
             {
-                ballSpaceTable = new double[ball.NumberOfTerms+4];
                 for (i = 0; i< ball.NumberOfTerms; i++)
                 {
                     ballSpaceTable[i]= ball.Space[i];
+                    Console.WriteLine("" + ballSpaceTable[i]);
                 }
                 ballFinalTime = ball.CountTimeExperiment[ball.NumberOfTerms - 1];
                 ballFinalSpace[0] = ball.Space[ball.NumberOfTerms - 1];
                 if(paperOn)
                 {
-                    ballFinalSpace[1] = paper.spaceFunctionRV1(ballFinalTime, gravity, height);
+                    ballFinalSpace[1] = height - paper.spaceFunctionRV1(ballFinalTime, gravity, height);
                 }
                 if (vaccumOn)
                 {
                     ballFinalSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
                 }
             }
-
-            if(paperOn)
+            if (paperOn)
             {
-                paperSpaceTable = new double[paper.NumberOfTerms+4];
                 for (i = 0; i < paper.NumberOfTerms; i++)
                 {
                     paperSpaceTable[i] = paper.Space[i];
@@ -166,17 +167,15 @@ namespace freeFall
                 paperFinalSpace[1] = paper.Space[paper.NumberOfTerms - 1];
                 if (bodyOn)
                 {
-                    paperFinalSpace[0] = ball.spaceFunctionRV1(paperFinalTime, gravity, height);
+                    paperFinalSpace[0] = height - ball.spaceFunctionRV1(paperFinalTime, gravity, height);
                 }
                 if (vaccumOn)
                 {
                     paperFinalSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
                 }
             }
-
             if(vaccumOn)
             {
-                vaccumSpaceTable= new double[vaccum.NumberOfTerms+4];
                 for (i = 0; i < vaccum.NumberOfTerms; i++)
                 {
                     vaccumSpaceTable[i] = vaccum.Space[i];
@@ -185,53 +184,51 @@ namespace freeFall
                 vaccumFinalSpace[2] = vaccum.Space[vaccum.NumberOfTerms - 1];
                 if (paperOn)
                 {
-                    vaccumFinalSpace[1] = paper.spaceFunctionRV1(vaccumFinalTime, gravity, height);
+                    vaccumFinalSpace[1] = height - paper.spaceFunctionRV1(vaccumFinalTime, gravity, height);
                 }
                 if (bodyOn)
                 {
-                    vaccumFinalSpace[0] = ball.spaceFunctionRV1(vaccumFinalTime, gravity, height);
+                    vaccumFinalSpace[0] = height - ball.spaceFunctionRV1(vaccumFinalTime, gravity, height);
                 }
             }
-
             if (vaccumOn)
             {
                 vectorRealeingAddPoint(timeTable, vaccumFinalTime);
 
                 if (bodyOn)
                 {
-                    vectorRealeingAddPoint(ballSpaceTable, vaccumFinalSpace[0]);
+                    vectorRealeing(ballSpaceTable, vaccumFinalSpace[0]);
                 }
                 if(paperOn)
                 {
-                    vectorRealeingAddPoint(paperSpaceTable, vaccumFinalSpace[1]);
+                    vectorRealeing(paperSpaceTable, vaccumFinalSpace[1]);
                 }
             }
-
             if (paperOn)
             {
                 vectorRealeingAddPoint(timeTable, paperFinalTime);
 
                 if (bodyOn)
                 {
-                    vectorRealeingAddPoint(ballSpaceTable, paperFinalSpace[0]);
+                    vectorRealeing(ballSpaceTable, paperFinalSpace[0]);
                 }
                 if (vaccumOn)
                 {
-                    vectorRealeingAddPoint(vaccumSpaceTable, paperFinalSpace[2]);
+                    vectorRealeing(vaccumSpaceTable, paperFinalSpace[2]);
                 }
             }
-
             if (bodyOn)
             {
                 vectorRealeingAddPoint(timeTable, ballFinalTime);
 
                 if (paperOn)
                 {
-                    vectorRealeingAddPoint(paperSpaceTable, ballFinalSpace[1]);
+                    vectorRealeing(paperSpaceTable, ballFinalSpace[1]);
+                   
                 }
                 if (vaccumOn)
                 {
-                    vectorRealeingAddPoint(vaccumSpaceTable, ballFinalSpace[2]);
+                    vectorRealeing(vaccumSpaceTable, ballFinalSpace[2]);
                 }
             }
         }
@@ -240,8 +237,8 @@ namespace freeFall
         {
             int i;
             int status = 0;
-
-            double[] auxiliary = new double[vector.Length];
+            double[] auxiliary = new double[1];
+            auxiliary = new double[vector.Length];
 
             for (i = 0; i < vector.Length; i++)
             {
@@ -272,21 +269,30 @@ namespace freeFall
         {
             int i;
             int status = 0;
-            double[] auxiliary = new double[vector.Length+1];
 
-            for (i=0; i<vector.Length; i++)
+            double[] auxiliary = new double[vector.Length];
+
+            for (i = 0; i < vector.Length; i++)
             {
-                if(status == 0)
+                auxiliary[i] = vector[i];
+            }
+            for (i = 0; i < vector.Length; i++)
+            {
+                if (status == 0)
                 {
-                    auxiliary[i] = vector[i];
+                    vector[i] = auxiliary[i];
                 }
                 else
                 {
-                    auxiliary[i+1] = vector[i];
+                    if ((i + 1) < vector.Length)
+                    {
+                        vector[i + 1] = auxiliary[i];
+                    }
                 }
-                if (vector[i] < value)
+                if ((value > auxiliary[i]) && status == 0)
                 {
                     vector[i] = value;
+                    vector[i + 1] = auxiliary[i];
                     status = 1;
                 }
             }

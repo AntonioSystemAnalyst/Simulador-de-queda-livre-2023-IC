@@ -50,14 +50,14 @@ namespace freeFall
         {
             int i;
 
-            for (i = 0; i < Program.numberOfPoints; i++)
+            for (i = 0; i < Program.numberOfTermsTable-2; i++)
             {
-                linha[0] = timeLarge[i];
+                linha[0] = Convert.ToString(Program.timeTable[i]);
                 if (Program.bodyOn)
                 {
-                    if (Program.ball.NumberOfTerms > i)
+                    if (Program.ballSpaceTable.Length > i)
                     {
-                        linha[1] = isNegative(Math.Round(Program.ball.Space[i], 2));
+                        linha[1] = isNegative(Math.Round(Program.ballSpaceTable[i], 2));
                     }
                     else
                     {
@@ -66,9 +66,9 @@ namespace freeFall
                 }
                 if (Program.paperOn)
                 {
-                    if (Program.paper.NumberOfTerms > i)
+                    if (Program.paperSpaceTable.Length > i)
                     {
-                        linha[2] = isNegative(Math.Round(Program.paper.Space[i], 2));
+                        linha[2] = isNegative(Math.Round(Program.paperSpaceTable[i], 2));
                     }
                     else
                     {
@@ -77,9 +77,9 @@ namespace freeFall
                 }
                 if (Program.vaccumOn)
                 {
-                    if (Program.vaccum.NumberOfTerms > i)
+                    if (Program.vaccumSpaceTable.Length > i)
                     {
-                        linha[3] = isNegative(Math.Round(Program.vaccum.Space[i], 2));
+                        linha[3] = isNegative(Math.Round(Program.vaccumSpaceTable[i], 2));
                     }
                     else
                     {

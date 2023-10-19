@@ -43,9 +43,22 @@ namespace freeFall
             richTextBox.Text += "vaccumFinalSpace: " + Program.vaccumFinalSpace[2] + "\n";
             richTextBox.Text += "-----------------------------" + "\n";
 
+            richTextBox.Text += "ballFinalSpace[1]: " + Program.ballFinalSpace[1];
+
+
             for (i=0; i<Program.numberOfTermsTable; i++)
             {
                 richTextBox.Text += "["+i+"] Time: " + Program.timeTable[i] + "\n";
+            }
+
+            for (i = 0; i < Program.ball.NumberOfTerms; i++)
+            {
+                richTextBox.Text += "[" + i + "] ball: " + Program.paperSpaceTable[i] + "- ["+i+"]" + Program.ball.Space[i] + "\n";
+            }
+
+            for (i = 0; i < Program.ball.NumberOfTerms+4; i++)
+            {
+                richTextBox.Text += "[" + i + "] ball: " + Program.ballSpaceTable[i] + "\n";
             }
         }
     }
