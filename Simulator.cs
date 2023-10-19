@@ -109,7 +109,7 @@ namespace freeFall
         }
         private void button1_Click_2(object sender, EventArgs e)
         {
-            Program.makeTable();
+            Program.makeTableWihtResistence();
             Table x = new Table();
             x.Show();
         }
@@ -807,6 +807,7 @@ namespace freeFall
                 calculateValues();
                 receveidGreatestValueTime();
                 receveidGreatestValueVelocity();
+                loadTable();
                 spaceWindow.buildGrafic(0);
                 speedWindow.buildGrafic(0);
                 animation();
@@ -821,6 +822,17 @@ namespace freeFall
                 Program.directionFlag = 1;
             }
             animationNumberCounter += 1;
+        }
+        public void loadTable()
+        {
+            if(Program.airResistance == 0)
+            {
+                Program.makeTableOutResistence();
+            }
+            else
+            {
+                Program.makeTableWihtResistence();
+            }
         }
         public void experimentFlag()
         {

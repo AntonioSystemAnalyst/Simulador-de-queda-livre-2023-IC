@@ -103,14 +103,39 @@ namespace freeFall
         public static body paper = new body();
         public static body vaccum = new body();
 
-        public static void  makeTable()
+        public static void makeTableOutResistence()
+        {
+            int i = 0;
+
+            numberOfTermsTable = ball.NumberOfTerms+2;
+            ballSpaceTable = new double[ball.NumberOfTerms + 2];
+            paperSpaceTable = new double[ball.NumberOfTerms + 2];
+            vaccumSpaceTable = new double[ball.NumberOfTerms + 2];
+            timeTable = new double[ball.NumberOfTerms];
+
+            for (i = 0; i < numberOfTermsTable-2; i++)
+            {
+                timeTable[i] = ball.CountTimeExperiment[i];
+                ballSpaceTable[i] = ball.Space[i];
+                Console.WriteLine("rodei" + ballSpaceTable[i]);
+                if (paperOn)
+                {
+                    paperSpaceTable[i] = paper.Space[i];
+                }
+                if(vaccumOn)
+                {
+                    vaccumSpaceTable[i] = vaccum.Space[i];
+                }
+            }
+            Console.WriteLine("rodei");
+        }
+        public static void  makeTableWihtResistence()
         {
             int i = 0;
 
             ballSpaceTable = new double[ball.NumberOfTerms + 4];
             paperSpaceTable = new double[paper.NumberOfTerms + 4];
             vaccumSpaceTable = new double[vaccum.NumberOfTerms + 4];
-            timeTable = new double[1];
             if (greatestValueTime == 1)
             {
                 numberOfTermsTable = ball.NumberOfTerms + 4;

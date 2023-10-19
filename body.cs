@@ -356,7 +356,7 @@ namespace freeFall
                 {
                     breakStatus = 1;
                 }
-                terminalTime += 0.01;
+                terminalTime += 0.001;
             } while (breakStatus == 0);
             return terminalTime;
         }

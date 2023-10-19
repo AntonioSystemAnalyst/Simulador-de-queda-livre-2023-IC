@@ -37,7 +37,7 @@
             this.panelSpace = new System.Windows.Forms.Panel();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
-            this.buttonData = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.buttonLog = new System.Windows.Forms.Button();
             this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -59,6 +59,7 @@
             this.txtEspaco = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtVelocidade = new System.Windows.Forms.TextBox();
+            this.buttonData = new System.Windows.Forms.Button();
             this.groupBoxPlanetas = new System.Windows.Forms.GroupBox();
             this.pictureBoxBack = new System.Windows.Forms.PictureBox();
             this.pictureBoxNext = new System.Windows.Forms.PictureBox();
@@ -113,7 +114,6 @@
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
             this.timerButton = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -242,20 +242,17 @@
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Valores instantâneos";
             // 
-            // buttonData
+            // button1
             // 
-            this.buttonData.Enabled = false;
-            this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(53, 149);
-            this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(89, 24);
-            this.buttonData.TabIndex = 30;
-            this.buttonData.Text = "Sem dados";
-            this.buttonData.UseVisualStyleBackColor = true;
-            this.buttonData.Visible = false;
-            this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
-            this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(135, 186);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 24);
+            this.button1.TabIndex = 45;
+            this.button1.Text = "T";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // buttonLog
             // 
@@ -491,6 +488,20 @@
             this.txtVelocidade.ReadOnly = true;
             this.txtVelocidade.Size = new System.Drawing.Size(83, 26);
             this.txtVelocidade.TabIndex = 11;
+            // 
+            // buttonData
+            // 
+            this.buttonData.Enabled = false;
+            this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonData.ForeColor = System.Drawing.Color.Black;
+            this.buttonData.Location = new System.Drawing.Point(53, 149);
+            this.buttonData.Name = "buttonData";
+            this.buttonData.Size = new System.Drawing.Size(89, 24);
+            this.buttonData.TabIndex = 30;
+            this.buttonData.Text = "Sem dados";
+            this.buttonData.UseVisualStyleBackColor = true;
+            this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
+            this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
             // 
             // groupBoxPlanetas
             // 
@@ -1082,18 +1093,6 @@
             // 
             this.timerButton.Interval = 300;
             this.timerButton.Tick += new System.EventHandler(this.timerButton_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(135, 186);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 24);
-            this.button1.TabIndex = 45;
-            this.button1.Text = "T";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // Simulator
             // 

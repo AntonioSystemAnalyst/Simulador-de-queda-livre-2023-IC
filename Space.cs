@@ -538,14 +538,15 @@ namespace freeFall
                                 }
                             }
                         }
-                        for (i = 0; i < Program.numberOfPoints; i++)
+                        for (i = 0; i < Program.numberOfTermsTable-2; i++)
                         {
-                            linha[0] = timeLarge[i].Replace('.', ',');
+                            Auxiliary = Math.Round(Program.timeTable[i], 4).ToString("0.0000");
+                            linha[0] = Auxiliary.Replace('.', ',');
                             if (Program.bodyOn)
                             {
-                                if (Program.ball.NumberOfTerms > i)
+                                if (Program.ballSpaceTable.Length > i)
                                 {
-                                    Auxiliary = Math.Round(Program.ball.Space[i], 4).ToString("0.0000");
+                                    Auxiliary = Math.Round(Program.ballSpaceTable[i], 4).ToString("0.0000");
                                     linha[1] = Convert.ToString(Auxiliary.Replace('.', ','));
                                 }
                                 else
@@ -555,9 +556,9 @@ namespace freeFall
                             }
                             if (Program.paperOn)
                             {
-                                if (Program.paper.NumberOfTerms > i)
+                                if (Program.paperSpaceTable.Length > i)
                                 {
-                                    Auxiliary = Math.Round(Program.paper.Space[i], 4).ToString("0.0000");
+                                    Auxiliary = Math.Round(Program.paperSpaceTable[i], 4).ToString("0.0000");
                                     linha[2] = Convert.ToString(Auxiliary.Replace('.', ','));
                                 }
                                 else
@@ -567,9 +568,9 @@ namespace freeFall
                             }
                             if (Program.vaccumOn)
                             {
-                                if (Program.vaccum.NumberOfTerms > i)
+                                if (Program.vaccumSpaceTable.Length > i)
                                 {
-                                    Auxiliary = Math.Round(Program.vaccum.Space[i], 4).ToString("0.0000");
+                                    Auxiliary = Math.Round(Program.vaccumSpaceTable[i], 4).ToString("0.0000");
                                     linha[3] = Convert.ToString(Auxiliary.Replace('.', ','));
                                 }
                                 else
