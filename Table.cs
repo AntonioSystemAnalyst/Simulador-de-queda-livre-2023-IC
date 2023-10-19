@@ -45,10 +45,15 @@ namespace freeFall
 
             richTextBox.Text += "ballFinalSpace[1]: " + Program.ballFinalSpace[1];
 
+            richTextBox.Text += "timeAll V: " + Program.vaccum.TimeAllExperiment + "\n";
+            richTextBox.Text += "timeAll B: " + Program.ball.TimeAllExperiment + "\n";
+            richTextBox.Text += "timeAll P: " + Program.paper.TimeAllExperiment + "\n"; ;
+
+
 
             for (i=0; i<Program.numberOfTermsTable; i++)
             {
-                richTextBox.Text += "["+i+"] Time: " + Program.timeTable[i] + "\n";
+               // richTextBox.Text += "["+i+"] Time: " + Program.timeTable[i] + "\n";
             }
 
             for (i = 0; i < Program.ball.NumberOfTerms; i++)

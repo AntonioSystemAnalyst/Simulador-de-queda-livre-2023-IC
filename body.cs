@@ -304,6 +304,7 @@ namespace freeFall
             countTimeExperiment[numberOfTerms-1] = Math.Round(getEndTime(gravity, height, countTimeExperiment[numberOfTerms - 3]), 4);
             space[numberOfTerms - 1] = height - spaceFunctionRV1(Math.Round(countTimeExperiment[numberOfTerms - 1], 10), gravity, height);
             velocity[numberOfTerms - 1] = velocityFunctionRV1(countTimeExperiment[numberOfTerms - 1], 1, gravity);
+            timeAllExperiment = countTimeExperiment[numberOfTerms - 1];
             animationPaper(numberOfTerms, airDensity);
             animationVector(534, height);
         }
