@@ -187,7 +187,6 @@ namespace freeFall
                 for (i = 0; i< ball.NumberOfTerms; i++)
                 {
                     ballSpaceTable[i]= ball.Space[i];
-                    Console.WriteLine("" + ballSpaceTable[i]);
                 }
                 ballFinalTime = ball.CountTimeExperiment[ball.NumberOfTerms - 1];
                 ballFinalSpace[0] = ball.Space[ball.NumberOfTerms - 1];
