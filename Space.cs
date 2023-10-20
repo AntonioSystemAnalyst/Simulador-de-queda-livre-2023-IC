@@ -55,9 +55,9 @@ namespace freeFall
                 linha[0] = Convert.ToString(Program.timeTable[i]);
                 if (Program.bodyOn)
                 {
-                    if (Program.ballSpaceTable.Length > i)
+                    if (Program.ballSpaceTableIndex > i)
                     {
-                        linha[1] = isNegative(Math.Round(Program.ballSpaceTable[i], 2));
+                        linha[1] = isNegative(Math.Round(Program.ballSpaceTable[i], 4));
                     }
                     else
                     {
@@ -66,9 +66,9 @@ namespace freeFall
                 }
                 if (Program.paperOn)
                 {
-                    if (Program.paperSpaceTable.Length > i)
+                    if (Program.paperSpaceTableIndex > i)
                     {
-                        linha[2] = isNegative(Math.Round(Program.paperSpaceTable[i], 2));
+                        linha[2] = isNegative(Math.Round(Program.paperSpaceTable[i], 4));
                     }
                     else
                     {
@@ -77,9 +77,9 @@ namespace freeFall
                 }
                 if (Program.vaccumOn)
                 {
-                    if (Program.vaccumSpaceTable.Length > i)
+                    if (Program.vaccumSpaceTableIndex > i)
                     {
-                        linha[3] = isNegative(Math.Round(Program.vaccumSpaceTable[i], 2));
+                        linha[3] = isNegative(Math.Round(Program.vaccumSpaceTable[i], 4));
                     }
                     else
                     {
@@ -96,11 +96,11 @@ namespace freeFall
 
             if (value <= 0)
             {
-                result = value.ToString("0.00");
+                result = "0.0000";
             }
             else
             {
-                result = value.ToString("0.00");
+                result = value.ToString("0.0000"); 
             }
             return result;
         }
@@ -544,7 +544,7 @@ namespace freeFall
                             linha[0] = Auxiliary.Replace('.', ',');
                             if (Program.bodyOn)
                             {
-                                if (Program.ballSpaceTable.Length > i)
+                                if (Program.ballSpaceTableIndex> i)
                                 {
                                     Auxiliary = Math.Round(Program.ballSpaceTable[i], 4).ToString("0.0000");
                                     linha[1] = Convert.ToString(Auxiliary.Replace('.', ','));
@@ -556,7 +556,7 @@ namespace freeFall
                             }
                             if (Program.paperOn)
                             {
-                                if (Program.paperSpaceTable.Length > i)
+                                if (Program.paperSpaceTableIndex > i)
                                 {
                                     Auxiliary = Math.Round(Program.paperSpaceTable[i], 4).ToString("0.0000");
                                     linha[2] = Convert.ToString(Auxiliary.Replace('.', ','));
@@ -568,7 +568,7 @@ namespace freeFall
                             }
                             if (Program.vaccumOn)
                             {
-                                if (Program.vaccumSpaceTable.Length > i)
+                                if (Program.vaccumSpaceTableIndex > i)
                                 {
                                     Auxiliary = Math.Round(Program.vaccumSpaceTable[i], 4).ToString("0.0000");
                                     linha[3] = Convert.ToString(Auxiliary.Replace('.', ','));

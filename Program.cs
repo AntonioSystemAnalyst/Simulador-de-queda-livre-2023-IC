@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -90,6 +91,11 @@ namespace freeFall
         public static double[] paperSpaceTable;
         public static double[] vaccumSpaceTable;
 
+        public static double timeTableIndex;
+        public static double ballSpaceTableIndex;
+        public static double paperSpaceTableIndex;
+        public static double vaccumSpaceTableIndex;
+
         public static double ballFinalTime = 0.0;
         public static double paperFinalTime = 0.0;
         public static double vaccumFinalTime = 0.0;
@@ -111,13 +117,12 @@ namespace freeFall
             ballSpaceTable = new double[ball.NumberOfTerms + 2];
             paperSpaceTable = new double[ball.NumberOfTerms + 2];
             vaccumSpaceTable = new double[ball.NumberOfTerms + 2];
-            timeTable = new double[ball.NumberOfTerms];
+            timeTable = new double[ball.NumberOfTerms+2];
 
             for (i = 0; i < numberOfTermsTable-2; i++)
             {
                 timeTable[i] = ball.CountTimeExperiment[i];
                 ballSpaceTable[i] = ball.Space[i];
-                Console.WriteLine("rodei" + ballSpaceTable[i]);
                 if (paperOn)
                 {
                     paperSpaceTable[i] = paper.Space[i];
@@ -127,7 +132,11 @@ namespace freeFall
                     vaccumSpaceTable[i] = vaccum.Space[i];
                 }
             }
-            Console.WriteLine("rodei");
+            ballSpaceTableIndex = vectorOneZero(ballSpaceTable);
+            paperSpaceTableIndex = vectorOneZero(paperSpaceTable);
+            vaccumSpaceTableIndex = vectorOneZero(vaccumSpaceTable);
+            timeTableIndex = vectorOneZero(timeTable);
+            timeTableIndex = timeTableIndex - 1;
         }
         public static void  makeTableWihtResistence()
         {
@@ -265,6 +274,28 @@ namespace freeFall
                     vectorRealeing(vaccumSpaceTable, ballFinalSpace[2]);
                 }
             }
+
+            ballSpaceTableIndex = vectorOneZero(ballSpaceTable);
+            paperSpaceTableIndex = vectorOneZero(paperSpaceTable);
+            vaccumSpaceTableIndex = vectorOneZero(vaccumSpaceTable);
+            timeTableIndex = vectorOneZero(timeTable);
+            timeTableIndex = timeTableIndex - 1;
+        }
+
+        public static int vectorOneZero(double[] vector)
+        {
+            int i;
+            int status = 0;
+            int index = 0;
+            for(i=0; i < vector.Length; i++)
+            {
+                if (Math.Round(vector[i], 3) == 0 && status == 0)
+                {
+                    index = i+1;
+                    status = 1;
+                }
+            }
+            return index;
         }
 
         public static void vectorRealeingAddPoint(double[] vector, double value)
