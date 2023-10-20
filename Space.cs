@@ -221,7 +221,7 @@ namespace freeFall
                 {
                     timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperiment[i].ToString("0.00"));
                 }
-                timeLarge[Program.ball.NumberOfTerms-1] = Convert.ToString(Program.ball.CountTimeExperiment[i].ToString("0.0000"));
+                timeLarge[timeLarge.Length - 1] = Convert.ToString(Program.ball.CountTimeExperiment[timeLarge.Length - 1].ToString("0.0000"));
             }
             if (Program.greatestValueTime == 2)
             {

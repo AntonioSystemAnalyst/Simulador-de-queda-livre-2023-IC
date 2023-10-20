@@ -155,7 +155,8 @@ namespace freeFall
         {
             if (op == 0)
             {
-                pictureBoxPaper.Visible = true;
+                pictureBoxPaper.Visible = true; 
+                pictureBoxPaper.Location = new Point(222, 30);
             }
             else
             {
@@ -183,6 +184,7 @@ namespace freeFall
                 groupBoxVacuum.Visible = true;
                 pictureBoxVacuum.Visible = true;
                 pictureBoxGauge.Visible = true;
+                pictureBoxVacuum.Location = new Point(16, 13);
             }
             else
             {

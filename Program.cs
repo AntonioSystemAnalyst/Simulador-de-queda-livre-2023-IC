@@ -136,6 +136,15 @@ namespace freeFall
             ballSpaceTable = new double[ball.NumberOfTerms + 4];
             paperSpaceTable = new double[paper.NumberOfTerms + 4];
             vaccumSpaceTable = new double[vaccum.NumberOfTerms + 4];
+            if (greatestValueTime == 0)
+            {
+                numberOfTermsTable = ball.NumberOfTerms + 4;
+                timeTable = new double[numberOfTermsTable];
+                for (i = 0; i < ball.NumberOfTerms; i++)
+                {
+                    timeTable[i] = ball.CountTimeExperiment[i];
+                }
+            }
             if (greatestValueTime == 1)
             {
                 numberOfTermsTable = ball.NumberOfTerms + 4;

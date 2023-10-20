@@ -802,6 +802,7 @@ namespace freeFall
                 labelTextStart.Text = "CAINDO!";
                 BTNIniciar.Enabled = true;
                 clear();
+                bodysFlag();
                 experimentFlag();
                 objectVaccumFlag();
                 calculateValues();
@@ -871,6 +872,25 @@ namespace freeFall
             else
             {
                 Program.objectVaccum = 1;
+            }
+        }
+        public void bodysFlag()
+        {
+            if (checkBoxPaper.Checked)
+            {
+                Program.paperOn = true;
+            }
+            else
+            {
+                Program.paperOn = false;
+            }
+            if (checkBoxVacuum.Checked)
+            {
+                Program.vaccumOn = true;
+            }
+            else
+            {
+                Program.vaccumOn = false;
             }
         }
         private void BTNIniciar_Click(object sender, EventArgs e)
@@ -1040,7 +1060,6 @@ namespace freeFall
             {
                 comboBoxVacuum.Enabled = true;
                 animationWindow.picutureVaccum(0);
-                Program.vaccumOn = true;
                 textBoxVaccumHeight.Text = "";
                 textBoxVaccumVelocity.Text = "";
             }
@@ -1048,7 +1067,6 @@ namespace freeFall
             {
                 comboBoxVacuum.Enabled = false;
                 animationWindow.picutureVaccum(1);
-                Program.vaccumOn = false;
                 textBoxVaccumHeight.Text = " --";
                 textBoxVaccumVelocity.Text = " --";
             }
@@ -1069,7 +1087,6 @@ namespace freeFall
                     comboPaper.Enabled = true;
                     animationWindow.picuturePaper(0);
                 }
-                Program.paperOn = true;
                 textBoxPaperHeight.Text = "";
                 textBoxPaperVelocity.Text = "";
             }
@@ -1077,7 +1094,6 @@ namespace freeFall
             {
                 comboPaper.Enabled = false;
                 animationWindow.picuturePaper(1);
-                Program.paperOn = false;
                 textBoxPaperHeight.Text = " --";
                 textBoxPaperVelocity.Text = " --";
             }
