@@ -63,7 +63,7 @@ namespace freeFall
                 {
                     if (Program.ball.NumberOfTerms > i)
                     {
-                        linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 2).ToString("0.00"));
+                        linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 4).ToString("0.0000"));
                     }
                     else
                     {
@@ -74,7 +74,7 @@ namespace freeFall
                 {
                     if (Program.paper.NumberOfTerms > i)
                     {
-                        linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 2).ToString("0.00"));
+                        linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 4).ToString("0.0000"));
         }
                     else
                     {
@@ -85,7 +85,7 @@ namespace freeFall
                 {
                     if (Program.vaccum.NumberOfTerms > i)
                     {
-                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 2).ToString("0.00"));
+                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 4).ToString("0.0000"));
                     }
                     else
                     {
@@ -206,7 +206,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.0000"));
                 }
             }
             if (Program.greatestValueTime == 1)
@@ -217,7 +217,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.0000"));
                 }
             }
             if (Program.greatestValueTime == 2)
@@ -228,7 +228,7 @@ namespace freeFall
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i].ToString("0.0000"));
                 }
             }
 
@@ -240,7 +240,7 @@ namespace freeFall
                 timeLarge = new string[Program.vaccum.NumberOfTerms];
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.vaccum.SpaceTime[i].ToString("0.00"));
+                    timeLarge[i] = Convert.ToString(Program.vaccum.SpaceTime[i].ToString("0.0000"));
                 }
             }
         }
@@ -429,7 +429,7 @@ namespace freeFall
                             {
                                 if (Program.ball.NumberOfTerms > i)
                                 {
-                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 2).ToString("0.00"));
+                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 4).ToString("0.0000"));
                                 }
                                 else
                                 {
@@ -440,7 +440,7 @@ namespace freeFall
                             {
                                 if (Program.paper.NumberOfTerms > i)
                                 {
-                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 2).ToString("0.00"));
+                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 4).ToString("0.0000"));
                                 }
                                 else
                                 {
@@ -451,7 +451,7 @@ namespace freeFall
                             {
                                 if (Program.vaccum.NumberOfTerms > i)
                                 {
-                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 2).ToString("0.00"));
+                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 4).ToString("0.0000"));
                                 }
                                 else
                                 {
@@ -539,7 +539,7 @@ namespace freeFall
                             {
                                 if (Program.ball.NumberOfTerms > i)
                                 {
-                                    Auxiliary = Math.Round(Program.ball.Velocity[i], 2).ToString("0.00");
+                                    Auxiliary = Math.Round(Program.ball.Velocity[i], 4).ToString("0.0000");
                                     linha[1] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else
@@ -551,7 +551,7 @@ namespace freeFall
                             {
                                 if (Program.paper.NumberOfTerms > i)
                                 {
-                                    Auxiliary = Math.Round(Program.paper.Velocity[i], 2).ToString("0.00");
+                                    Auxiliary = Math.Round(Program.paper.Velocity[i], 4).ToString("0.0000");
                                     linha[2] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else
@@ -563,7 +563,7 @@ namespace freeFall
                             {
                                 if (Program.vaccum.NumberOfTerms > i)
                                 {
-                                    Auxiliary = Math.Round(Program.vaccum.Velocity[i], 2).ToString("0.00");
+                                    Auxiliary = Math.Round(Program.vaccum.Velocity[i], 4).ToString("0.0000");
                                     linha[3] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else

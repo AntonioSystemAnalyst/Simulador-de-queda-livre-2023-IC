@@ -17,6 +17,7 @@ namespace freeFall
             loadImageValueInit();
             timerFocus.Enabled = true;
             timerLaodImage.Enabled = true;
+            airResistenceStatus();
         }
 
         public void loadImageValueInit()
@@ -42,38 +43,28 @@ namespace freeFall
             textBoxGravity.Text = "" + Program.gravity;
             textBoxHeight.Text = "" + Program.height;
             textBoxPlanetName.Text = "" + Program.planetName;
-
-            if(Program.airResistance == 0)
-            {
-                textBoxAirDensity.Text = "--";
-            }
-            else
-            {
-                textBoxAirDensity.Text = "" + Program.airDensity;
-            }
-            
-
-            textBoxCorpoTime.Text = "" + Math.Round(Program.ball.CountTimeExperiment[Program.ball.NumberOfTerms - 1], 2);
-            textBoxCorpoVelocityFynal.Text = "" + Math.Round(Program.ball.Velocity[Program.ball.NumberOfTerms - 1], 2);
+            textBoxAirDensity.Text = "" + Program.airDensity;
+            textBoxCorpoTime.Text = "" + Math.Round(Program.ball.CountTimeExperiment[Program.ball.NumberOfTerms - 1], 4);
+            textBoxCorpoVelocityFynal.Text = "" + Math.Round(Program.ball.Velocity[Program.ball.NumberOfTerms - 1], 4);
             txtEspacoCorpo.Text = "" + Program.height;
             txtVelocidadeCorpoInitial.Text = "" + Program.ball.InitialVelocity;
             textBoxCEBall.Text = "" + Program.ball.DragCoefficient;
 
             if(Program.paperOn)
             {
-                textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paper.Velocity[Program.paper.NumberOfTerms - 1], 2);
+                textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paper.Velocity[Program.paper.NumberOfTerms - 1], 4);
                 textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity;
                 textBoxPaperHeight.Text = "" + Program.height;
-                textBoxPaperTime.Text = "" + Math.Round(Program.paper.CountTimeExperiment[Program.paper.NumberOfTerms - 1], 2);
+                textBoxPaperTime.Text = "" + Math.Round(Program.paper.CountTimeExperiment[Program.paper.NumberOfTerms - 1], 4);
                 textBoxCEPaper.Text = "" + Program.paper.DragCoefficient;
             }
 
             if(Program.vaccumOn)
             {
-                textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[Program.vaccum.NumberOfTerms - 1], 2);
+                textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccum.Velocity[Program.vaccum.NumberOfTerms - 1], 4);
                 textBoxVaccumHeight.Text = "" + Program.height;
                 textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity;
-                textBoxVaccumTime.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[Program.vaccum.NumberOfTerms - 1], 2);
+                textBoxVaccumTime.Text = "" + Math.Round(Program.vaccum.CountTimeExperiment[Program.vaccum.NumberOfTerms - 1], 4);
                 textBoxCEVacuo.Text = "" + Program.vaccum.DragCoefficient;
             }
 
@@ -162,12 +153,31 @@ namespace freeFall
             textBoxCEVacuo.ForeColor= Program.colorSimulator;
         }
 
+        public void airResistenceStatus ()
+        {
+            if(Program.airResistanceFlag == 0)
+            {
+                pictureBoxAirResistence.Visible = false;
+                labelAirResistence.Text = "Sem resistência do ar";
+            }
+            else
+            {
+                pictureBoxAirResistence.Visible = true;
+                labelAirResistence.Text = "Com resistência do ar";
+            }
+        }
+
         private void buttonFocus_Click(object sender, EventArgs e)
         {
 
         }
 
         private void experimentData_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

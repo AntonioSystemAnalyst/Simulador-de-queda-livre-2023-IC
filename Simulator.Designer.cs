@@ -37,7 +37,6 @@
             this.panelSpace = new System.Windows.Forms.Panel();
             this.buttonLogo = new System.Windows.Forms.Button();
             this.groupBoxResultados = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonLog = new System.Windows.Forms.Button();
             this.pictureBoxVaccumObject = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -114,6 +113,7 @@
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
             this.timerButton = new System.Windows.Forms.Timer(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -133,6 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
             this.groupBoxData.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
@@ -210,7 +211,6 @@
             // groupBoxResultados
             // 
             this.groupBoxResultados.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxResultados.BackgroundImage")));
-            this.groupBoxResultados.Controls.Add(this.button1);
             this.groupBoxResultados.Controls.Add(this.buttonLog);
             this.groupBoxResultados.Controls.Add(this.pictureBoxVaccumObject);
             this.groupBoxResultados.Controls.Add(this.pictureBox2);
@@ -241,18 +241,6 @@
             this.groupBoxResultados.TabIndex = 8;
             this.groupBoxResultados.TabStop = false;
             this.groupBoxResultados.Text = "Valores instantâneos";
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(135, 186);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 24);
-            this.button1.TabIndex = 45;
-            this.button1.Text = "T";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // buttonLog
             // 
@@ -494,11 +482,11 @@
             this.buttonData.Enabled = false;
             this.buttonData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonData.ForeColor = System.Drawing.Color.Black;
-            this.buttonData.Location = new System.Drawing.Point(53, 149);
+            this.buttonData.Location = new System.Drawing.Point(40, 23);
             this.buttonData.Name = "buttonData";
-            this.buttonData.Size = new System.Drawing.Size(89, 24);
+            this.buttonData.Size = new System.Drawing.Size(112, 27);
             this.buttonData.TabIndex = 30;
-            this.buttonData.Text = "Sem dados";
+            this.buttonData.Text = "Visualizar";
             this.buttonData.UseVisualStyleBackColor = true;
             this.buttonData.Click += new System.EventHandler(this.buttonData_Click);
             this.buttonData.MouseHover += new System.EventHandler(this.buttonData_MouseHover);
@@ -1010,20 +998,19 @@
             // 
             this.groupBoxData.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxData.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("groupBoxData.BackgroundImage")));
-            this.groupBoxData.Controls.Add(this.buttonData);
             this.groupBoxData.Controls.Add(this.groupBox1);
             this.groupBoxData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxData.ForeColor = System.Drawing.Color.Cyan;
             this.groupBoxData.Location = new System.Drawing.Point(500, 342);
             this.groupBoxData.Name = "groupBoxData";
-            this.groupBoxData.Size = new System.Drawing.Size(195, 193);
+            this.groupBoxData.Size = new System.Drawing.Size(195, 120);
             this.groupBoxData.TabIndex = 11;
             this.groupBoxData.TabStop = false;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.labelTextStart);
-            this.groupBox1.Location = new System.Drawing.Point(30, 65);
+            this.groupBox1.Location = new System.Drawing.Point(29, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(136, 65);
             this.groupBox1.TabIndex = 33;
@@ -1094,6 +1081,19 @@
             this.timerButton.Interval = 300;
             this.timerButton.Tick += new System.EventHandler(this.timerButton_Tick);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.buttonData);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBox2.Location = new System.Drawing.Point(500, 468);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(195, 63);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Dados do experimento ";
+            // 
             // Simulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1101,6 +1101,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1229, 621);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxGraficos);
             this.Controls.Add(this.panelAnimation);
             this.Controls.Add(this.groupBoxData);
@@ -1141,6 +1142,7 @@
             this.groupBoxData.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1230,6 +1232,6 @@
         private System.Windows.Forms.Label labelMaskPapel;
         private System.Windows.Forms.Label labelGraficDetails;
         private System.Windows.Forms.Timer timerButton;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

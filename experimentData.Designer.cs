@@ -82,6 +82,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timerFocus = new System.Windows.Forms.Timer(this.components);
             this.timerLaodImage = new System.Windows.Forms.Timer(this.components);
+            this.labelAirResistence = new System.Windows.Forms.Label();
+            this.pictureBoxAirResistence = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCorpoView)).BeginInit();
             this.groupBoxResultados.SuspendLayout();
             this.groupBoxPaper.SuspendLayout();
@@ -92,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccum)).BeginInit();
             this.groupBoxGeneralData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirResistence)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxCorpoView
@@ -590,6 +593,8 @@
             // groupBoxGeneralData
             // 
             this.groupBoxGeneralData.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxGeneralData.Controls.Add(this.pictureBoxAirResistence);
+            this.groupBoxGeneralData.Controls.Add(this.labelAirResistence);
             this.groupBoxGeneralData.Controls.Add(this.labelAirDensityUnity);
             this.groupBoxGeneralData.Controls.Add(this.textBoxAirDensity);
             this.groupBoxGeneralData.Controls.Add(this.labelAirDensity);
@@ -718,6 +723,27 @@
             // 
             this.timerLaodImage.Tick += new System.EventHandler(this.timerLaodImage_Tick);
             // 
+            // labelAirResistence
+            // 
+            this.labelAirResistence.AutoSize = true;
+            this.labelAirResistence.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAirResistence.Location = new System.Drawing.Point(75, 16);
+            this.labelAirResistence.Name = "labelAirResistence";
+            this.labelAirResistence.Size = new System.Drawing.Size(144, 13);
+            this.labelAirResistence.TabIndex = 49;
+            this.labelAirResistence.Text = "Resistência do ar ligada";
+            this.labelAirResistence.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // pictureBoxAirResistence
+            // 
+            this.pictureBoxAirResistence.Image = global::freeFall.Properties.Resources.airResistence;
+            this.pictureBoxAirResistence.Location = new System.Drawing.Point(174, 34);
+            this.pictureBoxAirResistence.Name = "pictureBoxAirResistence";
+            this.pictureBoxAirResistence.Size = new System.Drawing.Size(33, 29);
+            this.pictureBoxAirResistence.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxAirResistence.TabIndex = 50;
+            this.pictureBoxAirResistence.TabStop = false;
+            // 
             // ExperimentData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -752,6 +778,7 @@
             this.groupBoxGeneralData.ResumeLayout(false);
             this.groupBoxGeneralData.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlanet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirResistence)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -809,5 +836,7 @@
         private System.Windows.Forms.TextBox textBoxCEPaper;
         private System.Windows.Forms.Label labelCEVacuo;
         private System.Windows.Forms.TextBox textBoxCEVacuo;
+        private System.Windows.Forms.Label labelAirResistence;
+        private System.Windows.Forms.PictureBox pictureBoxAirResistence;
     }
 }

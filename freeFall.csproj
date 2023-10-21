@@ -124,12 +124,6 @@
     <Compile Include="Speed.Designer.cs">
       <DependentUpon>Speed.cs</DependentUpon>
     </Compile>
-    <Compile Include="Table.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Table.Designer.cs">
-      <DependentUpon>Table.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="AnimationWindow.resx">
       <DependentUpon>AnimationWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Speed.resx">
       <DependentUpon>Speed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Table.resx">
-      <DependentUpon>Table.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

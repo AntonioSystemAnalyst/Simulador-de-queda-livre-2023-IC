@@ -28,6 +28,9 @@ namespace freeFall
         // define se tera ou não resistencia do ar
         public static int airResistance = 1;
 
+        // define se tera ou não resistencia do ar
+        public static int airResistanceFlag = 1;
+
         // define se o papel esta massado ou não
         public static int crumpledPaper = 0;
 
