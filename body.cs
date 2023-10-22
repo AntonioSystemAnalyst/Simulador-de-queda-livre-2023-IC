@@ -23,7 +23,6 @@ namespace freeFall
         public double term0, term1, term2, term3, term4, term5;
         public double term6, term7;
         public int precision = 15;
-        public double velocityPoint;
         public double greatValueVelocity;
         // --- Antimation
         double qtdSpaceForNumberOfTermes;
@@ -34,6 +33,7 @@ namespace freeFall
         private double[] spaceTime;
         private double[] spacePixel;
         private double[] countTimeExperiment;
+        private double[] countTimeExperimentVelocity;
         private double[] animationPixel;
         private int[] pixels;
         private int[] paperPixels;
@@ -160,12 +160,14 @@ namespace freeFall
             countTimeExperiment = new double[numberOfTerms];
             spaceTime = new double[numberOfTerms];
             spacePixel = new double[Convert.ToInt32(534)];
+            countTimeExperimentVelocity = new double[numberOfTerms];
 
             // Espaço 
             for (i = 0; i < numberOfTerms; i++)
             {
                 space[i] = height + ((initialVelocityExperiment * countTime) + (-1 * gravity * (countTime * countTime)) / 2);
                 spaceTime[i] = Math.Round(countTime, precision);
+                countTimeExperimentVelocity[i] = countTime;
                 countTime = countTime + 0.01;
             }
 
@@ -193,19 +195,6 @@ namespace freeFall
                 velocity[numberOfTerms - 1] = initialVelocityExperiment + (-1 * gravity * timeAllExperiment);
                 spaceTime[numberOfTerms - 1] = timeAllExperiment;
             }
-            for (i = 0; i < numberOfTerms; i++)
-            {
-              Console.WriteLine("" + countTimeExperiment[i]);
-              
-
-            }
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                Console.WriteLine("" + space[i]);
-
-
-            }
-
             animationVector(534, height);
         }
 
@@ -220,6 +209,7 @@ namespace freeFall
             double countTime = 0.0;
             double result = 0.0;
             double decimalPart = 0.0;
+            double auxiliary = 0.0;
             int i;
  
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
@@ -247,12 +237,13 @@ namespace freeFall
             velocity = new double[numberOfTerms];
             countTimeExperiment = new double[numberOfTerms];
             spaceTime = new double[numberOfTerms];
+            countTimeExperimentVelocity = new double[numberOfTerms];
 
             countTime = 0.01;
             for (i = 1; i < numberOfTerms; i++)
             {
-                velocityPoint = velocityFunctionRV1(countTime, 1, gravity);
-                velocity[i] = velocityPoint;
+                velocity[i] = Math.Round(velocityFunctionRV1(countTime, 1, gravity), 4);
+                countTimeExperimentVelocity[i] = countTime;
                 countTime = countTime + 0.01;
             }
             finalVelocity = velocity[velocity.Length - 1];
@@ -260,7 +251,7 @@ namespace freeFall
             countTime = 0;
             for (i = 0; i < numberOfTerms; i++)
             {
-                spacePoint = height - Math.Round(spaceFunctionRV1(countTime, gravity, height), 10);
+                spacePoint = height - Math.Round(spaceFunctionRV1(countTime, gravity, height), 15);
                 if (spacePoint <= 0)
                 {
                     space[i] = 0;
@@ -276,7 +267,7 @@ namespace freeFall
                         space[i] = spacePoint;
                     }
                 }
-                spaceTime[i] = Math.Round(countTime, 4);
+                spaceTime[i] = Math.Round(countTime, 15);
                 countTime = countTime + 0.01;
             }
             
@@ -288,11 +279,28 @@ namespace freeFall
                 countTime = countTime + 0.01;
             }
 
-            timeAllExperiment = Math.Round(getEndTime(gravity, height, countTimeExperiment[numberOfTerms - 3]), 10);
-            countTimeExperiment[numberOfTerms - 1] = timeAllExperiment;
-            space[numberOfTerms - 1] = height - spaceFunctionRV1(Math.Round(timeAllExperiment, 10), gravity, height);
-            velocity[numberOfTerms - 1] = velocityFunctionRV1(timeAllExperiment, 1, gravity);
+            timeAllExperiment = Math.Round(getEndTime(gravity, height, countTimeExperiment[numberOfTerms - 3]), 15);
 
+            Console.WriteLine("ax: " + auxiliary);
+
+            countTimeExperiment[numberOfTerms - 1] = timeAllExperiment;
+   
+            space[numberOfTerms - 1] = height - spaceFunctionRV1(Math.Round(timeAllExperiment, 10), gravity, height);
+           
+
+            for(i=0; i < numberOfTerms; i++)
+            {
+                Console.WriteLine("space: " + space[i]);
+            }
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                Console.WriteLine("velocity: " + velocity[i]);
+            }
+            for (i = 0; i < numberOfTerms; i++)
+            {
+                Console.WriteLine("timee: " + countTimeExperiment[i]);
+            }
+            Console.WriteLine("ax: " + auxiliary);
             animationPaper(numberOfTerms, airDensity);
             animationVector(534, height);
         }
@@ -315,7 +323,7 @@ namespace freeFall
                     spaceFunction = height;
                 }
                 value = height - spaceFunction;
-                if (Math.Round(value, 15) <= 0.00001)
+                if (Math.Round(value, 15) <= 0.000001)
                 {
                     breakStatus = 1;
                 }
@@ -340,11 +348,11 @@ namespace freeFall
                     spaceFunction = height;
                 }
                 value = height - spaceFunction;
-                if (Math.Round(value, 15) <= 0)
+                if (Math.Round(value, 15) <= 0.00001)
                 {
                     breakStatus = 1;
                 }
-                terminalTime += 0.001;
+                terminalTime += 0.0001;
             } while (breakStatus == 0);
             return terminalTime;
         }
@@ -363,11 +371,11 @@ namespace freeFall
                     spaceFunction = height;
                 }
                 value = height - spaceFunction;
-                if (Math.Round(value, 14) <= 0)
+                if (Math.Round(value, 15) <= 0.00001)
                 {
                     breakStatus = 1;
                 }
-                terminalTime += 0.001;
+                terminalTime += 0.0001;
             } while (breakStatus == 0);
             return terminalTime;
         }
@@ -539,6 +547,12 @@ namespace freeFall
         {
             get { return endSpaceWithResistence; }
             set { endSpaceWithResistence = value; }
+        }
+
+        public double[] CountTimeExperimentVelocity
+        {
+            get { return countTimeExperimentVelocity; }
+            set { countTimeExperimentVelocity = value; }
         }
 
     }

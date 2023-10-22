@@ -15,17 +15,18 @@ namespace freeFall
             sizeWindo();
             loadData();
             loadImageValueInit();
+            airResistenceStatus();
             timerFocus.Enabled = true;
             timerLaodImage.Enabled = true;
-            airResistenceStatus();
+           
         }
 
         public void loadImageValueInit()
         {
-            pictureBoxCorpoView.Image = Program.ballImage;
-            pictureBoxPaper.Image = Program.paperImage;
-            pictureBoxVaccumObject.Image =Program.vaccumImage;
-            pictureBoxPlanet.Image = Program.planetImage;
+            pictureBoxCorpoView.Image = Program.experimentDataCorpoImage;
+            pictureBoxPaper.Image = Program.experimentDataPaperImage;
+            pictureBoxVaccumObject.Image = Program.experimentDataVaccumImage;
+            pictureBoxPlanet.Image = Program.experimentPlanetVaccumImage;
         }
 
         public void loadImageValue()
@@ -115,7 +116,6 @@ namespace freeFall
 
         private void timerLaodImage_Tick(object sender, EventArgs e)
         {
-            loadImageValue();
             colorAll();
         }
         private void experimentData_FormClosing(object sender, FormClosingEventArgs e)

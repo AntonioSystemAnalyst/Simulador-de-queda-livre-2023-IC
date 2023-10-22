@@ -115,7 +115,6 @@ namespace freeFall
         {
             int i;
             var chart = chartSpeed.ChartAreas[0];
-            double result = 0.0;
             chartSpeed.Visible = true;
             chartSpeed.Titles.Add("Velocidade versus tempo");
             chartSpeed.Titles[0].Font = new Font(chartSpeed.Titles[0].Font.FontFamily, chartSpeed.Titles[0].Font.Size, FontStyle.Bold);
@@ -162,7 +161,7 @@ namespace freeFall
 
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperiment[i], Math.Round(Program.ball.Velocity[i], 4));
+                    chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperimentVelocity[i], Math.Round(Program.ball.Velocity[i], 4));
                 }
             }
             if (Program.paperOn)
@@ -174,7 +173,7 @@ namespace freeFall
 
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperiment[i], Math.Round(Program.paper.Velocity[i], 4));
+                    chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperimentVelocity[i], Math.Round(Program.paper.Velocity[i], 4));
                 }
             }
             if (Program.vaccumOn)
@@ -206,7 +205,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.0000"));
+                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperimentVelocity[i].ToString("0.0000"));
                 }
             }
             if (Program.greatestValueTime == 1)
@@ -217,7 +216,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.SpaceTime[i].ToString("0.0000"));
+                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperimentVelocity[i].ToString("0.0000"));
                 }
             }
             if (Program.greatestValueTime == 2)
@@ -228,7 +227,7 @@ namespace freeFall
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.paper.SpaceTime[i].ToString("0.0000"));
+                    timeLarge[i] = Convert.ToString(Program.paper.CountTimeExperimentVelocity[i].ToString("0.0000"));
                 }
             }
 

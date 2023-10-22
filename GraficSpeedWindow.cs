@@ -30,7 +30,7 @@ namespace freeFall
         {
             if (Program.ball.NumberOfTerms > countGrafic)
             {
-                chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperiment[countGrafic], Program.ball.Velocity[countGrafic]);
+                chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperimentVelocity[countGrafic], Program.ball.Velocity[countGrafic]);
             }
         }
 
@@ -38,7 +38,7 @@ namespace freeFall
         {
             if (Program.paper.NumberOfTerms > countGrafic)
             {
-                chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperiment[countGrafic], Program.paper.Velocity[countGrafic]);
+                chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperimentVelocity[countGrafic], Program.paper.Velocity[countGrafic]);
             }
         }
 
@@ -142,7 +142,7 @@ namespace freeFall
                     {
                         if (i < Program.ball.NumberOfTerms)
                         {
-                            chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperiment[i], (Program.ball.Velocity[i]));
+                            chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperimentVelocity[i], (Program.ball.Velocity[i]));
                         }
                     }
                 }
@@ -157,7 +157,7 @@ namespace freeFall
                 {
                     for (i = 0; i < n; i++)
                     {
-                        chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperiment[i], (Program.paper.Velocity[i]));
+                        chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperimentVelocity[i], (Program.paper.Velocity[i]));
                     }
                 }
             }

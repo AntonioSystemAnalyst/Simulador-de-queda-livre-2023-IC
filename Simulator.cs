@@ -799,6 +799,7 @@ namespace freeFall
                 bodysFlag();
                 experimentFlag();
                 objectVaccumFlag();
+                Program.loadExperimentData();
                 calculateValues();
                 receveidGreatestValueTime();
                 receveidGreatestValueVelocity();
@@ -820,7 +821,7 @@ namespace freeFall
         }
         public void loadTable()
         {
-            if(Program.airResistance == 0)
+            if(Program.airResistance == 0 || planetCounter == 2 || planetCounter == 3)
             {
                 Program.makeTableOutResistence();
             }
@@ -1828,6 +1829,7 @@ namespace freeFall
             labelMaskPapel.ForeColor = Program.colorSimulator;
             labelMaskVaccum.ForeColor = Program.colorSimulator;
             labelMaskAirResistence.ForeColor = Program.colorSimulator;
+            groupBoxDataExperiment.ForeColor = Program.colorSimulator;
             spaceWindow.colorAll();
             speedWindow.colorAll();
             animationWindow.colorAll();
@@ -1932,7 +1934,10 @@ namespace freeFall
             BTNIniciar.Focus();
             timerButton.Enabled = false;
         }
+        private void button1_Click_2(object sender, EventArgs e)
+        {
 
+        }
         private void checkBoxGrafic_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -2009,7 +2014,6 @@ namespace freeFall
         {
 
         }
-
         private void pictureBoxCorpo_Click(object sender, EventArgs e)
         {
 

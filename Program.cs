@@ -72,6 +72,12 @@ namespace freeFall
         public static Image vaccumImageExperiment;
         public static Image planetImage;
 
+        public static Image experimentDataCorpoImage;
+        public static Image experimentDataPaperImage;
+        public static Image experimentDataVaccumImage;
+        public static Image experimentPlanetVaccumImage;
+
+
         // controle de trackbars
         public static int colorTrackBar = 1;
         public static int planeTrackBar = 7;
@@ -112,17 +118,26 @@ namespace freeFall
         public static body paper = new body();
         public static body vaccum = new body();
 
+        public static void loadExperimentData()
+        {
+            experimentDataCorpoImage = ballImage;
+            experimentDataPaperImage = paperImage;
+            experimentDataVaccumImage = vaccumImage;
+            experimentPlanetVaccumImage = planetImage;
+        }
         public static void makeTableOutResistence()
         {
             int i = 0;
 
-            numberOfTermsTable = ball.NumberOfTerms+2;
+            numberOfTermsTable = ball.NumberOfTerms + 2;
             ballSpaceTable = new double[ball.NumberOfTerms + 2];
             paperSpaceTable = new double[ball.NumberOfTerms + 2];
             vaccumSpaceTable = new double[ball.NumberOfTerms + 2];
-            timeTable = new double[ball.NumberOfTerms+2];
+            timeTable = new double[ball.NumberOfTerms + 2];
 
-            for (i = 0; i < numberOfTermsTable-2; i++)
+            cleanTables();
+
+            for (i = 0; i < numberOfTermsTable - 2; i++)
             {
                 timeTable[i] = ball.CountTimeExperiment[i];
                 ballSpaceTable[i] = ball.Space[i];
@@ -130,7 +145,7 @@ namespace freeFall
                 {
                     paperSpaceTable[i] = paper.Space[i];
                 }
-                if(vaccumOn)
+                if (vaccumOn)
                 {
                     vaccumSpaceTable[i] = vaccum.Space[i];
                 }
@@ -141,17 +156,20 @@ namespace freeFall
             timeTableIndex = vectorOneZero(timeTable);
             timeTableIndex = timeTableIndex - 1;
         }
-        public static void  makeTableWihtResistence()
+        public static void makeTableWihtResistence()
         {
             int i = 0;
 
             ballSpaceTable = new double[ball.NumberOfTerms + 4];
             paperSpaceTable = new double[paper.NumberOfTerms + 4];
             vaccumSpaceTable = new double[vaccum.NumberOfTerms + 4];
+
+
             if (greatestValueTime == 0)
             {
                 numberOfTermsTable = ball.NumberOfTerms + 4;
                 timeTable = new double[numberOfTermsTable];
+                cleanTables();
                 for (i = 0; i < ball.NumberOfTerms; i++)
                 {
                     timeTable[i] = ball.CountTimeExperiment[i];
@@ -161,6 +179,7 @@ namespace freeFall
             {
                 numberOfTermsTable = ball.NumberOfTerms + 4;
                 timeTable = new double[numberOfTermsTable];
+                cleanTables();
                 for (i = 0; i < ball.NumberOfTerms; i++)
                 {
                     timeTable[i] = ball.CountTimeExperiment[i];
@@ -170,6 +189,7 @@ namespace freeFall
             {
                 numberOfTermsTable = paper.NumberOfTerms + 4;
                 timeTable = new double[numberOfTermsTable];
+                cleanTables();
                 for (i = 0; i < paper.NumberOfTerms; i++)
                 {
                     timeTable[i] = paper.CountTimeExperiment[i];
@@ -179,21 +199,22 @@ namespace freeFall
             {
                 numberOfTermsTable = vaccum.NumberOfTerms + 4;
                 timeTable = new double[numberOfTermsTable];
+                cleanTables();
                 for (i = 0; i < vaccum.NumberOfTerms; i++)
                 {
                     timeTable[i] = vaccum.CountTimeExperiment[i];
                 }
             }
-            
-            if(bodyOn)
+
+            if (bodyOn)
             {
-                for (i = 0; i< ball.NumberOfTerms; i++)
+                for (i = 0; i < ball.NumberOfTerms; i++)
                 {
-                    ballSpaceTable[i]= ball.Space[i];
+                    ballSpaceTable[i] = ball.Space[i];
                 }
                 ballFinalTime = ball.CountTimeExperiment[ball.NumberOfTerms - 1];
                 ballFinalSpace[0] = ball.Space[ball.NumberOfTerms - 1];
-                if(paperOn)
+                if (paperOn)
                 {
                     ballFinalSpace[1] = height - paper.spaceFunctionRV1(ballFinalTime, gravity, height);
                 }
@@ -219,7 +240,7 @@ namespace freeFall
                     paperFinalSpace[2] = vaccum.spaceFunction(ballFinalTime, 0, gravity, height);
                 }
             }
-            if(vaccumOn)
+            if (vaccumOn)
             {
                 for (i = 0; i < vaccum.NumberOfTerms; i++)
                 {
@@ -244,7 +265,7 @@ namespace freeFall
                 {
                     vectorRealeing(ballSpaceTable, vaccumFinalSpace[0]);
                 }
-                if(paperOn)
+                if (paperOn)
                 {
                     vectorRealeing(paperSpaceTable, vaccumFinalSpace[1]);
                 }
@@ -269,7 +290,7 @@ namespace freeFall
                 if (paperOn)
                 {
                     vectorRealeing(paperSpaceTable, ballFinalSpace[1]);
-                   
+
                 }
                 if (vaccumOn)
                 {
@@ -284,16 +305,53 @@ namespace freeFall
             timeTableIndex = timeTableIndex - 1;
         }
 
+        public static void cleanTables()
+        {
+            int i = 0;
+
+            timeTableIndex = 0.0;
+            ballSpaceTableIndex = 0.0;
+            paperSpaceTableIndex = 0.0;
+            vaccumSpaceTableIndex = 0.0;
+
+            ballFinalTime = 0.0;
+            paperFinalTime = 0.0;
+            vaccumFinalTime = 0.0;
+
+            for (i = 0; i < 3; i++)
+            {
+                ballFinalSpace[i] = 0;
+                paperFinalSpace[i] = 0;
+                vaccumFinalSpace[i] = 0;
+            }
+
+            for (i = 0; i < timeTable.Length; i++)
+            {
+                timeTable[i] = 0;
+                if (ballSpaceTable.Length > i)
+                {
+                    ballSpaceTable[i] = 0;
+                }
+                if (paperSpaceTable.Length > i)
+                {
+                    paperSpaceTable[i] = 0;
+                }
+                if (vaccumSpaceTable.Length > i)
+                {
+                    vaccumSpaceTable[i] = 0;
+                }
+            }
+        }
         public static int vectorOneZero(double[] vector)
         {
             int i;
             int status = 0;
             int index = 0;
-            for(i=0; i < vector.Length; i++)
+            for (i = 0; i < vector.Length; i++)
             {
-                if (Math.Round(vector[i], 3) == 0 && status == 0)
+                if (Math.Round(vector[i], 4) == 0 && status == 0)
                 {
-                    index = i+1;
+                    index = i + 1;
                     status = 1;
                 }
             }
@@ -319,7 +377,7 @@ namespace freeFall
                 }
                 else
                 {
-                    if((i+1) < vector.Length)
+                    if ((i + 1) < vector.Length)
                     {
                         vector[i + 1] = auxiliary[i];
                     }
@@ -327,7 +385,7 @@ namespace freeFall
                 if ((value < auxiliary[i]) && status == 0)
                 {
                     vector[i] = value;
-                    vector[i+1] = auxiliary[i];
+                    vector[i + 1] = auxiliary[i];
                     status = 1;
                 }
             }

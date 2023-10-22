@@ -113,7 +113,8 @@
             this.timerAirResistence = new System.Windows.Forms.Timer(this.components);
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
             this.timerButton = new System.Windows.Forms.Timer(this.components);
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxDataExperiment = new System.Windows.Forms.GroupBox();
+            this.buttonBalls = new System.Windows.Forms.Button();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -133,7 +134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxTimeRight)).BeginInit();
             this.groupBoxData.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBoxDataExperiment.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBoxGraficos
@@ -252,7 +253,6 @@
             this.buttonLog.TabIndex = 44;
             this.buttonLog.Text = "PL";
             this.buttonLog.UseVisualStyleBackColor = true;
-            this.buttonLog.Visible = false;
             this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject
@@ -558,6 +558,7 @@
             // 
             this.groupBoxConfiguracao.BackColor = System.Drawing.Color.Black;
             this.groupBoxConfiguracao.BackgroundImage = global::freeFall.Properties.Resources.background1;
+            this.groupBoxConfiguracao.Controls.Add(this.buttonBalls);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskAirResistence);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskVaccum);
             this.groupBoxConfiguracao.Controls.Add(this.labelMaskPapel);
@@ -1081,18 +1082,31 @@
             this.timerButton.Interval = 300;
             this.timerButton.Tick += new System.EventHandler(this.timerButton_Tick);
             // 
-            // groupBox2
+            // groupBoxDataExperiment
             // 
-            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox2.Controls.Add(this.buttonData);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Cyan;
-            this.groupBox2.Location = new System.Drawing.Point(500, 468);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(195, 63);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Dados do experimento ";
+            this.groupBoxDataExperiment.BackColor = System.Drawing.Color.Transparent;
+            this.groupBoxDataExperiment.Controls.Add(this.buttonData);
+            this.groupBoxDataExperiment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxDataExperiment.ForeColor = System.Drawing.Color.Cyan;
+            this.groupBoxDataExperiment.Location = new System.Drawing.Point(500, 468);
+            this.groupBoxDataExperiment.Name = "groupBoxDataExperiment";
+            this.groupBoxDataExperiment.Size = new System.Drawing.Size(195, 63);
+            this.groupBoxDataExperiment.TabIndex = 13;
+            this.groupBoxDataExperiment.TabStop = false;
+            this.groupBoxDataExperiment.Text = "Dados do experimento ";
+            // 
+            // buttonBalls
+            // 
+            this.buttonBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBalls.ForeColor = System.Drawing.Color.Black;
+            this.buttonBalls.Location = new System.Drawing.Point(168, 238);
+            this.buttonBalls.Name = "buttonBalls";
+            this.buttonBalls.Size = new System.Drawing.Size(39, 27);
+            this.buttonBalls.TabIndex = 51;
+            this.buttonBalls.Text = "Balls";
+            this.buttonBalls.UseVisualStyleBackColor = true;
+            this.buttonBalls.Visible = false;
+            this.buttonBalls.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // Simulator
             // 
@@ -1101,7 +1115,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1229, 621);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBoxDataExperiment);
             this.Controls.Add(this.groupBoxGraficos);
             this.Controls.Add(this.panelAnimation);
             this.Controls.Add(this.groupBoxData);
@@ -1142,7 +1156,7 @@
             this.groupBoxData.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.groupBoxDataExperiment.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1232,6 +1246,7 @@
         private System.Windows.Forms.Label labelMaskPapel;
         private System.Windows.Forms.Label labelGraficDetails;
         private System.Windows.Forms.Timer timerButton;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBoxDataExperiment;
+        private System.Windows.Forms.Button buttonBalls;
     }
 }
