@@ -1458,42 +1458,42 @@ namespace freeFall
         {
             if (Program.paperOn && Program.bodyOn && Program.vaccumOn)
             {
-                if (countBody < Program.ball.NumberOfTerms)
+                if (countBody < Program.ballSpaceTableIndex)
                 {
                     animationWindow.animationCorpo(countBody);
-                    txtEspaco.Text = " " + isNegative(Math.Round(Program.ball.Space[countBody], 4));
-                    txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 4).ToString("0.0000");
+                    txtEspaco.Text = " " + isNegative(Math.Round(Program.ballSpaceTable[countBody], 4));
+                    txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countBody], 4).ToString("0.0000");
                     if (greatestValueTime == 1 || greatestValueTime == 0)
                     {
-                        textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 4).ToString("0.0000");
+                        textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000");
                     }
                 }
                 else
                 {
                     txtEspaco.Text = "0.0000";
                 }
-                if (countPaper < Program.paper.NumberOfTerms)
+                if (countPaper < Program.paperSpaceTableIndex)
                 {
                     animationWindow.animationPaper(countPaper);
-                    textBoxPaperHeight.Text = " " + isNegative(Math.Round(Program.paper.Space[countPaper], 4));
-                    textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countPaper], 4).ToString("0.0000");
+                    textBoxPaperHeight.Text = " " + isNegative(Math.Round(Program.paperSpaceTable[countPaper], 4));
+                    textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[countPaper], 4).ToString("0.0000");
                     if (greatestValueTime == 2)
                     {
-                        textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countPaper], 4).ToString("0.0000");
+                        textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countPaper], 4).ToString("0.0000");
                     }
                 }
                 else
                 {
                     textBoxPaperHeight.Text = "0.00";
                 }
-                if (countVaccum < Program.vaccum.NumberOfTerms)
+                if (countVaccum < Program.vaccumSpaceTableIndex)
                 {
                     animationWindow.animationVaccum(countVaccum);
-                    textBoxVaccumHeight.Text = " " + isNegative(Math.Round(Program.vaccum.Space[countVaccum], 4));
-                    textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccum.Velocity[countVaccum], 4).ToString("0.0000");
+                    textBoxVaccumHeight.Text = " " + isNegative(Math.Round(Program.vaccumSpaceTable[countVaccum], 4));
+                    textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[countVaccum], 4).ToString("0.0000");
                     if (greatestValueTime == 3)
                     {
-                        textTempo.Text = " " + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 4).ToString("0.0000");
+                        textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countVaccum], 4).ToString("0.0000");
                     }
                 }
                 else
@@ -1506,28 +1506,28 @@ namespace freeFall
             {
                 if (Program.paperOn && Program.bodyOn && Program.vaccumOn == false)
                 {
-                    if (countBody < Program.ball.NumberOfTerms)
+                    if (countBody < Program.ballSpaceTableIndex)
                     {
                         animationWindow.animationCorpo(countBody);
-                        txtEspaco.Text = " " + isNegative(Math.Round(Program.ball.Space[countBody], 4));
-                        txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 4).ToString("0.0000");
+                        txtEspaco.Text = " " + isNegative(Math.Round(Program.ballSpaceTable[countBody], 4));
+                        txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countBody], 4).ToString("0.0000");
                         if (greatestValueTime == 1 || greatestValueTime == 0)
                         {
-                            textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 4).ToString("0.0000");
+                            textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000");
                         }
                     }
                     else
                     {
                         txtEspaco.Text = "0.0000";
                     }
-                    if (countPaper < Program.paper.NumberOfTerms)
+                    if (countPaper < Program.paperSpaceTableIndex)
                     {
                         animationWindow.animationPaper(countPaper);
-                        textBoxPaperHeight.Text = " " + isNegative(Math.Round(Program.paper.Space[countPaper], 4));
-                        textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countPaper], 4).ToString("0.0000");
+                        textBoxPaperHeight.Text = " " + isNegative(Math.Round(Program.paperSpaceTable[countPaper], 4));
+                        textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[countPaper], 4).ToString("0.0000");
                         if (greatestValueTime == 2)
                         {
-                            textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countPaper], 4).ToString("0.0000");
+                            textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countPaper], 4).ToString("0.0000");
                         }
                     }
                     else
@@ -1540,28 +1540,28 @@ namespace freeFall
                 {
                     if (Program.paperOn == false && Program.bodyOn && Program.vaccumOn)
                     {
-                        if (countBody < Program.ball.NumberOfTerms)
+                        if (countBody < Program.ballSpaceTableIndex)
                         {
                             animationWindow.animationCorpo(countBody);
-                            txtEspaco.Text = " " + isNegative(Math.Round(Program.ball.Space[countBody], 4));
-                            txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 4).ToString("0.0000");
+                            txtEspaco.Text = " " + isNegative(Math.Round(Program.ballSpaceTable[countBody], 4));
+                            txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countBody], 4).ToString("0.0000");
                             if (greatestValueTime == 1 || greatestValueTime == 0)
                             {
-                                textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 4).ToString("0.0000");
+                                textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000");
                             }
                         }
                         else
                         {
                             txtEspaco.Text = "0.0000";
                         }
-                        if (countVaccum < Program.vaccum.NumberOfTerms)
+                        if (countVaccum < Program.vaccumSpaceTableIndex)
                         {
                             animationWindow.animationVaccum(countVaccum);
-                            textBoxVaccumHeight.Text = " " + isNegative(Math.Round(Program.vaccum.Space[countVaccum], 4));
-                            textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccum.Velocity[countVaccum], 4).ToString("0.0000");
+                            textBoxVaccumHeight.Text = " " + isNegative(Math.Round(Program.vaccumSpaceTable[countVaccum], 4));
+                            textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[countVaccum], 4).ToString("0.0000");
                             if (greatestValueTime == 3)
                             {
-                                textTempo.Text = " " + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 4).ToString("0.0000");
+                                textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countVaccum], 4).ToString("0.0000");
                             }
                         }
                         else
@@ -1572,14 +1572,14 @@ namespace freeFall
                     }
                     else
                     {
-                        if (countBody < Program.ball.NumberOfTerms)
+                        if (countBody < Program.ballSpaceTableIndex)
                         {
                             animationWindow.animationCorpo(countBody);
-                            txtEspaco.Text = " " + isNegative(Math.Round(Program.ball.Space[countBody], 4));
-                            txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 4).ToString("0.0000");
+                            txtEspaco.Text = " " + isNegative(Math.Round(Program.ballSpaceTable[countBody], 4));
+                            txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countBody], 4).ToString("0.0000");
                             if (greatestValueTime == 1 || greatestValueTime == 0)
                             {
-                                textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 4).ToString("0.0000");
+                                textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000");
                             }
                         }
                         else

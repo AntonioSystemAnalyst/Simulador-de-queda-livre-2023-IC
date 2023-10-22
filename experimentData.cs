@@ -45,27 +45,27 @@ namespace freeFall
             textBoxHeight.Text = "" + Program.height;
             textBoxPlanetName.Text = "" + Program.planetName;
             textBoxAirDensity.Text = "" + Program.airDensity;
-            textBoxCorpoTime.Text = "" + Math.Round(Program.ballFinalEndTime[Program.ballSpaceTableIndex - 1], 4);
-            textBoxCorpoVelocityFynal.Text = "" + Math.Round(Program.ballVelocityTable[Program.ballSpaceTableIndex - 1], 4);
+            textBoxCorpoTime.Text = "" + Math.Round(Program.ballFinalEndTime[Program.ballSpaceTableIndex - 1], 4).ToString("0.0000");
+            textBoxCorpoVelocityFynal.Text = "" + Math.Round(Program.ballVelocityTable[Program.ballSpaceTableIndex - 1], 4).ToString("0.0000");
             txtEspacoCorpo.Text = "" + Program.height;
             txtVelocidadeCorpoInitial.Text = "" + Program.ball.InitialVelocity;
             textBoxCEBall.Text = "" + Program.ball.DragCoefficient;
 
             if(Program.paperOn)
             {
-                textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paperVelocityTable[Program.paperSpaceTableIndex - 1], 4);
+                textBoxPaperFynalVelocity.Text = "" + Math.Round(Program.paperVelocityTable[Program.paperSpaceTableIndex - 1], 4).ToString("0.0000");
                 textBoxPaperInitalVelocity.Text = "" + Program.paper.InitialVelocity;
                 textBoxPaperHeight.Text = "" + Program.height;
-                textBoxPaperTime.Text = "" + Math.Round(Program.paperFinalEndTime[Program.paperSpaceTableIndex - 1], 4);
+                textBoxPaperTime.Text = "" + Math.Round(Program.paperFinalEndTime[Program.paperSpaceTableIndex - 1], 4).ToString("0.0000");
                 textBoxCEPaper.Text = "" + Program.paper.DragCoefficient;
             }
 
             if(Program.vaccumOn)
             {
-                textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccumVelocityTable[Program.vaccumSpaceTableIndex - 1], 4);
+                textBoxVaccumFynalVelocity.Text = "" + Math.Round(Program.vaccumVelocityTable[Program.vaccumSpaceTableIndex - 1], 4).ToString("0.0000");
                 textBoxVaccumHeight.Text = "" + Program.height;
                 textBoxVaccumInitialVelocity.Text = "" + Program.vaccum.InitialVelocity;
-                textBoxVaccumTime.Text = "" + Math.Round(Program.vaccumFinalEndTime[Program.vaccumSpaceTableIndex - 1], 4);
+                textBoxVaccumTime.Text = "" + Math.Round(Program.vaccumFinalEndTime[Program.vaccumSpaceTableIndex - 1], 4).ToString("0.0000");
                 textBoxCEVacuo.Text = "" + Program.vaccum.DragCoefficient;
             }
 
