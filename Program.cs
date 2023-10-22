@@ -221,44 +221,132 @@ namespace freeFall
             vaccumFinalEndTime = new double[vaccum.NumberOfTerms + 4];
 
 
-            if (greatestValueTime == 0)
+            if (paperOn && bodyOn && vaccumOn)
             {
-                numberOfTermsTable = ball.NumberOfTerms + 4;
-                timeTable = new double[numberOfTermsTable];
-                cleanTables();
-                for (i = 0; i < ball.NumberOfTerms; i++)
+                if (greatestValueTime == 0)
                 {
-                    timeTable[i] = ball.CountTimeExperiment[i];
+                    numberOfTermsTable = ball.NumberOfTerms + 4;
+                    timeTable = new double[numberOfTermsTable];
+                    cleanTables();
+                    for (i = 0; i < ball.NumberOfTerms; i++)
+                    {
+                        timeTable[i] = ball.CountTimeExperiment[i];
+                    }
+                }
+                if (greatestValueTime == 1)
+                {
+                    numberOfTermsTable = ball.NumberOfTerms + 4;
+                    timeTable = new double[numberOfTermsTable];
+                    cleanTables();
+                    for (i = 0; i < ball.NumberOfTerms; i++)
+                    {
+                        timeTable[i] = ball.CountTimeExperiment[i];
+                    }
+                }
+                if (greatestValueTime == 2)
+                {
+                    numberOfTermsTable = paper.NumberOfTerms + 4;
+                    timeTable = new double[numberOfTermsTable];
+                    cleanTables();
+                    for (i = 0; i < paper.NumberOfTerms; i++)
+                    {
+                        timeTable[i] = paper.CountTimeExperiment[i];
+                    }
+                }
+                if (greatestValueTime == 3)
+                {
+                    numberOfTermsTable = vaccum.NumberOfTerms + 4;
+                    timeTable = new double[numberOfTermsTable];
+                    cleanTables();
+                    for (i = 0; i < vaccum.NumberOfTerms; i++)
+                    {
+                        timeTable[i] = vaccum.CountTimeExperiment[i];
+                    }
                 }
             }
-            if (greatestValueTime == 1)
+            else
             {
-                numberOfTermsTable = ball.NumberOfTerms + 4;
-                timeTable = new double[numberOfTermsTable];
-                cleanTables();
-                for (i = 0; i < ball.NumberOfTerms; i++)
+                if (paperOn && bodyOn && vaccumOn == false)
                 {
-                    timeTable[i] = ball.CountTimeExperiment[i];
+                    if (greatestValueTime == 0)
+                    {
+                        numberOfTermsTable = ball.NumberOfTerms + 3;
+                        timeTable = new double[numberOfTermsTable];
+                        cleanTables();
+                        for (i = 0; i < ball.NumberOfTerms; i++)
+                        {
+                            timeTable[i] = ball.CountTimeExperiment[i];
+                        }
+                    }
+                    if (greatestValueTime == 1)
+                    {
+                        numberOfTermsTable = ball.NumberOfTerms + 3;
+                        timeTable = new double[numberOfTermsTable];
+                        cleanTables();
+                        for (i = 0; i < ball.NumberOfTerms; i++)
+                        {
+                            timeTable[i] = ball.CountTimeExperiment[i];
+                        }
+                    }
+                    if (greatestValueTime == 2)
+                    {
+                        numberOfTermsTable = paper.NumberOfTerms + 3;
+                        timeTable = new double[numberOfTermsTable];
+                        cleanTables();
+                        for (i = 0; i < paper.NumberOfTerms; i++)
+                        {
+                            timeTable[i] = paper.CountTimeExperiment[i];
+                        }
+                    }
                 }
-            }
-            if (greatestValueTime == 2)
-            {
-                numberOfTermsTable = paper.NumberOfTerms + 4;
-                timeTable = new double[numberOfTermsTable];
-                cleanTables();
-                for (i = 0; i < paper.NumberOfTerms; i++)
+                else
                 {
-                    timeTable[i] = paper.CountTimeExperiment[i];
-                }
-            }
-            if (greatestValueTime == 3)
-            {
-                numberOfTermsTable = vaccum.NumberOfTerms + 4;
-                timeTable = new double[numberOfTermsTable];
-                cleanTables();
-                for (i = 0; i < vaccum.NumberOfTerms; i++)
-                {
-                    timeTable[i] = vaccum.CountTimeExperiment[i];
+                    if (paperOn == false && bodyOn && vaccumOn)
+                    {
+                        if (greatestValueTime == 0)
+                        {
+                            numberOfTermsTable = ball.NumberOfTerms + 3;
+                            timeTable = new double[numberOfTermsTable];
+                            cleanTables();
+                            for (i = 0; i < ball.NumberOfTerms; i++)
+                            {
+                                timeTable[i] = ball.CountTimeExperiment[i];
+                            }
+                        }
+                        if (greatestValueTime == 1)
+                        {
+                            numberOfTermsTable = ball.NumberOfTerms + 3;
+                            timeTable = new double[numberOfTermsTable];
+                            cleanTables();
+                            for (i = 0; i < ball.NumberOfTerms; i++)
+                            {
+                                timeTable[i] = ball.CountTimeExperiment[i];
+                            }
+                        }
+                        if (greatestValueTime == 3)
+                        {
+                            numberOfTermsTable = vaccum.NumberOfTerms + 3;
+                            timeTable = new double[numberOfTermsTable];
+                            cleanTables();
+                            for (i = 0; i < vaccum.NumberOfTerms; i++)
+                            {
+                                timeTable[i] = vaccum.CountTimeExperiment[i];
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (greatestValueTime == 0)
+                        {
+                            numberOfTermsTable = ball.NumberOfTerms + 2;
+                            timeTable = new double[numberOfTermsTable];
+                            cleanTables();
+                            for (i = 0; i < ball.NumberOfTerms; i++)
+                            {
+                                timeTable[i] = ball.CountTimeExperiment[i];
+                            }
+                        }
+                    }
                 }
             }
 
