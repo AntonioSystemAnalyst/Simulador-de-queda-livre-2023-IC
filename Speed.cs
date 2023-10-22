@@ -56,14 +56,14 @@ namespace freeFall
         {
             int i;
 
-            for (i = 0; i < Program.numberOfPoints; i++)
+            for (i = 0; i < Program.numberOfTermsTable - 2; i++)
             {
-                linha[0] = timeLarge[i];
+                linha[0] = Convert.ToString(Math.Round(Program.timeTable[i], 4).ToString("0.0000"));
                 if (Program.bodyOn)
                 {
-                    if (Program.ball.NumberOfTerms > i)
+                    if (Program.ballSpaceTableIndex > i)
                     {
-                        linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 4).ToString("0.0000"));
+                        linha[1] = Convert.ToString(Math.Round(Program.ballVelocityTable[i], 4).ToString("0.0000"));
                     }
                     else
                     {
@@ -72,9 +72,9 @@ namespace freeFall
                 }
                 if (Program.paperOn)
                 {
-                    if (Program.paper.NumberOfTerms > i)
+                    if (Program.paperSpaceTableIndex > i)
                     {
-                        linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 4).ToString("0.0000"));
+                        linha[2] = Convert.ToString(Math.Round(Program.paperVelocityTable[i], 4).ToString("0.0000"));
         }
                     else
                     {
@@ -83,9 +83,9 @@ namespace freeFall
                 }
                 if (Program.vaccumOn)
                 {
-                    if (Program.vaccum.NumberOfTerms > i)
+                    if (Program.vaccumSpaceTableIndex > i)
                     {
-                        linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 4).ToString("0.0000"));
+                        linha[3] = Convert.ToString(Math.Round(Program.vaccumVelocityTable[i], 4).ToString("0.0000"));
                     }
                     else
                     {
@@ -159,9 +159,9 @@ namespace freeFall
                 chartSpeed.Series["Bola"].Color = Color.Red;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
 
-                for (i = 0; i < Program.ball.NumberOfTerms; i++)
+                for (i = 0; i < Program.ballSpaceTableIndex-1; i++)
                 {
-                    chartSpeed.Series["Bola"].Points.AddXY(Program.ball.CountTimeExperimentVelocity[i], Math.Round(Program.ball.Velocity[i], 4));
+                    chartSpeed.Series["Bola"].Points.AddXY(Program.ballFinalEndTime[i], Math.Round(Program.ballVelocityTable[i], 4));
                 }
             }
             if (Program.paperOn)
@@ -171,9 +171,9 @@ namespace freeFall
                 chartSpeed.Series["Papel"].Color = Color.Blue;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
 
-                for (i = 0; i < Program.paper.NumberOfTerms; i++)
+                for (i = 0; i < Program.paperSpaceTableIndex-1; i++)
                 {
-                    chartSpeed.Series["Papel"].Points.AddXY(Program.paper.CountTimeExperimentVelocity[i], Math.Round(Program.paper.Velocity[i], 4));
+                    chartSpeed.Series["Papel"].Points.AddXY(Program.paperFinalEndTime[i], Math.Round(Program.paperVelocityTable[i], 4));
                 }
             }
             if (Program.vaccumOn)
@@ -183,9 +183,9 @@ namespace freeFall
                 chartSpeed.Series["Corpo no vácuo"].Color = Color.Purple;
                 chartSpeed.Series[0].IsVisibleInLegend = false;
 
-                for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
+                for (i = 0; i < Program.vaccumSpaceTableIndex-1; i++)
                 {
-                    chartSpeed.Series["Corpo no vácuo"].Points.AddXY(Program.vaccum.CountTimeExperiment[i], Math.Round(Program.vaccum.Velocity[i], 4));
+                    chartSpeed.Series["Corpo no vácuo"].Points.AddXY(Program.vaccumFinalEndTime[i], Math.Round(Program.vaccumVelocityTable[i], 4));
                 }
             }
         }
@@ -205,7 +205,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperimentVelocity[i].ToString("0.0000"));
+                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperiment[i].ToString("0.0000"));
                 }
             }
             if (Program.greatestValueTime == 1)
@@ -216,7 +216,7 @@ namespace freeFall
                 timeLarge = new string[Program.ball.NumberOfTerms];
                 for (i = 0; i < Program.ball.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperimentVelocity[i].ToString("0.0000"));
+                    timeLarge[i] = Convert.ToString(Program.ball.CountTimeExperiment[i].ToString("0.0000"));
                 }
             }
             if (Program.greatestValueTime == 2)
@@ -227,7 +227,7 @@ namespace freeFall
                 timeLarge = new string[Program.paper.NumberOfTerms];
                 for (i = 0; i < Program.paper.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.paper.CountTimeExperimentVelocity[i].ToString("0.0000"));
+                    timeLarge[i] = Convert.ToString(Program.paper.CountTimeExperiment[i].ToString("0.0000"));
                 }
             }
 
@@ -239,7 +239,7 @@ namespace freeFall
                 timeLarge = new string[Program.vaccum.NumberOfTerms];
                 for (i = 0; i < Program.vaccum.NumberOfTerms; i++)
                 {
-                    timeLarge[i] = Convert.ToString(Program.vaccum.SpaceTime[i].ToString("0.0000"));
+                    timeLarge[i] = Convert.ToString(Program.vaccum.CountTimeExperiment[i].ToString("0.0000"));
                 }
             }
         }
@@ -428,7 +428,7 @@ namespace freeFall
                             {
                                 if (Program.ball.NumberOfTerms > i)
                                 {
-                                    linha[1] = Convert.ToString(Math.Round(Program.ball.Velocity[i], 4).ToString("0.0000"));
+                                    linha[1] = Convert.ToString(Math.Round(Program.ballVelocityTable[i], 4).ToString("0.0000"));
                                 }
                                 else
                                 {
@@ -439,7 +439,7 @@ namespace freeFall
                             {
                                 if (Program.paper.NumberOfTerms > i)
                                 {
-                                    linha[2] = Convert.ToString(Math.Round(Program.paper.Velocity[i], 4).ToString("0.0000"));
+                                    linha[2] = Convert.ToString(Math.Round(Program.paperVelocityTable[i], 4).ToString("0.0000"));
                                 }
                                 else
                                 {
@@ -450,7 +450,7 @@ namespace freeFall
                             {
                                 if (Program.vaccum.NumberOfTerms > i)
                                 {
-                                    linha[3] = Convert.ToString(Math.Round(Program.vaccum.Velocity[i], 4).ToString("0.0000"));
+                                    linha[3] = Convert.ToString(Math.Round(Program.vaccumVelocityTable[i], 4).ToString("0.0000"));
                                 }
                                 else
                                 {
@@ -531,14 +531,15 @@ namespace freeFall
                                 }
                             }
                         }
-                        for (i = 0; i < Program.numberOfPoints; i++)
+                        for (i = 0; i < Program.numberOfTermsTable - 2; i++)
                         {
-                            linha[0] = timeLarge[i].Replace('.', ',');
+                            Auxiliary = Math.Round(Program.timeTable[i], 4).ToString("0.0000");
+                            linha[0] = Auxiliary.Replace('.', ',');
                             if (Program.bodyOn)
                             {
-                                if (Program.ball.NumberOfTerms > i)
+                                if (Program.ballSpaceTableIndex > i)
                                 {
-                                    Auxiliary = Math.Round(Program.ball.Velocity[i], 4).ToString("0.0000");
+                                    Auxiliary = Math.Round(Program.ballVelocityTable[i], 4).ToString("0.0000");
                                     linha[1] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else
@@ -548,9 +549,9 @@ namespace freeFall
                             }
                             if (Program.paperOn)
                             {
-                                if (Program.paper.NumberOfTerms > i)
+                                if (Program.paperSpaceTableIndex > i)
                                 {
-                                    Auxiliary = Math.Round(Program.paper.Velocity[i], 4).ToString("0.0000");
+                                    Auxiliary = Math.Round(Program.paperVelocityTable[i], 4).ToString("0.0000");
                                     linha[2] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else
@@ -560,9 +561,9 @@ namespace freeFall
                             }
                             if (Program.vaccumOn)
                             {
-                                if (Program.vaccum.NumberOfTerms > i)
+                                if (Program.vaccumSpaceTableIndex > i)
                                 {
-                                    Auxiliary = Math.Round(Program.vaccum.Velocity[i], 4).ToString("0.0000");
+                                    Auxiliary = Math.Round(Program.vaccumVelocityTable[i], 4).ToString("0.0000");
                                     linha[3] = Convert.ToString(Auxiliary).Replace('.', ',');
                                 }
                                 else

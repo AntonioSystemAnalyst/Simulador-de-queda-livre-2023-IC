@@ -100,6 +100,10 @@ namespace freeFall
         public static double[] paperSpaceTable;
         public static double[] vaccumSpaceTable;
 
+        public static double[] ballVelocityTable;
+        public static double[] paperVelocityTable;
+        public static double[] vaccumVelocityTable;
+
         public static double timeTableIndex;
         public static double ballSpaceTableIndex;
         public static double paperSpaceTableIndex;
@@ -108,6 +112,10 @@ namespace freeFall
         public static double ballFinalTime = 0.0;
         public static double paperFinalTime = 0.0;
         public static double vaccumFinalTime = 0.0;
+
+        public static double []ballFinalEndTime;
+        public static double []paperFinalEndTime;
+        public static double []vaccumFinalEndTime;
 
         public static double[] ballFinalSpace = new double[3];
         public static double[] paperFinalSpace = new double[3];
@@ -134,6 +142,13 @@ namespace freeFall
             paperSpaceTable = new double[ball.NumberOfTerms + 2];
             vaccumSpaceTable = new double[ball.NumberOfTerms + 2];
             timeTable = new double[ball.NumberOfTerms + 2];
+            ballVelocityTable = new double[ball.NumberOfTerms + 2];
+            paperVelocityTable = new double[paper.NumberOfTerms + 2];
+            vaccumVelocityTable = new double[vaccum.NumberOfTerms + 2];
+
+            ballFinalEndTime = new double[ball.NumberOfTerms + 2];
+            paperFinalEndTime = new double[paper.NumberOfTerms + 2];
+            vaccumFinalEndTime = new double[vaccum.NumberOfTerms + 2];
 
             cleanTables();
 
@@ -150,11 +165,31 @@ namespace freeFall
                     vaccumSpaceTable[i] = vaccum.Space[i];
                 }
             }
+
             ballSpaceTableIndex = vectorOneZero(ballSpaceTable);
             paperSpaceTableIndex = vectorOneZero(paperSpaceTable);
             vaccumSpaceTableIndex = vectorOneZero(vaccumSpaceTable);
             timeTableIndex = vectorOneZero(timeTable);
             timeTableIndex = timeTableIndex - 1;
+
+            for (i = 0; i < timeTable.Length-1; i++)
+            {
+                if (bodyOn && ballVelocityTable.Length > i)
+                {
+                    ballVelocityTable[i] = ball.velocityFunctionRV(0, gravity, timeTable[i]);
+                    ballFinalEndTime[i] = timeTable[i];
+                }
+                if (paperOn && paperVelocityTable.Length > i)
+                {
+                    paperVelocityTable[i] = paper.velocityFunctionRV(0, gravity, timeTable[i]);
+                    paperFinalEndTime[i] = timeTable[i];
+                }
+                if (vaccumOn && vaccumVelocityTable.Length > i)
+                {
+                    vaccumVelocityTable[i] = vaccum.velocityFunctionRV(0, gravity, timeTable[i]);
+                    vaccumFinalEndTime[i] = timeTable[i];
+                }
+            }
         }
         public static void makeTableWihtResistence()
         {
@@ -163,6 +198,13 @@ namespace freeFall
             ballSpaceTable = new double[ball.NumberOfTerms + 4];
             paperSpaceTable = new double[paper.NumberOfTerms + 4];
             vaccumSpaceTable = new double[vaccum.NumberOfTerms + 4];
+            ballVelocityTable = new double[ball.NumberOfTerms + 4];
+            paperVelocityTable = new double[paper.NumberOfTerms + 4];
+            vaccumVelocityTable = new double[vaccum.NumberOfTerms + 4];
+
+            ballFinalEndTime = new double[ball.NumberOfTerms + 4];
+            paperFinalEndTime = new double[paper.NumberOfTerms + 4];
+            vaccumFinalEndTime = new double[vaccum.NumberOfTerms + 4];
 
 
             if (greatestValueTime == 0)
@@ -303,6 +345,25 @@ namespace freeFall
             vaccumSpaceTableIndex = vectorOneZero(vaccumSpaceTable);
             timeTableIndex = vectorOneZero(timeTable);
             timeTableIndex = timeTableIndex - 1;
+
+            for (i = 0; i < timeTable.Length-2; i++)
+            {
+                if (bodyOn && ballVelocityTable.Length > i)
+                {
+                    ballVelocityTable[i] = ball.velocityFunctionRV1(timeTable[i], 1, gravity);
+                    ballFinalEndTime[i] = timeTable[i];
+                }
+                if (paperOn && paperVelocityTable.Length > i)
+                {
+                    paperVelocityTable[i] = paper.velocityFunctionRV1(timeTable[i], 1, gravity);
+                    paperFinalEndTime[i] = timeTable[i];
+                }
+                if (vaccumOn && vaccumVelocityTable.Length > i)
+                {
+                    vaccumVelocityTable[i] = vaccum.velocityFunctionRV(0, gravity, timeTable[i]);
+                    vaccumFinalEndTime[i] = timeTable[i];
+                }
+            }
         }
 
         public static void cleanTables()

@@ -136,19 +136,15 @@ namespace freeFall
             double countTime = 0.0;
             double result = 0.0;
             double decimalPart = 0.0;
-            double endTime = 0.0;
             int i = 0;
 
             finalVelocity = Math.Sqrt((initialVelocityExperiment * initialVelocityExperiment) + (2 * gravity * height));
             timeAllExperiment = Math.Round(((finalVelocity - initialVelocityExperiment) / gravity), precision);
             result = timeAllExperiment / 0.01;
-            Console.WriteLine("result: " + result);
             decimalPart = result - Math.Floor(result);
-            Console.WriteLine("decimal: " + decimalPart);
             if (decimalPart > 0)
             {
                 numberOfTerms = Convert.ToInt32(Math.Floor(result)) + 2;
-                Console.WriteLine("nb: " + numberOfTerms);
             }
             else
             {
@@ -203,13 +199,17 @@ namespace freeFall
             return height + ((initialVelocityExperiment * countTime) + (-1 * gravity * (countTime * countTime)) / 2);
         }
 
+        public double velocityFunctionRV (double initialVelocityExperiment, double gravity, double countTime)
+        {
+            return initialVelocityExperiment + (-1 * gravity * countTime);
+        }
+
         public void CalculateWithResistenceRV1(double height, double gravity, double airDensity)
         {
             double spacePoint = 0.0;
             double countTime = 0.0;
             double result = 0.0;
             double decimalPart = 0.0;
-            double auxiliary = 0.0;
             int i;
  
             term0 = Math.Round((0.5 * dragCoefficient * airDensity * crossSectionalArea), precision);
@@ -278,29 +278,9 @@ namespace freeFall
                 countTimeExperiment[i] = Math.Round(countTime, 4);
                 countTime = countTime + 0.01;
             }
-
             timeAllExperiment = Math.Round(getEndTime(gravity, height, countTimeExperiment[numberOfTerms - 3]), 15);
-
-            Console.WriteLine("ax: " + auxiliary);
-
             countTimeExperiment[numberOfTerms - 1] = timeAllExperiment;
-   
             space[numberOfTerms - 1] = height - spaceFunctionRV1(Math.Round(timeAllExperiment, 10), gravity, height);
-           
-
-            for(i=0; i < numberOfTerms; i++)
-            {
-                Console.WriteLine("space: " + space[i]);
-            }
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                Console.WriteLine("velocity: " + velocity[i]);
-            }
-            for (i = 0; i < numberOfTerms; i++)
-            {
-                Console.WriteLine("timee: " + countTimeExperiment[i]);
-            }
-            Console.WriteLine("ax: " + auxiliary);
             animationPaper(numberOfTerms, airDensity);
             animationVector(534, height);
         }
