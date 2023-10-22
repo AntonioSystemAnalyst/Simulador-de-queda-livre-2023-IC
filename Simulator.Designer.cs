@@ -65,6 +65,7 @@
             this.buttonPlanet = new System.Windows.Forms.Button();
             this.pictureBoxPlanets = new System.Windows.Forms.PictureBox();
             this.groupBoxConfiguracao = new System.Windows.Forms.GroupBox();
+            this.buttonBalls = new System.Windows.Forms.Button();
             this.labelMaskAirResistence = new System.Windows.Forms.Label();
             this.labelMaskVaccum = new System.Windows.Forms.Label();
             this.labelMaskPapel = new System.Windows.Forms.Label();
@@ -114,7 +115,6 @@
             this.timerVenus = new System.Windows.Forms.Timer(this.components);
             this.timerButton = new System.Windows.Forms.Timer(this.components);
             this.groupBoxDataExperiment = new System.Windows.Forms.GroupBox();
-            this.buttonBalls = new System.Windows.Forms.Button();
             this.groupBoxGraficos.SuspendLayout();
             this.groupBoxResultados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxVaccumObject)).BeginInit();
@@ -253,6 +253,7 @@
             this.buttonLog.TabIndex = 44;
             this.buttonLog.Text = "PL";
             this.buttonLog.UseVisualStyleBackColor = true;
+            this.buttonLog.Visible = false;
             this.buttonLog.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // pictureBoxVaccumObject
@@ -590,6 +591,19 @@
             this.groupBoxConfiguracao.TabIndex = 6;
             this.groupBoxConfiguracao.TabStop = false;
             this.groupBoxConfiguracao.Text = "Configurações";
+            // 
+            // buttonBalls
+            // 
+            this.buttonBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBalls.ForeColor = System.Drawing.Color.Black;
+            this.buttonBalls.Location = new System.Drawing.Point(168, 238);
+            this.buttonBalls.Name = "buttonBalls";
+            this.buttonBalls.Size = new System.Drawing.Size(39, 27);
+            this.buttonBalls.TabIndex = 51;
+            this.buttonBalls.Text = "Balls";
+            this.buttonBalls.UseVisualStyleBackColor = true;
+            this.buttonBalls.Visible = false;
+            this.buttonBalls.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // labelMaskAirResistence
             // 
@@ -1094,19 +1108,6 @@
             this.groupBoxDataExperiment.TabIndex = 13;
             this.groupBoxDataExperiment.TabStop = false;
             this.groupBoxDataExperiment.Text = "Dados do experimento ";
-            // 
-            // buttonBalls
-            // 
-            this.buttonBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBalls.ForeColor = System.Drawing.Color.Black;
-            this.buttonBalls.Location = new System.Drawing.Point(168, 238);
-            this.buttonBalls.Name = "buttonBalls";
-            this.buttonBalls.Size = new System.Drawing.Size(39, 27);
-            this.buttonBalls.TabIndex = 51;
-            this.buttonBalls.Text = "Balls";
-            this.buttonBalls.UseVisualStyleBackColor = true;
-            this.buttonBalls.Visible = false;
-            this.buttonBalls.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // Simulator
             // 

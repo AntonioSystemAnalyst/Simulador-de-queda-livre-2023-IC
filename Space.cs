@@ -429,12 +429,12 @@ namespace freeFall
                                 }
                             }
                         }
-                        for (i = 0; i < Program.numberOfPoints; i++)
+                        for (i = 0; i < Program.numberOfTermsTable - 2; i++)
                         {
-                            linha[0] = timeLarge[i];
+                            linha[0] = Convert.ToString(Math.Round(Program.timeTable[i], 4).ToString("0.0000"));
                             if (Program.bodyOn)
                             {
-                                if (Program.ball.NumberOfTerms > i)
+                                if (Program.ballSpaceTableIndex > i)
                                 {
                                     linha[1] = Convert.ToString(Math.Round(Program.ballSpaceTable[i], 4).ToString("0.0000"));
                                 }
@@ -445,7 +445,7 @@ namespace freeFall
                             }
                             if (Program.paperOn)
                             {
-                                if (Program.paper.NumberOfTerms > i)
+                                if (Program.paperSpaceTableIndex > i)
                                 {
                                     linha[2] = Convert.ToString(Math.Round(Program.paperSpaceTable[i], 4).ToString("0.0000"));
                                 }
@@ -456,7 +456,7 @@ namespace freeFall
                             }
                             if (Program.vaccumOn)
                             {
-                                if (Program.vaccum.NumberOfTerms > i)
+                                if (Program.vaccumSpaceTableIndex > i)
                                 {
                                     linha[3] = Convert.ToString(Math.Round(Program.vaccumSpaceTable[i], 4).ToString("0.0000"));
                                 }

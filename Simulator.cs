@@ -284,7 +284,7 @@ namespace freeFall
                 pictureBoxNext.Visible = true;
                 txtgravit.Enabled = true;
                 textBoxAirDensity.Enabled = true;
-                if (checkBoxPaper.Checked == true)
+                if (checkBoxPaper.Checked == true && Program.planetName != "Vênus")
                 {
                     comboPaper.Enabled = true;
                 }

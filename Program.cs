@@ -215,7 +215,6 @@ namespace freeFall
             ballVelocityTable = new double[ball.NumberOfTerms + 4];
             paperVelocityTable = new double[paper.NumberOfTerms + 4];
             vaccumVelocityTable = new double[vaccum.NumberOfTerms + 4];
-
             ballFinalEndTime = new double[ball.NumberOfTerms + 4];
             paperFinalEndTime = new double[paper.NumberOfTerms + 4];
             vaccumFinalEndTime = new double[vaccum.NumberOfTerms + 4];
@@ -336,8 +335,6 @@ namespace freeFall
                     }
                     else
                     {
-                        if (greatestValueTime == 0)
-                        {
                             numberOfTermsTable = ball.NumberOfTerms + 2;
                             timeTable = new double[numberOfTermsTable];
                             cleanTables();
@@ -345,7 +342,6 @@ namespace freeFall
                             {
                                 timeTable[i] = ball.CountTimeExperiment[i];
                             }
-                        }
                     }
                 }
             }
