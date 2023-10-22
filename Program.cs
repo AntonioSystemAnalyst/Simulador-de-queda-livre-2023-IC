@@ -190,6 +190,20 @@ namespace freeFall
                     vaccumFinalEndTime[i] = timeTable[i];
                 }
             }
+
+            if(bodyOn)
+            {
+                ball.animationVector(534, height, ball.NumberOfTerms + 2, ballSpaceTable);
+            }
+            if(paperOn)
+            {
+                paper.animationVector(534, height, paper.NumberOfTerms + 2, paperSpaceTable);
+            }
+            if(vaccumOn)
+            {
+                vaccum.animationVector(534, height, vaccum.NumberOfTerms + 2, vaccumSpaceTable);
+            }
+
         }
         public static void makeTableWihtResistence()
         {
@@ -363,6 +377,23 @@ namespace freeFall
                     vaccumVelocityTable[i] = vaccum.velocityFunctionRV(0, gravity, timeTable[i]);
                     vaccumFinalEndTime[i] = timeTable[i];
                 }
+            }
+
+            if (bodyOn)
+            {
+                ball.animationVector(534, height, ball.NumberOfTerms + 2, ballSpaceTable);
+                ball.PaperPixels = new int[ball.NumberOfTerms + 4];
+                ball.animationPaper(ball.NumberOfTerms + 4, airDensity);
+            }
+            if (paperOn)
+            {
+                paper.animationVector(534, height, paper.NumberOfTerms + 2, paperSpaceTable);
+                paper.PaperPixels = new int[paper.NumberOfTerms + 4];
+                paper.animationPaper(paper.NumberOfTerms + 4, airDensity);
+            }
+            if (vaccumOn)
+            {
+                vaccum.animationVector(534, height, vaccum.NumberOfTerms + 2, vaccumSpaceTable);
             }
         }
 

@@ -380,22 +380,25 @@ namespace freeFall
         }
         private void timerAnimation_Tick(object sender, EventArgs e)
         {
-            if (countGrafic < Program.ball.NumberOfTerms)
+            if (countGrafic < Program.ballSpaceTableIndex)
             {
                 animationWindow.animationCorpo(countGrafic);
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
-                    textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countGrafic], 4).ToString("0.0000"); ;
+                    textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countGrafic], 4).ToString("0.0000"); ;
                 }
-                txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countGrafic], 4).ToString("0.0000"); ;
-                txtEspaco.Text = " " + Math.Round(Program.ball.Space[countGrafic], 4).ToString("0.0000"); ;
+                txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countGrafic], 4).ToString("0.0000"); 
+                txtEspaco.Text = " " + Math.Round(Program.ballSpaceTable[countGrafic], 4).ToString("0.0000"); 
             }
             countBody = countBody + 1;
-            if (countBody >= Program.ball.NumberOfTerms)
+            if (countBody <= Program.ball.NumberOfTerms)
             {
                 txtEspaco.Text = "0.0000";
+                txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countBody], 4).ToString("0.0000");
+                textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000"); 
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
+                    textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000"); ;
                     stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -407,22 +410,25 @@ namespace freeFall
         }
         private void timerAnimationPaper_Tick(object sender, EventArgs e)
         {
-            if (countGrafic < Program.paper.NumberOfTerms)
+            if (countGrafic < Program.paperSpaceTableIndex)
             {
                 animationWindow.animationPaper(countGrafic);
                 if (greatestValueTime == 2)
                 {
-                    textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countGrafic], 4).ToString("0.0000"); 
+                    textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countGrafic], 4).ToString("0.0000"); 
                 }
-                textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countGrafic], 4).ToString("0.0000"); 
-                textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countGrafic], 4).ToString("0.0000"); 
+                textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[countGrafic], 4).ToString("0.0000"); 
+                textBoxPaperHeight.Text = " " + Math.Round(Program.paperSpaceTable[countGrafic], 4).ToString("0.0000"); 
             }
             countPaper = countPaper + 1;
-            if (countPaper >= Program.paper.NumberOfTerms)
+            if (countPaper <= Program.paper.NumberOfTerms)
             {
                 textBoxPaperHeight.Text = "0.0000";
+                textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countPaper], 4).ToString("0.0000");
+                textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[countPaper], 4).ToString("0.0000");
                 if (greatestValueTime == 2)
                 {
+                    textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countPaper], 4).ToString("0.0000");
                     stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -435,22 +441,25 @@ namespace freeFall
 
         private void timerAnimationVacuum_Tick(object sender, EventArgs e)
         {
-            if (countGrafic < Program.vaccum.NumberOfTerms)
+            if (countGrafic < Program.vaccumSpaceTableIndex)
             {
                 animationWindow.animationVaccum(countGrafic);
                 if (greatestValueTime == 3)
                 {
-                    textTempo.Text = " " + Math.Round(Program.vaccum.CountTimeExperiment[countGrafic], 4).ToString("0.0000"); 
+                    textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countGrafic], 4).ToString("0.0000"); 
                 }
-                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccum.Velocity[countGrafic], 4).ToString("0.0000"); 
-                textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[countGrafic], 4).ToString("0.0000"); 
+                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[countGrafic], 4).ToString("0.0000"); 
+                textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccumSpaceTable[countGrafic], 4).ToString("0.0000"); 
             }
             countVaccum = countVaccum + 1;
-            if (countVaccum >= Program.vaccum.NumberOfTerms)
+            if (countVaccum <= Program.vaccum.NumberOfTerms)
             {
                 textBoxVaccumHeight.Text = "0.0000";
+                textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countVaccum], 4).ToString("0.0000");
+                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[countVaccum], 4).ToString("0.0000");
                 if (greatestValueTime == 3)
                 {
+                    textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countVaccum], 4).ToString("0.0000");
                     stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -466,36 +475,35 @@ namespace freeFall
             countPaper = countGrafic;
             countVaccum = countGrafic;
 
-            if (countVaccum < Program.vaccum.NumberOfTerms)
+            if (countGrafic < Program.vaccumSpaceTableIndex)
             {
-                animationWindow.animationVaccum(countVaccum);
+                animationWindow.animationVaccum(countGrafic);
                 if (greatestValueTime == 3)
                 {
-                    textTempo.Text = " " + Math.Round(Program.vaccum.CountTimeExperiment[countVaccum], 4).ToString("0.0000"); 
+                    textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countGrafic], 4).ToString("0.0000");
                 }
-                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccum.Velocity[countVaccum], 4).ToString("0.0000"); 
-                textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccum.Space[countVaccum], 4).ToString("0.0000"); 
+                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[countGrafic], 4).ToString("0.0000");
+                textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccumSpaceTable[countGrafic], 4).ToString("0.0000");
             }
-            if (countBody < Program.ball.NumberOfTerms)
+            if (countGrafic < Program.ballSpaceTableIndex)
             {
-                animationWindow.animationCorpo(countBody);
+                animationWindow.animationCorpo(countGrafic);
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
-                    textTempo.Text = " " + Math.Round(Program.ball.CountTimeExperiment[countBody], 4).ToString("0.0000"); 
+                    textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countGrafic], 4).ToString("0.0000"); 
                 }
-                txtVelocidade.Text = " " + Math.Round(Program.ball.Velocity[countBody], 4).ToString("0.0000"); 
-                txtEspaco.Text = " " + Math.Round(Program.ball.Space[countBody], 4).ToString("0.0000"); 
+                txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countGrafic], 4).ToString("0.0000"); 
+                txtEspaco.Text = " " + Math.Round(Program.ballSpaceTable[countGrafic], 4).ToString("0.0000"); 
             }
-            if (countPaper < Program.paper.NumberOfTerms)
+            if (countGrafic < Program.paperSpaceTableIndex)
             {
-                animationWindow.animationPaper(countPaper);
-
+                animationWindow.animationPaper(countGrafic);
                 if (greatestValueTime == 2)
                 {
-                    textTempo.Text = " " + Math.Round(Program.paper.CountTimeExperiment[countPaper], 4).ToString("0.0000");
+                    textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countGrafic], 4).ToString("0.0000");
                 }
-                textBoxPaperVelocity.Text = " " + Math.Round(Program.paper.Velocity[countPaper], 4).ToString("0.0000"); 
-                textBoxPaperHeight.Text = " " + Math.Round(Program.paper.Space[countPaper], 4).ToString("0.0000"); 
+                textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[countGrafic], 4).ToString("0.0000");
+                textBoxPaperHeight.Text = " " + Math.Round(Program.paperSpaceTable[countGrafic], 4).ToString("0.0000");
             }
         }
         public void stopAllTimes()

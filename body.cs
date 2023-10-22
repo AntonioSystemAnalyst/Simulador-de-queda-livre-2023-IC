@@ -43,18 +43,18 @@ namespace freeFall
             double roundedValue = Math.Round(value * factor) / factor;
             return roundedValue;
         }
-        public void animationVector(int quantityPixel, double height)
+        public void animationVector(int quantityPixel, double height, int Terms, double[] space)
         {
             qtdSpaceForPixels = height / quantityPixel;
             double countSpace = 0.0;
             int i = 0, k = 0;
             int status = 0;
             int start = 0;
-            int end = numberOfTerms - 1;
+            int end = Terms - 1;
             int[] auxiliary;
             animationPixel = new double[quantityPixel + 1];
-            pixels = new int[numberOfTerms + 1];
-            auxiliary = new int[numberOfTerms + 1];
+            pixels = new int[Terms + 1];
+            auxiliary = new int[Terms + 1];
 
             for (i = 0; i <= quantityPixel; i++)
             {
@@ -62,12 +62,12 @@ namespace freeFall
                 countSpace = countSpace + qtdSpaceForPixels;
             }
 
-            for (i = 0; i < numberOfTerms; i++)
+            for (i = 0; i < Terms; i++)
             {
                 status = 0;
                 for (k = 0; k <= quantityPixel; k++)
                 {
-                    if ((animationPixel[k] - space[(numberOfTerms - 1) - i]) >= 0.01 && status == 0)
+                    if ((animationPixel[k] - space[(Terms - 1) - i]) >= 0.01 && status == 0)
                     {
                         auxiliary[i] = k;
                         status = 1;
@@ -75,7 +75,7 @@ namespace freeFall
                 }
             }
 
-            for (i = 0; i < numberOfTerms; i++)
+            for (i = 0; i < Terms; i++)
             {
                 pixels[i] = -(auxiliary[i] - quantityPixel);
                 if (auxiliary[i] == 0)
@@ -99,7 +99,7 @@ namespace freeFall
                     pixels[i] = 524;
                 }
             }
-            pixels[numberOfTerms - 1] = 524;
+            pixels[Terms - 1] = 524;
         }
         public void animationPaper(int terms, double airDensity)
         {
@@ -191,7 +191,7 @@ namespace freeFall
                 velocity[numberOfTerms - 1] = initialVelocityExperiment + (-1 * gravity * timeAllExperiment);
                 spaceTime[numberOfTerms - 1] = timeAllExperiment;
             }
-            animationVector(534, height);
+            animationVector(534, height, numberOfTerms, space);
         }
 
         public double spaceFunction(double countTime, double initialVelocityExperiment, double gravity, double height)
@@ -282,7 +282,7 @@ namespace freeFall
             countTimeExperiment[numberOfTerms - 1] = timeAllExperiment;
             space[numberOfTerms - 1] = height - spaceFunctionRV1(Math.Round(timeAllExperiment, 10), gravity, height);
             animationPaper(numberOfTerms, airDensity);
-            animationVector(534, height);
+            animationVector(534, height, numberOfTerms, space);
         }
 
         public double getEndTime(double gravity, double height, double time)
