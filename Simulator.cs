@@ -385,20 +385,19 @@ namespace freeFall
                 animationWindow.animationCorpo(countGrafic);
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
-                    textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countGrafic], 4).ToString("0.0000"); ;
+                    textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countGrafic], 4).ToString("0.0000"); 
                 }
                 txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countGrafic], 4).ToString("0.0000"); 
                 txtEspaco.Text = " " + Math.Round(Program.ballSpaceTable[countGrafic], 4).ToString("0.0000"); 
             }
             countBody = countBody + 1;
-            if (countBody <= Program.ball.NumberOfTerms)
+            if (countBody > Program.ball.NumberOfTerms)
             {
                 txtEspaco.Text = "0.0000";
-                txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[countBody], 4).ToString("0.0000");
-                textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000"); 
                 if (greatestValueTime == 1 || greatestValueTime == 0)
                 {
-                    textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[countBody], 4).ToString("0.0000"); ;
+                    textTempo.Text = " " + Math.Round(Program.ballFinalEndTime[Program.ballSpaceTableIndex-1], 4).ToString("0.0000");
+                    showValueEnd();
                     stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -421,14 +420,13 @@ namespace freeFall
                 textBoxPaperHeight.Text = " " + Math.Round(Program.paperSpaceTable[countGrafic], 4).ToString("0.0000"); 
             }
             countPaper = countPaper + 1;
-            if (countPaper <= Program.paper.NumberOfTerms)
+            if (countPaper > Program.paper.NumberOfTerms)
             {
                 textBoxPaperHeight.Text = "0.0000";
-                textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countPaper], 4).ToString("0.0000");
-                textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[countPaper], 4).ToString("0.0000");
                 if (greatestValueTime == 2)
                 {
-                    textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[countPaper], 4).ToString("0.0000");
+                    textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[Program.paperSpaceTableIndex-1], 4).ToString("0.0000");
+                    showValueEnd();
                     stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -452,14 +450,13 @@ namespace freeFall
                 textBoxVaccumHeight.Text = " " + Math.Round(Program.vaccumSpaceTable[countGrafic], 4).ToString("0.0000"); 
             }
             countVaccum = countVaccum + 1;
-            if (countVaccum <= Program.vaccum.NumberOfTerms)
+            if (countVaccum > Program.vaccum.NumberOfTerms)
             {
                 textBoxVaccumHeight.Text = "0.0000";
-                textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countVaccum], 4).ToString("0.0000");
-                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[countVaccum], 4).ToString("0.0000");
                 if (greatestValueTime == 3)
                 {
-                    textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[countVaccum], 4).ToString("0.0000");
+                    textTempo.Text = " " + Math.Round(Program.vaccumFinalEndTime[Program.vaccumSpaceTableIndex-1], 4).ToString("0.0000");
+                    showValueEnd();
                     stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
@@ -468,6 +465,18 @@ namespace freeFall
                     enabledConfigure(0);
                 }
             }
+        }
+
+        public void showValueEnd()
+        {
+            txtEspaco.Text = "0.0000";
+            txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[Program.ballSpaceTableIndex-1], 4).ToString("0.0000");
+           
+            textBoxPaperHeight.Text = "0.0000";
+            textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[Program.paperSpaceTableIndex-1], 4).ToString("0.0000");
+
+            textBoxVaccumHeight.Text = "0.0000";
+            textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[Program.vaccumSpaceTableIndex-1], 4).ToString("0.0000");
         }
         public void alignVectors()
         {

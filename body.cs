@@ -191,7 +191,6 @@ namespace freeFall
                 velocity[numberOfTerms - 1] = initialVelocityExperiment + (-1 * gravity * timeAllExperiment);
                 spaceTime[numberOfTerms - 1] = timeAllExperiment;
             }
-            animationVector(534, height, numberOfTerms, space);
         }
 
         public double spaceFunction(double countTime, double initialVelocityExperiment, double gravity, double height)
@@ -281,8 +280,6 @@ namespace freeFall
             timeAllExperiment = Math.Round(getEndTime(gravity, height, countTimeExperiment[numberOfTerms - 3]), 15);
             countTimeExperiment[numberOfTerms - 1] = timeAllExperiment;
             space[numberOfTerms - 1] = height - spaceFunctionRV1(Math.Round(timeAllExperiment, 10), gravity, height);
-            animationPaper(numberOfTerms, airDensity);
-            animationVector(534, height, numberOfTerms, space);
         }
 
         public double getEndTime(double gravity, double height, double time)

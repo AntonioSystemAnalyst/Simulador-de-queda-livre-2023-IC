@@ -104,10 +104,10 @@ namespace freeFall
         public static double[] paperVelocityTable;
         public static double[] vaccumVelocityTable;
 
-        public static double timeTableIndex;
-        public static double ballSpaceTableIndex;
-        public static double paperSpaceTableIndex;
-        public static double vaccumSpaceTableIndex;
+        public static int timeTableIndex;
+        public static int ballSpaceTableIndex;
+        public static int paperSpaceTableIndex;
+        public static int vaccumSpaceTableIndex;
 
         public static double ballFinalTime = 0.0;
         public static double paperFinalTime = 0.0;
@@ -401,10 +401,10 @@ namespace freeFall
         {
             int i = 0;
 
-            timeTableIndex = 0.0;
-            ballSpaceTableIndex = 0.0;
-            paperSpaceTableIndex = 0.0;
-            vaccumSpaceTableIndex = 0.0;
+            timeTableIndex = 0;
+            ballSpaceTableIndex = 0;
+            paperSpaceTableIndex = 0;
+            vaccumSpaceTableIndex = 0;
 
             ballFinalTime = 0.0;
             paperFinalTime = 0.0;
