@@ -427,6 +427,7 @@ namespace freeFall
                 {
                     textTempo.Text = " " + Math.Round(Program.paperFinalEndTime[Program.paperSpaceTableIndex-1], 4).ToString("0.0000");
                     showValueEnd();
+                    animationWindow.animationPaper(countGrafic+1);
                     stopAllTimes();
                     BTNIniciar.Text = "Posicionar";
                     buttonStartControl = 3;
