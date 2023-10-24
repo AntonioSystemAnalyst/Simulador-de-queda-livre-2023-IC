@@ -470,14 +470,21 @@ namespace freeFall
 
         public void showValueEnd()
         {
-            txtEspaco.Text = "0.0000";
-            txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[Program.ballSpaceTableIndex-1], 4).ToString("0.0000");
-           
-            textBoxPaperHeight.Text = "0.0000";
-            textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[Program.paperSpaceTableIndex-1], 4).ToString("0.0000");
-
-            textBoxVaccumHeight.Text = "0.0000";
-            textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[Program.vaccumSpaceTableIndex-1], 4).ToString("0.0000");
+            if(Program.bodyOn)
+            {
+                txtEspaco.Text = "0.0000";
+                txtVelocidade.Text = " " + Math.Round(Program.ballVelocityTable[Program.ballSpaceTableIndex - 1], 4).ToString("0.0000");
+            }
+            if(Program.paperOn)
+            {
+                textBoxPaperHeight.Text = "0.0000";
+                textBoxPaperVelocity.Text = " " + Math.Round(Program.paperVelocityTable[Program.paperSpaceTableIndex - 1], 4).ToString("0.0000");
+            }
+            if(Program.vaccumOn)
+            {
+                textBoxVaccumHeight.Text = "0.0000";
+                textBoxVaccumVelocity.Text = " " + Math.Round(Program.vaccumVelocityTable[Program.vaccumSpaceTableIndex - 1], 4).ToString("0.0000");
+            }
         }
         public void alignVectors()
         {
