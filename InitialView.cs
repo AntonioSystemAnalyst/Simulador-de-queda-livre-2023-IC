@@ -18,7 +18,13 @@ namespace freeFall
             planetData("Terra", "6.371,00", "12.742", "1.083.206.916.846", "5,9722 x 10²⁴", "9,81", "1,23");
             Program.airDensity = 1.23;
             //richTextBoxText.Text = "QUEDA LIVRE\n\nA queda livre é um fenômeno físico que ocorre quando um corpo é liberado no ar ou vacúo, e é deixado para cair devido à gravidade.\n\nRESISTÊNCIA DO AR\n\nA resistência do ar é a força que se opõe ao movimento de um objeto pelo ar.\n\nREFERÊNCIAS\n\nImagens\n\nAs ilustrações dos horizontes dos planetas, no campo ''Experimento'', foram feitas com a inteligência artifical da Microsoft, ''Bing Image Creator'', que pode ser acessada em: https://www.bing.com/create. Acessada em 14 de maio de 2023.\n\nAs demais imagens foram retiradas da plataforma ''Pixabay'', que esta disponível no site: https://pixabay.com/pt/. Acessada em 14 de maio de 2023.\n\nCRÉDITOS\n\n";
-            richTextBoxText.Text = "Este conteúdo será inserido futuramente.";
+            richTextBoxText.Text = "\nDesenvolvido por:\n\n" +
+                                  "José Antonio de Almeida Silva\n" +
+                                  "Orientador: Prof. Dr. Antonio Augusto Soares\n" +
+                                  "Designer e Edição de Imagens: Rudson Alves\n" +
+                                  "Iniciação Científica - UFSCar/Sorocaba\n" +
+                                  "Ano: 2022 - 2023";
+
         }
 
         private void timerAnimation_Tick(object sender, EventArgs e)

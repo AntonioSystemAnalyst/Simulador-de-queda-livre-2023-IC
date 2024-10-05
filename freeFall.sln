@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "freeFall", "freeFall.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{36D2EF58-4511-4F8B-B139-F9325F3F92EF}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "freeFallSetup", "..\freeFallSetup\freeFallSetup.vdproj", "{A87D2C6B-C7E9-4CF0-BE13-DC79A91C9147}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,8 +17,6 @@ Global
 		{A7D27068-DD1F-4686-BBAB-B4998147EE23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D27068-DD1F-4686-BBAB-B4998147EE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D27068-DD1F-4686-BBAB-B4998147EE23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A87D2C6B-C7E9-4CF0-BE13-DC79A91C9147}.Debug|Any CPU.ActiveCfg = Debug
-		{A87D2C6B-C7E9-4CF0-BE13-DC79A91C9147}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

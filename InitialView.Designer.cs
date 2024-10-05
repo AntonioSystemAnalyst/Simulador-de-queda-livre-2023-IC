@@ -164,7 +164,7 @@
             this.richTextBoxText.Location = new System.Drawing.Point(786, 25);
             this.richTextBoxText.Name = "richTextBoxText";
             this.richTextBoxText.ReadOnly = true;
-            this.richTextBoxText.Size = new System.Drawing.Size(349, 364);
+            this.richTextBoxText.Size = new System.Drawing.Size(349, 176);
             this.richTextBoxText.TabIndex = 14;
             this.richTextBoxText.Text = "";
             this.richTextBoxText.Visible = false;
@@ -184,24 +184,22 @@
             // 
             this.pictureBoxDFQM.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxDFQM.Image = global::freeFall.Properties.Resources.dfqm;
-            this.pictureBoxDFQM.Location = new System.Drawing.Point(330, 458);
+            this.pictureBoxDFQM.Location = new System.Drawing.Point(304, 497);
             this.pictureBoxDFQM.Name = "pictureBoxDFQM";
             this.pictureBoxDFQM.Size = new System.Drawing.Size(67, 65);
             this.pictureBoxDFQM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxDFQM.TabIndex = 16;
             this.pictureBoxDFQM.TabStop = false;
-            this.pictureBoxDFQM.Visible = false;
             // 
             // pictureBoxUfscar
             // 
             this.pictureBoxUfscar.Image = global::freeFall.Properties.Resources.ufscar;
-            this.pictureBoxUfscar.Location = new System.Drawing.Point(210, 458);
+            this.pictureBoxUfscar.Location = new System.Drawing.Point(179, 497);
             this.pictureBoxUfscar.Name = "pictureBoxUfscar";
             this.pictureBoxUfscar.Size = new System.Drawing.Size(104, 65);
             this.pictureBoxUfscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxUfscar.TabIndex = 17;
             this.pictureBoxUfscar.TabStop = false;
-            this.pictureBoxUfscar.Visible = false;
             // 
             // pictureBoxCorpo
             // 
