@@ -1,46 +1,21 @@
-Simulador de Queda Livre 2023 - Iniciação Científica
+# Simulador de Queda Livre - 2023 (Iniciação Científica)
 
-Este repositório contém o código-fonte de um simulador desenvolvido em C# para estudar o movimento de queda livre de corpos próximos à superfície de planetas rochosos e da Lua. O simulador foi projetado para ser utilizado como uma ferramenta didática no ensino de cinemática, abordando a aceleração da gravidade, resistência do ar e as características geométricas dos corpos.
-Descrição
+Este repositório contém um simulador desenvolvido em **C#** para estudar o movimento da queda de corpos de diferentes formatos próximos à superfície dos planetas rochosos e da Lua. O simulador oferece uma experiência interativa, permitindo que os alunos investiguem a influência da resistência do ar no movimento de queda, além de explorar a cinemática de corpos em diferentes condições atmosféricas e gravitacionais.
 
-O Simulador de Queda Livre 2023 foi desenvolvido como parte de um projeto de Iniciação Científica e pode ser utilizado no contexto das aulas de física, especialmente para ilustrar os conceitos de movimento acelerado e influência de diferentes variáveis na cinemática de queda de corpos. A ferramenta oferece a possibilidade de:
+## Objetivo
 
-    Visualizar o movimento de corpos com diferentes formas e densidades atmosféricas.
-    Observar a variação da aceleração gravitacional em diferentes planetas e na Lua.
-    Gerar gráficos e tabelas com a posição (altura) e a velocidade vertical dos corpos de prova.
-    Exportar dados para análise posterior em planilhas eletrônicas.
+O objetivo principal deste projeto é criar um ambiente de simulação que ajude no aprendizado da cinemática da queda dos corpos, utilizando conceitos de física, gráficos e dados matemáticos para aprofundar a compreensão dos alunos sobre o movimento de queda em diferentes planetas e na Lua.
 
-Funcionalidades
+## Funcionalidades
 
-    Simulação de Queda Livre: O simulador permite simular o movimento de corpos próximos à superfície de diferentes planetas e da Lua.
-    Gráficos e Tabelas: Exibição de gráficos e tabelas em tempo real para análise dos dados do movimento (posição e velocidade).
-    Exploração de Variáveis: Permite ajustar diferentes parâmetros, como a densidade atmosférica, geometria do corpo e características gravitacionais de diferentes planetas.
-    Exportação de Dados: Os dados gerados pela simulação podem ser exportados para planilhas eletrônicas para análise posterior.
+- **Simulação Gráfica**: O simulador exibe a simulação do movimento de queda dos corpos com a opção de visualizar os gráficos e tabelas em uma tela separada.
+- **Parâmetros Ajustáveis**: É possível modificar parâmetros como a geometria do corpo, a resistência do ar e as condições atmosféricas para observar diferentes cenários de queda.
+- **Exportação de Dados**: Os dados gerados pela simulação podem ser exportados para uma planilha eletrônica para análises mais aprofundadas.
+- **Interação**: O simulador permite que os alunos investiguem e analisem o comportamento de corpos em queda sob diferentes condições.
 
-Como Usar
+## Instalação
 
-    Clone o repositório para o seu computador:
+1. Clone este repositório:
+   ```bash
+   git clone https://github.com/AntonioSystemAnalyst/Simulador-de-queda-livre-2023-IC.git
 
-    git clone https://github.com/AntonioSystemAnalyst/Simulador-de-queda-livre-2023-IC.git
-
-    Abra o projeto no Visual Studio ou em outro ambiente de desenvolvimento C#.
-
-    Execute o simulador para começar a simulação da queda dos corpos. Você pode ajustar os parâmetros (como a densidade atmosférica e a geometria do corpo) e observar os resultados gráficos e numéricos.
-
-    Interaja com a ferramenta: Utilize a interface para testar diferentes condições atmosféricas e gravitacionais em planetas e na Lua.
-
-    Exportação de Dados: Após a simulação, você pode exportar os dados para uma planilha eletrônica (formato .csv) para análise posterior.
-
-Tecnologias Utilizadas
-
-    C#: Linguagem de programação utilizada para o desenvolvimento do simulador.
-    .NET Framework: Plataforma de desenvolvimento que suporta o C#.
-    Windows Forms: Biblioteca gráfica para a criação da interface de usuário.
-
-Exemplos de Uso
-
-O simulador pode ser utilizado para explorar diversos aspectos da cinemática, como:
-
-    A comparação entre o movimento de queda de corpos em diferentes planetas, com diferentes intensidades de gravidade e densidade atmosférica.
-    O estudo de como diferentes geometrias de corpos afetam o seu movimento.
-    A análise de como o uso de paraquedas influencia o movimento de queda, com foco na velocidade terminal.
