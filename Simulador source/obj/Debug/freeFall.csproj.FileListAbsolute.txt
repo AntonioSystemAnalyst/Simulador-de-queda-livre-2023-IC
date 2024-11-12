@@ -56,3 +56,23 @@ C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\obj\Debug\free
 C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\obj\Debug\freeFall.csproj.CoreCompileInputs.cache
 C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\obj\Debug\freeFall.exe
 C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\obj\Debug\freeFall.pdb
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\bin\Debug\freeFall.exe.config
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\bin\Debug\freeFall.exe
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\bin\Debug\freeFall.pdb
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.csproj.AssemblyReference.cache
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.AnimationWindow.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.Data.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.ExperimentData.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.GraficSpaceWindow.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.GraficSpeedWindow.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.InitialView.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.programView.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.logVetors.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.Properties.Resources.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.Simulator.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.Space.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.Speed.resources
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.csproj.GenerateResource.cache
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.csproj.CoreCompileInputs.cache
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.exe
+C:\Users\Orphew\Documents\GitHub\Simulador-de-queda-livre-2023-IC\Simulador source\obj\Debug\freeFall.pdb
